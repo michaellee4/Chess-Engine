@@ -51,6 +51,9 @@ class Board
 
 		// stores the history of moves
 		Move history[MAX_GAME_MOVES];
+
+		// piece list
+		int pList[13][10];
 }
 
 #endif

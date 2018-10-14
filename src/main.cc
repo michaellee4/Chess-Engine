@@ -29,6 +29,11 @@ void printArray()
 int main()
 {
 	InitAll();
-	printArray();
+	
+	U64 testbb = 0ULL;
+	testbb |= (1ULL<<Sq120ToSq64[D2]);
+	testbb |= (1ULL<<Sq120ToSq64[G2]);
+
+	PrintBitBoard(testbb);
 	return 0;
 }

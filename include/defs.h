@@ -1,6 +1,8 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+#include "Debug.h"
+
 typedef unsigned long long U64;
 
 const unsigned int BRD_SQ_NUM = 120;
@@ -37,5 +39,7 @@ extern int Sq120ToSq64[BRD_SQ_NUM];
 extern int Sq64ToSq120[64];
 
 extern void InitAll();
+extern int FileRankToSq(int file, int rank);
+extern void PrintBitBoard(U64 bb);
 
 #endif

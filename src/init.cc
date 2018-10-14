@@ -3,6 +3,7 @@
 int Sq120ToSq64[BRD_SQ_NUM];
 int Sq64ToSq120[64];
 
+//return the 120 sq value of a given file and rank
 int FileRankToSq(int file, int rank)
 {
 	return 21 + file + rank * 10;
