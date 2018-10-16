@@ -1,13 +1,12 @@
 #include "defs.h"
+#include "utils.h"
+#include "init.h"
 
 int Sq120ToSq64[BRD_SQ_NUM];
 int Sq64ToSq120[64];
 
-//return the 120 sq value of a given file and rank
-int FileRankToSq(int file, int rank)
-{
-	return 21 + file + rank * 10;
-}
+U64 SetMask[64];
+U64 ClearMask[64];
 
 // creates 2 arrays to map 64 <-> 120 board square representations
 void InitSq120ToSq64()
@@ -37,9 +36,17 @@ void InitSq120ToSq64()
 	}
 }
 
-
+void InitBitMasks()
+{
+	for(int index = 0; index < 64; index++)
+	{
+		SetMask[index] = 1ULL << index;
+		ClearMask[index] = ~SetMask[index];
+	}
+}
 
 void InitAll()
 {
 	InitSq120ToSq64();
+	InitBitMasks();
 }

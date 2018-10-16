@@ -38,8 +38,9 @@ enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8 };
 extern int Sq120ToSq64[BRD_SQ_NUM];
 extern int Sq64ToSq120[64];
 
-extern void InitAll();
-extern int FileRankToSq(int file, int rank);
-extern void PrintBitBoard(U64 bb);
+// array of masks to set a given bit to 1 using bitwise or
+extern U64 SetMask[64];
+// array of masks to set a given bit to 0 using bitwise and
+extern U64 ClearMask[64];
 
 #endif
