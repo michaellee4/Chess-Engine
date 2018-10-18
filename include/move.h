@@ -12,6 +12,6 @@ class Move
 		int enPas;
 		int fiftyMove;
 		U64 posKey;
-}
+};
 
 #endif

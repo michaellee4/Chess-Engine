@@ -2,7 +2,7 @@
 #define BOARD_H
 
 #include "defs.h"
-#include "Move.h"
+#include "move.h"
 
 class Board
 {
@@ -20,7 +20,7 @@ class Board
 		int side_to_move;
 
 		// trackes the enPassant square, if there is one
-		int enpas;
+		int enPas;
 
 		// tracks the number of turns made (not ply)
 		int fiftyMove;
@@ -54,6 +54,6 @@ class Board
 
 		// piece list
 		int pList[13][10];
-}
+};
 
 #endif

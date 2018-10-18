@@ -45,8 +45,26 @@ void InitBitMasks()
 	}
 }
 
+void InitHashKeys()
+{
+	for(int i = 0; i < 13; i ++)
+	{
+		for(int j = 0; j < 120; j++)
+		{
+			PieceKeys[i][j] = RandU64();
+		}
+	}
+	SideKey = RandU64();
+
+	for(int i = 0; i < 16; i ++)
+	{
+		CastleKeys[i] = RandU64();
+	}
+}
+
 void InitAll()
 {
 	InitSq120ToSq64();
 	InitBitMasks();
+	InitHashKeys();
 }

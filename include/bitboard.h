@@ -3,7 +3,6 @@
 
 #include "defs.h"
 
-extern const int BitTable[64];
 
 int PopBit(U64&);
 
@@ -11,4 +10,7 @@ int CountBits(U64);
 
 void PrintBitBoard(U64);
 
+void SetBit(U64&, int);
+
+void ClearBit(U64&, int);
 #endif

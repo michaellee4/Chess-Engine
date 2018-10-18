@@ -1,7 +1,7 @@
 #ifndef DEFS_H
 #define DEFS_H
 
-#include "Debug.h"
+#include "debug.h"
 
 typedef unsigned long long U64;
 
@@ -35,12 +35,21 @@ enum {
 // Castling permissions
 enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8 };
 
+// *** used in init
 extern int Sq120ToSq64[BRD_SQ_NUM];
 extern int Sq64ToSq120[64];
 
+//*** used in bitboards
 // array of masks to set a given bit to 1 using bitwise or
 extern U64 SetMask[64];
 // array of masks to set a given bit to 0 using bitwise and
 extern U64 ClearMask[64];
+
+extern const int BitTable[64];
+
+//*** used in hash
+extern U64 PieceKeys[13][120];
+extern U64 SideKey;
+extern U64 CastleKeys[16];
 
 #endif
