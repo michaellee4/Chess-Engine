@@ -5,22 +5,15 @@
 #include "utils.h"
 #include "init.h"
 #include "hash.h"
+#include "board.h"
 #include <unordered_set>
 using namespace std;
 
 int main()
 {
 	InitAll();
-	
-	unordered_set<U64> s; 
-	int numDup = 0;
-	for(int i = 0; i < 100; i++)
-	{
-		U64 r = RandU64();
-		if(s.find(r)!=s.end())
-			numDup++;
-		s.insert(r);
-		printf("%llu\n", r);
-	}
+	Board b;
+	b.ParseFEN("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq a6 0 1");
+	b.PrintBoard();
 	return 0;
 }

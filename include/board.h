@@ -3,6 +3,13 @@
 
 #include "defs.h"
 #include "move.h"
+#include <string>
+
+extern char PceChar[];
+extern char SideChar[];
+extern char RankChar[];
+extern char FileChar[];
+
 
 class Board
 {
@@ -26,6 +33,7 @@ class Board
 		int fifty_move;
 
 		// number of half moves
+
 		int ply;
 
 		// total number of plys
@@ -57,6 +65,9 @@ class Board
 
 		void ResetBoard(void);
 
+		void ParseFEN(std::string);
+
+		void PrintBoard();
 };
 
 #endif

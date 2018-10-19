@@ -1,6 +1,6 @@
 #ifndef HASH_H
 #define HASH_H
-
-U64 GeneratePosKey();
+#include "board.h"
+U64 GeneratePosKey(const Board& pos);
 
 #endif
