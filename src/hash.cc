@@ -24,12 +24,12 @@ U64 GeneratePosKey(const Board& pos)
 	{
 		hash ^= SideKey;
 	}
-	if(pos.enPas != NO_SQ)
+	if(pos.en_pas != NO_SQ)
 	{
-		hash ^= PieceKeys[EMPTY][pos.enPas];
+		hash ^= PieceKeys[EMPTY][pos.en_pas];
 	}
 
-	hash ^= CastleKeys[pos.castlePerm];
+	hash ^= CastleKeys[pos.castle_perm];
 
 	return hash;
 }
