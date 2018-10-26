@@ -5,12 +5,6 @@
 #include "move.h"
 #include <string>
 
-extern char PceChar[];
-extern char SideChar[];
-extern char RankChar[];
-extern char FileChar[];
-
-
 class Board
 {
 	public:
@@ -46,13 +40,15 @@ class Board
 		int piece_num[13];
 
 		// non pawn pieces
-		int big_pce[3];
+		int big_pce[2];
 
 		// rooks and queens
-		int maj_pce[3];
+		int maj_pce[2];
 
 		// bishops and knights
-		int min_pce[3];
+		int min_pce[2];
+
+		int material[2];
 
 		// stores castle permissions using 4 bits
 		int castle_perm;
@@ -68,6 +64,12 @@ class Board
 		void ParseFEN(std::string);
 
 		void PrintBoard();
+
+		void UpdatePieceLists();
+
+		bool IsPiece(int piece);
+
+		int SqAttacked(const int sq, const int side);
 };
 
 #endif

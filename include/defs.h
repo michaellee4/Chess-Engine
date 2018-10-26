@@ -31,7 +31,7 @@ enum {
 	A5 = 61, B5, C5, D5, E5, F5, G5, H5,
 	A6 = 71, B6, C6, D6, E6, F6, G6, H6,
 	A7 = 81, B7, C7, D7, E7, F7, G7, H7,
-	A8 = 91, B8, C8, D8, E8, F8, G8, H8, NO_SQ
+	A8 = 91, B8, C8, D8, E8, F8, G8, H8, NO_SQ, OFFBOARD
 };
 
 // Castling permissions
@@ -53,5 +53,8 @@ extern const int BitTable[64];
 extern U64 PieceKeys[13][120];
 extern U64 SideKey;
 extern U64 CastleKeys[16];
+
+extern int FileBrd[BRD_SQ_NUM];
+extern int RankBrd[BRD_SQ_NUM];
 
 #endif

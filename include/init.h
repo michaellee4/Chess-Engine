@@ -7,5 +7,6 @@ void InitAll();
 void InitSq120ToSq64();
 void InitBitMasks();
 void InitHashKeys();
+void InitFileRankBrd();
 
 #endif

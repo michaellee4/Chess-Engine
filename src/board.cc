@@ -7,14 +7,28 @@
 #include "utils.h"
 #include <cstdio>
 #include <unordered_map>
+#include <vector>
+#include "bitboard.h"
 
-char PceChar[] = ".PNBRQKpnbrqk";
-char SideChar[] = "wb-";
-char RankChar[] = "12345678";
-char FileChar[] = "abcdefgh";
-std::unordered_map<int, std::string> epstr = {{71,"a6"}, {72,"b6"}, {73,"c6"}, {74,"d6"}, {75,"e6"}, {76,"f6"}, {77,"g6"}, {78,"h6"},
-										 {41,"a3"}, {42,"b3"}, {43,"c3"}, {44,"d3"}, {45,"e3"}, {46,"f3"}, {47,"g3"}, {48,"h3"}};
+const std::string PceChar = ".PNBRQKpnbrqk";
+const std::string SideChar = "wb-";
+const std::string RankChar = "12345678";
+const std::string FileChar = "abcdefgh";
+const std::unordered_map<int, std::string> epstr = 
+{{71,"a6"}, {72,"b6"}, {73,"c6"}, {74,"d6"}, {75,"e6"}, {76,"f6"}, {77,"g6"}, {78,"h6"},
+ {41,"a3"}, {42,"b3"}, {43,"c3"}, {44,"d3"}, {45,"e3"}, {46,"f3"}, {47,"g3"}, {48,"h3"}, {99, "None"}};
+ 
+const std::vector<bool> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
+const std::vector<bool> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
+const std::vector<bool> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
+const std::vector<int> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
+const std::vector<int> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
+	BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
 
+const std::vector<int> KnMoves { -8, -19, -21, -12, 8, 19, 21, 12 };
+const std::vector<int> RkMoves { -1, -10, 1, 10 };
+const std::vector<int> BiMoves { -9, -11, 11, 9 };
+const std::vector<int> KiMoves { -1, -10, 1, 10, -9, -11, 11, 9 };
 void Board::ResetBoard(void)
 {
 	for(int i = 0; i < BRD_SQ_NUM; i ++)
@@ -27,13 +41,15 @@ void Board::ResetBoard(void)
 		this->pieces[Sq64ToSq120[i]] = EMPTY;
 	}
 
-	for(int i = 0; i < 3; i ++)
+	for(int i = 0; i < 2; i ++)
 	{
 		this->big_pce[i] = 0;
 		this->maj_pce[i] = 0;
 		this->min_pce[i] = 0;
+		this->material[i] = 0;
 		this->pawns[i] = 0;
 	}
+	this->pawns[2] = 0;
 
 	for(int i = 0; i < 13; i ++)
 	{
@@ -149,6 +165,7 @@ void Board::ParseFEN(std::string fen)
 	this->hist_ply = stoi(section) * 2 + (this->side_to_move);
 
 	this->pos_key = GeneratePosKey(*this);
+	this->UpdatePieceLists();
 }
 
 void Board::PrintBoard() {
@@ -173,7 +190,7 @@ void Board::PrintBoard() {
 	}
 	printf("\n");
 	printf("side:%c\n",SideChar[this->side_to_move]);
-	printf("enPas:%s (%d)\n",epstr[this->en_pas].c_str(),this->en_pas);
+	printf("enPas:%s (%d)\n",epstr.at(this->en_pas).c_str(),this->en_pas);
 	printf("castle:%c%c%c%c\n",
 			this->castle_perm & WKCA ? 'K' : '-',
 			this->castle_perm & WQCA ? 'Q' : '-',
@@ -181,4 +198,153 @@ void Board::PrintBoard() {
 			this->castle_perm & BQCA ? 'q' : '-'	
 			);
 	printf("PosKey:%llX\n",this->pos_key);
+}
+
+void Board::UpdatePieceLists()
+{
+	for (int index = 0; index < BRD_SQ_NUM; index ++)
+	{
+		int piece = this->pieces[index];
+		// on board
+		if( IsPiece(piece) )
+		{
+			int color = PieceCol[piece];
+			this->big_pce[color] += PieceBig[piece];
+			this->maj_pce[color] += PieceMaj[piece];
+			this->min_pce[color] += PieceMin[piece];
+			this->material[color] += PieceVal[piece];
+
+			this->piece_list[piece][this->piece_num[piece]] = index;
+			this->piece_num[piece]++;
+
+			if(piece == wK) this->king_sq[WHITE] = index;
+			if(piece == bK) this->king_sq[BLACK] = index;
+
+			if(piece == wP) 
+			{
+				SetBit(this->pawns[WHITE], Sq120ToSq64[index]);
+				SetBit(this->pawns[BOTH], Sq120ToSq64[index]);
+			}
+			if(piece == bP) 
+			{
+				SetBit(this->pawns[BLACK], Sq120ToSq64[index]);
+				SetBit(this->pawns[BOTH], Sq120ToSq64[index]);
+			}
+		}
+	}
+}
+
+bool CheckBoard(const Board& pos)
+{
+	int t_pceNum[13] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	int t_bigPce[2] = { 0, 0};
+	int t_majPce[2] = { 0, 0};
+	int t_minPce[2] = { 0, 0};
+	int t_material[2] = { 0, 0};
+	
+	int sq64,t_piece,t_pce_num,sq120,colour,pcount;
+	
+	U64 t_pawns[3] = {0ULL, 0ULL, 0ULL};
+	
+	t_pawns[WHITE] = pos.pawns[WHITE];
+	t_pawns[BLACK] = pos.pawns[BLACK];
+	t_pawns[BOTH] = pos.pawns[BOTH];
+	
+	// check piece lists
+	for(t_piece = wP; t_piece <= bK; ++t_piece) {
+		for(t_pce_num = 0; t_pce_num < pos.piece_num[t_piece]; ++t_pce_num) {
+			sq120 = pos.piece_list[t_piece][t_pce_num];
+			ASSERT(pos.pieces[sq120]==t_piece);
+		}	
+	}
+	
+	// check piece count and other counters	
+	for(sq64 = 0; sq64 < 64; ++sq64) {
+		sq120 = Sq64ToSq120[sq64];
+		t_piece = pos.pieces[sq120];
+		t_pceNum[t_piece]++;
+		colour = PieceCol[t_piece];
+		if( PieceBig[t_piece] == true) t_bigPce[colour]++;
+		if( PieceMin[t_piece] == true) t_minPce[colour]++;
+		if( PieceMaj[t_piece] == true) t_majPce[colour]++;
+		
+		t_material[colour] += PieceVal[t_piece];
+	}
+	
+	for(t_piece = wP; t_piece <= bK; ++t_piece) {
+		ASSERT(t_pceNum[t_piece]==pos.piece_num[t_piece]);	
+	}
+	
+	// check bitboards count
+	pcount = CountBits(t_pawns[WHITE]);
+	ASSERT(pcount == pos.piece_num[wP]);
+	pcount = CountBits(t_pawns[BLACK]);
+	ASSERT(pcount == pos.piece_num[bP]);
+	pcount = CountBits(t_pawns[BOTH]);
+	ASSERT(pcount == (pos.piece_num[bP] + pos.piece_num[wP]));
+	
+	// check bitboards squares
+	while(t_pawns[WHITE]) {
+		sq64 = PopBit(t_pawns[WHITE]);
+		ASSERT(pos.pieces[Sq64ToSq120[sq64]] == wP);
+	}
+	
+	while(t_pawns[BLACK]) {
+		sq64 = PopBit(t_pawns[BLACK]);
+		ASSERT(pos.pieces[Sq64ToSq120[sq64]] == bP);
+	}
+	
+	while(t_pawns[BOTH]) {
+		sq64 = PopBit(t_pawns[BOTH]);
+		ASSERT( (pos.pieces[Sq64ToSq120[sq64]] == bP) || (pos.pieces[Sq64ToSq120[sq64]] == wP) );
+	}
+	
+	ASSERT(t_material[WHITE]==pos.material[WHITE] && t_material[BLACK]==pos.material[BLACK]);
+	ASSERT(t_minPce[WHITE]==pos.min_pce[WHITE] && t_minPce[BLACK]==pos.min_pce[BLACK]);
+	ASSERT(t_majPce[WHITE]==pos.maj_pce[WHITE] && t_majPce[BLACK]==pos.maj_pce[BLACK]);
+	ASSERT(t_bigPce[WHITE]==pos.big_pce[WHITE] && t_bigPce[BLACK]==pos.big_pce[BLACK]);	
+	
+	ASSERT(pos.side_to_move==WHITE || pos.side_to_move==BLACK);
+	ASSERT(GeneratePosKey(pos)==pos.pos_key);
+	
+	ASSERT(pos.en_pas==NO_SQ || ( RankBrd[pos.en_pas]==RANK_6 && pos.side_to_move == WHITE)
+		 || ( RankBrd[pos.en_pas]==RANK_3 && pos.side_to_move == BLACK));
+	
+	ASSERT(pos.pieces[pos.king_sq[WHITE]] == wK);
+	ASSERT(pos.pieces[pos.king_sq[BLACK]] == bK);
+		 
+	return true;
+}
+
+
+bool Board::IsPiece(int piece)
+{
+	return (piece != OFFBOARD && piece != EMPTY && piece != NO_SQ);
+}
+
+int Board::SqAttacked(const int sq, const int attacker)
+{
+	int numAttackers = 0;
+
+	// Check Pawn
+	if(attacker == WHITE)
+	{
+		if(this->pieces[sq - 11] == wP)
+			numAttackers++;
+		if(this->pieces[sq - 9] == wP)
+			numAttackers++;
+	}
+	// BLACK
+	else
+	{
+		if(this->pieces[sq + 11] == bP)
+			numAttackers++;
+		if(this->pieces[sq + 9] == bP)
+			numAttackers++;
+	}
+
+	// Check Knight
+	// for(int i = 0; i < KnMoves.size(); i++)
+
+	return numAttackers;
 }

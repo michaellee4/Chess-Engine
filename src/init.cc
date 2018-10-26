@@ -1,12 +1,35 @@
 #include "defs.h"
 #include "utils.h"
 #include "init.h"
+#include "hash.h"
 
 int Sq120ToSq64[BRD_SQ_NUM];
 int Sq64ToSq120[64];
 
+int FileBrd[BRD_SQ_NUM];
+int RankBrd[BRD_SQ_NUM];
+
 U64 SetMask[64];
 U64 ClearMask[64];
+
+void InitFileRankBrd()
+{
+	for(int sq = 0; sq < BRD_SQ_NUM; sq++)
+	{
+		FileBrd[sq] = OFFBOARD;
+		RankBrd[sq] = OFFBOARD;
+	}
+
+	for(int rank = RANK_1; rank<=RANK_8; rank++)
+	{
+		for(int file = FILE_A; file < FILE_H; file++)
+		{
+			int sq = FileRankToSq(file, rank);
+			FileBrd[sq] = file;
+			RankBrd[sq] = rank;
+		}
+	}
+}
 
 // creates 2 arrays to map 64 <-> 120 board square representations
 void InitSq120ToSq64()
