@@ -1,34 +1,13 @@
 #include "board.h"
 #include "defs.h"
 #include "debug.h"
-#include <string>
-#include <sstream>
 #include "hash.h"
 #include "utils.h"
-#include <cstdio>
-#include <unordered_map>
-#include <vector>
 #include "bitboard.h"
+#include <string>
+#include <sstream>
+#include <cstdio> 
 
-const std::string PceChar = ".PNBRQKpnbrqk";
-const std::string SideChar = "wb-";
-const std::string RankChar = "12345678";
-const std::string FileChar = "abcdefgh";
-const std::unordered_map<int, std::string> epstr = 
-{{71,"a6"}, {72,"b6"}, {73,"c6"}, {74,"d6"}, {75,"e6"}, {76,"f6"}, {77,"g6"}, {78,"h6"},
- {41,"a3"}, {42,"b3"}, {43,"c3"}, {44,"d3"}, {45,"e3"}, {46,"f3"}, {47,"g3"}, {48,"h3"}, {99, "None"}};
- 
-const std::vector<bool> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
-const std::vector<bool> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
-const std::vector<bool> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
-const std::vector<int> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
-const std::vector<int> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
-	BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
-
-const std::vector<int> KnMoves { -8, -19, -21, -12, 8, 19, 21, 12 };
-const std::vector<int> RkMoves { -1, -10, 1, 10 };
-const std::vector<int> BiMoves { -9, -11, 11, 9 };
-const std::vector<int> KiMoves { -1, -10, 1, 10, -9, -11, 11, 9 };
 void Board::ResetBoard(void)
 {
 	for(int i = 0; i < BRD_SQ_NUM; i ++)

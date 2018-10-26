@@ -90,4 +90,5 @@ void InitAll()
 	InitSq120ToSq64();
 	InitBitMasks();
 	InitHashKeys();
+	InitFileRankBrd();
 }

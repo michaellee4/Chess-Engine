@@ -6,7 +6,7 @@ int FileRankToSq(int file, int rank)
 {
 	return 21 + file + rank * 10;
 }
-
+ 
 //https://stackoverflow.com/questions/37396278/how-to-generate-very-large-random-number-in-c
 U64 RandU64() 
 {

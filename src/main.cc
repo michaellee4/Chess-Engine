@@ -15,7 +15,7 @@ using namespace std;
 
 int main()
 {
-		InitAll();
+	InitAll();
 	Board b;
 	b.ParseFEN(TOUGHFEN);
 

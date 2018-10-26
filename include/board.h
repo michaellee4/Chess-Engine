@@ -54,7 +54,7 @@ class Board
 		int castle_perm;
 
 		// stores the history of moves
-		Move history[MAX_GAME_MOVES];
+		U_Move history[MAX_GAME_MOVES];
 
 		// piece list
 		int piece_list[13][10];

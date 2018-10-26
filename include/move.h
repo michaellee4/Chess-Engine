@@ -4,7 +4,7 @@
 
 #include "defs.h"
 
-class Move
+class U_Move
 {
 	public:
 		int move;
