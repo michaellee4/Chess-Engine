@@ -26,11 +26,8 @@ void ShowSqAtBySide(const int side,Board& pos) {
 	for(rank = RANK_8; rank >= RANK_1; --rank) {
 		for(file = FILE_A; file <= FILE_H; ++file) {
 			sq = FileRankToSq(file,rank);
-			if(pos.SqAttacked(sq, side)) {
-				printf("X");
-			} else {
-				printf("-");
-			}
+			int numAtk = pos.SqAttacked(sq, side);
+			printf("%i",numAtk );
 				
 		}
 		printf("\n");
@@ -46,12 +43,18 @@ int main()
 	Board b;
 	b.ParseFEN(testFEN);	
 	b.PrintBoard();	
-	//ASSERT(CheckBoard(board));
-	
-	printf("\n\nWhite Attacking:\n");
-	ShowSqAtBySide(WHITE,b);
-	
-	printf("\n\nBlack Attacking:\n");
-	ShowSqAtBySide(BLACK,b);
+	ASSERT(CheckBoard(b));
+
+	Move test;
+
+	test.move = 0;
+	test.move |= A2;
+	test.move |= (H6 <<7);
+	test.move |= (wR <<14);
+	test.move |= (wK << 20);
+
+	printf("SQ: %s\n",SqToString(A2).c_str() );
+	printf("SQ: %s\n",SqToString(H6).c_str() );
+	printf("Move: %s \n", test.ToString().c_str());
 	return 0;
 }

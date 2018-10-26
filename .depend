@@ -4,6 +4,8 @@ init.o: src/init.cc include/defs.h include/debug.h include/utils.h \
 board.o: src/board.cc include/board.h include/defs.h include/debug.h \
  include/move.h include/defs.h include/debug.h include/hash.h \
  include/board.h include/utils.h include/bitboard.h
+move.o: src/move.cc include/move.h include/defs.h include/debug.h \
+ include/defs.h
 bitboard.o: src/bitboard.cc include/defs.h include/debug.h \
  include/bitboard.h include/defs.h include/utils.h
 main.o: src/main.cc include/defs.h include/debug.h include/bitboard.h \

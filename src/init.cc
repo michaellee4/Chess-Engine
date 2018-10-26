@@ -22,7 +22,7 @@ void InitFileRankBrd()
 
 	for(int rank = RANK_1; rank<=RANK_8; rank++)
 	{
-		for(int file = FILE_A; file < FILE_H; file++)
+		for(int file = FILE_A; file <= FILE_H; file++)
 		{
 			int sq = FileRankToSq(file, rank);
 			FileBrd[sq] = file;

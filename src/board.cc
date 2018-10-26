@@ -141,7 +141,12 @@ void Board::ParseFEN(std::string fen)
 		this->fifty_move = stoi(section);
 		// fullmove counter
 		std::getline(stream, section, ' ');
-		this->hist_ply = stoi(section) * 2 + (this->side_to_move);
+		this->hist_ply = (stoi(section) - 1 ) * 2 + (this->side_to_move);
+	}
+	else
+	{
+		this->fifty_move = 0;
+		this->hist_ply = 1;
 	}
 	this->pos_key = GeneratePosKey(*this);
 	this->UpdatePieceLists();
