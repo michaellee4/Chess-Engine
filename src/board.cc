@@ -134,15 +134,15 @@ void Board::ParseFEN(std::string fen)
 		int rank = section[1] - '1';
 		this->en_pas = FileRankToSq(file, rank);
 	}
-
 	// halfmove clock (halfmoves since capture or pawn advance)
 	std::getline(stream, section, ' ');
-	this->fifty_move = stoi(section);
-
-	// fullmove counter
-	std::getline(stream, section, ' ');
-	this->hist_ply = stoi(section) * 2 + (this->side_to_move);
-
+	if(stream.good())
+	{
+		this->fifty_move = stoi(section);
+		// fullmove counter
+		std::getline(stream, section, ' ');
+		this->hist_ply = stoi(section) * 2 + (this->side_to_move);
+	}
 	this->pos_key = GeneratePosKey(*this);
 	this->UpdatePieceLists();
 }
@@ -301,7 +301,7 @@ bool Board::IsPiece(int piece)
 	return (piece != OFFBOARD && piece != EMPTY && piece != NO_SQ);
 }
 
-int Board::SqAttacked(const int sq, const int attacker)
+const int Board::SqAttacked(const int sq, const int attacker)
 {
 	int numAttackers = 0;
 
@@ -313,7 +313,6 @@ int Board::SqAttacked(const int sq, const int attacker)
 		if(this->pieces[sq - 9] == wP)
 			numAttackers++;
 	}
-	// BLACK
 	else
 	{
 		if(this->pieces[sq + 11] == bP)
@@ -322,8 +321,64 @@ int Board::SqAttacked(const int sq, const int attacker)
 			numAttackers++;
 	}
 
+
+
 	// Check Knight
-	// for(int i = 0; i < KnMoves.size(); i++)
+	int attackingKnight = attacker == WHITE ? wN : bN;
+	for(int i = 0; i < 8; i++)
+	{
+		if(this->pieces[sq + KnMoves[i]] == attackingKnight)
+			numAttackers++;
+	}
+
+	// Check Horizontal and Vertical
+	int attackingRook = attacker == WHITE ? wR : bR;
+	int attackingQueen = attacker == WHITE ? wQ : bQ;
+	for(int i = 0 ; i < 4; i ++)
+	{
+		int move = RkMoves[i];
+		int t_sq = sq + move;
+		int pce = this->pieces[t_sq];
+		while(pce != OFFBOARD)
+		{
+			if(pce != EMPTY)
+			{
+				if(pce == attackingRook || pce == attackingQueen)
+					numAttackers++;
+				break;
+			}
+			t_sq += move;
+			pce = this->pieces[t_sq];
+		}
+
+	}
+
+	int attackingBishop = attacker == WHITE ? wB : bB;
+	for(int i = 0 ; i < 4; i ++)
+	{
+		int move = BiMoves[i];
+		int t_sq = sq + move;
+		int pce = this->pieces[t_sq];
+		while(pce != OFFBOARD)
+		{
+			if(pce != EMPTY)
+			{
+				if(pce == attackingBishop || pce == attackingQueen)
+					numAttackers++;
+				break;
+			}
+			t_sq += move;
+			pce = this->pieces[t_sq];
+		}
+	}
+
+	int attackingKing = attacker == WHITE ? wK : bK;
+	for(int i = 0; i < 8; i++)
+	{
+		if(this->pieces[sq + KiMoves[i]] == attackingKing)
+			numAttackers++;
+	}
+	// Check Diagonals
 
 	return numAttackers;
 }

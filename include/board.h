@@ -69,7 +69,7 @@ class Board
 
 		bool IsPiece(int piece);
 
-		int SqAttacked(const int sq, const int side);
+		const int SqAttacked(const int sq, const int side);
 };
-
+		bool CheckBoard(const Board& pos);
 #endif
