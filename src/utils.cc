@@ -22,11 +22,3 @@ U64 RandU64()
 	return distribution(generator);
 }
 
-std::string SqToString(const int sq)
-{
-	std::ostringstream stream;
-	char file = 'a' + FileBrd[sq];
-	char rank = '1' + RankBrd[sq];
-	stream<<file<<rank;
-	return stream.str();
-}

@@ -6,6 +6,7 @@
 #include<unordered_map>
 
 #define START_FEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+#define MAXPOSITIONMOVES 256
 
 typedef unsigned long long U64;
 

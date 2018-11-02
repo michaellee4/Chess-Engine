@@ -2,6 +2,32 @@
 #include <sstream>
 #include "defs.h"
 #include<iostream>
+
+Move::Move(int from, int to, int captured, int enpas, int ps, int prom, int castle)
+{
+	this->move = 0;
+	this->move |= from & 0x7f;
+	this->move |= (to & 0x7f) << 7;
+	this->move |= (captured & 0xf) << 14;
+	this->move |= enpas << 18;
+	this->move |= ps << 19;
+	this->move |= (prom & 0xf) << 20;
+	this->move |= castle << 24;
+}
+Move::Move(int move, int score)
+{
+	this->move = move;
+	this->score = score;
+}
+Move::Move(int move)
+{
+	this->move = move;
+}
+Move::Move()
+{
+	this->move = this->score = 0;
+}
+
 int Move::From()
 {
 	return this->move & 0x7f;

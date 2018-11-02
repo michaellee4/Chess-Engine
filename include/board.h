@@ -70,6 +70,8 @@ class Board
 		bool IsPiece(int piece);
 
 		const int SqAttacked(const int sq, const int side);
+
+		static std::string SqToString(const int sq);
 };
 		bool CheckBoard(const Board& pos);
 #endif

@@ -387,3 +387,12 @@ const int Board::SqAttacked(const int sq, const int attacker)
 
 	return numAttackers;
 }
+
+std::string Board::SqToString(const int sq)
+{
+	std::ostringstream stream;
+	char file = 'a' + FileBrd[sq];
+	char rank = '1' + RankBrd[sq];
+	stream<<file<<rank;
+	return stream.str();
+}

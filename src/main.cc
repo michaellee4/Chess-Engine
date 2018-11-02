@@ -53,8 +53,8 @@ int main()
 	test.move |= (wR <<14);
 	test.move |= (wK << 20);
 
-	printf("SQ: %s\n",SqToString(A2).c_str() );
-	printf("SQ: %s\n",SqToString(H6).c_str() );
+	printf("SQ: %s\n",Board::SqToString(A2).c_str() );
+	printf("SQ: %s\n",b.SqToString(H6).c_str() );
 	printf("Move: %s \n", test.ToString().c_str());
 	return 0;
 }

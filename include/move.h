@@ -20,7 +20,10 @@ class Move
 	public:
 		int move;
 		int score;
-
+		Move(int from, int to, int captured, int enpas, int ps, int prom, int castle);
+		Move(int move, int score);
+		Move(int move);
+		Move();
 		// 7 bits for src
 		int From();
 		// 7 bits for dest 
