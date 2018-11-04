@@ -181,7 +181,7 @@ void Board::PrintBoard() {
 			this->castle_perm & BKCA ? 'k' : '-',
 			this->castle_perm & BQCA ? 'q' : '-'	
 			);
-	printf("PosKey:%llX\n",this->pos_key);
+	printf("PosKey:%llX\n\n",this->pos_key);
 }
 
 void Board::UpdatePieceLists()

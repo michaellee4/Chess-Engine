@@ -93,6 +93,172 @@ void MoveList::AddPawnCaptureMove(Board& pos, int from, int to, int cap, int sid
 
 }
 
+void MoveList::GenerateBishopMoves(Board& pos, int side)
+{
+	int bi = side == WHITE ? wB : bB;
+	for(int pce = 0; pce < pos.piece_num[bi]; pce ++)
+	{
+		int curBiSq = pos.piece_list[bi][pce];
+		printf("Bishop on %s %i\n",Board::SqToString(curBiSq).c_str(), side );
+		for(int move = 0; move < BiMoves.size(); move ++)
+		{
+			int newSq = curBiSq + BiMoves[move];
+			while(pos.SqOnBoard(newSq))
+			{
+				if(pos.pieces[newSq] != EMPTY)
+				{
+					if(PieceCol[pos.pieces[newSq]] == (!side))
+					{
+						printf("Capture Bishop Move to %s\n",Board::SqToString(newSq).c_str() );
+					}
+					break;
+				}
+				printf("Empty Bishop Move to %s\n",Board::SqToString(newSq).c_str() );
+				newSq += BiMoves[move];
+			}
+		}
+	}
+}
+
+void MoveList::GenerateRookMoves(Board& pos, int side)
+{
+	int rk = side == WHITE ? wR : bR;
+	for(int pce = 0; pce < pos.piece_num[rk]; pce ++)
+	{
+		int curRkSq = pos.piece_list[rk][pce];
+		printf("Rook on %s %i\n",Board::SqToString(curRkSq).c_str(), side );
+		for(int move = 0; move < RkMoves.size(); move ++)
+		{
+			int newSq = curRkSq + RkMoves[move];
+			while(pos.SqOnBoard(newSq))
+			{
+				if(pos.pieces[newSq] != EMPTY)
+				{
+					if(PieceCol[pos.pieces[newSq]] == (!side))
+					{
+						printf("Capture Rook Move to %s\n",Board::SqToString(newSq).c_str() );
+					}
+					break;
+				}
+				printf("Empty Rook Move to %s\n",Board::SqToString(newSq).c_str() );
+				newSq += RkMoves[move];
+			}
+		}
+	}
+}
+void MoveList::GenerateQueenMoves(Board& pos, int side)
+{
+	int Qn = side == WHITE ? wQ : bQ;
+
+	for(int pce = 0; pce < pos.piece_num[Qn]; pce ++)
+	{
+		int curQn = pos.piece_list[Qn][pce];
+		printf("Queen on %s %i\n",Board::SqToString(curQn).c_str(), side );
+		for(int move = 0; move < BiMoves.size(); move ++)
+		{
+			int newSq = curQn + BiMoves[move];
+			while(pos.SqOnBoard(newSq))
+			{
+				if(pos.pieces[newSq] != EMPTY)
+				{
+					if(PieceCol[pos.pieces[newSq]] == (!side))
+					{
+						printf("Capture Queen Move to %s\n",Board::SqToString(newSq).c_str() );
+					}
+					break;
+				}
+				printf("Empty Queen Move to %s\n",Board::SqToString(newSq).c_str() );
+				newSq += BiMoves[move];
+			}
+		}
+	}
+
+	for(int pce = 0; pce < pos.piece_num[Qn]; pce ++)
+	{
+		int curQn = pos.piece_list[Qn][pce];
+		printf("Queen on %s %i\n",Board::SqToString(curQn).c_str(), side );
+		for(int move = 0; move < RkMoves.size(); move ++)
+		{
+			int newSq = curQn + RkMoves[move];
+			while(pos.SqOnBoard(newSq))
+			{
+				if(pos.pieces[newSq] != EMPTY)
+				{
+					if(PieceCol[pos.pieces[newSq]] == (!side))
+					{
+						printf("Capture Queen Move to %s\n",Board::SqToString(newSq).c_str() );
+					}
+					break;
+				}
+				printf("Empty Queen Move to %s\n",Board::SqToString(newSq).c_str() );
+				newSq += RkMoves[move];
+			}
+		}
+	}
+}
+void MoveList::GenerateSlidingMoves(Board& pos, int side)
+{
+	this->GenerateBishopMoves(pos, side);
+	this->GenerateRookMoves(pos, side);
+	this->GenerateQueenMoves(pos, side);
+}
+
+
+void MoveList::GenerateKnightMoves(Board& pos, int side)
+{
+	int kn = side == WHITE ? wN : bN;
+	for(int pce = 0; pce < pos.piece_num[kn]; pce ++)
+	{
+		int curKnSq = pos.piece_list[kn][pce];
+		printf("Knight on %s %i\n",Board::SqToString(curKnSq).c_str(), side );
+		for(int move = 0; move < KnMoves.size(); move ++)
+		{
+			int newSq = curKnSq + KnMoves[move];
+			if(pos.SqOnBoard(newSq))
+			{
+				if(PieceCol[pos.pieces[newSq]]== (!side))
+				{
+					printf("Capture Knight Move to %s\n",Board::SqToString(newSq).c_str() );
+				}
+				if(pos.pieces[newSq] == EMPTY)
+				{
+					printf("Empty Knight Move to %s\n",Board::SqToString(newSq).c_str() );
+				}
+			}
+		}
+	}
+}
+
+//*** does not include attacked squares.
+void MoveList::GenerateKingMoves(Board& pos, int side)
+{
+	int ki = side == WHITE ? wK : bK;
+	int kingSq = pos.piece_list[ki][0];
+	ASSERT(pos.piece_num[ki] == 1);
+	printf("King on %s\n",Board::SqToString(kingSq).c_str() );
+	for(int move = 0; move < KiMoves.size(); move ++)
+	{
+		int newSq = kingSq + KiMoves[move];
+		if(pos.SqOnBoard(newSq) && !pos.SqAttacked(newSq, !side))
+		{
+			if(pos.pieces[newSq] == EMPTY)
+			{
+				printf("Empty King Move to %s\n",Board::SqToString(newSq).c_str() );
+			}
+			if(PieceCol[pos.pieces[newSq]]== !side)
+			{
+				printf("Capture King Move to %s\n",Board::SqToString(newSq).c_str() );
+			}
+		}
+	}
+}
+void MoveList::GenerateNonSlidingMoves(Board& pos, int side)
+{
+	this->GenerateKnightMoves(pos, side);
+	this->GenerateKingMoves(pos, side);
+}
+
+
 void MoveList::GeneratePawnMoves(Board& pos, int side)
 {
 	int oppositeSide = !side;
@@ -138,4 +304,6 @@ void MoveList::GenerateAllMoves(Board& pos)
 	ASSERT(CheckBoard(pos));
 	this->moves.clear();
 	this->GeneratePawnMoves(pos, pos.side_to_move);
+	this->GenerateSlidingMoves(pos, pos.side_to_move);
+	this->GenerateNonSlidingMoves(pos, pos.side_to_move);
 }

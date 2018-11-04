@@ -11,6 +11,13 @@ class MoveList
 		void AddPawnMove(Board& pos, int from, int to, int side);
 		void AddPawnCaptureMove(Board& pos, int from, int to, int cap, int side);
 		void GeneratePawnMoves(Board& pos, int side);
+		void GenerateBishopMoves(Board& pos, int side);
+		void GenerateRookMoves(Board& pos, int side);
+		void GenerateQueenMoves(Board& pos, int side);
+		void GenerateKnightMoves(Board& pos, int side);
+		void GenerateKingMoves(Board& pos, int side);
+		void GenerateSlidingMoves(Board& pos, int side);
+		void GenerateNonSlidingMoves(Board& pos, int side);
 	public:
 		std::vector<Move> moves;
 
