@@ -27,7 +27,6 @@ class Board
 		int fifty_move;
 
 		// number of half moves
-
 		int ply;
 
 		// total number of plys
@@ -36,6 +35,7 @@ class Board
 		// position hash
 		U64 pos_key;
 
+		/*** Replace pieceList and PieceNum with 1 2d vector ***/
 		// keeps track of how many of each pice is present on the board
 		int piece_num[13];
 
@@ -63,17 +63,17 @@ class Board
 
 		void ParseFEN(std::string);
 
-		void PrintBoard();
+		void PrintBoard(void);
 
-		void UpdatePieceLists();
+		void UpdatePieceLists(void);
 
 		bool IsPiece(int piece);
 
 		bool SqOnBoard(int sq);
 
-		void PrintMoveList();
+		void PrintMoveList(void);
 
-		void GenerateAllMoves();
+		void GenerateAllMoves(void);
 		
 		const int SqAttacked(const int sq, const int side);
 
