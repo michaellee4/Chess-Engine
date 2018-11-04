@@ -69,6 +69,12 @@ class Board
 
 		bool IsPiece(int piece);
 
+		bool SqOnBoard(int sq);
+
+		void PrintMoveList();
+
+		void GenerateAllMoves();
+		
 		const int SqAttacked(const int sq, const int side);
 
 		static std::string SqToString(const int sq);

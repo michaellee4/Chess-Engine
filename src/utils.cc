@@ -22,3 +22,23 @@ U64 RandU64()
 	return distribution(generator);
 }
 
+
+void ShowSqAtBySide(const int side,Board& pos) {
+		
+	int rank = 0;
+	int file = 0;
+	int sq = 0;
+	
+	printf("\n\nSquares attacked by:%c\n",SideChar[side]);
+	for(rank = RANK_8; rank >= RANK_1; --rank) {
+		for(file = FILE_A; file <= FILE_H; ++file) {
+			sq = FileRankToSq(file,rank);
+			int numAtk = pos.SqAttacked(sq, side);
+			printf("%i",numAtk );
+				
+		}
+		printf("\n");
+	}  
+    printf("\n\n");
+
+}

@@ -306,6 +306,11 @@ bool Board::IsPiece(int piece)
 	return (piece != OFFBOARD && piece != EMPTY && piece != NO_SQ);
 }
 
+bool Board::SqOnBoard(int sq)
+{
+	return !(this->pieces[sq] == OFFBOARD);
+}
+
 const int Board::SqAttacked(const int sq, const int attacker)
 {
 	int numAttackers = 0;
@@ -395,4 +400,14 @@ std::string Board::SqToString(const int sq)
 	char rank = '1' + RankBrd[sq];
 	stream<<file<<rank;
 	return stream.str();
+}
+
+void Board::PrintMoveList()
+{
+
+}
+
+void Board::GenerateAllMoves()
+{
+
 }

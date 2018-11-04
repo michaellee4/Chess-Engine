@@ -2,6 +2,13 @@
 #ifndef MOVE_H
 #define MOVE_H
 
+//move flags
+#define EP 0x40000
+#define PS 0x80000
+#define CA 0x1000000
+#define CAP 0x7C000
+#define PROM 0xF00000
+
 #include "defs.h"
 #include <string>
 // used for undoing
@@ -20,7 +27,7 @@ class Move
 	public:
 		int move;
 		int score;
-		Move(int from, int to, int captured, int enpas, int ps, int prom, int castle);
+		Move(int from, int to, int captured, int prom, int flag);
 		Move(int move, int score);
 		Move(int move);
 		Move();
