@@ -4,18 +4,17 @@
 #include "defs.h"
 #include "board.h"
 #include "move.h"
+#include <vector>
 class MoveList
 {	
 	private:
-		void AddWhitePawnMove(Board& pos, int from, int to);
-		void AddWhitePawnCaptureMove(Board& pos, int from, int to, int cap);
+		void AddPawnMove(Board& pos, int from, int to, int side);
+		void AddPawnCaptureMove(Board& pos, int from, int to, int cap, int side);
 		void GeneratePawnMoves(Board& pos, int side);
 	public:
-		// Change this to a vector with initial Capacity later
-		Move moves[MAXPOSITIONMOVES];
-		int count;
+		std::vector<Move> moves;
 
-		//MoveList();
+		MoveList();
 
 		void AddQuietMove(Board& pos, Move move);
 		void AddCaptureMove(Board& pos, Move move);

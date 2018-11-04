@@ -1,63 +1,96 @@
 #include "movelist.h"
 
-// MoveList::MoveList()
-// {
-	
-// }
+MoveList::MoveList()
+{
+	moves.reserve(MAXPOSITIONMOVES);
+}
 
 void MoveList::PrintMoveList()
 {
-	for(int i = 0; i < this->count; i ++)
+	for(int i = 0; i < this->moves.size(); i ++)
 	{
 		Move curMove = this->moves[i];
 		printf("Move: %d > %s (score: %d)\n",i ,curMove.ToString().c_str(), curMove.score );
 	}
-		printf("MoveList Total: %d Moves\n", this->count );
+		printf("MoveList Total: %d Moves\n", this->moves.size() );
 }
 
 void MoveList::AddQuietMove(Board& pos, Move move)
 {
-	this->moves[this->count] = move;
-	this->count++;
+	this->moves.push_back(move);
 }
 void MoveList::AddCaptureMove(Board& pos, Move move)
 {
-	this->moves[this->count] = move;
-	this->count++;
+	this->moves.push_back(move);
 }
 void MoveList::AddEnPasMove(Board& pos, Move move)
 {
-	this->moves[this->count] = move;
-	this->count++;
+	this->moves.push_back(move);
 }
 
-void MoveList::AddWhitePawnMove(Board& pos, int from, int to)
+void MoveList::AddPawnMove(Board& pos, int from, int to, int side)
 {
-	if(RankBrd[from] == RANK_7)
+	if(side == WHITE)
 	{
-		this->AddQuietMove(pos, Move(from,to,EMPTY,wQ,0));
-		this->AddQuietMove(pos, Move(from,to,EMPTY,wR,0));
-		this->AddQuietMove(pos, Move(from,to,EMPTY,wB,0));
-		this->AddQuietMove(pos, Move(from,to,EMPTY,wN,0));
+		if(RankBrd[from] == RANK_7)
+		{
+			this->AddQuietMove(pos, Move(from,to,EMPTY,wQ,0));
+			this->AddQuietMove(pos, Move(from,to,EMPTY,wR,0));
+			this->AddQuietMove(pos, Move(from,to,EMPTY,wB,0));
+			this->AddQuietMove(pos, Move(from,to,EMPTY,wN,0));
+		}
+		else
+		{
+			this->AddQuietMove(pos, Move(from,to,EMPTY,EMPTY,0));
+		}	
 	}
 	else
 	{
-		this->AddQuietMove(pos, Move(from,to,EMPTY,EMPTY,0));
+		if(RankBrd[from] == RANK_2)
+		{
+			this->AddQuietMove(pos, Move(from,to,EMPTY,bQ,0));
+			this->AddQuietMove(pos, Move(from,to,EMPTY,bR,0));
+			this->AddQuietMove(pos, Move(from,to,EMPTY,bB,0));
+			this->AddQuietMove(pos, Move(from,to,EMPTY,bN,0));
+		}
+		else
+		{
+			this->AddQuietMove(pos, Move(from,to,EMPTY,EMPTY,0));
+		}	
 	}
+
 }
-void MoveList::AddWhitePawnCaptureMove(Board& pos, int from, int to, int cap)
+void MoveList::AddPawnCaptureMove(Board& pos, int from, int to, int cap, int side)
 {
-	if(RankBrd[from] == RANK_7)
+	if(side == WHITE)
 	{
-		this->AddCaptureMove(pos, Move(from,to,cap,wQ,CAP));
-		this->AddCaptureMove(pos, Move(from,to,cap,wR,CAP));
-		this->AddCaptureMove(pos, Move(from,to,cap,wB,CAP));
-		this->AddCaptureMove(pos, Move(from,to,cap,wN,CAP));	
+		if(RankBrd[from] == RANK_7)
+		{
+			this->AddCaptureMove(pos, Move(from,to,cap,wQ,CAP));
+			this->AddCaptureMove(pos, Move(from,to,cap,wR,CAP));
+			this->AddCaptureMove(pos, Move(from,to,cap,wB,CAP));
+			this->AddCaptureMove(pos, Move(from,to,cap,wN,CAP));	
+		}
+		else
+		{
+			this->AddCaptureMove(pos, Move(from,to,cap,EMPTY,0));
+		}
 	}
 	else
 	{
-		this->AddCaptureMove(pos, Move(from,to,cap,EMPTY,0));
+		if(RankBrd[from] == RANK_2)
+		{
+			this->AddCaptureMove(pos, Move(from,to,cap,bQ,CAP));
+			this->AddCaptureMove(pos, Move(from,to,cap,bR,CAP));
+			this->AddCaptureMove(pos, Move(from,to,cap,bB,CAP));
+			this->AddCaptureMove(pos, Move(from,to,cap,bN,CAP));	
+		}
+		else
+		{
+			this->AddCaptureMove(pos, Move(from,to,cap,EMPTY,0));
+		}
 	}
+
 }
 
 void MoveList::GeneratePawnMoves(Board& pos, int side)
@@ -76,7 +109,7 @@ void MoveList::GeneratePawnMoves(Board& pos, int side)
 		ASSERT(sq != OFFBOARD && sq != NO_SQ)
 		if(pos.pieces[sq + oneMove] == EMPTY)
 		{
-			this->AddWhitePawnMove(pos, sq, sq + oneMove);
+			this->AddPawnMove(pos, sq, sq + oneMove, side);
 			if( ((side == WHITE && RankBrd[sq] == RANK_2) || (side == BLACK && RankBrd[sq] == RANK_7)) && pos.pieces[sq + twoMove] == EMPTY)
 			{
 				this->AddQuietMove(pos, Move(sq, sq + twoMove, EMPTY, EMPTY, PS));
@@ -84,11 +117,11 @@ void MoveList::GeneratePawnMoves(Board& pos, int side)
 		}
 		if(pos.SqOnBoard(sq + cap1) && PieceCol[pos.pieces[sq + cap1]] == oppositeSide)
 		{
-			this->AddWhitePawnCaptureMove(pos, sq, sq + cap1, pos.pieces[sq + cap1]);
+			this->AddPawnCaptureMove(pos, sq, sq + cap1, pos.pieces[sq + cap1], side);
 		}
 		if(pos.SqOnBoard(sq + cap2) && PieceCol[pos.pieces[sq + cap2]] == oppositeSide)
 		{
-			this->AddWhitePawnCaptureMove(pos, sq, sq + cap2, pos.pieces[sq + cap2]);
+			this->AddPawnCaptureMove(pos, sq, sq + cap2, pos.pieces[sq + cap2], side);
 		}
 		if(sq + cap1 == pos.en_pas)
 		{
@@ -103,6 +136,6 @@ void MoveList::GeneratePawnMoves(Board& pos, int side)
 void MoveList::GenerateAllMoves(Board& pos)
 {
 	ASSERT(CheckBoard(pos));
-	this->count = 0;
+	this->moves.clear();
 	this->GeneratePawnMoves(pos, pos.side_to_move);
 }
