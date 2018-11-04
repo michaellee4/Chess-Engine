@@ -8,6 +8,10 @@
 class MoveList
 {	
 	private:
+		void AddQuietMove(Board& pos, Move move);
+		void AddCaptureMove(Board& pos, Move move);
+		void AddEnPasMove(Board& pos, Move move);
+
 		void AddPawnMove(Board& pos, int from, int to, int side);
 		void AddPawnCaptureMove(Board& pos, int from, int to, int cap, int side);
 		void GeneratePawnMoves(Board& pos, int side);
@@ -18,14 +22,13 @@ class MoveList
 		void GenerateKingMoves(Board& pos, int side);
 		void GenerateSlidingMoves(Board& pos, int side);
 		void GenerateNonSlidingMoves(Board& pos, int side);
+		void GenerateCastlingMoves(Board& psd, int side);
+
 	public:
 		std::vector<Move> moves;
 
 		MoveList();
 
-		void AddQuietMove(Board& pos, Move move);
-		void AddCaptureMove(Board& pos, Move move);
-		void AddEnPasMove(Board& pos, Move move);
 		void GenerateAllMoves(Board& pos);
 		void PrintMoveList();
 };
