@@ -1,10 +1,27 @@
 #include "utils.h"
+#include "defs.h"
 #include <random>
+#include <sstream>
+#include <string>
 #include <sstream>
 //return the 120 sq value of a given file and rank
 int FileRankToSq(int file, int rank)
 {
 	return 21 + file + rank * 10;
+}
+
+bool IsPiece(int piece)
+{
+	return (piece != OFFBOARD && piece != EMPTY && piece != NO_SQ);
+}
+
+std::string SqToString(const int sq)
+{
+	std::ostringstream stream;
+	char file = 'a' + FileBrd[sq];
+	char rank = '1' + RankBrd[sq];
+	stream<<file<<rank;
+	return stream.str();
 }
  
 //https://stackoverflow.com/questions/37396278/how-to-generate-very-large-random-number-in-c

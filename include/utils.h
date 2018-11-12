@@ -6,6 +6,7 @@
 #include <string>
 int FileRankToSq(int file, int rank);
 U64 RandU64();
-
+bool IsPiece(int piece);
 void ShowSqAtBySide(const int side,Board& pos);
+std::string SqToString(const int sq);
 #endif

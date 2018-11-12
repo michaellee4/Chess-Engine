@@ -18,6 +18,9 @@ main.o: src/main.cc include/defs.h include/debug.h include/bitboard.h \
 hash.o: src/hash.cc include/defs.h include/debug.h include/hash.h \
  include/board.h include/defs.h include/move.h include/utils.h \
  include/board.h
+movemaker.o: src/movemaker.cc include/movemaker.h include/defs.h \
+ include/debug.h include/board.h include/move.h include/defs.h \
+ include/bitboard.h include/debug.h
 stopwatch.o: src/stopwatch.cc include/stopwatch.h
 utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
- include/board.h include/move.h
+ include/board.h include/move.h include/defs.h

@@ -64,21 +64,18 @@ class Board
 
 		void ParseFEN(std::string);
 
-		void PrintBoard(void);
+		void PrintBoard(void) const;
 
 		void UpdatePieceLists(void);
 
-		bool IsPiece(int piece);
+		bool SqOnBoard(int sq) const;
 
-		bool SqOnBoard(int sq);
-
-		void PrintMoveList(void);
+		void PrintMoveList(void) const;
 
 		void GenerateAllMoves(void);
 		
-		const int SqAttacked(const int sq, const int side);
+		int SqAttacked(const int sq, const int side) const;
 
-		static std::string SqToString(const int sq);
 };
 		bool CheckBoard(const Board& pos);
 #endif

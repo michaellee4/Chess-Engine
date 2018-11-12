@@ -152,7 +152,7 @@ void Board::ParseFEN(std::string fen)
 	this->UpdatePieceLists();
 }
 
-void Board::PrintBoard() {
+void Board::PrintBoard() const{
 	
 	int sq,file,rank,piece;
 	
@@ -301,17 +301,12 @@ bool CheckBoard(const Board& pos)
 }
 
 
-bool Board::IsPiece(int piece)
-{
-	return (piece != OFFBOARD && piece != EMPTY && piece != NO_SQ);
-}
-
-bool Board::SqOnBoard(int sq)
+bool Board::SqOnBoard(int sq) const
 {
 	return !(this->pieces[sq] == OFFBOARD);
 }
 
-const int Board::SqAttacked(const int sq, const int attacker)
+int Board::SqAttacked(const int sq, const int attacker) const
 {
 	int numAttackers = 0;
 
@@ -393,16 +388,9 @@ const int Board::SqAttacked(const int sq, const int attacker)
 	return numAttackers;
 }
 
-std::string Board::SqToString(const int sq)
-{
-	std::ostringstream stream;
-	char file = 'a' + FileBrd[sq];
-	char rank = '1' + RankBrd[sq];
-	stream<<file<<rank;
-	return stream.str();
-}
 
-void Board::PrintMoveList()
+
+void Board::PrintMoveList() const
 {
 
 }
