@@ -25,6 +25,7 @@ class MoveList
 		void GenerateCastlingMoves(Board& psd, int side);
 
 	public:
+		// possibly use linked list instead of vector
 		std::vector<Move> moves;
 
 		MoveList();

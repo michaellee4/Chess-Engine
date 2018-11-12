@@ -5,11 +5,12 @@
 #include "move.h"
 #include <string>
 
+// change all arrays to vector
 class Board
 {
 	public:
 		// stores the state of the board 120 sq representation
-		int pieces[BRD_SQ_NUM];
+		int pieces[BRD_SQ_NUM]; 
 
 		// stores a pawn bitboard for white/black/both pawns
 		U64 pawns[3];
@@ -35,9 +36,12 @@ class Board
 		// position hash
 		U64 pos_key;
 
-		/*** Replace pieceList and PieceNum with 1 2d vector ***/
+		/*** Replace pieceList and PieceNum with 1 2d vector or LL ***/
 		// keeps track of how many of each pice is present on the board
 		int piece_num[13];
+
+		// piece list
+		int piece_list[13][10];
 
 		// non pawn pieces
 		int big_pce[2];
@@ -55,9 +59,6 @@ class Board
 
 		// stores the history of moves
 		U_Move history[MAX_GAME_MOVES];
-
-		// piece list
-		int piece_list[13][10];
 
 		void ResetBoard(void);
 

@@ -13,9 +13,11 @@ bitboard.o: src/bitboard.cc include/defs.h include/debug.h \
  include/move.h
 main.o: src/main.cc include/defs.h include/debug.h include/bitboard.h \
  include/defs.h include/utils.h include/board.h include/move.h \
- include/init.h include/hash.h include/board.h include/movelist.h
+ include/init.h include/hash.h include/board.h include/movelist.h \
+ include/stopwatch.h
 hash.o: src/hash.cc include/defs.h include/debug.h include/hash.h \
  include/board.h include/defs.h include/move.h include/utils.h \
  include/board.h
+stopwatch.o: src/stopwatch.cc include/stopwatch.h
 utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
  include/board.h include/move.h
