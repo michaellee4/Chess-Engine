@@ -9,6 +9,7 @@
 #include "movelist.h"
 #include <unordered_set>
 #include "stopwatch.h"
+#include "movemaker.h"
 
 #define FEN1 "8/3q1p2/8/5P2/4Q3/8/8/8 w - - 0 2 "
 #define FEN2 "rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2"
