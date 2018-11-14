@@ -56,7 +56,12 @@ const std::vector<int> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHIT
 	BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
 const std::vector<bool> PieceSlides = { false, false, false, true, true, true, false, false, false, true, true, true, false };
 
-
+const std::vector<int> PiecePawn = { false, true, false, false, false, false, false, true, false, false, false, false, false };	
+const std::vector<int> PieceKnight = { false, false, true, false, false, false, false, false, true, false, false, false, false };
+const std::vector<int> PieceKing = { false, false, false, false, false, false, true, false, false, false, false, false, true };
+const std::vector<int> PieceRookQueen = { false, false, false, false, true, true, false, false, false, false, true, true, false };
+const std::vector<int> PieceBishopQueen = { false, false, false, true, false, true, false, false, false, true, false, true, false };
+	
 // attackers
 const std::vector<int> KnMoves { -8, -19, -21, -12, 8, 19, 21, 12 };
 const std::vector<int> RkMoves { -1, -10, 1, 10 };

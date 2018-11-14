@@ -5,9 +5,9 @@
 #include "board.h"
 
 #define HASH_PCE(pce,sq) (pos.pos_key ^= (PieceKeys[(pce)][(sq)]))
-#define HASH_CA (pos.pos_key ^= (CastleKeys[(pos->castlePerm)]))
+#define HASH_CA (pos.pos_key ^= (CastleKeys[(pos.castle_perm)]))
 #define HASH_SIDE (pos.pos_key ^= (SideKey))
-#define HASH_EP (pos.pos_key ^= (PieceKeys[EMPTY][(pos->enPas)]))
+#define HASH_EP (pos.pos_key ^= (PieceKeys[EMPTY][(pos.en_pas)]))
 
 const int CastlePerm[120] = {
     15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
@@ -27,5 +27,8 @@ const int CastlePerm[120] = {
 void ClearPiece(const int sq, Board& pos);
 void AddPiece(const int sq, Board& pos, const int pce);
 void MovePiece(const int src, const int dest, Board& pos);
+bool MakeMove(Board& pos, Move moveInfo);
+void TakeMove(Board& pos);
+void TakeMove(Board& pos);
 
 #endif
