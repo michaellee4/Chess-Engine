@@ -11,6 +11,7 @@
 #include "stopwatch.h"
 #include "movemaker.h"
 #include <cstdio>
+#include <bitset>
 
 #define FEN1 "8/3q1p2/8/5P2/4Q3/8/8/8 w - - 0 2 "
 #define FEN2 "rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2"
@@ -41,25 +42,24 @@ int main()
 
 	m.GenerateAllMoves(b);
 
-	Move move = 0;
-	b.PrintBoard();
-	getchar();
-	for (int i = 0; i < m.moves.size(); i++)
-	{
-		move = m.moves[i];
-		if( !MakeMove(b, move.move))
-		{
-			continue;
-		}
-		// printf("\nMade: %s\n", move.ToString().c_str());
-		// b.PrintBoard();
-		// TakeMove(b);
-		// printf("\nTaken %s\n", move.ToString().c_str());
-		// b.PrintBoard();
-		// getchar();
+	// Move move = 0;
+	// b.PrintBoard();
+	// getchar();
+	// for (int i = 0; i < m.moves.size(); i++)
+	// {
+	// 	move = m.moves[i];
+	// 	if( !MakeMove(b, move.move))
+	// 	{
+	// 		continue;
+	// 	}
+	// 	printf("\nMade: %s\n", move.ToString().c_str());
+	// 	b.PrintBoard();
+	// 	TakeMove(b);
+	// 	printf("\nTaken %s\n", move.ToString().c_str());
+	// 	b.PrintBoard();
+	// 	getchar();
 
-	}
-
+	// }
 
 	m.PrintMoveList();
 

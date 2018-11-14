@@ -1,5 +1,6 @@
 #include "movelist.h"
-
+#include <bitset>
+#include <iostream>
 MoveList::MoveList()
 {
 	moves.reserve(MAXPOSITIONMOVES);
@@ -10,7 +11,9 @@ void MoveList::PrintMoveList()
 	for(int i = 0; i < this->moves.size(); i ++)
 	{
 		Move curMove = this->moves[i];
-		printf("Move: %d > %s (score: %d)\n",i ,curMove.ToString().c_str(), curMove.score );
+		printf("Move: %02d > %s (score: %d) : ",i ,curMove.ToString().c_str(), curMove.score );
+		std::bitset<32> bits(curMove.move);
+		std::cout <<  bits <<std::endl;
 	}
 		printf("MoveList Total: %d Moves\n\n", this->moves.size() );
 }

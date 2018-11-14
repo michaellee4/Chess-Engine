@@ -96,6 +96,7 @@ void MovePiece(const int src, const int dest, Board& pos)
 	int idx = 0;
 	for (; idx < pos.piece_num[pce] && pos.piece_list[pce][idx] != src; idx++){}
 
+
 	// should always find something
 	ASSERT(idx != pos.piece_num[pce]);
 	pos.piece_list[pce][idx] = dest;
@@ -104,16 +105,16 @@ void MovePiece(const int src, const int dest, Board& pos)
 
 bool MakeMove(Board& pos, Move moveInfo)
 {
-	ASSERT(CheckBoard(pos));
+	// ASSERT(CheckBoard(pos));
+
 	int from = moveInfo.From();
 	int to = moveInfo.To();
 	int side = pos.side_to_move;
-	int pce = pos.pieces[from];
 	int move = moveInfo.move;
+
 	ASSERT(pos.SqOnBoard(from));
 	ASSERT(pos.SqOnBoard(to));
 	ASSERT(pos.SqOnBoard(from));
-	ASSERT(IsPiece(pce));
 
 	pos.history[pos.hist_ply].posKey = pos.pos_key;
 
@@ -166,7 +167,7 @@ bool MakeMove(Board& pos, Move moveInfo)
 	pos.hist_ply++;
 	pos.ply++;
 
-	if(PiecePawn[pce])
+	if(PiecePawn[pos.pieces[from]])
 	{
 		pos.fifty_move = 0;
 		if(move & PS)
@@ -177,6 +178,7 @@ bool MakeMove(Board& pos, Move moveInfo)
 		}
 		HASH_EP;
 	}
+
 	MovePiece(from , to , pos);
 
 	int promotion = moveInfo.Promoted();
@@ -187,15 +189,14 @@ bool MakeMove(Board& pos, Move moveInfo)
 		AddPiece(to, pos, promotion);
 	}
 
-	if(PieceKing[pce])
+	if(PieceKing[pos.pieces[to]])
 	{
-		pos.king_sq[side] = to;
+		pos.king_sq[pos.side_to_move] = to;
 	}
 
 	pos.side_to_move ^= 1;
 	HASH_SIDE;
-
-	ASSERT(CheckBoard(pos));
+	// ASSERT(CheckBoard(pos));
 
 	if(pos.SqAttacked(pos.king_sq[side], !side))
 	{
@@ -257,7 +258,7 @@ void TakeMove(Board& pos)
 		}
 	}
 	MovePiece(to, from, pos);
-
+	ASSERT(IsPiece(pos.pieces[from]));
 	if (PieceKing[pos.pieces[from]])
 	{
 		pos.king_sq[pos.side_to_move] = from;

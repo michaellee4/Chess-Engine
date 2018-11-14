@@ -84,5 +84,6 @@ std::string Move::ToString()
 			pChar = 'b';
 		stream << pChar;
 	}
+	
   	return stream.str();
 }
