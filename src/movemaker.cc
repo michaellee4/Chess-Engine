@@ -105,7 +105,7 @@ void MovePiece(const int src, const int dest, Board& pos)
 
 bool MakeMove(Board& pos, Move moveInfo)
 {
-	// ASSERT(CheckBoard(pos));
+	ASSERT(CheckBoard(pos));
 
 	int from = moveInfo.From();
 	int to = moveInfo.To();
@@ -196,7 +196,7 @@ bool MakeMove(Board& pos, Move moveInfo)
 
 	pos.side_to_move ^= 1;
 	HASH_SIDE;
-	// ASSERT(CheckBoard(pos));
+	ASSERT(CheckBoard(pos));
 
 	if(pos.SqAttacked(pos.king_sq[side], !side))
 	{

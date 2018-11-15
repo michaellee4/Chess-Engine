@@ -289,7 +289,7 @@ bool CheckBoard(const Board& pos)
 	ASSERT(t_bigPce[WHITE]==pos.big_pce[WHITE] && t_bigPce[BLACK]==pos.big_pce[BLACK]);	
 	
 	ASSERT(pos.side_to_move==WHITE || pos.side_to_move==BLACK);
-	ASSERT(GeneratePosKey(pos)==pos.pos_key);
+	// ASSERT(GeneratePosKey(pos)==pos.pos_key);
 	
 	ASSERT(pos.en_pas==NO_SQ || ( RankBrd[pos.en_pas]==RANK_6 && pos.side_to_move == WHITE)
 		 || ( RankBrd[pos.en_pas]==RANK_3 && pos.side_to_move == BLACK));
