@@ -69,10 +69,10 @@ void MoveList::AddPawnCaptureMove(Board& pos, int from, int to, int cap, int sid
 	{
 		if(RankBrd[from] == RANK_7)
 		{
-			this->AddCaptureMove(pos, Move(from,to,cap,wQ,CAP));
-			this->AddCaptureMove(pos, Move(from,to,cap,wR,CAP));
-			this->AddCaptureMove(pos, Move(from,to,cap,wB,CAP));
-			this->AddCaptureMove(pos, Move(from,to,cap,wN,CAP));	
+			this->AddCaptureMove(pos, Move(from,to,cap,wQ,0));
+			this->AddCaptureMove(pos, Move(from,to,cap,wR,0));
+			this->AddCaptureMove(pos, Move(from,to,cap,wB,0));
+			this->AddCaptureMove(pos, Move(from,to,cap,wN,0));	
 		}
 		else
 		{
@@ -83,10 +83,10 @@ void MoveList::AddPawnCaptureMove(Board& pos, int from, int to, int cap, int sid
 	{
 		if(RankBrd[from] == RANK_2)
 		{
-			this->AddCaptureMove(pos, Move(from,to,cap,bQ,CAP));
-			this->AddCaptureMove(pos, Move(from,to,cap,bR,CAP));
-			this->AddCaptureMove(pos, Move(from,to,cap,bB,CAP));
-			this->AddCaptureMove(pos, Move(from,to,cap,bN,CAP));	
+			this->AddCaptureMove(pos, Move(from,to,cap,bQ,0));
+			this->AddCaptureMove(pos, Move(from,to,cap,bR,0));
+			this->AddCaptureMove(pos, Move(from,to,cap,bB,0));
+			this->AddCaptureMove(pos, Move(from,to,cap,bN,0));	
 		}
 		else
 		{
@@ -111,7 +111,7 @@ void MoveList::GenerateBishopMoves(Board& pos, int side)
 				{
 					if(PieceCol[pos.pieces[newSq]] == (!side))
 					{
-						this->AddCaptureMove(pos, Move(curBiSq, newSq, pos.pieces[newSq], EMPTY, CAP));
+						this->AddCaptureMove(pos, Move(curBiSq, newSq, pos.pieces[newSq], EMPTY, 0));
 					}
 					break;
 				}
@@ -137,7 +137,7 @@ void MoveList::GenerateRookMoves(Board& pos, int side)
 				{
 					if(PieceCol[pos.pieces[newSq]] == (!side))
 					{
-						this->AddCaptureMove(pos, Move(curRkSq, newSq, pos.pieces[newSq], EMPTY, CAP));
+						this->AddCaptureMove(pos, Move(curRkSq, newSq, pos.pieces[newSq], EMPTY, 0));
 					}
 					break;
 				}
@@ -163,7 +163,7 @@ void MoveList::GenerateQueenMoves(Board& pos, int side)
 				{
 					if(PieceCol[pos.pieces[newSq]] == (!side))
 					{
-						this->AddCaptureMove(pos, Move(curQn, newSq, pos.pieces[newSq], EMPTY, CAP));
+						this->AddCaptureMove(pos, Move(curQn, newSq, pos.pieces[newSq], EMPTY, 0));
 					}
 					break;
 				}
@@ -185,7 +185,7 @@ void MoveList::GenerateQueenMoves(Board& pos, int side)
 				{
 					if(PieceCol[pos.pieces[newSq]] == (!side))
 					{
-						this->AddCaptureMove(pos, Move(curQn, newSq, pos.pieces[newSq], EMPTY, CAP));
+						this->AddCaptureMove(pos, Move(curQn, newSq, pos.pieces[newSq], EMPTY, 0));
 					}
 					break;
 				}
@@ -216,7 +216,7 @@ void MoveList::GenerateKnightMoves(Board& pos, int side)
 			{
 				if(PieceCol[pos.pieces[newSq]]== !side)
 				{
-					this->AddCaptureMove(pos, Move(curKnSq, newSq, pos.pieces[newSq], EMPTY, CAP));
+					this->AddCaptureMove(pos, Move(curKnSq, newSq, pos.pieces[newSq], EMPTY, 0));
 				}
 				if(pos.pieces[newSq] == EMPTY)
 				{
@@ -244,7 +244,7 @@ void MoveList::GenerateKingMoves(Board& pos, int side)
 			}
 			if(PieceCol[pos.pieces[newSq]]== !side)
 			{
-				this->AddCaptureMove(pos, Move(kingSq, newSq, pos.pieces[newSq], EMPTY, CAP));
+				this->AddCaptureMove(pos, Move(kingSq, newSq, pos.pieces[newSq], EMPTY, 0));
 			}
 		}
 	}

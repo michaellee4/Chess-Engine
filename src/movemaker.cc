@@ -48,6 +48,9 @@ void ClearPiece(const int sq, Board& pos)
 
 void AddPiece(const int sq, Board& pos, const int pce)
 {
+	ASSERT(IsPiece(pce));
+	ASSERT(pos.SqOnBoard(sq));
+
 	int col = PieceCol[pce];
 	HASH_PCE(pce, sq);
 	pos.pieces[sq] = pce;
@@ -76,6 +79,9 @@ void AddPiece(const int sq, Board& pos, const int pce)
 
 void MovePiece(const int src, const int dest, Board& pos)
 {
+    ASSERT(pos.SqOnBoard(src));
+    ASSERT(pos.SqOnBoard(dest));
+
 	int pce = pos.pieces[src];
 	int col = PieceCol[pce];
 
@@ -115,6 +121,7 @@ bool MakeMove(Board& pos, Move moveInfo)
 	ASSERT(pos.SqOnBoard(from));
 	ASSERT(pos.SqOnBoard(to));
 	ASSERT(pos.SqOnBoard(from));
+	ASSERT(IsPiece(pos.pieces[from]))
 
 	pos.history[pos.hist_ply].posKey = pos.pos_key;
 
@@ -158,12 +165,14 @@ bool MakeMove(Board& pos, Move moveInfo)
 
 	int captured = moveInfo.Captured();
 	pos.fifty_move++;
+
 	if(captured != EMPTY)
 	{
 		ASSERT(IsPiece(captured));
 		ClearPiece(to, pos);
 		pos.fifty_move = 0;
 	}
+
 	pos.hist_ply++;
 	pos.ply++;
 
@@ -175,8 +184,8 @@ bool MakeMove(Board& pos, Move moveInfo)
 			int offset = side == WHITE ? 10 : -10;
 			pos.en_pas = from + offset;
 			ASSERT((side == WHITE && RankBrd[pos.en_pas] == RANK_3)||(side == BLACK && RankBrd[pos.en_pas] == RANK_6));
+			HASH_EP;
 		}
-		HASH_EP;
 	}
 
 	MovePiece(from , to , pos);
@@ -209,26 +218,28 @@ bool MakeMove(Board& pos, Move moveInfo)
 void TakeMove(Board& pos)
 {
 	ASSERT(CheckBoard(pos));
+
 	pos.hist_ply--;
 	pos.ply--;
-	int move = pos.history[pos.hist_ply].move;
-	Move moveInfo = Move(move);
+
+	Move moveInfo = Move(pos.history[pos.hist_ply].move);
+	int move = moveInfo.move;
 	int from = moveInfo.From();
 	int to = moveInfo.To();
 
-
 	ASSERT(pos.SqOnBoard(from) && pos.SqOnBoard(to));
 
-	if(pos.en_pas != NO_SQ)
-	{
-		HASH_EP;
-	}
+	if(pos.en_pas != NO_SQ) HASH_EP;
 	HASH_CA;
 
 	U_Move undo = pos.history[pos.hist_ply];
 	pos.castle_perm = undo.castlePerm;
 	pos.fifty_move = undo.fiftyMove;
 	pos.en_pas = undo.enPas;
+
+    if(pos.en_pas != NO_SQ) HASH_EP;
+    HASH_CA;
+
 	pos.side_to_move ^= 1;
 	HASH_SIDE;
 

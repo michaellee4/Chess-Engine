@@ -35,7 +35,7 @@ int main()
 	Stopwatch s;
 	InitAll();
 	Board b;
-	b.ParseFEN(START_FEN);	
+	b.ParseFEN(GENALLMOVE);	
 	ASSERT(CheckBoard(b));
 	
 	MoveList m;
@@ -48,11 +48,12 @@ int main()
 	for (int i = 0; i < m.moves.size(); i++)
 	{
 		move = m.moves[i];
+		printf("Trying: %s\n", move.ToString().c_str());
 		if( !MakeMove(b, move))
 		{
 			continue;
 		}
-		printf("\nMade: %s\n", move.ToString().c_str());
+		printf("Made: %s\n", move.ToString().c_str());
 		b.PrintBoard();
 		TakeMove(b);
 		printf("\nTaken %s\n", move.ToString().c_str());
