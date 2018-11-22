@@ -8,6 +8,31 @@
 #include <sstream>
 #include <cstdio> 
 
+Board::Board():pawns(3), 
+			   king_sq(2), 
+			   piece_num(13), 
+			   big_pce(2), 
+			   maj_pce(2), 
+			   min_pce(2), 
+			   material(2), 
+			   history(MAX_GAME_MOVES)
+{
+	this->ParseFEN(START_FEN);
+}
+
+Board::Board(const std::string fen):pawns(3), 
+									king_sq(2), 
+									piece_num(13), 
+									big_pce(2),
+									maj_pce(2), 
+									min_pce(2), 
+									material(2), 
+									history(MAX_GAME_MOVES) 
+{
+
+	this->ParseFEN(fen);
+}
+
 void Board::ResetBoard(void)
 {
 	for(int i = 0; i < BRD_SQ_NUM; i ++)
@@ -49,7 +74,7 @@ void Board::ResetBoard(void)
 	this->pos_key = 0ULL;
 }
 
-void Board::ParseFEN(std::string fen)
+void Board::ParseFEN(const std::string fen)
 {
 	using namespace std;
 	this->ResetBoard();
