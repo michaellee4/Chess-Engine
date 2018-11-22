@@ -11,7 +11,7 @@
 Board::Board():pawns(3), 
 			   king_sq(2), 
 			   piece_num(13), 
-			   piece_list(13, std::vector<int>(10)),
+			   piece_list(13, std::vector<int>()),
 			   big_pce(2), 
 			   maj_pce(2), 
 			   min_pce(2), 
@@ -28,7 +28,7 @@ Board::Board():pawns(3),
 Board::Board(const std::string fen):pawns(3), 
 									king_sq(2), 
 									piece_num(13), 
-			   						piece_list(13, std::vector<int>(10)),
+			   						piece_list(13, std::vector<int>()),
 									big_pce(2),
 									maj_pce(2), 
 									min_pce(2), 
@@ -66,7 +66,7 @@ void Board::ResetBoard(void)
 
 	for(int i = 0; i < 13; i ++)
 	{
-		this->piece_num[i] = 0;
+		this->piece_list[i].clear();
 	}
 
 	this->king_sq[WHITE] = 0;
@@ -232,8 +232,9 @@ void Board::UpdatePieceLists()
 			this->min_pce[color] += PieceInfo::PieceMin[piece];
 			this->material[color] += PieceInfo::PieceVal[piece];
 
-			this->piece_list[piece][this->piece_num[piece]] = index;
-			this->piece_num[piece]++;
+			// this->piece_list[piece][this->piece_num[piece]] = index;
+			// this->piece_num[piece]++;
+			this->piece_list[piece].push_back(index);
 
 			if(piece == wK) this->king_sq[WHITE] = index;
 			if(piece == bK) this->king_sq[BLACK] = index;

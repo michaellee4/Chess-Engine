@@ -99,7 +99,7 @@ void MoveList::AddPawnCaptureMove(Board& pos, int from, int to, int cap, int sid
 void MoveList::GenerateBishopMoves(Board& pos, int side)
 {
 	int bi = side == WHITE ? wB : bB;
-	for(int pce = 0; pce < pos.piece_num[bi]; pce ++)
+	for(int pce = 0; pce < pos.piece_list[bi].size(); pce ++)
 	{
 		int curBiSq = pos.piece_list[bi][pce];
 		for(int move = 0; move < Attack::BiMoves.size(); move ++)
@@ -125,7 +125,7 @@ void MoveList::GenerateBishopMoves(Board& pos, int side)
 void MoveList::GenerateRookMoves(Board& pos, int side)
 {
 	int rk = side == WHITE ? wR : bR;
-	for(int pce = 0; pce < pos.piece_num[rk]; pce ++)
+	for(int pce = 0; pce < pos.piece_list[rk].size(); pce ++)
 	{
 		int curRkSq = pos.piece_list[rk][pce];
 		for(int move = 0; move < Attack::RkMoves.size(); move ++)
@@ -151,7 +151,7 @@ void MoveList::GenerateQueenMoves(Board& pos, int side)
 {
 	int Qn = side == WHITE ? wQ : bQ;
 
-	for(int pce = 0; pce < pos.piece_num[Qn]; pce ++)
+	for(int pce = 0; pce < pos.piece_list[Qn].size(); pce ++)
 	{
 		int curQn = pos.piece_list[Qn][pce];
 		for(int move = 0; move < Attack::BiMoves.size(); move ++)
@@ -173,7 +173,7 @@ void MoveList::GenerateQueenMoves(Board& pos, int side)
 		}
 	}
 
-	for(int pce = 0; pce < pos.piece_num[Qn]; pce ++)
+	for(int pce = 0; pce < pos.piece_list[Qn].size(); pce ++)
 	{
 		int curQn = pos.piece_list[Qn][pce];
 		for(int move = 0; move < Attack::RkMoves.size(); move ++)
@@ -206,7 +206,7 @@ void MoveList::GenerateSlidingMoves(Board& pos, int side)
 void MoveList::GenerateKnightMoves(Board& pos, int side)
 {
 	int kn = side == WHITE ? wN : bN;
-	for(int pce = 0; pce < pos.piece_num[kn]; pce ++)
+	for(int pce = 0; pce < pos.piece_list[kn].size(); pce ++)
 	{
 		int curKnSq = pos.piece_list[kn][pce];
 		for(int move = 0; move < Attack::KnMoves.size(); move ++)
@@ -232,7 +232,7 @@ void MoveList::GenerateKingMoves(Board& pos, int side)
 {
 	int ki = side == WHITE ? wK : bK;
 	int kingSq = pos.piece_list[ki][0];
-	ASSERT(pos.piece_num[ki] == 1);
+	ASSERT(pos.piece_list[ki].size() == 1);
 	for(int move = 0; move < Attack::KiMoves.size(); move ++)
 	{
 		int newSq = kingSq + Attack::KiMoves[move];
@@ -266,7 +266,7 @@ void MoveList::GeneratePawnMoves(Board& pos, int side)
 	int cap2 = side == WHITE ? 11 : -11;
 	int pawn = side == WHITE ? wP : bP;
 
-	for(int pceNum = 0; pceNum < pos.piece_num[pawn]; pceNum++)
+	for(int pceNum = 0; pceNum < pos.piece_list[pawn].size(); pceNum++)
 	{
 		int sq = pos.piece_list[pawn][pceNum];
 		ASSERT(sq != OFFBOARD && sq != NO_SQ)

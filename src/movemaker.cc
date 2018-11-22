@@ -42,7 +42,9 @@ void MM::ClearPiece(const int sq, Board& pos)
 	ASSERT(idx != pos.piece_list[pce].size())
 	
 	// swap out the value
-	pos.piece_list[pce][idx] = pos.piece_list[pce][--pos.piece_num[pce]];
+	// pos.piece_list[pce][idx] = pos.piece_list[pce][--pos.piece_num[pce]];
+	pos.piece_list[pce][idx] = pos.piece_list[pce].back();
+	pos.piece_list[pce].pop_back();
 }
 
 void MM::AddPiece(const int sq, Board& pos, const int pce)
@@ -73,7 +75,9 @@ void MM::AddPiece(const int sq, Board& pos, const int pce)
 	}
 	
 	pos.material[col]+=PieceInfo::PieceVal[pce];
-	pos.piece_list[pce][pos.piece_num[pce]++] = sq;
+
+	// pos.piece_list[pce][pos.piece_num[pce]++] = sq;
+	pos.piece_list[pce].push_back(sq);
 }
 
 void MM::MovePiece(const int src, const int dest, Board& pos)
