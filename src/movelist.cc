@@ -349,7 +349,7 @@ void MoveList::GenerateCastlingMoves(Board& pos, int side)
 
 void MoveList::GenerateAllMoves(Board& pos)
 {
-	ASSERT(CheckBoard(pos));
+	// ASSERT(CheckBoard(pos));
 	this->moves.clear();
 	this->GeneratePawnMoves(pos, pos.side_to_move);
 	this->GenerateSlidingMoves(pos, pos.side_to_move);

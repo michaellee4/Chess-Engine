@@ -8,14 +8,17 @@ board.o: src/board.cc include/board.h include/defs.h include/debug.h \
  include/board.h include/utils.h include/bitboard.h
 move.o: src/move.cc include/move.h include/defs.h include/debug.h \
  include/defs.h
-perft.o: src/perft.cc
+perft.o: src/perft.cc include/defs.h include/debug.h include/perft.h \
+ include/board.h include/defs.h include/move.h include/movelist.h \
+ include/movemaker.h
 bitboard.o: src/bitboard.cc include/defs.h include/debug.h \
  include/bitboard.h include/defs.h include/utils.h include/board.h \
  include/move.h
 main.o: src/main.cc include/defs.h include/debug.h include/bitboard.h \
  include/defs.h include/utils.h include/board.h include/move.h \
  include/init.h include/hash.h include/board.h include/movelist.h \
- include/stopwatch.h include/movemaker.h
+ include/stopwatch.h include/movemaker.h include/perft.h \
+ include/movelist.h include/movemaker.h
 hash.o: src/hash.cc include/defs.h include/debug.h include/hash.h \
  include/board.h include/defs.h include/move.h include/utils.h \
  include/board.h

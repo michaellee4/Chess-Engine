@@ -7,7 +7,7 @@
 #include "hash.h"
 #include<cstdio>
 
-void MM::MM::ClearPiece(const int sq, Board& pos)
+void MM::ClearPiece(const int sq, Board& pos)
 {
 	int pce = pos.pieces[sq];
 	int col = PieceInfo::PieceCol[pce];
@@ -46,7 +46,7 @@ void MM::MM::ClearPiece(const int sq, Board& pos)
 	pos.piece_list[pce][idx] = pos.piece_list[pce][pos.piece_num[pce]];
 }
 
-void MM::MM::AddPiece(const int sq, Board& pos, const int pce)
+void MM::AddPiece(const int sq, Board& pos, const int pce)
 {
 	ASSERT(IsPiece(pce));
 	ASSERT(pos.SqOnBoard(sq));
@@ -77,7 +77,7 @@ void MM::MM::AddPiece(const int sq, Board& pos, const int pce)
 	pos.piece_list[pce][pos.piece_num[pce]++] = sq;
 }
 
-void MM::MM::MovePiece(const int src, const int dest, Board& pos)
+void MM::MovePiece(const int src, const int dest, Board& pos)
 {
     ASSERT(pos.SqOnBoard(src));
     ASSERT(pos.SqOnBoard(dest));

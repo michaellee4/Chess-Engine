@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -I ./include/
+CXXFLAGS = -O3 -std=c++11 -I ./include/
 TESTS = ./src/tests/
 SRC = $(wildcard ./src/*.cc)
 OBJS = $(patsubst %cc,%o,$(SRC))

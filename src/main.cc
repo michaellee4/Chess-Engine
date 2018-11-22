@@ -12,7 +12,7 @@
 #include "movemaker.h"
 #include <cstdio>
 #include <bitset>
-
+#include "perft.h"
 #define FEN1 "8/3q1p2/8/5P2/4Q3/8/8/8 w - - 0 2 "
 #define FEN2 "rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2"
 #define FEN3 "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2"
@@ -28,6 +28,9 @@
 #define CASTLE2 "3rk2r/8/8/8/8/8/6p1/R3K2R b KQk - 0 1"
 #define GENALLMOVE "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
 
+#define PERFTFEN "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
+#define pt "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
+
 using namespace std;
 
 int main()
@@ -35,34 +38,14 @@ int main()
 	Stopwatch s;
 	InitAll();
 	Board b;
-	b.ParseFEN(GENALLMOVE);	
-	ASSERT(CheckBoard(b));
-	
-	MoveList m;
+	PerftTester p;
 
-	m.GenerateAllMoves(b);
+	b.ParseFEN(pt);	
+	ASSERT(CheckBoard(b));
+	p.PerftTest(4, b);
 
 	Move move = 0;
-	b.PrintBoard();
-	getchar();
-	for (int i = 0; i < m.moves.size(); i++)
-	{
-		move = m.moves[i];
-		printf("Trying: %s\n", move.ToString().c_str());
-		if( !MM::MakeMove(b, move))
-		{
-			continue;
-		}
-		printf("Made: %s\n", move.ToString().c_str());
-		b.PrintBoard();
-		MM::TakeMove(b);
-		printf("\nTaken %s\n", move.ToString().c_str());
-		b.PrintBoard();
-		getchar();
-
-	}
-
-	m.PrintMoveList();
+	
 
 	return 0;
 }
