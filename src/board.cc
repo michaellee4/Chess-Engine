@@ -20,7 +20,7 @@ Board::Board():pawns(3),
 {
 	for(int i = 0; i < 13; i++)
 	{
-		this->piece_list.reserve(10);
+		this->piece_list[i].reserve(10);
 	}
 	this->ParseFEN(START_FEN);
 }
@@ -37,7 +37,7 @@ Board::Board(const std::string fen):pawns(3),
 {
 	for(int i = 0; i < 13; i++)
 	{
-		this->piece_list.reserve(10);
+		this->piece_list[i].reserve(10);
 	}
 	this->ParseFEN(fen);
 }
@@ -270,7 +270,7 @@ bool CheckBoard(const Board& pos)
 	
 	// check piece lists
 	for(t_piece = wP; t_piece <= bK; ++t_piece) {
-		for(t_pce_num = 0; t_pce_num < pos.piece_num[t_piece]; ++t_pce_num) {
+		for(t_pce_num = 0; t_pce_num < pos.piece_list[t_piece].size(); ++t_pce_num) {
 			sq120 = pos.piece_list[t_piece][t_pce_num];
 			ASSERT(pos.pieces[sq120]==t_piece);
 		}	
@@ -290,16 +290,16 @@ bool CheckBoard(const Board& pos)
 	}
 	
 	for(t_piece = wP; t_piece <= bK; ++t_piece) {
-		ASSERT(t_pceNum[t_piece]==pos.piece_num[t_piece]);	
+		ASSERT(t_pceNum[t_piece]==pos.piece_list[t_piece].size());	
 	}
 	
 	// check bitboards count
 	pcount = BB::CountBits(t_pawns[WHITE]);
-	ASSERT(pcount == pos.piece_num[wP]);
+	ASSERT(pcount == pos.piece_list[wP].size());
 	pcount = BB::CountBits(t_pawns[BLACK]);
-	ASSERT(pcount == pos.piece_num[bP]);
+	ASSERT(pcount == pos.piece_list[bP].size());
 	pcount = BB::CountBits(t_pawns[BOTH]);
-	ASSERT(pcount == (pos.piece_num[bP] + pos.piece_num[wP]));
+	ASSERT(pcount == (pos.piece_list[bP].size() + pos.piece_list[wP].size()));
 	
 	// check bitboards squares
 	while(t_pawns[WHITE]) {

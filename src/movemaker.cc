@@ -36,14 +36,13 @@ void MM::ClearPiece(const int sq, Board& pos)
 
 	// REMOVE PIECE FROM PIECE LIST
 	int idx = 0;
-	for (; idx < pos.piece_num[pce] && pos.piece_list[pce][idx] != sq; idx++){}
+	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != sq; idx++){}
 
 	// should always find something
-	ASSERT(idx != pos.piece_num[pce])
+	ASSERT(idx != pos.piece_list[pce].size())
 	
 	// swap out the value
-	pos.piece_num[pce]--;
-	pos.piece_list[pce][idx] = pos.piece_list[pce][pos.piece_num[pce]];
+	pos.piece_list[pce][idx] = pos.piece_list[pce][--pos.piece_num[pce]];
 }
 
 void MM::AddPiece(const int sq, Board& pos, const int pce)
@@ -100,11 +99,11 @@ void MM::MovePiece(const int src, const int dest, Board& pos)
 
 	// ADD PIECE TO PIECE LIST
 	int idx = 0;
-	for (; idx < pos.piece_num[pce] && pos.piece_list[pce][idx] != src; idx++){}
+	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != src; idx++){}
 
 
 	// should always find something
-	ASSERT(idx != pos.piece_num[pce]);
+	ASSERT(idx != pos.piece_list[pce].size());
 	pos.piece_list[pce][idx] = dest;
 	
 }

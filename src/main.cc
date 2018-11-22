@@ -35,14 +35,16 @@ using namespace std;
 
 int main()
 {
-	Stopwatch s;
 	InitAll();
 	Board b;
 	PerftTester p;
 
 	b.ParseFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 ");	
 	ASSERT(CheckBoard(b));
-	p.PerftTest(5, b);
+	int d; 
+	cin>>d;
+	Stopwatch s;
+	p.PerftTest(d, b);
 
 	Move move = 0;
 	
