@@ -148,7 +148,7 @@ void Board::ParseFEN(std::string fen)
 		this->fifty_move = 0;
 		this->hist_ply = 1;
 	}
-	this->pos_key = GeneratePosKey(*this);
+	this->pos_key = Hash::GeneratePosKey(*this);
 	this->UpdatePieceLists();
 }
 
@@ -163,7 +163,7 @@ void Board::PrintBoard() const{
 		for(file = FILE_A; file <= FILE_H; file++) {
 			sq = FileRankToSq(file,rank);
 			piece = this->pieces[sq];
-			printf("%3c",PceChar[piece]);
+			printf("%3c",BoardChar::PceChar[piece]);
 		}
 		printf("\n");
 	}
@@ -173,8 +173,8 @@ void Board::PrintBoard() const{
 		printf("%3c",'a'+file);	
 	}
 	printf("\n");
-	printf("side:%c\n",SideChar[this->side_to_move]);
-	printf("enPas:%s (%d)\n",epstr.at(this->en_pas).c_str(),this->en_pas);
+	printf("side:%c\n",BoardChar::SideChar[this->side_to_move]);
+	printf("enPas:%s (%d)\n",BoardChar::epstr.at(this->en_pas).c_str(),this->en_pas);
 	printf("castle:%c%c%c%c\n",
 			this->castle_perm & WKCA ? 'K' : '-',
 			this->castle_perm & WQCA ? 'Q' : '-',
@@ -192,11 +192,11 @@ void Board::UpdatePieceLists()
 		// on board
 		if( IsPiece(piece) )
 		{
-			int color = PieceCol[piece];
-			this->big_pce[color] += PieceBig[piece];
-			this->maj_pce[color] += PieceMaj[piece];
-			this->min_pce[color] += PieceMin[piece];
-			this->material[color] += PieceVal[piece];
+			int color = PieceInfo::PieceCol[piece];
+			this->big_pce[color] += PieceInfo::PieceBig[piece];
+			this->maj_pce[color] += PieceInfo::PieceMaj[piece];
+			this->min_pce[color] += PieceInfo::PieceMin[piece];
+			this->material[color] += PieceInfo::PieceVal[piece];
 
 			this->piece_list[piece][this->piece_num[piece]] = index;
 			this->piece_num[piece]++;
@@ -206,13 +206,13 @@ void Board::UpdatePieceLists()
 
 			if(piece == wP) 
 			{
-				SetBit(this->pawns[WHITE], Sq120ToSq64[index]);
-				SetBit(this->pawns[BOTH], Sq120ToSq64[index]);
+				BB::SetBit(this->pawns[WHITE], Sq120ToSq64[index]);
+				BB::SetBit(this->pawns[BOTH], Sq120ToSq64[index]);
 			}
 			if(piece == bP) 
 			{
-				SetBit(this->pawns[BLACK], Sq120ToSq64[index]);
-				SetBit(this->pawns[BOTH], Sq120ToSq64[index]);
+				BB::SetBit(this->pawns[BLACK], Sq120ToSq64[index]);
+				BB::SetBit(this->pawns[BOTH], Sq120ToSq64[index]);
 			}
 		}
 	}
@@ -247,12 +247,12 @@ bool CheckBoard(const Board& pos)
 		sq120 = Sq64ToSq120[sq64];
 		t_piece = pos.pieces[sq120];
 		t_pceNum[t_piece]++;
-		colour = PieceCol[t_piece];
-		if( PieceBig[t_piece] == true) t_bigPce[colour]++;
-		if( PieceMin[t_piece] == true) t_minPce[colour]++;
-		if( PieceMaj[t_piece] == true) t_majPce[colour]++;
+		colour = PieceInfo::PieceCol[t_piece];
+		if( PieceInfo::PieceBig[t_piece] == true) t_bigPce[colour]++;
+		if( PieceInfo::PieceMin[t_piece] == true) t_minPce[colour]++;
+		if( PieceInfo::PieceMaj[t_piece] == true) t_majPce[colour]++;
 		
-		t_material[colour] += PieceVal[t_piece];
+		t_material[colour] += PieceInfo::PieceVal[t_piece];
 	}
 	
 	for(t_piece = wP; t_piece <= bK; ++t_piece) {
@@ -260,26 +260,26 @@ bool CheckBoard(const Board& pos)
 	}
 	
 	// check bitboards count
-	pcount = CountBits(t_pawns[WHITE]);
+	pcount = BB::CountBits(t_pawns[WHITE]);
 	ASSERT(pcount == pos.piece_num[wP]);
-	pcount = CountBits(t_pawns[BLACK]);
+	pcount = BB::CountBits(t_pawns[BLACK]);
 	ASSERT(pcount == pos.piece_num[bP]);
-	pcount = CountBits(t_pawns[BOTH]);
+	pcount = BB::CountBits(t_pawns[BOTH]);
 	ASSERT(pcount == (pos.piece_num[bP] + pos.piece_num[wP]));
 	
 	// check bitboards squares
 	while(t_pawns[WHITE]) {
-		sq64 = PopBit(t_pawns[WHITE]);
+		sq64 = BB::PopBit(t_pawns[WHITE]);
 		ASSERT(pos.pieces[Sq64ToSq120[sq64]] == wP);
 	}
 	
 	while(t_pawns[BLACK]) {
-		sq64 = PopBit(t_pawns[BLACK]);
+		sq64 = BB::PopBit(t_pawns[BLACK]);
 		ASSERT(pos.pieces[Sq64ToSq120[sq64]] == bP);
 	}
 	
 	while(t_pawns[BOTH]) {
-		sq64 = PopBit(t_pawns[BOTH]);
+		sq64 = BB::PopBit(t_pawns[BOTH]);
 		ASSERT( (pos.pieces[Sq64ToSq120[sq64]] == bP) || (pos.pieces[Sq64ToSq120[sq64]] == wP) );
 	}
 	
@@ -289,8 +289,7 @@ bool CheckBoard(const Board& pos)
 	ASSERT(t_bigPce[WHITE]==pos.big_pce[WHITE] && t_bigPce[BLACK]==pos.big_pce[BLACK]);	
 	
 	ASSERT(pos.side_to_move==WHITE || pos.side_to_move==BLACK);
-	// printf("%d %d\n",GeneratePosKey(pos), pos.pos_key );
-	ASSERT(GeneratePosKey(pos)==pos.pos_key);
+	// printf("%d %d\n",Hash::GeneratePosKey(pos), pos.pos_key );ASSERT(Hasher::GeneratePosKey(pos)==pos.pos_key);
 	
 	ASSERT(pos.en_pas==NO_SQ || ( RankBrd[pos.en_pas]==RANK_6 && pos.side_to_move == WHITE)
 		 || ( RankBrd[pos.en_pas]==RANK_3 && pos.side_to_move == BLACK));
@@ -333,7 +332,7 @@ int Board::SqAttacked(const int sq, const int attacker) const
 	int attackingKnight = attacker == WHITE ? wN : bN;
 	for(int i = 0; i < 8; i++)
 	{
-		if(this->pieces[sq + KnMoves[i]] == attackingKnight)
+		if(this->pieces[sq + Attack::KnMoves[i]] == attackingKnight)
 			numAttackers++;
 	}
 
@@ -342,7 +341,7 @@ int Board::SqAttacked(const int sq, const int attacker) const
 	int attackingQueen = attacker == WHITE ? wQ : bQ;
 	for(int i = 0 ; i < 4; i ++)
 	{
-		int move = RkMoves[i];
+		int move = Attack::RkMoves[i];
 		int t_sq = sq + move;
 		int pce = this->pieces[t_sq];
 		while(pce != OFFBOARD)
@@ -362,7 +361,7 @@ int Board::SqAttacked(const int sq, const int attacker) const
 	int attackingBishop = attacker == WHITE ? wB : bB;
 	for(int i = 0 ; i < 4; i ++)
 	{
-		int move = BiMoves[i];
+		int move = Attack::BiMoves[i];
 		int t_sq = sq + move;
 		int pce = this->pieces[t_sq];
 		while(pce != OFFBOARD)
@@ -381,7 +380,7 @@ int Board::SqAttacked(const int sq, const int attacker) const
 	int attackingKing = attacker == WHITE ? wK : bK;
 	for(int i = 0; i < 8; i++)
 	{
-		if(this->pieces[sq + KiMoves[i]] == attackingKing)
+		if(this->pieces[sq + Attack::KiMoves[i]] == attackingKing)
 			numAttackers++;
 	}
 	// Check Diagonals

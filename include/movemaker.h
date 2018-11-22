@@ -24,11 +24,17 @@ const int CastlePerm[120] = {
     15, 15, 15, 15, 15, 15, 15, 15, 15, 15
 };
 
-void ClearPiece(const int sq, Board& pos);
-void AddPiece(const int sq, Board& pos, const int pce);
-void MovePiece(const int src, const int dest, Board& pos);
-bool MakeMove(Board& pos, Move moveInfo);
-void TakeMove(Board& pos);
-void TakeMove(Board& pos);
+
+class MM
+{
+    static void ClearPiece(const int sq, Board& pos);
+    static void AddPiece(const int sq, Board& pos, const int pce);
+    static void MovePiece(const int src, const int dest, Board& pos);
+public:
+    static bool MakeMove(Board& pos, Move moveInfo);
+    static void TakeMove(Board& pos);
+    
+};
+
 
 #endif

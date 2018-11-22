@@ -37,53 +37,54 @@ enum {
 	A8 = 91, B8, C8, D8, E8, F8, G8, H8, NO_SQ, OFFBOARD
 };
 
-
-
-const std::string PceChar = ".PNBRQKpnbrqk";
-const std::string SideChar = "wb-";
-const std::string RankChar = "12345678";
-const std::string FileChar = "abcdefgh";
-const std::unordered_map<int, std::string> epstr = 
-{{71,"a6"}, {72,"b6"}, {73,"c6"}, {74,"d6"}, {75,"e6"}, {76,"f6"}, {77,"g6"}, {78,"h6"},
- {41,"a3"}, {42,"b3"}, {43,"c3"}, {44,"d3"}, {45,"e3"}, {46,"f3"}, {47,"g3"}, {48,"h3"}, {99, "None"}};
- 
-//piece info
-const std::vector<bool> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
-const std::vector<bool> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
-const std::vector<bool> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
-const std::vector<int> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
-const std::vector<int> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
-	BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
-const std::vector<bool> PieceSlides = { false, false, false, true, true, true, false, false, false, true, true, true, false };
-
-const std::vector<int> PiecePawn = { false, true, false, false, false, false, false, true, false, false, false, false, false };	
-// const std::vector<int> PieceKnight = { false, false, true, false, false, false, false, false, true, false, false, false, false };
-const std::vector<int> PieceKing = { false, false, false, false, false, false, true, false, false, false, false, false, true };
-// const std::vector<int> PieceRookQueen = { false, false, false, false, true, true, false, false, false, false, true, true, false };
-// const std::vector<int> PieceBishopQueen = { false, false, false, true, false, true, false, false, false, true, false, true, false };
-	
-// attackers
-const std::vector<int> KnMoves { -8, -19, -21, -12, 8, 19, 21, 12 };
-const std::vector<int> RkMoves { -1, -10, 1, 10 };
-const std::vector<int> BiMoves { -9, -11, 11, 9 };
-const std::vector<int> KiMoves { -1, -10, 1, 10, -9, -11, 11, 9 };
-
-
-
 // Castling permissions
 enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8 };
+
+namespace BoardChar
+{
+	const std::string PceChar = ".PNBRQKpnbrqk";
+	const std::string SideChar = "wb-";
+	const std::string RankChar = "12345678";
+	const std::string FileChar = "abcdefgh";
+	const std::unordered_map<int, std::string> epstr = 
+	{{71,"a6"}, {72,"b6"}, {73,"c6"}, {74,"d6"}, {75,"e6"}, {76,"f6"}, {77,"g6"}, {78,"h6"},
+	 {41,"a3"}, {42,"b3"}, {43,"c3"}, {44,"d3"}, {45,"e3"}, {46,"f3"}, {47,"g3"}, {48,"h3"}, {99, "None"}};
+}
+
+ 
+ namespace PieceInfo
+ {
+//piece info
+	const std::vector<bool> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
+	const std::vector<bool> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
+	const std::vector<bool> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
+	const std::vector<int> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
+	const std::vector<int> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
+										BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
+	const std::vector<bool> PieceSlides = { false, false, false, true, true, true, false, false, false, true, true, true, false };
+
+	const std::vector<int> PiecePawn = { false, true, false, false, false, false, false, true, false, false, false, false, false };	
+	const std::vector<int> PieceKing = { false, false, false, false, false, false, true, false, false, false, false, false, true };
+	// const std::vector<int> PieceRookQueen = { false, false, false, false, true, true, false, false, false, false, true, true, false };
+	// const std::vector<int> PieceBishopQueen = { false, false, false, true, false, true, false, false, false, true, false, true, false };
+	// const std::vector<int> PieceKnight = { false, false, true, false, false, false, false, false, true, false, false, false, false };
+
+ }
+
+
+namespace Attack
+{
+	// attackers
+	const std::vector<int> KnMoves { -8, -19, -21, -12, 8, 19, 21, 12 };
+	const std::vector<int> RkMoves { -1, -10, 1, 10 };
+	const std::vector<int> BiMoves { -9, -11, 11, 9 };
+	const std::vector<int> KiMoves { -1, -10, 1, 10, -9, -11, 11, 9 };
+}
+
 
 // *** used in init
 extern int Sq120ToSq64[BRD_SQ_NUM];
 extern int Sq64ToSq120[64];
-
-//*** used in bitboards
-// array of masks to set a given bit to 1 using bitwise or
-extern U64 SetMask[64];
-// array of masks to set a given bit to 0 using bitwise and
-extern U64 ClearMask[64];
-
-extern const int BitTable[64];
 
 //*** used in hash
 extern U64 PieceKeys[13][120];

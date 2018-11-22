@@ -2,6 +2,7 @@
 #include "utils.h"
 #include "init.h"
 #include "hash.h"
+#include "bitboard.h"
 
 int Sq120ToSq64[BRD_SQ_NUM];
 int Sq64ToSq120[64];

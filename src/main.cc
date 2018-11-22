@@ -49,13 +49,13 @@ int main()
 	{
 		move = m.moves[i];
 		printf("Trying: %s\n", move.ToString().c_str());
-		if( !MakeMove(b, move))
+		if( !MM::MakeMove(b, move))
 		{
 			continue;
 		}
 		printf("Made: %s\n", move.ToString().c_str());
 		b.PrintBoard();
-		TakeMove(b);
+		MM::TakeMove(b);
 		printf("\nTaken %s\n", move.ToString().c_str());
 		b.PrintBoard();
 		getchar();

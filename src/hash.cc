@@ -7,7 +7,7 @@ U64 PieceKeys[13][120];
 U64 SideKey;
 U64 CastleKeys[16];
 
-U64 GeneratePosKey(const Board& pos)
+U64 Hash::GeneratePosKey(const Board& pos)
 {
 	U64 hash = 0;
 	for(int sq = 0; sq < BRD_SQ_NUM; sq ++)

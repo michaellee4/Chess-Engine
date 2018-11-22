@@ -46,7 +46,7 @@ void ShowSqAtBySide(const int side,Board& pos) {
 	int file = 0;
 	int sq = 0;
 	
-	printf("\n\nSquares attacked by:%c\n",SideChar[side]);
+	printf("\n\nSquares attacked by:%c\n",BoardChar::SideChar[side]);
 	for(rank = RANK_8; rank >= RANK_1; --rank) {
 		for(file = FILE_A; file <= FILE_H; ++file) {
 			sq = FileRankToSq(file,rank);

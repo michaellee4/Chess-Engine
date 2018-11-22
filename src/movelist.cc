@@ -102,21 +102,21 @@ void MoveList::GenerateBishopMoves(Board& pos, int side)
 	for(int pce = 0; pce < pos.piece_num[bi]; pce ++)
 	{
 		int curBiSq = pos.piece_list[bi][pce];
-		for(int move = 0; move < BiMoves.size(); move ++)
+		for(int move = 0; move < Attack::BiMoves.size(); move ++)
 		{
-			int newSq = curBiSq + BiMoves[move];
+			int newSq = curBiSq + Attack::BiMoves[move];
 			while(pos.SqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
 				{
-					if(PieceCol[pos.pieces[newSq]] == (!side))
+					if(PieceInfo::PieceCol[pos.pieces[newSq]] == (!side))
 					{
 						this->AddCaptureMove(pos, Move(curBiSq, newSq, pos.pieces[newSq], EMPTY, 0));
 					}
 					break;
 				}
 					this->AddQuietMove(pos, Move(curBiSq, newSq, EMPTY, EMPTY, 0));
-				newSq += BiMoves[move];
+				newSq += Attack::BiMoves[move];
 			}
 		}
 	}
@@ -128,21 +128,21 @@ void MoveList::GenerateRookMoves(Board& pos, int side)
 	for(int pce = 0; pce < pos.piece_num[rk]; pce ++)
 	{
 		int curRkSq = pos.piece_list[rk][pce];
-		for(int move = 0; move < RkMoves.size(); move ++)
+		for(int move = 0; move < Attack::RkMoves.size(); move ++)
 		{
-			int newSq = curRkSq + RkMoves[move];
+			int newSq = curRkSq + Attack::RkMoves[move];
 			while(pos.SqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
 				{
-					if(PieceCol[pos.pieces[newSq]] == (!side))
+					if(PieceInfo::PieceCol[pos.pieces[newSq]] == (!side))
 					{
 						this->AddCaptureMove(pos, Move(curRkSq, newSq, pos.pieces[newSq], EMPTY, 0));
 					}
 					break;
 				}
 					this->AddQuietMove(pos, Move(curRkSq, newSq, EMPTY, EMPTY, 0));
-				newSq += RkMoves[move];
+				newSq += Attack::RkMoves[move];
 			}
 		}
 	}
@@ -154,21 +154,21 @@ void MoveList::GenerateQueenMoves(Board& pos, int side)
 	for(int pce = 0; pce < pos.piece_num[Qn]; pce ++)
 	{
 		int curQn = pos.piece_list[Qn][pce];
-		for(int move = 0; move < BiMoves.size(); move ++)
+		for(int move = 0; move < Attack::BiMoves.size(); move ++)
 		{
-			int newSq = curQn + BiMoves[move];
+			int newSq = curQn + Attack::BiMoves[move];
 			while(pos.SqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
 				{
-					if(PieceCol[pos.pieces[newSq]] == (!side))
+					if(PieceInfo::PieceCol[pos.pieces[newSq]] == (!side))
 					{
 						this->AddCaptureMove(pos, Move(curQn, newSq, pos.pieces[newSq], EMPTY, 0));
 					}
 					break;
 				}
 					this->AddQuietMove(pos, Move(curQn, newSq, EMPTY, EMPTY, 0));
-				newSq += BiMoves[move];
+				newSq += Attack::BiMoves[move];
 			}
 		}
 	}
@@ -176,21 +176,21 @@ void MoveList::GenerateQueenMoves(Board& pos, int side)
 	for(int pce = 0; pce < pos.piece_num[Qn]; pce ++)
 	{
 		int curQn = pos.piece_list[Qn][pce];
-		for(int move = 0; move < RkMoves.size(); move ++)
+		for(int move = 0; move < Attack::RkMoves.size(); move ++)
 		{
-			int newSq = curQn + RkMoves[move];
+			int newSq = curQn + Attack::RkMoves[move];
 			while(pos.SqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
 				{
-					if(PieceCol[pos.pieces[newSq]] == (!side))
+					if(PieceInfo::PieceCol[pos.pieces[newSq]] == (!side))
 					{
 						this->AddCaptureMove(pos, Move(curQn, newSq, pos.pieces[newSq], EMPTY, 0));
 					}
 					break;
 				}
 					this->AddQuietMove(pos, Move(curQn, newSq, EMPTY, EMPTY, 0));
-				newSq += RkMoves[move];
+				newSq += Attack::RkMoves[move];
 			}
 		}
 	}
@@ -209,12 +209,12 @@ void MoveList::GenerateKnightMoves(Board& pos, int side)
 	for(int pce = 0; pce < pos.piece_num[kn]; pce ++)
 	{
 		int curKnSq = pos.piece_list[kn][pce];
-		for(int move = 0; move < KnMoves.size(); move ++)
+		for(int move = 0; move < Attack::KnMoves.size(); move ++)
 		{
-			int newSq = curKnSq + KnMoves[move];
+			int newSq = curKnSq + Attack::KnMoves[move];
 			if(pos.SqOnBoard(newSq))
 			{
-				if(PieceCol[pos.pieces[newSq]]== !side)
+				if(PieceInfo::PieceCol[pos.pieces[newSq]]== !side)
 				{
 					this->AddCaptureMove(pos, Move(curKnSq, newSq, pos.pieces[newSq], EMPTY, 0));
 				}
@@ -233,16 +233,16 @@ void MoveList::GenerateKingMoves(Board& pos, int side)
 	int ki = side == WHITE ? wK : bK;
 	int kingSq = pos.piece_list[ki][0];
 	ASSERT(pos.piece_num[ki] == 1);
-	for(int move = 0; move < KiMoves.size(); move ++)
+	for(int move = 0; move < Attack::KiMoves.size(); move ++)
 	{
-		int newSq = kingSq + KiMoves[move];
+		int newSq = kingSq + Attack::KiMoves[move];
 		if(pos.SqOnBoard(newSq) /*&& !pos.SqAttacked(newSq, !side)*/)
 		{
 			if(pos.pieces[newSq] == EMPTY)
 			{
 				this->AddQuietMove(pos, Move(kingSq, newSq, EMPTY, EMPTY, 0));
 			}
-			if(PieceCol[pos.pieces[newSq]]== !side)
+			if(PieceInfo::PieceCol[pos.pieces[newSq]]== !side)
 			{
 				this->AddCaptureMove(pos, Move(kingSq, newSq, pos.pieces[newSq], EMPTY, 0));
 			}
@@ -278,11 +278,11 @@ void MoveList::GeneratePawnMoves(Board& pos, int side)
 				this->AddQuietMove(pos, Move(sq, sq + twoMove, EMPTY, EMPTY, PS));
 			}
 		}
-		if(pos.SqOnBoard(sq + cap1) && PieceCol[pos.pieces[sq + cap1]] == oppositeSide)
+		if(pos.SqOnBoard(sq + cap1) && PieceInfo::PieceCol[pos.pieces[sq + cap1]] == oppositeSide)
 		{
 			this->AddPawnCaptureMove(pos, sq, sq + cap1, pos.pieces[sq + cap1], side);
 		}
-		if(pos.SqOnBoard(sq + cap2) && PieceCol[pos.pieces[sq + cap2]] == oppositeSide)
+		if(pos.SqOnBoard(sq + cap2) && PieceInfo::PieceCol[pos.pieces[sq + cap2]] == oppositeSide)
 		{
 			this->AddPawnCaptureMove(pos, sq, sq + cap2, pos.pieces[sq + cap2], side);
 		}

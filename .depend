@@ -1,6 +1,6 @@
 init.o: src/init.cc include/defs.h include/debug.h include/utils.h \
  include/defs.h include/board.h include/move.h include/init.h \
- include/hash.h
+ include/hash.h include/bitboard.h
 movelist.o: src/movelist.cc include/movelist.h include/defs.h \
  include/debug.h include/board.h include/move.h
 board.o: src/board.cc include/board.h include/defs.h include/debug.h \
@@ -21,7 +21,8 @@ hash.o: src/hash.cc include/defs.h include/debug.h include/hash.h \
  include/board.h
 movemaker.o: src/movemaker.cc include/movemaker.h include/defs.h \
  include/debug.h include/board.h include/move.h include/defs.h \
- include/bitboard.h include/debug.h include/utils.h include/move.h
+ include/bitboard.h include/debug.h include/utils.h include/move.h \
+ include/hash.h
 stopwatch.o: src/stopwatch.cc include/stopwatch.h
 utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
  include/board.h include/move.h include/defs.h
