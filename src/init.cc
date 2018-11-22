@@ -15,15 +15,15 @@ U64 ClearMask[64];
 
 void InitFileRankBrd()
 {
-	for(int sq = 0; sq < BRD_SQ_NUM; sq++)
+	for(int sq = 0; sq < BRD_SQ_NUM; ++sq)
 	{
 		FileBrd[sq] = OFFBOARD;
 		RankBrd[sq] = OFFBOARD;
 	}
 
-	for(int rank = RANK_1; rank<=RANK_8; rank++)
+	for(int rank = RANK_1; rank<=RANK_8; ++rank)
 	{
-		for(int file = FILE_A; file <= FILE_H; file++)
+		for(int file = FILE_A; file <= FILE_H; ++file)
 		{
 			int sq = FileRankToSq(file, rank);
 			FileBrd[sq] = file;
@@ -37,32 +37,32 @@ void InitSq120ToSq64()
 {
 	int sq64 = 0;
 
-	for(int index = 0; index < BRD_SQ_NUM; index++)
+	for(int index = 0; index < BRD_SQ_NUM; ++index)
 	{
 		// use 65 as invalid value
 		Sq120ToSq64[index] = 65;
 	}
 
-	for(int index = 0; index < 64; index++)
+	for(int index = 0; index < 64; ++index)
 	{
 		Sq64ToSq120[index] = 65;
 	}
 
-	for(int rank = RANK_1; rank <= RANK_8; rank++)
+	for(int rank = RANK_1; rank <= RANK_8; ++rank)
 	{
-		for(int file = FILE_A; file <= FILE_H; file++)
+		for(int file = FILE_A; file <= FILE_H; ++file)
 		{
 			int sq = FileRankToSq(file, rank);
 			Sq64ToSq120[sq64] = sq;
 			Sq120ToSq64[sq] = sq64;
-			sq64++;
+			++sq64;
 		}
 	}
 }
 
 void InitBitMasks()
 {
-	for(int index = 0; index < 64; index++)
+	for(int index = 0; index < 64; ++index)
 	{
 		SetMask[index] = 1ULL << index;
 		ClearMask[index] = ~SetMask[index];
@@ -71,16 +71,16 @@ void InitBitMasks()
 
 void InitHashKeys()
 {
-	for(int i = 0; i < 13; i ++)
+	for(int i = 0; i < 13; ++i )
 	{
-		for(int j = 0; j < 120; j++)
+		for(int j = 0; j < 120; ++j)
 		{
 			PieceKeys[i][j] = RandU64();
 		}
 	}
 	SideKey = RandU64();
 
-	for(int i = 0; i < 16; i ++)
+	for(int i = 0; i < 16; ++i )
 	{
 		CastleKeys[i] = RandU64();
 	}

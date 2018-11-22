@@ -18,14 +18,14 @@ void MM::ClearPiece(const int sq, Board& pos)
 	pos.material[col] -= PieceInfo::PieceVal[pce];
 	if (PieceInfo::PieceBig[pce])
 	{
-		pos.big_pce[col]--;
+		--pos.big_pce[col];
 		if (PieceInfo::PieceMaj[pce])
 		{
-			pos.maj_pce[col]--;
+			--pos.maj_pce[col];
 		}
 		else
 		{
-			pos.min_pce[col]--;
+			--pos.min_pce[col];
 		}
 	}
 	else
@@ -36,13 +36,12 @@ void MM::ClearPiece(const int sq, Board& pos)
 
 	// REMOVE PIECE FROM PIECE LIST
 	int idx = 0;
-	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != sq; idx++){}
+	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != sq; ++idx){}
 
 	// should always find something
 	ASSERT(idx != pos.piece_list[pce].size())
 	
 	// swap out the value
-	// pos.piece_list[pce][idx] = pos.piece_list[pce][--pos.piece_num[pce]];
 	pos.piece_list[pce][idx] = pos.piece_list[pce].back();
 	pos.piece_list[pce].pop_back();
 }
@@ -58,14 +57,14 @@ void MM::AddPiece(const int sq, Board& pos, const int pce)
 
 	if(PieceInfo::PieceBig[pce])
 	{
-		pos.big_pce[col]++;
+		++pos.big_pce[col];
 		if(PieceInfo::PieceMaj[pce])
 		{
-			pos.maj_pce[col]++;
+			++pos.maj_pce[col];
 		}
 		else
 		{
-			pos.min_pce[col]++;
+			++pos.min_pce[col];
 		}
 	}
 	else
@@ -76,7 +75,6 @@ void MM::AddPiece(const int sq, Board& pos, const int pce)
 	
 	pos.material[col]+=PieceInfo::PieceVal[pce];
 
-	// pos.piece_list[pce][pos.piece_num[pce]++] = sq;
 	pos.piece_list[pce].push_back(sq);
 }
 
@@ -103,7 +101,7 @@ void MM::MovePiece(const int src, const int dest, Board& pos)
 
 	// ADD PIECE TO PIECE LIST
 	int idx = 0;
-	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != src; idx++){}
+	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != src; ++idx){}
 
 
 	// should always find something
@@ -167,7 +165,7 @@ bool MM::MakeMove(Board& pos, Move moveInfo)
 	Hash::HashCa(pos);
 
 	int captured = moveInfo.Captured();
-	pos.fifty_move++;
+	++pos.fifty_move;
 
 	if(captured != EMPTY)
 	{
@@ -176,8 +174,8 @@ bool MM::MakeMove(Board& pos, Move moveInfo)
 		pos.fifty_move = 0;
 	}
 
-	pos.hist_ply++;
-	pos.ply++;
+	++pos.hist_ply;
+	++pos.ply;
 
 	if(PieceInfo::PiecePawn[pos.pieces[from]])
 	{
@@ -222,8 +220,8 @@ void MM::TakeMove(Board& pos)
 {
 	ASSERT(CheckBoard(pos));
 
-	pos.hist_ply--;
-	pos.ply--;
+	--pos.hist_ply;
+	--pos.ply;
 
 	Move moveInfo = Move(pos.history[pos.hist_ply].move);
 	int move = moveInfo.move;

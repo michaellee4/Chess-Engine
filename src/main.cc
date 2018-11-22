@@ -42,9 +42,8 @@ int main()
 	b.ParseFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 ");	
 	ASSERT(CheckBoard(b));
 	int d; 
-	cin>>d;
 	Stopwatch s;
-	p.PerftTest(d, b);
+	p.PerftTest(6, b);
 
 	Move move = 0;
 	

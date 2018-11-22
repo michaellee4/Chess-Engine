@@ -36,10 +36,7 @@ class Board
 		// position hash
 		U64 pos_key;
 
-		/*** Replace pieceList and PieceNum with 1 2d vector or LL ***/
-		// keeps track of how many of each pice is present on the board
-		std::vector<int> piece_num;
-
+		// keeps track of how many of each pice is present on the board and where they are
 		// piece list
 		std::vector<std::vector<int>> piece_list;
 

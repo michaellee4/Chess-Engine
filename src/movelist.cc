@@ -1,6 +1,7 @@
 #include "movelist.h"
 #include <bitset>
 #include <iostream>
+
 MoveList::MoveList()
 {
 	moves.reserve(MAXPOSITIONMOVES);
@@ -8,7 +9,7 @@ MoveList::MoveList()
 
 void MoveList::PrintMoveList()
 {
-	for(int i = 0; i < this->moves.size(); i ++)
+	for(int i = 0; i < this->moves.size(); ++i)
 	{
 		Move curMove = this->moves[i];
 		printf("Move: %02d > %s (score: %d) : ",i ,curMove.ToString().c_str(), curMove.score );
@@ -99,10 +100,10 @@ void MoveList::AddPawnCaptureMove(Board& pos, int from, int to, int cap, int sid
 void MoveList::GenerateBishopMoves(Board& pos, int side)
 {
 	int bi = side == WHITE ? wB : bB;
-	for(int pce = 0; pce < pos.piece_list[bi].size(); pce ++)
+	for(int pce = 0; pce < pos.piece_list[bi].size(); ++pce )
 	{
 		int curBiSq = pos.piece_list[bi][pce];
-		for(int move = 0; move < Attack::BiMoves.size(); move ++)
+		for(int move = 0; move < Attack::BiMoves.size(); ++move )
 		{
 			int newSq = curBiSq + Attack::BiMoves[move];
 			while(pos.SqOnBoard(newSq))
@@ -125,10 +126,10 @@ void MoveList::GenerateBishopMoves(Board& pos, int side)
 void MoveList::GenerateRookMoves(Board& pos, int side)
 {
 	int rk = side == WHITE ? wR : bR;
-	for(int pce = 0; pce < pos.piece_list[rk].size(); pce ++)
+	for(int pce = 0; pce < pos.piece_list[rk].size(); ++pce)
 	{
 		int curRkSq = pos.piece_list[rk][pce];
-		for(int move = 0; move < Attack::RkMoves.size(); move ++)
+		for(int move = 0; move < Attack::RkMoves.size(); ++move)
 		{
 			int newSq = curRkSq + Attack::RkMoves[move];
 			while(pos.SqOnBoard(newSq))
@@ -151,10 +152,10 @@ void MoveList::GenerateQueenMoves(Board& pos, int side)
 {
 	int Qn = side == WHITE ? wQ : bQ;
 
-	for(int pce = 0; pce < pos.piece_list[Qn].size(); pce ++)
+	for(int pce = 0; pce < pos.piece_list[Qn].size(); ++pce)
 	{
 		int curQn = pos.piece_list[Qn][pce];
-		for(int move = 0; move < Attack::BiMoves.size(); move ++)
+		for(int move = 0; move < Attack::BiMoves.size(); ++move)
 		{
 			int newSq = curQn + Attack::BiMoves[move];
 			while(pos.SqOnBoard(newSq))
@@ -173,10 +174,10 @@ void MoveList::GenerateQueenMoves(Board& pos, int side)
 		}
 	}
 
-	for(int pce = 0; pce < pos.piece_list[Qn].size(); pce ++)
+	for(int pce = 0; pce < pos.piece_list[Qn].size(); ++pce)
 	{
 		int curQn = pos.piece_list[Qn][pce];
-		for(int move = 0; move < Attack::RkMoves.size(); move ++)
+		for(int move = 0; move < Attack::RkMoves.size(); ++move)
 		{
 			int newSq = curQn + Attack::RkMoves[move];
 			while(pos.SqOnBoard(newSq))
@@ -206,10 +207,10 @@ void MoveList::GenerateSlidingMoves(Board& pos, int side)
 void MoveList::GenerateKnightMoves(Board& pos, int side)
 {
 	int kn = side == WHITE ? wN : bN;
-	for(int pce = 0; pce < pos.piece_list[kn].size(); pce ++)
+	for(int pce = 0; pce < pos.piece_list[kn].size(); ++pce)
 	{
 		int curKnSq = pos.piece_list[kn][pce];
-		for(int move = 0; move < Attack::KnMoves.size(); move ++)
+		for(int move = 0; move < Attack::KnMoves.size(); ++move)
 		{
 			int newSq = curKnSq + Attack::KnMoves[move];
 			if(pos.SqOnBoard(newSq))
@@ -233,7 +234,7 @@ void MoveList::GenerateKingMoves(Board& pos, int side)
 	int ki = side == WHITE ? wK : bK;
 	int kingSq = pos.piece_list[ki][0];
 	ASSERT(pos.piece_list[ki].size() == 1);
-	for(int move = 0; move < Attack::KiMoves.size(); move ++)
+	for(int move = 0; move < Attack::KiMoves.size(); ++move)
 	{
 		int newSq = kingSq + Attack::KiMoves[move];
 		if(pos.SqOnBoard(newSq) /*&& !pos.SqAttacked(newSq, !side)*/)
@@ -266,7 +267,7 @@ void MoveList::GeneratePawnMoves(Board& pos, int side)
 	int cap2 = side == WHITE ? 11 : -11;
 	int pawn = side == WHITE ? wP : bP;
 
-	for(int pceNum = 0; pceNum < pos.piece_list[pawn].size(); pceNum++)
+	for(int pceNum = 0; pceNum < pos.piece_list[pawn].size(); ++pceNum)
 	{
 		int sq = pos.piece_list[pawn][pceNum];
 		ASSERT(sq != OFFBOARD && sq != NO_SQ)
@@ -349,7 +350,7 @@ void MoveList::GenerateCastlingMoves(Board& pos, int side)
 
 void MoveList::GenerateAllMoves(Board& pos)
 {
-	// ASSERT(CheckBoard(pos));
+	ASSERT(CheckBoard(pos));
 	this->moves.clear();
 	this->GeneratePawnMoves(pos, pos.side_to_move);
 	this->GenerateSlidingMoves(pos, pos.side_to_move);

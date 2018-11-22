@@ -10,7 +10,6 @@
 
 Board::Board():pawns(3), 
 			   king_sq(2), 
-			   piece_num(13), 
 			   piece_list(13, std::vector<int>()),
 			   big_pce(2), 
 			   maj_pce(2), 
@@ -18,7 +17,7 @@ Board::Board():pawns(3),
 			   material(2), 
 			   history(MAX_GAME_MOVES)
 {
-	for(int i = 0; i < 13; i++)
+	for(int i = 0; i < 13; ++i)
 	{
 		this->piece_list[i].reserve(10);
 	}
@@ -27,7 +26,6 @@ Board::Board():pawns(3),
 
 Board::Board(const std::string fen):pawns(3), 
 									king_sq(2), 
-									piece_num(13), 
 			   						piece_list(13, std::vector<int>()),
 									big_pce(2),
 									maj_pce(2), 
@@ -35,7 +33,7 @@ Board::Board(const std::string fen):pawns(3),
 									material(2), 
 									history(MAX_GAME_MOVES) 
 {
-	for(int i = 0; i < 13; i++)
+	for(int i = 0; i < 13; ++i)
 	{
 		this->piece_list[i].reserve(10);
 	}
@@ -44,17 +42,17 @@ Board::Board(const std::string fen):pawns(3),
 
 void Board::ResetBoard(void)
 {
-	for(int i = 0; i < BRD_SQ_NUM; i ++)
+	for(int i = 0; i < BRD_SQ_NUM; ++i)
 	{
 		this->pieces[i] = NO_SQ;
 	}
 
-	for(int i = 0; i < 64; i ++)
+	for(int i = 0; i < 64; ++i)
 	{
 		this->pieces[Sq64ToSq120[i]] = EMPTY;
 	}
 
-	for(int i = 0; i < 2; i ++)
+	for(int i = 0; i < 2; ++i)
 	{
 		this->big_pce[i] = 0;
 		this->maj_pce[i] = 0;
@@ -64,7 +62,7 @@ void Board::ResetBoard(void)
 	}
 	this->pawns[2] = 0;
 
-	for(int i = 0; i < 13; i ++)
+	for(int i = 0; i < 13; ++i)
 	{
 		this->piece_list[i].clear();
 	}
@@ -96,14 +94,14 @@ void Board::ParseFEN(const std::string fen)
 	int fenIdx = 0;
 	for(int rank = RANK_8; rank >= RANK_1; rank --)
 	{
-		for(int file = FILE_A; file <= FILE_H; file++)
+		for(int file = FILE_A; file <= FILE_H; ++file)
 		{
 			if(isdigit(section[fenIdx]))
 			{
-				for(int i = 0; i < section[fenIdx] - '0'; i++)
+				for(int i = 0; i < section[fenIdx] - '0'; ++i)
 				{
 					this->pieces[FileRankToSq(file, rank)] = EMPTY;
-					file++;
+					++file;
 				}
 				file--;
 
@@ -126,9 +124,9 @@ void Board::ParseFEN(const std::string fen)
 					case 'K':this->pieces[FileRankToSq(file, rank)] = wK;break;
 				}
 			}
-			fenIdx++;
+			++fenIdx;
 		}
-		fenIdx++;
+		++fenIdx;
 	}
 
 	// side to move
@@ -140,7 +138,7 @@ void Board::ParseFEN(const std::string fen)
 	this->castle_perm = 0;
 	if(section[0] != '-')
 	{
-		for(int i = 0; i < section.size(); i ++)
+		for(int i = 0; i < section.size(); ++i )
 		{
 			switch(section[i])
 			{
@@ -194,7 +192,7 @@ void Board::PrintBoard() const{
 	
 	for(rank = RANK_8; rank >= RANK_1; rank--) {
 		printf("%d  ",rank+1);
-		for(file = FILE_A; file <= FILE_H; file++) {
+		for(file = FILE_A; file <= FILE_H; ++file) {
 			sq = FileRankToSq(file,rank);
 			piece = this->pieces[sq];
 			printf("%3c",BoardChar::PceChar[piece]);
@@ -203,7 +201,7 @@ void Board::PrintBoard() const{
 	}
 	
 	printf("\n   ");
-	for(file = FILE_A; file <= FILE_H; file++) {
+	for(file = FILE_A; file <= FILE_H; ++file) {
 		printf("%3c",'a'+file);	
 	}
 	printf("\n");
@@ -220,7 +218,7 @@ void Board::PrintBoard() const{
 
 void Board::UpdatePieceLists()
 {
-	for (int index = 0; index < BRD_SQ_NUM; index ++)
+	for (int index = 0; index < BRD_SQ_NUM; ++index)
 	{
 		int piece = this->pieces[index];
 		// on board
@@ -232,8 +230,6 @@ void Board::UpdatePieceLists()
 			this->min_pce[color] += PieceInfo::PieceMin[piece];
 			this->material[color] += PieceInfo::PieceVal[piece];
 
-			// this->piece_list[piece][this->piece_num[piece]] = index;
-			// this->piece_num[piece]++;
 			this->piece_list[piece].push_back(index);
 
 			if(piece == wK) this->king_sq[WHITE] = index;
@@ -281,11 +277,11 @@ bool CheckBoard(const Board& pos)
 	for(sq64 = 0; sq64 < 64; ++sq64) {
 		sq120 = Sq64ToSq120[sq64];
 		t_piece = pos.pieces[sq120];
-		t_pceNum[t_piece]++;
+		++t_pceNum[t_piece];
 		colour = PieceInfo::PieceCol[t_piece];
-		if( PieceInfo::PieceBig[t_piece] == true) t_bigPce[colour]++;
-		if( PieceInfo::PieceMin[t_piece] == true) t_minPce[colour]++;
-		if( PieceInfo::PieceMaj[t_piece] == true) t_majPce[colour]++;
+		if( PieceInfo::PieceBig[t_piece] == true) ++t_bigPce[colour];
+		if( PieceInfo::PieceMin[t_piece] == true) ++t_minPce[colour];
+		if( PieceInfo::PieceMaj[t_piece] == true) ++t_majPce[colour];
 		
 		t_material[colour] += PieceInfo::PieceVal[t_piece];
 	}
@@ -349,32 +345,32 @@ int Board::SqAttacked(const int sq, const int attacker) const
 	if(attacker == WHITE)
 	{
 		if(this->pieces[sq - 11] == wP)
-			numAttackers++;
+			++numAttackers;
 		if(this->pieces[sq - 9] == wP)
-			numAttackers++;
+			++numAttackers;
 	}
 	else
 	{
 		if(this->pieces[sq + 11] == bP)
-			numAttackers++;
+			++numAttackers;
 		if(this->pieces[sq + 9] == bP)
-			numAttackers++;
+			++numAttackers;
 	}
 
 
 
 	// Check Knight
 	int attackingKnight = attacker == WHITE ? wN : bN;
-	for(int i = 0; i < 8; i++)
+	for(int i = 0; i < 8; ++i)
 	{
 		if(this->pieces[sq + Attack::KnMoves[i]] == attackingKnight)
-			numAttackers++;
+			++numAttackers;
 	}
 
 	// Check Horizontal and Vertical
 	int attackingRook = attacker == WHITE ? wR : bR;
 	int attackingQueen = attacker == WHITE ? wQ : bQ;
-	for(int i = 0 ; i < 4; i ++)
+	for(int i = 0 ; i < 4; ++i )
 	{
 		int move = Attack::RkMoves[i];
 		int t_sq = sq + move;
@@ -384,7 +380,7 @@ int Board::SqAttacked(const int sq, const int attacker) const
 			if(pce != EMPTY)
 			{
 				if(pce == attackingRook || pce == attackingQueen)
-					numAttackers++;
+					++numAttackers;
 				break;
 			}
 			t_sq += move;
@@ -394,7 +390,7 @@ int Board::SqAttacked(const int sq, const int attacker) const
 	}
 
 	int attackingBishop = attacker == WHITE ? wB : bB;
-	for(int i = 0 ; i < 4; i ++)
+	for(int i = 0 ; i < 4; ++i )
 	{
 		int move = Attack::BiMoves[i];
 		int t_sq = sq + move;
@@ -404,7 +400,7 @@ int Board::SqAttacked(const int sq, const int attacker) const
 			if(pce != EMPTY)
 			{
 				if(pce == attackingBishop || pce == attackingQueen)
-					numAttackers++;
+					++numAttackers;
 				break;
 			}
 			t_sq += move;
@@ -413,10 +409,10 @@ int Board::SqAttacked(const int sq, const int attacker) const
 	}
 
 	int attackingKing = attacker == WHITE ? wK : bK;
-	for(int i = 0; i < 8; i++)
+	for(int i = 0; i < 8; ++i)
 	{
 		if(this->pieces[sq + Attack::KiMoves[i]] == attackingKing)
-			numAttackers++;
+			++numAttackers;
 	}
 	// Check Diagonals
 

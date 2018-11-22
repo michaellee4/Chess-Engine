@@ -6,7 +6,7 @@ void PerftTester::Perft(int depth, Board& pos) {
     // ASSERT(CheckBoard(pos));  
 
 	if(depth == 0) {
-        this->leafNodes++;
+        ++this->leafNodes;
         return;
     }	
 

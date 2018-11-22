@@ -5,6 +5,7 @@
 #include "board.h"
 #include "move.h"
 #include <vector>
+
 class MoveList
 {	
 	private:

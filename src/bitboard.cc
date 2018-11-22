@@ -34,9 +34,9 @@ void BB::ClearBit(U64& bb, int index)
 
 void BB::PrintBitBoard(U64 bb)
 {
-	for (int rank = RANK_8; rank >=RANK_1; rank--)
+	for (int rank = RANK_8; rank >=RANK_1; --rank)
 	{
-		for(int file = FILE_A; file <= FILE_H; file++)
+		for(int file = FILE_A; file <= FILE_H; ++file)
 		{
 			int sq = FileRankToSq(file, rank);
 			int sq64 = Sq120ToSq64[sq];
