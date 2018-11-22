@@ -41,7 +41,7 @@ class Board
 		std::vector<int> piece_num;
 
 		// piece list
-		int piece_list[13][10];
+		std::vector<std::vector<int>> piece_list;
 
 		// non pawn pieces
 		std::vector<int> big_pce;

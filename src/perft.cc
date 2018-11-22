@@ -54,14 +54,7 @@ void PerftTester::PerftTest(int depth, Board& pos) {
     return;
 }
 
+void PerftTester::PerftTestAll(Board& pos)
+{
 
-
-
-
-
-
-
-
-
-
-
+}

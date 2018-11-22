@@ -40,9 +40,9 @@ int main()
 	Board b;
 	PerftTester p;
 
-	b.ParseFEN(pt);	
+	b.ParseFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 ");	
 	ASSERT(CheckBoard(b));
-	p.PerftTest(4, b);
+	p.PerftTest(5, b);
 
 	Move move = 0;
 	

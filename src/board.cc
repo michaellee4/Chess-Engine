@@ -11,25 +11,34 @@
 Board::Board():pawns(3), 
 			   king_sq(2), 
 			   piece_num(13), 
+			   piece_list(13, std::vector<int>(10)),
 			   big_pce(2), 
 			   maj_pce(2), 
 			   min_pce(2), 
 			   material(2), 
 			   history(MAX_GAME_MOVES)
 {
+	for(int i = 0; i < 13; i++)
+	{
+		this->piece_list.reserve(10);
+	}
 	this->ParseFEN(START_FEN);
 }
 
 Board::Board(const std::string fen):pawns(3), 
 									king_sq(2), 
 									piece_num(13), 
+			   						piece_list(13, std::vector<int>(10)),
 									big_pce(2),
 									maj_pce(2), 
 									min_pce(2), 
 									material(2), 
 									history(MAX_GAME_MOVES) 
 {
-
+	for(int i = 0; i < 13; i++)
+	{
+		this->piece_list.reserve(10);
+	}
 	this->ParseFEN(fen);
 }
 
