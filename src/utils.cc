@@ -25,7 +25,7 @@ std::string SqToString(const int sq)
 }
  
 //https://stackoverflow.com/questions/37396278/how-to-generate-very-large-random-number-in-c
-uint64_t Randuint64_t() 
+uint64_t RandU64() 
 {
 	using namespace std;
 	  /* Seed */

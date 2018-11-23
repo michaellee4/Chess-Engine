@@ -75,14 +75,14 @@ void InitHashKeys()
 	{
 		for(uint32_t j = 0; j < 120; ++j)
 		{
-			PieceKeys[i][j] = Randuint64_t();
+			PieceKeys[i][j] = RandU64();
 		}
 	}
-	SideKey = Randuint64_t();
+	SideKey = RandU64();
 
 	for(uint32_t i = 0; i < 16; ++i )
 	{
-		CastleKeys[i] = Randuint64_t();
+		CastleKeys[i] = RandU64();
 	}
 }
 
