@@ -4,6 +4,7 @@
 #include "debug.h"
 #include<vector>
 #include<unordered_map>
+#include<cstddef>
 
 #define START_FEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 #define MAXPOSITIONMOVES 256
@@ -63,11 +64,11 @@ namespace BoardChar
 										BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
 	const std::vector<bool> PieceSlides = { false, false, false, true, true, true, false, false, false, true, true, true, false };
 
-	const std::vector<int> PiecePawn = { false, true, false, false, false, false, false, true, false, false, false, false, false };	
-	const std::vector<int> PieceKing = { false, false, false, false, false, false, true, false, false, false, false, false, true };
-	// const std::vector<int> PieceRookQueen = { false, false, false, false, true, true, false, false, false, false, true, true, false };
-	// const std::vector<int> PieceBishopQueen = { false, false, false, true, false, true, false, false, false, true, false, true, false };
-	// const std::vector<int> PieceKnight = { false, false, true, false, false, false, false, false, true, false, false, false, false };
+	const std::vector<bool> PiecePawn = { false, true, false, false, false, false, false, true, false, false, false, false, false };	
+	const std::vector<bool> PieceKing = { false, false, false, false, false, false, true, false, false, false, false, false, true };
+	// const std::vector<bool> PieceRookQueen = { false, false, false, false, true, true, false, false, false, false, true, true, false };
+	// const std::vector<bool> PieceBishopQueen = { false, false, false, true, false, true, false, false, false, true, false, true, false };
+	// const std::vector<bool> PieceKnight = { false, false, true, false, false, false, false, false, true, false, false, false, false };
 
  }
 

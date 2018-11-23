@@ -314,7 +314,7 @@ void MoveList::GenerateCastlingMoves(Board& pos, int side)
 		}
 		if(pos.castle_perm & WQCA)
 		{
-			if(pos.pieces[D1] == EMPTY && pos.pieces[C1] == EMPTY & pos.pieces[B1] ==EMPTY)
+			if(pos.pieces[D1] == EMPTY && pos.pieces[C1] == EMPTY && pos.pieces[B1] ==EMPTY)
 			{
 				if(!pos.SqAttacked(E1, BLACK) && !pos.SqAttacked(D1, BLACK))
 				{
@@ -337,7 +337,7 @@ void MoveList::GenerateCastlingMoves(Board& pos, int side)
 		}
 		if(pos.castle_perm & BQCA)
 		{
-			if(pos.pieces[D8] == EMPTY && pos.pieces[C8] == EMPTY & pos.pieces[B8] ==EMPTY)
+			if(pos.pieces[D8] == EMPTY && pos.pieces[C8] == EMPTY && pos.pieces[B8] ==EMPTY)
 			{
 				if(!pos.SqAttacked(E8, WHITE) && !pos.SqAttacked(D8, WHITE))
 				{
