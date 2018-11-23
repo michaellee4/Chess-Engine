@@ -9,9 +9,9 @@
 #define START_FEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 #define MAXPOSITIONMOVES 256
 
-const unsigned int BRD_SQ_NUM = 120;
+const uint32_t BRD_SQ_NUM = 120;
 
-const unsigned int MAX_GAME_MOVES = 2 << 10;
+const uint32_t MAX_GAME_MOVES = 2 << 10;
 // pieces
 enum { EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK };
 
@@ -45,7 +45,7 @@ namespace BoardChar
 	const std::string SideChar = "wb-";
 	const std::string RankChar = "12345678";
 	const std::string FileChar = "abcdefgh";
-	const std::unordered_map<int, std::string> epstr = 
+	const std::unordered_map<uint32_t, std::string> epstr = 
 	{{71,"a6"}, {72,"b6"}, {73,"c6"}, {74,"d6"}, {75,"e6"}, {76,"f6"}, {77,"g6"}, {78,"h6"},
 	 {41,"a3"}, {42,"b3"}, {43,"c3"}, {44,"d3"}, {45,"e3"}, {46,"f3"}, {47,"g3"}, {48,"h3"}, {99, "None"}};
 }
@@ -57,8 +57,8 @@ namespace BoardChar
 	const std::vector<bool> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
 	const std::vector<bool> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
 	const std::vector<bool> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
-	const std::vector<int> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
-	const std::vector<int> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
+	const std::vector<uint32_t> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
+	const std::vector<uint32_t> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
 										BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
 	const std::vector<bool> PieceSlides = { false, false, false, true, true, true, false, false, false, true, true, true, false };
 

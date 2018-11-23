@@ -7,7 +7,7 @@
 #include "hash.h"
 #include<cstdio>
 
-void MM::ClearPiece(const int sq, Board& pos)
+void MM::ClearPiece(const uint32_t sq, Board& pos)
 {
 	int pce = pos.pieces[sq];
 	int col = PieceInfo::PieceCol[pce];
@@ -35,7 +35,7 @@ void MM::ClearPiece(const int sq, Board& pos)
 	}
 
 	// REMOVE PIECE FROM PIECE LIST
-	int idx = 0;
+	uint32_t idx = 0;
 	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != sq; ++idx){}
 
 	// should always find something
@@ -46,7 +46,7 @@ void MM::ClearPiece(const int sq, Board& pos)
 	pos.piece_list[pce].pop_back();
 }
 
-void MM::AddPiece(const int sq, Board& pos, const int pce)
+void MM::AddPiece(const uint32_t sq, Board& pos, const uint32_t pce)
 {
 	ASSERT(IsPiece(pce));
 	ASSERT(pos.SqOnBoard(sq));
@@ -78,7 +78,7 @@ void MM::AddPiece(const int sq, Board& pos, const int pce)
 	pos.piece_list[pce].push_back(sq);
 }
 
-void MM::MovePiece(const int src, const int dest, Board& pos)
+void MM::MovePiece(const uint32_t src, const uint32_t dest, Board& pos)
 {
     ASSERT(pos.SqOnBoard(src));
     ASSERT(pos.SqOnBoard(dest));
@@ -100,7 +100,7 @@ void MM::MovePiece(const int src, const int dest, Board& pos)
 	}
 
 	// ADD PIECE TO PIECE LIST
-	int idx = 0;
+	uint32_t idx = 0;
 	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != src; ++idx){}
 
 

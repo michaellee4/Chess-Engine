@@ -10,7 +10,7 @@ class Board
 {
 	public:
 		// stores the state of the board 120 sq representation
-		int pieces[BRD_SQ_NUM]; 
+		std::vector<uint32_t> pieces; 
 
 		// stores a pawn bitboard for white/black/both pawns
 		std::vector<uint64_t> pawns;
@@ -19,13 +19,13 @@ class Board
 		std::vector<int> king_sq;
 
 		// tracks which player is up to move
-		int side_to_move;
+		uint32_t side_to_move;
 
 		// trackes the enPassant square, if there is one
-		int en_pas;
+		uint32_t en_pas;
 
 		// tracks the number of turns made (not ply)
-		int fifty_move;
+		uint32_t fifty_move;
 
 		// number of half moves
 		int ply;
@@ -38,21 +38,21 @@ class Board
 
 		// keeps track of how many of each pice is present on the board and where they are
 		// piece list
-		std::vector<std::vector<int>> piece_list;
+		std::vector<std::vector<uint32_t>> piece_list;
 
 		// non pawn pieces
-		std::vector<int> big_pce;
+		std::vector<uint32_t> big_pce;
 
 		// rooks and queens
-		std::vector<int> maj_pce;
+		std::vector<uint32_t> maj_pce;
 
 		// bishops and knights
-		std::vector<int> min_pce;
+		std::vector<uint32_t> min_pce;
 
-		std::vector<int> material;
+		std::vector<uint32_t> material;
 
 		// stores castle permissions using 4 bits
-		int castle_perm;
+		uint32_t castle_perm;
 
 		// stores the history of moves
 		std::vector<U_Move> history;
@@ -69,13 +69,9 @@ class Board
 
 		void UpdatePieceLists(void);
 
-		bool SqOnBoard(int sq) const;
-
-		void PrintMoveList(void) const;
-
-		void GenerateAllMoves(void);
+		bool SqOnBoard(uint32_t sq) const;
 		
-		int SqAttacked(const int sq, const int side) const;
+		uint32_t SqAttacked(const uint32_t sq, const uint32_t side) const;
 
 };
 		bool CheckBoard(const Board& pos);

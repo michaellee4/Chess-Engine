@@ -17,7 +17,7 @@ int BB::PopBit(uint64_t& bb) {
 
 // counts the number of 1 bits
 int BB::CountBits(uint64_t b) {
-  int r;
+  uint32_t r;
   for(r = 0; b; r++, b &= b - 1);
   return r;
 }
@@ -34,9 +34,9 @@ void BB::ClearBit(uint64_t& bb, int index)
 
 void BB::PrintBitBoard(uint64_t bb)
 {
-	for (int rank = RANK_8; rank >=RANK_1; --rank)
+	for (uint32_t rank = RANK_8; rank >=RANK_1; --rank)
 	{
-		for(int file = FILE_A; file <= FILE_H; ++file)
+		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
 		{
 			int sq = FileRankToSq(file, rank);
 			int sq64 = Sq120ToSq64[sq];

@@ -41,12 +41,9 @@ int main()
 
 	b.ParseFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 ");	
 	ASSERT(CheckBoard(b));
-	int d; 
 	Stopwatch s;
 	p.PerftTest(6, b);
 
-	Move move = 0;
-	
 
 	return 0;
 }

@@ -1,7 +1,7 @@
 #include "defs.h"
 #include <cstdio>
 #include "perft.h"
-void PerftTester::Perft(int depth, Board& pos) {
+void PerftTester::Perft(uint32_t depth, Board& pos) {
 
     // ASSERT(CheckBoard(pos));  
 
@@ -13,7 +13,7 @@ void PerftTester::Perft(int depth, Board& pos) {
     MoveList m;
     m.GenerateAllMoves(pos);
       
-	for(int MoveNum = 0; MoveNum < m.moves.size(); ++MoveNum) {	
+	for(uint32_t MoveNum = 0; MoveNum < m.moves.size(); ++MoveNum) {	
        
         if ( !MM::MakeMove(pos,m.moves[MoveNum]))  {
             continue;
@@ -26,7 +26,7 @@ void PerftTester::Perft(int depth, Board& pos) {
 }
 
 
-void PerftTester::PerftTest(int depth, Board& pos) {
+void PerftTester::PerftTest(uint32_t depth, Board& pos) {
 
     // ASSERT(CheckBoard(pos));
 
@@ -37,7 +37,7 @@ void PerftTester::PerftTest(int depth, Board& pos) {
     MoveList m;
     m.GenerateAllMoves(pos);
     
-	for(int MoveNum = 0; MoveNum < m.moves.size(); ++MoveNum) {
+	for(uint32_t MoveNum = 0; MoveNum < m.moves.size(); ++MoveNum) {
         Move move = m.moves[MoveNum];
         if ( !MM::MakeMove(pos, move))  {
             continue;

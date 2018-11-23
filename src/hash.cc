@@ -10,7 +10,7 @@ uint64_t CastleKeys[16];
 uint64_t Hash::GeneratePosKey(const Board& pos)
 {
 	uint64_t hash = 0;
-	for(int sq = 0; sq < BRD_SQ_NUM; ++sq)
+	for(uint32_t sq = 0; sq < BRD_SQ_NUM; ++sq)
 	{
 		int piece = pos.pieces[sq];
 

@@ -25,26 +25,26 @@ class U_Move
 class Move
 {
 	public:
-		int move;
+		uint32_t move;
 		int score;
-		Move(int from, int to, int captured, int prom, int flag);
-		Move(int move, int score);
-		Move(int move);
+		Move(uint32_t from, uint32_t to, uint32_t captured, uint32_t prom, uint32_t flag);
+		Move(uint32_t move, int32_t score);
+		Move(uint32_t move);
 		Move();
 		// 7 bits for src
-		int From();
+		uint32_t From();
 		// 7 bits for dest 
-		int To();
+		uint32_t To();
 		// 4 bits for which piece was captured if any
-		int Captured();
+		uint32_t Captured();
 		// 1 bit for enPas
-		int EnPassant();
+		uint32_t EnPassant();
 		// 1 bit for pawn start 
-		int PawnStart();
+		uint32_t PawnStart();
 		// 4 bits for which piece was captured if any
-		int Promoted();
+		uint32_t Promoted();
 		// 1 bit for Castle move
-		int Castle();
+		uint32_t Castle();
 
 		bool wasCapture();
 		bool wasPromotion();

@@ -8,32 +8,34 @@
 #include <sstream>
 #include <cstdio> 
 
-Board::Board():pawns(3), 
+Board::Board():pieces(BRD_SQ_NUM),
+			   pawns(3), 
 			   king_sq(2), 
-			   piece_list(13, std::vector<int>()),
+			   piece_list(13, std::vector<uint32_t>()),
 			   big_pce(2), 
 			   maj_pce(2), 
 			   min_pce(2), 
 			   material(2), 
 			   history(MAX_GAME_MOVES)
 {
-	for(int i = 0; i < 13; ++i)
+	for(uint32_t i = 0; i < 13; ++i)
 	{
 		this->piece_list[i].reserve(10);
 	}
 	this->ParseFEN(START_FEN);
 }
 
-Board::Board(const std::string fen):pawns(3), 
+Board::Board(const std::string fen):pieces(BRD_SQ_NUM),
+									pawns(3), 
 									king_sq(2), 
-			   						piece_list(13, std::vector<int>()),
+			   						piece_list(13, std::vector<uint32_t>()),
 									big_pce(2),
 									maj_pce(2), 
 									min_pce(2), 
 									material(2), 
 									history(MAX_GAME_MOVES) 
 {
-	for(int i = 0; i < 13; ++i)
+	for(uint32_t i = 0; i < 13; ++i)
 	{
 		this->piece_list[i].reserve(10);
 	}
@@ -42,17 +44,17 @@ Board::Board(const std::string fen):pawns(3),
 
 void Board::ResetBoard(void)
 {
-	for(int i = 0; i < BRD_SQ_NUM; ++i)
+	for(uint32_t i = 0; i < BRD_SQ_NUM; ++i)
 	{
 		this->pieces[i] = NO_SQ;
 	}
 
-	for(int i = 0; i < 64; ++i)
+	for(uint32_t i = 0; i < 64; ++i)
 	{
 		this->pieces[Sq64ToSq120[i]] = EMPTY;
 	}
 
-	for(int i = 0; i < 2; ++i)
+	for(uint32_t i = 0; i < 2; ++i)
 	{
 		this->big_pce[i] = 0;
 		this->maj_pce[i] = 0;
@@ -62,7 +64,7 @@ void Board::ResetBoard(void)
 	}
 	this->pawns[2] = 0;
 
-	for(int i = 0; i < 13; ++i)
+	for(uint32_t i = 0; i < 13; ++i)
 	{
 		this->piece_list[i].clear();
 	}
@@ -92,13 +94,13 @@ void Board::ParseFEN(const std::string fen)
 	std::getline(stream, section, ' ');
 	//cout << section << endl;
 	int fenIdx = 0;
-	for(int rank = RANK_8; rank >= RANK_1; rank --)
+	for(int32_t rank = RANK_8; rank >= RANK_1; rank --)
 	{
-		for(int file = FILE_A; file <= FILE_H; ++file)
+		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
 		{
 			if(isdigit(section[fenIdx]))
 			{
-				for(int i = 0; i < section[fenIdx] - '0'; ++i)
+				for(int32_t i = 0; i < section[fenIdx] - '0'; ++i)
 				{
 					this->pieces[FileRankToSq(file, rank)] = EMPTY;
 					++file;
@@ -138,7 +140,7 @@ void Board::ParseFEN(const std::string fen)
 	this->castle_perm = 0;
 	if(section[0] != '-')
 	{
-		for(int i = 0; i < section.size(); ++i )
+		for(uint32_t i = 0; i < section.size(); ++i )
 		{
 			switch(section[i])
 			{
@@ -213,12 +215,12 @@ void Board::PrintBoard() const{
 			this->castle_perm & BKCA ? 'k' : '-',
 			this->castle_perm & BQCA ? 'q' : '-'	
 			);
-	printf("PosKey:%llX\n\n",this->pos_key);
+	printf("PosKey:%lX\n\n",this->pos_key);
 }
 
 void Board::UpdatePieceLists()
 {
-	for (int index = 0; index < BRD_SQ_NUM; ++index)
+	for(uint32_t index = 0; index < BRD_SQ_NUM; ++index)
 	{
 		int piece = this->pieces[index];
 		// on board
@@ -251,13 +253,13 @@ void Board::UpdatePieceLists()
 
 bool CheckBoard(const Board& pos)
 {
-	int t_pceNum[13] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	int t_bigPce[2] = { 0, 0};
-	int t_majPce[2] = { 0, 0};
-	int t_minPce[2] = { 0, 0};
-	int t_material[2] = { 0, 0};
+	uint32_t t_pceNum[13] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	uint32_t t_bigPce[2] = { 0, 0};
+	uint32_t t_majPce[2] = { 0, 0};
+	uint32_t t_minPce[2] = { 0, 0};
+	uint32_t t_material[2] = { 0, 0};
 	
-	int sq64,t_piece,t_pce_num,sq120,colour,pcount;
+	uint32_t sq64,t_piece,t_pce_num,sq120,colour,pcount;
 	
 	uint64_t t_pawns[3] = {0ULL, 0ULL, 0ULL};
 	
@@ -297,7 +299,7 @@ bool CheckBoard(const Board& pos)
 	ASSERT(pcount == pos.piece_list[bP].size());
 	pcount = BB::CountBits(t_pawns[BOTH]);
 	ASSERT(pcount == (pos.piece_list[bP].size() + pos.piece_list[wP].size()));
-	
+	(void) pcount;
 	// check bitboards squares
 	while(t_pawns[WHITE]) {
 		sq64 = BB::PopBit(t_pawns[WHITE]);
@@ -332,14 +334,14 @@ bool CheckBoard(const Board& pos)
 }
 
 
-bool Board::SqOnBoard(int sq) const
+bool Board::SqOnBoard(uint32_t sq) const
 {
 	return !(this->pieces[sq] == OFFBOARD);
 }
 
-int Board::SqAttacked(const int sq, const int attacker) const
+uint32_t Board::SqAttacked(const uint32_t sq, const uint32_t attacker) const
 {
-	int numAttackers = 0;
+	uint32_t numAttackers = 0;
 
 	// Check Pawn
 	if(attacker == WHITE)
@@ -360,21 +362,21 @@ int Board::SqAttacked(const int sq, const int attacker) const
 
 
 	// Check Knight
-	int attackingKnight = attacker == WHITE ? wN : bN;
-	for(int i = 0; i < 8; ++i)
+	uint32_t attackingKnight = attacker == WHITE ? wN : bN;
+	for(uint32_t i = 0; i < 8; ++i)
 	{
 		if(this->pieces[sq + Attack::KnMoves[i]] == attackingKnight)
 			++numAttackers;
 	}
 
 	// Check Horizontal and Vertical
-	int attackingRook = attacker == WHITE ? wR : bR;
-	int attackingQueen = attacker == WHITE ? wQ : bQ;
-	for(int i = 0 ; i < 4; ++i )
+	uint32_t attackingRook = attacker == WHITE ? wR : bR;
+	uint32_t attackingQueen = attacker == WHITE ? wQ : bQ;
+	for(uint32_t i = 0 ; i < 4; ++i )
 	{
-		int move = Attack::RkMoves[i];
-		int t_sq = sq + move;
-		int pce = this->pieces[t_sq];
+		uint32_t move = Attack::RkMoves[i];
+		uint32_t t_sq = sq + move;
+		uint32_t pce = this->pieces[t_sq];
 		while(pce != OFFBOARD)
 		{
 			if(pce != EMPTY)
@@ -389,12 +391,12 @@ int Board::SqAttacked(const int sq, const int attacker) const
 
 	}
 
-	int attackingBishop = attacker == WHITE ? wB : bB;
-	for(int i = 0 ; i < 4; ++i )
+	uint32_t attackingBishop = attacker == WHITE ? wB : bB;
+	for(uint32_t i = 0 ; i < 4; ++i )
 	{
-		int move = Attack::BiMoves[i];
-		int t_sq = sq + move;
-		int pce = this->pieces[t_sq];
+		uint32_t move = Attack::BiMoves[i];
+		uint32_t t_sq = sq + move;
+		uint32_t pce = this->pieces[t_sq];
 		while(pce != OFFBOARD)
 		{
 			if(pce != EMPTY)
@@ -408,8 +410,8 @@ int Board::SqAttacked(const int sq, const int attacker) const
 		}
 	}
 
-	int attackingKing = attacker == WHITE ? wK : bK;
-	for(int i = 0; i < 8; ++i)
+	uint32_t attackingKing = attacker == WHITE ? wK : bK;
+	for(uint32_t i = 0; i < 8; ++i)
 	{
 		if(this->pieces[sq + Attack::KiMoves[i]] == attackingKing)
 			++numAttackers;
@@ -417,16 +419,4 @@ int Board::SqAttacked(const int sq, const int attacker) const
 	// Check Diagonals
 
 	return numAttackers;
-}
-
-
-
-void Board::PrintMoveList() const
-{
-
-}
-
-void Board::GenerateAllMoves()
-{
-
 }

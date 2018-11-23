@@ -27,9 +27,9 @@ const int CastlePerm[120] = {
 
 class MM
 {
-    static void ClearPiece(const int sq, Board& pos);
-    static void AddPiece(const int sq, Board& pos, const int pce);
-    static void MovePiece(const int src, const int dest, Board& pos);
+    static void ClearPiece(const uint32_t sq, Board& pos);
+    static void AddPiece(const uint32_t sq, Board& pos, const uint32_t pce);
+    static void MovePiece(const uint32_t src, const uint32_t dest, Board& pos);
 public:
     static bool MakeMove(Board& pos, Move moveInfo);
     static void TakeMove(Board& pos);

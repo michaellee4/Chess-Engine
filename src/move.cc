@@ -3,7 +3,7 @@
 #include "defs.h"
 #include<iostream>
 
-Move::Move(int from, int to, int captured, int prom, int flag)
+Move::Move(uint32_t from, uint32_t to, uint32_t captured, uint32_t prom, uint32_t flag)
 {
 	this->move = 0;
 	this->move |= from & 0x7f;
@@ -13,12 +13,12 @@ Move::Move(int from, int to, int captured, int prom, int flag)
 	this->move |= flag;
 	this->score = 0;
 }
-Move::Move(int move, int score)
+Move::Move(uint32_t move, int32_t score)
 {
 	this->move = move;
 	this->score = score;
 }
-Move::Move(int move)
+Move::Move(uint32_t move)
 {
 	this->move = move;
 	this->score = 0;
@@ -28,31 +28,31 @@ Move::Move()
 	this->move = this->score = 0;
 }
 
-int Move::From()
+uint32_t Move::From()
 {
 	return this->move & 0x7f;
 }
-int Move::To()
+uint32_t Move::To()
 {
 	return (this->move >> 7) & 0x7f; 
 }
-int Move::Captured()
+uint32_t Move::Captured()
 {
 	return (this->move >> 14) & 0xf; 
 }
-int Move::EnPassant()
+uint32_t Move::EnPassant()
 {
 	return this->move & 0x40000;
 }
-int Move::PawnStart()
+uint32_t Move::PawnStart()
 {
 	return this->move & 0x80000; 
 }
-int Move::Promoted()
+uint32_t Move::Promoted()
 {
 	return (this->move >> 20) & 0xf;
 }
-int Move::Castle()
+uint32_t Move::Castle()
 {
 	return this->move & 0x1000000;
 }
