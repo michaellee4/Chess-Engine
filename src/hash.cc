@@ -3,13 +3,13 @@
 #include "utils.h"
 #include "board.h"
 
-U64 PieceKeys[13][120];
-U64 SideKey;
-U64 CastleKeys[16];
+uint64_t PieceKeys[13][120];
+uint64_t SideKey;
+uint64_t CastleKeys[16];
 
-U64 Hash::GeneratePosKey(const Board& pos)
+uint64_t Hash::GeneratePosKey(const Board& pos)
 {
-	U64 hash = 0;
+	uint64_t hash = 0;
 	for(int sq = 0; sq < BRD_SQ_NUM; ++sq)
 	{
 		int piece = pos.pieces[sq];

@@ -19,7 +19,7 @@ class U_Move
 		int castlePerm;
 		int enPas;
 		int fiftyMove;
-		U64 posKey;
+		uint64_t posKey;
 };
 
 class Move

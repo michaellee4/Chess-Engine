@@ -10,8 +10,8 @@ int Sq64ToSq120[64];
 int FileBrd[BRD_SQ_NUM];
 int RankBrd[BRD_SQ_NUM];
 
-U64 SetMask[64];
-U64 ClearMask[64];
+uint64_t SetMask[64];
+uint64_t ClearMask[64];
 
 void InitFileRankBrd()
 {
@@ -75,14 +75,14 @@ void InitHashKeys()
 	{
 		for(int j = 0; j < 120; ++j)
 		{
-			PieceKeys[i][j] = RandU64();
+			PieceKeys[i][j] = Randuint64_t();
 		}
 	}
-	SideKey = RandU64();
+	SideKey = Randuint64_t();
 
 	for(int i = 0; i < 16; ++i )
 	{
-		CastleKeys[i] = RandU64();
+		CastleKeys[i] = Randuint64_t();
 	}
 }
 

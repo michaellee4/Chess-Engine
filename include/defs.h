@@ -9,8 +9,6 @@
 #define START_FEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 #define MAXPOSITIONMOVES 256
 
-typedef unsigned long long U64;
-
 const unsigned int BRD_SQ_NUM = 120;
 
 const unsigned int MAX_GAME_MOVES = 2 << 10;
@@ -88,9 +86,9 @@ extern int Sq120ToSq64[BRD_SQ_NUM];
 extern int Sq64ToSq120[64];
 
 //*** used in hash
-extern U64 PieceKeys[13][120];
-extern U64 SideKey;
-extern U64 CastleKeys[16];
+extern uint64_t PieceKeys[13][120];
+extern uint64_t SideKey;
+extern uint64_t CastleKeys[16];
 
 extern int FileBrd[BRD_SQ_NUM];
 extern int RankBrd[BRD_SQ_NUM];

@@ -16,11 +16,11 @@ namespace BBmask
 class BB
 {
 public:
-	static int PopBit(U64&);
-	static int CountBits(U64);
-	static void PrintBitBoard(U64);
-	static void SetBit(U64&, int);
-	static void ClearBit(U64&, int);
+	static int PopBit(uint64_t&);
+	static int CountBits(uint64_t);
+	static void PrintBitBoard(uint64_t);
+	static void SetBit(uint64_t&, int);
+	static void ClearBit(uint64_t&, int);
 };
 
 #endif

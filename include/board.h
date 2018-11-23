@@ -13,7 +13,7 @@ class Board
 		int pieces[BRD_SQ_NUM]; 
 
 		// stores a pawn bitboard for white/black/both pawns
-		std::vector<U64> pawns;
+		std::vector<uint64_t> pawns;
 
 		// stores king positions
 		std::vector<int> king_sq;
@@ -34,7 +34,7 @@ class Board
 		int hist_ply;
 
 		// position hash
-		U64 pos_key;
+		uint64_t pos_key;
 
 		// keeps track of how many of each pice is present on the board and where they are
 		// piece list

@@ -5,7 +5,7 @@
 #include "board.h"
 #include <string>
 int FileRankToSq(int file, int rank);
-U64 RandU64();
+uint64_t Randuint64_t();
 bool IsPiece(int piece);
 void ShowSqAtBySide(const int side,Board& pos);
 std::string SqToString(const int sq);

@@ -4,7 +4,7 @@
 
 namespace Hash
 {
-	U64 GeneratePosKey(const Board& pos);
+	uint64_t GeneratePosKey(const Board& pos);
 	inline void HashPce(int pce, int sq, Board& pos)
 	{
 		pos.pos_key ^= (PieceKeys[(pce)][(sq)]);
