@@ -287,13 +287,16 @@ void MoveList::GeneratePawnMoves(Board& pos, uint32_t side)
 		{
 			this->AddPawnCaptureMove(pos, sq, sq + cap2, pos.pieces[sq + cap2], side);
 		}
-		if(sq + cap1 == (int32_t)pos.en_pas)
+		if(pos.en_pas != NO_SQ)
 		{
-			this->AddCaptureMove(pos, Move(sq, sq + cap1, EMPTY, EMPTY, EP));
-		}
-		if(sq + cap2 == (int32_t) pos.en_pas)
-		{
-			this->AddCaptureMove(pos, Move(sq, sq + cap2, EMPTY, EMPTY, EP));
+			if(sq + cap1 == (int32_t)pos.en_pas)
+			{
+				this->AddEnPasMove(pos, Move(sq, sq + cap1, EMPTY, EMPTY, EP));
+			}
+			if(sq + cap2 == (int32_t) pos.en_pas)
+			{
+				this->AddEnPasMove(pos, Move(sq, sq + cap2, EMPTY, EMPTY, EP));
+			}
 		}
 	}
 }
