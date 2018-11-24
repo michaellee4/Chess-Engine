@@ -35,6 +35,8 @@ using namespace std;
 
 int main()
 {
+	//Testing commig
+	
 	InitAll();
 	Board b;
 	PerftTester p;
