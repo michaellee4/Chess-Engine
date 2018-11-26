@@ -3,26 +3,14 @@
 #include "defs.h"
 #include<iostream>
 
-Move::Move(uint32_t from, uint32_t to, uint32_t captured, uint32_t prom, uint32_t flag)
-{
-	this->move = 0;
-	this->move |= from & 0x7f;
-	this->move |= (to & 0x7f) << 7;
-	this->move |= (captured & 0xf) << 14;
-	this->move |= (prom & 0xf) << 20;
-	this->move |= flag;
-	this->score = 0;
-}
-Move::Move(uint32_t move, int32_t score)
-{
-	this->move = move;
-	this->score = score;
-}
-Move::Move(uint32_t move)
-{
-	this->move = move;
-	this->score = 0;
-}
+Move::Move(uint32_t from, uint32_t to, uint32_t captured, uint32_t prom, uint32_t flag): 
+move(0 |(from & 0x7f) | ((to & 0x7f) << 7) | ((captured & 0xf) << 14) | ((prom & 0xf) << 20) | flag), 
+score(0){}
+
+Move::Move(uint32_t move, int32_t score) : move(move), score(score){}
+
+Move::Move(uint32_t move) : move(move), score(0) {}
+
 Move::Move()
 {
 	this->move = this->score = 0;
