@@ -5,6 +5,7 @@
 
 // #define DEBUG
 
+// Tests if n is true. End the program and indicate line # if the assertion fails.
 #ifndef DEBUG
 #define ASSERT(n)
 #else

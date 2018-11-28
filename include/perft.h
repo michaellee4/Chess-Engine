@@ -8,6 +8,8 @@
 #include <string>
 #include <sstream>
 
+// Generate and counts all legal moves to a given depths.
+// Correct values given in the perft.epd file in root dir
 class PerftTester
 {
 private:

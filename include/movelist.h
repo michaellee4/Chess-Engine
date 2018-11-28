@@ -9,10 +9,12 @@
 class MoveList
 {	
 	private:
+		// Creates and adds a type of move to eh movelist
 		void AddQuietMove(Board& pos, Move move);
 		void AddCaptureMove(Board& pos, Move move);
 		void AddEnPasMove(Board& pos, Move move);
 
+		// Add's each piece's move
 		void AddPawnMove(Board& pos, uint32_t from, uint32_t to, uint32_t side);
 		void AddPawnCaptureMove(Board& pos, uint32_t from, uint32_t to, uint32_t cap, uint32_t side);
 		void GeneratePawnMoves(Board& pos, uint32_t side);
@@ -26,7 +28,6 @@ class MoveList
 		void GenerateCastlingMoves(Board& psd, uint32_t side);
 
 	public:
-		// possibly use linked list instead of vector
 		std::vector<Move> moves;
 
 		MoveList();

@@ -39,6 +39,7 @@ enum {
 // Castling permissions
 enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8 };
 
+// Provides dictionaries for used in ToString() functions
 namespace BoardChar
 {
 	const std::string PceChar = ".PNBRQKpnbrqk";
@@ -50,16 +51,15 @@ namespace BoardChar
 	 {41,"a3"}, {42,"b3"}, {43,"c3"}, {44,"d3"}, {45,"e3"}, {46,"f3"}, {47,"g3"}, {48,"h3"}, {99, "None"}};
 }
 
- 
- namespace PieceInfo
- {
-//piece info
+// Provides dictionaries to get information about a piece
+namespace PieceInfo
+{
 	const std::vector<bool> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
 	const std::vector<bool> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
 	const std::vector<bool> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
 	const std::vector<uint32_t> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
 	const std::vector<uint32_t> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
-										BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
+											BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
 	const std::vector<bool> PieceSlides = { false, false, false, true, true, true, false, false, false, true, true, true, false };
 
 	const std::vector<bool> PiecePawn = { false, true, false, false, false, false, false, true, false, false, false, false, false };	
@@ -70,10 +70,9 @@ namespace BoardChar
 
  }
 
-
+// Lists attack patterns for Pieces on the 120 Sq board.
 namespace Attack
 {
-	// attackers
 	const std::vector<int> KnMoves { -8, -19, -21, -12, 8, 19, 21, 12 };
 	const std::vector<int> RkMoves { -1, -10, 1, 10 };
 	const std::vector<int> BiMoves { -9, -11, 11, 9 };
@@ -90,6 +89,7 @@ extern uint64_t PieceKeys[13][120];
 extern uint64_t SideKey;
 extern uint64_t CastleKeys[16];
 
+//*** used in utils
 extern int FileBrd[BRD_SQ_NUM];
 extern int RankBrd[BRD_SQ_NUM];
 

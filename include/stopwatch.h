@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <cstdio>
 
+// Simple stopwatch class for benchmarking
 class Stopwatch
 {
     typedef std::chrono::high_resolution_clock Time;

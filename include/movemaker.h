@@ -4,11 +4,7 @@
 #include "defs.h"
 #include "board.h"
 
-#define HASH_PCE(pce,sq) (pos.pos_key ^= (PieceKeys[(pce)][(sq)]))
-#define HASH_CA (pos.pos_key ^= (CastleKeys[(pos.castle_perm)]))
-#define HASH_SIDE (pos.pos_key ^= (SideKey))
-#define HASH_EP (pos.pos_key ^= (PieceKeys[EMPTY][(pos.en_pas)]))
-
+// Indicates the change in castle permissions for a given Sq move. Used with bitwise &
 const int CastlePerm[120] = {
     15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
     15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
@@ -27,11 +23,15 @@ const int CastlePerm[120] = {
 
 class MM
 {
+	// Used by Make/Take move to manipulate the board for a move
     static void ClearPiece(const uint32_t sq, Board& pos);
     static void AddPiece(const uint32_t sq, Board& pos, const uint32_t pce);
     static void MovePiece(const uint32_t src, const uint32_t dest, Board& pos);
 public:
+	// Makes the provided move (move piece/capture/update board)
     static bool MakeMove(Board& pos, Move moveInfo);
+
+    // Undo's the last move made which is stored in Board::hist_move
     static void TakeMove(Board& pos);
     
 };

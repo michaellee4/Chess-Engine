@@ -5,7 +5,9 @@
 #include "move.h"
 #include <string>
 #include <vector>
-// change all arrays to vector
+
+/*** The central unit of the Engine ***/
+// Handles the entire board representation and all information regarding the board.
 class Board
 {
 	public:
@@ -37,7 +39,6 @@ class Board
 		uint64_t pos_key;
 
 		// keeps track of how many of each pice is present on the board and where they are
-		// piece list
 		std::vector<std::vector<uint32_t>> piece_list;
 
 		// non pawn pieces
@@ -61,18 +62,26 @@ class Board
 
 		Board(const std::string fen);
 
+		// Resets the board to the empty state
 		void ResetBoard(void);
 
+		// Reads in a Forseth-Edwards Notation string and prepares the board in accordance ot it.
 		void ParseFEN(const std::string);
 
+		// Prints out the current state of the board
 		void PrintBoard(void) const;
 
+		// Update the underlying board information arrays
 		void UpdatePieceLists(void);
 
+		// Checks if a sq is on the board
 		bool SqOnBoard(uint32_t sq) const;
 		
+		// returns the number of times that a Sq is attacked by the given side
 		uint32_t SqAttacked(const uint32_t sq, const uint32_t side) const;
 
 };
+		// reconstructs the board state and checks if they match
+		// Used for debugging.
 		bool CheckBoard(const Board& pos);
 #endif

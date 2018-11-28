@@ -7,15 +7,13 @@
 extern uint64_t SetMask[64];
 extern uint64_t ClearMask[64];
 
-// removes the lowest order bit of an integer and returns the index
 int BB::PopBit(uint64_t& bb) {
   uint64_t b = bb ^ (bb - 1);
   unsigned int fold = (unsigned) ((b & 0xffffffff) ^ (b >> 32));
   bb &= (bb - 1);
-  return BBmask::BitTable[(fold * 0x783a9b23) >> 26];
+  return BB::BitTable[(fold * 0x783a9b23) >> 26];
 }
 
-// counts the number of 1 bits
 int BB::CountBits(uint64_t b) {
   uint32_t r;
   for(r = 0; b; r++, b &= b - 1);

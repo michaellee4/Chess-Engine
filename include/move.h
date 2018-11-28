@@ -11,6 +11,7 @@
 
 #include "defs.h"
 #include <string>
+
 // used for undoing
 class U_Move
 {
