@@ -18,7 +18,7 @@ private:
 	long leafNodes;
 	void Perft(uint32_t depth, Board& pos);
 public:
-	void PerftTest(uint32_t depth, Board& pos);
+	int PerftTest(uint32_t depth, Board& pos, bool print);
 	void PerftTestAll(Board& pos);
 };
 

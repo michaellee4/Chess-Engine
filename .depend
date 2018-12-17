@@ -26,6 +26,5 @@ movemaker.o: src/movemaker.cc include/movemaker.h include/defs.h \
  include/debug.h include/board.h include/move.h include/defs.h \
  include/bitboard.h include/debug.h include/utils.h include/move.h \
  include/hash.h
-stopwatch.o: src/stopwatch.cc include/stopwatch.h
 utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
  include/board.h include/move.h include/defs.h

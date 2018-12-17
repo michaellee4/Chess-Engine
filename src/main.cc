@@ -41,11 +41,12 @@ int main()
 	Board b;
 	PerftTester p;
 
-	b.ParseFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 ");	
+	/*
+	b.ParseFEN("r3k2r/8/8/8/8/8/8/R3K1R1 b Qkq - 0 1");	
 	ASSERT(CheckBoard(b));
 	Stopwatch s;
 	p.PerftTest(6, b);
-
-
+	*/
+	p.PerftTestAll(b);
 	return 0;
 }

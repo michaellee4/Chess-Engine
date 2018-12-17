@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -O3 -Wall -Werror -std=c++11 -I ./include/
-TESTS = ./src/tests/
 SRC = $(wildcard ./src/*.cc)
+BIN = $(wildcard ./build/*.cc)
 OBJS = $(patsubst %cc,%o,$(SRC))
 RM = rm -f
 
@@ -18,6 +18,7 @@ depend: .depend
 
 clean:
 	rm -f $(OBJS)
+	rm ce
 
 dist-clean: clean
 	rm -f *~ .depend
