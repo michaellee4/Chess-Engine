@@ -62,7 +62,7 @@ int PerftTester::PerftTest(uint32_t depth, Board& pos, bool print = true) {
 void PerftTester::PerftTestAll(Board& pos)
 {
 	
-	std::ifstream perftFile("src/test/perftsuite.epd");
+	std::ifstream perftFile("tests/perftsuite.epd");
 	std::string linebuf;
 	std::string fen;
 	char buf;
