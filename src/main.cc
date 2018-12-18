@@ -47,6 +47,8 @@ int main()
 	Stopwatch s;
 	p.PerftTest(6, b);
 	*/
-	p.PerftTestAll(b);
+	Stopwatch s;
+	//p.PerftTestAll(b);
+	cout << Stopwatch::getTimeInMilli() << endl;
 	return 0;
 }

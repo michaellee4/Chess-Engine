@@ -17,7 +17,7 @@ class Stopwatch
 		~Stopwatch();
 		void start();
 		float stop();
-
+		static uint64_t getTimeInMilli();
 };
 
 Stopwatch::Stopwatch()
@@ -36,9 +36,14 @@ float Stopwatch::stop()
 {
 	auto dur = std::chrono::duration_cast<ms>(Time::now() - start_time);
 	float milli = dur.count();
-	printf("Elapsed Time: %.3f seconds\n", milli / 1000 );
-	return dur.count();
+	return milli;
 }
 
-
+uint64_t Stopwatch::getTimeInMilli()
+{
+	using namespace std::chrono;
+	milliseconds ms = duration_cast< milliseconds >(
+    system_clock::now().time_since_epoch());
+	return ms.count();
+}
 #endif
