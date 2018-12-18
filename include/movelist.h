@@ -26,14 +26,15 @@ class MoveList
 		void GenerateSlidingMoves(Board& pos, uint32_t side);
 		void GenerateNonSlidingMoves(Board& pos, uint32_t side);
 		void GenerateCastlingMoves(Board& psd, uint32_t side);
+		std::vector<Move> moves;
 
 	public:
-		std::vector<Move> moves;
 
 		MoveList();
 
 		void GenerateAllMoves(Board& pos);
-		uint32_t size();
+		uint32_t size() const;
+		const Move& operator[](const int idx) const;
 		Move& operator[](const int idx);
 		// void PrintMoveList();
 };

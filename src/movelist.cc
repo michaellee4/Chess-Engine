@@ -361,11 +361,15 @@ void MoveList::GenerateAllMoves(Board& pos)
 	this->GenerateCastlingMoves(pos, pos.side_to_move);
 }
 
-uint32_t MoveList::size()
+uint32_t MoveList::size() const
 {
 	return this->moves.size();
 }
+const Move& MoveList::operator[](const int idx) const
+{
+	return moves[idx];
+}
 Move& MoveList::operator[](const int idx)
 {
-	return this->moves[idx];
+	return moves[idx];
 }

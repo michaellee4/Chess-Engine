@@ -53,14 +53,14 @@ void IOHandler::PrintBoard(const Board& pos){
 
 void IOHandler::PrintMoveList(const MoveList& list)
 {
-	for(uint32_t i = 0; i < list.moves.size(); ++i)
+	for(uint32_t i = 0; i < list.size(); ++i)
 	{
-		Move curMove = list.moves[i];
+		Move curMove = list[i];
 		printf("Move: %02d > %s (score: %d) : ",i ,curMove.ToString().c_str(), curMove.score );
 		std::bitset<32> bits(curMove.move);
 		std::cout <<  bits <<std::endl;
 	}
-		printf("MoveList Total: %lu Moves\n\n", list.moves.size() );
+		printf("MoveList Total: %u Moves\n\n", list.size() );
 }
 
 Move IOHandler::ParseMove(std::string input, Board& pos)

@@ -16,9 +16,9 @@ void PerftTester::Perft(uint32_t depth, Board& pos) {
     MoveList m;
     m.GenerateAllMoves(pos);
       
-	for(uint32_t MoveNum = 0; MoveNum < m.moves.size(); ++MoveNum) {	
+	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {	
        
-        if ( !MM::MakeMove(pos,m.moves[MoveNum]))  {
+        if ( !MM::MakeMove(pos,m[MoveNum]))  {
             continue;
         }
         Perft(depth - 1, pos);
@@ -43,8 +43,8 @@ int PerftTester::PerftTest(uint32_t depth, Board& pos, bool print = true) {
     MoveList m;
     m.GenerateAllMoves(pos);
     
-	for(uint32_t MoveNum = 0; MoveNum < m.moves.size(); ++MoveNum) {
-        Move move = m.moves[MoveNum];
+	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {
+        Move move = m[MoveNum];
         if ( !MM::MakeMove(pos, move))  {
             continue;
         }
