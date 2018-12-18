@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include "io.h"
 void PerftTester::Perft(uint32_t depth, Board& pos) {
 
     // ASSERT(CheckBoard(pos));  
@@ -34,7 +35,7 @@ int PerftTester::PerftTest(uint32_t depth, Board& pos, bool print = true) {
 	
 	if(print)
 	{
-		pos.PrintBoard();
+		IOHandler::PrintBoard(pos);
 		std::cout << std::endl << "Starting Test To Depth: "<< depth << std::endl;
 	}
 	this->leafNodes = 0;

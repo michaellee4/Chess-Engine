@@ -18,7 +18,8 @@ namespace BB
 	int PopBit(uint64_t&);
 	// counts the number of 1 bits
 	int CountBits(uint64_t);
-	void PrintBitBoard(uint64_t);
+
+	// void PrintBitBoard(uint64_t);
 	// sets the given bit to 1
 	void SetBit(uint64_t&, int);
 	// sets the given bit to 0

@@ -7,17 +7,17 @@ MoveList::MoveList()
 	moves.reserve(MAXPOSITIONMOVES);
 }
 
-void MoveList::PrintMoveList()
-{
-	for(uint32_t i = 0; i < this->moves.size(); ++i)
-	{
-		Move curMove = this->moves[i];
-		printf("Move: %02d > %s (score: %d) : ",i ,curMove.ToString().c_str(), curMove.score );
-		std::bitset<32> bits(curMove.move);
-		std::cout <<  bits <<std::endl;
-	}
-		printf("MoveList Total: %lu Moves\n\n", this->moves.size() );
-}
+// void MoveList::PrintMoveList()
+// {
+// 	for(uint32_t i = 0; i < this->moves.size(); ++i)
+// 	{
+// 		Move curMove = this->moves[i];
+// 		printf("Move: %02d > %s (score: %d) : ",i ,curMove.ToString().c_str(), curMove.score );
+// 		std::bitset<32> bits(curMove.move);
+// 		std::cout <<  bits <<std::endl;
+// 	}
+// 		printf("MoveList Total: %lu Moves\n\n", this->moves.size() );
+// }
 
 void MoveList::AddQuietMove(Board& pos, Move move)
 {

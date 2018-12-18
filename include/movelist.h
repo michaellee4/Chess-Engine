@@ -33,7 +33,7 @@ class MoveList
 		MoveList();
 
 		void GenerateAllMoves(Board& pos);
-		void PrintMoveList();
+		// void PrintMoveList();
 };
 
 

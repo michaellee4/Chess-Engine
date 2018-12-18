@@ -69,7 +69,7 @@ class Board
 		void ParseFEN(const std::string);
 
 		// Prints out the current state of the board
-		void PrintBoard(void) const;
+		// void PrintBoard(void) const;
 
 		// Update the underlying board information arrays
 		void UpdatePieceLists(void);

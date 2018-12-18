@@ -186,37 +186,37 @@ void Board::ParseFEN(const std::string fen)
 	this->UpdatePieceLists();
 }
 
-void Board::PrintBoard() const{
+// void Board::PrintBoard() const{
 	
-	int sq,file,rank,piece;
+// 	int sq,file,rank,piece;
 	
-	printf("\nGame Board:\n\n");
+// 	printf("\nGame Board:\n\n");
 	
-	for(rank = RANK_8; rank >= RANK_1; rank--) {
-		printf("%d  ",rank+1);
-		for(file = FILE_A; file <= FILE_H; ++file) {
-			sq = FileRankToSq(file,rank);
-			piece = this->pieces[sq];
-			printf("%3c",BoardChar::PceChar[piece]);
-		}
-		printf("\n");
-	}
+// 	for(rank = RANK_8; rank >= RANK_1; rank--) {
+// 		printf("%d  ",rank+1);
+// 		for(file = FILE_A; file <= FILE_H; ++file) {
+// 			sq = FileRankToSq(file,rank);
+// 			piece = this->pieces[sq];
+// 			printf("%3c",BoardChar::PceChar[piece]);
+// 		}
+// 		printf("\n");
+// 	}
 	
-	printf("\n   ");
-	for(file = FILE_A; file <= FILE_H; ++file) {
-		printf("%3c",'a'+file);	
-	}
-	printf("\n");
-	printf("side:%c\n",BoardChar::SideChar[this->side_to_move]);
-	printf("enPas:%s (%d)\n",BoardChar::epstr.at(this->en_pas).c_str(),this->en_pas);
-	printf("castle:%c%c%c%c\n",
-			this->castle_perm & WKCA ? 'K' : '-',
-			this->castle_perm & WQCA ? 'Q' : '-',
-			this->castle_perm & BKCA ? 'k' : '-',
-			this->castle_perm & BQCA ? 'q' : '-'	
-			);
-	printf("PosKey:%lX\n\n",this->pos_key);
-}
+// 	printf("\n   ");
+// 	for(file = FILE_A; file <= FILE_H; ++file) {
+// 		printf("%3c",'a'+file);	
+// 	}
+// 	printf("\n");
+// 	printf("side:%c\n",BoardChar::SideChar[this->side_to_move]);
+// 	printf("enPas:%s (%d)\n",BoardChar::epstr.at(this->en_pas).c_str(),this->en_pas);
+// 	printf("castle:%c%c%c%c\n",
+// 			this->castle_perm & WKCA ? 'K' : '-',
+// 			this->castle_perm & WQCA ? 'Q' : '-',
+// 			this->castle_perm & BKCA ? 'k' : '-',
+// 			this->castle_perm & BQCA ? 'q' : '-'	
+// 			);
+// 	printf("PosKey:%lX\n\n",this->pos_key);
+// }
 
 void Board::UpdatePieceLists()
 {

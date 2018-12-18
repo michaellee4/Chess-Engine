@@ -30,18 +30,18 @@ void BB::ClearBit(uint64_t& bb, int index)
 	bb &= ClearMask[index];
 }
 
-void BB::PrintBitBoard(uint64_t bb)
-{
-	for (uint32_t rank = RANK_8; rank >=RANK_1; --rank)
-	{
-		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
-		{
-			int sq = FileRankToSq(file, rank);
-			int sq64 = Sq120ToSq64[sq];
+// void BB::PrintBitBoard(uint64_t bb)
+// {
+// 	for (uint32_t rank = RANK_8; rank >=RANK_1; --rank)
+// 	{
+// 		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
+// 		{
+// 			int sq = FileRankToSq(file, rank);
+// 			int sq64 = Sq120ToSq64[sq];
 
-			printf("%c", ((1ULL << sq64) & bb) ? 'X' : '-' );
-		}
-		printf("\n");
-	}
-	printf("\n\n");
-}
+// 			printf("%c", ((1ULL << sq64) & bb) ? 'X' : '-' );
+// 		}
+// 		printf("\n");
+// 	}
+// 	printf("\n\n");
+// }
