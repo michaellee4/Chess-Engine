@@ -6,7 +6,7 @@ board.o: src/board.cc include/board.h include/defs.h include/debug.h \
  include/board.h include/utils.h include/bitboard.h
 io.o: src/io.cc include/io.h include/board.h include/defs.h \
  include/debug.h include/move.h include/movemaker.h include/movelist.h \
- include/utils.h
+ include/utils.h include/defs.h
 movelist.o: src/movelist.cc include/movelist.h include/defs.h \
  include/debug.h include/board.h include/move.h
 perft.o: src/perft.cc include/defs.h include/debug.h include/perft.h \

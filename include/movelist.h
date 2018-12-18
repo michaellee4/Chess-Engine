@@ -33,6 +33,8 @@ class MoveList
 		MoveList();
 
 		void GenerateAllMoves(Board& pos);
+		uint32_t size();
+		Move& operator[](const int idx);
 		// void PrintMoveList();
 };
 

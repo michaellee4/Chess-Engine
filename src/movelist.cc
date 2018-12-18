@@ -360,3 +360,12 @@ void MoveList::GenerateAllMoves(Board& pos)
 	this->GenerateNonSlidingMoves(pos, pos.side_to_move);
 	this->GenerateCastlingMoves(pos, pos.side_to_move);
 }
+
+uint32_t MoveList::size()
+{
+	return this->moves.size();
+}
+Move& MoveList::operator[](const int idx)
+{
+	return this->moves[idx];
+}

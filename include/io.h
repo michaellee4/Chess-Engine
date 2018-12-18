@@ -6,13 +6,13 @@
 #include "move.h"
 #include "movelist.h"
 #include "utils.h"
-
+#include <string>
 namespace IOHandler
 {
 	void PrintBoard(const Board& pos);
 	void PrintBitBoard(const uint64_t);
 	void PrintMoveList(const MoveList& list);
-	static Move ParseMove;
+	Move ParseMove(std::string input, Board& pos);
 };
 
 #endif

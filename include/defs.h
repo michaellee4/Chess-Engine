@@ -64,9 +64,9 @@ namespace PieceInfo
 
 	const std::vector<bool> PiecePawn = { false, true, false, false, false, false, false, true, false, false, false, false, false };	
 	const std::vector<bool> PieceKing = { false, false, false, false, false, false, true, false, false, false, false, false, true };
-	// const std::vector<bool> PieceRookQueen = { false, false, false, false, true, true, false, false, false, false, true, true, false };
-	// const std::vector<bool> PieceBishopQueen = { false, false, false, true, false, true, false, false, false, true, false, true, false };
-	// const std::vector<bool> PieceKnight = { false, false, true, false, false, false, false, false, true, false, false, false, false };
+	const std::vector<bool> PieceRookQueen = { false, false, false, false, true, true, false, false, false, false, true, true, false };
+	const std::vector<bool> PieceBishopQueen = { false, false, false, true, false, true, false, false, false, true, false, true, false };
+	const std::vector<bool> PieceKnight = { false, false, true, false, false, false, false, false, true, false, false, false, false };
 
  }
 

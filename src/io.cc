@@ -1,6 +1,7 @@
 #include "io.h"
 #include <bitset>
 #include <iostream>
+#include "defs.h"
 
 void IOHandler::PrintBitBoard(uint64_t bb)
 {
@@ -60,4 +61,38 @@ void IOHandler::PrintMoveList(const MoveList& list)
 		std::cout <<  bits <<std::endl;
 	}
 		printf("MoveList Total: %lu Moves\n\n", list.moves.size() );
+}
+
+Move IOHandler::ParseMove(std::string input, Board& pos)
+{
+	const Move noMove(0);
+	if(input[1] < '1' || input[1] > '8') return noMove;
+	if(input[0] < 'a' || input[0] > 'h') return noMove;
+	if(input[3] < '1' || input[3] > '8') return noMove;
+	if(input[2] < 'a' || input[2] > 'h') return noMove;
+
+	uint32_t fromSq = FileRankToSq(input[0] - 'a', input[1] - '1');
+	uint32_t toSq = FileRankToSq(input[2] - 'a', input[3] - '1');
+	char promPce = input.size() > 4 ? input[4] : '*';
+	MoveList m;
+	m.GenerateAllMoves(pos);
+
+	for(uint32_t i = 0; i < m.size(); i++)
+	{
+		Move cur = m[i];
+		if(cur.From() == fromSq && cur.To() == toSq)
+		{
+			if(promPce != '*')
+			{
+				uint32_t prom = cur.Promoted();
+				if(PieceInfo::PieceRookQueen[prom] && !PieceInfo::PieceBishopQueen[prom] && promPce == 'r') return cur;
+				if(!PieceInfo::PieceRookQueen[prom] && PieceInfo::PieceBishopQueen[prom] && promPce == 'b') return cur;
+				if(PieceInfo::PieceRookQueen[prom] && PieceInfo::PieceBishopQueen[prom] && promPce == 'q') return cur;
+				if(PieceInfo::PieceKnight[prom] && promPce == 'n') return cur;
+				continue;
+			}
+			return cur;
+		}
+	}
+	return noMove;
 }
