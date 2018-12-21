@@ -17,6 +17,7 @@ private:
 	int32_t quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info);
 public:
 	void searchPosition(Board& pos, SearchInfo& info);
+	static int32_t EvaluatePosition(const Board& pos);
 };
 
 #endif
