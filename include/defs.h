@@ -81,6 +81,9 @@ namespace PieceInfo
 // Lists attack patterns for Pieces on the 120 Sq board.
 namespace Attack
 {
+	const std::vector<int> wPCap   { -11, -9 };
+	const std::vector<int> bPCap   {  11,  9 };
+	const std::vector<int> PnMoves { -10, 10 };
 	const std::vector<int> KnMoves { -8, -19, -21, -12, 8, 19, 21, 12 };
 	const std::vector<int> RkMoves { -1, -10, 1, 10 };
 	const std::vector<int> BiMoves { -9, -11, 11, 9 };

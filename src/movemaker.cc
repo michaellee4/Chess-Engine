@@ -128,7 +128,7 @@ bool MM::MakeMove(Board& pos, Move moveInfo)
 
 	if(move & EP)
 	{
-		int offset = side == WHITE ? -10 : 10;
+		int offset = Attack::PnMoves[side];
 		MM::ClearPiece(to + offset, pos);
 	}
 	else if (move & CA)
@@ -182,7 +182,7 @@ bool MM::MakeMove(Board& pos, Move moveInfo)
 		pos.fifty_move = 0;
 		if(move & PS)
 		{
-			int offset = side == WHITE ? 10 : -10;
+			int offset = Attack::PnMoves[!side];
 			pos.en_pas = from + offset;
 			ASSERT((side == WHITE && RankBrd[pos.en_pas] == RANK_3)||(side == BLACK && RankBrd[pos.en_pas] == RANK_6));
 			Hash::HashEP(pos);
@@ -246,7 +246,7 @@ void MM::TakeMove(Board& pos)
 
 	if(move & EP)
 	{
-		int offset = pos.side_to_move == WHITE ? -10 : 10;
+		int offset = Attack::PnMoves[pos.side_to_move];
 		int pce = pos.side_to_move == WHITE ? bP: wP;
 		MM::AddPiece(to + offset, pos, pce);
 	}

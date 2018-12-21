@@ -351,20 +351,19 @@ bool Board::SqOnBoard(uint32_t sq) const
 uint32_t Board::SqAttacked(const uint32_t sq, const uint32_t attacker) const
 {
 	uint32_t numAttackers = 0;
-
 	// Check Pawn
 	if(attacker == WHITE)
 	{
-		if(this->pieces[sq - 11] == wP)
+		if(this->pieces[sq + Attack::wPCap[0]] == wP)
 			++numAttackers;
-		if(this->pieces[sq - 9] == wP)
+		if(this->pieces[sq + Attack::wPCap[1]] == wP)
 			++numAttackers;
 	}
 	else
 	{
-		if(this->pieces[sq + 11] == bP)
+		if(this->pieces[sq + Attack::bPCap[0]] == bP)
 			++numAttackers;
-		if(this->pieces[sq + 9] == bP)
+		if(this->pieces[sq + Attack::bPCap[1]] == bP)
 			++numAttackers;
 	}
 
@@ -372,7 +371,7 @@ uint32_t Board::SqAttacked(const uint32_t sq, const uint32_t attacker) const
 
 	// Check Knight
 	uint32_t attackingKnight = attacker == WHITE ? wN : bN;
-	for(uint32_t i = 0; i < 8; ++i)
+	for(uint32_t i = 0; i < Attack::KnMoves.size(); ++i)
 	{
 		if(this->pieces[sq + Attack::KnMoves[i]] == attackingKnight)
 			++numAttackers;
@@ -381,7 +380,7 @@ uint32_t Board::SqAttacked(const uint32_t sq, const uint32_t attacker) const
 	// Check Horizontal and Vertical
 	uint32_t attackingRook = attacker == WHITE ? wR : bR;
 	uint32_t attackingQueen = attacker == WHITE ? wQ : bQ;
-	for(uint32_t i = 0 ; i < 4; ++i )
+	for(uint32_t i = 0 ; i < Attack::RkMoves.size(); ++i )
 	{
 		uint32_t move = Attack::RkMoves[i];
 		uint32_t t_sq = sq + move;
@@ -401,7 +400,7 @@ uint32_t Board::SqAttacked(const uint32_t sq, const uint32_t attacker) const
 	}
 
 	uint32_t attackingBishop = attacker == WHITE ? wB : bB;
-	for(uint32_t i = 0 ; i < 4; ++i )
+	for(uint32_t i = 0 ; i < Attack::BiMoves.size(); ++i )
 	{
 		uint32_t move = Attack::BiMoves[i];
 		uint32_t t_sq = sq + move;
@@ -420,7 +419,7 @@ uint32_t Board::SqAttacked(const uint32_t sq, const uint32_t attacker) const
 	}
 
 	uint32_t attackingKing = attacker == WHITE ? wK : bK;
-	for(uint32_t i = 0; i < 8; ++i)
+	for(uint32_t i = 0; i < Attack::KiMoves.size(); ++i)
 	{
 		if(this->pieces[sq + Attack::KiMoves[i]] == attackingKing)
 			++numAttackers;
