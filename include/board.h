@@ -5,7 +5,7 @@
 #include "move.h"
 #include <string>
 #include <vector>
-
+#include "pvtable.h"
 /*** The central unit of the Engine ***/
 // Handles the entire board representation and all information regarding the board.
 class Board
@@ -80,6 +80,10 @@ class Board
 		// returns the number of times that a Sq is attacked by the given side
 		uint32_t SqAttacked(const uint32_t sq, const uint32_t side) const;
 
+		// Principal variation table
+		PV_Table pv_table;
+		
+		std::vector<Move> pv_arr;
 };
 		// reconstructs the board state and checks if they match
 		// Used for debugging.

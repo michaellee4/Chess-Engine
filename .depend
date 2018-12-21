@@ -1,33 +1,37 @@
-init.o: src/init.cc include/defs.h include/debug.h include/utils.h \
- include/defs.h include/board.h include/move.h include/init.h \
- include/hash.h include/bitboard.h
+init.o: src/init.cc include/defs.h include/debug.h include/move.h \
+ include/pvtable.h include/utils.h include/defs.h include/board.h \
+ include/init.h include/hash.h include/bitboard.h
 board.o: src/board.cc include/board.h include/defs.h include/debug.h \
- include/move.h include/defs.h include/debug.h include/hash.h \
- include/board.h include/utils.h include/bitboard.h
+ include/move.h include/pvtable.h include/defs.h include/debug.h \
+ include/hash.h include/board.h include/utils.h include/bitboard.h
 io.o: src/io.cc include/io.h include/board.h include/defs.h \
- include/debug.h include/move.h include/movemaker.h include/movelist.h \
- include/utils.h include/defs.h
+ include/debug.h include/move.h include/pvtable.h include/movemaker.h \
+ include/movelist.h include/utils.h include/defs.h
 movelist.o: src/movelist.cc include/movelist.h include/defs.h \
- include/debug.h include/board.h include/move.h
-perft.o: src/perft.cc include/defs.h include/debug.h include/perft.h \
- include/board.h include/defs.h include/move.h include/movelist.h \
- include/movemaker.h include/io.h include/utils.h
-bitboard.o: src/bitboard.cc include/defs.h include/debug.h \
- include/bitboard.h include/defs.h include/utils.h include/board.h \
- include/move.h
-main.o: src/main.cc include/defs.h include/debug.h include/bitboard.h \
- include/defs.h include/utils.h include/board.h include/move.h \
- include/init.h include/hash.h include/board.h include/movelist.h \
- include/stopwatch.h include/movemaker.h include/perft.h \
+ include/debug.h include/move.h include/pvtable.h include/board.h
+perft.o: src/perft.cc include/defs.h include/debug.h include/move.h \
+ include/pvtable.h include/perft.h include/board.h include/defs.h \
  include/movelist.h include/movemaker.h include/io.h include/utils.h
-hash.o: src/hash.cc include/defs.h include/debug.h include/hash.h \
- include/board.h include/defs.h include/move.h include/utils.h \
+bitboard.o: src/bitboard.cc include/defs.h include/debug.h include/move.h \
+ include/pvtable.h include/bitboard.h include/defs.h include/utils.h \
  include/board.h
+main.o: src/main.cc include/defs.h include/debug.h include/move.h \
+ include/pvtable.h include/bitboard.h include/defs.h include/utils.h \
+ include/board.h include/init.h include/hash.h include/board.h \
+ include/movelist.h include/stopwatch.h include/movemaker.h \
+ include/perft.h include/movelist.h include/movemaker.h include/io.h \
+ include/utils.h
+hash.o: src/hash.cc include/defs.h include/debug.h include/move.h \
+ include/pvtable.h include/hash.h include/board.h include/defs.h \
+ include/utils.h include/board.h
 movemaker.o: src/movemaker.cc include/movemaker.h include/defs.h \
- include/debug.h include/board.h include/move.h include/defs.h \
- include/bitboard.h include/debug.h include/utils.h include/move.h \
- include/hash.h
+ include/debug.h include/move.h include/pvtable.h include/board.h \
+ include/defs.h include/bitboard.h include/debug.h include/utils.h \
+ include/move.h include/hash.h
+pvtable.o: src/pvtable.cc include/pvtable.h include/move.h include/defs.h \
+ include/debug.h include/pvtable.h include/board.h include/defs.h \
+ include/movemaker.h include/board.h
 utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
- include/board.h include/move.h include/defs.h
+ include/move.h include/pvtable.h include/board.h include/defs.h
 move.o: src/move.cc include/move.h include/defs.h include/debug.h \
- include/defs.h
+ include/move.h include/pvtable.h

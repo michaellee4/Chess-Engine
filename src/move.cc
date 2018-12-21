@@ -75,3 +75,8 @@ std::string Move::ToString()
 	
   	return stream.str();
 }
+
+bool Move::isNull()
+{
+	return this->move == 0; 
+}

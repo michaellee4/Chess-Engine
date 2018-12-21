@@ -5,9 +5,11 @@
 #include<vector>
 #include<unordered_map>
 #include<cstddef>
-
+#include "move.h"
+#include "pvtable.h"
 #define START_FEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 #define MAXPOSITIONMOVES 256
+#define MAXDEPTH 64
 
 const uint32_t BRD_SQ_NUM = 120;
 
@@ -93,4 +95,5 @@ extern uint64_t CastleKeys[16];
 extern int FileBrd[BRD_SQ_NUM];
 extern int RankBrd[BRD_SQ_NUM];
 
+const Move noMove(0);
 #endif

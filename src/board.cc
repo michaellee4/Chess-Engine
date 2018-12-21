@@ -16,7 +16,10 @@ Board::Board():pieces(BRD_SQ_NUM),
 			   maj_pce(2), 
 			   min_pce(2), 
 			   material(2), 
-			   history(MAX_GAME_MOVES)
+			   history(MAX_GAME_MOVES),
+			   pv_table(),
+	    	   pv_arr(MAXDEPTH)
+
 {
 	for(uint32_t i = 0; i < 13; ++i)
 	{
@@ -33,7 +36,9 @@ Board::Board(const std::string fen):pieces(BRD_SQ_NUM),
 									maj_pce(2), 
 									min_pce(2), 
 									material(2), 
-									history(MAX_GAME_MOVES) 
+									history(MAX_GAME_MOVES),
+									pv_table(),
+									pv_arr(MAXDEPTH)
 {
 	for(uint32_t i = 0; i < 13; ++i)
 	{

@@ -9,7 +9,6 @@
 #define CAP 0x7C000
 #define PROM 0xF00000
 
-#include "defs.h"
 #include <string>
 
 // used for undoing
@@ -46,11 +45,13 @@ class Move
 		uint32_t Promoted();
 		// 1 bit for Castle move
 		uint32_t Castle();
-
+		
+		bool isNull();
 		bool wasCapture();
 		bool wasPromotion();
 
 		std::string ToString();
 
 };
+
 #endif

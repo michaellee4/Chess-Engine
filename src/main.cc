@@ -46,12 +46,24 @@ void gameLoop(Board& b)
 			MM::TakeMove(b);
 			prevValid = true;
 		}
+		else if (input[0] == 'p')
+		{
+			int max = PV_Table::getPvLine(b, 4);
+			cout<< "PvLine of " << max << " Moves: ";
+			for(int i = 0; i < max; i++)
+			{
+				Move move = b.pv_arr[i];
+				cout << move.ToString() << " ";
+			}
+			cout << endl;
+			prevValid = false;
+		}
 		else 
 		{
 			Move move = IOHandler::ParseMove(input, b);
 			if(move.move != 0)
 			{
-				cout<< "making move: " << move.From() <<" "<<move.To() <<endl;
+				b.pv_table.insert(b, move);
 				MM::MakeMove(b, move);
 				prevValid = true;
 			}

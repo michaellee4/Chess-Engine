@@ -25,7 +25,7 @@ void IOHandler::PrintBoard(const Board& pos){
 	
 	printf("\nGame Board:\n\n");
 	
-	for(rank = RANK_8; rank >= RANK_1; rank--) {
+	for(rank = RANK_8; rank >= RANK_1; --rank) {
 		printf("%d  ",rank+1);
 		for(file = FILE_A; file <= FILE_H; ++file) {
 			sq = FileRankToSq(file,rank);
@@ -65,7 +65,7 @@ void IOHandler::PrintMoveList(const MoveList& list)
 
 Move IOHandler::ParseMove(std::string input, Board& pos)
 {
-	const Move noMove(0);
+	
 	if(input[1] < '1' || input[1] > '8') return noMove;
 	if(input[0] < 'a' || input[0] > 'h') return noMove;
 	if(input[3] < '1' || input[3] > '8') return noMove;
@@ -77,7 +77,7 @@ Move IOHandler::ParseMove(std::string input, Board& pos)
 	MoveList m;
 	m.GenerateAllMoves(pos);
 
-	for(uint32_t i = 0; i < m.size(); i++)
+	for(uint32_t i = 0; i < m.size(); ++i)
 	{
 		Move cur = m[i];
 		if(cur.From() == fromSq && cur.To() == toSq)
