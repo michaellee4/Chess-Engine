@@ -82,8 +82,8 @@ int main()
 
 	Board b;
 	PerftTester p;
-	p.PerftTestAll(b);
-	//gameLoop(b);
+	// p.PerftTestAll(b);
+	gameLoop(b);
 	// b.ParseFEN("n1n5/PPPk4/8/8/8/8/4Kppp/5N1N w - - 0 1");	
 	return 0;
 }

@@ -17,7 +17,7 @@ class Stopwatch
 		~Stopwatch();
 		void start();
 		float stop();
-		static uint64_t getTimeInMilli();
+		static uint32_t getTimeInMilli();
 };
 
 Stopwatch::Stopwatch()
@@ -39,7 +39,7 @@ float Stopwatch::stop()
 	return milli;
 }
 
-uint64_t Stopwatch::getTimeInMilli()
+uint32_t Stopwatch::getTimeInMilli()
 {
 	using namespace std::chrono;
 	milliseconds ms = duration_cast< milliseconds >(
