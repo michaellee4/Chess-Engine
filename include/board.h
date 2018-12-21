@@ -58,6 +58,15 @@ class Board
 		// stores the history of moves
 		std::vector<U_Move> history;
 
+		// Principal variation table
+		PV_Table pv_table;
+		
+		std::vector<Move> pv_arr;
+
+		std::vector<std::vector<uint32_t>> search_hist;
+
+		std::vector<std::vector<uint32_t>> search_killers;
+
 		Board();
 
 		Board(const std::string fen);
@@ -80,10 +89,6 @@ class Board
 		// returns the number of times that a Sq is attacked by the given side
 		uint32_t SqAttacked(const uint32_t sq, const uint32_t side) const;
 
-		// Principal variation table
-		PV_Table pv_table;
-		
-		std::vector<Move> pv_arr;
 };
 		// reconstructs the board state and checks if they match
 		// Used for debugging.

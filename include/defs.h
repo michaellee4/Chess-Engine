@@ -7,13 +7,19 @@
 #include<cstddef>
 #include "move.h"
 #include "pvtable.h"
-#define START_FEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
-#define MAXPOSITIONMOVES 256
-#define MAXDEPTH 64
+#define STARTFEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+
+const uint32_t MAXPOSITIONMOVES = 256;
+
+const uint32_t MAXDEPTH = 64;
+
+const uint32_t NUM_PCE_TYPES = 13;
 
 const uint32_t BRD_SQ_NUM = 120;
 
 const uint32_t MAX_GAME_MOVES = 2 << 10;
+
+const uint32_t NUM_SIDES = 2;
 // pieces
 enum { EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK };
 

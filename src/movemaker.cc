@@ -124,7 +124,7 @@ bool MM::MakeMove(Board& pos, Move moveInfo)
 	ASSERT(pos.SqOnBoard(from));
 	ASSERT(IsPiece(pos.pieces[from]))
 
-	pos.history[pos.hist_ply].posKey = pos.pos_key;
+	pos.history[pos.hist_ply].pos_key = pos.pos_key;
 
 	if(move & EP)
 	{
