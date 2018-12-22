@@ -8,6 +8,7 @@
 #include "board.h"
 #include "movelist.h"
 #include <unordered_set>
+#include "search.h"
 #include "stopwatch.h"
 #include "movemaker.h"
 #include <cstdio>
@@ -84,7 +85,6 @@ void gameLoop(Board& b)
 int main()
 {
 	InitAll();
-
 	Board b("k7/B7/1B6/1B6/8/8/8/K6b w - - 0 1 ");
 	PerftTester p;
 	// p.PerftTestAll(b);

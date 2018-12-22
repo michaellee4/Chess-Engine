@@ -29,10 +29,10 @@ class Board
 		// tracks the number of turns made (not ply)
 		uint32_t fifty_move;
 
-		// number of half moves
+		// number of half moves in the current search
 		int ply;
 
-		// total number of plys
+		// total number of half moves in the entire game
 		int hist_ply;
 
 		// position hash

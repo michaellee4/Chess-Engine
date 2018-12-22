@@ -3,7 +3,6 @@
 
 #include <chrono>
 #include <unistd.h>
-#include <cstdio>
 
 // Simple stopwatch class for benchmarking
 class Stopwatch
@@ -17,33 +16,7 @@ class Stopwatch
 		~Stopwatch();
 		void start();
 		float stop();
-		static uint32_t getTimeInMilli();
+		static uint64_t getTimeInMilli();
 };
 
-Stopwatch::Stopwatch()
-{
-	this->start();
-}
-Stopwatch::~Stopwatch()
-{
-	this->stop();
-}
-void Stopwatch::start()
-{
-	start_time = Time::now();
-}
-float Stopwatch::stop()
-{
-	auto dur = std::chrono::duration_cast<ms>(Time::now() - start_time);
-	float milli = dur.count();
-	return milli;
-}
-
-uint32_t Stopwatch::getTimeInMilli()
-{
-	using namespace std::chrono;
-	milliseconds ms = duration_cast< milliseconds >(
-    system_clock::now().time_since_epoch());
-	return ms.count();
-}
 #endif

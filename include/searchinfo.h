@@ -1,12 +1,11 @@
 #ifndef SEARCHINFO_H
 #define SEARCHINFO_H
 
-class SearchInfo
+struct SearchInfo
 {
-public:
-	uint32_t startTime;
-	uint32_t stopTime;
-	uint32_t timeLimit;
+	uint64_t startTime;
+	uint64_t stopTime;
+	uint64_t timeLimit;
 
 	uint32_t depth;
 	uint32_t depthLimit;
