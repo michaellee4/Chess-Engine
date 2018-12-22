@@ -97,7 +97,7 @@ void gameLoop(Board& b)
 int main()
 {
 	InitAll();
-	Board b;
+	Board b(WAC1);
 	PerftTester p;
 	// p.PerftTestAll(b);
 	gameLoop(b);

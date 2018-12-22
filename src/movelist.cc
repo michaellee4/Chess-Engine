@@ -356,9 +356,10 @@ void MoveList::GenerateAllMoves(Board& pos)
 	ASSERT(CheckBoard(pos));
 	this->moves.clear();
 	this->GeneratePawnMoves(pos, pos.side_to_move);
-	this->GenerateSlidingMoves(pos, pos.side_to_move);
 	this->GenerateNonSlidingMoves(pos, pos.side_to_move);
+	this->GenerateSlidingMoves(pos, pos.side_to_move);
 	this->GenerateCastlingMoves(pos, pos.side_to_move);
+
 }
 
 uint32_t MoveList::size() const
