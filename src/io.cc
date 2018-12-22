@@ -48,7 +48,7 @@ void IOHandler::PrintBoard(const Board& pos){
 			pos.castle_perm & BKCA ? 'k' : '-',
 			pos.castle_perm & BQCA ? 'q' : '-'	
 			);
-	printf("PosKey:%lX\n\n",pos.pos_key);
+	std::cout << "PosKey: " << pos.pos_key << "\n" << std::endl;
 }
 
 void IOHandler::PrintMoveList(const MoveList& list)

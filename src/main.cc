@@ -64,8 +64,13 @@ void gameLoop(Board& b)
 			if(move.move != 0)
 			{
 				b.pv_table.insert(b, move);
-				MM::MakeMove(b, move);
-				prevValid = true;
+				if(!MM::MakeMove(b, move))
+				{
+					cout << "Illegal Move!"<<std::endl;
+					prevValid = true;
+				}
+				else
+					prevValid = true;
 			}
 			else
 			{
@@ -80,7 +85,7 @@ int main()
 {
 	InitAll();
 
-	Board b;
+	Board b("k7/B7/1B6/1B6/8/8/8/K6b w - - 0 1 ");
 	PerftTester p;
 	// p.PerftTestAll(b);
 	gameLoop(b);
