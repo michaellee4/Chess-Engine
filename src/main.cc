@@ -17,14 +17,20 @@
 #include "io.h"
 #include <climits>
 #include <string>
+#include "searchinfo.h"
+#include "search.h"
 #define PERFTFEN "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
 #define pt "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
+#define WAC1 "2rr3k/pp3pp1/1nnqbN1p/3pN3/2pP4/2P3Q1/PPB4P/R4RK1 w - -"
 
 using namespace std;
 
 
 void gameLoop(Board& b)
 {
+	SearchInfo info;
+	SearchAgent s;
+
 	// Game Loop
 	std::string input;
 	bool prevValid = true;
@@ -58,6 +64,12 @@ void gameLoop(Board& b)
 			}
 			cout << endl;
 			prevValid = true;
+		}
+		else if(input[0] == 's')
+		{
+			info.depth = 4;
+			s.searchPosition(b, info);
+			prevValid = false;
 		}
 		else 
 		{

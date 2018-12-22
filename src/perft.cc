@@ -6,7 +6,7 @@
 #include "io.h"
 void PerftTester::Perft(uint32_t depth, Board& pos) {
 
-    // ASSERT(CheckBoard(pos));  
+    ASSERT(CheckBoard(pos));  
 
 	if(depth == 0) {
         ++this->leafNodes;
@@ -24,8 +24,6 @@ void PerftTester::Perft(uint32_t depth, Board& pos) {
         Perft(depth - 1, pos);
         MM::TakeMove(pos);
     }
-
-    return;
 }
 
 

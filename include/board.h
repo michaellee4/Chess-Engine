@@ -47,10 +47,10 @@ class Board
 		uint32_t fifty_move;
 
 		// number of half moves in the current search
-		int ply;
+		int32_t ply;
 
 		// total number of half moves in the entire game
-		int hist_ply;
+		int32_t hist_ply;
 
 		// position hash
 		uint64_t pos_key;

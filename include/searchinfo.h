@@ -18,6 +18,9 @@ struct SearchInfo
 	bool infinite;
 	bool quit;
 	bool stopped;
+
+	float fh;
+	float fhf;
 };
 
 

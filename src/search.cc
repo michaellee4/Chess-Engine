@@ -1,7 +1,8 @@
 #include "search.h"
 #include "stopwatch.h"
 #include <iostream>
-
+#include "movelist.h"
+#include "movemaker.h"
 int32_t SearchAgent::evalPawns(const Board& pos)
 {
 	int32_t pce = wP;
@@ -138,11 +139,72 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)
 	info.startTime = Stopwatch::getTimeInMilli();
 	info.stopped = false;
 	info.nodes = 0;
+	info.fh = 0;
+	info.fhf = 0;
 }
 
 int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull)
 {
-	return 0;
+    ASSERT(CheckBoard(pos)); 
+
+	if(depth == 0) {
+        ++info.nodes;
+        return this->evaluatePosition(pos);
+    }
+    ++info.nodes;
+
+    if(isRepetition(pos) || pos.fifty_move >= 100)
+    {
+    	return 0;
+    }
+    if((unsigned)pos.ply > MAXDEPTH - 1)
+    {
+    	return this->evaluatePosition(pos);
+    }
+
+    MoveList m;
+    m.GenerateAllMoves(pos);
+    int32_t legalMoves = 0;
+    int32_t prevAlpha = alpha;
+    Move bestMove = noMove;
+    int score = -INFINITY;
+
+	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {	
+        if ( !MM::MakeMove(pos,m[MoveNum]))  {
+            continue;
+        }
+        ++legalMoves;
+        score = -1 * this->alphaBeta(-beta, -alpha, depth - 1, pos, info, true);
+        MM::TakeMove(pos);
+        if(score > alpha)
+        {
+        	if(score >= beta)
+        	{
+        		if(legalMoves == 1)
+        		{
+        			++info.fhf;
+        		}
+        		++info.fh;
+        		return beta;
+        	}
+        	alpha = score;
+        	bestMove = m[MoveNum];
+        }
+    }
+    if(legalMoves == 0)
+    {
+    	if(pos.SqAttacked(pos.king_sq[pos.side_to_move], !pos.side_to_move))
+    	{
+    		return -MATE + pos.ply;
+    	}
+    	else return 0;
+    }
+
+    if(alpha != prevAlpha)
+    {
+    	pos.pv_table.insert(pos, bestMove);
+    }
+	return alpha;
 }
 
 int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info)
@@ -157,12 +219,12 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 	using std::endl;
 	Move bestMove = noMove;
 	int32_t bestScore = -INFINITY;
-	
 	this->clearForSearch(pos, info);
 
 	for(uint32_t curDepth = 1 ; curDepth <= info.depth; ++curDepth)
 	{
 		bestScore = this->alphaBeta(-INFINITY, INFINITY, curDepth, pos, info, true);
+
 		// check time
 		int32_t pvMoves = PV_Table::getPvLine(pos, curDepth);
 		bestMove = pos.pv_arr[0];
@@ -176,5 +238,6 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 			cout << move.ToString() << " ";
 		}
 		cout<<endl;
+		cout << "Ordering: " << info.fhf/info.fh << "\n" << endl;
 	}
 }
