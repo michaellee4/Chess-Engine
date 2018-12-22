@@ -1,6 +1,6 @@
 #include "search.h"
 #include "stopwatch.h"
-#include "stopwatch.h"
+#include <iostream>
 
 int32_t SearchAgent::evalPawns(const Board& pos)
 {
@@ -140,7 +140,7 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)
 	info.nodes = 0;
 }
 
-int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, SearchInfo& info, bool doNull)
+int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull)
 {
 	return 0;
 }
@@ -149,8 +149,33 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 {
 	return 0;
 }
-	
+
+//uses iterative deepening
 void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 {
+	using std::cout;
+	using std::endl;
+	Move bestMove = noMove;
+	int32_t bestScore = -INFINITY;
+	int32_t pvMoves = 0;
+	
+	this->clearForSearch(pos, info);
 
+	for(uint32_t curDepth = 1 ; curDepth <= info.depth; ++curDepth)
+	{
+		bestScore = this->alphaBeta(-INFINITY, INFINITY, curDepth, pos, info, true);
+		// check time
+		pvMoves = PV_Table::getPvLine(pos, curDepth);
+		bestMove = pos.pv_arr[0];
+		cout<<"Depth:" << curDepth << " score:" << bestScore << " move:" << bestMove.ToString() << " nodes:" << info.nodes<<endl;
+		
+		pvMoves = PV_Table::getPvLine(pos, curDepth);
+		cout<< "PvLine of " << pvMoves << " Moves: ";
+		for(int i = 0; i < pvMoves; ++i)
+		{
+			Move move = pos.pv_arr[i];
+			cout << move.ToString() << " ";
+		}
+		cout<<endl;
+	}
 }

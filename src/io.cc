@@ -2,6 +2,7 @@
 #include <bitset>
 #include <iostream>
 #include "defs.h"
+#include "algorithm"
 
 void IOHandler::PrintBitBoard(uint64_t bb)
 {
@@ -65,7 +66,7 @@ void IOHandler::PrintMoveList(const MoveList& list)
 
 Move IOHandler::ParseMove(std::string input, Board& pos)
 {
-	
+	std::transform(input.begin(), input.end(), input.begin(), ::tolower);
 	if(input[1] < '1' || input[1] > '8') return noMove;
 	if(input[0] < 'a' || input[0] > 'h') return noMove;
 	if(input[3] < '1' || input[3] > '8') return noMove;

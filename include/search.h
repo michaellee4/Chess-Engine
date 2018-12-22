@@ -73,7 +73,7 @@ private:
 
 	void clearForSearch(Board& pos, SearchInfo& info);
 
-	int32_t alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, SearchInfo& info, bool doNull);
+	int32_t alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull);
 
 	int32_t quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info);
 
