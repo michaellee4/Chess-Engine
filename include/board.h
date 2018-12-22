@@ -10,6 +10,23 @@
 // Handles the entire board representation and all information regarding the board.
 class Board
 {
+	private:
+		// Resets the board to the empty state
+		void ResetBoard(void);
+
+		// Update the underlying board information arrays
+		void UpdatePieceLists(void);
+
+		// Places the pieces on the board using the fen
+		void SetUpPieces(const std::string& section);
+
+		// Sets up castling permissions with the fen
+		void GetCastlePerm(const std::string& section);
+
+		void GetEnPassant(const std::string& section);
+
+		void GetMoveCounters(std::istringstream& stream, std::string& section);
+
 	public:
 		// stores the state of the board 120 sq representation
 		std::vector<uint32_t> pieces; 
@@ -71,17 +88,11 @@ class Board
 
 		Board(const std::string fen);
 
-		// Resets the board to the empty state
-		void ResetBoard(void);
-
 		// Reads in a Forseth-Edwards Notation string and prepares the board in accordance ot it.
 		void ParseFEN(const std::string);
 
 		// Prints out the current state of the board
 		// void PrintBoard(void) const;
-
-		// Update the underlying board information arrays
-		void UpdatePieceLists(void);
 
 		// Checks if a sq is on the board
 		bool SqOnBoard(uint32_t sq) const;

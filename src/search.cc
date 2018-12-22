@@ -157,7 +157,6 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 	using std::endl;
 	Move bestMove = noMove;
 	int32_t bestScore = -INFINITY;
-	int32_t pvMoves = 0;
 	
 	this->clearForSearch(pos, info);
 
@@ -165,7 +164,7 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 	{
 		bestScore = this->alphaBeta(-INFINITY, INFINITY, curDepth, pos, info, true);
 		// check time
-		pvMoves = PV_Table::getPvLine(pos, curDepth);
+		int32_t pvMoves = PV_Table::getPvLine(pos, curDepth);
 		bestMove = pos.pv_arr[0];
 		cout<<"Depth:" << curDepth << " score:" << bestScore << " move:" << bestMove.ToString() << " nodes:" << info.nodes<<endl;
 		

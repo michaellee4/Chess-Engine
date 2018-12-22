@@ -91,17 +91,8 @@ void Board::ResetBoard(void)
 
 	this->pos_key = 0ULL;
 }
-
-void Board::ParseFEN(const std::string fen)
+void Board::SetUpPieces(const std::string& section)
 {
-	using namespace std;
-	this->ResetBoard();
-
-	std::istringstream stream(fen);
-	std::string section;
-	// piece locations fix this
-	std::getline(stream, section, ' ');
-	//cout << section << endl;
 	int fenIdx = 0;
 	for(int32_t rank = RANK_8; rank >= RANK_1; rank --)
 	{
@@ -139,13 +130,10 @@ void Board::ParseFEN(const std::string fen)
 		}
 		++fenIdx;
 	}
+}
 
-	// side to move
-	std::getline(stream, section, ' ');
-	this->side_to_move = section[0] == 'w' ? WHITE : BLACK;
-
-	// Castling permissions
-	std::getline(stream, section, ' ');
+void Board::GetCastlePerm(const std::string& section)
+{
 	this->castle_perm = 0;
 	if(section[0] != '-')
 	{
@@ -168,17 +156,23 @@ void Board::ParseFEN(const std::string fen)
 			}
 		}
 	}
+}
 
-	// En Passant Square
-	std::getline(stream, section, ' ');
+
+void Board::GetEnPassant(const std::string& section)
+{
 	if(section != "-")
 	{
 		int file = section[0] - 'a';
 		int rank = section[1] - '1';
 		this->en_pas = FileRankToSq(file, rank);
 	}
-	// halfmove clock (halfmoves since capture or pawn advance)
-	std::getline(stream, section, ' ');
+}
+
+void Board::GetMoveCounters(std::istringstream& stream, std::string& section)
+{
+	using namespace std;
+
 	if(stream.good())
 	{
 		this->fifty_move = stoi(section);
@@ -191,6 +185,37 @@ void Board::ParseFEN(const std::string fen)
 		this->fifty_move = 0;
 		this->hist_ply = 1;
 	}
+}
+
+void Board::ParseFEN(const std::string fen)
+{
+	using namespace std;
+
+	this->ResetBoard();
+
+	std::istringstream stream(fen);
+	std::string section;
+
+	// piece locations 
+	std::getline(stream, section, ' ');
+	this->SetUpPieces(section);
+
+	// side to move
+	std::getline(stream, section, ' ');
+	this->side_to_move = section[0] == 'w' ? WHITE : BLACK;
+
+	// Castling permissions
+	std::getline(stream, section, ' ');
+	this->GetCastlePerm(section);
+
+	// En Passant Square
+	std::getline(stream, section, ' ');
+	this->GetEnPassant(section);
+
+	// halfmove clock (halfmoves since capture or pawn advance)
+	std::getline(stream, section, ' ');
+	this->GetMoveCounters(stream, section);
+
 	this->pos_key = Hash::GeneratePosKey(*this);
 	this->UpdatePieceLists();
 }

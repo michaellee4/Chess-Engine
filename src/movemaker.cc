@@ -99,7 +99,7 @@ void MM::MovePiece(const uint32_t src, const uint32_t dest, Board& pos)
 		BB::SetBit(pos.pawns[BOTH], Sq120ToSq64[dest]);
 	}
 
-	// ADD PIECE TO PIECE LIST
+	//update piece position in piece_list replace this with std::find()
 	uint32_t idx = 0;
 	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != src; ++idx){}
 

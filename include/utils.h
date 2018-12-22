@@ -18,4 +18,6 @@ void ShowSqAtBySide(const int side,Board& pos);
 
 // String representation of a square
 std::string SqToString(const int sq);
+
+void StringToLower(std::string& str);
 #endif

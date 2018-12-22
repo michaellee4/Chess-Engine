@@ -57,7 +57,7 @@ void gameLoop(Board& b)
 				cout << move.ToString() << " ";
 			}
 			cout << endl;
-			prevValid = false;
+			prevValid = true;
 		}
 		else 
 		{
@@ -85,7 +85,7 @@ void gameLoop(Board& b)
 int main()
 {
 	InitAll();
-	Board b("k7/B7/1B6/1B6/8/8/8/K6b w - - 0 1 ");
+	Board b;
 	PerftTester p;
 	// p.PerftTestAll(b);
 	gameLoop(b);

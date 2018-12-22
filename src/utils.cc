@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string>
 #include <sstream>
+#include <algorithm>
 //return the 120 sq value of a given file and rank
 int FileRankToSq(int file, int rank)
 {
@@ -58,4 +59,9 @@ void ShowSqAtBySide(const int side,Board& pos) {
 	}  
     printf("\n\n");
 
+}
+
+void StringToLower(std::string& str)
+{
+	std::transform(str.begin(), str.end(), str.begin(), ::tolower);
 }
