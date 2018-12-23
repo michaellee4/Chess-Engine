@@ -9,14 +9,14 @@ int32_t SearchAgent::evalPawns(const Board& pos)
 	int32_t PnScore = 0;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.SqOnBoard(sq));
+		ASSERT(pos.sqOnBoard(sq));
 		PnScore += Value::PawnTable[Sq120ToSq64[sq]];
 	}	
 
 	pce = bP;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.SqOnBoard(sq));
+		ASSERT(pos.sqOnBoard(sq));
 		PnScore -= Value::PawnTable[Value::WhiteToBlack[Sq120ToSq64[sq]]];
 	}	
 	return PnScore;
@@ -29,14 +29,14 @@ int32_t SearchAgent::evalBishops(const Board& pos)
 
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.SqOnBoard(sq));
+		ASSERT(pos.sqOnBoard(sq));
 		BiScore += Value::BishopTable[Sq120ToSq64[sq]];
 	}	
 
 	pce = bB;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.SqOnBoard(sq));
+		ASSERT(pos.sqOnBoard(sq));
 		BiScore -= Value::BishopTable[Value::WhiteToBlack[Sq120ToSq64[sq]]];
 	}	
 	return BiScore;
@@ -49,14 +49,14 @@ int32_t SearchAgent::evalRooks(const Board& pos)
 
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.SqOnBoard(sq));
+		ASSERT(pos.sqOnBoard(sq));
 		RkScore += Value::RookTable[Sq120ToSq64[sq]];
 	}	
 
 	pce = bR;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.SqOnBoard(sq));
+		ASSERT(pos.sqOnBoard(sq));
 		RkScore -= Value::RookTable[Value::WhiteToBlack[Sq120ToSq64[sq]]];
 	}	
 	return RkScore;
@@ -68,14 +68,14 @@ int32_t SearchAgent::evalKnights(const Board& pos)
 	int32_t KnScore = 0;
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.SqOnBoard(sq));
+		ASSERT(pos.sqOnBoard(sq));
 		KnScore += Value::KnightTable[Sq120ToSq64[sq]];
 	}	
 
 	pce = bN;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.SqOnBoard(sq));
+		ASSERT(pos.sqOnBoard(sq));
 		KnScore -= Value::KnightTable[Value::WhiteToBlack[Sq120ToSq64[sq]]];
 	}			
 	return KnScore;
@@ -145,7 +145,7 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)
 
 int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull)
 {
-    ASSERT(CheckBoard(pos)); 
+    ASSERT(checkBoard(pos)); 
 
 	if(depth == 0) {
         ++info.nodes;
@@ -163,19 +163,19 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     }
 
     MoveList m;
-    m.GenerateAllMoves(pos);
+    m.generateAllMoves(pos);
     int32_t legalMoves = 0;
     int32_t prevAlpha = alpha;
     Move bestMove = noMove;
     int score = -INFINITY;
 
 	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {	
-        if ( !MM::MakeMove(pos,m[MoveNum]))  {
+        if ( !MM::makeMove(pos,m[MoveNum]))  {
             continue;
         }
         ++legalMoves;
         score = -1 * this->alphaBeta(-beta, -alpha, depth - 1, pos, info, true);
-        MM::TakeMove(pos);
+        MM::takeMove(pos);
         if(score > alpha)
         {
         	if(score >= beta)
@@ -193,7 +193,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     }
     if(legalMoves == 0)
     {
-    	if(pos.SqAttacked(pos.king_sq[pos.side_to_move], !pos.side_to_move))
+    	if(pos.sqAttacked(pos.king_sq[pos.side_to_move], !pos.side_to_move))
     	{
     		return -MATE + pos.ply;
     	}
@@ -228,14 +228,14 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 		// check time
 		int32_t pvMoves = PV_Table::getPvLine(pos, curDepth);
 		bestMove = pos.pv_arr[0];
-		cout<<"Depth:" << curDepth << " score:" << bestScore << " move:" << bestMove.ToString() << " nodes:" << info.nodes<<endl;
+		cout<<"Depth:" << curDepth << " score:" << bestScore << " move:" << bestMove.toString() << " nodes:" << info.nodes<<endl;
 		
 		pvMoves = PV_Table::getPvLine(pos, curDepth);
 		cout<< "PvLine of " << pvMoves << " Moves: ";
 		for(int i = 0; i < pvMoves; ++i)
 		{
 			Move move = pos.pv_arr[i];
-			cout << move.ToString() << " ";
+			cout << move.toString() << " ";
 		}
 		cout<<endl;
 		cout << "Ordering: " << info.fhf/info.fh << "\n" << endl;

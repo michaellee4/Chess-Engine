@@ -38,7 +38,7 @@ void gameLoop(Board& b)
 	{
 		if(prevValid)
 		{
-			IOHandler::PrintBoard(b);
+			IOHandler::printBoard(b);
 		}
 		cout<< "Please enter a move > ";
 		cin >> input;
@@ -50,7 +50,7 @@ void gameLoop(Board& b)
 		} 
 		else if(input[0] == 't')
 		{
-			MM::TakeMove(b);
+			MM::takeMove(b);
 			prevValid = true;
 		}
 		else if (input[0] == 'p')
@@ -60,7 +60,7 @@ void gameLoop(Board& b)
 			for(int i = 0; i < max; i++)
 			{
 				Move move = b.pv_arr[i];
-				cout << move.ToString() << " ";
+				cout << move.toString() << " ";
 			}
 			cout << endl;
 			prevValid = true;
@@ -73,11 +73,11 @@ void gameLoop(Board& b)
 		}
 		else 
 		{
-			Move move = IOHandler::ParseMove(input, b);
+			Move move = IOHandler::parseMove(input, b);
 			if(move.move != 0)
 			{
 				b.pv_table.insert(b, move);
-				if(!MM::MakeMove(b, move))
+				if(!MM::makeMove(b, move))
 				{
 					cout << "Illegal Move!"<<std::endl;
 					prevValid = true;
@@ -96,11 +96,11 @@ void gameLoop(Board& b)
 
 int main()
 {
-	InitAll();
+	initAll();
 	Board b(WAC1);
 	PerftTester p;
-	// p.PerftTestAll(b);
+	// p.perftTestAll(b);
 	gameLoop(b);
-	// b.ParseFEN("n1n5/PPPk4/8/8/8/8/4Kppp/5N1N w - - 0 1");	
+	// b.parseFEN("n1n5/PPPk4/8/8/8/8/4Kppp/5N1N w - - 0 1");	
 	return 0;
 }

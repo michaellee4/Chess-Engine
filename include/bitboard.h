@@ -15,15 +15,15 @@ namespace BB
 	};
 	
 	// removes the lowest order bit of an integer and returns the index
-	int PopBit(uint64_t&);
+	int popBit(uint64_t&);
 	// counts the number of 1 bits
-	int CountBits(uint64_t);
+	int countBits(uint64_t);
 
-	// void PrintBitBoard(uint64_t);
+	// void printBitBoard(uint64_t);
 	// sets the given bit to 1
-	void SetBit(uint64_t&, int);
+	void setBit(uint64_t&, int);
 	// sets the given bit to 0
-	void ClearBit(uint64_t&, int);
+	void clearBit(uint64_t&, int);
 }
 
 

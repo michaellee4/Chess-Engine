@@ -32,25 +32,25 @@ class Move
 		Move(uint32_t move);
 		Move();
 		// 7 bits for src
-		uint32_t From();
+		uint32_t from();
 		// 7 bits for dest 
-		uint32_t To();
+		uint32_t to();
 		// 4 bits for which piece was captured if any
-		uint32_t Captured();
+		uint32_t captured();
 		// 1 bit for enPas
-		uint32_t EnPassant();
+		uint32_t enPassant();
 		// 1 bit for pawn start 
-		uint32_t PawnStart();
+		uint32_t pawnStart();
 		// 4 bits for which piece was captured if any
-		uint32_t Promoted();
+		uint32_t promoted();
 		// 1 bit for Castle move
-		uint32_t Castle();
+		uint32_t castle();
 		
 		bool isNull();
 		bool wasCapture();
 		bool wasPromotion();
 
-		std::string ToString();
+		std::string toString();
 
 };
 

@@ -51,7 +51,7 @@ enum {
 // Castling permissions
 enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8 };
 
-// Provides dictionaries for used in ToString() functions
+// Provides dictionaries for used in toString() functions
 namespace BoardChar
 {
 	const std::string PceChar = ".PNBRQKpnbrqk";

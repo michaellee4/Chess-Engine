@@ -7,12 +7,12 @@
 #include "hash.h"
 #include<cstdio>
 
-void MM::ClearPiece(const uint32_t sq, Board& pos)
+void MM::clearPiece(const uint32_t sq, Board& pos)
 {
 	int pce = pos.pieces[sq];
 	int col = PieceInfo::PieceCol[pce];
 	
-	Hash::HashPce(pce, sq, pos);
+	Hash::hashPce(pce, sq, pos);
 
 	pos.pieces[sq] = EMPTY;
 	pos.material[col] -= PieceInfo::PieceVal[pce];
@@ -30,8 +30,8 @@ void MM::ClearPiece(const uint32_t sq, Board& pos)
 	}
 	else
 	{
-		BB::ClearBit(pos.pawns[col], Sq120ToSq64[sq]);
-		BB::ClearBit(pos.pawns[BOTH], Sq120ToSq64[sq]);
+		BB::clearBit(pos.pawns[col], Sq120ToSq64[sq]);
+		BB::clearBit(pos.pawns[BOTH], Sq120ToSq64[sq]);
 	}
 
 	// REMOVE PIECE FROM PIECE LIST
@@ -46,13 +46,13 @@ void MM::ClearPiece(const uint32_t sq, Board& pos)
 	pos.piece_list[pce].pop_back();
 }
 
-void MM::AddPiece(const uint32_t sq, Board& pos, const uint32_t pce)
+void MM::addPiece(const uint32_t sq, Board& pos, const uint32_t pce)
 {
-	ASSERT(IsPiece(pce));
-	ASSERT(pos.SqOnBoard(sq));
+	ASSERT(isPiece(pce));
+	ASSERT(pos.sqOnBoard(sq));
 
 	int col = PieceInfo::PieceCol[pce];
-	Hash::HashPce(pce, sq, pos);
+	Hash::hashPce(pce, sq, pos);
 	pos.pieces[sq] = pce;
 
 	if(PieceInfo::PieceBig[pce])
@@ -69,8 +69,8 @@ void MM::AddPiece(const uint32_t sq, Board& pos, const uint32_t pce)
 	}
 	else
 	{
-		BB::SetBit(pos.pawns[col], Sq120ToSq64[sq]);
-		BB::SetBit(pos.pawns[BOTH], Sq120ToSq64[sq]);
+		BB::setBit(pos.pawns[col], Sq120ToSq64[sq]);
+		BB::setBit(pos.pawns[BOTH], Sq120ToSq64[sq]);
 	}
 	
 	pos.material[col]+=PieceInfo::PieceVal[pce];
@@ -78,25 +78,25 @@ void MM::AddPiece(const uint32_t sq, Board& pos, const uint32_t pce)
 	pos.piece_list[pce].push_back(sq);
 }
 
-void MM::MovePiece(const uint32_t src, const uint32_t dest, Board& pos)
+void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos)
 {
-    ASSERT(pos.SqOnBoard(src));
-    ASSERT(pos.SqOnBoard(dest));
+    ASSERT(pos.sqOnBoard(src));
+    ASSERT(pos.sqOnBoard(dest));
 
 	int pce = pos.pieces[src];
 	int col = PieceInfo::PieceCol[pce];
 
-	Hash::HashPce(pce, src, pos);
+	Hash::hashPce(pce, src, pos);
 	pos.pieces[src] = EMPTY;
-	Hash::HashPce(pce, dest, pos);
+	Hash::hashPce(pce, dest, pos);
 	pos.pieces[dest] = pce;
 
 	if(!PieceInfo::PieceBig[pce])
 	{
-		BB::ClearBit(pos.pawns[col], Sq120ToSq64[src]);
-		BB::ClearBit(pos.pawns[BOTH], Sq120ToSq64[src]);
-		BB::SetBit(pos.pawns[col], Sq120ToSq64[dest]);
-		BB::SetBit(pos.pawns[BOTH], Sq120ToSq64[dest]);
+		BB::clearBit(pos.pawns[col], Sq120ToSq64[src]);
+		BB::clearBit(pos.pawns[BOTH], Sq120ToSq64[src]);
+		BB::setBit(pos.pawns[col], Sq120ToSq64[dest]);
+		BB::setBit(pos.pawns[BOTH], Sq120ToSq64[dest]);
 	}
 
 	//update piece position in piece_list replace this with std::find()
@@ -110,48 +110,48 @@ void MM::MovePiece(const uint32_t src, const uint32_t dest, Board& pos)
 	
 }
 
-bool MM::MakeMove(Board& pos, Move moveInfo)
+bool MM::makeMove(Board& pos, Move moveInfo)
 {
-	ASSERT(CheckBoard(pos));
+	ASSERT(checkBoard(pos));
 
-	int from = moveInfo.From();
-	int to = moveInfo.To();
+	int from = moveInfo.from();
+	int to = moveInfo.to();
 	int side = pos.side_to_move;
 	int move = moveInfo.move;
 
-	ASSERT(pos.SqOnBoard(from));
-	ASSERT(pos.SqOnBoard(to));
-	ASSERT(pos.SqOnBoard(from));
-	ASSERT(IsPiece(pos.pieces[from]))
+	ASSERT(pos.sqOnBoard(from));
+	ASSERT(pos.sqOnBoard(to));
+	ASSERT(pos.sqOnBoard(from));
+	ASSERT(isPiece(pos.pieces[from]))
 
 	pos.history[pos.hist_ply].pos_key = pos.pos_key;
 
 	if(move & EP)
 	{
 		int offset = Attack::PnMoves[side];
-		MM::ClearPiece(to + offset, pos);
+		MM::clearPiece(to + offset, pos);
 	}
 	else if (move & CA)
 	{
 		switch(to)
 		{
 			case C1:
-				MM::MovePiece(A1, D1, pos);
+				MM::movePiece(A1, D1, pos);
 			break;
 			case C8:
-				MM::MovePiece(A8, D8, pos);
+				MM::movePiece(A8, D8, pos);
 			break;
 			case G1:
-				MM::MovePiece(H1, F1, pos);
+				MM::movePiece(H1, F1, pos);
 			break;
 			case G8:
-				MM::MovePiece(H8, F8, pos);
+				MM::movePiece(H8, F8, pos);
 			break;
 			default: ASSERT(false); break;
 		}
 	}
-	if(pos.en_pas != NO_SQ) Hash::HashEP(pos);
-	Hash::HashCa(pos);
+	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
+	Hash::hashCa(pos);
 
 	pos.history[pos.hist_ply].move = move;
 	pos.history[pos.hist_ply].fiftyMove = pos.fifty_move;
@@ -162,15 +162,15 @@ bool MM::MakeMove(Board& pos, Move moveInfo)
 	pos.castle_perm &= CastlePerm[to];
 	pos.en_pas = NO_SQ;
 
-	Hash::HashCa(pos);
+	Hash::hashCa(pos);
 
-	int captured = moveInfo.Captured();
+	int captured = moveInfo.captured();
 	++pos.fifty_move;
 
 	if(captured != EMPTY)
 	{
-		ASSERT(IsPiece(captured));
-		MM::ClearPiece(to, pos);
+		ASSERT(isPiece(captured));
+		MM::clearPiece(to, pos);
 		pos.fifty_move = 0;
 	}
 
@@ -185,18 +185,18 @@ bool MM::MakeMove(Board& pos, Move moveInfo)
 			int offset = Attack::PnMoves[!side];
 			pos.en_pas = from + offset;
 			ASSERT((side == WHITE && RankBrd[pos.en_pas] == RANK_3)||(side == BLACK && RankBrd[pos.en_pas] == RANK_6));
-			Hash::HashEP(pos);
+			Hash::hashEP(pos);
 		}
 	}
 
-	MM::MovePiece(from , to , pos);
+	MM::movePiece(from , to , pos);
 
-	int promotion = moveInfo.Promoted();
+	int promotion = moveInfo.promoted();
 	if(promotion != EMPTY)
 	{
-		ASSERT(IsPiece(promotion) && !PieceInfo::PiecePawn[promotion]);
-		MM::ClearPiece(to, pos);
-		MM::AddPiece(to, pos, promotion);
+		ASSERT(isPiece(promotion) && !PieceInfo::PiecePawn[promotion]);
+		MM::clearPiece(to, pos);
+		MM::addPiece(to, pos, promotion);
 	}
 
 	if(PieceInfo::PieceKing[pos.pieces[to]])
@@ -205,90 +205,90 @@ bool MM::MakeMove(Board& pos, Move moveInfo)
 	}
 
 	pos.side_to_move ^= 1;
-	Hash::HashSide(pos);
-	ASSERT(CheckBoard(pos));
+	Hash::hashSide(pos);
+	ASSERT(checkBoard(pos));
 
-	if(pos.SqAttacked(pos.king_sq[side], !side))
+	if(pos.sqAttacked(pos.king_sq[side], !side))
 	{
-		MM::TakeMove(pos);
+		MM::takeMove(pos);
 		return false;
 	}
 	return true;
 }
 
-void MM::TakeMove(Board& pos)
+void MM::takeMove(Board& pos)
 {
-	ASSERT(CheckBoard(pos));
+	ASSERT(checkBoard(pos));
 
 	--pos.hist_ply;
 	--pos.ply;
 
 	Move moveInfo = Move(pos.history[pos.hist_ply].move);
 	int move = moveInfo.move;
-	int from = moveInfo.From();
-	int to = moveInfo.To();
+	int from = moveInfo.from();
+	int to = moveInfo.to();
 
-	ASSERT(pos.SqOnBoard(from) && pos.SqOnBoard(to));
+	ASSERT(pos.sqOnBoard(from) && pos.sqOnBoard(to));
 
-	if(pos.en_pas != NO_SQ) Hash::HashEP(pos);
-	Hash::HashCa(pos);
+	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
+	Hash::hashCa(pos);
 
 	U_Move undo = pos.history[pos.hist_ply];
 	pos.castle_perm = undo.castlePerm;
 	pos.fifty_move = undo.fiftyMove;
 	pos.en_pas = undo.enPas;
 
-    if(pos.en_pas != NO_SQ) Hash::HashEP(pos);
-    Hash::HashCa(pos);
+    if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
+    Hash::hashCa(pos);
 
 	pos.side_to_move ^= 1;
-	Hash::HashSide(pos);
+	Hash::hashSide(pos);
 
 	if(move & EP)
 	{
 		int offset = Attack::PnMoves[pos.side_to_move];
 		int pce = pos.side_to_move == WHITE ? bP: wP;
-		MM::AddPiece(to + offset, pos, pce);
+		MM::addPiece(to + offset, pos, pce);
 	}
 	else if (move & CA)
 	{
 		switch(to)
 		{
 			case C1:
-				MM::MovePiece(D1, A1, pos);
+				MM::movePiece(D1, A1, pos);
 			break;
 			case C8:
-				MM::MovePiece(D8, A8, pos);
+				MM::movePiece(D8, A8, pos);
 			break;
 			case G1:
-				MM::MovePiece(F1, H1, pos);
+				MM::movePiece(F1, H1, pos);
 			break;
 			case G8:
-				MM::MovePiece(F8, H8, pos);
+				MM::movePiece(F8, H8, pos);
 			break;
 			default: ASSERT(false); break;
 		}
 	}
-	MM::MovePiece(to, from, pos);
-	ASSERT(IsPiece(pos.pieces[from]));
+	MM::movePiece(to, from, pos);
+	ASSERT(isPiece(pos.pieces[from]));
 	if (PieceInfo::PieceKing[pos.pieces[from]])
 	{
 		pos.king_sq[pos.side_to_move] = from;
 	}
 
-	int captured = moveInfo.Captured();
+	int captured = moveInfo.captured();
 	if(captured != EMPTY)
 	{
-		ASSERT(IsPiece(captured));
-		MM::AddPiece(to, pos, captured);
+		ASSERT(isPiece(captured));
+		MM::addPiece(to, pos, captured);
 	}
 
-	int promotion = moveInfo.Promoted();
+	int promotion = moveInfo.promoted();
 	if(promotion != EMPTY)
 	{
-		ASSERT(IsPiece(promotion) && !PieceInfo::PiecePawn[promotion]);
-		MM::ClearPiece(from, pos);
-		MM::AddPiece(from, pos, (PieceInfo::PieceCol[promotion] == WHITE ? wP : bP));
+		ASSERT(isPiece(promotion) && !PieceInfo::PiecePawn[promotion]);
+		MM::clearPiece(from, pos);
+		MM::addPiece(from, pos, (PieceInfo::PieceCol[promotion] == WHITE ? wP : bP));
 	}
-	ASSERT(CheckBoard(pos));
+	ASSERT(checkBoard(pos));
 }

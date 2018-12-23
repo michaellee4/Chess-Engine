@@ -24,15 +24,15 @@ const int CastlePerm[120] = {
 class MM
 {
 	// Used by Make/Take move to manipulate the board for a move
-    static void ClearPiece(const uint32_t sq, Board& pos);
-    static void AddPiece(const uint32_t sq, Board& pos, const uint32_t pce);
-    static void MovePiece(const uint32_t src, const uint32_t dest, Board& pos);
+    static void clearPiece(const uint32_t sq, Board& pos);
+    static void addPiece(const uint32_t sq, Board& pos, const uint32_t pce);
+    static void movePiece(const uint32_t src, const uint32_t dest, Board& pos);
 public:
 	// Makes the provided move (move piece/capture/update board)
-    static bool MakeMove(Board& pos, Move moveInfo);
+    static bool makeMove(Board& pos, Move moveInfo);
 
     // Undo's the last move made which is stored in Board::hist_move
-    static void TakeMove(Board& pos);
+    static void takeMove(Board& pos);
     
 };
 

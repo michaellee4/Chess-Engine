@@ -4,23 +4,23 @@
 
 namespace Hash
 {
-	// Generates a positions hash key
-	uint64_t GeneratePosKey(const Board& pos);
+	// generates a positions hash key
+	uint64_t generatePosKey(const Board& pos);
 
 	// Used in Make/Take as macros to update position key
-	inline void HashPce(uint32_t pce, uint32_t sq, Board& pos)
+	inline void hashPce(uint32_t pce, uint32_t sq, Board& pos)
 	{
 		pos.pos_key ^= (PieceKeys[(pce)][(sq)]);
 	}
-	inline void HashCa(Board& pos)
+	inline void hashCa(Board& pos)
 	{
 		pos.pos_key ^= (CastleKeys[(pos.castle_perm)]);
 	}
-	inline void HashSide(Board& pos)
+	inline void hashSide(Board& pos)
 	{
 		pos.pos_key ^= (SideKey);
 	}
-	inline void HashEP(Board& pos)
+	inline void hashEP(Board& pos)
 	{
 		pos.pos_key ^= (PieceKeys[EMPTY][(pos.en_pas)]);
 	}

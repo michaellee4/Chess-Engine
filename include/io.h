@@ -9,10 +9,10 @@
 #include <string>
 namespace IOHandler
 {
-	void PrintBoard(const Board& pos);
-	void PrintBitBoard(const uint64_t);
-	void PrintMoveList(const MoveList& list);
-	Move ParseMove(std::string input, Board& pos);
+	void printBoard(const Board& pos);
+	void printBitBoard(const uint64_t);
+	void printMoveList(const MoveList& list);
+	Move parseMove(std::string input, Board& pos);
 };
 
 #endif

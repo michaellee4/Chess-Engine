@@ -13,7 +13,7 @@ int RankBrd[BRD_SQ_NUM];
 uint64_t SetMask[64];
 uint64_t ClearMask[64];
 
-void InitFileRankBrd()
+void initFileRankBrd()
 {
 	for(uint32_t sq = 0; sq < BRD_SQ_NUM; ++sq)
 	{
@@ -25,7 +25,7 @@ void InitFileRankBrd()
 	{
 		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
 		{
-			int sq = FileRankToSq(file, rank);
+			int sq = fileRankToSq(file, rank);
 			FileBrd[sq] = file;
 			RankBrd[sq] = rank;
 		}
@@ -33,7 +33,7 @@ void InitFileRankBrd()
 }
 
 // creates 2 arrays to map 64 <-> 120 board square representations
-void InitSq120ToSq64()
+void initSq120ToSq64()
 {
 	int sq64 = 0;
 
@@ -52,7 +52,7 @@ void InitSq120ToSq64()
 	{
 		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
 		{
-			int sq = FileRankToSq(file, rank);
+			int sq = fileRankToSq(file, rank);
 			Sq64ToSq120[sq64] = sq;
 			Sq120ToSq64[sq] = sq64;
 			++sq64;
@@ -60,7 +60,7 @@ void InitSq120ToSq64()
 	}
 }
 
-void InitBitMasks()
+void initBitMasks()
 {
 	for(uint32_t index = 0; index < 64; ++index)
 	{
@@ -69,27 +69,27 @@ void InitBitMasks()
 	}
 }
 
-void InitHashKeys()
+void initHashKeys()
 {
 	for(uint32_t i = 0; i < 13; ++i )
 	{
 		for(uint32_t j = 0; j < 120; ++j)
 		{
-			PieceKeys[i][j] = RandU64();
+			PieceKeys[i][j] = randU64();
 		}
 	}
-	SideKey = RandU64();
+	SideKey = randU64();
 
 	for(uint32_t i = 0; i < 16; ++i )
 	{
-		CastleKeys[i] = RandU64();
+		CastleKeys[i] = randU64();
 	}
 }
 
-void InitAll()
+void initAll()
 {
-	InitSq120ToSq64();
-	InitBitMasks();
-	InitHashKeys();
-	InitFileRankBrd();
+	initSq120ToSq64();
+	initBitMasks();
+	initHashKeys();
+	initFileRankBrd();
 }

@@ -16,31 +16,31 @@ Move::Move()
 	this->move = this->score = 0;
 }
 
-uint32_t Move::From()
+uint32_t Move::from()
 {
 	return this->move & 0x7f;
 }
-uint32_t Move::To()
+uint32_t Move::to()
 {
 	return (this->move >> 7) & 0x7f; 
 }
-uint32_t Move::Captured()
+uint32_t Move::captured()
 {
 	return (this->move >> 14) & 0xf; 
 }
-uint32_t Move::EnPassant()
+uint32_t Move::enPassant()
 {
 	return this->move & 0x40000;
 }
-uint32_t Move::PawnStart()
+uint32_t Move::pawnStart()
 {
 	return this->move & 0x80000; 
 }
-uint32_t Move::Promoted()
+uint32_t Move::promoted()
 {
 	return (this->move >> 20) & 0xf;
 }
-uint32_t Move::Castle()
+uint32_t Move::castle()
 {
 	return this->move & 0x1000000;
 }
@@ -52,13 +52,13 @@ bool Move::wasPromotion()
 {
 	return this->move & 0xf00000;
 }
-std::string Move::ToString()
+std::string Move::toString()
 {
-	char srcFile = 'a' + FileBrd[this->From()];
-	char srcRank = '1' + RankBrd[this->From()];
-	char destFile = 'a' + FileBrd[this->To()];
-	char destRank = '1' + RankBrd[this->To()];
-	int promoted = this->Promoted();
+	char srcFile = 'a' + FileBrd[this->from()];
+	char srcRank = '1' + RankBrd[this->from()];
+	char destFile = 'a' + FileBrd[this->to()];
+	char destRank = '1' + RankBrd[this->to()];
+	int promoted = this->promoted();
 	std::ostringstream stream;
 	stream << srcFile << srcRank << destFile << destRank;
 	if(promoted)

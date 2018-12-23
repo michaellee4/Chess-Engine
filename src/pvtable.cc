@@ -44,14 +44,14 @@ int32_t PV_Table::getPvLine(Board& pos, const uint32_t depth)
 	{
 		ASSERT(count < MAXDEPTH);
 		// check move exists here?
-		MM::MakeMove(pos, move);
+		MM::makeMove(pos, move);
 		pos.pv_arr[count++] = move;
 		move = pos.pv_table.get(pos);
 	}
 
 	while(pos.ply > 0)
 	{
-		MM::TakeMove(pos);
+		MM::takeMove(pos);
 	}
 
 	return count;

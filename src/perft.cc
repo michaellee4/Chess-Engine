@@ -4,9 +4,9 @@
 #include <iostream>
 #include <sstream>
 #include "io.h"
-void PerftTester::Perft(uint32_t depth, Board& pos) {
+void PerftTester::perft(uint32_t depth, Board& pos) {
 
-    ASSERT(CheckBoard(pos));  
+    ASSERT(checkBoard(pos));  
 
 	if(depth == 0) {
         ++this->leafNodes;
@@ -14,51 +14,51 @@ void PerftTester::Perft(uint32_t depth, Board& pos) {
     }	
 
     MoveList m;
-    m.GenerateAllMoves(pos);
+    m.generateAllMoves(pos);
       
 	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {	
        
-        if ( !MM::MakeMove(pos,m[MoveNum]))  {
+        if ( !MM::makeMove(pos,m[MoveNum]))  {
             continue;
         }
-        Perft(depth - 1, pos);
-        MM::TakeMove(pos);
+        perft(depth - 1, pos);
+        MM::takeMove(pos);
     }
 }
 
 
-int PerftTester::PerftTest(uint32_t depth, Board& pos, bool print = true) {
+int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) {
 
-    // ASSERT(CheckBoard(pos));
+    // ASSERT(checkBoard(pos));
 	
 	if(print)
 	{
-		IOHandler::PrintBoard(pos);
+		IOHandler::printBoard(pos);
 		std::cout << std::endl << "Starting Test To Depth: "<< depth << std::endl;
 	}
 	this->leafNodes = 0;
 
     MoveList m;
-    m.GenerateAllMoves(pos);
+    m.generateAllMoves(pos);
     
 	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {
         Move move = m[MoveNum];
-        if ( !MM::MakeMove(pos, move))  {
+        if ( !MM::makeMove(pos, move))  {
             continue;
         }
         long cumnodes = this->leafNodes;
-        Perft(depth - 1, pos);
-        MM::TakeMove(pos);        
+        perft(depth - 1, pos);
+        MM::takeMove(pos);        
         long oldnodes = this->leafNodes - cumnodes;
 		if(print)
-    		std::cout << "move " << MoveNum + 1 << " : " << move.ToString() << " : " << oldnodes<<std::endl;
+    		std::cout << "move " << MoveNum + 1 << " : " << move.toString() << " : " << oldnodes<<std::endl;
 	}
 	if(print)
 		std::cout << std::endl << "Test Complete : " << this->leafNodes << " nodes visited" << std::endl;
     return this->leafNodes;
 }
 
-void PerftTester::PerftTestAll(Board& pos)
+void PerftTester::perftTestAll(Board& pos)
 {
 	
 	std::ifstream perftFile("tests/perftsuite.epd");
@@ -75,7 +75,7 @@ void PerftTester::PerftTestAll(Board& pos)
 			std::stringstream line(linebuf);
 			getline(line, fen, ';');
 			std::cout << "Testing fen: "<< fen <<std::endl;
-			pos.ParseFEN(fen);
+			pos.parseFEN(fen);
 			while(line.good())
 			{
 				line >> buf;
@@ -84,7 +84,7 @@ void PerftTester::PerftTestAll(Board& pos)
 				line >> buf;
 				if(depth <= 5)
 				{
-					int perft = PerftTest(depth, pos, false);
+					int perft = perftTest(depth, pos, false);
 					if(perft != expected)
 					{
 						std::cout << "mismatch at depth: " << depth << " got " << perft << " expected " << expected<< std::endl;

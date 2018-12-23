@@ -10,33 +10,33 @@ class MoveList
 {	
 	private:
 		// Creates and adds a type of move to eh movelist
-		void AddQuietMove(Board& pos, Move move);
-		void AddCaptureMove(Board& pos, Move move);
-		void AddEnPasMove(Board& pos, Move move);
+		void addQuietMove(Board& pos, Move move);
+		void addCaptureMove(Board& pos, Move move);
+		void addEnPasMove(Board& pos, Move move);
 
-		// Add's each piece's move
-		void AddPawnMove(Board& pos, uint32_t from, uint32_t to, uint32_t side);
-		void AddPawnCaptureMove(Board& pos, uint32_t from, uint32_t to, uint32_t cap, uint32_t side);
-		void GeneratePawnMoves(Board& pos, uint32_t side);
-		void GenerateBishopMoves(Board& pos, uint32_t side);
-		void GenerateRookMoves(Board& pos, uint32_t side);
-		void GenerateQueenMoves(Board& pos, uint32_t side);
-		void GenerateKnightMoves(Board& pos, uint32_t side);
-		void GenerateKingMoves(Board& pos, uint32_t side);
-		void GenerateSlidingMoves(Board& pos, uint32_t side);
-		void GenerateNonSlidingMoves(Board& pos, uint32_t side);
-		void GenerateCastlingMoves(Board& psd, uint32_t side);
+		// add's each piece's move
+		void addPawnMove(Board& pos, uint32_t from, uint32_t to, uint32_t side);
+		void addPawnCaptureMove(Board& pos, uint32_t from, uint32_t to, uint32_t cap, uint32_t side);
+		void generatePawnMoves(Board& pos, uint32_t side);
+		void generateBishopMoves(Board& pos, uint32_t side);
+		void generateRookMoves(Board& pos, uint32_t side);
+		void generateQueenMoves(Board& pos, uint32_t side);
+		void generateKnightMoves(Board& pos, uint32_t side);
+		void generateKingMoves(Board& pos, uint32_t side);
+		void generateSlidingMoves(Board& pos, uint32_t side);
+		void generateNonSlidingMoves(Board& pos, uint32_t side);
+		void generateCastlingMoves(Board& psd, uint32_t side);
 		std::vector<Move> moves;
 
 	public:
 
 		MoveList();
 
-		void GenerateAllMoves(Board& pos);
+		void generateAllMoves(Board& pos);
 		uint32_t size() const;
 		const Move& operator[](const int idx) const;
 		Move& operator[](const int idx);
-		// void PrintMoveList();
+		// void printMoveList();
 };
 
 

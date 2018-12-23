@@ -27,7 +27,7 @@ Board::Board():pieces(BRD_SQ_NUM),
 	{
 		this->piece_list[i].reserve(10);
 	}
-	this->ParseFEN(STARTFEN);
+	this->parseFEN(STARTFEN);
 }
 
 Board::Board(const std::string fen):pieces(BRD_SQ_NUM),
@@ -48,10 +48,10 @@ Board::Board(const std::string fen):pieces(BRD_SQ_NUM),
 	{
 		this->piece_list[i].reserve(10);
 	}
-	this->ParseFEN(fen);
+	this->parseFEN(fen);
 }
 
-void Board::ResetBoard(void)
+void Board::resetBoard(void)
 {
 	for(uint32_t i = 0; i < BRD_SQ_NUM; ++i)
 	{
@@ -91,7 +91,7 @@ void Board::ResetBoard(void)
 
 	this->pos_key = 0ULL;
 }
-void Board::SetUpPieces(const std::string& section)
+void Board::setUpPieces(const std::string& section)
 {
 	int fenIdx = 0;
 	for(int32_t rank = RANK_8; rank >= RANK_1; rank --)
@@ -102,7 +102,7 @@ void Board::SetUpPieces(const std::string& section)
 			{
 				for(int32_t i = 0; i < section[fenIdx] - '0'; ++i)
 				{
-					this->pieces[FileRankToSq(file, rank)] = EMPTY;
+					this->pieces[fileRankToSq(file, rank)] = EMPTY;
 					++file;
 				}
 				file--;
@@ -112,18 +112,18 @@ void Board::SetUpPieces(const std::string& section)
 			{
 				switch(section[fenIdx])
 				{
-					case 'p':this->pieces[FileRankToSq(file, rank)] = bP;break;
-					case 'n':this->pieces[FileRankToSq(file, rank)] = bN;break;
-					case 'b':this->pieces[FileRankToSq(file, rank)] = bB;break;
-					case 'r':this->pieces[FileRankToSq(file, rank)] = bR;break;
-					case 'q':this->pieces[FileRankToSq(file, rank)] = bQ;break;
-					case 'k':this->pieces[FileRankToSq(file, rank)] = bK;break;
-					case 'P':this->pieces[FileRankToSq(file, rank)] = wP;break;
-					case 'N':this->pieces[FileRankToSq(file, rank)] = wN;break;
-					case 'B':this->pieces[FileRankToSq(file, rank)] = wB;break;
-					case 'R':this->pieces[FileRankToSq(file, rank)] = wR;break;
-					case 'Q':this->pieces[FileRankToSq(file, rank)] = wQ;break;
-					case 'K':this->pieces[FileRankToSq(file, rank)] = wK;break;
+					case 'p':this->pieces[fileRankToSq(file, rank)] = bP;break;
+					case 'n':this->pieces[fileRankToSq(file, rank)] = bN;break;
+					case 'b':this->pieces[fileRankToSq(file, rank)] = bB;break;
+					case 'r':this->pieces[fileRankToSq(file, rank)] = bR;break;
+					case 'q':this->pieces[fileRankToSq(file, rank)] = bQ;break;
+					case 'k':this->pieces[fileRankToSq(file, rank)] = bK;break;
+					case 'P':this->pieces[fileRankToSq(file, rank)] = wP;break;
+					case 'N':this->pieces[fileRankToSq(file, rank)] = wN;break;
+					case 'B':this->pieces[fileRankToSq(file, rank)] = wB;break;
+					case 'R':this->pieces[fileRankToSq(file, rank)] = wR;break;
+					case 'Q':this->pieces[fileRankToSq(file, rank)] = wQ;break;
+					case 'K':this->pieces[fileRankToSq(file, rank)] = wK;break;
 				}
 			}
 			++fenIdx;
@@ -132,7 +132,7 @@ void Board::SetUpPieces(const std::string& section)
 	}
 }
 
-void Board::GetCastlePerm(const std::string& section)
+void Board::getCastlePerm(const std::string& section)
 {
 	this->castle_perm = 0;
 	if(section[0] != '-')
@@ -159,17 +159,17 @@ void Board::GetCastlePerm(const std::string& section)
 }
 
 
-void Board::GetEnPassant(const std::string& section)
+void Board::getenPassant(const std::string& section)
 {
 	if(section != "-")
 	{
 		int file = section[0] - 'a';
 		int rank = section[1] - '1';
-		this->en_pas = FileRankToSq(file, rank);
+		this->en_pas = fileRankToSq(file, rank);
 	}
 }
 
-void Board::GetMoveCounters(std::istringstream& stream, std::string& section)
+void Board::getMoveCounters(std::istringstream& stream, std::string& section)
 {
 	using namespace std;
 
@@ -187,18 +187,18 @@ void Board::GetMoveCounters(std::istringstream& stream, std::string& section)
 	}
 }
 
-void Board::ParseFEN(const std::string fen)
+void Board::parseFEN(const std::string fen)
 {
 	using namespace std;
 
-	this->ResetBoard();
+	this->resetBoard();
 
 	std::istringstream stream(fen);
 	std::string section;
 
 	// piece locations 
 	std::getline(stream, section, ' ');
-	this->SetUpPieces(section);
+	this->setUpPieces(section);
 
 	// side to move
 	std::getline(stream, section, ' ');
@@ -206,21 +206,21 @@ void Board::ParseFEN(const std::string fen)
 
 	// Castling permissions
 	std::getline(stream, section, ' ');
-	this->GetCastlePerm(section);
+	this->getCastlePerm(section);
 
 	// En Passant Square
 	std::getline(stream, section, ' ');
-	this->GetEnPassant(section);
+	this->getenPassant(section);
 
 	// halfmove clock (halfmoves since capture or pawn advance)
 	std::getline(stream, section, ' ');
-	this->GetMoveCounters(stream, section);
+	this->getMoveCounters(stream, section);
 
-	this->pos_key = Hash::GeneratePosKey(*this);
-	this->UpdatePieceLists();
+	this->pos_key = Hash::generatePosKey(*this);
+	this->updatePieceLists();
 }
 
-// void Board::PrintBoard() const{
+// void Board::printBoard() const{
 	
 // 	int sq,file,rank,piece;
 	
@@ -229,7 +229,7 @@ void Board::ParseFEN(const std::string fen)
 // 	for(rank = RANK_8; rank >= RANK_1; rank--) {
 // 		printf("%d  ",rank+1);
 // 		for(file = FILE_A; file <= FILE_H; ++file) {
-// 			sq = FileRankToSq(file,rank);
+// 			sq = fileRankToSq(file,rank);
 // 			piece = this->pieces[sq];
 // 			printf("%3c",BoardChar::PceChar[piece]);
 // 		}
@@ -252,13 +252,13 @@ void Board::ParseFEN(const std::string fen)
 // 	printf("PosKey:%lX\n\n",this->pos_key);
 // }
 
-void Board::UpdatePieceLists()
+void Board::updatePieceLists()
 {
 	for(uint32_t index = 0; index < BRD_SQ_NUM; ++index)
 	{
 		int piece = this->pieces[index];
 		// on board
-		if( IsPiece(piece) )
+		if( isPiece(piece) )
 		{
 			int color = PieceInfo::PieceCol[piece];
 			this->big_pce[color] += PieceInfo::PieceBig[piece];
@@ -273,19 +273,19 @@ void Board::UpdatePieceLists()
 
 			if(piece == wP) 
 			{
-				BB::SetBit(this->pawns[WHITE], Sq120ToSq64[index]);
-				BB::SetBit(this->pawns[BOTH], Sq120ToSq64[index]);
+				BB::setBit(this->pawns[WHITE], Sq120ToSq64[index]);
+				BB::setBit(this->pawns[BOTH], Sq120ToSq64[index]);
 			}
 			if(piece == bP) 
 			{
-				BB::SetBit(this->pawns[BLACK], Sq120ToSq64[index]);
-				BB::SetBit(this->pawns[BOTH], Sq120ToSq64[index]);
+				BB::setBit(this->pawns[BLACK], Sq120ToSq64[index]);
+				BB::setBit(this->pawns[BOTH], Sq120ToSq64[index]);
 			}
 		}
 	}
 }
 
-bool CheckBoard(const Board& pos)
+bool checkBoard(const Board& pos)
 {
 	uint32_t t_pceNum[NUM_PCE_TYPES] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	uint32_t t_bigPce[NUM_SIDES] = { 0, 0};
@@ -327,26 +327,26 @@ bool CheckBoard(const Board& pos)
 	}
 	
 	// check bitboards count
-	pcount = BB::CountBits(t_pawns[WHITE]);
+	pcount = BB::countBits(t_pawns[WHITE]);
 	ASSERT(pcount == pos.piece_list[wP].size());
-	pcount = BB::CountBits(t_pawns[BLACK]);
+	pcount = BB::countBits(t_pawns[BLACK]);
 	ASSERT(pcount == pos.piece_list[bP].size());
-	pcount = BB::CountBits(t_pawns[BOTH]);
+	pcount = BB::countBits(t_pawns[BOTH]);
 	ASSERT(pcount == (pos.piece_list[bP].size() + pos.piece_list[wP].size()));
 	(void) pcount;
 	// check bitboards squares
 	while(t_pawns[WHITE]) {
-		sq64 = BB::PopBit(t_pawns[WHITE]);
+		sq64 = BB::popBit(t_pawns[WHITE]);
 		ASSERT(pos.pieces[Sq64ToSq120[sq64]] == wP);
 	}
 	
 	while(t_pawns[BLACK]) {
-		sq64 = BB::PopBit(t_pawns[BLACK]);
+		sq64 = BB::popBit(t_pawns[BLACK]);
 		ASSERT(pos.pieces[Sq64ToSq120[sq64]] == bP);
 	}
 	
 	while(t_pawns[BOTH]) {
-		sq64 = BB::PopBit(t_pawns[BOTH]);
+		sq64 = BB::popBit(t_pawns[BOTH]);
 		ASSERT( (pos.pieces[Sq64ToSq120[sq64]] == bP) || (pos.pieces[Sq64ToSq120[sq64]] == wP) );
 	}
 	
@@ -356,7 +356,7 @@ bool CheckBoard(const Board& pos)
 	ASSERT(t_bigPce[WHITE]==pos.big_pce[WHITE] && t_bigPce[BLACK]==pos.big_pce[BLACK]);	
 	
 	ASSERT(pos.side_to_move==WHITE || pos.side_to_move==BLACK);
-	// printf("%d %d\n",Hash::GeneratePosKey(pos), pos.pos_key );ASSERT(Hasher::GeneratePosKey(pos)==pos.pos_key);
+	// printf("%d %d\n",Hash::generatePosKey(pos), pos.pos_key );ASSERT(Hasher::generatePosKey(pos)==pos.pos_key);
 	
 	ASSERT(pos.en_pas==NO_SQ || ( RankBrd[pos.en_pas]==RANK_6 && pos.side_to_move == WHITE)
 		 || ( RankBrd[pos.en_pas]==RANK_3 && pos.side_to_move == BLACK));
@@ -368,12 +368,12 @@ bool CheckBoard(const Board& pos)
 }
 
 
-bool Board::SqOnBoard(uint32_t sq) const
+bool Board::sqOnBoard(uint32_t sq) const
 {
 	return !(this->pieces[sq] == OFFBOARD);
 }
 
-uint32_t Board::SqAttacked(const uint32_t sq, const uint32_t attacker) const
+uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const
 {
 	uint32_t numAttackers = 0;
 	// Check Pawn

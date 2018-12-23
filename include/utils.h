@@ -6,18 +6,19 @@
 #include <string>
 
 // returns the SQ# on the 120 Sq board representation
-int FileRankToSq(int file, int rank);
+int fileRankToSq(int file, int rank);
 
-// Generates a random 64 bit integer
-uint64_t RandU64();
+// generates a random 64 bit integer
+uint64_t randU64();
 
-bool IsPiece(int piece);
+bool isPiece(int piece);
 
-// Prints the 8x8 board with numbers indicating how many times each sq is attacked by the provided side
-void ShowSqAtBySide(const int side,Board& pos);
+// prints the 8x8 board with numbers indicating how many times each sq is attacked by the provided side
+void showAttackedSqs(const int side,Board& pos);
 
 // String representation of a square
-std::string SqToString(const int sq);
+std::string sqToString(const int sq);
 
-void StringToLower(std::string& str);
+void stringToLower(std::string& str);
 #endif
+

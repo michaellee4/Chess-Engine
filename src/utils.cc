@@ -6,17 +6,17 @@
 #include <sstream>
 #include <algorithm>
 //return the 120 sq value of a given file and rank
-int FileRankToSq(int file, int rank)
+int fileRankToSq(int file, int rank)
 {
 	return 21 + file + rank * 10;
 }
 
-bool IsPiece(int piece)
+bool isPiece(int piece)
 {
 	return (piece != OFFBOARD && piece != EMPTY && piece != NO_SQ);
 }
 
-std::string SqToString(const int sq)
+std::string sqToString(const int sq)
 {
 	std::ostringstream stream;
 	char file = 'a' + FileBrd[sq];
@@ -26,7 +26,7 @@ std::string SqToString(const int sq)
 }
  
 //https://stackoverflow.com/questions/37396278/how-to-generate-very-large-random-number-in-c
-uint64_t RandU64() 
+uint64_t randU64() 
 {
 	using namespace std;
 	  /* Seed */
@@ -41,7 +41,7 @@ uint64_t RandU64()
 }
 
 
-void ShowSqAtBySide(const int side,Board& pos) {
+void showAttackedSqs(const int side,Board& pos) {
 		
 	int rank = 0;
 	int file = 0;
@@ -50,8 +50,8 @@ void ShowSqAtBySide(const int side,Board& pos) {
 	printf("\n\nSquares attacked by:%c\n",BoardChar::SideChar[side]);
 	for(rank = RANK_8; rank >= RANK_1; --rank) {
 		for(file = FILE_A; file <= FILE_H; ++file) {
-			sq = FileRankToSq(file,rank);
-			int numAtk = pos.SqAttacked(sq, side);
+			sq = fileRankToSq(file,rank);
+			int numAtk = pos.sqAttacked(sq, side);
 			printf("%i",numAtk );
 				
 		}
@@ -61,7 +61,7 @@ void ShowSqAtBySide(const int side,Board& pos) {
 
 }
 
-void StringToLower(std::string& str)
+void stringToLower(std::string& str)
 {
 	std::transform(str.begin(), str.end(), str.begin(), ::tolower);
 }

@@ -8,7 +8,7 @@
 #include <string>
 #include <sstream>
 
-// Generate and counts all legal moves to a given depths.
+// generate and counts all legal moves to a given depths.
 // Correct values given in the perft.epd file in root dir
 class PerftTester
 {
@@ -16,10 +16,10 @@ private:
 	const uint32_t depth_limit = 6;
 	long testArr[6 + 1];
 	long leafNodes;
-	void Perft(uint32_t depth, Board& pos);
+	void perft(uint32_t depth, Board& pos);
 public:
-	int PerftTest(uint32_t depth, Board& pos, bool print);
-	void PerftTestAll(Board& pos);
+	int perftTest(uint32_t depth, Board& pos, bool print);
+	void perftTestAll(Board& pos);
 };
 
 
