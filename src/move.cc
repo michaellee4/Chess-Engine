@@ -54,10 +54,10 @@ bool Move::wasPromotion()
 }
 std::string Move::toString()
 {
-	char srcFile = 'a' + FileBrd[this->from()];
-	char srcRank = '1' + RankBrd[this->from()];
-	char destFile = 'a' + FileBrd[this->to()];
-	char destRank = '1' + RankBrd[this->to()];
+	char srcFile = 'a' + BoardUtils::FileBrd[this->from()];
+	char srcRank = '1' + BoardUtils::RankBrd[this->from()];
+	char destFile = 'a' + BoardUtils::FileBrd[this->to()];
+	char destRank = '1' + BoardUtils::RankBrd[this->to()];
 	int promoted = this->promoted();
 	std::ostringstream stream;
 	stream << srcFile << srcRank << destFile << destRank;

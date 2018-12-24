@@ -19,8 +19,8 @@ bool isPiece(int piece)
 std::string sqToString(const int sq)
 {
 	std::ostringstream stream;
-	char file = 'a' + FileBrd[sq];
-	char rank = '1' + RankBrd[sq];
+	char file = 'a' + BoardUtils::FileBrd[sq];
+	char rank = '1' + BoardUtils::RankBrd[sq];
 	stream<<file<<rank;
 	return stream.str();
 }

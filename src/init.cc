@@ -3,12 +3,29 @@
 #include "init.h"
 #include "hash.h"
 #include "bitboard.h"
+#include <vector>
+// std::vector<int32_t> BoardUtils::Sq120ToSq64(BRD_SQ_NUM);
+// std::vector<int32_t> BoardUtils::Sq64ToSq120(64);
 
-int Sq120ToSq64[BRD_SQ_NUM];
-int Sq64ToSq120[64];
+// int BoardUtils::FileBrd[BRD_SQ_NUM];
+// int BoardUtils::RankBrd[BRD_SQ_NUM];
 
-int FileBrd[BRD_SQ_NUM];
-int RankBrd[BRD_SQ_NUM];
+namespace BoardUtils
+{
+	// *** used in init
+	std::vector<int32_t> Sq120ToSq64(BRD_SQ_NUM);
+	std::vector<int32_t> Sq64ToSq120(64);
+	//*** used in utils
+	std::vector<int32_t> FileBrd(BRD_SQ_NUM);
+	std::vector<int32_t> RankBrd(BRD_SQ_NUM);
+}
+
+namespace Hash
+{
+	std::vector<std::vector<uint64_t>> PieceKeys(13, std::vector<uint64_t>(120));
+	uint64_t SideKey;
+	std::vector<uint64_t> CastleKeys(16);
+}
 
 uint64_t SetMask[64];
 uint64_t ClearMask[64];
@@ -17,8 +34,8 @@ void initFileRankBrd()
 {
 	for(uint32_t sq = 0; sq < BRD_SQ_NUM; ++sq)
 	{
-		FileBrd[sq] = OFFBOARD;
-		RankBrd[sq] = OFFBOARD;
+		BoardUtils::FileBrd[sq] = OFFBOARD;
+		BoardUtils::RankBrd[sq] = OFFBOARD;
 	}
 
 	for(uint32_t rank = RANK_1; rank<=RANK_8; ++rank)
@@ -26,8 +43,8 @@ void initFileRankBrd()
 		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
 		{
 			int sq = fileRankToSq(file, rank);
-			FileBrd[sq] = file;
-			RankBrd[sq] = rank;
+			BoardUtils::FileBrd[sq] = file;
+			BoardUtils::RankBrd[sq] = rank;
 		}
 	}
 }
@@ -40,12 +57,12 @@ void initSq120ToSq64()
 	for(uint32_t index = 0; index < BRD_SQ_NUM; ++index)
 	{
 		// use 65 as invalid value
-		Sq120ToSq64[index] = 65;
+		BoardUtils::Sq120ToSq64[index] = 65;
 	}
 
 	for(uint32_t index = 0; index < 64; ++index)
 	{
-		Sq64ToSq120[index] = 65;
+		BoardUtils::Sq64ToSq120[index] = 65;
 	}
 
 	for(uint32_t rank = RANK_1; rank <= RANK_8; ++rank)
@@ -53,8 +70,8 @@ void initSq120ToSq64()
 		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
 		{
 			int sq = fileRankToSq(file, rank);
-			Sq64ToSq120[sq64] = sq;
-			Sq120ToSq64[sq] = sq64;
+			BoardUtils::Sq64ToSq120[sq64] = sq;
+			BoardUtils::Sq120ToSq64[sq] = sq64;
 			++sq64;
 		}
 	}
@@ -75,14 +92,14 @@ void initHashKeys()
 	{
 		for(uint32_t j = 0; j < 120; ++j)
 		{
-			PieceKeys[i][j] = randU64();
+			Hash::PieceKeys[i][j] = randU64();
 		}
 	}
-	SideKey = randU64();
+	Hash::SideKey = randU64();
 
 	for(uint32_t i = 0; i < 16; ++i )
 	{
-		CastleKeys[i] = randU64();
+		Hash::CastleKeys[i] = randU64();
 	}
 }
 

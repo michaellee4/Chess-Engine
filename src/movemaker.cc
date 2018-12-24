@@ -30,8 +30,8 @@ void MM::clearPiece(const uint32_t sq, Board& pos)
 	}
 	else
 	{
-		BB::clearBit(pos.pawns[col], Sq120ToSq64[sq]);
-		BB::clearBit(pos.pawns[BOTH], Sq120ToSq64[sq]);
+		BB::clearBit(pos.pawns[col], BoardUtils::Sq120ToSq64[sq]);
+		BB::clearBit(pos.pawns[BOTH], BoardUtils::Sq120ToSq64[sq]);
 	}
 
 	// REMOVE PIECE FROM PIECE LIST
@@ -69,8 +69,8 @@ void MM::addPiece(const uint32_t sq, Board& pos, const uint32_t pce)
 	}
 	else
 	{
-		BB::setBit(pos.pawns[col], Sq120ToSq64[sq]);
-		BB::setBit(pos.pawns[BOTH], Sq120ToSq64[sq]);
+		BB::setBit(pos.pawns[col], BoardUtils::Sq120ToSq64[sq]);
+		BB::setBit(pos.pawns[BOTH], BoardUtils::Sq120ToSq64[sq]);
 	}
 	
 	pos.material[col]+=PieceInfo::PieceVal[pce];
@@ -93,10 +93,10 @@ void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos)
 
 	if(!PieceInfo::PieceBig[pce])
 	{
-		BB::clearBit(pos.pawns[col], Sq120ToSq64[src]);
-		BB::clearBit(pos.pawns[BOTH], Sq120ToSq64[src]);
-		BB::setBit(pos.pawns[col], Sq120ToSq64[dest]);
-		BB::setBit(pos.pawns[BOTH], Sq120ToSq64[dest]);
+		BB::clearBit(pos.pawns[col], BoardUtils::Sq120ToSq64[src]);
+		BB::clearBit(pos.pawns[BOTH], BoardUtils::Sq120ToSq64[src]);
+		BB::setBit(pos.pawns[col], BoardUtils::Sq120ToSq64[dest]);
+		BB::setBit(pos.pawns[BOTH], BoardUtils::Sq120ToSq64[dest]);
 	}
 
 	//update piece position in piece_list replace this with std::find()
@@ -184,7 +184,7 @@ bool MM::makeMove(Board& pos, Move moveInfo)
 		{
 			int offset = Attack::PnMoves[!side];
 			pos.en_pas = from + offset;
-			ASSERT((side == WHITE && RankBrd[pos.en_pas] == RANK_3)||(side == BLACK && RankBrd[pos.en_pas] == RANK_6));
+			ASSERT((side == WHITE && BoardUtils::RankBrd[pos.en_pas] == RANK_3)||(side == BLACK && BoardUtils::RankBrd[pos.en_pas] == RANK_6));
 			Hash::hashEP(pos);
 		}
 	}

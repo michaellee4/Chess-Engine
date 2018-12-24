@@ -94,19 +94,14 @@ namespace Attack
 	const std::vector<int> KiMoves { -1, -10, 1, 10, -9, -11, 11, 9 };
 }
 
-
-// *** used in init
-extern int Sq120ToSq64[BRD_SQ_NUM];
-extern int Sq64ToSq120[64];
-
-//*** used in hash
-extern uint64_t PieceKeys[13][120];
-extern uint64_t SideKey;
-extern uint64_t CastleKeys[16];
-
-//*** used in utils
-extern int FileBrd[BRD_SQ_NUM];
-extern int RankBrd[BRD_SQ_NUM];
+namespace BoardUtils
+{
+	// *** initialized in init
+	extern std::vector<int32_t> Sq120ToSq64;
+	extern std::vector<int32_t> Sq64ToSq120;
+	extern std::vector<int32_t> FileBrd;
+	extern std::vector<int32_t> RankBrd;
+}
 
 const Move noMove(0);
 #endif

@@ -60,7 +60,7 @@ void Board::resetBoard(void)
 
 	for(uint32_t i = 0; i < 64; ++i)
 	{
-		this->pieces[Sq64ToSq120[i]] = EMPTY;
+		this->pieces[BoardUtils::Sq64ToSq120[i]] = EMPTY;
 	}
 
 	for(uint32_t i = 0; i < NUM_SIDES; ++i)
@@ -273,13 +273,13 @@ void Board::updatePieceLists()
 
 			if(piece == wP) 
 			{
-				BB::setBit(this->pawns[WHITE], Sq120ToSq64[index]);
-				BB::setBit(this->pawns[BOTH], Sq120ToSq64[index]);
+				BB::setBit(this->pawns[WHITE], BoardUtils::Sq120ToSq64[index]);
+				BB::setBit(this->pawns[BOTH], BoardUtils::Sq120ToSq64[index]);
 			}
 			if(piece == bP) 
 			{
-				BB::setBit(this->pawns[BLACK], Sq120ToSq64[index]);
-				BB::setBit(this->pawns[BOTH], Sq120ToSq64[index]);
+				BB::setBit(this->pawns[BLACK], BoardUtils::Sq120ToSq64[index]);
+				BB::setBit(this->pawns[BOTH], BoardUtils::Sq120ToSq64[index]);
 			}
 		}
 	}
@@ -311,7 +311,7 @@ bool checkBoard(const Board& pos)
 	
 	// check piece count and other counters	
 	for(sq64 = 0; sq64 < 64; ++sq64) {
-		sq120 = Sq64ToSq120[sq64];
+		sq120 = BoardUtils::Sq64ToSq120[sq64];
 		t_piece = pos.pieces[sq120];
 		++t_pceNum[t_piece];
 		colour = PieceInfo::PieceCol[t_piece];
@@ -337,17 +337,17 @@ bool checkBoard(const Board& pos)
 	// check bitboards squares
 	while(t_pawns[WHITE]) {
 		sq64 = BB::popBit(t_pawns[WHITE]);
-		ASSERT(pos.pieces[Sq64ToSq120[sq64]] == wP);
+		ASSERT(pos.pieces[BoardUtils::Sq64ToSq120[sq64]] == wP);
 	}
 	
 	while(t_pawns[BLACK]) {
 		sq64 = BB::popBit(t_pawns[BLACK]);
-		ASSERT(pos.pieces[Sq64ToSq120[sq64]] == bP);
+		ASSERT(pos.pieces[BoardUtils::Sq64ToSq120[sq64]] == bP);
 	}
 	
 	while(t_pawns[BOTH]) {
 		sq64 = BB::popBit(t_pawns[BOTH]);
-		ASSERT( (pos.pieces[Sq64ToSq120[sq64]] == bP) || (pos.pieces[Sq64ToSq120[sq64]] == wP) );
+		ASSERT( (pos.pieces[BoardUtils::Sq64ToSq120[sq64]] == bP) || (pos.pieces[BoardUtils::Sq64ToSq120[sq64]] == wP) );
 	}
 	
 	ASSERT(t_material[WHITE]==pos.material[WHITE] && t_material[BLACK]==pos.material[BLACK]);
@@ -358,8 +358,8 @@ bool checkBoard(const Board& pos)
 	ASSERT(pos.side_to_move==WHITE || pos.side_to_move==BLACK);
 	// printf("%d %d\n",Hash::generatePosKey(pos), pos.pos_key );ASSERT(Hasher::generatePosKey(pos)==pos.pos_key);
 	
-	ASSERT(pos.en_pas==NO_SQ || ( RankBrd[pos.en_pas]==RANK_6 && pos.side_to_move == WHITE)
-		 || ( RankBrd[pos.en_pas]==RANK_3 && pos.side_to_move == BLACK));
+	ASSERT(pos.en_pas==NO_SQ || ( BoardUtils::RankBrd[pos.en_pas]==RANK_6 && pos.side_to_move == WHITE)
+		 || ( BoardUtils::RankBrd[pos.en_pas]==RANK_3 && pos.side_to_move == BLACK));
 	
 	ASSERT(pos.pieces[pos.king_sq[WHITE]] == wK);
 	ASSERT(pos.pieces[pos.king_sq[BLACK]] == bK);

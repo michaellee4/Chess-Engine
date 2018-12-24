@@ -36,7 +36,7 @@ void MoveList::addPawnMove(Board& pos, uint32_t from, uint32_t to, uint32_t side
 {
 	if(side == WHITE)
 	{
-		if(RankBrd[from] == RANK_7)
+		if(BoardUtils::RankBrd[from] == RANK_7)
 		{
 			this->addQuietMove(pos, Move(from,to,EMPTY,wQ,0));
 			this->addQuietMove(pos, Move(from,to,EMPTY,wR,0));
@@ -50,7 +50,7 @@ void MoveList::addPawnMove(Board& pos, uint32_t from, uint32_t to, uint32_t side
 	}
 	else
 	{
-		if(RankBrd[from] == RANK_2)
+		if(BoardUtils::RankBrd[from] == RANK_2)
 		{
 			this->addQuietMove(pos, Move(from,to,EMPTY,bQ,0));
 			this->addQuietMove(pos, Move(from,to,EMPTY,bR,0));
@@ -68,7 +68,7 @@ void MoveList::addPawnCaptureMove(Board& pos, uint32_t from, uint32_t to, uint32
 {
 	if(side == WHITE)
 	{
-		if(RankBrd[from] == RANK_7)
+		if(BoardUtils::RankBrd[from] == RANK_7)
 		{
 			this->addCaptureMove(pos, Move(from,to,cap,wQ,0));
 			this->addCaptureMove(pos, Move(from,to,cap,wR,0));
@@ -82,7 +82,7 @@ void MoveList::addPawnCaptureMove(Board& pos, uint32_t from, uint32_t to, uint32
 	}
 	else
 	{
-		if(RankBrd[from] == RANK_2)
+		if(BoardUtils::RankBrd[from] == RANK_2)
 		{
 			this->addCaptureMove(pos, Move(from,to,cap,bQ,0));
 			this->addCaptureMove(pos, Move(from,to,cap,bR,0));
@@ -274,7 +274,7 @@ void MoveList::generatePawnMoves(Board& pos, uint32_t side)
 		if(pos.pieces[sq + oneMove] == EMPTY)
 		{
 			this->addPawnMove(pos, sq, sq + oneMove, side);
-			if( ((side == WHITE && RankBrd[sq] == RANK_2) || (side == BLACK && RankBrd[sq] == RANK_7)) && pos.pieces[sq + twoMove] == EMPTY)
+			if( ((side == WHITE && BoardUtils::RankBrd[sq] == RANK_2) || (side == BLACK && BoardUtils::RankBrd[sq] == RANK_7)) && pos.pieces[sq + twoMove] == EMPTY)
 			{
 				this->addQuietMove(pos, Move(sq, sq + twoMove, EMPTY, EMPTY, PS));
 			}
@@ -289,11 +289,11 @@ void MoveList::generatePawnMoves(Board& pos, uint32_t side)
 		}
 		if(pos.en_pas != NO_SQ)
 		{
-			if(sq + cap1 == (int32_t)pos.en_pas)
+			if((unsigned)(sq + cap1) == pos.en_pas)
 			{
 				this->addEnPasMove(pos, Move(sq, sq + cap1, EMPTY, EMPTY, EP));
 			}
-			if(sq + cap2 == (int32_t) pos.en_pas)
+			if((unsigned)(sq + cap2) == pos.en_pas)
 			{
 				this->addEnPasMove(pos, Move(sq, sq + cap2, EMPTY, EMPTY, EP));
 			}

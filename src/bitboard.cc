@@ -37,7 +37,7 @@ void BB::clearBit(uint64_t& bb, int index)
 // 		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
 // 		{
 // 			int sq = fileRankToSq(file, rank);
-// 			int sq64 = Sq120ToSq64[sq];
+// 			int sq64 = BoardUtils::Sq120ToSq64[sq];
 
 // 			printf("%c", ((1ULL << sq64) & bb) ? 'X' : '-' );
 // 		}
