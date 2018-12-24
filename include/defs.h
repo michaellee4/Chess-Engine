@@ -9,21 +9,18 @@
 #include "pvtable.h"
 #define STARTFEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
-const uint32_t MAXPOSITIONMOVES = 256;
+const uint32_t MAX_DEPTH = 64;
 
-const uint32_t MAXDEPTH = 64;
+const uint32_t PCE_TYPES = 13;
 
-const uint32_t NUM_PCE_TYPES = 13;
+const uint32_t BRD_ARR_SIZE = 120;
 
-const uint32_t BRD_SQ_NUM = 120;
+const uint32_t CHESSBOARD_SIZE = 64;
 
 const uint32_t MAX_GAME_MOVES = 2 << 10;
 
 const uint32_t NUM_SIDES = 2;
 
-const int32_t INFINITY = 30000;
-
-const int32_t MATE = 29000;
 // pieces
 enum { EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK };
 
@@ -103,5 +100,5 @@ namespace BoardUtils
 	extern std::vector<int32_t> RankBrd;
 }
 
-const Move noMove(0);
+const Move NOMOVE(0);
 #endif

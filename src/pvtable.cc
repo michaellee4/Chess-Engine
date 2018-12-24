@@ -5,7 +5,7 @@
 /*** PV_ENTRY ***/
 
 PV_Entry::PV_Entry(uint64_t key, Move move) : pos_key(key), move(move) {}
-PV_Entry::PV_Entry() : pos_key(0ULL), move(noMove) {}
+PV_Entry::PV_Entry() : pos_key(0ULL), move(NOMOVE) {}
 
 /*** PV_Table ***/
 
@@ -35,14 +35,14 @@ void PV_Table::clear()
 
 int32_t PV_Table::getPvLine(Board& pos, const uint32_t depth)
 {
-	ASSERT(depth < MAXDEPTH);
+	ASSERT(depth < MAX_DEPTH);
 
 	Move move = pos.pv_table.get(pos);
 	uint32_t count = 0;
 
 	while(!move.isNull() && count < depth)
 	{
-		ASSERT(count < MAXDEPTH);
+		ASSERT(count < MAX_DEPTH);
 		// check move exists here?
 		MM::makeMove(pos, move);
 		pos.pv_arr[count++] = move;

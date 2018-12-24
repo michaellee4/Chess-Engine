@@ -117,9 +117,9 @@ void SearchAgent::checkStop()
 
 void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)
 {
-	for(uint32_t i = 0; i < NUM_PCE_TYPES; ++i)
+	for(uint32_t i = 0; i < PCE_TYPES; ++i)
 	{
-		for(uint32_t j = 0; j < BRD_SQ_NUM; ++j)
+		for(uint32_t j = 0; j < BRD_ARR_SIZE; ++j)
 		{
 			pos.search_hist[i][j] = 0;
 		}
@@ -127,7 +127,7 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)
 
 	for(uint32_t i = 0; i < NUM_SIDES; ++i)
 	{
-		for(uint32_t j = 0; j < MAXDEPTH; ++j)
+		for(uint32_t j = 0; j < MAX_DEPTH; ++j)
 		{
 			pos.search_killers[i][j] = 0;
 		}
@@ -156,7 +156,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     {
     	return 0;
     }
-    if((unsigned)pos.ply > MAXDEPTH - 1)
+    if((unsigned)pos.ply > MAX_DEPTH - 1)
     {
     	return this->evaluatePosition(pos);
     }
@@ -165,8 +165,8 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     m.generateAllMoves(pos);
     int32_t legalMoves = 0;
     int32_t prevAlpha = alpha;
-    Move bestMove = noMove;
-    int score = -INFINITY;
+    Move bestMove = NOMOVE;
+    int score = -Value::INFINITY;
 
 	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {	
         if ( !MM::makeMove(pos,m[MoveNum]))  {
@@ -194,7 +194,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     {
     	if(pos.sqAttacked(pos.king_sq[pos.side_to_move], !pos.side_to_move))
     	{
-    		return -MATE + pos.ply;
+    		return -Value::MATE + pos.ply;
     	}
     	else return 0;
     }
@@ -216,13 +216,13 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 {
 	using std::cout;
 	using std::endl;
-	Move bestMove = noMove;
-	int32_t bestScore = -INFINITY;
+	Move bestMove = NOMOVE;
+	int32_t bestScore = -Value::INFINITY;
 	this->clearForSearch(pos, info);
 
 	for(uint32_t curDepth = 1 ; curDepth <= info.depth; ++curDepth)
 	{
-		bestScore = this->alphaBeta(-INFINITY, INFINITY, curDepth, pos, info, true);
+		bestScore = this->alphaBeta(-Value::INFINITY, Value::INFINITY, curDepth, pos, info, true);
 
 		// check time
 		int32_t pvMoves = PV_Table::getPvLine(pos, curDepth);

@@ -8,43 +8,43 @@
 #include <sstream>
 #include <cstdio> 
 
-Board::Board():pieces(BRD_SQ_NUM),
+Board::Board():pieces(BRD_ARR_SIZE),
 			   pawns(3), 
 			   king_sq(NUM_SIDES), 
-			   piece_list(NUM_PCE_TYPES, std::vector<uint32_t>()),
+			   piece_list(PCE_TYPES, std::vector<uint32_t>()),
 			   big_pce(NUM_SIDES), 
 			   maj_pce(NUM_SIDES), 
 			   min_pce(NUM_SIDES), 
 			   material(NUM_SIDES), 
 			   history(MAX_GAME_MOVES),
 			   pv_table(),
-	    	   pv_arr(MAXDEPTH),
-	    	   search_hist(NUM_PCE_TYPES, std::vector<uint32_t>(BRD_SQ_NUM)),
-	    	   search_killers(NUM_SIDES, std::vector<uint32_t>(MAXDEPTH))
+	    	   pv_arr(MAX_DEPTH),
+	    	   search_hist(PCE_TYPES, std::vector<uint32_t>(BRD_ARR_SIZE)),
+	    	   search_killers(NUM_SIDES, std::vector<uint32_t>(MAX_DEPTH))
 
 {
-	for(uint32_t i = 0; i < NUM_PCE_TYPES; ++i)
+	for(uint32_t i = 0; i < PCE_TYPES; ++i)
 	{
 		this->piece_list[i].reserve(10);
 	}
 	this->parseFEN(STARTFEN);
 }
 
-Board::Board(const std::string fen):pieces(BRD_SQ_NUM),
+Board::Board(const std::string fen):pieces(BRD_ARR_SIZE),
 									pawns(3), 
 									king_sq(NUM_SIDES), 
-			   						piece_list(NUM_PCE_TYPES, std::vector<uint32_t>()),
+			   						piece_list(PCE_TYPES, std::vector<uint32_t>()),
 									big_pce(NUM_SIDES),
 									maj_pce(NUM_SIDES), 
 									min_pce(NUM_SIDES), 
 									material(NUM_SIDES), 
 									history(MAX_GAME_MOVES),
 									pv_table(),
-									pv_arr(MAXDEPTH),
-									search_hist(NUM_PCE_TYPES, std::vector<uint32_t>(BRD_SQ_NUM)),
-									search_killers(NUM_SIDES, std::vector<uint32_t>(MAXDEPTH))
+									pv_arr(MAX_DEPTH),
+									search_hist(PCE_TYPES, std::vector<uint32_t>(BRD_ARR_SIZE)),
+									search_killers(NUM_SIDES, std::vector<uint32_t>(MAX_DEPTH))
 {
-	for(uint32_t i = 0; i < NUM_PCE_TYPES; ++i)
+	for(uint32_t i = 0; i < PCE_TYPES; ++i)
 	{
 		this->piece_list[i].reserve(10);
 	}
@@ -53,12 +53,12 @@ Board::Board(const std::string fen):pieces(BRD_SQ_NUM),
 
 void Board::resetBoard(void)
 {
-	for(uint32_t i = 0; i < BRD_SQ_NUM; ++i)
+	for(uint32_t i = 0; i < BRD_ARR_SIZE; ++i)
 	{
 		this->pieces[i] = NO_SQ;
 	}
 
-	for(uint32_t i = 0; i < 64; ++i)
+	for(uint32_t i = 0; i < CHESSBOARD_SIZE; ++i)
 	{
 		this->pieces[BoardUtils::Sq64ToSq120[i]] = EMPTY;
 	}
@@ -73,7 +73,7 @@ void Board::resetBoard(void)
 	}
 	this->pawns[2] = 0;
 
-	for(uint32_t i = 0; i < NUM_PCE_TYPES; ++i)
+	for(uint32_t i = 0; i < PCE_TYPES; ++i)
 	{
 		this->piece_list[i].clear();
 	}
@@ -254,7 +254,7 @@ void Board::parseFEN(const std::string fen)
 
 void Board::updatePieceLists()
 {
-	for(uint32_t index = 0; index < BRD_SQ_NUM; ++index)
+	for(uint32_t index = 0; index < BRD_ARR_SIZE; ++index)
 	{
 		int piece = this->pieces[index];
 		// on board
@@ -287,7 +287,7 @@ void Board::updatePieceLists()
 
 bool checkBoard(const Board& pos)
 {
-	uint32_t t_pceNum[NUM_PCE_TYPES] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	uint32_t t_pceNum[PCE_TYPES] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	uint32_t t_bigPce[NUM_SIDES] = { 0, 0};
 	uint32_t t_majPce[NUM_SIDES] = { 0, 0};
 	uint32_t t_minPce[NUM_SIDES] = { 0, 0};
@@ -310,7 +310,7 @@ bool checkBoard(const Board& pos)
 	}
 	
 	// check piece count and other counters	
-	for(sq64 = 0; sq64 < 64; ++sq64) {
+	for(sq64 = 0; sq64 < CHESSBOARD_SIZE; ++sq64) {
 		sq120 = BoardUtils::Sq64ToSq120[sq64];
 		t_piece = pos.pieces[sq120];
 		++t_pceNum[t_piece];

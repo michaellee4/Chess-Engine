@@ -4,7 +4,7 @@
 
 MoveList::MoveList()
 {
-	moves.reserve(MAXPOSITIONMOVES);
+	moves.reserve(MAX_MOVES_PER_POSITION);
 }
 
 // void MoveList::printMoveList()

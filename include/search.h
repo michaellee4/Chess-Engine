@@ -6,7 +6,11 @@
 #include <vector>
 // Piece Value tables for positional evaluation
 namespace Value
-{
+{	
+	const int32_t INFINITY = 30000;
+
+	const int32_t MATE = 29000;
+	
 	const std::vector<int32_t> PawnTable {
 		0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,
 		10	,	10	,	0	,	-10	,	-10	,	0	,	10	,	10	,

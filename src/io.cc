@@ -67,10 +67,10 @@ Move IOHandler::parseMove(std::string input, Board& pos)
 {
 	stringToLower(input);
 
-	if(input[1] < '1' || input[1] > '8') return noMove;
-	if(input[0] < 'a' || input[0] > 'h') return noMove;
-	if(input[3] < '1' || input[3] > '8') return noMove;
-	if(input[2] < 'a' || input[2] > 'h') return noMove;
+	if(input[1] < '1' || input[1] > '8') return NOMOVE;
+	if(input[0] < 'a' || input[0] > 'h') return NOMOVE;
+	if(input[3] < '1' || input[3] > '8') return NOMOVE;
+	if(input[2] < 'a' || input[2] > 'h') return NOMOVE;
 
 	uint32_t fromSq = fileRankToSq(input[0] - 'a', input[1] - '1');
 	uint32_t toSq = fileRankToSq(input[2] - 'a', input[3] - '1');
@@ -95,5 +95,5 @@ Move IOHandler::parseMove(std::string input, Board& pos)
 			return cur;
 		}
 	}
-	return noMove;
+	return NOMOVE;
 }

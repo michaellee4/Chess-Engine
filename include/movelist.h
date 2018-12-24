@@ -9,6 +9,7 @@
 class MoveList
 {	
 	private:
+		const uint32_t MAX_MOVES_PER_POSITION = 256;
 		// Creates and adds a type of move to eh movelist
 		void addQuietMove(Board& pos, Move move);
 		void addCaptureMove(Board& pos, Move move);
