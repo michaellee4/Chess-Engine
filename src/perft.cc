@@ -34,7 +34,7 @@ int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) {
 	if(print)
 	{
 		IOHandler::printBoard(pos);
-		std::cout << std::endl << "Starting Test To Depth: "<< depth << std::endl;
+		std::cout << "\n" << "Starting Test To Depth: "<< depth << "\n";
 	}
 	this->leafNodes = 0;
 
@@ -51,10 +51,10 @@ int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) {
         MM::takeMove(pos);        
         long oldnodes = this->leafNodes - cumnodes;
 		if(print)
-    		std::cout << "move " << MoveNum + 1 << " : " << move.toString() << " : " << oldnodes<<std::endl;
+    		std::cout << "move " << MoveNum + 1 << " : " << move.toString() << " : " << oldnodes<<"\n";
 	}
 	if(print)
-		std::cout << std::endl << "Test Complete : " << this->leafNodes << " nodes visited" << std::endl;
+		std::cout << "\n" << "Test Complete : " << this->leafNodes << " nodes visited" << "\n";
     return this->leafNodes;
 }
 
@@ -74,7 +74,7 @@ void PerftTester::perftTestAll(Board& pos)
 		{
 			std::stringstream line(linebuf);
 			getline(line, fen, ';');
-			std::cout << "Testing fen: "<< fen <<std::endl;
+			std::cout << "Testing fen: "<< fen <<";";
 			pos.parseFEN(fen);
 			while(line.good())
 			{
@@ -87,12 +87,14 @@ void PerftTester::perftTestAll(Board& pos)
 					int perft = perftTest(depth, pos, false);
 					if(perft != expected)
 					{
-						std::cout << "mismatch at depth: " << depth << " got " << perft << " expected " << expected<< std::endl;
+						std::cout << "mismatch at depth: " << depth << " got " << perft << " expected " << expected<< "\n";
 					}
+					std::cout<<'d'<<depth<<" "<<perft<<';';
 				}
 			}
+			std::cout << "\n";
 		}
 		perftFile.close();
 	}
-	else std::cout << "cant open file" << std::endl;
+	else std::cout << "cant open file" << "\n";
 }
