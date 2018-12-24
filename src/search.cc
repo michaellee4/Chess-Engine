@@ -215,7 +215,6 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 {
 	using std::cout;
-	using std::endl;
 	Move bestMove = NOMOVE;
 	int32_t bestScore = -Value::INFINITY;
 	this->clearForSearch(pos, info);
@@ -227,7 +226,7 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 		// check time
 		int32_t pvMoves = PV_Table::getPvLine(pos, curDepth);
 		bestMove = pos.pv_arr[0];
-		cout<<"Depth:" << curDepth << " score:" << bestScore << " move:" << bestMove.toString() << " nodes:" << info.nodes<<endl;
+		cout<<"Depth:" << curDepth << " score:" << bestScore << " move:" << bestMove.toString() << " nodes:" << info.nodes<<'\n';
 		
 		pvMoves = PV_Table::getPvLine(pos, curDepth);
 		cout<< "PvLine of " << pvMoves << " Moves: ";
@@ -236,7 +235,7 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 			Move move = pos.pv_arr[i];
 			cout << move.toString() << " ";
 		}
-		cout<<endl;
-		cout << "Ordering: " << info.fhf/info.fh << "\n" << endl;
+		cout<<'\n';
+		cout << "Ordering: " << info.fhf/info.fh << "\n" << '\n';
 	}
 }

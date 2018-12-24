@@ -14,7 +14,7 @@ MoveList::MoveList()
 // 		Move curMove = this->moves[i];
 // 		printf("Move: %02d > %s (score: %d) : ",i ,curMove.toString().c_str(), curMove.score );
 // 		std::bitset<32> bits(curMove.move);
-// 		std::cout <<  bits <<std::endl;
+// 		std::cout <<  bits <<'\n';
 // 	}
 // 		printf("MoveList Total: %lu Moves\n\n", this->moves.size() );
 // }

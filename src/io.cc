@@ -48,7 +48,7 @@ void IOHandler::printBoard(const Board& pos){
 			pos.castle_perm & BKCA ? 'k' : '-',
 			pos.castle_perm & BQCA ? 'q' : '-'	
 			);
-	std::cout << "PosKey: " << pos.pos_key << "\n" << std::endl;
+	std::cout << "PosKey: " << pos.pos_key << "\n" << '\n';
 }
 
 void IOHandler::printMoveList(const MoveList& list)
@@ -58,7 +58,7 @@ void IOHandler::printMoveList(const MoveList& list)
 		Move curMove = list[i];
 		printf("Move: %02d > %s (score: %d) : ",i ,curMove.toString().c_str(), curMove.score );
 		std::bitset<32> bits(curMove.move);
-		std::cout <<  bits <<std::endl;
+		std::cout <<  bits <<'\n';
 	}
 		printf("MoveList Total: %u Moves\n\n", list.size() );
 }

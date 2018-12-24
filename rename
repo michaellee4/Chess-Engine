@@ -1,8 +1,0 @@
-#!/usr/bin/bash
-
-foo=$1
-#lower="$(tr '[:upper:]' '[:lower:]' <<< ${foo:0:1})${foo:1}"
-lower=$2
-(cd src; sed -i "s/${foo}/${lower}/g" *)
-#(cd include; sed -i "s/${foo}/${lower}/g" *)
-echo changed ${foo} to ${lower}

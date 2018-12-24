@@ -45,7 +45,7 @@ void gameLoop(Board& b)
 		if(input[0] == 'q') break;
 		else if(input [0] == 't' && b.hist_ply == 0)
 		{
-			std::cout << "No Moves to Take!" << std::endl;
+			std::cout << "No Moves to Take!" << '\n';
 			prevValid = false;
 		} 
 		else if(input[0] == 't')
@@ -62,7 +62,7 @@ void gameLoop(Board& b)
 				Move move = b.pv_arr[i];
 				cout << move.toString() << " ";
 			}
-			cout << endl;
+			cout << '\n';
 			prevValid = true;
 		}
 		else if(input[0] == 's')
@@ -79,7 +79,7 @@ void gameLoop(Board& b)
 				b.pv_table.insert(b, move);
 				if(!MM::makeMove(b, move))
 				{
-					cout << "Illegal Move!"<<std::endl;
+					cout << "Illegal Move!"<<'\n';
 					prevValid = true;
 				}
 				else
@@ -87,7 +87,7 @@ void gameLoop(Board& b)
 			}
 			else
 			{
-				std::cout << "Illegal Move!" << std::endl;
+				std::cout << "Illegal Move!" << '\n';
 				prevValid = false;
 			}
 		}
