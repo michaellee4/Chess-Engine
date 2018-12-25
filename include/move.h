@@ -10,7 +10,7 @@
 #define PROM 0xF00000
 
 #include <string>
-
+class Board;
 // used for undoing
 class U_Move
 {
@@ -20,6 +20,9 @@ class U_Move
 		int enPas;
 		int fiftyMove;
 		uint64_t pos_key;
+		U_Move();
+		U_Move(int32_t move, const Board& pos);
+
 };
 
 class Move
@@ -34,28 +37,27 @@ class Move
 		Move(Move&& move) noexcept;
 		Move();
 		// 7 bits for src
-		uint32_t from();
+		inline uint32_t from() { return this->move & 0x7f; }
 		// 7 bits for dest 
-		uint32_t to();
+		inline uint32_t to() { return (this->move >> 7) & 0x7f; }
 		// 4 bits for which piece was captured if any
-		uint32_t captured();
+		inline uint32_t captured() { return (this->move >> 14) & 0xf; }
 		// 1 bit for enPas
-		uint32_t enPassant();
+		inline uint32_t enPassant() {  return this->move & 0x40000; }
 		// 1 bit for pawn start 
-		uint32_t pawnStart();
+		inline uint32_t pawnStart() { return this->move & 0x80000; }
 		// 4 bits for which piece was captured if any
-		uint32_t promoted();
+		inline uint32_t promoted() { return (this->move >> 20) & 0xf; }
 		// 1 bit for Castle move
-		uint32_t castle();
+		inline uint32_t castle() { return this->move & 0x1000000; }
 		
-		bool isNull();
-		bool wasCapture();
-		bool wasPromotion();
+		inline bool isNull() { return this->move == 0; }
+		inline bool wasCapture() { return this->move & 0x7c000; }
+		inline bool wasPromotion() { return this->move & 0xf00000; }
 
 		std::string toString();
 
 		Move& operator=(const Move& move);
-		Move& operator=(const Move&& move);
 
 
 };

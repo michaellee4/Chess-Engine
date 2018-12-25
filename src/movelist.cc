@@ -9,15 +9,15 @@ MoveList::MoveList()
 
 void MoveList::addQuietMove(Board& pos, Move&& move)
 {
-	this->moves.push_back(move);
+	this->moves.emplace_back(move);
 }
 void MoveList::addCaptureMove(Board& pos, Move&& move)
 {
-	this->moves.push_back(move);
+	this->moves.emplace_back(move);
 }
 void MoveList::addEnPasMove(Board& pos, Move&& move)
 {
-	this->moves.push_back(move);
+	this->moves.emplace_back(move);
 }
 
 void MoveList::addPawnMove(Board& pos, uint32_t from, uint32_t to, uint32_t side)

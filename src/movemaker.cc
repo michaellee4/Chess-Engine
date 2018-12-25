@@ -6,7 +6,7 @@
 #include "move.h"
 #include "hash.h"
 #include<cstdio>
-
+#include <algorithm>
 void MM::clearPiece(const uint32_t sq, Board& pos)
 {
 	int pce = pos.pieces[sq];
@@ -33,17 +33,7 @@ void MM::clearPiece(const uint32_t sq, Board& pos)
 		BB::clearBit(pos.pawns[col], BoardUtils::Sq120ToSq64[sq]);
 		BB::clearBit(pos.pawns[BOTH], BoardUtils::Sq120ToSq64[sq]);
 	}
-
-	// REMOVE PIECE FROM PIECE LIST
-	uint32_t idx = 0;
-	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != sq; ++idx){}
-
-	// should always find something
-	ASSERT(idx != pos.piece_list[pce].size())
-	
-	// swap out the value
-	pos.piece_list[pce][idx] = pos.piece_list[pce].back();
-	pos.piece_list[pce].pop_back();
+	pos.piece_list[pce].erase(std::remove(pos.piece_list[pce].begin(), pos.piece_list[pce].end(), sq), pos.piece_list[pce].end());
 }
 
 void MM::addPiece(const uint32_t sq, Board& pos, const uint32_t pce)
@@ -99,18 +89,11 @@ void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos)
 		BB::setBit(pos.pawns[BOTH], BoardUtils::Sq120ToSq64[dest]);
 	}
 
-	//update piece position in piece_list replace this with std::find()
-	uint32_t idx = 0;
-	for (; idx < pos.piece_list[pce].size() && pos.piece_list[pce][idx] != src; ++idx){}
-
-
-	// should always find something
-	ASSERT(idx != pos.piece_list[pce].size());
-	pos.piece_list[pce][idx] = dest;
-	
+	//find and replace the old sq with the dest sq
+	*std::find(pos.piece_list[pce].begin(), pos.piece_list[pce].end(), src)  = dest;	
 }
 
-bool MM::makeMove(Board& pos, Move moveInfo)
+bool MM::makeMove(Board& pos, Move& moveInfo)
 {
 	ASSERT(checkBoard(pos));
 
@@ -153,13 +136,9 @@ bool MM::makeMove(Board& pos, Move moveInfo)
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
 	Hash::hashCa(pos);
 
-	pos.history[pos.hist_ply].move = move;
-	pos.history[pos.hist_ply].fiftyMove = pos.fifty_move;
-	pos.history[pos.hist_ply].enPas = pos.en_pas;
-	pos.history[pos.hist_ply].castlePerm = pos.castle_perm;
+	pos.history[pos.hist_ply] = U_Move(move, pos);
 
-	pos.castle_perm &= CastlePerm[from];
-	pos.castle_perm &= CastlePerm[to];
+	pos.castle_perm &= CastlePerm[from] & CastlePerm[to];
 	pos.en_pas = NO_SQ;
 
 	Hash::hashCa(pos);

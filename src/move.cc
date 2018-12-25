@@ -2,6 +2,11 @@
 #include <sstream>
 #include "defs.h"
 #include<iostream>
+#include "board.h"
+/*** UMOVE ***/
+U_Move::U_Move() : move(0), castlePerm(0), enPas(NO_SQ), fiftyMove(0) {}
+U_Move::U_Move(int32_t move, const Board& pos) : move(move), castlePerm(pos.castle_perm), enPas(pos.en_pas), fiftyMove(pos.fifty_move) {}
+
 
 Move::Move(uint32_t from, uint32_t to, uint32_t captured, uint32_t prom, uint32_t flag): 
 move(0 |(from & 0x7f) | ((to & 0x7f) << 7) | ((captured & 0xf) << 14) | ((prom & 0xf) << 20) | flag), 
@@ -20,42 +25,6 @@ Move::Move(Move&& move) noexcept : move(move.move), score(move.score)
 	move.move = move.score = 0;
 }
 
-uint32_t Move::from()
-{
-	return this->move & 0x7f;
-}
-uint32_t Move::to()
-{
-	return (this->move >> 7) & 0x7f; 
-}
-uint32_t Move::captured()
-{
-	return (this->move >> 14) & 0xf; 
-}
-uint32_t Move::enPassant()
-{
-	return this->move & 0x40000;
-}
-uint32_t Move::pawnStart()
-{
-	return this->move & 0x80000; 
-}
-uint32_t Move::promoted()
-{
-	return (this->move >> 20) & 0xf;
-}
-uint32_t Move::castle()
-{
-	return this->move & 0x1000000;
-}
-bool Move::wasCapture()
-{
-	return this->move & 0x7c000;
-}
-bool Move::wasPromotion()
-{
-	return this->move & 0xf00000;
-}
 std::string Move::toString()
 {
 	char srcFile = 'a' + BoardUtils::FileBrd[this->from()];
@@ -80,22 +49,7 @@ std::string Move::toString()
   	return stream.str();
 }
 
-bool Move::isNull()
-{
-	return this->move == 0; 
-}
-
 Move& Move::operator=(const Move& move)
-{
-	if(this != &move)
-	{
-		this->move = move.move;
-		this->score = move.score;
-	}
-	return *this;
-}
-
-Move& Move::operator=(const Move&& move)
 {
 	if(this != &move)
 	{

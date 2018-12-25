@@ -40,4 +40,4 @@ stopwatch.o: src/stopwatch.cc include/stopwatch.h
 utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
  include/move.h include/pvtable.h include/board.h include/defs.h
 move.o: src/move.cc include/move.h include/defs.h include/debug.h \
- include/move.h include/pvtable.h
+ include/move.h include/pvtable.h include/board.h include/defs.h

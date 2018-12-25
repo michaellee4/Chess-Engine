@@ -102,6 +102,7 @@ int main()
 	Stopwatch s;
 	s.start();
 	p.perftTest(6,b,true);
+	// p.perftTestAll(b);
 	std::cout << s.stop() << '\n';
 	// gameLoop(b);
 	// b.parseFEN("n1n5/PPPk4/8/8/8/8/4Kppp/5N1N w - - 0 1");	
