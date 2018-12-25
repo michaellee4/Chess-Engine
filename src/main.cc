@@ -97,9 +97,12 @@ void gameLoop(Board& b)
 int main()
 {
 	initAll();
-	Board b(WAC1);
+	Board b;
 	PerftTester p;
-	p.perftTestAll(b);
+	Stopwatch s;
+	s.start();
+	p.perftTest(6,b,true);
+	std::cout << s.stop() << '\n';
 	// gameLoop(b);
 	// b.parseFEN("n1n5/PPPk4/8/8/8/8/4Kppp/5N1N w - - 0 1");	
 	return 0;

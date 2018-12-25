@@ -11,9 +11,9 @@ class MoveList
 	private:
 		const uint32_t MAX_MOVES_PER_POSITION = 256;
 		// Creates and adds a type of move to eh movelist
-		void addQuietMove(Board& pos, Move move);
-		void addCaptureMove(Board& pos, Move move);
-		void addEnPasMove(Board& pos, Move move);
+		void addQuietMove(Board& pos, Move&& move);
+		void addCaptureMove(Board& pos, Move&& move);
+		void addEnPasMove(Board& pos, Move&& move);
 
 		// add's each piece's move
 		void addPawnMove(Board& pos, uint32_t from, uint32_t to, uint32_t side);

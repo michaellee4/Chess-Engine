@@ -30,6 +30,8 @@ class Move
 		Move(uint32_t from, uint32_t to, uint32_t captured, uint32_t prom, uint32_t flag);
 		Move(uint32_t move, int32_t score);
 		Move(uint32_t move);
+		Move(const Move& move);
+		Move(Move&& move) noexcept;
 		Move();
 		// 7 bits for src
 		uint32_t from();

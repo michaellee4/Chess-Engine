@@ -11,9 +11,13 @@ Move::Move(uint32_t move, int32_t score) : move(move), score(score){}
 
 Move::Move(uint32_t move) : move(move), score(0) {}
 
-Move::Move()
+Move::Move() : move(0), score(0) {}
+
+Move::Move(const Move& move) : move(move.move), score(move.score){}
+
+Move::Move(Move&& move) noexcept : move(move.move), score(move.score)
 {
-	this->move = this->score = 0;
+	move.move = move.score = 0;
 }
 
 uint32_t Move::from()
