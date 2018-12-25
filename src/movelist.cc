@@ -104,7 +104,7 @@ void MoveList::generateBishopMoves(Board& pos, uint32_t side)
 					}
 					break;
 				}
-					this->addQuietMove(pos, Move(curBiSq, newSq, EMPTY, EMPTY, 0));
+				this->addQuietMove(pos, Move(curBiSq, newSq, EMPTY, EMPTY, 0));
 				newSq += Attack::BiMoves[move];
 			}
 		}
@@ -130,7 +130,7 @@ void MoveList::generateRookMoves(Board& pos, uint32_t side)
 					}
 					break;
 				}
-					this->addQuietMove(pos, Move(curRkSq, newSq, EMPTY, EMPTY, 0));
+				this->addQuietMove(pos, Move(curRkSq, newSq, EMPTY, EMPTY, 0));
 				newSq += Attack::RkMoves[move];
 			}
 		}

@@ -88,7 +88,6 @@ void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos)
 		BB::setBit(pos.pawns[col], BoardUtils::Sq120ToSq64[dest]);
 		BB::setBit(pos.pawns[BOTH], BoardUtils::Sq120ToSq64[dest]);
 	}
-
 	//find and replace the old sq with the dest sq
 	*std::find(pos.piece_list[pce].begin(), pos.piece_list[pce].end(), src)  = dest;	
 }
