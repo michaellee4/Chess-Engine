@@ -15,6 +15,7 @@ class PV_Entry
 		PV_Entry();
 
 		PV_Entry& operator=(const PV_Entry& o);
+		PV_Entry& operator=(const PV_Entry&& o);
 };
 
 class PV_Table

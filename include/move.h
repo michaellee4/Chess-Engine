@@ -53,7 +53,10 @@ class Move
 		bool wasPromotion();
 
 		std::string toString();
+
 		Move& operator=(const Move& move);
+		Move& operator=(const Move&& move);
+
 
 };
 
