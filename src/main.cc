@@ -1,13 +1,10 @@
 #include "defs.h"
-#include <iostream>
-#include <iomanip>
 #include "bitboard.h"
 #include "utils.h"
 #include "init.h"
 #include "hash.h"
 #include "board.h"
 #include "movelist.h"
-#include <unordered_set>
 #include "search.h"
 #include "stopwatch.h"
 #include "movemaker.h"
@@ -15,10 +12,14 @@
 #include <bitset>
 #include "perft.h"
 #include "io.h"
-#include <climits>
-#include <string>
 #include "searchinfo.h"
 #include "search.h"
+#include <iostream>
+#include <iomanip>
+#include <unordered_set>
+#include <climits>
+#include <string>
+
 #define PERFTFEN "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
 #define pt "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
 #define WAC1 "2rr3k/pp3pp1/1nnqbN1p/3pN3/2pP4/2P3Q1/PPB4P/R4RK1 w - -"
@@ -96,7 +97,7 @@ void gameLoop(Board& b)
 
 int main()
 {
-	initAll();
+	Init::initAll();
 	Board b;
 	PerftTester p;
 	Stopwatch s;

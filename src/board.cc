@@ -132,7 +132,7 @@ void Board::setUpPieces(const std::string& section)
 	}
 }
 
-void Board::getCastlePerm(const std::string& section)
+void Board::setUpCastlePerm(const std::string& section)
 {
 	this->castle_perm = 0;
 	if(section[0] != '-')
@@ -169,7 +169,7 @@ void Board::getenPassant(const std::string& section)
 	}
 }
 
-void Board::getMoveCounters(std::istringstream& stream, std::string& section)
+void Board::setUpMoveCounters(std::istringstream& stream, std::string& section)
 {
 	using namespace std;
 
@@ -206,7 +206,7 @@ void Board::parseFEN(const std::string fen)
 
 	// Castling permissions
 	std::getline(stream, section, ' ');
-	this->getCastlePerm(section);
+	this->setUpCastlePerm(section);
 
 	// En Passant Square
 	std::getline(stream, section, ' ');
@@ -214,7 +214,7 @@ void Board::parseFEN(const std::string fen)
 
 	// halfmove clock (halfmoves since capture or pawn advance)
 	std::getline(stream, section, ' ');
-	this->getMoveCounters(stream, section);
+	this->setUpMoveCounters(stream, section);
 
 	this->pos_key = Hash::generatePosKey(*this);
 	this->updatePieceLists();

@@ -92,7 +92,7 @@ void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos)
 	*std::find(pos.piece_list[pce].begin(), pos.piece_list[pce].end(), src)  = dest;	
 }
 
-bool MM::makeMove(Board& pos, Move& moveInfo)
+bool MM::makeMove(Board& pos, const Move& moveInfo)
 {
 	ASSERT(checkBoard(pos));
 

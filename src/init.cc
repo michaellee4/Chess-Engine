@@ -27,7 +27,7 @@ namespace BB
 	std::vector<uint64_t> ClearMask(CHESSBOARD_SIZE);
 }
 
-void initFileRankBrd()
+void Init::initFileRankBrd()
 {
 	for(uint32_t sq = 0; sq < BRD_ARR_SIZE; ++sq)
 	{
@@ -47,7 +47,7 @@ void initFileRankBrd()
 }
 
 // creates 2 arrays to map 64 <-> 120 board square representations
-void initSq120ToSq64()
+void Init::initSq120ToSq64()
 {
 	int sq64 = 0;
 
@@ -74,7 +74,7 @@ void initSq120ToSq64()
 	}
 }
 
-void initBitMasks()
+void Init::initBitMasks()
 {
 	for(uint32_t index = 0; index < CHESSBOARD_SIZE; ++index)
 	{
@@ -83,7 +83,7 @@ void initBitMasks()
 	}
 }
 
-void initHashKeys()
+void Init::initHashKeys()
 {
 	for(uint32_t i = 0; i < PCE_TYPES; ++i )
 	{
@@ -100,7 +100,7 @@ void initHashKeys()
 	}
 }
 
-void initAll()
+void Init::initAll()
 {
 	initSq120ToSq64();
 	initBitMasks();

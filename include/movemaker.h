@@ -29,7 +29,7 @@ class MM
     static void movePiece(const uint32_t src, const uint32_t dest, Board& pos);
 public:
 	// Makes the provided move (move piece/capture/update board)
-    static bool makeMove(Board& pos, Move& moveInfo);
+    static bool makeMove(Board& pos, const Move& moveInfo);
 
     // Undo's the last move made which is stored in Board::hist_move
     static void takeMove(Board& pos);

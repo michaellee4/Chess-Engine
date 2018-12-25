@@ -21,11 +21,11 @@ class Board
 		void setUpPieces(const std::string& section);
 
 		// Sets up castling permissions with the fen
-		void getCastlePerm(const std::string& section);
+		void setUpCastlePerm(const std::string& section);
 
 		void getenPassant(const std::string& section);
 
-		void getMoveCounters(std::istringstream& stream, std::string& section);
+		void setUpMoveCounters(std::istringstream& stream, std::string& section);
 
 	public:
 		// stores the state of the board 120 sq representation
@@ -90,9 +90,6 @@ class Board
 
 		// Reads in a Forseth-Edwards Notation string and prepares the board in accordance ot it.
 		void parseFEN(const std::string);
-
-		// prints out the current state of the board
-		// void printBoard(void) const;
 
 		// Checks if a sq is on the board
 		bool sqOnBoard(uint32_t sq) const;
