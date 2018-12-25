@@ -84,3 +84,13 @@ bool Move::isNull()
 {
 	return this->move == 0; 
 }
+
+Move& Move::operator=(const Move& move)
+{
+	if(this != &move)
+	{
+		this->move = move.move;
+		this->score = move.score;
+	}
+	return *this;
+}

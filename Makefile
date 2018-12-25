@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -O3 -Wall -Werror -std=c++11 -I $(INCLUDE)
+CXXFLAGS = -O3 -Wall -Werror -std=c++17 -I $(INCLUDE)
 INCLUDE = include
 SRCDIR = src
 OBJDIR = obj
@@ -8,7 +8,7 @@ OBJS = $(patsubst $(SRCDIR)/%.cc,$(OBJDIR)/%.o,$(SRC))
 LINLOCATION = bin/linux/ce
 NAME = ce
 MW = x86_64-w64-mingw32-g++
-MWFLAGS = -O3 -std=c++11 -I $(INCLUDE) -static-libgcc -static-libstdc++ -static -D__NO_INLINE__ -Wall -Werror
+MWFLAGS = -O3 -std=c++17 -I $(INCLUDE) -static-libgcc -static-libstdc++ -static -D__NO_INLINE__ -Wall -Werror
 MWLOCATION = bin/win64/ce.exe
 
 all: ce

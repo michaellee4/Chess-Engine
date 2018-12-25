@@ -10,7 +10,11 @@ class PV_Entry
 		uint64_t pos_key;
 		Move move;
 		PV_Entry(uint64_t key, Move move);
+		PV_Entry(const PV_Entry& o);
+		PV_Entry(PV_Entry&& o) noexcept;
 		PV_Entry();
+
+		PV_Entry& operator=(const PV_Entry& o);
 };
 
 class PV_Table
