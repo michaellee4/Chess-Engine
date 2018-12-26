@@ -3,7 +3,7 @@
 #include <iostream>
 #include "defs.h"
 #include "utils.h"
-void IOHandler::printBitBoard(uint64_t bb)
+void IO::printBitBoard(uint64_t bb)
 {
 	for (uint32_t rank = RANK_8; rank >=RANK_1; --rank)
 	{
@@ -19,7 +19,7 @@ void IOHandler::printBitBoard(uint64_t bb)
 	printf("\n\n");
 }
 
-void IOHandler::printBoard(const Board& pos){
+void IO::printBoard(const Board& pos){
 	
 	int sq,file,rank,piece;
 	
@@ -30,7 +30,7 @@ void IOHandler::printBoard(const Board& pos){
 		for(file = FILE_A; file <= FILE_H; ++file) {
 			sq = fileRankToSq(file,rank);
 			piece = pos.pieces[sq];
-			printf("%3c",BoardChar::PceChar[piece]);
+			printf("%3c",IO::PceChar[piece]);
 		}
 		printf("\n");
 	}
@@ -40,8 +40,8 @@ void IOHandler::printBoard(const Board& pos){
 		printf("%3c",'a'+file);	
 	}
 	printf("\n");
-	printf("side:%c\n",BoardChar::SideChar[pos.side_to_move]);
-	printf("enPas:%s (%d)\n",BoardChar::epstr.at(pos.en_pas).c_str(),pos.en_pas);
+	printf("side:%c\n",IO::SideChar[pos.side_to_move]);
+	printf("enPas:%s (%d)\n",IO::epstr.at(pos.en_pas).c_str(),pos.en_pas);
 	printf("castle:%c%c%c%c\n",
 			pos.castle_perm & WKCA ? 'K' : '-',
 			pos.castle_perm & WQCA ? 'Q' : '-',
@@ -51,7 +51,7 @@ void IOHandler::printBoard(const Board& pos){
 	std::cout << "PosKey: " << pos.pos_key << "\n" << '\n';
 }
 
-void IOHandler::printMoveList(const MoveList& list)
+void IO::printMoveList(const MoveList& list)
 {
 	for(uint32_t i = 0; i < list.size(); ++i)
 	{
@@ -63,7 +63,7 @@ void IOHandler::printMoveList(const MoveList& list)
 		printf("MoveList Total: %u Moves\n\n", list.size() );
 }
 
-Move IOHandler::parseMove(std::string input, Board& pos)
+Move IO::parseMove(std::string input, Board& pos)
 {
 	stringToLower(input);
 

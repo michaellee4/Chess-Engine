@@ -39,6 +39,7 @@ search.o: src/search.cc include/search.h include/defs.h include/debug.h \
  include/stopwatch.h include/movelist.h include/movemaker.h
 stopwatch.o: src/stopwatch.cc include/stopwatch.h
 utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
- include/move.h include/pvtable.h include/board.h include/defs.h
+ include/move.h include/pvtable.h include/board.h include/defs.h \
+ include/io.h include/movemaker.h include/movelist.h include/utils.h
 move.o: src/move.cc include/move.h include/defs.h include/debug.h \
  include/move.h include/pvtable.h include/board.h include/defs.h

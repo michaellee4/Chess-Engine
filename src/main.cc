@@ -40,7 +40,7 @@ void gameLoop(Board& b)
 	{
 		if(prevValid)
 		{
-			IOHandler::printBoard(b);
+			IO::printBoard(b);
 		}
 		cout<< "Please enter a move > ";
 		cin >> input;
@@ -75,7 +75,7 @@ void gameLoop(Board& b)
 		}
 		else 
 		{
-			Move move = IOHandler::parseMove(input, b);
+			Move move = IO::parseMove(input, b);
 			if(move.move != 0)
 			{
 				b.pv_table.insert(b, move);
@@ -104,8 +104,8 @@ int main()
 	PerftTester p;
 	Stopwatch s;
 	s.start();
-	p.perftTest(6,b,true);
-	// p.perftTestAll(b);
+	// p.perftTest(6,b,true);
+	p.perftTestAll(b);
 	std::cout << s.stop() << '\n';
 	// gameLoop(b);
 	// b.parseFEN("n1n5/PPPk4/8/8/8/8/4Kppp/5N1N w - - 0 1");	

@@ -1,5 +1,6 @@
 #include "utils.h"
 #include "defs.h"
+#include "io.h"
 #include <random>
 #include <sstream>
 #include <string>
@@ -47,7 +48,7 @@ void showAttackedSqs(const int side,Board& pos) {
 	int file = 0;
 	int sq = 0;
 	
-	printf("\n\nSquares attacked by:%c\n",BoardChar::SideChar[side]);
+	printf("\n\nSquares attacked by:%c\n",IO::SideChar[side]);
 	for(rank = RANK_8; rank >= RANK_1; --rank) {
 		for(file = FILE_A; file <= FILE_H; ++file) {
 			sq = fileRankToSq(file,rank);

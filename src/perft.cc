@@ -32,7 +32,7 @@ int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) {
 	
 	if(print)
 	{
-		IOHandler::printBoard(pos);
+		IO::printBoard(pos);
 		std::cout << "\n" << "Starting Test To Depth: "<< depth << "\n";
 	}
 	this->leafNodes = 0;
