@@ -1,11 +1,16 @@
 #include "movelist.h"
 #include <bitset>
 #include <iostream>
-
+#include <utility>
 MoveList::MoveList()
 {
 	moves.reserve(MAX_MOVES_PER_POSITION);
 }
+
+MoveList::MoveList(const MoveList& o) : moves(o.moves) {}
+
+MoveList::MoveList(MoveList&& o) noexcept : moves(std::move(o.moves)) {}
+
 
 void MoveList::addQuietMove(const Board& pos, Move&& move)
 {
@@ -350,6 +355,23 @@ void MoveList::generateAllMoves(const Board& pos)
 	this->generateSlidingMoves(pos, pos.side_to_move);
 	this->generateCastlingMoves(pos, pos.side_to_move);
 
+}
+
+void MoveList::reorderList(int32_t startIdx)
+{
+	int32_t curBest = 0;
+	int32_t bestIdx = startIdx;
+	for(uint32_t i = startIdx; i < this->size(); ++i)
+	{
+		if(this->moves[i].score > curBest)
+		{
+			curBest = this->moves[i].score;
+			bestIdx = i;
+		}
+	}
+	Move tmp = this->moves[startIdx];
+	this->moves[startIdx] = this->moves[bestIdx];
+	this->moves[bestIdx] = tmp;
 }
 
 uint32_t MoveList::size() const

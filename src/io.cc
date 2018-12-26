@@ -75,8 +75,7 @@ Move IOHandler::parseMove(std::string input, Board& pos)
 	uint32_t fromSq = fileRankToSq(input[0] - 'a', input[1] - '1');
 	uint32_t toSq = fileRankToSq(input[2] - 'a', input[3] - '1');
 	char promPce = input.size() > 4 ? input[4] : '*';
-	MoveList m;
-	m.generateAllMoves(pos);
+	MoveList m = pos.getMoveList();
 
 	for(uint32_t i = 0; i < m.size(); ++i)
 	{

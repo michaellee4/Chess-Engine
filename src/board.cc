@@ -4,6 +4,7 @@
 #include "hash.h"
 #include "utils.h"
 #include "bitboard.h"
+#include "movelist.h"
 #include <string>
 #include <sstream>
 #include <cstdio> 
@@ -420,4 +421,11 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const
 	// Check Diagonals
 
 	return numAttackers;
+}
+
+MoveList Board::getMoveList() const
+{
+	MoveList m;
+	m.generateAllMoves(*this);
+	return m;
 }

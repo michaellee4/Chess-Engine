@@ -8,6 +8,7 @@
 #include "pvtable.h"
 /*** The central unit of the Engine ***/
 // Handles the entire board representation and all information regarding the board.
+class MoveList;
 class Board
 {
 	private:
@@ -96,6 +97,8 @@ class Board
 		
 		// returns the number of times that a Sq is attacked by the given side
 		uint32_t sqAttacked(const uint32_t sq, const uint32_t side) const;
+
+		MoveList getMoveList() const;
 
 };
 		// reconstructs the board state and checks if they match

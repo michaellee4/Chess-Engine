@@ -161,14 +161,14 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     	return this->evaluatePosition(pos);
     }
 
-    MoveList m;
-    m.generateAllMoves(pos);
+    MoveList m = pos.getMoveList();
     int32_t legalMoves = 0;
     int32_t prevAlpha = alpha;
     Move bestMove = NOMOVE;
     int score = -Value::INFINITY;
 
-	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {	
+	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {
+		m.reorderList(MoveNum);
         if ( !MM::makeMove(pos,m[MoveNum]))  {
             continue;
         }
@@ -236,6 +236,6 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 			cout << move.toString() << " ";
 		}
 		cout<<'\n';
-		cout << "Ordering: " << info.fhf/info.fh << "\n" << '\n';
+		cout << "Ordering: " << (info.fh ? info.fhf/info.fh : 0) << "\n" << '\n';
 	}
 }

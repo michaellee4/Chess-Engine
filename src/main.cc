@@ -23,6 +23,7 @@
 #define PERFTFEN "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
 #define pt "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
 #define WAC1 "2rr3k/pp3pp1/1nnqbN1p/3pN3/2pP4/2P3Q1/PPB4P/R4RK1 w - -"
+#define WAC2 "r1b1k2r/ppppnppp/2n2q2/2b5/3NP3/2P1B3/PP3PPP/RN1QKB1R w KQkq - 0 1"
 
 using namespace std;
 
@@ -68,7 +69,7 @@ void gameLoop(Board& b)
 		}
 		else if(input[0] == 's')
 		{
-			info.depth = 4;
+			info.depth = 5;
 			s.searchPosition(b, info);
 			prevValid = false;
 		}
@@ -98,14 +99,14 @@ void gameLoop(Board& b)
 int main()
 {
 	Init::initAll();
-	Board b;
+	Board b(WAC2);
 	PerftTester p;
 	Stopwatch s;
 	s.start();
-	p.perftTest(6,b,true);
+	// p.perftTest(6,b,true);
 	// p.perftTestAll(b);
-	std::cout << s.stop() << '\n';
-	// gameLoop(b);
+	// std::cout << s.stop() << '\n';
+	gameLoop(b);
 	// b.parseFEN("n1n5/PPPk4/8/8/8/8/4Kppp/5N1N w - - 0 1");	
 	return 0;
 }

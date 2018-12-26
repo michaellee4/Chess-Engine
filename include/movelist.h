@@ -40,8 +40,10 @@ class MoveList
 	public:
 
 		MoveList();
-
+		MoveList(const MoveList& o);
+		MoveList(MoveList&& o) noexcept;
 		void generateAllMoves(const Board& pos);
+		void reorderList(int32_t idx);
 		uint32_t size() const;
 		const Move& operator[](const int idx) const;
 		Move& operator[](const int idx);
