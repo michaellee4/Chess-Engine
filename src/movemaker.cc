@@ -7,6 +7,7 @@
 #include "hash.h"
 #include<cstdio>
 #include <algorithm>
+
 void MM::clearPiece(const uint32_t sq, Board& pos)
 {
 	int pce = pos.pieces[sq];

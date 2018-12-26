@@ -76,13 +76,3 @@ PV_Entry& PV_Entry::operator=(const PV_Entry& o)
 	}
 	return *this;
 }
-
-PV_Entry& PV_Entry::operator=(const PV_Entry&& o)
-{
-	if(this != &o)
-	{
-		this->pos_key = o.pos_key;
-		this->move = o.move;
-	}
-	return *this;
-}

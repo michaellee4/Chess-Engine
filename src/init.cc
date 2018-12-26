@@ -3,6 +3,7 @@
 #include "init.h"
 #include "hash.h"
 #include "bitboard.h"
+#include "movelist.h"
 #include <vector>
 
 namespace BoardUtils
@@ -25,6 +26,11 @@ namespace BB
 {
 	std::vector<uint64_t> SetMask(CHESSBOARD_SIZE);
 	std::vector<uint64_t> ClearMask(CHESSBOARD_SIZE);
+}
+
+namespace MvvLva
+{
+	std::vector<std::vector<int32_t>> MvvLvaScore(PCE_TYPES, std::vector<int32_t>(PCE_TYPES));
 }
 
 void Init::initFileRankBrd()
@@ -100,10 +106,23 @@ void Init::initHashKeys()
 	}
 }
 
+void Init::initMvvLva()
+{
+	const std::vector<int32_t> victimScore{0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600};
+	for (int32_t atk = wP; atk <= bK; ++atk)
+	{
+		for(int32_t vic = wP; vic <= bK; ++vic)
+		{
+			MvvLva::MvvLvaScore[vic][atk] = victimScore[vic] + 6 - (victimScore[atk] / 100);
+		}
+	}
+}
+
 void Init::initAll()
 {
 	initSq120ToSq64();
 	initBitMasks();
 	initHashKeys();
 	initFileRankBrd();
+	initMvvLva();
 }

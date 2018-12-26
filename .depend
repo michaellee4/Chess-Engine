@@ -1,6 +1,6 @@
 init.o: src/init.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/utils.h include/defs.h include/board.h \
- include/init.h include/hash.h include/bitboard.h
+ include/init.h include/hash.h include/bitboard.h include/movelist.h
 board.o: src/board.cc include/board.h include/defs.h include/debug.h \
  include/move.h include/pvtable.h include/defs.h include/debug.h \
  include/hash.h include/board.h include/utils.h include/bitboard.h

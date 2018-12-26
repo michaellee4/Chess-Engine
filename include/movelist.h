@@ -6,14 +6,20 @@
 #include "move.h"
 #include <vector>
 
+//used in move ordering. MostValuableVictim-LeastValuableAttacker
+namespace MvvLva
+{
+	extern std::vector<std::vector<int32_t>> MvvLvaScore;
+}
+
 class MoveList
 {	
 	private:
 		const uint32_t MAX_MOVES_PER_POSITION = 256;
 		// Creates and adds a type of move to eh movelist
-		void addQuietMove(const Board& pos, const Move&& move);
-		void addCaptureMove(const Board& pos, const Move&& move);
-		void addEnPasMove(const Board& pos, const Move&& move);
+		void addQuietMove(const Board& pos, Move&& move);
+		void addCaptureMove(const Board& pos, Move&& move);
+		void addEnPasMove(const Board& pos, Move&& move);
 
 		// add's each piece's move
 		void addPawnMove(const Board& pos, uint32_t from, uint32_t to, uint32_t side);

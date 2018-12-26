@@ -69,13 +69,13 @@ namespace PieceInfo
 	const std::vector<uint32_t> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
 	const std::vector<uint32_t> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
 											BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
-	const std::vector<bool> PieceSlides = { false, false, false, true, true, true, false, false, false, true, true, true, false };
+	const std::vector<bool> PieceSlides { false, false, false, true, true, true, false, false, false, true, true, true, false };
 
-	const std::vector<bool> PiecePawn = { false, true, false, false, false, false, false, true, false, false, false, false, false };	
-	const std::vector<bool> PieceKing = { false, false, false, false, false, false, true, false, false, false, false, false, true };
-	const std::vector<bool> PieceRookQueen = { false, false, false, false, true, true, false, false, false, false, true, true, false };
-	const std::vector<bool> PieceBishopQueen = { false, false, false, true, false, true, false, false, false, true, false, true, false };
-	const std::vector<bool> PieceKnight = { false, false, true, false, false, false, false, false, true, false, false, false, false };
+	const std::vector<bool> PiecePawn { false, true, false, false, false, false, false, true, false, false, false, false, false };	
+	const std::vector<bool> PieceKing { false, false, false, false, false, false, true, false, false, false, false, false, true };
+	const std::vector<bool> PieceRookQueen { false, false, false, false, true, true, false, false, false, false, true, true, false };
+	const std::vector<bool> PieceBishopQueen { false, false, false, true, false, true, false, false, false, true, false, true, false };
+	const std::vector<bool> PieceKnight { false, false, true, false, false, false, false, false, true, false, false, false, false };
 
  }
 

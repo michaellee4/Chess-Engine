@@ -7,16 +7,18 @@ MoveList::MoveList()
 	moves.reserve(MAX_MOVES_PER_POSITION);
 }
 
-void MoveList::addQuietMove(const Board& pos, const Move&& move)
+void MoveList::addQuietMove(const Board& pos, Move&& move)
 {
 	this->moves.emplace_back(move);
 }
-void MoveList::addCaptureMove(const Board& pos, const Move&& move)
+void MoveList::addCaptureMove(const Board& pos, Move&& move)
 {
+	move.score = MvvLva::MvvLvaScore[move.captured()][pos.pieces[move.from()]];
 	this->moves.emplace_back(move);
 }
-void MoveList::addEnPasMove(const Board& pos, const Move&& move)
+void MoveList::addEnPasMove(const Board& pos, Move&& move)
 {
+	move.score = 105;
 	this->moves.emplace_back(move);
 }
 

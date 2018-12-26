@@ -1,4 +1,3 @@
-
 #ifndef MOVE_H
 #define MOVE_H
 
@@ -22,7 +21,6 @@ class U_Move
 		uint64_t pos_key;
 		U_Move();
 		U_Move(int32_t move, const Board& pos);
-
 };
 
 class Move
