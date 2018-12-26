@@ -10,6 +10,7 @@ NAME = ce
 MW = x86_64-w64-mingw32-g++
 MWFLAGS = -O3 -std=c++17 -I $(INCLUDE) -static-libgcc -static-libstdc++ -static -D__NO_INLINE__ -Wall -Werror
 MWLOCATION = bin/win64/ce.exe
+DEBUGFLAGS= -g -fsanitize=address
 
 all: ce
 
