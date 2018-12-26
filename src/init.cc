@@ -30,7 +30,7 @@ namespace BB
 
 namespace MvvLva
 {
-	int32_t MvvLvaScore[PCE_TYPES][PCE_TYPES];
+	std::vector<std::vector<int32_t>> MvvLvaScore(PCE_TYPES, std::vector<int32_t>(PCE_TYPES));
 }
 
 void Init::initFileRankBrd()

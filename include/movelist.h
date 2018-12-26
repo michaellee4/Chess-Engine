@@ -9,8 +9,8 @@
 //used in move ordering. MostValuableVictim-LeastValuableAttacker
 namespace MvvLva
 {
-	extern int32_t MvvLvaScore[PCE_TYPES][PCE_TYPES];
-	const int32_t victimScore[] = {0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600};
+	extern std::vector<std::vector<int32_t>> MvvLvaScore;
+	const std::vector<int32_t> victimScore {0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600};
 
 }
 

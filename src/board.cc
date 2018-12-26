@@ -339,7 +339,7 @@ bool checkBoard(const Board& pos)
 
 bool Board::sqOnBoard(uint32_t sq) const
 {
-	return !(this->pieces[sq] == OFFBOARD);
+	return !(this->pieces[sq] == OFFBOARD || this->pieces[sq] == NO_SQ);
 }
 
 uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const
