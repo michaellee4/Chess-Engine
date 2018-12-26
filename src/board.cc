@@ -56,7 +56,7 @@ void Board::resetBoard(void)
 {
 	for(uint32_t i = 0; i < BRD_ARR_SIZE; ++i)
 	{
-		this->pieces[i] = NO_SQ;
+		this->pieces[i] = OFFBOARD;
 	}
 
 	for(uint32_t i = 0; i < CHESSBOARD_SIZE; ++i)

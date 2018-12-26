@@ -11,7 +11,7 @@ uint64_t Hash::generatePosKey(const Board& pos)
 		int piece = pos.pieces[sq];
 
 		//is actually a piece
-		if(piece != NO_SQ && piece != EMPTY)
+		if(piece != NO_SQ && piece != EMPTY && piece != OFFBOARD)
 		{
 			ASSERT(piece>=wP && piece<=bK);
 			hash ^= Hash::PieceKeys[piece][sq];
