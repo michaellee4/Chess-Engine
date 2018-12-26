@@ -4,7 +4,7 @@
 #include "movemaker.h"
 /*** PV_ENTRY ***/
 
-PV_Entry::PV_Entry(uint64_t key, Move move) : pos_key(key), move(move) {}
+PV_Entry::PV_Entry(uint64_t key, Move _move) : pos_key(key), move(_move) {}
 
 PV_Entry::PV_Entry(const PV_Entry& o) : pos_key(o.pos_key), move(o.move) {}
 

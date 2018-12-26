@@ -56,6 +56,9 @@ class Board
 		// position hash
 		uint64_t pos_key;
 
+		// stores castle permissions using 4 bits
+		uint32_t castle_perm;
+		
 		// keeps track of how many of each pice is present on the board and where they are
 		std::vector<std::vector<uint32_t>> piece_list;
 
@@ -69,9 +72,6 @@ class Board
 		std::vector<uint32_t> min_pce;
 
 		std::vector<uint32_t> material;
-
-		// stores castle permissions using 4 bits
-		uint32_t castle_perm;
 
 		// stores the history of moves
 		std::vector<U_Move> history;

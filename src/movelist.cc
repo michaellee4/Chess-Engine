@@ -2,7 +2,7 @@
 #include <bitset>
 #include <iostream>
 #include <utility>
-MoveList::MoveList()
+MoveList::MoveList() : moves()
 {
 	moves.reserve(MAX_MOVES_PER_POSITION);
 }

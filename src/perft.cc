@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include "io.h"
+PerftTester::PerftTester() : leafNodes(0) {}
 void PerftTester::perft(uint32_t depth, Board& pos) {
 
     ASSERT(checkBoard(pos));  

@@ -1,9 +1,6 @@
 #include "stopwatch.h"
 
-Stopwatch::Stopwatch()
-{
-	this->start();
-}
+Stopwatch::Stopwatch() : start_time(Time::now()) {}
 Stopwatch::~Stopwatch()
 {
 	this->stop();
@@ -22,7 +19,7 @@ float Stopwatch::stop()
 uint64_t Stopwatch::getTimeInMilli()
 {
 	using namespace std::chrono;
-	milliseconds ms = duration_cast< milliseconds >(
+	milliseconds milli= duration_cast< milliseconds >(
     system_clock::now().time_since_epoch());
-	return ms.count();
+	return milli.count();
 }

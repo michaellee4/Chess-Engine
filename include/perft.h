@@ -14,12 +14,12 @@ class PerftTester
 {
 private:
 	const uint32_t depth_limit = 6;
-	long testArr[6 + 1];
 	long leafNodes;
 	void perft(uint32_t depth, Board& pos);
 public:
 	int perftTest(uint32_t depth, Board& pos, bool print);
 	void perftTestAll(Board& pos);
+	PerftTester();
 };
 
 

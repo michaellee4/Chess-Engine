@@ -14,13 +14,13 @@ class Board;
 class U_Move
 {
 	public:
-		int move;
-		int castlePerm;
-		int enPas;
-		int fiftyMove;
+		int32_t move;
+		int32_t castlePerm;
+		int32_t enPas;
+		int32_t fiftyMove;
 		uint64_t pos_key;
 		U_Move();
-		U_Move(int32_t move, const Board& pos);
+		U_Move(int32_t _move, const Board& pos);
 };
 
 class Move
@@ -29,10 +29,10 @@ class Move
 		uint32_t move;
 		int score;
 		Move(uint32_t from, uint32_t to, uint32_t captured, uint32_t prom, uint32_t flag);
-		Move(uint32_t move, int32_t score);
-		Move(uint32_t move);
-		Move(const Move& move);
-		Move(Move&& move) noexcept;
+		Move(uint32_t _move, int32_t _score);
+		Move(uint32_t _move);
+		Move(const Move& o);
+		Move(Move&& o) noexcept;
 		Move();
 		// 7 bits for src
 		inline uint32_t from() const { return this->move & 0x7f; }
@@ -55,7 +55,7 @@ class Move
 
 		std::string toString();
 
-		Move& operator=(const Move& move);
+		Move& operator=(const Move& o);
 
 
 };
