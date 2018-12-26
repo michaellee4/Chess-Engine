@@ -145,6 +145,7 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)
 
 int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull)
 {
+	(void)doNull;
     ASSERT(checkBoard(pos)); 
 
     ++info.nodes;
@@ -206,10 +207,10 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 	return alpha;
 }
 
-int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info)
-{
-	return 0;
-}
+//int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info)
+//{
+//	return 0;
+//}
 
 //uses iterative deepening
 void SearchAgent::searchPosition(Board& pos, SearchInfo& info)

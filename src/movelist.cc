@@ -14,6 +14,7 @@ MoveList::MoveList(MoveList&& o) noexcept : moves(std::move(o.moves)) {}
 
 void MoveList::addQuietMove(const Board& pos, Move&& move)
 {
+	(void)pos;
 	this->moves.emplace_back(move);
 }
 void MoveList::addCaptureMove(const Board& pos, Move&& move)
@@ -23,6 +24,7 @@ void MoveList::addCaptureMove(const Board& pos, Move&& move)
 }
 void MoveList::addEnPasMove(const Board& pos, Move&& move)
 {
+	(void) pos;
 	move.score = 105;
 	this->moves.emplace_back(move);
 }

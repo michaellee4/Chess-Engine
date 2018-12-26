@@ -22,6 +22,6 @@ namespace IO
 	void printBitBoard(const uint64_t);
 	void printMoveList(const MoveList& list);
 	Move parseMove(std::string input, Board& pos);
-};
+}
 
 #endif

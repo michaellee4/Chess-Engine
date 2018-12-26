@@ -5,7 +5,7 @@
 #include "utils.h"
 void IO::printBitBoard(uint64_t bb)
 {
-	for (uint32_t rank = RANK_8; rank >=RANK_1; --rank)
+	for (int32_t rank = RANK_8; rank >=RANK_1; --rank)
 	{
 		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
 		{

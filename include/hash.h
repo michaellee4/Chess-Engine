@@ -28,6 +28,6 @@ namespace Hash
 	{
 		pos.pos_key ^= (PieceKeys[EMPTY][(pos.en_pas)]);
 	}
-};
+}
 
 #endif
