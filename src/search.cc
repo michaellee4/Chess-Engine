@@ -152,7 +152,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
         return this->evaluatePosition(pos);
     }
 
-    if(isRepetition(pos) || pos.fifty_move >= 100)
+    if((isRepetition(pos) || pos.fifty_move >= 100) && pos.ply)
     {
     	return 0;
     }
