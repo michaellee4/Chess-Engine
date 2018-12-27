@@ -14,7 +14,7 @@ void PerftTester::perft(uint32_t depth, Board& pos) {
         return;
     }	
 
-    MoveList m = pos.getMoveList();
+    MoveList m = pos.getAllMoves();
       
 	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {	
        
@@ -38,7 +38,7 @@ int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) {
 	}
 	this->leafNodes = 0;
 
-    MoveList m = pos.getMoveList();
+    MoveList m = pos.getAllMoves();
     
 	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {
         Move move = m[MoveNum];

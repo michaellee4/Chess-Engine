@@ -437,9 +437,16 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const
 	return numAttackers;
 }
 
-MoveList Board::getMoveList() const
+MoveList Board::getAllMoves() const
 {
 	MoveList m;
 	m.generateAllMoves(*this);
+	return m;
+}
+
+MoveList Board::getAllCaptureMoves() const
+{
+	MoveList m;
+	m.generateAllCaptureMoves(*this);
 	return m;
 }

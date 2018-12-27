@@ -34,6 +34,7 @@ class MoveList
 		void generateSlidingMoves(const Board& pos, uint32_t side);
 		void generateNonSlidingMoves(const Board& pos, uint32_t side);
 		void generateCastlingMoves(const Board& psd, uint32_t side);
+
 		std::vector<Move> moves;
 
 	public:
@@ -48,6 +49,7 @@ class MoveList
 		MoveList(const MoveList& o);
 		MoveList(MoveList&& o) noexcept;
 		void generateAllMoves(const Board& pos);
+		void generateAllCaptureMoves(const Board& pos);
 		void reorderList(int32_t idx);
 		uint32_t size() const;
 		const Move& operator[](const int idx) const;

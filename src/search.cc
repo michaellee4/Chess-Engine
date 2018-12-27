@@ -150,7 +150,8 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 
     ++info.nodes;
 	if(depth == 0) {
-        return this->evaluatePosition(pos);
+		return this->quiescenceSearch(alpha, beta, pos, info);
+        // return this->evaluatePosition(pos);
     }
 
     if((isRepetition(pos) || pos.fifty_move >= 100) && pos.ply)
@@ -162,7 +163,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     	return this->evaluatePosition(pos);
     }
 
-    MoveList m = pos.getMoveList();
+    MoveList m = pos.getAllMoves();
     int32_t legalMoves = 0;
     int32_t prevAlpha = alpha;
     Move bestMove = NOMOVE;
@@ -233,10 +234,69 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 	return alpha;
 }
 
-//int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info)
-//{
-//	return 0;
-//}
+int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info)
+{
+	ASSERT(checkBoard(pos));
+	++info.nodes;
+	if(isRepetition(pos) || pos.fifty_move >= 100)
+	{
+		return 0;
+	}
+	if((unsigned)pos.ply > MAX_DEPTH - 1)
+	{
+		return this->evaluatePosition(pos);
+	}
+
+	int32_t initialScore = this->evaluatePosition(pos);
+	
+	if(initialScore >= beta)
+	{
+		return beta;
+	}
+	else if(initialScore > alpha)
+	{
+		alpha = initialScore;
+	}
+
+	MoveList m = pos.getAllCaptureMoves();
+
+    int32_t legalMoves = 0;
+    int32_t prevAlpha = alpha;
+    Move bestMove = NOMOVE;
+    int score = -Value::INFINITY;
+
+    for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
+	{
+		m.reorderList(moveNum);
+        Move curMove = m[moveNum];
+
+        if ( !MM::makeMove(pos,curMove))  {
+            continue;
+        }
+        ++legalMoves;
+        score = -1 * this->quiescenceSearch(-beta, -alpha, pos, info);
+        MM::takeMove(pos);
+        if(score > alpha)
+        {
+        	if(score >= beta)
+        	{
+        		if(legalMoves == 1)
+        		{
+        			++info.fhf;
+        		}
+        		++info.fh;
+        		return beta;
+        	}
+        	alpha = score;
+        	bestMove = curMove;
+        }
+    }
+	if(alpha != prevAlpha)
+	{
+		pos.pv_table.insert(pos, bestMove);
+	}
+	return alpha;
+}
 
 //uses iterative deepening
 void SearchAgent::searchPosition(Board& pos, SearchInfo& info)

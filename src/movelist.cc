@@ -2,6 +2,7 @@
 #include <bitset>
 #include <iostream>
 #include <utility>
+#include <algorithm>
 MoveList::MoveList() : moves()
 {
 	moves.reserve(MAX_MOVES_PER_POSITION);
@@ -368,6 +369,20 @@ void MoveList::generateAllMoves(const Board& pos)
 	this->generateSlidingMoves(pos, pos.side_to_move);
 	this->generateCastlingMoves(pos, pos.side_to_move);
 
+}
+
+void MoveList::generateAllCaptureMoves(const Board& pos)
+{
+	this->generateAllMoves(pos);
+	// for(int i = moves.size() - 1; i >= 0; --i)
+	// {
+	// 	if(!moves[i].wasCapture() && !moves[i].enPassant())
+	// 		moves.erase(moves.begin() + i);
+	// }
+	this->moves.erase(	std::remove_if(	this->moves.begin(), 
+										this->moves.end(), 
+										[](const Move& m){return (!m.wasCapture() && !m.enPassant());}),
+					  	this->moves.end());
 }
 
 void MoveList::reorderList(int32_t startIdx)
