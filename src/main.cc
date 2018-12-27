@@ -14,6 +14,7 @@
 #include "io.h"
 #include "searchinfo.h"
 #include "search.h"
+#include "uci.h"
 #include <iostream>
 #include <iomanip>
 #include <unordered_set>
@@ -103,13 +104,14 @@ int main()
 	Init::initAll();
 	Board b(WAC2);
 	// Board b;
-	PerftTester p;
-	Stopwatch s;
-	s.start();
+	// PerftTester p;
+	// Stopwatch s;
+	// s.start();
+	UCILoop();
 	// p.perftTest(6,b,true);
 	// p.perftTestAll(b);
 	// std::cout << s.stop() << '\n';
-	gameLoop(b);
+	// gameLoop(b);
 	// b.parseFEN("n1n5/PPPk4/8/8/8/8/4Kppp/5N1N w - - 0 1");	
 	return 0;
 }

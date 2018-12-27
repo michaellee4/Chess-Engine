@@ -22,7 +22,7 @@ main.o: src/main.cc include/defs.h include/debug.h include/move.h \
  include/movelist.h include/search.h include/searchinfo.h \
  include/stopwatch.h include/movemaker.h include/perft.h \
  include/movelist.h include/movemaker.h include/io.h include/utils.h \
- include/searchinfo.h
+ include/searchinfo.h include/uci.h
 hash.o: src/hash.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/hash.h include/board.h include/defs.h \
  include/utils.h include/board.h
@@ -44,4 +44,6 @@ utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
 move.o: src/move.cc include/move.h include/defs.h include/debug.h \
  include/move.h include/pvtable.h include/board.h include/defs.h
 uci.o: src/uci.cc include/uci.h include/board.h include/defs.h \
- include/debug.h include/move.h include/pvtable.h include/searchinfo.h
+ include/debug.h include/move.h include/pvtable.h include/searchinfo.h \
+ include/defs.h include/io.h include/movemaker.h include/movelist.h \
+ include/utils.h include/move.h
