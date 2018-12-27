@@ -1,3 +1,5 @@
-Add a linter
+Add a linter (clang-tidy)
 Integrate CMake
 Add Unit Tests
+Add gui
+

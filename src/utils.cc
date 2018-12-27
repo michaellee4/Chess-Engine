@@ -9,6 +9,15 @@
 #include <sstream>
 #include <algorithm>
 #include <cstring>
+
+#ifdef WIN32
+#include "windows.h"
+#else
+#include "sys/time.h"
+#include "sys/select.h"
+#include "string.h"
+#endif
+
 //return the 120 sq value of a given file and rank
 int fileRankToSq(int file, int rank)
 {
@@ -136,12 +145,8 @@ void ReadInput(SearchInfo& info)
     if (InputWaiting()) {    
 		info.stopped = true;
 		getline(std::cin, buf);
-		auto endc = buf.find('\n');
-		if(endc!=std::string::npos)
-		{
-			std::replace(buf.begin(), buf.end(), '\n', '\0');
-		}
-		if(buf == "quit")
+		std::replace(buf.begin(), buf.end(), '\n', '\0');
+		if(buf.substr(0, 4) == "quit")
 		{
 			info.quit = true;
 		}
