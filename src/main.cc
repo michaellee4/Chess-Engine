@@ -102,12 +102,13 @@ void gameLoop(Board& b)
 int main()
 {
 	Init::initAll();
+	UCIManager uci;
 	Board b(WAC2);
 	// Board b;
 	// PerftTester p;
 	// Stopwatch s;
 	// s.start();
-	UCILoop();
+	uci.UCILoop();
 	// p.perftTest(6,b,true);
 	// p.perftTestAll(b);
 	// std::cout << s.stop() << '\n';

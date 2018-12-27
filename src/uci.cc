@@ -5,14 +5,14 @@
 #include <iostream>
 #include <sstream>
 
-void parseGoCmd(const std::string& cmd, SearchInfo& info, Board& pos)
+void UCIManager::parseGoCmd(const std::string& cmd, SearchInfo& info, Board& pos)
 {
 (void)pos;
 (void)cmd;
 (void)info;
 }
 
-void parsePosition(const std::string& input, Board& pos)
+void UCIManager::parsePosition(const std::string& input, Board& pos)
 {
 
 	std::stringstream ss(input);
@@ -67,7 +67,7 @@ void parsePosition(const std::string& input, Board& pos)
 	IO::printBoard(pos);
 }
 
-void UCILoop()
+void UCIManager::UCILoop()
 {
 	std::string buf;
 	std::cout << "id name ChessEngine\n";
