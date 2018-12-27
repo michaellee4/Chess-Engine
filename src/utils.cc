@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <random>
 #include <sstream>
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <algorithm>
@@ -97,7 +98,7 @@ int InputWaiting()
       }
     }
     if (pipe) {
-      if (!PeekNamedPipe(inh, NULL, 0, NULL, &dw, NULL)) return 1;
+      if (!PeekNamedPipe(inh, NULL ,0, NULL, &dw, NULL)) return 1;
       return dw;
     } else {
       GetNumberOfConsoleInputEvents(inh, &dw);
@@ -107,23 +108,42 @@ int InputWaiting()
 }
 
 //Can probably change this to use C++ I/O
-void ReadInput(SearchInfo& info) {
-  int             bytes;
-  char            input[256] = "", *endc;
+// void ReadInput(SearchInfo& info) {
+//   int             bytes;
+//   char            input[256] = "", *endc;
 
+//     if (InputWaiting()) {    
+// 		info.stopped = true;
+// 		do {
+// 		  bytes=read(fileno(stdin),input,256);
+// 		} while (bytes<0);
+// 		endc = strchr(input,'\n');
+// 		if (endc) *endc=0;
+
+// 		if (strlen(input) > 0) {
+// 			if (!strncmp(input, "quit", 4))    {
+// 			  info.quit = true;
+// 			}
+// 		}
+// 		return;
+//     }
+// }
+
+//c++ version, not 100% sure if working
+void ReadInput(SearchInfo& info)
+{
+	std::string buf;
     if (InputWaiting()) {    
 		info.stopped = true;
-		do {
-		  bytes=read(fileno(stdin),input,256);
-		} while (bytes<0);
-		endc = strchr(input,'\n');
-		if (endc) *endc=0;
-
-		if (strlen(input) > 0) {
-			if (!strncmp(input, "quit", 4))    {
-			  info.quit = true;
-			}
+		getline(std::cin, buf);
+		auto endc = buf.find('\n');
+		if(endc!=std::string::npos)
+		{
+			std::replace(buf.begin(), buf.end(), '\n', '\0');
 		}
-		return;
+		if(buf == "quit")
+		{
+			info.quit = true;
+		}
     }
 }
