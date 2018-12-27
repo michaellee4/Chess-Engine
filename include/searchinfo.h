@@ -5,7 +5,7 @@ struct SearchInfo
 {
 	uint64_t startTime;
 	uint64_t stopTime;
-	uint64_t timeLimit;
+	bool timeLimit;
 
 	uint32_t depth;
 	uint32_t depthLimit;

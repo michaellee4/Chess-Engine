@@ -21,6 +21,7 @@ const uint32_t MAX_GAME_MOVES = 2 << 10;
 
 const uint32_t NUM_SIDES = 2;
 
+const uint32_t CHECK_TIMER = 0x7FF;
 // pieces
 enum { EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK };
 

@@ -1,8 +1,9 @@
 #include "search.h"
 #include "stopwatch.h"
-#include <iostream>
 #include "movelist.h"
 #include "movemaker.h"
+#include <sstream>
+#include <iostream>
 int32_t SearchAgent::evalPawns(const Board& pos)
 {
 	int32_t pce = wP;
@@ -110,9 +111,12 @@ int32_t SearchAgent::isRepetition(const Board& pos)
 	return false;
 }
 
-void SearchAgent::checkStop()
+void SearchAgent::checkStop(SearchInfo& info)
 {
-
+	if(info.timeLimit && Stopwatch::getTimeInMilli() > info.stopTime)
+	{
+		info.stopped = true;
+	}
 }
 
 void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)
@@ -148,11 +152,17 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 	(void)doNull;
     ASSERT(checkBoard(pos)); 
 
-    ++info.nodes;
 	if(depth == 0) {
 		return this->quiescenceSearch(alpha, beta, pos, info);
         // return this->evaluatePosition(pos);
     }
+
+	if((info.nodes & CHECK_TIMER )== 0)
+	{
+		this->checkStop(info);
+	}
+
+    ++info.nodes;
 
     if((isRepetition(pos) || pos.fifty_move >= 100) && pos.ply)
     {
@@ -192,6 +202,10 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
         ++legalMoves;
         score = -1 * this->alphaBeta(-beta, -alpha, depth - 1, pos, info, true);
         MM::takeMove(pos);
+        if(info.stopped)
+        {
+        	return 0;
+        }   
         if(score > alpha)
         {
         	if(score >= beta)
@@ -237,7 +251,14 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info)
 {
 	ASSERT(checkBoard(pos));
+
+	if( ( info.nodes & CHECK_TIMER )== 0)
+	{
+		this->checkStop(info);
+	}
+
 	++info.nodes;
+
 	if(isRepetition(pos) || pos.fifty_move >= 100)
 	{
 		return 0;
@@ -276,6 +297,10 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
         ++legalMoves;
         score = -1 * this->quiescenceSearch(-beta, -alpha, pos, info);
         MM::takeMove(pos);
+        if(info.stopped)
+        {
+        	return 0;
+        }
         if(score > alpha)
         {
         	if(score >= beta)
@@ -301,7 +326,8 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 //uses iterative deepening
 void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 {
-	using std::cout;
+	//use a string stream to build up gui string
+	std::stringstream guiStr;
 	Move bestMove = NOMOVE;
 	int32_t bestScore = -Value::INFINITY;
 	this->clearForSearch(pos, info);
@@ -309,20 +335,27 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
 	for(uint32_t curDepth = 1 ; curDepth <= info.depth; ++curDepth)
 	{
 		bestScore = this->alphaBeta(-Value::INFINITY, Value::INFINITY, curDepth, pos, info, true);
-
+		if(info.stopped)
+		{
+			break;
+		}
 		// check time
 		int32_t pvMoves = PV_Table::getPvLine(pos, curDepth);
 		bestMove = pos.pv_arr[0];
-		cout<<"Depth:" << curDepth << " score:" << bestScore << " move:" << bestMove.toString() << " nodes:" << info.nodes<<'\n';
+		guiStr << "info score cp " << bestScore;
+		guiStr << " depth " << curDepth;
+		guiStr << " nodes " << info.nodes;
+		guiStr << " time "  << Stopwatch::getTimeInMilli() - info.startTime;
 		
 		pvMoves = PV_Table::getPvLine(pos, curDepth);
-		cout<< "PvLine of " << pvMoves << " Moves: ";
+		guiStr<< " pv";
 		for(int i = 0; i < pvMoves; ++i)
 		{
-			Move move = pos.pv_arr[i];
-			cout << move.toString() << " ";
+			guiStr << ' ' <<pos.pv_arr[i].toString();
 		}
-		cout<<'\n';
-		cout << "Ordering: " << (info.fh ? info.fhf/info.fh : 0) << "\n" << '\n';
+		guiStr<<'\n';
+		std::cout << guiStr.str();
+		std::cout << "Ordering: " << (info.fh ? info.fhf/info.fh : 0) << "\n" << '\n';
 	}
+	std::cout << "Best move found was: " << bestMove.toString() << std::endl;
 }

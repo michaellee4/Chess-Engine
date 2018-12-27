@@ -73,7 +73,7 @@ class SearchAgent
 private:
 	int32_t isRepetition(const Board& pos);
 
-	void checkStop();
+	void checkStop(SearchInfo& info);
 
 	void clearForSearch(Board& pos, SearchInfo& info);
 
