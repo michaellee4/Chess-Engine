@@ -43,3 +43,5 @@ utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
  include/io.h include/movemaker.h include/movelist.h include/utils.h
 move.o: src/move.cc include/move.h include/defs.h include/debug.h \
  include/move.h include/pvtable.h include/board.h include/defs.h
+uci.o: src/uci.cc include/uci.h include/board.h include/defs.h \
+ include/debug.h include/move.h include/pvtable.h include/searchinfo.h

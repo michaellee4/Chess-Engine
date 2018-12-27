@@ -21,6 +21,19 @@ struct SearchInfo
 
 	float fh;
 	float fhf;
+
+	SearchInfo() : startTime(0),
+				   stopTime(0),
+				   timeLimit(false),
+				   depth(0),
+				   depthLimit(0),
+				   nodes(0),
+				   movesLeft(0),
+				   infinite(false),
+				   quit(false),
+				   stopped(false),
+				   fh(0),
+				   fhf(0) {}
 };
 
 
