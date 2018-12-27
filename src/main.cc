@@ -103,7 +103,7 @@ int main()
 {
 	Init::initAll();
 	UCIManager uci;
-	Board b(WAC2);
+	// Board b(WAC2);
 	// Board b;
 	// PerftTester p;
 	// Stopwatch s;

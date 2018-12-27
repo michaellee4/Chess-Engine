@@ -2,17 +2,77 @@
 #include "defs.h"
 #include "io.h"
 #include "move.h"
+#include "stopwatch.h"
 #include <iostream>
 #include <sstream>
 
-void UCIManager::parseGoCmd(const std::string& cmd, SearchInfo& info, Board& pos)
+UCIManager::UCIManager() : pos(), info(), sa() {}
+// go depth 6 wtime 180000 btime 100000 binc 1000 winc 1000 movetime 1000 movestogo 40
+void UCIManager::parseGoCmd(const std::string& input)
 {
-(void)pos;
-(void)cmd;
-(void)info;
+	int32_t depth = -1;
+	int32_t movesToGo = 30;
+	int32_t moveTime = -1;
+	int64_t time = -1;
+	int64_t inc = 0;
+	this->info.timeLimit = false;
+	std::string buf;
+	std::stringstream ss(input);
+	while(ss.good())
+	{
+		ss >> buf;
+		if(buf == "binc" && this->pos.side_to_move == BLACK)
+		{
+			ss >> inc;
+		}
+		else if (buf == "winc" && this->pos.side_to_move == WHITE)
+		{
+			ss >> inc;
+		}
+		else if(buf == "btime" && this->pos.side_to_move == BLACK)
+		{
+			ss >> time;
+		}
+		else if(buf == "wtime" && this->pos.side_to_move == WHITE)
+		{
+			ss >> time;
+		}
+		else if(buf == "movestogo")
+		{
+			ss >> movesToGo;
+		}
+		else if(buf == "movetime")
+		{
+			ss >> moveTime;
+		}
+		else if(buf == "depth")
+		{
+			ss >> depth;
+		}
+		if(moveTime != -1) 
+		{
+			time = moveTime;
+			movesToGo = 1;
+		}
+	}
+	this->info.startTime = Stopwatch::getTimeInMilli();
+	this->info.depth = depth;
+	if(time != -1) 
+	{
+		this->info.timeLimit = true;
+		time /= movesToGo;
+		time -= 50;
+		this->info.stopTime = this->info.startTime + time + inc;
+	}
+	if(depth == -1) 
+	{
+		this->info.depth = MAX_DEPTH;
+	}
+	std::cout<<"time:"<<time<<"ms start:"<<this->info.startTime<<" stop:"<<this->info.stopTime<<" depth:"<<this->info.depth<<" timeset:"<<this->info.timeLimit<<'\n';
+	sa.searchPosition(this->pos, this->info);
 }
 
-void UCIManager::parsePosition(const std::string& input, Board& pos)
+void UCIManager::parsePosition(const std::string& input)
 {
 
 	std::stringstream ss(input);
@@ -23,7 +83,7 @@ void UCIManager::parsePosition(const std::string& input, Board& pos)
 
 	if(input.substr(0,UCI_STARTPOS.size()) == UCI_STARTPOS)
 	{
-		pos.parseFEN(STARTFEN);
+		this->pos.parseFEN(STARTFEN);
 		ss >> buf;
 		ASSERT(buf == "startpos");
 
@@ -36,7 +96,7 @@ void UCIManager::parsePosition(const std::string& input, Board& pos)
 		ss>>buf;
 		if(buf != "fen")
 		{
-			pos.parseFEN(STARTFEN);
+			this->pos.parseFEN(STARTFEN);
 		}
 		else
 		{
@@ -49,7 +109,7 @@ void UCIManager::parsePosition(const std::string& input, Board& pos)
 				ss >> buf;
 			}
 			fen << buf;
-			pos.parseFEN(fen.str());
+			this->pos.parseFEN(fen.str());
 		}
 	}
 
@@ -58,13 +118,13 @@ void UCIManager::parsePosition(const std::string& input, Board& pos)
 		//reads all the moves and makes them 1 by 1
 		while(ss >> buf)
 		{
-			Move m = IO::parseMove(buf, pos);
+			Move m = IO::parseMove(buf, this->pos);
 			if(m == NOMOVE) { break; }
-			MM::makeMove(pos, m);
-			pos.ply = 0;
+			MM::makeMove(this->pos, m);
+			this->pos.ply = 0;
 		}
 	}
-	IO::printBoard(pos);
+	IO::printBoard(this->pos);
 }
 
 void UCIManager::UCILoop()
@@ -73,8 +133,6 @@ void UCIManager::UCILoop()
 	std::cout << "id name ChessEngine\n";
 	std::cout << "id author ml45898\n";
 	std::cout << "uciok\n";
-	Board pos;
-	SearchInfo info;
 
 	while(true)
 	{
@@ -91,19 +149,19 @@ void UCIManager::UCILoop()
 		}
 		else if(firstWord == "position")
 		{
-			parsePosition(buf, pos);
+			parsePosition(buf);
 		}
 		else if(firstWord == "ucinewgame")
 		{
-			parsePosition(UCI_STARTPOS, pos);
+			parsePosition(UCI_STARTPOS);
 		}
 		else if(firstWord == "go")
 		{
-			parseGoCmd(buf, info, pos);
+			parseGoCmd(buf);
 		}
 		else if (firstWord == "quit")
 		{
-			info.quit = true;
+			this->info.quit = true;
 		}
 		else if (firstWord == "uci")
 		{
@@ -111,6 +169,6 @@ void UCIManager::UCILoop()
 			std::cout << "id author ml45898\n";
 			std::cout << "uciok\n";	
 		}
-		if(info.quit) { break; }
+		if(this->info.quit) { break; }
 	}
 }

@@ -23,10 +23,10 @@ uint64_t Hash::generatePosKey(const Board& pos)
 	}
 	if(pos.en_pas != NO_SQ)
 	{
-		ASSERT(pos.en_pas>=0 && pos.en_pas<BRD_ARR_SIZE);
+		ASSERT(pos.en_pas<BRD_ARR_SIZE);
 		hash ^= Hash::PieceKeys[EMPTY][pos.en_pas];
 	}
-	ASSERT(pos.castle_perm>=0 && pos.castle_perm<=15);
+	ASSERT(pos.castle_perm<=15);
 	hash ^= Hash::CastleKeys[pos.castle_perm];
 
 	return hash;
