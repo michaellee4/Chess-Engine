@@ -27,8 +27,8 @@ Board::Board():pieces(BRD_ARR_SIZE),
 			   history(MAX_GAME_MOVES),
 			   pv_table(),
 	    	   pv_arr(MAX_DEPTH),
-	    	   search_hist(PCE_TYPES, std::vector<uint32_t>(BRD_ARR_SIZE)),
-	    	   search_killers(NUM_SIDES, std::vector<uint32_t>(MAX_DEPTH))
+	    	   search_hist(PCE_TYPES, std::vector<int32_t>(BRD_ARR_SIZE)),
+	    	   search_killers(NUM_SIDES, std::vector<Move>(MAX_DEPTH))
 
 {
 	for(uint32_t i = 0; i < PCE_TYPES; ++i)
@@ -56,8 +56,8 @@ Board::Board(const std::string fen):pieces(BRD_ARR_SIZE),
 									history(MAX_GAME_MOVES),
 									pv_table(),
 									pv_arr(MAX_DEPTH),
-									search_hist(PCE_TYPES, std::vector<uint32_t>(BRD_ARR_SIZE)),
-									search_killers(NUM_SIDES, std::vector<uint32_t>(MAX_DEPTH))
+									search_hist(PCE_TYPES, std::vector<int32_t>(BRD_ARR_SIZE)),
+									search_killers(NUM_SIDES, std::vector<Move>(MAX_DEPTH))
 {
 	for(uint32_t i = 0; i < PCE_TYPES; ++i)
 	{

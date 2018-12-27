@@ -17,7 +17,6 @@ namespace MvvLva
 class MoveList
 {	
 	private:
-		const uint32_t MAX_MOVES_PER_POSITION = 256;
 		// Creates and adds a type of move to eh movelist
 		void addQuietMove(const Board& pos, Move&& move);
 		void addCaptureMove(const Board& pos, Move&& move);
@@ -38,7 +37,13 @@ class MoveList
 		std::vector<Move> moves;
 
 	public:
-
+		const uint32_t MAX_MOVES_PER_POSITION = 256;
+		const uint32_t PVMOVE_OFFSET = 	2000000;
+		const uint32_t CAPTURE_OFFSET = 1000000;
+		// Any non-capture move that changes the beta-cutoff
+		const uint32_t KILLER_OFFSET1 = 900000;
+		const uint32_t KILLER_OFFSET2 = 800000;
+		
 		MoveList();
 		MoveList(const MoveList& o);
 		MoveList(MoveList&& o) noexcept;

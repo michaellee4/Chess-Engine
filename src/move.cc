@@ -56,3 +56,23 @@ Move& Move::operator=(const Move& o)
 	}
 	return *this;
 }
+
+Move& Move::operator=(Move&& o)
+{
+	if(this != &o)
+	{
+		this->move = std::move(o.move);
+		this->score = std::move(o.score);
+	}
+	return *this;
+}
+
+bool Move::operator==(const Move& rhs) const
+{
+	return this->move == rhs.move;
+}
+
+bool Move::operator!=(const Move& rhs) const
+{
+	return this->move != rhs.move;
+}

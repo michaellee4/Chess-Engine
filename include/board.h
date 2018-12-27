@@ -81,9 +81,9 @@ class Board
 		
 		std::vector<Move> pv_arr;
 
-		std::vector<std::vector<uint32_t>> search_hist;
+		std::vector<std::vector<int32_t>> search_hist;
 
-		std::vector<std::vector<uint32_t>> search_killers;
+		std::vector<std::vector<Move>> search_killers;
 	public:
 		Board();
 

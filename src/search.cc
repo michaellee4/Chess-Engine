@@ -129,7 +129,7 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)
 	{
 		for(uint32_t j = 0; j < MAX_DEPTH; ++j)
 		{
-			pos.search_killers[i][j] = 0;
+			pos.search_killers[i][j] = NOMOVE;
 		}
 	}
 
@@ -167,10 +167,25 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     int32_t prevAlpha = alpha;
     Move bestMove = NOMOVE;
     int score = -Value::INFINITY;
+    Move pvMove = pos.pv_table.get(pos);
+    if(pvMove != NOMOVE)
+    {
+		for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
+		{
+			if(m[moveNum] == pvMove)
+			{
+				m[moveNum].score = m.PVMOVE_OFFSET;
+				break;
+			}
+		}
+    }
 
-	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {
-		m.reorderList(MoveNum);
-        if ( !MM::makeMove(pos,m[MoveNum]))  {
+	for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
+	{
+		m.reorderList(moveNum);
+        Move curMove = m[moveNum];
+
+        if ( !MM::makeMove(pos,curMove))  {
             continue;
         }
         ++legalMoves;
@@ -185,10 +200,21 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
         			++info.fhf;
         		}
         		++info.fh;
+
+        		if(!curMove.wasCapture())
+        		{
+        			pos.search_killers[1][pos.ply] = pos.search_killers[0][pos.ply];
+        			pos.search_killers[0][pos.ply] = curMove;
+        		}
+
         		return beta;
         	}
         	alpha = score;
-        	bestMove = m[MoveNum];
+        	bestMove = curMove;
+        	if(!curMove.wasCapture())
+        	{
+        		pos.search_hist[pos.pieces[bestMove.from()]][bestMove.to()] += depth;
+        	}
         }
     }
     if(legalMoves == 0)

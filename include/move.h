@@ -56,8 +56,9 @@ class Move
 		std::string toString();
 
 		Move& operator=(const Move& o);
-
-
+		Move& operator=(Move&& o);
+		bool operator==(const Move& rhs) const;
+		bool operator!=(const Move& rhs) const;
 };
 
 #endif

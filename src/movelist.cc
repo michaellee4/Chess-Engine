@@ -14,18 +14,29 @@ MoveList::MoveList(MoveList&& o) noexcept : moves(std::move(o.moves)) {}
 
 void MoveList::addQuietMove(const Board& pos, Move&& move)
 {
-	(void)pos;
+	if(pos.search_killers[0][pos.ply] == move)
+	{
+		move.score = KILLER_OFFSET1;
+	}
+	else if(pos.search_killers[1][pos.ply] == move)
+	{
+		move.score = KILLER_OFFSET2;		
+	}
+	else
+	{
+		move.score = pos.search_hist[pos.pieces[move.from()]][move.to()];
+	}
 	this->moves.emplace_back(move);
 }
 void MoveList::addCaptureMove(const Board& pos, Move&& move)
 {
-	move.score = MvvLva::MvvLvaScore[move.captured()][pos.pieces[move.from()]];
+	move.score = MvvLva::MvvLvaScore[move.captured()][pos.pieces[move.from()]] + CAPTURE_OFFSET;
 	this->moves.emplace_back(move);
 }
 void MoveList::addEnPasMove(const Board& pos, Move&& move)
 {
 	(void) pos;
-	move.score = 105;
+	move.score = 105 + CAPTURE_OFFSET;
 	this->moves.emplace_back(move);
 }
 
