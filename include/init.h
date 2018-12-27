@@ -3,22 +3,22 @@
 
 namespace Init
 {
-	void initAll();
+	void initAll() noexcept;
 
 	// creates 2 arrays to map 64 <-> 120 board square representations
-	void initSq120ToSq64();
+	void initSq120ToSq64() noexcept;
 
 	// initializes bitmasks used in bitboards.cc
-	void initBitMasks();
+	void initBitMasks() noexcept;
 
 	// initializes all necessary hash codes for position hashes
-	void initHashKeys();
+	void initHashKeys() noexcept;
 
 	// initializes the two arrays to return a given square's file and rank
-	void initFileRankBrd();	
+	void initFileRankBrd() noexcept;	
 
 	// initializes the MvvLva arrays
-	void initMvvLva();
+	void initMvvLva() noexcept;
 }
 
 

@@ -4,9 +4,10 @@
 #include <iostream>
 #include <sstream>
 #include "io.h"
-PerftTester::PerftTester() : leafNodes(0) {}
-void PerftTester::perft(uint32_t depth, Board& pos) {
+PerftTester::PerftTester() noexcept : leafNodes(0) {}
 
+void PerftTester::perft(uint32_t depth, Board& pos) noexcept
+{
     ASSERT(checkBoard(pos));  
 
 	if(depth == 0) {
@@ -27,10 +28,9 @@ void PerftTester::perft(uint32_t depth, Board& pos) {
 }
 
 
-int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) {
-
-    // ASSERT(checkBoard(pos));
-	
+int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) noexcept
+ {
+    ASSERT(checkBoard(pos));
 	if(print)
 	{
 		IO::printBoard(pos);
@@ -57,7 +57,7 @@ int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) {
     return this->leafNodes;
 }
 
-void PerftTester::perftTestAll(Board& pos)
+void PerftTester::perftTestAll(Board& pos) noexcept
 {
 	
 	std::ifstream perftFile("tests/perftsuite.epd");

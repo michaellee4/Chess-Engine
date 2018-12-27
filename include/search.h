@@ -71,23 +71,23 @@ namespace Value
 class SearchAgent
 {
 private:
-	int32_t isRepetition(const Board& pos);
+	int32_t isRepetition(const Board& pos) noexcept;
 
 	void checkStop(SearchInfo& info);
 
-	void clearForSearch(Board& pos, SearchInfo& info);
+	void clearForSearch(Board& pos, SearchInfo& info) noexcept;
 
-	int32_t alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull);
+	int32_t alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull) noexcept;
 
-	int32_t quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info);
+	int32_t quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info) noexcept;
 
-	int32_t evalPawns(const Board& pos);
-	int32_t evalBishops(const Board& pos);
-	int32_t evalRooks(const Board& pos);
-	int32_t evalKnights(const Board& pos);
+	int32_t evalPawns(const Board& pos) noexcept;
+	int32_t evalBishops(const Board& pos) noexcept;
+	int32_t evalRooks(const Board& pos) noexcept;
+	int32_t evalKnights(const Board& pos) noexcept;
 public:
-	void searchPosition(Board& pos, SearchInfo& info);
-	int32_t evaluatePosition(const Board& pos);
+	void searchPosition(Board& pos, SearchInfo& info) noexcept;
+	int32_t evaluatePosition(const Board& pos) noexcept;
 };
 
 #endif

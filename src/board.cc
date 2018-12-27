@@ -9,7 +9,8 @@
 #include <sstream>
 #include <cstdio> 
 
-Board::Board():pieces(BRD_ARR_SIZE),
+Board::Board() noexcept :
+			   pieces(BRD_ARR_SIZE),
 			   pawns(3), 
 			   king_sq(NUM_SIDES),
 			   side_to_move(WHITE),
@@ -38,7 +39,8 @@ Board::Board():pieces(BRD_ARR_SIZE),
 	this->parseFEN(STARTFEN);
 }
 
-Board::Board(const std::string fen):pieces(BRD_ARR_SIZE),
+Board::Board(const std::string fen) noexcept :
+									pieces(BRD_ARR_SIZE),
 									pawns(3), 
 									king_sq(NUM_SIDES), 
 								    side_to_move(WHITE),
@@ -66,7 +68,7 @@ Board::Board(const std::string fen):pieces(BRD_ARR_SIZE),
 	this->parseFEN(fen);
 }
 
-void Board::resetBoard(void)
+void Board::resetBoard(void) noexcept
 {
 	for(uint32_t i = 0; i < BRD_ARR_SIZE; ++i)
 	{
@@ -106,7 +108,7 @@ void Board::resetBoard(void)
 
 	this->pos_key = 0ULL;
 }
-void Board::setUpPieces(const std::string& section)
+void Board::setUpPieces(const std::string& section) noexcept
 {
 	int fenIdx = 0;
 	for(int32_t rank = RANK_8; rank >= RANK_1; rank --)
@@ -147,7 +149,7 @@ void Board::setUpPieces(const std::string& section)
 	}
 }
 
-void Board::setUpCastlePerm(const std::string& section)
+void Board::setUpCastlePerm(const std::string& section) noexcept
 {
 	this->castle_perm = 0;
 	if(section[0] != '-')
@@ -174,7 +176,7 @@ void Board::setUpCastlePerm(const std::string& section)
 }
 
 
-void Board::getenPassant(const std::string& section)
+void Board::getenPassant(const std::string& section) noexcept
 {
 	if(section != "-")
 	{
@@ -184,7 +186,7 @@ void Board::getenPassant(const std::string& section)
 	}
 }
 
-void Board::setUpMoveCounters(std::istringstream& stream, std::string& section)
+void Board::setUpMoveCounters(std::istringstream& stream, std::string& section) noexcept
 {
 	using namespace std;
 
@@ -202,7 +204,7 @@ void Board::setUpMoveCounters(std::istringstream& stream, std::string& section)
 	}
 }
 
-void Board::parseFEN(const std::string fen)
+void Board::parseFEN(const std::string fen) noexcept
 {
 	using namespace std;
 
@@ -235,7 +237,7 @@ void Board::parseFEN(const std::string fen)
 	this->updatePieceLists();
 }
 
-void Board::updatePieceLists()
+void Board::updatePieceLists() noexcept
 {
 	for(uint32_t index = 0; index < BRD_ARR_SIZE; ++index)
 	{
@@ -268,7 +270,7 @@ void Board::updatePieceLists()
 	}
 }
 
-bool checkBoard(const Board& pos)
+bool checkBoard(const Board& pos) noexcept
 {
 	uint32_t t_pceNum[PCE_TYPES] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	uint32_t t_bigPce[NUM_SIDES] = { 0, 0};
@@ -351,12 +353,12 @@ bool checkBoard(const Board& pos)
 }
 
 
-bool Board::sqOnBoard(uint32_t sq) const
+bool Board::sqOnBoard(uint32_t sq) const noexcept
 {
 	return !(this->pieces[sq] == OFFBOARD || this->pieces[sq] == NO_SQ);
 }
 
-uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const
+uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noexcept
 {
 	uint32_t numAttackers = 0;
 	// Check Pawn
@@ -437,14 +439,14 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const
 	return numAttackers;
 }
 
-MoveList Board::getAllMoves() const
+MoveList Board::getAllMoves() const noexcept
 {
 	MoveList m;
 	m.generateAllMoves(*this);
 	return m;
 }
 
-MoveList Board::getAllCaptureMoves() const
+MoveList Board::getAllCaptureMoves() const noexcept
 {
 	MoveList m;
 	m.generateAllCaptureMoves(*this);

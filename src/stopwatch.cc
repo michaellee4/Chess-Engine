@@ -1,22 +1,22 @@
 #include "stopwatch.h"
 
-Stopwatch::Stopwatch() : start_time(Time::now()) {}
-Stopwatch::~Stopwatch()
+Stopwatch::Stopwatch() noexcept : start_time(Time::now()) {}
+Stopwatch::~Stopwatch() noexcept
 {
 	this->stop();
 }
-void Stopwatch::start()
+void Stopwatch::start() noexcept
 {
 	start_time = Time::now();
 }
-float Stopwatch::stop()
+float Stopwatch::stop() noexcept
 {
 	auto dur = std::chrono::duration_cast<ms>(Time::now() - start_time);
 	float milli = dur.count();
 	return milli;
 }
 
-uint64_t Stopwatch::getTimeInMilli()
+uint64_t Stopwatch::getTimeInMilli() noexcept
 {
 	using namespace std::chrono;
 	milliseconds milli= duration_cast< milliseconds >(

@@ -12,11 +12,11 @@ class Stopwatch
 	private:
 		Time::time_point start_time;
 	public:
-		Stopwatch();
-		~Stopwatch();
-		void start();
-		float stop();
-		static uint64_t getTimeInMilli();
+		Stopwatch() noexcept;
+		~Stopwatch() noexcept;
+		void start() noexcept;
+		float stop() noexcept;
+		static uint64_t getTimeInMilli() noexcept;
 };
 
 #endif

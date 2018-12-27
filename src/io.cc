@@ -3,7 +3,7 @@
 #include <iostream>
 #include "defs.h"
 #include "utils.h"
-void IO::printBitBoard(uint64_t bb)
+void IO::printBitBoard(uint64_t bb) noexcept
 {
 	for (int32_t rank = RANK_8; rank >=RANK_1; --rank)
 	{
@@ -19,7 +19,8 @@ void IO::printBitBoard(uint64_t bb)
 	printf("\n\n");
 }
 
-void IO::printBoard(const Board& pos){
+void IO::printBoard(const Board& pos) noexcept
+{
 	
 	int sq,file,rank,piece;
 	
@@ -51,7 +52,7 @@ void IO::printBoard(const Board& pos){
 	std::cout << "PosKey: " << pos.pos_key << "\n" << '\n';
 }
 
-void IO::printMoveList(const MoveList& list)
+void IO::printMoveList(const MoveList& list) noexcept
 {
 	for(uint32_t i = 0; i < list.size(); ++i)
 	{
@@ -63,7 +64,7 @@ void IO::printMoveList(const MoveList& list)
 		printf("MoveList Total: %u Moves\n\n", list.size() );
 }
 
-Move IO::parseMove(std::string input, Board& pos)
+Move IO::parseMove(std::string input, Board& pos) noexcept
 {
 	stringToLower(input);
 

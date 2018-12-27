@@ -19,17 +19,17 @@
 #endif
 
 //return the 120 sq value of a given file and rank
-int fileRankToSq(int file, int rank)
+int fileRankToSq(int file, int rank) noexcept
 {
 	return 21 + file + rank * 10;
 }
 
-bool isPiece(int piece)
+bool isPiece(int piece) noexcept
 {
 	return (piece != OFFBOARD && piece != EMPTY && piece != NO_SQ);
 }
 
-std::string sqToString(const int sq)
+std::string sqToString(const int sq) noexcept
 {
 	std::ostringstream stream;
 	char file = 'a' + BoardUtils::FileBrd[sq];
@@ -39,7 +39,7 @@ std::string sqToString(const int sq)
 }
  
 //https://stackoverflow.com/questions/37396278/how-to-generate-very-large-random-number-in-c
-uint64_t randU64() 
+uint64_t randU64() noexcept
 {
 	using namespace std;
 	  /* Seed */
@@ -54,8 +54,8 @@ uint64_t randU64()
 }
 
 
-void showAttackedSqs(const int side,Board& pos) {
-		
+void showAttackedSqs(const int side,Board& pos) noexcept
+{
 	int rank = 0;
 	int file = 0;
 	int sq = 0;
@@ -74,7 +74,7 @@ void showAttackedSqs(const int side,Board& pos) {
 
 }
 
-void stringToLower(std::string& str)
+void stringToLower(std::string& str) noexcept
 {
 	std::transform(str.begin(), str.end(), str.begin(), ::tolower);
 }

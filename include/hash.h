@@ -12,19 +12,19 @@ namespace Hash
 	uint64_t generatePosKey(const Board& pos);
 
 	// Used in Make/Take as macros to update position key
-	inline void hashPce(uint32_t pce, uint32_t sq, Board& pos)
+	inline void hashPce(uint32_t pce, uint32_t sq, Board& pos) noexcept
 	{
 		pos.pos_key ^= (PieceKeys[(pce)][(sq)]);
 	}
-	inline void hashCa(Board& pos)
+	inline void hashCa(Board& pos) noexcept
 	{
 		pos.pos_key ^= (CastleKeys[(pos.castle_perm)]);
 	}
-	inline void hashSide(Board& pos)
+	inline void hashSide(Board& pos) noexcept
 	{
 		pos.pos_key ^= (SideKey);
 	}
-	inline void hashEP(Board& pos)
+	inline void hashEP(Board& pos) noexcept
 	{
 		pos.pos_key ^= (PieceKeys[EMPTY][(pos.en_pas)]);
 	}

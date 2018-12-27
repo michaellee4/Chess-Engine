@@ -33,7 +33,7 @@ namespace MvvLva
 	std::vector<std::vector<int32_t>> MvvLvaScore(PCE_TYPES, std::vector<int32_t>(PCE_TYPES));
 }
 
-void Init::initFileRankBrd()
+void Init::initFileRankBrd() noexcept
 {
 	for(uint32_t sq = 0; sq < BRD_ARR_SIZE; ++sq)
 	{
@@ -53,7 +53,7 @@ void Init::initFileRankBrd()
 }
 
 // creates 2 arrays to map 64 <-> 120 board square representations
-void Init::initSq120ToSq64()
+void Init::initSq120ToSq64() noexcept
 {
 	int sq64 = 0;
 
@@ -80,7 +80,7 @@ void Init::initSq120ToSq64()
 	}
 }
 
-void Init::initBitMasks()
+void Init::initBitMasks() noexcept
 {
 	for(uint32_t index = 0; index < CHESSBOARD_SIZE; ++index)
 	{
@@ -89,7 +89,7 @@ void Init::initBitMasks()
 	}
 }
 
-void Init::initHashKeys()
+void Init::initHashKeys() noexcept
 {
 	for(uint32_t i = 0; i < PCE_TYPES; ++i )
 	{
@@ -106,7 +106,7 @@ void Init::initHashKeys()
 	}
 }
 
-void Init::initMvvLva()
+void Init::initMvvLva() noexcept
 {
 	for (int32_t atk = wP; atk <= bK; ++atk)
 	{
@@ -117,7 +117,7 @@ void Init::initMvvLva()
 	}
 }
 
-void Init::initAll()
+void Init::initAll() noexcept
 {
 	initSq120ToSq64();
 	initBitMasks();

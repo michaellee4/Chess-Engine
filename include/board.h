@@ -13,20 +13,20 @@ class Board
 {
 	private:
 		// Resets the board to the empty state
-		void resetBoard(void);
+		void resetBoard(void) noexcept;
 
 		// Update the underlying board information arrays
-		void updatePieceLists(void);
+		void updatePieceLists(void) noexcept;
 
 		// Places the pieces on the board using the fen
-		void setUpPieces(const std::string& section);
+		void setUpPieces(const std::string& section) noexcept;
 
 		// Sets up castling permissions with the fen
-		void setUpCastlePerm(const std::string& section);
+		void setUpCastlePerm(const std::string& section) noexcept;
 
-		void getenPassant(const std::string& section);
+		void getenPassant(const std::string& section) noexcept;
 
-		void setUpMoveCounters(std::istringstream& stream, std::string& section);
+		void setUpMoveCounters(std::istringstream& stream, std::string& section) noexcept;
 
 	public:
 		// stores the state of the board 120 sq representation
@@ -85,25 +85,25 @@ class Board
 
 		std::vector<std::vector<Move>> search_killers;
 	public:
-		Board();
+		Board() noexcept;
 
-		Board(const std::string fen);
+		Board(const std::string fen) noexcept;
 
 		// Reads in a Forseth-Edwards Notation string and prepares the board in accordance ot it.
-		void parseFEN(const std::string);
+		void parseFEN(const std::string) noexcept;
 
 		// Checks if a sq is on the board
-		bool sqOnBoard(uint32_t sq) const;
+		bool sqOnBoard(uint32_t sq) const noexcept;
 		
 		// returns the number of times that a Sq is attacked by the given side
-		uint32_t sqAttacked(const uint32_t sq, const uint32_t side) const;
+		uint32_t sqAttacked(const uint32_t sq, const uint32_t side) const noexcept;
 
-		MoveList getAllMoves() const;
+		MoveList getAllMoves() const noexcept;
 		
-		MoveList getAllCaptureMoves() const;
+		MoveList getAllCaptureMoves() const noexcept;
 
 };
 		// reconstructs the board state and checks if they match
 		// Used for debugging.
-		bool checkBoard(const Board& pos);
+		bool checkBoard(const Board& pos) noexcept;
 #endif

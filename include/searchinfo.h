@@ -22,7 +22,7 @@ struct SearchInfo
 	float fh;
 	float fhf;
 
-	SearchInfo() : startTime(0),
+	constexpr SearchInfo() noexcept: startTime(0),
 				   stopTime(0),
 				   timeLimit(false),
 				   depth(0),

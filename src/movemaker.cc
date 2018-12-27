@@ -8,7 +8,7 @@
 #include<cstdio>
 #include <algorithm>
 
-void MM::clearPiece(const uint32_t sq, Board& pos)
+void MM::clearPiece(const uint32_t sq, Board& pos) noexcept
 {
 	int pce = pos.pieces[sq];
 	int col = PieceInfo::PieceCol[pce];
@@ -37,7 +37,7 @@ void MM::clearPiece(const uint32_t sq, Board& pos)
 	pos.piece_list[pce].erase(std::remove(pos.piece_list[pce].begin(), pos.piece_list[pce].end(), sq), pos.piece_list[pce].end());
 }
 
-void MM::addPiece(const uint32_t sq, Board& pos, const uint32_t pce)
+void MM::addPiece(const uint32_t sq, Board& pos, const uint32_t pce) noexcept
 {
 	ASSERT(isPiece(pce));
 	ASSERT(pos.sqOnBoard(sq));
@@ -69,7 +69,7 @@ void MM::addPiece(const uint32_t sq, Board& pos, const uint32_t pce)
 	pos.piece_list[pce].push_back(sq);
 }
 
-void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos)
+void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos) noexcept
 {
     ASSERT(pos.sqOnBoard(src));
     ASSERT(pos.sqOnBoard(dest));
@@ -93,7 +93,7 @@ void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos)
 	*std::find(pos.piece_list[pce].begin(), pos.piece_list[pce].end(), src)  = dest;	
 }
 
-bool MM::makeMove(Board& pos, const Move& moveInfo)
+bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 {
 	ASSERT(checkBoard(pos));
 
@@ -195,7 +195,7 @@ bool MM::makeMove(Board& pos, const Move& moveInfo)
 	return true;
 }
 
-void MM::takeMove(Board& pos)
+void MM::takeMove(Board& pos) noexcept
 {
 	ASSERT(checkBoard(pos));
 

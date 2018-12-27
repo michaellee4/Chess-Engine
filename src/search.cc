@@ -5,7 +5,7 @@
 #include "movemaker.h"
 #include <sstream>
 #include <iostream>
-int32_t SearchAgent::evalPawns(const Board& pos)
+int32_t SearchAgent::evalPawns(const Board& pos) noexcept
 {
 	int32_t pce = wP;
 	int32_t PnScore = 0;	
@@ -24,7 +24,7 @@ int32_t SearchAgent::evalPawns(const Board& pos)
 	return PnScore;
 }
 
-int32_t SearchAgent::evalBishops(const Board& pos)
+int32_t SearchAgent::evalBishops(const Board& pos) noexcept
 {
 	int32_t pce = wB;	
 	int32_t BiScore = 0;
@@ -44,7 +44,7 @@ int32_t SearchAgent::evalBishops(const Board& pos)
 	return BiScore;
 }
 
-int32_t SearchAgent::evalRooks(const Board& pos)
+int32_t SearchAgent::evalRooks(const Board& pos) noexcept
 {
 	int32_t pce = wR;	
 	int32_t RkScore = 0;
@@ -64,7 +64,7 @@ int32_t SearchAgent::evalRooks(const Board& pos)
 	return RkScore;
 }
 
-int32_t SearchAgent::evalKnights(const Board& pos)
+int32_t SearchAgent::evalKnights(const Board& pos) noexcept
 {
 	int32_t pce = wN;	
 	int32_t KnScore = 0;
@@ -84,7 +84,7 @@ int32_t SearchAgent::evalKnights(const Board& pos)
 }
 
 
-int32_t SearchAgent::evaluatePosition(const Board& pos)
+int32_t SearchAgent::evaluatePosition(const Board& pos) noexcept
 {
 	// initial score
 	int32_t score = pos.material[WHITE] - pos.material[BLACK];
@@ -101,7 +101,7 @@ int32_t SearchAgent::evaluatePosition(const Board& pos)
 	return score;
 }
 
-int32_t SearchAgent::isRepetition(const Board& pos)
+int32_t SearchAgent::isRepetition(const Board& pos) noexcept
 {
 	for(int32_t idx = pos.hist_ply - pos.fifty_move; idx < pos.hist_ply - 1; ++idx)
 	{
@@ -121,7 +121,7 @@ void SearchAgent::checkStop(SearchInfo& info)
 	ReadInput(info);
 }
 
-void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)
+void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 {
 	for(uint32_t i = 0; i < PCE_TYPES; ++i)
 	{
@@ -149,7 +149,7 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)
 	info.fhf = 0;
 }
 
-int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull)
+int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull) noexcept
 {
 	(void)doNull;
     ASSERT(checkBoard(pos)); 
@@ -250,7 +250,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 	return alpha;
 }
 
-int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info)
+int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info) noexcept
 {
 	ASSERT(checkBoard(pos));
 
@@ -326,7 +326,7 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 }
 
 //uses iterative deepening
-void SearchAgent::searchPosition(Board& pos, SearchInfo& info)
+void SearchAgent::searchPosition(Board& pos, SearchInfo& info) noexcept
 {
 	//use a string stream to build up gui string
 	std::stringstream guiStr;
