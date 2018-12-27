@@ -2,9 +2,11 @@
 #include "defs.h"
 #include "io.h"
 #include "move.h"
+#include "utils.h"
 #include "stopwatch.h"
 #include <iostream>
 #include <sstream>
+
 
 UCIManager::UCIManager() : pos(), info(), sa() {}
 // go depth 6 wtime 180000 btime 100000 binc 1000 winc 1000 movetime 1000 movestogo 40
@@ -68,7 +70,7 @@ void UCIManager::parseGoCmd(const std::string& input)
 	{
 		this->info.depth = MAX_DEPTH;
 	}
-	std::cout<<"time:"<<time<<"ms start:"<<this->info.startTime<<" stop:"<<this->info.stopTime<<" depth:"<<this->info.depth<<" timeset:"<<this->info.timeLimit<<'\n';
+	std::cout<<"time:"<<time<<" start:"<<this->info.startTime<<" stop:"<<this->info.stopTime<<" depth:"<<this->info.depth<<" timeset:"<<this->info.timeLimit<<'\n';
 	sa.searchPosition(this->pos, this->info);
 }
 

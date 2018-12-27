@@ -1,6 +1,7 @@
 #include "search.h"
 #include "stopwatch.h"
 #include "movelist.h"
+#include "utils.h"
 #include "movemaker.h"
 #include <sstream>
 #include <iostream>
@@ -117,6 +118,7 @@ void SearchAgent::checkStop(SearchInfo& info)
 	{
 		info.stopped = true;
 	}
+	ReadInput(info);
 }
 
 void SearchAgent::clearForSearch(Board& pos, SearchInfo& info)

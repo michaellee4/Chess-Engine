@@ -3,6 +3,7 @@
 
 #include "defs.h"
 #include "board.h"
+#include "searchinfo.h"
 #include <string>
 
 // returns the SQ# on the 120 Sq board representation
@@ -20,5 +21,10 @@ void showAttackedSqs(const int side,Board& pos);
 std::string sqToString(const int sq);
 
 void stringToLower(std::string& str);
+
+int InputWaiting();
+
+void ReadInput(SearchInfo& info);
+
 #endif
 

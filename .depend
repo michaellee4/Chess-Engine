@@ -1,48 +1,54 @@
 init.o: src/init.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/utils.h include/defs.h include/board.h \
- include/init.h include/hash.h include/bitboard.h include/movelist.h
+ include/searchinfo.h include/init.h include/hash.h include/bitboard.h \
+ include/movelist.h
 board.o: src/board.cc include/board.h include/defs.h include/debug.h \
  include/move.h include/pvtable.h include/defs.h include/debug.h \
- include/hash.h include/board.h include/utils.h include/bitboard.h \
- include/movelist.h
+ include/hash.h include/board.h include/utils.h include/searchinfo.h \
+ include/bitboard.h include/movelist.h
 io.o: src/io.cc include/io.h include/board.h include/defs.h \
  include/debug.h include/move.h include/pvtable.h include/movemaker.h \
- include/movelist.h include/utils.h include/defs.h include/utils.h
+ include/movelist.h include/utils.h include/searchinfo.h include/defs.h \
+ include/utils.h
 movelist.o: src/movelist.cc include/movelist.h include/defs.h \
  include/debug.h include/move.h include/pvtable.h include/board.h
 perft.o: src/perft.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/perft.h include/board.h include/defs.h \
- include/movelist.h include/movemaker.h include/io.h include/utils.h
+ include/movelist.h include/movemaker.h include/io.h include/utils.h \
+ include/searchinfo.h
 bitboard.o: src/bitboard.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/bitboard.h include/defs.h include/utils.h \
- include/board.h
+ include/board.h include/searchinfo.h
 main.o: src/main.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/bitboard.h include/defs.h include/utils.h \
- include/board.h include/init.h include/hash.h include/board.h \
- include/movelist.h include/search.h include/searchinfo.h \
- include/stopwatch.h include/movemaker.h include/perft.h \
- include/movelist.h include/movemaker.h include/io.h include/utils.h \
- include/searchinfo.h include/uci.h include/search.h
+ include/board.h include/searchinfo.h include/init.h include/hash.h \
+ include/board.h include/movelist.h include/search.h include/stopwatch.h \
+ include/movemaker.h include/perft.h include/movelist.h \
+ include/movemaker.h include/io.h include/utils.h include/searchinfo.h \
+ include/uci.h include/search.h
 hash.o: src/hash.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/hash.h include/board.h include/defs.h \
- include/utils.h include/board.h
+ include/utils.h include/searchinfo.h include/board.h
 movemaker.o: src/movemaker.cc include/movemaker.h include/defs.h \
  include/debug.h include/move.h include/pvtable.h include/board.h \
  include/defs.h include/bitboard.h include/debug.h include/utils.h \
- include/move.h include/hash.h
+ include/searchinfo.h include/move.h include/hash.h
 pvtable.o: src/pvtable.cc include/pvtable.h include/move.h include/defs.h \
  include/debug.h include/pvtable.h include/board.h include/defs.h \
  include/movemaker.h include/board.h
 search.o: src/search.cc include/search.h include/defs.h include/debug.h \
  include/move.h include/pvtable.h include/board.h include/searchinfo.h \
- include/stopwatch.h include/movelist.h include/movemaker.h
+ include/stopwatch.h include/movelist.h include/utils.h \
+ include/movemaker.h
 stopwatch.o: src/stopwatch.cc include/stopwatch.h
 utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
- include/move.h include/pvtable.h include/board.h include/defs.h \
- include/io.h include/movemaker.h include/movelist.h include/utils.h
+ include/move.h include/pvtable.h include/board.h include/searchinfo.h \
+ include/defs.h include/io.h include/movemaker.h include/movelist.h \
+ include/utils.h
 move.o: src/move.cc include/move.h include/defs.h include/debug.h \
  include/move.h include/pvtable.h include/board.h include/defs.h
 uci.o: src/uci.cc include/uci.h include/board.h include/defs.h \
  include/debug.h include/move.h include/pvtable.h include/searchinfo.h \
  include/search.h include/defs.h include/io.h include/movemaker.h \
- include/movelist.h include/utils.h include/move.h include/stopwatch.h
+ include/movelist.h include/utils.h include/move.h include/utils.h \
+ include/stopwatch.h
