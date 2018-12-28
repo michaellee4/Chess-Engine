@@ -5,3 +5,4 @@ Add gui
 Refactor Xboard and console protocol
 Add time constants to stopwatch
 Add all three protocolManagers to a superclass and use inheritance
+multithreading? (big if)
