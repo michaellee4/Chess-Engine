@@ -85,9 +85,13 @@ private:
 	int32_t evalBishops(const Board& pos) noexcept;
 	int32_t evalRooks(const Board& pos) noexcept;
 	int32_t evalKnights(const Board& pos) noexcept;
+
+	bool threeFoldRepetition(const Board& pos) noexcept;
+	bool drawnMaterial(const Board& pos) noexcept;
 public:
 	void searchPosition(Board& pos, SearchInfo& info) noexcept;
 	int32_t evaluatePosition(const Board& pos) noexcept;
+	bool isGameOver(Board& pos) noexcept;
 };
 
 #endif

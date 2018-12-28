@@ -7,21 +7,24 @@
 #include<cstddef>
 #include "move.h"
 #include "pvtable.h"
+#include <string>
 #define STARTFEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
-const uint32_t MAX_DEPTH = 64;
+constexpr uint32_t MAX_DEPTH = 64;
 
-const uint32_t PCE_TYPES = 13;
+constexpr uint32_t PCE_TYPES = 13;
 
-const uint32_t BRD_ARR_SIZE = 120;
+constexpr uint32_t BRD_ARR_SIZE = 120;
 
-const uint32_t CHESSBOARD_SIZE = 64;
+constexpr uint32_t CHESSBOARD_SIZE = 64;
 
-const uint32_t MAX_GAME_MOVES = 2 << 10;
+constexpr uint32_t MAX_GAME_MOVES = 2 << 10;
 
-const uint32_t NUM_SIDES = 2;
+constexpr uint32_t NUM_SIDES = 2;
 
-const uint32_t CHECK_TIMER = 0x7FF;
+constexpr uint32_t CHECK_TIMER = 0x7FF;
+
+const std::string NAME = "ChessEngine";
 // pieces
 enum { EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK };
 

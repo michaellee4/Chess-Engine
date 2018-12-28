@@ -132,7 +132,7 @@ void UCIManager::parsePosition(const std::string& input)
 void UCIManager::UCILoop()
 {
 	std::string buf;
-	std::cout << "id name ChessEngine\n";
+	std::cout << "id name "<<NAME<<'\n';
 	std::cout << "id author ml45898\n";
 	std::cout << "uciok\n";
 
@@ -167,7 +167,7 @@ void UCIManager::UCILoop()
 		}
 		else if (firstWord == "uci")
 		{
-			std::cout << "id name ChessEngine\n";
+			std::cout << "id name "<< NAME<< '\n';
 			std::cout << "id author ml45898\n";
 			std::cout << "uciok\n";	
 		}

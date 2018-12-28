@@ -101,12 +101,94 @@ int32_t SearchAgent::evaluatePosition(const Board& pos) noexcept
 	return score;
 }
 
+bool SearchAgent::threeFoldRepetition(const Board& pos) noexcept
+{
+	int32_t numRep = 0;
+	for(int32_t i = 0; i < pos.hist_ply; ++i)
+	{
+		if(pos.history[i].pos_key == pos.pos_key)
+		{
+			++numRep;
+		}
+	}
+	return numRep > 2;
+}
+
+bool SearchAgent::drawnMaterial(const Board& pos) noexcept
+{
+	auto pieceList = pos.piece_list;
+	if(!pieceList[wP].empty() || !pieceList[bP].empty()) return false;
+	if(!pieceList[wQ].empty() || !pieceList[bQ].empty()) return false;
+	if(!pieceList[wR].empty() || !pieceList[bR].empty()) return false;
+	if(pieceList[wB].size() > 1 || pieceList[bB].size() > 1) return false;
+	if(pieceList[wN].size() > 1 || pieceList[bN].size() > 1) return false;
+	if(!pieceList[wN].empty() && !pieceList[wB].empty()) return false;
+	if(!pieceList[bN].empty() && !pieceList[bB].empty()) return false;
+	return true;
+}
+
 int32_t SearchAgent::isRepetition(const Board& pos) noexcept
 {
 	for(int32_t idx = pos.hist_ply - pos.fifty_move; idx < pos.hist_ply - 1; ++idx)
 	{
 		ASSERT(idx >= 0 && (unsigned)idx < MAX_GAME_MOVES);
 		if(pos.pos_key == pos.history[idx].pos_key)
+			return true;
+	}
+	return false;
+}
+
+bool SearchAgent::isGameOver(Board& pos) noexcept
+{
+	if(pos.fifty_move > 100)
+	{
+		std::cout << "1/2-1/2 {fifty move rule (claimed by " << NAME << ")}" << std::endl;
+		return true;
+	}
+	if(threeFoldRepetition(pos))
+	{
+		std::cout << "1/2-1/2 {3-fold repetition (claimed by " << NAME << ")}" << std::endl;
+		return true;
+	}
+	if(drawnMaterial(pos))
+	{
+		std::cout << "1/2-1/2 {insufficient material (claimed by " << NAME << ")}" << std::endl;
+		return true;
+	}
+
+	MoveList m = pos.getAllMoves();
+	bool legalMoveFound = false;
+	for(uint32_t i = 0; i < m.size(); ++i)
+	{
+		Move curMove = m[i];
+		if(!MM::makeMove(pos, curMove))
+		{
+			continue;
+		}
+		legalMoveFound = true;
+		MM::takeMove(pos);
+		break;
+	}
+	if(legalMoveFound) return false;
+
+	bool inCheck = pos.sqAttacked(pos.king_sq[pos.side_to_move], !pos.side_to_move);
+
+	if(inCheck)
+	{
+		if(pos.side_to_move == WHITE)
+		{
+			std::cout << "0-1 {black mates (claimed by "<< NAME<< ")}" << std::endl;
+			return true;			
+		}
+		else
+		{
+			std::cout << "0-1 {white mates (claimed by "<< NAME<< ")}" << std::endl;
+			return true;
+		}
+	}
+	else
+	{
+			std::cout << "\n1/2-1/2 {stalemate (claimed by "<< NAME<< ")}" << std::endl;
 			return true;
 	}
 	return false;
