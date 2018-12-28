@@ -25,6 +25,10 @@ Move::Move(Move&& o) noexcept : move(std::move(o.move)), score(std::move(o.score
 
 const std::string Move::toString() const noexcept
 {
+	if(this->move == 0)
+	{
+		return "NOMOVE";
+	}
 	char srcFile = 'a' + BoardUtils::FileBrd[this->from()];
 	char srcRank = '1' + BoardUtils::RankBrd[this->from()];
 	char destFile = 'a' + BoardUtils::FileBrd[this->to()];
