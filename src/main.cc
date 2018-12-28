@@ -74,6 +74,8 @@ int main()
 	Init::initAll();
 	printGreeting();
 	connect();
+	// UCIManager uci;
+	// uci.UCILoop();
 	// XBoardManager x;
 	// x.XBoardLoop();
 	// Board b(WAC2);

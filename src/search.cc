@@ -140,6 +140,11 @@ int32_t SearchAgent::isRepetition(const Board& pos) noexcept
 	return false;
 }
 
+bool SearchAgent::inCheck(const Board& pos) noexcept
+{
+	return pos.sqAttacked(pos.king_sq[pos.side_to_move], !pos.side_to_move);
+}
+
 bool SearchAgent::isGameOver(Board& pos) noexcept
 {
 	if(pos.fifty_move > 100)
@@ -173,9 +178,7 @@ bool SearchAgent::isGameOver(Board& pos) noexcept
 	}
 	if(legalMoveFound) return false;
 
-	bool inCheck = pos.sqAttacked(pos.king_sq[pos.side_to_move], !pos.side_to_move);
-
-	if(inCheck)
+	if(inCheck(pos))
 	{
 		if(pos.side_to_move == WHITE)
 		{
@@ -257,6 +260,10 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     if((unsigned)pos.ply > MAX_DEPTH - 1)
     {
     	return this->evaluatePosition(pos);
+    }
+    if(inCheck(pos))
+    {
+    	depth ++;
     }
 
     MoveList m = pos.getAllMoves();

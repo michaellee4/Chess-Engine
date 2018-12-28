@@ -88,6 +88,7 @@ private:
 
 	bool threeFoldRepetition(const Board& pos) noexcept;
 	bool drawnMaterial(const Board& pos) noexcept;
+	bool inCheck(const Board& pos) noexcept;
 public:
 	void searchPosition(Board& pos, SearchInfo& info) noexcept;
 	int32_t evaluatePosition(const Board& pos) noexcept;

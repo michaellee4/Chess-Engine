@@ -58,7 +58,6 @@ void XBoardManager::XBoardLoop()
 		if(!(getline (std::cin, buf))) { continue; }
 		std::stringstream ss(buf);
 		ss >> buf;
-		std::cout << "command seen:" << buf <<std::endl;
 
 		if (buf == "quit") 
 		{
@@ -77,18 +76,15 @@ void XBoardManager::XBoardLoop()
 		else if(buf == "sd")
 		{
 			ss >> depth;
-			std::cout << "DEBUG depth: "<< depth <<std::endl; 
 		}
 		else if (buf == "st")
 		{
 			ss >> moveTime;
-			std::cout << "DEBUG moveTime: "<< moveTime <<std::endl; 
 		}
 		else if (buf == "time")
 		{
 			ss >> time;
 			time *= 10;
-			std::cout << "DEBUG time: "<< time <<std::endl; 
 		}
 		else if (buf == "level")
 		{
@@ -102,12 +98,10 @@ void XBoardManager::XBoardLoop()
 				ss >> tmp;
 				ss >> sec;
 				ss >> inc;
-				std::cout << "DEBUG level with :" <<std::endl; 
 			}
 			else
 			{
 				ss >> inc;
-				std::cout << "DEBUG level without :" <<std::endl; 
 			}
 			timeLeft*= 60000;
 			timeLeft+= sec * 1000;
@@ -117,7 +111,6 @@ void XBoardManager::XBoardLoop()
 				movesToGo[0] = movesToGo[1] = mps;	
 			}
 			time = -1;
-		    printf("DEBUG level timeLeft:%d movesToGo:%d inc:%ld mps%d\n",timeLeft,movesToGo[0],inc,mps);
 		}
 		else if (buf == "ping")
 		{
