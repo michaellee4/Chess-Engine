@@ -22,6 +22,8 @@ struct SearchInfo
 	float fh;
 	float fhf;
 
+	int32_t GAME_MODE;
+	bool POST_THINKING;
 	constexpr SearchInfo() noexcept: startTime(0),
 				   stopTime(0),
 				   timeLimit(false),
@@ -33,7 +35,9 @@ struct SearchInfo
 				   quit(false),
 				   stopped(false),
 				   fh(0),
-				   fhf(0) {}
+				   fhf(0),
+				   GAME_MODE(CONSOLE_MODE),
+				   POST_THINKING(false){}
 };
 
 

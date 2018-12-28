@@ -19,13 +19,17 @@ perft.o: src/perft.cc include/defs.h include/debug.h include/move.h \
 bitboard.o: src/bitboard.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/bitboard.h include/defs.h include/utils.h \
  include/board.h include/searchinfo.h
+xboard.o: src/xboard.cc include/xboard.h include/board.h include/defs.h \
+ include/debug.h include/move.h include/pvtable.h include/searchinfo.h \
+ include/search.h include/io.h include/movemaker.h include/movelist.h \
+ include/utils.h include/stopwatch.h
 main.o: src/main.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/bitboard.h include/defs.h include/utils.h \
  include/board.h include/searchinfo.h include/init.h include/hash.h \
  include/board.h include/movelist.h include/search.h include/stopwatch.h \
  include/movemaker.h include/perft.h include/movelist.h \
  include/movemaker.h include/io.h include/utils.h include/searchinfo.h \
- include/uci.h include/search.h
+ include/uci.h include/search.h include/xboard.h
 hash.o: src/hash.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/hash.h include/board.h include/defs.h \
  include/utils.h include/searchinfo.h include/board.h
