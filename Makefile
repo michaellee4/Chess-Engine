@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -O3 -Wall -Werror -Wextra -Wpedantic -D_FORTIFY_SOURCE=2 -Weffc++ -std=c++17 -I $(INCLUDE)
+CXXFLAGS = -O3 -Wall -Werror -Wextra -Wpedantic -Weffc++ -std=c++17 -I $(INCLUDE)
 INCLUDE = include
 SRCDIR = src
 OBJDIR = obj

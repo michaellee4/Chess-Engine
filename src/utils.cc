@@ -116,39 +116,39 @@ int InputWaiting()
 #endif
 }
 
-//Can probably change this to use C++ I/O
-// void ReadInput(SearchInfo& info) {
-//   int             bytes;
-//   char            input[256] = "", *endc;
+// Can probably change this to use C++ I/O
+void ReadInput(SearchInfo& info) {
+  int             bytes;
+  char            input[256] = "", *endc;
 
-//     if (InputWaiting()) {    
-// 		info.stopped = true;
-// 		do {
-// 		  bytes=read(fileno(stdin),input,256);
-// 		} while (bytes<0);
-// 		endc = strchr(input,'\n');
-// 		if (endc) *endc=0;
-
-// 		if (strlen(input) > 0) {
-// 			if (!strncmp(input, "quit", 4))    {
-// 			  info.quit = true;
-// 			}
-// 		}
-// 		return;
-//     }
-// }
-
-//c++ version, not 100% sure if working
-void ReadInput(SearchInfo& info)
-{
-	std::string buf;
     if (InputWaiting()) {    
 		info.stopped = true;
-		getline(std::cin, buf);
-		std::replace(buf.begin(), buf.end(), '\n', '\0');
-		if(buf.substr(0, 4) == "quit")
-		{
-			info.quit = true;
+		do {
+		  bytes=read(fileno(stdin),input,256);
+		} while (bytes<0);
+		endc = strchr(input,'\n');
+		if (endc) *endc=0;
+
+		if (strlen(input) > 0) {
+			if (!strncmp(input, "quit", 4))    {
+			  info.quit = true;
+			}
 		}
+		return;
     }
 }
+
+// //c++ version, not 100% sure if working
+// void ReadInput(SearchInfo& info)
+// {
+// 	std::string buf;
+//     if (InputWaiting()) {    
+// 		info.stopped = true;
+// 		getline(std::cin, buf);
+// 		std::replace(buf.begin(), buf.end(), '\n', '\0');
+// 		if(buf.substr(0, 4) == "quit")
+// 		{
+// 			info.quit = true;
+// 		}
+//     }
+// }

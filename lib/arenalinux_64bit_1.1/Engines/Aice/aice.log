@@ -1,0 +1,188 @@
+Welcome to AICE 0.99.2 
+Author: Anastasios Milikas / Christos Boussios
+Hash size 64.0 Mb (2796204 entries)
+Pawn hash size 2.0 Mb (24968 entries)
+Opening book aice.bk loaded (14624 positions).
+>Got from GUI: uci
+<TOLD TO GUI: id name AICE 0.99.2 
+id author Anastasios Milikas / Christos Boussios
+option name Hash type spin default 64 min 1 max 512
+option name PawnHash type spin default 2 min 1 max 32
+option name MaxDepth type spin default 50 min 1 max 96
+option name Ponder type check default false
+option name Resigns type check default true
+option name ResignValue type spin default 7 min 3 max 99
+option name AcceptsDraw type check default true
+option name UCI_Chess960 type check default false
+option name Pondering type combo default GUI var GUI var Never var Always
+option name Logging type combo default None var None var Normal var Detailed
+option name BookUsage type combo default Normal var None var Tournament var Normal var Random
+uciok
+>Got from GUI: setoption name Hash value 12
+>Got from GUI: setoption name PawnHash value 2
+>Got from GUI: setoption name MaxDepth value 50
+>Got from GUI: setoption name Ponder value false
+>Got from GUI: setoption name Resigns value true
+>Got from GUI: setoption name ResignValue value 7
+>Got from GUI: setoption name AcceptsDraw value true
+>Got from GUI: setoption name UCI_Chess960 value false
+>Got from GUI: setoption name Pondering value GUI
+>Got from GUI: setoption name Logging value None
+Welcome to AICE 0.99.2 
+Author: Anastasios Milikas / Christos Boussios
+Hash size 64.0 Mb (2796204 entries)
+Pawn hash size 2.0 Mb (24968 entries)
+Opening book aice.bk loaded (14624 positions).
+>Got from GUI: uci
+<TOLD TO GUI: id name AICE 0.99.2 
+id author Anastasios Milikas / Christos Boussios
+option name Hash type spin default 64 min 1 max 512
+option name PawnHash type spin default 2 min 1 max 32
+option name MaxDepth type spin default 50 min 1 max 96
+option name Ponder type check default false
+option name Resigns type check default true
+option name ResignValue type spin default 7 min 3 max 99
+option name AcceptsDraw type check default true
+option name UCI_Chess960 type check default false
+option name Pondering type combo default GUI var GUI var Never var Always
+option name Logging type combo default None var None var Normal var Detailed
+option name BookUsage type combo default Normal var None var Tournament var Normal var Random
+uciok
+>Got from GUI: setoption name Hash value 12
+>Got from GUI: isready
+<TOLD TO GUI: readyok
+>Got from GUI: setoption name Ponder value false
+>Got from GUI: quit
+Bye bye from AICE!
+Welcome to AICE 0.99.2 
+Author: Anastasios Milikas / Christos Boussios
+Hash size 64.0 Mb (2796204 entries)
+Pawn hash size 2.0 Mb (24968 entries)
+Opening book aice.bk loaded (14624 positions).
+>Got from GUI: uci
+<TOLD TO GUI: id name AICE 0.99.2 
+id author Anastasios Milikas / Christos Boussios
+option name Hash type spin default 64 min 1 max 512
+option name PawnHash type spin default 2 min 1 max 32
+option name MaxDepth type spin default 50 min 1 max 96
+option name Ponder type check default false
+option name Resigns type check default true
+option name ResignValue type spin default 7 min 3 max 99
+option name AcceptsDraw type check default true
+option name UCI_Chess960 type check default false
+option name Pondering type combo default GUI var GUI var Never var Always
+option name Logging type combo default None var None var Normal var Detailed
+option name BookUsage type combo default Normal var None var Tournament var Normal var Random
+uciok
+>Got from GUI: setoption name Hash value 12
+>Got from GUI: isready
+<TOLD TO GUI: readyok
+>Got from GUI: setoption name Ponder value false
+>Got from GUI: setoption name Ponder value false
+>Got from GUI: ucinewgame
+>Got from GUI: isready
+<TOLD TO GUI: readyok
+>Got from GUI: position startpos moves d2d4
+
+
+---NEW GAME INITIALIZED---
+
+>Got from GUI: go wtime 174004 btime 180000 winc 6000 binc 6000
+POSITION FEN: rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq d3 0 1 
+ENGINE IS PLAYING BLACK. OPENING STAGE. Ply 1 Allocated time 10500 ms Left 180000 ms
+<TOLD TO GUI: info depth 0 score cp 100 time 0 nodes 0 pv d7d5 
+<TOLD TO GUI: bestmove d7d5
+>Got from GUI: position startpos moves d2d4 d7d5 b1c3
+>Got from GUI: go wtime 168240 btime 186000 winc 6000 binc 6000
+POSITION FEN: rnbqkbnr/ppp1pppp/8/3p4/3P4/2N5/PPP1PPPP/R1BQKBNR b KQkq - 1 2 
+ENGINE IS PLAYING BLACK. OPENING STAGE. Ply 3 Allocated time 10650 ms Left 186000 ms
+<TOLD TO GUI: info depth 1
+<TOLD TO GUI: info depth 1 seldepth 2 score cp -137 time 0 nodes 4 pv b8d7 
+<TOLD TO GUI: info depth 1 score cp -45 time 1 nodes 9 pv b8a6 
+<TOLD TO GUI: info depth 1 score cp 0 time 1 nodes 14 pv b8c6 
+<TOLD TO GUI: info depth 1 score cp 4 time 1 nodes 77 pv e7e6 
+<TOLD TO GUI: info depth 2
+<TOLD TO GUI: info depth 2 seldepth 4 score cp -75 time 1 nodes 155 pv e7e6 e2e4 
+<TOLD TO GUI: info depth 2 seldepth 5 score cp -62 time 1 nodes 288 pv b8c6 e2e3 
+<TOLD TO GUI: info depth 2 seldepth 4 score cp -58 time 1 nodes 464 pv c8g4 c1g5 
+<TOLD TO GUI: info depth 3
+<TOLD TO GUI: info depth 3 seldepth 5 score cp -19 time 2 nodes 1014 pv c8g4 h2h3 g4h5 
+<TOLD TO GUI: info depth 3 seldepth 6 score cp -18 time 2 nodes 1557 pv e7e6 e2e4 f8b4 
+<TOLD TO GUI: info depth 4
+<TOLD TO GUI: info depth 4 seldepth 12 score cp -67 time 5 nodes 3221 pv e7e6 e2e3 g8f6 c1d2 
+<TOLD TO GUI: info depth 4 seldepth 7 score cp -66 time 8 nodes 4771 pv c8f5 e2e3 e7e6 c1d2 
+<TOLD TO GUI: info depth 4 seldepth 8 score cp -55 time 11 nodes 7187 pv g8f6 e2e3 c8g4 g1f3 
+<TOLD TO GUI: info depth 5
+<TOLD TO GUI: info depth 5 seldepth 12 score cp -12 time 15 nodes 11263 pv g8f6 e2e3 b8c6 c1d2 e7e5 
+<TOLD TO GUI: info depth 6
+<TOLD TO GUI: info depth 6 seldepth 12 score cp -57 time 23 nodes 18665 pv g8f6 e2e3 c8g4 f2f3 g4f5 c1d2 
+<TOLD TO GUI: info depth 7
+<TOLD TO GUI: info depth 7 seldepth 17 score cp -31 time 129 nodes 143320 pv g8f6 c1g5 h7h6 g5f6 e7f6 e2e4 f8b4 
+<TOLD TO GUI: info depth 7 seldepth 18 score cp -24 time 197 nodes 226783 pv c8f5 f2f3 e7e5 d4e5 f8b4 e1f2 d5d4 
+<TOLD TO GUI: info depth 8
+<TOLD TO GUI: info depth 8 seldepth 18 score cp -47 time 360 nodes 428924 pv c8f5 e2e3 e7e6 g1f3 g8f6 c1d2 f8d6 f1b5 e8e7 
+<TOLD TO GUI: info depth 8 seldepth 21 score cp -34 time 821 nodes 989889 pv e7e6 e2e3 g8f6 g1f3 f8b4 c1d2 b4c3 d2c3 e8g8 
+<TOLD TO GUI: info depth 9
+<TOLD TO GUI: info depth 9 seldepth 24 score cp -32 time 1552 nodes 1878512 pv e7e6 e2e4 b8c6 f1b5 f8b4 d1g4 e8f8 b5c6 b7c6 
+<TOLD TO GUI: info currmove c8f5 currmovenumber 2
+<TOLD TO GUI: info currmove g8f6 currmovenumber 3
+<TOLD TO GUI: info depth 9 seldepth 22 score cp -27 time 2531 nodes 3057417 pv g8f6 g1f3 e7e6 e2e3 c8d7 f1d3 f8d6 e1g1 e8g8 
+<TOLD TO GUI: info currmove b8d7 currmovenumber 4
+<TOLD TO GUI: info currmove b8a6 currmovenumber 5
+<TOLD TO GUI: info currmove d8d7 currmovenumber 6
+<TOLD TO GUI: info currmove e7e5 currmovenumber 7
+<TOLD TO GUI: info currmove c8d7 currmovenumber 8
+<TOLD TO GUI: info currmove c7c5 currmovenumber 9
+<TOLD TO GUI: info currmove g8h6 currmovenumber 10
+<TOLD TO GUI: info currmove h7h6 currmovenumber 11
+<TOLD TO GUI: info currmove c8h3 currmovenumber 12
+<TOLD TO GUI: info currmove c8e6 currmovenumber 13
+<TOLD TO GUI: info currmove f7f6 currmovenumber 14
+<TOLD TO GUI: info currmove h7h5 currmovenumber 15
+<TOLD TO GUI: info currmove c8g4 currmovenumber 16
+<TOLD TO GUI: info currmove g7g6 currmovenumber 17
+<TOLD TO GUI: info currmove b7b6 currmovenumber 18
+<TOLD TO GUI: info currmove a7a6 currmovenumber 19
+<TOLD TO GUI: info currmove a7a5 currmovenumber 20
+<TOLD TO GUI: info currmove c7c6 currmovenumber 21
+<TOLD TO GUI: info currmove b8c6 currmovenumber 22
+<TOLD TO GUI: info currmove b7b5 currmovenumber 23
+<TOLD TO GUI: info currmove e8d7 currmovenumber 24
+<TOLD TO GUI: info currmove d8d6 currmovenumber 25
+<TOLD TO GUI: info currmove f7f5 currmovenumber 26
+<TOLD TO GUI: info currmove g7g5 currmovenumber 27
+<TOLD TO GUI: info depth 10
+<TOLD TO GUI: info currmove g8f6 currmovenumber 1
+<TOLD TO GUI: info depth 10 seldepth 26 score cp -36 time 3321 nodes 3958349 pv g8f6 g1f3 e7e6 e2e3 f8b4 c1d2 e8g8 f1d3 b4c3 d2c3 b8c6 
+<TOLD TO GUI: info currmove e7e6 currmovenumber 2
+<TOLD TO GUI: info currmove c8f5 currmovenumber 3
+<TOLD TO GUI: info currmove b8d7 currmovenumber 4
+<TOLD TO GUI: info currmove b8c6 currmovenumber 5
+<TOLD TO GUI: info currmove b8a6 currmovenumber 6
+<TOLD TO GUI: info currmove f7f5 currmovenumber 7
+<TOLD TO GUI: info currmove c8e6 currmovenumber 8
+<TOLD TO GUI: info currmove c8g4 currmovenumber 9
+<TOLD TO GUI: info currmove c7c6 currmovenumber 10
+<TOLD TO GUI: info currmove e7e5 currmovenumber 11
+<TOLD TO GUI: info currmove e8d7 currmovenumber 12
+<TOLD TO GUI: info currmove g8h6 currmovenumber 13
+<TOLD TO GUI: info currmove c8h3 currmovenumber 14
+<TOLD TO GUI: info currmove g7g6 currmovenumber 15
+<TOLD TO GUI: info currmove c7c5 currmovenumber 16
+<TOLD TO GUI: info currmove g7g5 currmovenumber 17
+<TOLD TO GUI: info currmove a7a6 currmovenumber 18
+<TOLD TO GUI: info currmove b7b5 currmovenumber 19
+<TOLD TO GUI: info currmove d8d6 currmovenumber 20
+<TOLD TO GUI: info currmove c8d7 currmovenumber 21
+<TOLD TO GUI: info currmove f7f6 currmovenumber 22
+<TOLD TO GUI: info currmove d8d7 currmovenumber 23
+<TOLD TO GUI: info currmove h7h5 currmovenumber 24
+<TOLD TO GUI: info currmove b7b6 currmovenumber 25
+<TOLD TO GUI: info currmove h7h6 currmovenumber 26
+<TOLD TO GUI: info currmove a7a5 currmovenumber 27
+<TOLD TO GUI: info depth 11
+<TOLD TO GUI: info currmove g8f6 currmovenumber 1
+SEARCH FINISHED, 10593 KNodes (52.6 QNODES) BEST MOVE Ng8-f6 MOVE ORDERING 94.6
+NULL-MOVE 87.5  HASH HITS 17.7  CUTOFFS 6.9
+
+<TOLD TO GUI: bestmove g8f6

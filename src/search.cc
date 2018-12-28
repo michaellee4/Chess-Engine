@@ -357,7 +357,7 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info) noexcept
 		}
 		guiStr<<'\n';
 		std::cout << guiStr.str();
-		std::cout << "Ordering: " << (info.fh ? info.fhf/info.fh : 0) << "\n" << '\n';
+		// std::cout << "Ordering: " << (info.fh ? info.fhf/info.fh : 0) << "\n" << '\n';
 	}
-	std::cout << "Best move found was: " << bestMove.toString() << std::endl;
+	std::cout << "bestmove " << bestMove.toString() << std::endl;
 }
