@@ -24,7 +24,7 @@ class PV_Table
 		std::unordered_map<uint64_t, PV_Entry> table;
 	public:
 		PV_Table() noexcept;
-		Move get(const Board& pos) const noexcept;
+		Move get(const Board& pos) noexcept;
 		void insert(const Board& pos, const Move& move) noexcept;
 		int32_t size() const noexcept;
 		void clear() noexcept;

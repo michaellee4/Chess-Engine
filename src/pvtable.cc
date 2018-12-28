@@ -18,10 +18,10 @@ PV_Entry::PV_Entry() noexcept : pos_key(0ULL), move(NOMOVE) {}
 
 PV_Table::PV_Table() noexcept : table() {}
 
-Move PV_Table::get(const Board& pos) const noexcept
+Move PV_Table::get(const Board& pos) noexcept
 {
 	uint64_t posKey = pos.pos_key;
-	return this->table.at(posKey).move;
+	return this->table[posKey].move;
 }
 
 void PV_Table::insert(const Board& pos, const Move& move) noexcept
