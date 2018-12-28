@@ -16,7 +16,9 @@ public:
 	void parseGoCmd(const std::string& cmd);
 	void parsePosition(const std::string& input);
 	void UCILoop();
+	bool isOver();
 	UCIManager() noexcept;
+
 };
 
 #endif

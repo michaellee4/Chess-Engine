@@ -16,6 +16,7 @@
 #include "search.h"
 #include "uci.h"
 #include "xboard.h"
+#include "console.h"
 #include <iostream>
 #include <iomanip>
 #include <unordered_set>
@@ -29,84 +30,52 @@
 
 using namespace std;
 
-
-void gameLoop(Board& b)
+void connect()
 {
-	SearchInfo info;
-	SearchAgent s;
-
-	// Game Loop
-	std::string input;
-	bool prevValid = true;
-	while(true)
+	bool gameOver = false;
+	std::string buf;
+	while(!gameOver)
 	{
-		if(prevValid)
+		std::cout << std::flush;
+		if(!(getline (std::cin, buf))) { continue; }
+		if(buf[0] == '\n') { continue; }
+		if(buf == "uci")
 		{
-			IO::printBoard(b);
+			UCIManager uci;
+			uci.UCILoop();
+			gameOver = uci.isOver();
 		}
-		cout<< "Please enter a move > ";
-		cin >> input;
-		if(input[0] == 'q') break;
-		else if(input [0] == 't' && b.hist_ply == 0)
+		else if(buf == "xboard")
 		{
-			std::cout << "No Moves to Take!" << '\n';
-			prevValid = false;
-		} 
-		else if(input[0] == 't')
-		{
-			MM::takeMove(b);
-			prevValid = true;
+			XBoardManager xb;
+			xb.XBoardLoop();
+			gameOver = xb.isOver();
 		}
-		else if (input[0] == 'p')
+		else if(buf == "console")
 		{
-			int max = PV_Table::getPvLine(b, 4);
-			cout<< "PvLine of " << max << " Moves: ";
-			for(int i = 0; i < max; i++)
-			{
-				Move move = b.pv_arr[i];
-				cout << move.toString() << " ";
-			}
-			cout << '\n';
-			prevValid = true;
+			ConsoleManager cm;
+			cm.consoleLoop();
+			gameOver = cm.isOver();
 		}
-		else if(input[0] == 's')
+		else if(buf == "q" || buf == "quit")
 		{
-			info.depth = 6;
-			info.startTime = Stopwatch::getTimeInMilli();
-			info.stopTime = info.startTime + 200000;
-			s.searchPosition(b, info);
-			prevValid = false;
+			gameOver = true;
 		}
-		else 
-		{
-			Move move = IO::parseMove(input, b);
-			if(move.move != 0)
-			{
-				b.pv_table.insert(b, move);
-				if(!MM::makeMove(b, move))
-				{
-					cout << "Illegal Move!"<<'\n';
-					prevValid = true;
-				}
-				else
-					prevValid = true;
-			}
-			else
-			{
-				std::cout << "Illegal Move!" << '\n';
-				prevValid = false;
-			}
-		}
-	}
+	}	
 }
 
+void printGreeting()
+{
+	std::cout << "C++ Chess Engine" << std::endl;
+	std::cout << "Type \'console\' for an interactive console\n" << std::endl;
+}
 int main()
 {
 	Init::initAll();
-	// UCIManager uci;
-	// uci.UCILoop();
-	XBoardManager x;
-	x.XBoardLoop();
+	printGreeting();
+	connect();
+	// XBoardManager x;
+	// x.XBoardLoop();
 	// Board b(WAC2);
 	// Board b;
 	// PerftTester p;

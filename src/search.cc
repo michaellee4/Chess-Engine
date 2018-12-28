@@ -3,8 +3,10 @@
 #include "movelist.h"
 #include "utils.h"
 #include "movemaker.h"
+#include "io.h"
 #include <sstream>
 #include <iostream>
+#include <cstdio>
 int32_t SearchAgent::evalPawns(const Board& pos) noexcept
 {
 	int32_t pce = wP;
@@ -412,35 +414,21 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 void SearchAgent::searchPosition(Board& pos, SearchInfo& info) noexcept
 {
 	//use a string stream to build up gui string
-	std::stringstream guiStr;
 	Move bestMove = NOMOVE;
 	int32_t bestScore = -Value::INFINITY;
 	this->clearForSearch(pos, info);
 
 	for(uint32_t curDepth = 1 ; curDepth <= info.depth; ++curDepth)
 	{
+		std::stringstream guiStr;
 		bestScore = this->alphaBeta(-Value::INFINITY, Value::INFINITY, curDepth, pos, info, true);
 		if(info.stopped)
 		{
 			break;
 		}
-		// check time
-		int32_t pvMoves = PV_Table::getPvLine(pos, curDepth);
 		bestMove = pos.pv_arr[0];
-		guiStr << "info score cp " << bestScore;
-		guiStr << " depth " << curDepth;
-		guiStr << " nodes " << info.nodes;
-		guiStr << " time "  << Stopwatch::getTimeInMilli() - info.startTime;
-		
-		pvMoves = PV_Table::getPvLine(pos, curDepth);
-		guiStr<< " pv";
-		for(int i = 0; i < pvMoves; ++i)
-		{
-			guiStr << ' ' <<pos.pv_arr[i].toString();
-		}
-		guiStr<<'\n';
-		std::cout << guiStr.str();
-		// std::cout << "Ordering: " << (info.fh ? info.fhf/info.fh : 0) << "\n" << '\n';
+		PV_Table::getPvLine(pos, curDepth);
+		IO::printSearchDetails(pos, info, curDepth, bestScore);
 	}
-	std::cout << "bestmove " << bestMove.toString() << std::endl;
+	IO::printBestMove(pos, info, bestMove);
 }

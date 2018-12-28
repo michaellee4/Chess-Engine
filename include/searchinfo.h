@@ -24,6 +24,7 @@ struct SearchInfo
 
 	int32_t GAME_MODE;
 	bool POST_THINKING;
+	
 	constexpr SearchInfo() noexcept: startTime(0),
 				   stopTime(0),
 				   timeLimit(false),

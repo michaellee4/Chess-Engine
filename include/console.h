@@ -1,18 +1,20 @@
-#ifndef XBOARD_H
-#define XBOARD_H
+#ifndef CONSOLE_H
+#define CONSOLE_H
+
 #include"board.h"
 #include "searchinfo.h"
 #include "search.h"
-#include<string>
-class XBoardManager
+
+class ConsoleManager
 {
 	Board pos;
 	SearchInfo info;
 	SearchAgent sa;
 public:
-	void XBoardLoop();
-	XBoardManager();
+	void consoleLoop();
 	bool isOver();
+	ConsoleManager() noexcept;
 };
+
 
 #endif

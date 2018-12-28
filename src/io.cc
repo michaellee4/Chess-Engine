@@ -1,7 +1,10 @@
 #include "io.h"
 #include <bitset>
 #include <iostream>
+#include <sstream>
+#include "pvtable.h"
 #include "defs.h"
+#include "stopwatch.h"
 #include "utils.h"
 void IO::printBitBoard(uint64_t bb) noexcept
 {
@@ -62,6 +65,56 @@ void IO::printMoveList(const MoveList& list) noexcept
 		std::cout <<  bits <<'\n';
 	}
 		printf("MoveList Total: %u Moves\n\n", list.size() );
+}
+
+void IO::printSearchDetails(Board& pos, const SearchInfo& info, int32_t curDepth, int32_t bestScore) noexcept
+{
+	std::stringstream guiStr;
+	if (info.GAME_MODE == UCI_MODE)
+	{
+		guiStr << "info score cp " << bestScore;
+		guiStr << " depth " << curDepth;
+		guiStr << " nodes " << info.nodes;
+		guiStr << " time "  << Stopwatch::getTimeInMilli() - info.startTime;
+	}
+	else if (info.GAME_MODE == XBOARD_MODE && info .POST_THINKING)
+	{
+		std::cout << curDepth << ' ' << bestScore << ' ' << (Stopwatch::getTimeInMilli() - (info.startTime / 10)) << ' ' << info.nodes;
+	}
+	else if (info.POST_THINKING)
+	{
+		guiStr <<"score:"<<bestScore<<" depth:"<<curDepth<<" nodes:"<<info.nodes<<" time:"<<Stopwatch::getTimeInMilli()-info.startTime<<"(ms)";
+	}
+	if(info.GAME_MODE == UCI_MODE || info.POST_THINKING)
+	{
+		int32_t pvMoves = PV_Table::getPvLine(pos, curDepth);
+		guiStr<< " pv";
+		for(int i = 0; i < pvMoves; ++i)
+		{
+			guiStr << ' ' <<pos.pv_arr[i].toString();
+		}
+		guiStr<<'\n';
+	}
+	std::cout << guiStr.str() << std::flush;
+}
+
+void IO::printBestMove(Board& pos, const SearchInfo& info, const Move& bestMove) noexcept
+{
+	if(info.GAME_MODE == UCI_MODE) 
+	{
+		std::cout << "bestmove " << bestMove.toString() << std::endl;
+	} 
+	else if(info.GAME_MODE == XBOARD_MODE)
+	{		
+		std::cout<<"move "<<bestMove.toString() <<std::endl;
+		MM::makeMove(pos, bestMove);
+	} 
+	else 
+	{	
+		std::cout<<"\n\n***!! ChessEngine makes move "<<bestMove.toString()<<" !!***\n"<<std::endl;
+		MM::makeMove(pos, bestMove);
+		IO::printBoard(pos);
+	}
 }
 
 Move IO::parseMove(std::string input, Board& pos) noexcept

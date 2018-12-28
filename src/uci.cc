@@ -175,3 +175,8 @@ void UCIManager::UCILoop()
 		if(this->info.quit) { break; }
 	}
 }
+
+bool UCIManager::isOver()
+{
+	return this->info.quit;
+}

@@ -29,7 +29,7 @@ void XBoardManager::XBoardLoop()
 	while (true)
 	{
 		std::cout << std::flush;
-		if(this->pos.side_to_move == (unsigned)engineSide && sa.isGameOver(this->pos) == false)
+		if(this->pos.side_to_move == (unsigned)engineSide && !sa.isGameOver(this->pos))
 		{
 			this->info.startTime = Stopwatch::getTimeInMilli();
 			this->info.depth = depth;
@@ -143,12 +143,16 @@ void XBoardManager::XBoardLoop()
 		}
 		else if(buf == "usermove")
 		{
-			ss >> buf;
 			movesToGo[pos.side_to_move]--;
+			ss >> buf;
 			Move move = IO::parseMove(buf, this->pos);
 			if(move == NOMOVE) { continue; }
 			MM::makeMove(pos, move);
 			this->pos.ply = 0;
 		}
 	}
+}
+bool XBoardManager::isOver()
+{
+	return this->info.quit;
 }
