@@ -95,6 +95,8 @@ void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos) noexcept
 
 bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 {
+	if(moveInfo == NOMOVE)
+		return false;
 	ASSERT(checkBoard(pos));
 
 	int from = moveInfo.from();

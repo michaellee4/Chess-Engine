@@ -1,8 +1,5 @@
 Add a linter (clang-tidy)
 Integrate CMake
 Add Unit Tests
-Add gui
-Refactor Xboard and console protocol
-Add time constants to stopwatch
-Add all three protocolManagers to a superclass and use inheritance
+Use Ncurses for keyboard support
 multithreading? (big if)
