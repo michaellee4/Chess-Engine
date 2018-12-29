@@ -112,7 +112,7 @@ void ConsoleManager::loop()
 		else if (buf == "time")
 		{
 			ss >> moveTime;
-			moveTime *= 1000;
+			moveTime *= Stopwatch::MILLI_PER_SECOND;
 		}
 		else if (buf == "new")
 		{

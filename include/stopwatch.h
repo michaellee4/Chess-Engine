@@ -12,6 +12,8 @@ class Stopwatch
 	private:
 		Time::time_point start_time;
 	public:
+		static constexpr int32_t MILLI_PER_SECOND = 1000;
+		static constexpr int32_t SECONDS_PER_MINUTE = 60;
 		Stopwatch() noexcept;
 		~Stopwatch() noexcept;
 		void start() noexcept;

@@ -4,6 +4,7 @@
 #include "hash.h"
 #include "bitboard.h"
 #include "io.h"
+#include "stopwatch.h"
 #include "movelist.h"
 #include <vector>
 #include <iostream>

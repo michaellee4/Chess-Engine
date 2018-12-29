@@ -8,14 +8,15 @@
 using namespace std;
 int main()
 {
-	// Engine& engine = Engine::getInstance();
-	// engine.start();	
-	Engine::getInstance();
-	Board b;
-	PerftTester p;
-	Stopwatch s;
-	s.start();
-	p.perftTest(6, b, true);
-	std::cout<< s.stop()<<std::endl;
+	Engine& engine = Engine::getInstance();
+	engine.start();	
+	
+	// Engine::getInstance();
+	// Board b;
+	// PerftTester p;
+	// Stopwatch s;
+	// s.start();
+	// p.perftTest(6, b, true);
+	// std::cout<< s.stop()<<std::endl;
 	return 0;
 }

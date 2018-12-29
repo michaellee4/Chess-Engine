@@ -104,8 +104,8 @@ void XBoardManager::loop()
 			{
 				ss >> inc;
 			}
-			timeLeft*= 60000;
-			timeLeft+= sec * 1000;
+			timeLeft*= Stopwatch::MILLI_PER_SECOND * Stopwatch::SECONDS_PER_MINUTE;
+			timeLeft+= sec * Stopwatch::MILLI_PER_SECOND;
 			movesToGo[0] = movesToGo[1] = 30;
 			if(mps != 0)
 			{

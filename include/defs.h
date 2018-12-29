@@ -64,10 +64,8 @@ namespace PieceInfo
 	constexpr std::array<bool, PCE_TYPES> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
 	constexpr std::array<bool, PCE_TYPES> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
 	constexpr std::array<uint32_t, PCE_TYPES> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
-	constexpr std::array<uint32_t, PCE_TYPES> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
-											BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
+	constexpr std::array<uint32_t, PCE_TYPES> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
 	constexpr std::array<bool, PCE_TYPES> PieceSlides { false, false, false, true, true, true, false, false, false, true, true, true, false };
-
 	constexpr std::array<bool, PCE_TYPES> PiecePawn { false, true, false, false, false, false, false, true, false, false, false, false, false };	
 	constexpr std::array<bool, PCE_TYPES> PieceKing { false, false, false, false, false, false, true, false, false, false, false, false, true };
 	constexpr std::array<bool, PCE_TYPES> PieceRookQueen { false, false, false, false, true, true, false, false, false, false, true, true, false };
