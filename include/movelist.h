@@ -37,12 +37,12 @@ class MoveList
 		std::vector<Move> moves;
 
 	public:
-		const uint32_t MAX_MOVES_PER_POSITION = 256;
-		const uint32_t PVMOVE_OFFSET = 	2000000;
-		const uint32_t CAPTURE_OFFSET = 1000000;
+		const uint32_t kMaxPossibleMoves = 256;
+		const uint32_t kPvMoveBonus = 	2000000;
+		const uint32_t kCaptureBonus = 1000000;
 		// Any non-capture move that changes the beta-cutoff
-		const uint32_t KILLER_OFFSET1 = 900000;
-		const uint32_t KILLER_OFFSET2 = 800000;
+		const uint32_t kPrimaryKillerBonus = 900000;
+		const uint32_t kSecondaryKillerBonus = 800000;
 		
 		MoveList() noexcept; 
 		MoveList(const MoveList& o) noexcept;

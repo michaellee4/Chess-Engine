@@ -15,11 +15,11 @@ constexpr uint32_t kMaxSearchDepth = 64;
 
 constexpr uint32_t kNumPceTypes = 13;
 
+constexpr uint32_t kMoveLimit = 2 << 10;
+
 constexpr uint32_t kBoardArraySize = 120;
 
 constexpr uint32_t kChessboardSize = 64;
-
-constexpr uint32_t kMoveLimit = 2 << 10;
 
 constexpr uint32_t kNumPlayers = 2;
 

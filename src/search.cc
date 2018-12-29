@@ -183,7 +183,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 		{
 			if(m[moveNum] == pvMove)
 			{
-				m[moveNum].score = m.PVMOVE_OFFSET;
+				m[moveNum].score = m.kPvMoveBonus;
 				break;
 			}
 		}

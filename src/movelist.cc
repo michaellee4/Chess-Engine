@@ -7,7 +7,7 @@ using namespace MoveFlags;
 
 MoveList::MoveList() noexcept : moves()
 {
-	moves.reserve(MAX_MOVES_PER_POSITION);
+	moves.reserve(kMaxPossibleMoves);
 }
 
 MoveList::MoveList(const MoveList& o) noexcept : moves(o.moves) {}
@@ -18,11 +18,11 @@ void MoveList::addQuietMove(const Board& pos, Move&& move) noexcept
 {
 	if(pos.search_killers[0][pos.ply] == move)
 	{
-		move.score = KILLER_OFFSET1;
+		move.score = kPrimaryKillerBonus;
 	}
 	else if(pos.search_killers[1][pos.ply] == move)
 	{
-		move.score = KILLER_OFFSET2;		
+		move.score = kSecondaryKillerBonus;		
 	}
 	else
 	{
@@ -32,13 +32,13 @@ void MoveList::addQuietMove(const Board& pos, Move&& move) noexcept
 }
 void MoveList::addCaptureMove(const Board& pos, Move&& move) noexcept
 {
-	move.score = MvvLva::MvvLvaScore[move.captured()][pos.pieces[move.from()]] + CAPTURE_OFFSET;
+	move.score = MvvLva::MvvLvaScore[move.captured()][pos.pieces[move.from()]] + kCaptureBonus;
 	this->moves.emplace_back(move);
 }
 void MoveList::addEnPasMove(const Board& pos, Move&& move) noexcept
 {
 	(void) pos;
-	move.score = 105 + CAPTURE_OFFSET;
+	move.score = 105 + kCaptureBonus;
 	this->moves.emplace_back(move);
 }
 
