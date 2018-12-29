@@ -4,11 +4,11 @@
 #include "defs.h"
 namespace Value
 {	
-	constexpr int32_t INFINITY = 30000;
+	constexpr int32_t kInfinity = 30000;
 
-	constexpr int32_t MATE = 29000;
+	constexpr int32_t kMateScore = 29000;
 	
-	constexpr std::array<int32_t, CHESSBOARD_SIZE> PawnTable {
+	constexpr std::array<int32_t, kChessboardSize> PawnTable {
 		0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,
 		10	,	10	,	0	,	-10	,	-10	,	0	,	10	,	10	,
 		5	,	0	,	0	,	5	,	5	,	0	,	0	,	5	,
@@ -19,7 +19,7 @@ namespace Value
 		0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	
 	};
 
-	constexpr std::array<int32_t, CHESSBOARD_SIZE> KnightTable {
+	constexpr std::array<int32_t, kChessboardSize> KnightTable {
 		0	,	-10	,	0	,	0	,	0	,	0	,	-10	,	0	,
 		0	,	0	,	0	,	5	,	5	,	0	,	0	,	0	,
 		0	,	0	,	10	,	10	,	10	,	10	,	0	,	0	,
@@ -30,7 +30,7 @@ namespace Value
 		0	,	0	,	0	,	0	,	0	,	0	,	0	,	0		
 	};
 
-	constexpr std::array<int32_t, CHESSBOARD_SIZE> BishopTable {
+	constexpr std::array<int32_t, kChessboardSize> BishopTable {
 		0	,	0	,	-10	,	0	,	0	,	-10	,	0	,	0	,
 		0	,	0	,	0	,	10	,	10	,	0	,	0	,	0	,
 		0	,	0	,	10	,	15	,	15	,	10	,	0	,	0	,
@@ -41,7 +41,7 @@ namespace Value
 		0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	
 	};
 
-	constexpr std::array<int32_t, CHESSBOARD_SIZE> RookTable {
+	constexpr std::array<int32_t, kChessboardSize> RookTable {
 		0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
 		0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
 		0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
@@ -52,7 +52,7 @@ namespace Value
 		0	,	0	,	5	,	10	,	10	,	5	,	0	,	0		
 	};
 
-	constexpr std::array<int32_t, CHESSBOARD_SIZE> WhiteToBlack {
+	constexpr std::array<int32_t, kChessboardSize> WhiteToBlack {
 		56	,	57	,	58	,	59	,	60	,	61	,	62	,	63	,
 		48	,	49	,	50	,	51	,	52	,	53	,	54	,	55	,
 		40	,	41	,	42	,	43	,	44	,	45	,	46	,	47	,
@@ -66,11 +66,11 @@ namespace Value
 
 namespace EvalBB
 {
-	extern std::array<uint64_t, NUM_FILE_RANK> FileMask;
-	extern std::array<uint64_t, NUM_FILE_RANK> RankMask;
-	extern std::array<uint64_t, CHESSBOARD_SIZE> whitePassedMask;
-	extern std::array<uint64_t, CHESSBOARD_SIZE> blackPassedMask;
-	extern std::array<uint64_t, CHESSBOARD_SIZE> isolatedMask;
+	extern std::array<uint64_t, kNumFilesRanks> FileMask;
+	extern std::array<uint64_t, kNumFilesRanks> RankMask;
+	extern std::array<uint64_t, kChessboardSize> whitePassedMask;
+	extern std::array<uint64_t, kChessboardSize> blackPassedMask;
+	extern std::array<uint64_t, kChessboardSize> isolatedMask;
 }
 
 

@@ -11,23 +11,21 @@
 #include <array>
 #define STARTFEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
-constexpr uint32_t MAX_DEPTH = 64;
+constexpr uint32_t kMaxDepth = 64;
 
-constexpr uint32_t PCE_TYPES = 13;
+constexpr uint32_t kNumPceTypes = 13;
 
-constexpr uint32_t BRD_ARR_SIZE = 120;
+constexpr uint32_t kBoardArraySize = 120;
 
-constexpr uint32_t CHESSBOARD_SIZE = 64;
+constexpr uint32_t kChessboardSize = 64;
 
-constexpr uint32_t MAX_GAME_MOVES = 2 << 10;
+constexpr uint32_t kMoveLimit = 2 << 10;
 
-constexpr uint32_t NUM_SIDES = 2;
+constexpr uint32_t kNumPlayers = 2;
 
-constexpr uint32_t CHECK_TIMER = 0x7FF;
+constexpr uint32_t kNumFilesRanks = 8;
 
-constexpr uint32_t NUM_FILE_RANK = 8;
-
-const std::string NAME = "ChessEngine";
+const std::string kAppName = "ChessEngine";
 // pieces
 enum { EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK };
 
@@ -60,17 +58,17 @@ enum { UCI_MODE, XBOARD_MODE, CONSOLE_MODE};
 // Provides dictionaries to get information about a piece
 namespace PieceInfo
 {
-	constexpr std::array<bool, PCE_TYPES> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
-	constexpr std::array<bool, PCE_TYPES> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
-	constexpr std::array<bool, PCE_TYPES> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
-	constexpr std::array<uint32_t, PCE_TYPES> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
-	constexpr std::array<uint32_t, PCE_TYPES> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
-	constexpr std::array<bool, PCE_TYPES> PieceSlides { false, false, false, true, true, true, false, false, false, true, true, true, false };
-	constexpr std::array<bool, PCE_TYPES> PiecePawn { false, true, false, false, false, false, false, true, false, false, false, false, false };	
-	constexpr std::array<bool, PCE_TYPES> PieceKing { false, false, false, false, false, false, true, false, false, false, false, false, true };
-	constexpr std::array<bool, PCE_TYPES> PieceRookQueen { false, false, false, false, true, true, false, false, false, false, true, true, false };
-	constexpr std::array<bool, PCE_TYPES> PieceBishopQueen { false, false, false, true, false, true, false, false, false, true, false, true, false };
-	constexpr std::array<bool, PCE_TYPES> PieceKnight { false, false, true, false, false, false, false, false, true, false, false, false, false };
+	constexpr std::array<bool, kNumPceTypes> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
+	constexpr std::array<bool, kNumPceTypes> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
+	constexpr std::array<bool, kNumPceTypes> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
+	constexpr std::array<uint32_t, kNumPceTypes> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
+	constexpr std::array<uint32_t, kNumPceTypes> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
+	constexpr std::array<bool, kNumPceTypes> PieceSlides { false, false, false, true, true, true, false, false, false, true, true, true, false };
+	constexpr std::array<bool, kNumPceTypes> PiecePawn { false, true, false, false, false, false, false, true, false, false, false, false, false };	
+	constexpr std::array<bool, kNumPceTypes> PieceKing { false, false, false, false, false, false, true, false, false, false, false, false, true };
+	constexpr std::array<bool, kNumPceTypes> PieceRookQueen { false, false, false, false, true, true, false, false, false, false, true, true, false };
+	constexpr std::array<bool, kNumPceTypes> PieceBishopQueen { false, false, false, true, false, true, false, false, false, true, false, true, false };
+	constexpr std::array<bool, kNumPceTypes> PieceKnight { false, false, true, false, false, false, false, false, true, false, false, false, false };
 
  }
 
@@ -89,10 +87,10 @@ namespace Attack
 namespace BoardUtils
 {
 	// *** initialized in init
-	extern std::array<int32_t, BRD_ARR_SIZE> Sq120ToSq64;
-	extern std::array<int32_t, CHESSBOARD_SIZE> Sq64ToSq120;
-	extern std::array<int32_t, BRD_ARR_SIZE> FileBrd;
-	extern std::array<int32_t, BRD_ARR_SIZE> RankBrd;
+	extern std::array<int32_t, kBoardArraySize> Sq120ToSq64;
+	extern std::array<int32_t, kChessboardSize> Sq64ToSq120;
+	extern std::array<int32_t, kBoardArraySize> FileBrd;
+	extern std::array<int32_t, kBoardArraySize> RankBrd;
 }
 
 const Move NOMOVE(0);

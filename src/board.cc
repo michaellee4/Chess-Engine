@@ -10,9 +10,9 @@
 #include <cstdio> 
 
 Board::Board() noexcept :
-			   pieces(BRD_ARR_SIZE),
+			   pieces(kBoardArraySize),
 			   pawns(3), 
-			   king_sq(NUM_SIDES),
+			   king_sq(kNumPlayers),
 			   side_to_move(WHITE),
 			   en_pas(NO_SQ),
 			   fifty_move(0),
@@ -20,19 +20,19 @@ Board::Board() noexcept :
 			   hist_ply(0),
 			   pos_key(0),
 			   castle_perm(0xf),
-			   piece_list(PCE_TYPES, std::vector<uint32_t>()),
-			   big_pce(NUM_SIDES), 
-			   maj_pce(NUM_SIDES), 
-			   min_pce(NUM_SIDES), 
-			   material(NUM_SIDES), 
-			   history(MAX_GAME_MOVES),
+			   piece_list(kNumPceTypes, std::vector<uint32_t>()),
+			   big_pce(kNumPlayers), 
+			   maj_pce(kNumPlayers), 
+			   min_pce(kNumPlayers), 
+			   material(kNumPlayers), 
+			   history(kMoveLimit),
 			   pv_table(),
-	    	   pv_arr(MAX_DEPTH),
-	    	   search_hist(PCE_TYPES, std::vector<int32_t>(BRD_ARR_SIZE)),
-	    	   search_killers(NUM_SIDES, std::vector<Move>(MAX_DEPTH))
+	    	   pv_arr(kMaxDepth),
+	    	   search_hist(kNumPceTypes, std::vector<int32_t>(kBoardArraySize)),
+	    	   search_killers(kNumPlayers, std::vector<Move>(kMaxDepth))
 
 {
-	for(uint32_t i = 0; i < PCE_TYPES; ++i)
+	for(uint32_t i = 0; i < kNumPceTypes; ++i)
 	{
 		this->piece_list[i].reserve(10);
 	}
@@ -40,9 +40,9 @@ Board::Board() noexcept :
 }
 
 Board::Board(const std::string fen) noexcept :
-									pieces(BRD_ARR_SIZE),
+									pieces(kBoardArraySize),
 									pawns(3), 
-									king_sq(NUM_SIDES), 
+									king_sq(kNumPlayers), 
 								    side_to_move(WHITE),
 								    en_pas(NO_SQ),
 								    fifty_move(0),
@@ -50,18 +50,18 @@ Board::Board(const std::string fen) noexcept :
 								    hist_ply(0),
 								    pos_key(0),
 								    castle_perm(0xf),
-			   						piece_list(PCE_TYPES, std::vector<uint32_t>()),
-									big_pce(NUM_SIDES),
-									maj_pce(NUM_SIDES), 
-									min_pce(NUM_SIDES), 
-									material(NUM_SIDES), 
-									history(MAX_GAME_MOVES),
+			   						piece_list(kNumPceTypes, std::vector<uint32_t>()),
+									big_pce(kNumPlayers),
+									maj_pce(kNumPlayers), 
+									min_pce(kNumPlayers), 
+									material(kNumPlayers), 
+									history(kMoveLimit),
 									pv_table(),
-									pv_arr(MAX_DEPTH),
-									search_hist(PCE_TYPES, std::vector<int32_t>(BRD_ARR_SIZE)),
-									search_killers(NUM_SIDES, std::vector<Move>(MAX_DEPTH))
+									pv_arr(kMaxDepth),
+									search_hist(kNumPceTypes, std::vector<int32_t>(kBoardArraySize)),
+									search_killers(kNumPlayers, std::vector<Move>(kMaxDepth))
 {
-	for(uint32_t i = 0; i < PCE_TYPES; ++i)
+	for(uint32_t i = 0; i < kNumPceTypes; ++i)
 	{
 		this->piece_list[i].reserve(10);
 	}
@@ -70,17 +70,17 @@ Board::Board(const std::string fen) noexcept :
 
 void Board::resetBoard(void) noexcept
 {
-	for(uint32_t i = 0; i < BRD_ARR_SIZE; ++i)
+	for(uint32_t i = 0; i < kBoardArraySize; ++i)
 	{
 		this->pieces[i] = OFFBOARD;
 	}
 
-	for(uint32_t i = 0; i < CHESSBOARD_SIZE; ++i)
+	for(uint32_t i = 0; i < kChessboardSize; ++i)
 	{
 		this->pieces[BoardUtils::Sq64ToSq120[i]] = EMPTY;
 	}
 
-	for(uint32_t i = 0; i < NUM_SIDES; ++i)
+	for(uint32_t i = 0; i < kNumPlayers; ++i)
 	{
 		this->big_pce[i] = 0;
 		this->maj_pce[i] = 0;
@@ -90,7 +90,7 @@ void Board::resetBoard(void) noexcept
 	}
 	this->pawns[2] = 0;
 
-	for(uint32_t i = 0; i < PCE_TYPES; ++i)
+	for(uint32_t i = 0; i < kNumPceTypes; ++i)
 	{
 		this->piece_list[i].clear();
 	}
@@ -239,7 +239,7 @@ void Board::parseFEN(const std::string fen) noexcept
 
 void Board::updatePieceLists() noexcept
 {
-	for(uint32_t index = 0; index < BRD_ARR_SIZE; ++index)
+	for(uint32_t index = 0; index < kBoardArraySize; ++index)
 	{
 		int piece = this->pieces[index];
 		// on board
@@ -272,11 +272,11 @@ void Board::updatePieceLists() noexcept
 
 bool checkBoard(const Board& pos) noexcept
 {
-	uint32_t t_pceNum[PCE_TYPES] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	uint32_t t_bigPce[NUM_SIDES] = { 0, 0};
-	uint32_t t_majPce[NUM_SIDES] = { 0, 0};
-	uint32_t t_minPce[NUM_SIDES] = { 0, 0};
-	uint32_t t_material[NUM_SIDES] = { 0, 0};
+	uint32_t t_pceNum[kNumPceTypes] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	uint32_t t_bigPce[kNumPlayers] = { 0, 0};
+	uint32_t t_majPce[kNumPlayers] = { 0, 0};
+	uint32_t t_minPce[kNumPlayers] = { 0, 0};
+	uint32_t t_material[kNumPlayers] = { 0, 0};
 	
 	uint32_t sq64,t_piece,t_pce_num,sq120,colour,pcount;
 	
@@ -295,7 +295,7 @@ bool checkBoard(const Board& pos) noexcept
 	}
 	
 	// check piece count and other counters	
-	for(sq64 = 0; sq64 < CHESSBOARD_SIZE; ++sq64) {
+	for(sq64 = 0; sq64 < kChessboardSize; ++sq64) {
 		sq120 = BoardUtils::Sq64ToSq120[sq64];
 		t_piece = pos.pieces[sq120];
 		++t_pceNum[t_piece];

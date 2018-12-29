@@ -10,6 +10,7 @@
 class SearchAgent
 {
 private:
+	static constexpr uint32_t kInterval = 0x7FF;
 	int32_t isRepetition(const Board& pos) noexcept;
 	void checkStop(SearchInfo& info);
 	void clearForSearch(Board& pos, SearchInfo& info) noexcept;

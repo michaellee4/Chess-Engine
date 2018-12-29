@@ -12,41 +12,41 @@
 namespace BoardUtils
 {
 	// *** used in init
-	std::array<int32_t, BRD_ARR_SIZE> Sq120ToSq64;
-	std::array<int32_t, CHESSBOARD_SIZE> Sq64ToSq120;
-	std::array<int32_t, BRD_ARR_SIZE> FileBrd;
-	std::array<int32_t, BRD_ARR_SIZE> RankBrd;
+	std::array<int32_t, kBoardArraySize> Sq120ToSq64;
+	std::array<int32_t, kChessboardSize> Sq64ToSq120;
+	std::array<int32_t, kBoardArraySize> FileBrd;
+	std::array<int32_t, kBoardArraySize> RankBrd;
 }
 
 namespace Hash
 {
- 	std::array<std::array<uint64_t, BRD_ARR_SIZE>, PCE_TYPES> PieceKeys;
+ 	std::array<std::array<uint64_t, kBoardArraySize>, kNumPceTypes> PieceKeys;
  	uint64_t SideKey;
 	std::array<uint64_t, 16> CastleKeys;
 }
 namespace BB
 {
-	std::array<uint64_t, CHESSBOARD_SIZE> SetMask;
-	std::array<uint64_t, CHESSBOARD_SIZE> ClearMask;
+	std::array<uint64_t, kChessboardSize> SetMask;
+	std::array<uint64_t, kChessboardSize> ClearMask;
 }
 
 namespace MvvLva
 {
-	std::array<std::array<int32_t, PCE_TYPES>, PCE_TYPES> MvvLvaScore;
+	std::array<std::array<int32_t, kNumPceTypes>, kNumPceTypes> MvvLvaScore;
 }
 
 namespace EvalBB
 {
-	std::array<uint64_t, NUM_FILE_RANK> FileMask;
-	std::array<uint64_t, NUM_FILE_RANK> RankMask;
-	std::array<uint64_t, CHESSBOARD_SIZE> whitePassedMask;
-	std::array<uint64_t, CHESSBOARD_SIZE> blackPassedMask;
-	std::array<uint64_t, CHESSBOARD_SIZE> isolatedMask;
+	std::array<uint64_t, kNumFilesRanks> FileMask;
+	std::array<uint64_t, kNumFilesRanks> RankMask;
+	std::array<uint64_t, kChessboardSize> whitePassedMask;
+	std::array<uint64_t, kChessboardSize> blackPassedMask;
+	std::array<uint64_t, kChessboardSize> isolatedMask;
 }
 
 void Init::initFileRankBrd() noexcept
 {
-	for(uint32_t sq = 0; sq < BRD_ARR_SIZE; ++sq)
+	for(uint32_t sq = 0; sq < kBoardArraySize; ++sq)
 	{
 		BoardUtils::FileBrd[sq] = OFFBOARD;
 		BoardUtils::RankBrd[sq] = OFFBOARD;
@@ -68,13 +68,13 @@ void Init::initSq120ToSq64() noexcept
 {
 	int sq64 = 0;
 
-	for(uint32_t index = 0; index < BRD_ARR_SIZE; ++index)
+	for(uint32_t index = 0; index < kBoardArraySize; ++index)
 	{
 		// use 65 as invalid value
 		BoardUtils::Sq120ToSq64[index] = 65;
 	}
 
-	for(uint32_t index = 0; index < CHESSBOARD_SIZE; ++index)
+	for(uint32_t index = 0; index < kChessboardSize; ++index)
 	{
 		BoardUtils::Sq64ToSq120[index] = 65;
 	}
@@ -93,7 +93,7 @@ void Init::initSq120ToSq64() noexcept
 
 void Init::initBitMasks() noexcept
 {
-	for(uint32_t index = 0; index < CHESSBOARD_SIZE; ++index)
+	for(uint32_t index = 0; index < kChessboardSize; ++index)
 	{
 		BB::SetMask[index] = 1ULL << index;
 		BB::ClearMask[index] = ~BB::SetMask[index];
@@ -102,9 +102,9 @@ void Init::initBitMasks() noexcept
 
 void Init::initHashKeys() noexcept
 {
-	for(uint32_t i = 0; i < PCE_TYPES; ++i )
+	for(uint32_t i = 0; i < kNumPceTypes; ++i )
 	{
-		for(uint32_t j = 0; j < BRD_ARR_SIZE; ++j)
+		for(uint32_t j = 0; j < kBoardArraySize; ++j)
 		{
 			Hash::PieceKeys[i][j] = randU64();
 		}
@@ -126,56 +126,56 @@ void Init::initEvalMasks() noexcept
 	{
 		for(int32_t f = FILE_A; f <= FILE_H; ++f)
 		{
-			int32_t sq = r * NUM_FILE_RANK + f;
+			int32_t sq = r * kNumFilesRanks + f;
 			FileMask[f] |= (1ULL << sq);
 			RankMask[r] |= (1ULL << sq);
 		}
 	}
-	for(uint32_t sq = 0; sq < CHESSBOARD_SIZE; ++sq)
+	for(uint32_t sq = 0; sq < kChessboardSize; ++sq)
 	{
 		// forward square
-		int32_t fsq = sq + NUM_FILE_RANK;
-		while(fsq < (signed)CHESSBOARD_SIZE)
+		int32_t fsq = sq + kNumFilesRanks;
+		while(fsq < (signed)kChessboardSize)
 		{
 			whitePassedMask[sq] |= (1ULL << fsq);
-			fsq += NUM_FILE_RANK;
+			fsq += kNumFilesRanks;
 		}
-		fsq = sq - NUM_FILE_RANK;
+		fsq = sq - kNumFilesRanks;
 		while(fsq >= 0)
 		{
 			blackPassedMask[sq] |= (1ULL << fsq);
-			fsq -= NUM_FILE_RANK;
+			fsq -= kNumFilesRanks;
 		}
 		if(FileBrd[Sq64ToSq120[sq]] > FILE_A)
 		{
 			isolatedMask[sq] |= FileMask[FileBrd[Sq64ToSq120[sq]] - 1];
 			fsq = sq + 7;
-			while(fsq < (signed)CHESSBOARD_SIZE)
+			while(fsq < (signed)kChessboardSize)
 			{
 				whitePassedMask[sq] |= (1ULL << fsq);
-				fsq += NUM_FILE_RANK;
+				fsq += kNumFilesRanks;
 			}
 			fsq = sq - 9;
 			while(fsq >= 0)
 			{
 				blackPassedMask[sq] |= (1ULL << fsq);
-				fsq -= NUM_FILE_RANK;
+				fsq -= kNumFilesRanks;
 			}
 		}
 		if(FileBrd[Sq64ToSq120[sq]] < FILE_H)
 		{
 			isolatedMask[sq] |= FileMask[FileBrd[Sq64ToSq120[sq]] + 1];
 			fsq = sq + 9;
-			while(fsq < (signed)CHESSBOARD_SIZE)
+			while(fsq < (signed)kChessboardSize)
 			{
 				whitePassedMask[sq] |= (1ULL << fsq);
-				fsq += NUM_FILE_RANK;
+				fsq += kNumFilesRanks;
 			}
 			fsq = sq - 7;
 			while(fsq >= 0)
 			{
 				blackPassedMask[sq] |= (1ULL << fsq);
-				fsq -= NUM_FILE_RANK;
+				fsq -= kNumFilesRanks;
 			}
 		}
 	}

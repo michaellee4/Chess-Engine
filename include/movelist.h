@@ -9,8 +9,8 @@
 //used in move ordering. MostValuableVictim-LeastValuableAttacker
 namespace MvvLva
 {
-	extern std::array<std::array<int32_t, PCE_TYPES>, PCE_TYPES> MvvLvaScore;
-	constexpr std::array<int32_t, PCE_TYPES> victimScore {0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600};
+	extern std::array<std::array<int32_t, kNumPceTypes>, kNumPceTypes> MvvLvaScore;
+	constexpr std::array<int32_t, kNumPceTypes> victimScore {0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600};
 }
 
 class MoveList

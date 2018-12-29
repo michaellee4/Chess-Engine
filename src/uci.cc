@@ -70,7 +70,7 @@ void UCIManager::parseGoCmd(const std::string& input)
 	}
 	if(depth == -1) 
 	{
-		this->info.depth = MAX_DEPTH;
+		this->info.depth = kMaxDepth;
 	}
 	std::cout<<"time:"<<time<<" start:"<<this->info.startTime<<" stop:"<<this->info.stopTime<<" depth:"<<this->info.depth<<" timeset:"<<this->info.timeLimit<<'\n';
 	sa.searchPosition(this->pos, this->info);
@@ -135,7 +135,7 @@ void UCIManager::loop()
 {
 	info.GAME_MODE = UCI_MODE;
 	std::string buf;
-	std::cout << "id name "<<NAME<<'\n';
+	std::cout << "id name "<<kAppName<<'\n';
 	std::cout << "id author ml45898\n";
 	std::cout << "uciok\n";
 
@@ -170,7 +170,7 @@ void UCIManager::loop()
 		}
 		else if (firstWord == "uci")
 		{
-			std::cout << "id name "<< NAME<< '\n';
+			std::cout << "id name "<< kAppName<< '\n';
 			std::cout << "id author ml45898\n";
 			std::cout << "uciok\n";	
 		}

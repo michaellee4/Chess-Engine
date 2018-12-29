@@ -6,7 +6,7 @@
 uint64_t Hash::generatePosKey(const Board& pos)
 {
 	uint64_t hash = 0;
-	for(uint32_t sq = 0; sq < BRD_ARR_SIZE; ++sq)
+	for(uint32_t sq = 0; sq < kBoardArraySize; ++sq)
 	{
 		int piece = pos.pieces[sq];
 
@@ -23,7 +23,7 @@ uint64_t Hash::generatePosKey(const Board& pos)
 	}
 	if(pos.en_pas != NO_SQ)
 	{
-		ASSERT(pos.en_pas<BRD_ARR_SIZE);
+		ASSERT(pos.en_pas<kBoardArraySize);
 		hash ^= Hash::PieceKeys[EMPTY][pos.en_pas];
 	}
 	ASSERT(pos.castle_perm<=15);

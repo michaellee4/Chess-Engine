@@ -5,7 +5,7 @@
 #include <array>
 namespace Hash
 {
-	extern std::array<std::array<uint64_t, BRD_ARR_SIZE>, PCE_TYPES> PieceKeys;
+	extern std::array<std::array<uint64_t, kBoardArraySize>, kNumPceTypes> PieceKeys;
 	extern uint64_t SideKey;
 	extern std::array<uint64_t, 16> CastleKeys;
 

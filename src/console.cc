@@ -20,7 +20,7 @@ void ConsoleManager::loop()
 	std::string cmd;
 	int32_t depth = 5;
 	std::vector<int32_t> movesToGo { 30, 30 };
-	int32_t moveTime = 10 * Stopwatch::MILLI_PER_SECOND;
+	int32_t moveTime = 10 * Stopwatch::kMilliPerSecond;
 	uint32_t engineSide = BLACK;
 
 	while(true)
@@ -37,7 +37,7 @@ void ConsoleManager::loop()
 			}
 			sa.searchPosition(pos, this->info);
 		}
-		std::cout << '\n'<<NAME<<" > " << std::flush;
+		std::cout << '\n'<<kAppName<<" > " << std::flush;
 		if(!(getline (std::cin, buf))) { continue; }
 		if(buf == "\n") { continue; }
 		std::stringstream ss(buf);
@@ -83,7 +83,7 @@ void ConsoleManager::loop()
 		else if(buf == "view")
 		{
 			std::stringstream viewSS;
-			if(depth == MAX_DEPTH)
+			if(depth == kMaxDepth)
 			{
 				viewSS << "depth not set";
 			}
@@ -106,13 +106,13 @@ void ConsoleManager::loop()
 			ss >> depth;
 			if(depth == 0)
 			{
-				depth = MAX_DEPTH;
+				depth = kMaxDepth;
 			}
 		}
 		else if (buf == "time")
 		{
 			ss >> moveTime;
-			moveTime *= Stopwatch::MILLI_PER_SECOND;
+			moveTime *= Stopwatch::kMilliPerSecond;
 		}
 		else if (buf == "new")
 		{
