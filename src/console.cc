@@ -10,8 +10,8 @@ ConsoleManager::~ConsoleManager() noexcept {}
 
 void ConsoleManager::loop()
 {
-	std::cout << "Console Mode! \n";
-	std::cout << "Type help for commands \n\n";
+	std::cout << "\nConsole Mode! \n";
+	std::cout << "Type help for commands \n";
 
 	info.GAME_MODE = CONSOLE_MODE;
 	info.POST_THINKING = true;
@@ -59,7 +59,7 @@ void ConsoleManager::loop()
 			std::cout << ("enter moves using b7b8q notation\n\n\n");
 			std::cout << std::flush;
 		}
-		else if (buf == "quit")
+		else if (buf == "quit" || buf[0] == 'q')
 		{
 			this->info.quit = true;
 			break;
@@ -135,6 +135,13 @@ void ConsoleManager::loop()
 		else if(buf == "go")
 		{
 			engineSide = pos.side_to_move;
+		}
+		else if(buf == "undo")
+		{
+			// Go to previous user turn
+			MM::takeMove(this->pos);
+			MM::takeMove(this->pos);
+			IO::printBoard(pos);
 		}
 		else
 		{
