@@ -119,6 +119,19 @@ void ConsoleManager::loop()
 			engineSide = BLACK;
 			this->pos.parseFEN(STARTFEN);
 		}
+		else if (buf == "setboard")
+		{
+			engineSide = BOTH;
+			std::stringstream fen;
+			ss >> buf;
+			while(ss.good() && buf != "moves")
+			{
+				fen << buf << ' ';
+				ss >> buf;
+			}
+			fen << buf;
+			this->pos.parseFEN(fen.str());
+		}
 		else if(buf == "go")
 		{
 			engineSide = pos.side_to_move;
