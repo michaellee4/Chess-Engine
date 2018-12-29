@@ -18,9 +18,9 @@ void ConsoleManager::loop()
 
 	std::string buf;
 	std::string cmd;
-	int32_t depth = -1;
+	int32_t depth = 5;
 	std::vector<int32_t> movesToGo { 30, 30 };
-	int32_t moveTime = -1;
+	int32_t moveTime = 10 * Stopwatch::MILLI_PER_SECOND;
 	uint32_t engineSide = BLACK;
 
 	while(true)
