@@ -8,6 +8,7 @@
 #include "move.h"
 #include "pvtable.h"
 #include <string>
+#include <array>
 #define STARTFEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
 constexpr uint32_t MAX_DEPTH = 64;
@@ -59,32 +60,32 @@ enum { UCI_MODE, XBOARD_MODE, CONSOLE_MODE};
 // Provides dictionaries to get information about a piece
 namespace PieceInfo
 {
-	const std::vector<bool> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
-	const std::vector<bool> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
-	const std::vector<bool> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
-	const std::vector<uint32_t> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
-	const std::vector<uint32_t> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
+	constexpr std::array<bool, PCE_TYPES> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
+	constexpr std::array<bool, PCE_TYPES> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
+	constexpr std::array<bool, PCE_TYPES> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
+	constexpr std::array<uint32_t, PCE_TYPES> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
+	constexpr std::array<uint32_t, PCE_TYPES> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE,
 											BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
-	const std::vector<bool> PieceSlides { false, false, false, true, true, true, false, false, false, true, true, true, false };
+	constexpr std::array<bool, PCE_TYPES> PieceSlides { false, false, false, true, true, true, false, false, false, true, true, true, false };
 
-	const std::vector<bool> PiecePawn { false, true, false, false, false, false, false, true, false, false, false, false, false };	
-	const std::vector<bool> PieceKing { false, false, false, false, false, false, true, false, false, false, false, false, true };
-	const std::vector<bool> PieceRookQueen { false, false, false, false, true, true, false, false, false, false, true, true, false };
-	const std::vector<bool> PieceBishopQueen { false, false, false, true, false, true, false, false, false, true, false, true, false };
-	const std::vector<bool> PieceKnight { false, false, true, false, false, false, false, false, true, false, false, false, false };
+	constexpr std::array<bool, PCE_TYPES> PiecePawn { false, true, false, false, false, false, false, true, false, false, false, false, false };	
+	constexpr std::array<bool, PCE_TYPES> PieceKing { false, false, false, false, false, false, true, false, false, false, false, false, true };
+	constexpr std::array<bool, PCE_TYPES> PieceRookQueen { false, false, false, false, true, true, false, false, false, false, true, true, false };
+	constexpr std::array<bool, PCE_TYPES> PieceBishopQueen { false, false, false, true, false, true, false, false, false, true, false, true, false };
+	constexpr std::array<bool, PCE_TYPES> PieceKnight { false, false, true, false, false, false, false, false, true, false, false, false, false };
 
  }
 
 // Lists attack patterns for Pieces on the 120 Sq board.
 namespace Attack
 {
-	const std::vector<int> wPCap   { -11, -9 };
-	const std::vector<int> bPCap   {  11,  9 };
-	const std::vector<int> PnMoves { -10, 10 };
-	const std::vector<int> KnMoves { -8, -19, -21, -12, 8, 19, 21, 12 };
-	const std::vector<int> RkMoves { -1, -10, 1, 10 };
-	const std::vector<int> BiMoves { -9, -11, 11, 9 };
-	const std::vector<int> KiMoves { -1, -10, 1, 10, -9, -11, 11, 9 };
+	constexpr std::array<int32_t, 2> wPCap   { -11, -9 };
+	constexpr std::array<int32_t, 2> bPCap   {  11,  9 };
+	constexpr std::array<int32_t, 2> PnMoves { -10, 10 };
+	constexpr std::array<int32_t, 8> KnMoves { -8, -19, -21, -12, 8, 19, 21, 12 };
+	constexpr std::array<int32_t, 4> RkMoves { -1, -10, 1, 10 };
+	constexpr std::array<int32_t, 4> BiMoves { -9, -11, 11, 9 };
+	constexpr std::array<int32_t, 8> KiMoves { -1, -10, 1, 10, -9, -11, 11, 9 };
 }
 
 namespace BoardUtils
