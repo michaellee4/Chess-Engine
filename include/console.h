@@ -4,16 +4,14 @@
 #include"board.h"
 #include "searchinfo.h"
 #include "search.h"
+#include "protocol.h"
 
-class ConsoleManager
+class ConsoleManager : public ProtocolManager
 {
-	Board pos;
-	SearchInfo info;
-	SearchAgent sa;
 public:
-	void consoleLoop();
-	bool isOver();
+	void loop() override;
 	ConsoleManager() noexcept;
+	~ConsoleManager() noexcept;
 };
 
 

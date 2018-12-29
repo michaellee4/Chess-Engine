@@ -4,9 +4,10 @@
 #include <iostream>
 #include <sstream>
 #include <cstdio>
-XBoardManager::XBoardManager() : pos(), info(), sa() {}
+XBoardManager::XBoardManager() noexcept : ProtocolManager() {}
+XBoardManager::~XBoardManager() noexcept {}
 
-void XBoardManager::XBoardLoop()
+void XBoardManager::loop()
 {
 	info.GAME_MODE = XBOARD_MODE;
 	info.POST_THINKING = true;
@@ -144,8 +145,4 @@ void XBoardManager::XBoardLoop()
 			this->pos.ply = 0;
 		}
 	}
-}
-bool XBoardManager::isOver()
-{
-	return this->info.quit;
 }

@@ -22,6 +22,7 @@
 #include <unordered_set>
 #include <climits>
 #include <string>
+#include <memory>
 
 #define PERFTFEN "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
 #define pt "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
@@ -40,6 +41,7 @@ void printGreeting()
 void getConnection()
 {
 	printGreeting();
+	std::unique_ptr<ProtocolManager> manager;
 	bool gameOver = false;
 	std::string buf;
 	while(!gameOver)
@@ -49,25 +51,24 @@ void getConnection()
 		if(buf[0] == '\n') { continue; }
 		if(buf == "uci")
 		{
-			UCIManager uci;
-			uci.UCILoop();
-			gameOver = uci.isOver();
+			manager = std::make_unique<UCIManager>();
 		}
 		else if(buf == "xboard")
 		{
-			XBoardManager xb;
-			xb.XBoardLoop();
-			gameOver = xb.isOver();
+			manager = std::make_unique<XBoardManager>();
 		}
 		else if(buf == "console")
 		{
-			ConsoleManager cm;
-			cm.consoleLoop();
-			gameOver = cm.isOver();
+			manager = std::make_unique<ConsoleManager>();
 		}
 		else if(buf == "q" || buf == "quit")
 		{
 			gameOver = true;
+		}
+		if(manager)
+		{
+			manager->loop();
+			gameOver = manager->isOver();
 		}
 	}	
 }

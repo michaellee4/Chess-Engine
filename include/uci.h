@@ -3,22 +3,19 @@
 #include"board.h"
 #include "searchinfo.h"
 #include "search.h"
+#include "protocol.h"
 #include<string>
 	
 //might need newline at the end of this string
-class UCIManager
+class UCIManager : public ProtocolManager
 {
 	const std::string UCI_STARTPOS = "position startpos";
-	Board pos;
-	SearchInfo info;
-	SearchAgent sa;
 public:
 	void parseGoCmd(const std::string& cmd);
 	void parsePosition(const std::string& input);
-	void UCILoop();
-	bool isOver();
+	void loop() override;
 	UCIManager() noexcept;
-
+	~UCIManager() noexcept;
 };
 
 #endif

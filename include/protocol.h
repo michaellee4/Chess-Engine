@@ -7,12 +7,17 @@
 
 class ProtocolManager
 {
+protected:
 	Board pos;
 	SearchInfo info;
 	SearchAgent sa;
 public:
 	virtual void loop() = 0;
-	constexpr bool isOver() { return this->info.quit; }
+	virtual bool isOver() { return this->info.quit; }
+	ProtocolManager(): pos(), info(), sa() {}
+	virtual ~ProtocolManager() {};
+
+
 };
 
 #endif

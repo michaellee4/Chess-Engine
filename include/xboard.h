@@ -1,18 +1,16 @@
 #ifndef XBOARD_H
 #define XBOARD_H
-#include"board.h"
+#include "board.h"
 #include "searchinfo.h"
 #include "search.h"
-#include<string>
-class XBoardManager
+#include "protocol.h"
+#include <string>
+class XBoardManager : public ProtocolManager
 {
-	Board pos;
-	SearchInfo info;
-	SearchAgent sa;
 public:
-	void XBoardLoop();
-	XBoardManager();
-	bool isOver();
+	void loop() override;
+	XBoardManager() noexcept;
+	~XBoardManager() noexcept;
 };
 
 #endif

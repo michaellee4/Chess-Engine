@@ -5,9 +5,10 @@
 #include "io.h"
 #include <iostream>
 #include <sstream>
-ConsoleManager::ConsoleManager() noexcept : pos(), info(), sa() {}
+ConsoleManager::ConsoleManager() noexcept : ProtocolManager() {}
+ConsoleManager::~ConsoleManager() noexcept {}
 
-void ConsoleManager::consoleLoop()
+void ConsoleManager::loop()
 {
 	std::cout << "Console Mode! \n";
 	std::cout << "Type help for commands \n\n";
@@ -136,9 +137,4 @@ void ConsoleManager::consoleLoop()
 			}
 		}
 	}
-}
-
-bool ConsoleManager::isOver()
-{
-	return this->info.quit;
 }
