@@ -30,14 +30,9 @@ xboard.o: src/xboard.cc include/xboard.h include/board.h include/defs.h \
  include/search.h include/eval.h include/protocol.h include/io.h \
  include/movemaker.h include/movelist.h include/utils.h \
  include/stopwatch.h
-main.o: src/main.cc include/defs.h include/debug.h include/move.h \
- include/pvtable.h include/bitboard.h include/defs.h include/utils.h \
- include/board.h include/searchinfo.h include/init.h include/hash.h \
- include/board.h include/movelist.h include/search.h include/eval.h \
- include/stopwatch.h include/movemaker.h include/perft.h \
- include/movelist.h include/movemaker.h include/io.h include/utils.h \
- include/searchinfo.h include/uci.h include/search.h include/protocol.h \
- include/xboard.h include/console.h
+main.o: src/main.cc include/engine.h include/protocol.h include/board.h \
+ include/defs.h include/debug.h include/move.h include/pvtable.h \
+ include/searchinfo.h include/search.h include/eval.h
 hash.o: src/hash.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/hash.h include/board.h include/defs.h \
  include/utils.h include/searchinfo.h include/board.h
@@ -48,7 +43,11 @@ movemaker.o: src/movemaker.cc include/movemaker.h include/defs.h \
 pvtable.o: src/pvtable.cc include/pvtable.h include/move.h include/defs.h \
  include/debug.h include/pvtable.h include/board.h include/defs.h \
  include/movemaker.h include/board.h
-engine.o: src/engine.cc include/engine.h
+engine.o: src/engine.cc include/engine.h include/protocol.h \
+ include/board.h include/defs.h include/debug.h include/move.h \
+ include/pvtable.h include/searchinfo.h include/search.h include/eval.h \
+ include/defs.h include/init.h include/uci.h include/xboard.h \
+ include/console.h
 search.o: src/search.cc include/search.h include/defs.h include/debug.h \
  include/move.h include/pvtable.h include/board.h include/searchinfo.h \
  include/eval.h include/stopwatch.h include/movelist.h include/utils.h \
