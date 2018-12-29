@@ -76,6 +76,7 @@ int main()
 {
 	Init::initAll();
 	getConnection();
+	
 	// UCIManager uci;
 	// uci.UCILoop();
 	// XBoardManager x;

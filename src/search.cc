@@ -321,7 +321,6 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 	return alpha;
 }
 
-// MAKE FUNCTION FOR IO TO/FROM GUI
 //uses iterative deepening
 void SearchAgent::searchPosition(Board& pos, SearchInfo& info) noexcept
 {

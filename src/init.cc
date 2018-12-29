@@ -178,10 +178,6 @@ void Init::initEvalMasks() noexcept
 			}
 		}
 	}
-	for(uint32_t sq = 0; sq < CHESSBOARD_SIZE; ++sq)
-	{
-		IO::printBitBoard(isolatedMask[sq]);
-	}
 }
 
 
