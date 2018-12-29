@@ -34,15 +34,16 @@ class MoveList
 		void generateNonSlidingMoves(const Board& pos, uint32_t side) noexcept;
 		void generateCastlingMoves(const Board& psd, uint32_t side) noexcept;
 
+		static constexpr uint32_t kMaxPossibleMoves = 256;
+		static constexpr uint32_t kCaptureBonus = 1000000;
+		// Any non-capture move that changes the beta-cutoff
+		static constexpr uint32_t kPrimaryKillerBonus = 900000;
+		static constexpr uint32_t kSecondaryKillerBonus = 800000;
+
 		std::vector<Move> moves;
 
 	public:
-		const uint32_t kMaxPossibleMoves = 256;
-		const uint32_t kPvMoveBonus = 	2000000;
-		const uint32_t kCaptureBonus = 1000000;
-		// Any non-capture move that changes the beta-cutoff
-		const uint32_t kPrimaryKillerBonus = 900000;
-		const uint32_t kSecondaryKillerBonus = 800000;
+		static constexpr uint32_t kPvMoveBonus = 2000000;
 		
 		MoveList() noexcept; 
 		MoveList(const MoveList& o) noexcept;
