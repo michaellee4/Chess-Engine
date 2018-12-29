@@ -1,14 +1,14 @@
 #ifndef EVAL_H
 #define EVAL_H
 #include "board.h"
-
+#include "defs.h"
 namespace Value
 {	
-	const int32_t INFINITY = 30000;
+	constexpr int32_t INFINITY = 30000;
 
-	const int32_t MATE = 29000;
+	constexpr int32_t MATE = 29000;
 	
-	const std::vector<int32_t> PawnTable {
+	constexpr std::array<int32_t, CHESSBOARD_SIZE> PawnTable {
 		0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,
 		10	,	10	,	0	,	-10	,	-10	,	0	,	10	,	10	,
 		5	,	0	,	0	,	5	,	5	,	0	,	0	,	5	,
@@ -19,7 +19,7 @@ namespace Value
 		0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	
 	};
 
-	const std::vector<int32_t> KnightTable {
+	constexpr std::array<int32_t, CHESSBOARD_SIZE> KnightTable {
 		0	,	-10	,	0	,	0	,	0	,	0	,	-10	,	0	,
 		0	,	0	,	0	,	5	,	5	,	0	,	0	,	0	,
 		0	,	0	,	10	,	10	,	10	,	10	,	0	,	0	,
@@ -30,7 +30,7 @@ namespace Value
 		0	,	0	,	0	,	0	,	0	,	0	,	0	,	0		
 	};
 
-	const std::vector<int32_t> BishopTable {
+	constexpr std::array<int32_t, CHESSBOARD_SIZE> BishopTable {
 		0	,	0	,	-10	,	0	,	0	,	-10	,	0	,	0	,
 		0	,	0	,	0	,	10	,	10	,	0	,	0	,	0	,
 		0	,	0	,	10	,	15	,	15	,	10	,	0	,	0	,
@@ -41,7 +41,7 @@ namespace Value
 		0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	
 	};
 
-	const std::vector<int32_t> RookTable {
+	constexpr std::array<int32_t, CHESSBOARD_SIZE> RookTable {
 		0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
 		0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
 		0	,	0	,	5	,	10	,	10	,	5	,	0	,	0	,
@@ -52,7 +52,7 @@ namespace Value
 		0	,	0	,	5	,	10	,	10	,	5	,	0	,	0		
 	};
 
-	const std::vector<int32_t> WhiteToBlack {
+	constexpr std::array<int32_t, CHESSBOARD_SIZE> WhiteToBlack {
 		56	,	57	,	58	,	59	,	60	,	61	,	62	,	63	,
 		48	,	49	,	50	,	51	,	52	,	53	,	54	,	55	,
 		40	,	41	,	42	,	43	,	44	,	45	,	46	,	47	,

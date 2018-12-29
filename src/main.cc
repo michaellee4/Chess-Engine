@@ -2,6 +2,7 @@
 
 #include "perft.h"
 #include "stopwatch.h"
+#include "bitboard.h"
 #include <iostream>
 
 using namespace std;

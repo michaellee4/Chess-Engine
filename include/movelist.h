@@ -10,7 +10,7 @@
 namespace MvvLva
 {
 	extern std::vector<std::vector<int32_t>> MvvLvaScore;
-	const std::vector<int32_t> victimScore {0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600};
+	constexpr std::array<int32_t, PCE_TYPES> victimScore {0, 100, 200, 300, 400, 500, 600, 100, 200, 300, 400, 500, 600};
 
 }
 

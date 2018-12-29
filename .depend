@@ -33,7 +33,8 @@ xboard.o: src/xboard.cc include/xboard.h include/board.h include/defs.h \
 main.o: src/main.cc include/engine.h include/protocol.h include/board.h \
  include/defs.h include/debug.h include/move.h include/pvtable.h \
  include/searchinfo.h include/search.h include/eval.h include/perft.h \
- include/movelist.h include/movemaker.h include/stopwatch.h
+ include/movelist.h include/movemaker.h include/stopwatch.h \
+ include/bitboard.h
 hash.o: src/hash.cc include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/hash.h include/board.h include/defs.h \
  include/utils.h include/searchinfo.h include/board.h
