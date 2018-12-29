@@ -1,12 +1,13 @@
 #ifndef HASH_H
 #define HASH_H
 #include "board.h"
-
+#include "defs.h"
+#include <array>
 namespace Hash
 {
-	extern std::vector<std::vector<uint64_t>> PieceKeys;
+	extern std::array<std::array<uint64_t, BRD_ARR_SIZE>, PCE_TYPES> PieceKeys;
 	extern uint64_t SideKey;
-	extern std::vector<uint64_t> CastleKeys;
+	extern std::array<uint64_t, 16> CastleKeys;
 
 	// generates a positions hash key
 	uint64_t generatePosKey(const Board& pos);

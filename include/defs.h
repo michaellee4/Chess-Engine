@@ -91,10 +91,10 @@ namespace Attack
 namespace BoardUtils
 {
 	// *** initialized in init
-	extern std::vector<int32_t> Sq120ToSq64;
-	extern std::vector<int32_t> Sq64ToSq120;
-	extern std::vector<int32_t> FileBrd;
-	extern std::vector<int32_t> RankBrd;
+	extern std::array<int32_t, BRD_ARR_SIZE> Sq120ToSq64;
+	extern std::array<int32_t, CHESSBOARD_SIZE> Sq64ToSq120;
+	extern std::array<int32_t, BRD_ARR_SIZE> FileBrd;
+	extern std::array<int32_t, BRD_ARR_SIZE> RankBrd;
 }
 
 const Move NOMOVE(0);

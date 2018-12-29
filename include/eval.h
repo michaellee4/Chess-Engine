@@ -66,11 +66,11 @@ namespace Value
 
 namespace EvalBB
 {
-	extern std::vector<uint64_t> FileMask;
-	extern std::vector<uint64_t> RankMask;
-	extern std::vector<uint64_t> whitePassedMask;
-	extern std::vector<uint64_t> blackPassedMask;
-	extern std::vector<uint64_t> isolatedMask;
+	extern std::array<uint64_t, NUM_FILE_RANK> FileMask;
+	extern std::array<uint64_t, NUM_FILE_RANK> RankMask;
+	extern std::array<uint64_t, CHESSBOARD_SIZE> whitePassedMask;
+	extern std::array<uint64_t, CHESSBOARD_SIZE> blackPassedMask;
+	extern std::array<uint64_t, CHESSBOARD_SIZE> isolatedMask;
 }
 
 

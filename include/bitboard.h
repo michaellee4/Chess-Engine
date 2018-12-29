@@ -14,8 +14,8 @@ namespace BB
 	  58, 20, 37, 17, 36, 8
 	};
 
-	extern std::vector<uint64_t> SetMask;
-	extern std::vector<uint64_t> ClearMask;
+	extern std::array<uint64_t, CHESSBOARD_SIZE> SetMask;
+	extern std::array<uint64_t, CHESSBOARD_SIZE> ClearMask;
 	
 	// removes the lowest order bit of an integer and returns the index
 	int popBit(uint64_t&) noexcept;

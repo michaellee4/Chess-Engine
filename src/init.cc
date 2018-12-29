@@ -6,41 +6,41 @@
 #include "io.h"
 #include "movelist.h"
 #include <vector>
+#include <iostream>
 
 namespace BoardUtils
 {
 	// *** used in init
-	std::vector<int32_t> Sq120ToSq64(BRD_ARR_SIZE);
-	std::vector<int32_t> Sq64ToSq120(CHESSBOARD_SIZE);
-	//*** used in utils
-	std::vector<int32_t> FileBrd(BRD_ARR_SIZE);
-	std::vector<int32_t> RankBrd(BRD_ARR_SIZE);
+	std::array<int32_t, BRD_ARR_SIZE> Sq120ToSq64;
+	std::array<int32_t, CHESSBOARD_SIZE> Sq64ToSq120;
+	std::array<int32_t, BRD_ARR_SIZE> FileBrd;
+	std::array<int32_t, BRD_ARR_SIZE> RankBrd;
 }
 
 namespace Hash
 {
-	std::vector<std::vector<uint64_t>> PieceKeys(PCE_TYPES, std::vector<uint64_t>(BRD_ARR_SIZE));
-	uint64_t SideKey;
-	std::vector<uint64_t> CastleKeys(16);
+ 	std::array<std::array<uint64_t, BRD_ARR_SIZE>, PCE_TYPES> PieceKeys;
+ 	uint64_t SideKey;
+	std::array<uint64_t, 16> CastleKeys;
 }
 namespace BB
 {
-	std::vector<uint64_t> SetMask(CHESSBOARD_SIZE);
-	std::vector<uint64_t> ClearMask(CHESSBOARD_SIZE);
+	std::array<uint64_t, CHESSBOARD_SIZE> SetMask;
+	std::array<uint64_t, CHESSBOARD_SIZE> ClearMask;
 }
 
 namespace MvvLva
 {
-	std::vector<std::vector<int32_t>> MvvLvaScore(PCE_TYPES, std::vector<int32_t>(PCE_TYPES));
+	std::array<std::array<int32_t, PCE_TYPES>, PCE_TYPES> MvvLvaScore;
 }
 
 namespace EvalBB
 {
-	std::vector<uint64_t> FileMask(NUM_FILE_RANK);
-	std::vector<uint64_t> RankMask(NUM_FILE_RANK);
-	std::vector<uint64_t> whitePassedMask(CHESSBOARD_SIZE);
-	std::vector<uint64_t> blackPassedMask(CHESSBOARD_SIZE);
-	std::vector<uint64_t> isolatedMask(CHESSBOARD_SIZE);
+	std::array<uint64_t, NUM_FILE_RANK> FileMask;
+	std::array<uint64_t, NUM_FILE_RANK> RankMask;
+	std::array<uint64_t, CHESSBOARD_SIZE> whitePassedMask;
+	std::array<uint64_t, CHESSBOARD_SIZE> blackPassedMask;
+	std::array<uint64_t, CHESSBOARD_SIZE> isolatedMask;
 }
 
 void Init::initFileRankBrd() noexcept
