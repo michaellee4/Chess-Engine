@@ -147,7 +147,7 @@ void XBoardManager::loop()
 			movesToGo[pos.side_to_move]--;
 			ss >> buf;
 			Move move = IO::parseMove(buf, this->pos);
-			if(move == NOMOVE) { continue; }
+			if(move.isNull()) { continue; }
 			MM::makeMove(pos, move);
 			this->pos.ply = 0;
 		}

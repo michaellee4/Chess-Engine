@@ -3,6 +3,8 @@
 #include <iostream>
 #include <utility>
 #include <algorithm>
+using namespace MoveFlags;
+
 MoveList::MoveList() noexcept : moves()
 {
 	moves.reserve(MAX_MOVES_PER_POSITION);

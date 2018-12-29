@@ -146,7 +146,7 @@ void ConsoleManager::loop()
 		else
 		{
 			Move move = IO::parseMove(buf, this->pos);
-			if(move == NOMOVE)
+			if(move.isNull())
 			{
 				std::cout << "Unrecognized Command: "<<buf<<'\n';
 			}

@@ -8,6 +8,7 @@
 #include<cstdio>
 #include <algorithm>
 
+using namespace MoveFlags;
 void MM::clearPiece(const uint32_t sq, Board& pos) noexcept
 {
 	int pce = pos.pieces[sq];
@@ -95,7 +96,7 @@ void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos) noexcept
 
 bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 {
-	if(moveInfo == NOMOVE)
+	if(moveInfo.isNull())
 		return false;
 	ASSERT(checkBoard(pos));
 

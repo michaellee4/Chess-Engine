@@ -177,7 +177,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     Move bestMove = NOMOVE;
     int score = -Value::kInfinity;
     Move pvMove = pos.pv_table.get(pos);
-    if(pvMove != NOMOVE)
+    if(!pvMove.isNull())
     {
 		for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
 		{

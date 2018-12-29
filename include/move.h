@@ -1,13 +1,6 @@
 #ifndef MOVE_H
 #define MOVE_H
 
-//move flags
-#define EP 0x40000
-#define PS 0x80000
-#define CA 0x1000000
-#define CAP 0x7C000
-#define PROM 0xF00000
-
 #include <string>
 class Board;
 // used for undoing
@@ -23,6 +16,15 @@ class UndoMove
 		UndoMove(int32_t _move, const Board& pos);
 };
 
+namespace MoveFlags
+{
+	constexpr int32_t SQ = 0x7F;
+	constexpr int32_t EP = 0x40000;
+	constexpr int32_t PS = 0x80000;
+	constexpr int32_t CA = 0x1000000;
+	constexpr int32_t CAP = 0x7C000;
+	constexpr int32_t PROM = 0xF00000;
+}
 class Move
 {
 	public:
@@ -34,24 +36,25 @@ class Move
 		Move(const Move& o) noexcept;
 		Move(Move&& o) noexcept;
 		Move() noexcept;
+
 		// 7 bits for src
-		constexpr uint32_t from() const { return this->move & 0x7f; }
+		constexpr uint32_t from() const { return this->move & MoveFlags::SQ; }
 		// 7 bits for dest 
-		constexpr uint32_t to() const { return (this->move >> 7) & 0x7f; }
+		constexpr uint32_t to() const { return (this->move >> 7) & MoveFlags::SQ; }
 		// 4 bits for which piece was captured if any
 		constexpr uint32_t captured() const { return (this->move >> 14) & 0xf; }
 		// 1 bit for enPas
-		constexpr uint32_t enPassant() const {  return this->move & 0x40000; }
+		constexpr uint32_t enPassant() const {  return this->move & MoveFlags::EP; }
 		// 1 bit for pawn start 
-		constexpr uint32_t pawnStart() const { return this->move & 0x80000; }
+		constexpr uint32_t pawnStart() const { return this->move & MoveFlags::PS; }
 		// 4 bits for which piece was captured if any
-		constexpr uint32_t promoted() const { return (this->move >> 20) & 0xf; }
+		constexpr uint32_t promoted() const { return (this->move & MoveFlags::PROM) >> 20; }
 		// 1 bit for Castle move
-		constexpr uint32_t castle() const { return this->move & 0x1000000; }
+		constexpr uint32_t castle() const { return this->move & MoveFlags::CA; }
 		
 		constexpr bool isNull() const { return this->move == 0; }
-		constexpr bool wasCapture() const { return this->move & 0x7c000; }
-		constexpr bool wasPromotion() const { return this->move & 0xf00000; }
+		constexpr bool wasCapture() const { return this->move & MoveFlags::CAP; }
+		constexpr bool wasPromotion() const { return this->move & MoveFlags::PROM; }
 
 		const std::string toString() const noexcept;
 
