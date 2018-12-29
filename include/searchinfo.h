@@ -37,7 +37,8 @@ struct SearchInfo
 				   stopped(false),
 				   fh(0),
 				   fhf(0),
-				   GAME_MODE(CONSOLE_MODE),
+				   //console mode
+				   GAME_MODE(2),
 				   POST_THINKING(false){}
 };
 

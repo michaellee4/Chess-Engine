@@ -11,11 +11,15 @@ protected:
 	Board pos;
 	SearchInfo info;
 	SearchAgent sa;
+	// Current mode
+	enum { UCI_MODE, XBOARD_MODE, CONSOLE_MODE};
 public:
 	virtual void loop() = 0;
 	virtual bool isOver() { return this->info.quit; }
+	virtual int32_t getProtocol() = 0;
 	ProtocolManager(): pos(), info(), sa() {}
 	virtual ~ProtocolManager() {};
+
 
 
 };

@@ -5,7 +5,7 @@
 #include "io.h"
 #include <iostream>
 #include <sstream>
-ConsoleManager::ConsoleManager() noexcept : ProtocolManager() {}
+ConsoleManager::ConsoleManager() noexcept : ProtocolManager() { info.GAME_MODE = this->getProtocol();}
 ConsoleManager::~ConsoleManager() noexcept {}
 
 void ConsoleManager::loop()
@@ -157,4 +157,9 @@ void ConsoleManager::loop()
 			}
 		}
 	}
+}
+
+int32_t ConsoleManager::getProtocol()
+{
+	return CONSOLE_MODE;
 }

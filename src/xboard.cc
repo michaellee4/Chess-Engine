@@ -4,12 +4,11 @@
 #include <iostream>
 #include <sstream>
 #include <cstdio>
-XBoardManager::XBoardManager() noexcept : ProtocolManager() {}
+XBoardManager::XBoardManager() noexcept : ProtocolManager() { info.GAME_MODE = this->getProtocol();}
 XBoardManager::~XBoardManager() noexcept {}
 
 void XBoardManager::loop()
 {
-	info.GAME_MODE = XBOARD_MODE;
 	info.POST_THINKING = true;
 
 	std::cout << "feature ping=1 setboard=1 colors=0 usermove=1" << std::endl;
@@ -152,4 +151,9 @@ void XBoardManager::loop()
 			this->pos.ply = 0;
 		}
 	}
+}
+
+int32_t XBoardManager::getProtocol()
+{
+	return XBOARD_MODE;
 }

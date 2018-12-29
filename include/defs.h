@@ -53,8 +53,6 @@ enum {
 // Castling permissions
 enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8 };
 
-// Current mode
-	enum { UCI_MODE, XBOARD_MODE, CONSOLE_MODE};
 // Provides dictionaries to get information about a piece
 namespace PieceInfo
 {

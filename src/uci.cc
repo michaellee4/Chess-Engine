@@ -8,7 +8,7 @@
 #include <sstream>
 
 
-UCIManager::UCIManager() noexcept : ProtocolManager() {}
+UCIManager::UCIManager() noexcept : ProtocolManager() { info.GAME_MODE = this->getProtocol();}
 UCIManager::~UCIManager() noexcept {}
 
 // go depth 6 wtime 180000 btime 100000 binc 1000 winc 1000 movetime 1000 movestogo 40
@@ -176,4 +176,9 @@ void UCIManager::loop()
 		}
 		if(this->info.quit) { break; }
 	}
+}
+
+int32_t UCIManager::getProtocol()
+{
+	return UCI_MODE;
 }

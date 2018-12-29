@@ -9,6 +9,7 @@ class XBoardManager : public ProtocolManager
 {
 public:
 	void loop() override;
+	int32_t getProtocol() override;
 	XBoardManager() noexcept;
 	~XBoardManager() noexcept;
 };
