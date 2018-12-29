@@ -83,7 +83,7 @@ void ConsoleManager::loop()
 		else if(buf == "view")
 		{
 			std::stringstream viewSS;
-			if(depth == kMaxDepth)
+			if(depth == kMaxSearchDepth)
 			{
 				viewSS << "depth not set";
 			}
@@ -106,7 +106,7 @@ void ConsoleManager::loop()
 			ss >> depth;
 			if(depth == 0)
 			{
-				depth = kMaxDepth;
+				depth = kMaxSearchDepth;
 			}
 		}
 		else if (buf == "time")

@@ -126,7 +126,7 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 
 	for(uint32_t i = 0; i < kNumPlayers; ++i)
 	{
-		for(uint32_t j = 0; j < kMaxDepth; ++j)
+		for(uint32_t j = 0; j < kMaxSearchDepth; ++j)
 		{
 			pos.search_killers[i][j] = NOMOVE;
 		}
@@ -162,7 +162,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     {
     	return 0;
     }
-    if((unsigned)pos.ply > kMaxDepth - 1)
+    if((unsigned)pos.ply > kMaxSearchDepth - 1)
     {
     	return eval.evaluatePosition(pos);
     }
@@ -261,7 +261,7 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 	{
 		return 0;
 	}
-	if((unsigned)pos.ply > kMaxDepth - 1)
+	if((unsigned)pos.ply > kMaxSearchDepth - 1)
 	{
 		return eval.evaluatePosition(pos);
 	}

@@ -27,9 +27,9 @@ Board::Board() noexcept :
 			   material(kNumPlayers), 
 			   history(kMoveLimit),
 			   pv_table(),
-	    	   pv_arr(kMaxDepth),
+	    	   pv_arr(kMaxSearchDepth),
 	    	   search_hist(kNumPceTypes, std::vector<int32_t>(kBoardArraySize)),
-	    	   search_killers(kNumPlayers, std::vector<Move>(kMaxDepth))
+	    	   search_killers(kNumPlayers, std::vector<Move>(kMaxSearchDepth))
 
 {
 	for(uint32_t i = 0; i < kNumPceTypes; ++i)
@@ -57,9 +57,9 @@ Board::Board(const std::string fen) noexcept :
 									material(kNumPlayers), 
 									history(kMoveLimit),
 									pv_table(),
-									pv_arr(kMaxDepth),
+									pv_arr(kMaxSearchDepth),
 									search_hist(kNumPceTypes, std::vector<int32_t>(kBoardArraySize)),
-									search_killers(kNumPlayers, std::vector<Move>(kMaxDepth))
+									search_killers(kNumPlayers, std::vector<Move>(kMaxSearchDepth))
 {
 	for(uint32_t i = 0; i < kNumPceTypes; ++i)
 	{

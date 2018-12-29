@@ -70,7 +70,7 @@ void UCIManager::parseGoCmd(const std::string& input)
 	}
 	if(depth == -1) 
 	{
-		this->info.depth = kMaxDepth;
+		this->info.depth = kMaxSearchDepth;
 	}
 	std::cout<<"time:"<<time<<" start:"<<this->info.startTime<<" stop:"<<this->info.stopTime<<" depth:"<<this->info.depth<<" timeset:"<<this->info.timeLimit<<'\n';
 	sa.searchPosition(this->pos, this->info);

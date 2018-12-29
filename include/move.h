@@ -11,7 +11,7 @@
 #include <string>
 class Board;
 // used for undoing
-class U_Move
+class UndoMove
 {
 	public:
 		int32_t move;
@@ -19,8 +19,8 @@ class U_Move
 		int32_t enPas;
 		int32_t fiftyMove;
 		uint64_t pos_key;
-		U_Move();
-		U_Move(int32_t _move, const Board& pos);
+		UndoMove();
+		UndoMove(int32_t _move, const Board& pos);
 };
 
 class Move

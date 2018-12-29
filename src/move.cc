@@ -5,8 +5,8 @@
 #include "board.h"
 #include <utility>
 /*** UMOVE ***/
-U_Move::U_Move() : move(0), castlePerm(0), enPas(NO_SQ), fiftyMove(0), pos_key(0) {}
-U_Move::U_Move(int32_t _move, const Board& pos) : move(_move), castlePerm(pos.castle_perm), enPas(pos.en_pas), fiftyMove(pos.fifty_move), pos_key(pos.pos_key) {}
+UndoMove::UndoMove() : move(0), castlePerm(0), enPas(NO_SQ), fiftyMove(0), pos_key(0) {}
+UndoMove::UndoMove(int32_t _move, const Board& pos) : move(_move), castlePerm(pos.castle_perm), enPas(pos.en_pas), fiftyMove(pos.fifty_move), pos_key(pos.pos_key) {}
 
 /*** MOVE ***/
 Move::Move(uint32_t from, uint32_t to, uint32_t captured, uint32_t prom, uint32_t flag) noexcept : 

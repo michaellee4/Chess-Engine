@@ -11,7 +11,7 @@
 #include <array>
 #define STARTFEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
-constexpr uint32_t kMaxDepth = 64;
+constexpr uint32_t kMaxSearchDepth = 64;
 
 constexpr uint32_t kNumPceTypes = 13;
 

@@ -42,14 +42,14 @@ void PV_Table::clear() noexcept
 
 int32_t PV_Table::getPvLine(Board& pos, const uint32_t depth) noexcept
 {
-	ASSERT(depth < kMaxDepth);
+	ASSERT(depth < kMaxSearchDepth);
 
 	Move move = pos.pv_table.get(pos);
 	uint32_t count = 0;
 
 	while(!move.isNull() && count < depth)
 	{
-		ASSERT(count < kMaxDepth);
+		ASSERT(count < kMaxSearchDepth);
 		// check move exists here?
 		MM::makeMove(pos, move);
 		pos.pv_arr[count++] = move;

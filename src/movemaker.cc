@@ -138,7 +138,7 @@ bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
 	Hash::hashCa(pos);
 
-	pos.history[pos.hist_ply] = U_Move(move, pos);
+	pos.history[pos.hist_ply] = UndoMove(move, pos);
 
 	pos.castle_perm &= CastlePerm[from] & CastlePerm[to];
 	pos.en_pas = NO_SQ;
@@ -214,7 +214,7 @@ void MM::takeMove(Board& pos) noexcept
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
 	Hash::hashCa(pos);
 
-	U_Move undo = pos.history[pos.hist_ply];
+	UndoMove undo = pos.history[pos.hist_ply];
 	pos.castle_perm = undo.castlePerm;
 	pos.fifty_move = undo.fiftyMove;
 	pos.en_pas = undo.enPas;

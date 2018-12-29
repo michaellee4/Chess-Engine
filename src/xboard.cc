@@ -41,9 +41,9 @@ void XBoardManager::loop()
 				time -= 50;
 				this->info.stopTime = this->info.startTime + time + inc;
 			}
-			if(depth == -1 || depth > (signed)kMaxDepth)
+			if(depth == -1 || depth > (signed)kMaxSearchDepth)
 			{
-				this->info.depth = kMaxDepth;
+				this->info.depth = kMaxSearchDepth;
 			}
 			std::cout<<"time:"<<time<<" start:"<<this->info.startTime<<" stop:"<<this->info.stopTime<<" depth:"<<this->info.depth<<" timeset:"<<this->info.timeLimit<<" movestogo:"<<movesToGo[pos.side_to_move]<<" mps"<<mps<<'\n';
 			sa.searchPosition(pos, info);

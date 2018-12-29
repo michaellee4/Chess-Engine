@@ -74,7 +74,7 @@ class Board
 		std::vector<uint32_t> material;
 
 		// stores the history of moves
-		std::vector<U_Move> history;
+		std::vector<UndoMove> history;
 
 		// Principal variation table
 		PV_Table pv_table;
