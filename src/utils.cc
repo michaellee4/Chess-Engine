@@ -42,14 +42,14 @@ std::string sqToString(const int sq) noexcept
 uint64_t randU64() noexcept
 {
 	using namespace std;
-	  /* Seed */
+	/* Seed */
 	random_device rd;
 
 	/* Random number generator */
 	default_random_engine generator(rd());
 
 	/* Distribution on which to apply the generator */
-	uniform_int_distribution<long long unsigned> distribution(0,0xFFFFFFFFFFFFFFFF);
+	uniform_int_distribution<uint64_t> distribution(0,0xFFFFFFFFFFFFFFFF);
 	return distribution(generator);
 }
 
