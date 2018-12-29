@@ -17,6 +17,7 @@ namespace Init
 	// initializes the two arrays to return a given square's file and rank
 	void initFileRankBrd() noexcept;	
 
+	void initEvalMasks() noexcept;
 	// initializes the MvvLva arrays
 	void initMvvLva() noexcept;
 }

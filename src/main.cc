@@ -30,8 +30,16 @@
 
 using namespace std;
 
-void connect()
+
+void printGreeting()
 {
+	std::cout << "C++ Chess Engine" << std::endl;
+	std::cout << "Type \'console\' for an interactive console\n" << std::endl;
+}
+
+void getConnection()
+{
+	printGreeting();
 	bool gameOver = false;
 	std::string buf;
 	while(!gameOver)
@@ -64,16 +72,10 @@ void connect()
 	}	
 }
 
-void printGreeting()
-{
-	std::cout << "C++ Chess Engine" << std::endl;
-	std::cout << "Type \'console\' for an interactive console\n" << std::endl;
-}
 int main()
 {
 	Init::initAll();
-	printGreeting();
-	connect();
+	getConnection();
 	// UCIManager uci;
 	// uci.UCILoop();
 	// XBoardManager x;

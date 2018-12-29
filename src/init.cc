@@ -3,6 +3,7 @@
 #include "init.h"
 #include "hash.h"
 #include "bitboard.h"
+#include "io.h"
 #include "movelist.h"
 #include <vector>
 
@@ -31,6 +32,15 @@ namespace BB
 namespace MvvLva
 {
 	std::vector<std::vector<int32_t>> MvvLvaScore(PCE_TYPES, std::vector<int32_t>(PCE_TYPES));
+}
+
+namespace EvalBB
+{
+	std::vector<uint64_t> FileMask(NUM_FILE_RANK);
+	std::vector<uint64_t> RankMask(NUM_FILE_RANK);
+	std::vector<uint64_t> whitePassedMask(CHESSBOARD_SIZE);
+	std::vector<uint64_t> blackPassedMask(CHESSBOARD_SIZE);
+	std::vector<uint64_t> isolatedMask(CHESSBOARD_SIZE);
 }
 
 void Init::initFileRankBrd() noexcept
@@ -106,6 +116,75 @@ void Init::initHashKeys() noexcept
 	}
 }
 
+void Init::initEvalMasks() noexcept
+{
+	using namespace EvalBB;
+	using namespace BoardUtils;
+	// initializes the file/rank masks
+	for(int32_t r = RANK_8; r >= RANK_1; --r)
+	{
+		for(int32_t f = FILE_A; f <= FILE_H; ++f)
+		{
+			int32_t sq = r * NUM_FILE_RANK + f;
+			FileMask[f] |= (1ULL << sq);
+			RankMask[r] |= (1ULL << sq);
+		}
+	}
+	for(uint32_t sq = 0; sq < CHESSBOARD_SIZE; ++sq)
+	{
+		// forward square
+		int32_t fsq = sq + NUM_FILE_RANK;
+		while(fsq < (signed)CHESSBOARD_SIZE)
+		{
+			whitePassedMask[sq] |= (1ULL << fsq);
+			fsq += NUM_FILE_RANK;
+		}
+		fsq = sq - NUM_FILE_RANK;
+		while(fsq >= 0)
+		{
+			blackPassedMask[sq] |= (1ULL << fsq);
+			fsq -= NUM_FILE_RANK;
+		}
+		if(FileBrd[Sq64ToSq120[sq]] > FILE_A)
+		{
+			isolatedMask[sq] |= FileMask[FileBrd[Sq64ToSq120[sq]] - 1];
+			fsq = sq + 7;
+			while(fsq < (signed)CHESSBOARD_SIZE)
+			{
+				whitePassedMask[sq] |= (1ULL << fsq);
+				fsq += NUM_FILE_RANK;
+			}
+			fsq = sq - 9;
+			while(fsq >= 0)
+			{
+				blackPassedMask[sq] |= (1ULL << fsq);
+				fsq -= NUM_FILE_RANK;
+			}
+		}
+		if(FileBrd[Sq64ToSq120[sq]] < FILE_H)
+		{
+			isolatedMask[sq] |= FileMask[FileBrd[Sq64ToSq120[sq]] + 1];
+			fsq = sq + 9;
+			while(fsq < (signed)CHESSBOARD_SIZE)
+			{
+				whitePassedMask[sq] |= (1ULL << fsq);
+				fsq += NUM_FILE_RANK;
+			}
+			fsq = sq - 7;
+			while(fsq >= 0)
+			{
+				blackPassedMask[sq] |= (1ULL << fsq);
+				fsq -= NUM_FILE_RANK;
+			}
+		}
+	}
+	for(uint32_t sq = 0; sq < CHESSBOARD_SIZE; ++sq)
+	{
+		IO::printBitBoard(isolatedMask[sq]);
+	}
+}
+
+
 void Init::initMvvLva() noexcept
 {
 	for (int32_t atk = wP; atk <= bK; ++atk)
@@ -123,5 +202,6 @@ void Init::initAll() noexcept
 	initBitMasks();
 	initHashKeys();
 	initFileRankBrd();
+	initEvalMasks();
 	initMvvLva();
 }

@@ -24,6 +24,8 @@ constexpr uint32_t NUM_SIDES = 2;
 
 constexpr uint32_t CHECK_TIMER = 0x7FF;
 
+constexpr uint32_t NUM_FILE_RANK = 8;
+
 const std::string NAME = "ChessEngine";
 // pieces
 enum { EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK };

@@ -7,101 +7,7 @@
 #include <sstream>
 #include <iostream>
 #include <cstdio>
-int32_t SearchAgent::evalPawns(const Board& pos) noexcept
-{
-	int32_t pce = wP;
-	int32_t PnScore = 0;	
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
-		PnScore += Value::PawnTable[BoardUtils::Sq120ToSq64[sq]];
-	}	
-
-	pce = bP;	
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
-		PnScore -= Value::PawnTable[Value::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
-	}	
-	return PnScore;
-}
-
-int32_t SearchAgent::evalBishops(const Board& pos) noexcept
-{
-	int32_t pce = wB;	
-	int32_t BiScore = 0;
-
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
-		BiScore += Value::BishopTable[BoardUtils::Sq120ToSq64[sq]];
-	}	
-
-	pce = bB;	
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
-		BiScore -= Value::BishopTable[Value::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
-	}	
-	return BiScore;
-}
-
-int32_t SearchAgent::evalRooks(const Board& pos) noexcept
-{
-	int32_t pce = wR;	
-	int32_t RkScore = 0;
-
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
-		RkScore += Value::RookTable[BoardUtils::Sq120ToSq64[sq]];
-	}	
-
-	pce = bR;	
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
-		RkScore -= Value::RookTable[Value::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
-	}	
-	return RkScore;
-}
-
-int32_t SearchAgent::evalKnights(const Board& pos) noexcept
-{
-	int32_t pce = wN;	
-	int32_t KnScore = 0;
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
-		KnScore += Value::KnightTable[BoardUtils::Sq120ToSq64[sq]];
-	}	
-
-	pce = bN;	
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
-		KnScore -= Value::KnightTable[Value::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
-	}			
-	return KnScore;
-}
-
-
-int32_t SearchAgent::evaluatePosition(const Board& pos) noexcept
-{
-	// initial score
-	int32_t score = pos.material[WHITE] - pos.material[BLACK];
-	
-	score += evalPawns(pos);
-	score += evalKnights(pos);
-	score += evalBishops(pos);	
-	score += evalRooks(pos);		
-	
-	if(pos.side_to_move == BLACK)
-	{
-		score *= -1;
-	}
-	return score;
-}
+SearchAgent::SearchAgent() noexcept : eval() {}
 
 bool SearchAgent::threeFoldRepetition(const Board& pos) noexcept
 {
@@ -243,7 +149,6 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 
 	if(depth == 0) {
 		return this->quiescenceSearch(alpha, beta, pos, info);
-        // return this->evaluatePosition(pos);
     }
 
 	if((info.nodes & CHECK_TIMER )== 0)
@@ -259,7 +164,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     }
     if((unsigned)pos.ply > MAX_DEPTH - 1)
     {
-    	return this->evaluatePosition(pos);
+    	return eval.evaluatePosition(pos);
     }
     if(inCheck(pos))
     {
@@ -358,10 +263,10 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 	}
 	if((unsigned)pos.ply > MAX_DEPTH - 1)
 	{
-		return this->evaluatePosition(pos);
+		return eval.evaluatePosition(pos);
 	}
 
-	int32_t initialScore = this->evaluatePosition(pos);
+	int32_t initialScore = eval.evaluatePosition(pos);
 	
 	if(initialScore >= beta)
 	{
