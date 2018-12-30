@@ -216,7 +216,7 @@ void MM::takeMove(Board& pos) noexcept
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
 	Hash::hashCa(pos);
 
-	UndoMove undo = pos.history[pos.hist_ply];
+	UndoMove& undo = pos.history[pos.hist_ply];
 	pos.castle_perm = undo.castle_perm;
 	pos.fifty_move = undo.fifty_move;
 	pos.en_pas = undo.en_pas;
@@ -282,7 +282,7 @@ void MM::makeNullMove(Board& pos) noexcept
 	ASSERT(!pos.inCheck());
 	pos.ply++;
 
-	UndoMove uMove = pos.history[pos.hist_ply];
+	UndoMove& uMove = pos.history[pos.hist_ply];
 	uMove.pos_key = pos.pos_key;
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
 
@@ -308,7 +308,7 @@ void MM::takeNullMove(Board& pos) noexcept
 	pos.ply --;
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
 	
-	UndoMove uMove = pos.history[pos.hist_ply];
+	UndoMove& uMove = pos.history[pos.hist_ply];
 	pos.castle_perm = uMove.castle_perm;
 	pos.fifty_move = uMove.fifty_move;
 	pos.en_pas = uMove.en_pas;

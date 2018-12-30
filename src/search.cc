@@ -167,7 +167,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     }
     int32_t score = -Value::kInfinity;
 
-    if(doNull && !pos.inCheck() && pos.ply && (pos.big_pce[pos.side_to_move] > 0) && depth >= 4)
+    if(doNull && !pos.inCheck() && pos.ply && (pos.big_pce[pos.side_to_move] > 1) && depth >= 4)
     {
     	MM::makeNullMove(pos);
     	score = -alphaBeta(-beta, -beta + 1, depth - 4, pos, info, false);
