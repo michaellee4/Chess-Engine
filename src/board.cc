@@ -349,7 +349,7 @@ bool checkBoard(const Board& pos) noexcept
 
 bool Board::sqOnBoard(uint32_t sq) const noexcept
 {
-	return !(this->pieces[sq] == OFFBOARD || this->pieces[sq] == NO_SQ);
+	return BoardUtils::Sq120ToSq64[sq] != 65;
 }
 
 uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noexcept

@@ -37,7 +37,7 @@ class Board
 		std::vector<uint64_t> pawns;
 
 		// stores king positions
-		std::vector<int> king_sq;
+		std::vector<int32_t> king_sq;
 
 		// tracks which player is up to move
 		uint32_t side_to_move;
