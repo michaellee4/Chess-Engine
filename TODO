@@ -4,4 +4,3 @@ Add Unit Tests
 Use Ncurses for keyboard support
 multithreading? (big if)
 move PV_table and Pv_arr into search (put both in class with wrapper methods);
-move sqOnBoard out of board (prob use sq120To64);

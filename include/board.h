@@ -92,9 +92,6 @@ class Board
 
 		// Reads in a Forseth-Edwards Notation string and prepares the board in accordance ot it.
 		void parseFEN(const std::string) noexcept;
-
-		// Checks if a sq is on the board
-		bool sqOnBoard(uint32_t sq) const noexcept;
 		
 		// returns the number of times that a Sq is attacked by the given side
 		uint32_t sqAttacked(const uint32_t sq, const uint32_t side) const noexcept;
@@ -106,7 +103,6 @@ class Board
 		MoveList getAllMoves() const noexcept;
 		
 		MoveList getAllCaptureMoves() const noexcept;
-
 };
 		// reconstructs the board state and checks if they match
 		// Used for debugging.

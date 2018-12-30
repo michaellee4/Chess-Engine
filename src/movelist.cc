@@ -117,7 +117,7 @@ void MoveList::generateBishopMoves(const Board& pos, uint32_t side) noexcept
 		for(uint32_t move = 0; move < Attack::BiMoves.size(); ++move )
 		{
 			int newSq = curBiSq + Attack::BiMoves[move];
-			while(pos.sqOnBoard(newSq))
+			while(sqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
 				{
@@ -143,7 +143,7 @@ void MoveList::generateRookMoves(const Board& pos, uint32_t side) noexcept
 		for(uint32_t move = 0; move < Attack::RkMoves.size(); ++move)
 		{
 			int newSq = curRkSq + Attack::RkMoves[move];
-			while(pos.sqOnBoard(newSq))
+			while(sqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
 				{
@@ -169,7 +169,7 @@ void MoveList::generateQueenMoves(const Board& pos, uint32_t side) noexcept
 		for(uint32_t move = 0; move < Attack::BiMoves.size(); ++move)
 		{
 			int newSq = curQn + Attack::BiMoves[move];
-			while(pos.sqOnBoard(newSq))
+			while(sqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
 				{
@@ -191,7 +191,7 @@ void MoveList::generateQueenMoves(const Board& pos, uint32_t side) noexcept
 		for(uint32_t move = 0; move < Attack::RkMoves.size(); ++move)
 		{
 			int newSq = curQn + Attack::RkMoves[move];
-			while(pos.sqOnBoard(newSq))
+			while(sqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
 				{
@@ -224,7 +224,7 @@ void MoveList::generateKnightMoves(const Board& pos, uint32_t side) noexcept
 		for(uint32_t move = 0; move < Attack::KnMoves.size(); ++move)
 		{
 			int newSq = curKnSq + Attack::KnMoves[move];
-			if(pos.sqOnBoard(newSq))
+			if(sqOnBoard(newSq))
 			{
 				if(PieceInfo::PieceCol[pos.pieces[newSq]]== !side)
 				{
@@ -248,7 +248,7 @@ void MoveList::generateKingMoves(const Board& pos, uint32_t side) noexcept
 	for(uint32_t move = 0; move < Attack::KiMoves.size(); ++move)
 	{
 		int newSq = kingSq + Attack::KiMoves[move];
-		if(pos.sqOnBoard(newSq) /*&& !pos.sqAttacked(newSq, !side)*/)
+		if(sqOnBoard(newSq) /*&& !pos.sqAttacked(newSq, !side)*/)
 		{
 			if(pos.pieces[newSq] == EMPTY)
 			{
@@ -290,11 +290,11 @@ void MoveList::generatePawnMoves(const Board& pos, uint32_t side) noexcept
 				this->addQuietMove(pos, Move(sq, sq + twoMove, EMPTY, EMPTY, PS));
 			}
 		}
-		if(pos.sqOnBoard(sq + cap1) && PieceInfo::PieceCol[pos.pieces[sq + cap1]] == oppositeSide)
+		if(sqOnBoard(sq + cap1) && PieceInfo::PieceCol[pos.pieces[sq + cap1]] == oppositeSide)
 		{
 			this->addPawnCaptureMove(pos, sq, sq + cap1, pos.pieces[sq + cap1], side);
 		}
-		if(pos.sqOnBoard(sq + cap2) && PieceInfo::PieceCol[pos.pieces[sq + cap2]] == oppositeSide)
+		if(sqOnBoard(sq + cap2) && PieceInfo::PieceCol[pos.pieces[sq + cap2]] == oppositeSide)
 		{
 			this->addPawnCaptureMove(pos, sq, sq + cap2, pos.pieces[sq + cap2], side);
 		}

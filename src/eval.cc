@@ -10,7 +10,7 @@ int32_t Evaluator::evalPawns(const Board& pos) noexcept
 	int32_t PnScore = 0;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
+		ASSERT(sqOnBoard(sq));
 		PnScore += Value::PawnTable[Sq120ToSq64[sq]];
 
 		// Evals white isolated pawns
@@ -29,7 +29,7 @@ int32_t Evaluator::evalPawns(const Board& pos) noexcept
 	pce = bP;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
+		ASSERT(sqOnBoard(sq));
 		PnScore -= Value::PawnTable[WhiteToBlack[Sq120ToSq64[sq]]];
 		
 		// Evals black isolated pawns
@@ -54,14 +54,14 @@ int32_t Evaluator::evalBishops(const Board& pos) noexcept
 
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
+		ASSERT(sqOnBoard(sq));
 		BiScore += Value::BishopTable[Sq120ToSq64[sq]];
 	}	
 
 	pce = bB;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
+		ASSERT(sqOnBoard(sq));
 		BiScore -= Value::BishopTable[WhiteToBlack[Sq120ToSq64[sq]]];
 	}	
 
@@ -78,7 +78,7 @@ int32_t Evaluator::evalRooks(const Board& pos) noexcept
 
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
+		ASSERT(sqOnBoard(sq));
 		RkScore += Value::RookTable[Sq120ToSq64[sq]];
 
 		if( !(pos.pawns[BOTH] & EvalBB::FileMask[ FileBrd[sq] ]) )
@@ -94,7 +94,7 @@ int32_t Evaluator::evalRooks(const Board& pos) noexcept
 	pce = bR;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
+		ASSERT(sqOnBoard(sq));
 		RkScore -= Value::RookTable[WhiteToBlack[Sq120ToSq64[sq]]];
 
 		if( !(pos.pawns[BOTH] & EvalBB::FileMask[ FileBrd[sq] ]) )
@@ -116,7 +116,7 @@ int32_t Evaluator::evalQueens(const Board& pos) noexcept
 	int32_t pce = wQ;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
+		ASSERT(sqOnBoard(sq));
 
 		if( !(pos.pawns[BOTH] & EvalBB::FileMask[ FileBrd[sq] ]) )
 		{
@@ -131,7 +131,7 @@ int32_t Evaluator::evalQueens(const Board& pos) noexcept
 	pce = bQ;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
+		ASSERT(sqOnBoard(sq));
 
 		if( !(pos.pawns[BOTH] & EvalBB::FileMask[ FileBrd[sq] ]) )
 		{
@@ -179,14 +179,14 @@ int32_t Evaluator::evalKnights(const Board& pos) noexcept
 	int32_t KnScore = 0;
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
+		ASSERT(sqOnBoard(sq));
 		KnScore += Value::KnightTable[Sq120ToSq64[sq]];
 	}	
 
 	pce = bN;	
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
-		ASSERT(pos.sqOnBoard(sq));
+		ASSERT(sqOnBoard(sq));
 		KnScore -= Value::KnightTable[WhiteToBlack[Sq120ToSq64[sq]]];
 	}			
 	return KnScore;

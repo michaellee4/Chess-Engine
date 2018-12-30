@@ -346,12 +346,6 @@ bool checkBoard(const Board& pos) noexcept
 	return true;
 }
 
-
-bool Board::sqOnBoard(uint32_t sq) const noexcept
-{
-	return BoardUtils::Sq120ToSq64[sq] != 65;
-}
-
 uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noexcept
 {
 	uint32_t numAttackers = 0;

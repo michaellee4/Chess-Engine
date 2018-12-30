@@ -41,7 +41,7 @@ void MM::clearPiece(const uint32_t sq, Board& pos) noexcept
 void MM::addPiece(const uint32_t sq, Board& pos, const uint32_t pce) noexcept
 {
 	ASSERT(isPiece(pce));
-	ASSERT(pos.sqOnBoard(sq));
+	ASSERT(sqOnBoard(sq));
 
 	int col = PieceInfo::PieceCol[pce];
 	Hash::hashPce(pce, sq, pos);
@@ -72,8 +72,8 @@ void MM::addPiece(const uint32_t sq, Board& pos, const uint32_t pce) noexcept
 
 void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos) noexcept
 {
-    ASSERT(pos.sqOnBoard(src));
-    ASSERT(pos.sqOnBoard(dest));
+    ASSERT(sqOnBoard(src));
+    ASSERT(sqOnBoard(dest));
 
 	int pce = pos.pieces[src];
 	int col = PieceInfo::PieceCol[pce];
@@ -106,9 +106,9 @@ bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 	int side = pos.side_to_move;
 	int move = moveInfo.move;
 
-	ASSERT(pos.sqOnBoard(from));
-	ASSERT(pos.sqOnBoard(to));
-	ASSERT(pos.sqOnBoard(from));
+	ASSERT(sqOnBoard(from));
+	ASSERT(sqOnBoard(to));
+	ASSERT(sqOnBoard(from));
 	ASSERT(isPiece(pos.pieces[from]))
 
 	pos.history[pos.hist_ply].pos_key = pos.pos_key;
@@ -211,7 +211,7 @@ void MM::takeMove(Board& pos) noexcept
 	int from = moveInfo.from();
 	int to = moveInfo.to();
 
-	ASSERT(pos.sqOnBoard(from) && pos.sqOnBoard(to));
+	ASSERT(sqOnBoard(from) && sqOnBoard(to));
 
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
 	Hash::hashCa(pos);

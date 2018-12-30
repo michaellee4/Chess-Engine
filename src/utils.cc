@@ -18,6 +18,13 @@
 #include "string.h"
 #endif
 
+
+
+bool sqOnBoard(uint32_t sq) noexcept
+{
+	return BoardUtils::Sq120ToSq64[sq] != 65;
+}
+
 //return the 120 sq value of a given file and rank
 int fileRankToSq(int file, int rank) noexcept
 {

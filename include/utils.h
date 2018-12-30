@@ -25,6 +25,8 @@ namespace BoardUtils
 	};
 }
 
+bool sqOnBoard(uint32_t sq) noexcept;
+
 // returns the SQ# on the 120 Sq board representation
 int fileRankToSq(int file, int rank) noexcept;
 
