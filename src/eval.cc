@@ -2,6 +2,7 @@
 #include "defs.h"
 #include "utils.h"
 #include <iostream>
+#include <cmath>
 using namespace BoardUtils;
 int32_t Evaluator::evalPawns(const Board& pos) noexcept
 {
@@ -140,6 +141,33 @@ int32_t Evaluator::evalQueens(const Board& pos) noexcept
 	return QnScore;
 }
 
+int32_t Evaluator::evalKings(const Board& pos) noexcept
+{
+	int32_t KingScore = 0;
+	int32_t pce = wK;
+	// use king sq?
+	int32_t sq = pos.piece_list[pce][0];
+	if(pos.piece_list[bQ].size() == 0 || pos.material[BLACK] <= Value::kEndGameThreshold)
+	{
+		KingScore += Value::KingEndGame[ Sq120ToSq64[sq] ];
+	}
+	else
+	{
+		KingScore += Value::KingOpening[ Sq120ToSq64[sq] ];	
+	}
+
+	pce = bK;
+	sq = pos.piece_list[pce][0];
+	if(pos.piece_list[wQ].size() == 0 || pos.material[WHITE] <= Value::kEndGameThreshold)
+	{
+		KingScore -= Value::KingEndGame[ WhiteToBlack[ Sq120ToSq64[sq]] ];
+	}
+	else
+	{
+		KingScore -= Value::KingOpening[ WhiteToBlack[ Sq120ToSq64[sq]] ];	
+	}
+	return KingScore;
+}
 
 int32_t Evaluator::evalKnights(const Board& pos) noexcept
 {
@@ -160,16 +188,77 @@ int32_t Evaluator::evalKnights(const Board& pos) noexcept
 	return KnScore;
 }
 
+// Drawn material based on optimal play, Credits to the sjeng 11.2 engine
+bool Evaluator::drawnMaterial(const Board& pos) noexcept
+{
+    if (!pos.piece_list[wR].size() && !pos.piece_list[bR].size() && !pos.piece_list[wQ].size() && !pos.piece_list[bQ].size()) 
+    {
+	  	if (!pos.piece_list[bB].size() && !pos.piece_list[wB].size()) 
+	  	{
+	      	if (pos.piece_list[wN].size() < 3 && pos.piece_list[bN].size() < 3) 
+	      	{  
+	      		return true; 
+	    	}
+	  	} 
+	  	else if (!pos.piece_list[wN].size() && !pos.piece_list[bN].size()) 
+	  	{
+	  		int32_t wBsize = pos.piece_list[wB].size();
+	  		int32_t bBsize = pos.piece_list[bB].size();
+	    	if (std::abs(wBsize - bBsize) < 2) 
+	    	{ 
+	     		return true; 
+	    	}
+	  	} 
+	  	else if ((pos.piece_list[wN].size() < 3 && !pos.piece_list[wB].size()) || (pos.piece_list[wB].size() == 1 && !pos.piece_list[wN].size())) 
+	  	{
+	    	if ((pos.piece_list[bN].size() < 3 && !pos.piece_list[bB].size()) || (pos.piece_list[bB].size() == 1 && !pos.piece_list[bN].size()))  
+	    	{
+	    		return true; 
+	    	}
+	  	}
+	} 
+	else if (!pos.piece_list[wQ].size() && !pos.piece_list[bQ].size()) 
+	{
+        if (pos.piece_list[wR].size() == 1 && pos.piece_list[bR].size() == 1) 
+        {
+            if ((pos.piece_list[wN].size() + pos.piece_list[wB].size()) < 2 && (pos.piece_list[bN].size() + pos.piece_list[bB].size()) < 2)	
+            	{
+            		return true; 
+            	}
+        } 
+        else if (pos.piece_list[wR].size() == 1 && !pos.piece_list[bR].size()) 
+        {
+            if ((pos.piece_list[wN].size() + pos.piece_list[wB].size() == 0) && (((pos.piece_list[bN].size() + pos.piece_list[bB].size()) == 1) || ((pos.piece_list[bN].size() + pos.piece_list[bB].size()) == 2))) 
+            	{
+            		return true; 
+            	}
+        } 
+        else if (pos.piece_list[bR].size() == 1 && !pos.piece_list[wR].size()) 
+        {
+            if ((pos.piece_list[bN].size() + pos.piece_list[bB].size() == 0) && (((pos.piece_list[wN].size() + pos.piece_list[wB].size()) == 1) || ((pos.piece_list[wN].size() + pos.piece_list[wB].size()) == 2))) 
+           	{
+           		return true; 
+            }
+        }
+    }
+  	return false;
+}
 
 int32_t Evaluator::evaluatePosition(const Board& pos) noexcept
 {
+	if(drawnMaterial(pos))
+	{
+		return 0;
+	}
 	// initial score
 	int32_t score = pos.material[WHITE] - pos.material[BLACK];
 	
 	score += evalPawns(pos);
 	score += evalKnights(pos);
 	score += evalBishops(pos);	
-	score += evalRooks(pos);		
+	score += evalRooks(pos);
+	score += evalQueens(pos);
+	score += evalKings(pos);		
 	
 	if(pos.side_to_move == BLACK)
 	{
