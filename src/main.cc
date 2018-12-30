@@ -1,6 +1,6 @@
 #include "engine.h"
 
-#include "perft.h"
+#include "tester.h"
 #include "stopwatch.h"
 #include "bitboard.h"
 #include <iostream>

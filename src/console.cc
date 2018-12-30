@@ -143,6 +143,16 @@ void ConsoleManager::loop()
 			MM::takeMove(this->pos);
 			IO::printBoard(pos);
 		}
+		else if(buf == "eval")
+		{
+			IO::printBoard(this->pos);
+			int32_t score1 = this->sa.eval.evaluatePosition(this->pos);
+			std::cout << "Eval: " << score1 << std::endl;
+			this->pos.flipBoard();
+			IO::printBoard(this->pos);
+			int32_t score2 = this->sa.eval.evaluatePosition(this->pos);
+			std::cout << "Eval: " << score2<<std::endl;
+		}
 		else
 		{
 			Move move = IO::parseMove(buf, this->pos);

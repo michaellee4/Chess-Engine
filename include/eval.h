@@ -7,7 +7,14 @@ namespace Value
 	constexpr int32_t kInfinity = 30000;
 
 	constexpr int32_t kMateScore = 29000;
-	
+
+	constexpr int32_t kIsolatedPawn = -10;
+
+	constexpr int32_t kOpenRookFile = 5;
+
+	//passed pawn score based on rank
+	constexpr std::array< int32_t, kNumFilesRanks> passedPawnScore {0, 5, 10, 20, 35, 60, 100, 200};
+
 	constexpr std::array<int32_t, kChessboardSize> PawnTable {
 		0	,	0	,	0	,	0	,	0	,	0	,	0	,	0	,
 		10	,	10	,	0	,	-10	,	-10	,	0	,	10	,	10	,

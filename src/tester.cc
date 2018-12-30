@@ -1,5 +1,5 @@
 #include "defs.h"
-#include "perft.h"
+#include "tester.h"
 #include "io.h"
 #include "movelist.h"
 #include "movemaker.h"
