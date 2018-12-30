@@ -1,8 +1,9 @@
 #ifndef PVTABLE_H
 #define PVTABLE_H
 
-#include <unordered_map>
 #include "move.h"
+#include <unordered_map>
+#include <vector>
 class Board;
 class PV_Entry
 {
@@ -21,7 +22,8 @@ class PV_Entry
 class PV_Table
 {
 	private:
-		std::unordered_map<uint64_t, PV_Entry> table;
+		std::unordered_map<uint64_t, PV_Entry> pv_table;
+		std::vector<Move> pv_arr;
 	public:
 		PV_Table() noexcept;
 		Move get(const Board& pos) noexcept;
