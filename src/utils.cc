@@ -1,6 +1,8 @@
 #include "utils.h"
 #include "defs.h"
 #include "io.h"
+#include "movelist.h"
+#include "movemaker.h"
 #include <unistd.h>
 #include <random>
 #include <sstream>
@@ -17,6 +19,7 @@
 #include "sys/select.h"
 #include "string.h"
 #endif
+
 
 bool sqOnBoard(uint32_t sq) noexcept
 {

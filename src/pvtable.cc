@@ -2,6 +2,7 @@
 #include "defs.h"
 #include "board.h"
 #include "movemaker.h"
+#include "utils.h"
 #include <utility>
 /*** PV_ENTRY ***/
 
@@ -35,7 +36,10 @@ PV_Entry& PV_Entry::operator=(PV_Entry&& o) noexcept
 
 /*** PV_Table ***/
 
-PV_Table::PV_Table() noexcept : pv_table(), pv_arr(kMaxSearchDepth) {}
+PV_Table::PV_Table() noexcept : pv_table(), pv_arr(kMaxSearchDepth) 
+{
+	pv_table.reserve(125000);
+}
 
 Move PV_Table::get(const Board& pos) noexcept
 {
@@ -71,14 +75,12 @@ int32_t PV_Table::getPvLine(Board& pos, const uint32_t depth) noexcept
 		ASSERT(count < kMaxSearchDepth);
 		// check move exists here?
 		MM::makeMove(pos, move);
-		this->pv_arr[count++] = move;
+		this->pv_arr[count++] = move;	
 		move = this->get(pos);
 	}
-
 	while(pos.ply > 0)
 	{
 		MM::takeMove(pos);
 	}
-
 	return count;
 }

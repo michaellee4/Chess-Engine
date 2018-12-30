@@ -4,6 +4,7 @@
 #include "defs.h"
 #include "board.h"
 #include "searchinfo.h"
+#include "move.h"
 #include <string>
 
 namespace BoardUtils

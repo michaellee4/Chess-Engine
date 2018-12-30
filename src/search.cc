@@ -172,7 +172,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     	MM::makeNullMove(pos);
     	score = -alphaBeta(-beta, -beta + 1, depth - 4, pos, info, false);
     	MM::takeNullMove(pos);
-    	if(info.stopped == true)
+    	if(info.stopped)
     	{
     		return 0;
     	}
@@ -348,9 +348,9 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info) noexcept
 		{
 			break;
 		}
+		int32_t pvMoves = pv.getPvLine(pos, curDepth);
 		bestMove = this->pv.pv_arr[0];
-		pv.getPvLine(pos, curDepth);
-		IO::printSearchDetails(pos, info, curDepth, bestScore, pv);
+		IO::printSearchDetails(info, curDepth, bestScore, pv, pvMoves);
 	}
 	IO::printBestMove(pos, info, bestMove);
 }

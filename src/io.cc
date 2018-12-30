@@ -69,7 +69,7 @@ void IO::printMoveList(const MoveList& list) noexcept
 		printf("MoveList Total: %u Moves\n\n", list.size() );
 }
 
-void IO::printSearchDetails(Board& pos, const SearchInfo& info, int32_t curDepth, int32_t bestScore, PV_Table& pv) noexcept
+void IO::printSearchDetails(const SearchInfo& info, int32_t curDepth, int32_t bestScore, PV_Table& pv, int32_t pvMoves) noexcept
 {
 	std::stringstream guiStr;
 	if (info.protocol == ProtocolManager::kUCI)
@@ -89,7 +89,6 @@ void IO::printSearchDetails(Board& pos, const SearchInfo& info, int32_t curDepth
 	}
 	if(info.protocol == ProtocolManager::kUCI || info.doPrint)
 	{
-		int32_t pvMoves = pv.getPvLine(pos, curDepth);
 		guiStr<< " pv";
 		for(int i = 0; i < pvMoves; ++i)
 		{
