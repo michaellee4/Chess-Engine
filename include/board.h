@@ -5,6 +5,7 @@
 #include "move.h"
 #include <string>
 #include <vector>
+#include <sstream>
 #include "pvtable.h"
 /*** The central unit of the Engine ***/
 // Handles the entire board representation and all information regarding the board.

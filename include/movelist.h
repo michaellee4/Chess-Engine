@@ -4,7 +4,6 @@
 #include "defs.h"
 #include "board.h"
 #include "move.h"
-#include <vector>
 
 //used in move ordering. MostValuableVictim-LeastValuableAttacker
 namespace MvvLva

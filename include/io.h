@@ -2,10 +2,9 @@
 #define IO_H
 
 #include "board.h"
-#include "movemaker.h"	
 #include "move.h"
 #include "movelist.h"
-#include "utils.h"
+#include "searchinfo.h"
 #include <string>
 
 namespace IO

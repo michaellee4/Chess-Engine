@@ -5,7 +5,7 @@
 #include "io.h"
 #include <iostream>
 #include <sstream>
-ConsoleManager::ConsoleManager() noexcept : ProtocolManager() { info.GAME_MODE = this->getProtocol();}
+ConsoleManager::ConsoleManager() noexcept : ProtocolManager() { info.GAME_MODE = ProtocolManager::kConsole;}
 ConsoleManager::~ConsoleManager() noexcept {}
 
 void ConsoleManager::loop()
@@ -13,7 +13,6 @@ void ConsoleManager::loop()
 	std::cout << "\nConsole Mode! \n";
 	std::cout << "Type help for commands \n";
 
-	info.GAME_MODE = CONSOLE_MODE;
 	info.POST_THINKING = true;
 
 	std::string buf;
@@ -161,5 +160,5 @@ void ConsoleManager::loop()
 
 int32_t ConsoleManager::getProtocol()
 {
-	return CONSOLE_MODE;
+	return ProtocolManager::kConsole;
 }

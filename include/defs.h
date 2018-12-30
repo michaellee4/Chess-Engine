@@ -2,13 +2,10 @@
 #define DEFS_H
 
 #include "debug.h"
-#include<vector>
-#include<unordered_map>
-#include<cstddef>
 #include "move.h"
-#include "pvtable.h"
 #include <string>
 #include <array>
+#include<cstddef>
 #define STARTFEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
 constexpr uint32_t kMaxSearchDepth = 64;
@@ -54,7 +51,7 @@ enum {
 enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8 };
 
 // Current mode
-enum { UCI_MODE, XBOARD_MODE, CONSOLE_MODE};
+// enum { UCI_MODE, XBOARD_MODE, CONSOLE_MODE};
 
 // Provides dictionaries to get information about a piece
 namespace PieceInfo

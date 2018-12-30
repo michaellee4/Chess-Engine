@@ -4,7 +4,6 @@
 #include "board.h"
 #include "searchinfo.h"
 #include "eval.h"
-#include <vector>
 // Piece Value tables for positional evaluation
 
 class SearchAgent

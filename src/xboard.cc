@@ -4,7 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <cstdio>
-XBoardManager::XBoardManager() noexcept : ProtocolManager() { info.GAME_MODE = this->getProtocol();}
+XBoardManager::XBoardManager() noexcept : ProtocolManager() { info.GAME_MODE = ProtocolManager::kXBoard;}
 XBoardManager::~XBoardManager() noexcept {}
 
 void XBoardManager::loop()
@@ -155,5 +155,5 @@ void XBoardManager::loop()
 
 int32_t XBoardManager::getProtocol()
 {
-	return XBOARD_MODE;
+	return ProtocolManager::kXBoard;
 }

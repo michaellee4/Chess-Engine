@@ -6,6 +6,8 @@
 #include "defs.h"
 #include "stopwatch.h"
 #include "utils.h"
+#include "protocol.h"
+#include "movemaker.h"
 void IO::printBitBoard(uint64_t bb) noexcept
 {
 	for (int32_t rank = RANK_8; rank >=RANK_1; --rank)
@@ -70,14 +72,14 @@ void IO::printMoveList(const MoveList& list) noexcept
 void IO::printSearchDetails(Board& pos, const SearchInfo& info, int32_t curDepth, int32_t bestScore) noexcept
 {
 	std::stringstream guiStr;
-	if (info.GAME_MODE == UCI_MODE)
+	if (info.GAME_MODE == ProtocolManager::kUCI)
 	{
 		guiStr << "info score cp " << bestScore;
 		guiStr << " depth " << curDepth;
 		guiStr << " nodes " << info.nodes;
 		guiStr << " time "  << Stopwatch::getTimeInMilli() - info.startTime;
 	}
-	else if (info.GAME_MODE == XBOARD_MODE && info .POST_THINKING)
+	else if (info.GAME_MODE == ProtocolManager::kXBoard && info.POST_THINKING)
 	{
 		std::cout << curDepth << ' ' << bestScore << ' ' << (Stopwatch::getTimeInMilli() - (info.startTime / 10)) << ' ' << info.nodes;
 	}
@@ -85,7 +87,7 @@ void IO::printSearchDetails(Board& pos, const SearchInfo& info, int32_t curDepth
 	{
 		guiStr <<"score:"<<bestScore<<" depth:"<<curDepth<<" nodes:"<<info.nodes<<" time:"<<Stopwatch::getTimeInMilli()-info.startTime<<"(ms)";
 	}
-	if(info.GAME_MODE == UCI_MODE || info.POST_THINKING)
+	if(info.GAME_MODE == ProtocolManager::kUCI || info.POST_THINKING)
 	{
 		int32_t pvMoves = PV_Table::getPvLine(pos, curDepth);
 		guiStr<< " pv";
@@ -100,11 +102,11 @@ void IO::printSearchDetails(Board& pos, const SearchInfo& info, int32_t curDepth
 
 void IO::printBestMove(Board& pos, const SearchInfo& info, const Move& bestMove) noexcept
 {
-	if(info.GAME_MODE == UCI_MODE) 
+	if(info.GAME_MODE == ProtocolManager::kUCI) 
 	{
 		std::cout << "bestmove " << bestMove.toString() << std::endl;
 	} 
-	else if(info.GAME_MODE == XBOARD_MODE)
+	else if(info.GAME_MODE == ProtocolManager::kXBoard)
 	{		
 		std::cout<<"move "<<bestMove.toString() <<std::endl;
 		MM::makeMove(pos, bestMove);

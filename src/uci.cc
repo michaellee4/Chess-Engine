@@ -8,7 +8,7 @@
 #include <sstream>
 
 
-UCIManager::UCIManager() noexcept : ProtocolManager() { info.GAME_MODE = this->getProtocol();}
+UCIManager::UCIManager() noexcept : ProtocolManager() { info.GAME_MODE = ProtocolManager::kUCI;}
 UCIManager::~UCIManager() noexcept {}
 
 // go depth 6 wtime 180000 btime 100000 binc 1000 winc 1000 movetime 1000 movestogo 40
@@ -133,7 +133,6 @@ void UCIManager::parsePosition(const std::string& input)
 
 void UCIManager::loop()
 {
-	info.GAME_MODE = UCI_MODE;
 	std::string buf;
 	std::cout << "id name "<<kAppName<<'\n';
 	std::cout << "id author ml45898\n";
@@ -180,5 +179,5 @@ void UCIManager::loop()
 
 int32_t UCIManager::getProtocol()
 {
-	return UCI_MODE;
+	return ProtocolManager::kUCI;
 }

@@ -1,8 +1,5 @@
 #ifndef UCI_H
 #define UCI_H
-#include"board.h"
-#include "searchinfo.h"
-#include "search.h"
 #include "protocol.h"
 #include<string>
 	

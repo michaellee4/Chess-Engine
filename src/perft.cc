@@ -1,9 +1,12 @@
 #include "defs.h"
 #include "perft.h"
+#include "io.h"
+#include "movelist.h"
+#include "movemaker.h"
+#include "move.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include "io.h"
 PerftTester::PerftTester() noexcept : leafNodes(0) {}
 
 void PerftTester::perft(uint32_t depth, Board& pos) noexcept
