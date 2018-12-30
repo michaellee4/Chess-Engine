@@ -10,7 +10,13 @@ namespace Value
 
 	constexpr int32_t kIsolatedPawn = -10;
 
-	constexpr int32_t kOpenRookFile = 5;
+	constexpr int32_t kOpenRookFile = 10;
+
+	constexpr int32_t kSemiOpenRookFile = 5;
+
+	constexpr int32_t kOpenQueenFile = 5;
+
+	constexpr int32_t kSemiOpenQueenFile = 3;
 
 	//passed pawn score based on rank
 	constexpr std::array< int32_t, kNumFilesRanks> passedPawnScore {0, 5, 10, 20, 35, 60, 100, 200};
@@ -76,6 +82,7 @@ class Evaluator
 	int32_t evalBishops(const Board& pos) noexcept;
 	int32_t evalRooks(const Board& pos) noexcept;
 	int32_t evalKnights(const Board& pos) noexcept;
+	int32_t evalQueens(const Board& pos) noexcept;
 public:
 	int32_t evaluatePosition(const Board& pos) noexcept;
 };

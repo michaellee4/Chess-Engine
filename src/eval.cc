@@ -34,14 +34,12 @@ int32_t Evaluator::evalPawns(const Board& pos) noexcept
 		// Evals black isolated pawns
 		if( !(EvalBB::isolatedMask[Sq120ToSq64[sq]] & pos.pawns[BLACK]) )
 		{
-			std::cout << "bP isolated: " << sqToString(sq) << std::endl;
 			PnScore -= Value::kIsolatedPawn;
 		}
 
 		// Evals black passed pawns
 		if( !(EvalBB::blackPassedMask[Sq120ToSq64[sq]] & pos.pawns[WHITE]) )
 		{
-			std::cout << "bP passed: " << sqToString(sq) << std::endl;
 			PnScore -= Value::passedPawnScore[ 7 - RankBrd[sq] ];
 		}
 	}	
@@ -77,6 +75,15 @@ int32_t Evaluator::evalRooks(const Board& pos) noexcept
 		int32_t sq = pos.piece_list[pce][pceNum];
 		ASSERT(pos.sqOnBoard(sq));
 		RkScore += Value::RookTable[Sq120ToSq64[sq]];
+
+		if( !(pos.pawns[BOTH] & EvalBB::FileMask[ FileBrd[sq] ]) )
+		{
+			RkScore += Value::kOpenRookFile;
+		}
+		else if( !(pos.pawns[WHITE] & EvalBB::FileMask[ FileBrd[sq] ] ))
+		{
+			RkScore += Value::kSemiOpenRookFile; 
+		}
 	}	
 
 	pce = bR;	
@@ -84,9 +91,55 @@ int32_t Evaluator::evalRooks(const Board& pos) noexcept
 		int32_t sq = pos.piece_list[pce][pceNum];
 		ASSERT(pos.sqOnBoard(sq));
 		RkScore -= Value::RookTable[WhiteToBlack[Sq120ToSq64[sq]]];
+
+		if( !(pos.pawns[BOTH] & EvalBB::FileMask[ FileBrd[sq] ]) )
+		{
+			RkScore -= Value::kOpenRookFile;
+		}
+		else if( !(pos.pawns[BLACK] & EvalBB::FileMask[ FileBrd[sq] ] ) )
+		{
+			RkScore -= Value::kSemiOpenRookFile; 
+		}
 	}	
 	return RkScore;
 }
+
+int32_t Evaluator::evalQueens(const Board& pos) noexcept
+{
+	int32_t QnScore = 0;
+
+	int32_t pce = wQ;	
+	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
+		int32_t sq = pos.piece_list[pce][pceNum];
+		ASSERT(pos.sqOnBoard(sq));
+
+		if( !(pos.pawns[BOTH] & EvalBB::FileMask[ FileBrd[sq] ]) )
+		{
+			QnScore += Value::kOpenQueenFile;
+		}
+		else if( !(pos.pawns[WHITE] & EvalBB::FileMask[ FileBrd[sq] ] ) )
+		{
+			QnScore += Value::kSemiOpenQueenFile; 
+		}
+	}	
+
+	pce = bQ;	
+	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
+		int32_t sq = pos.piece_list[pce][pceNum];
+		ASSERT(pos.sqOnBoard(sq));
+
+		if( !(pos.pawns[BOTH] & EvalBB::FileMask[ FileBrd[sq] ]) )
+		{
+			QnScore -= Value::kOpenQueenFile;
+		}
+		else if( !(pos.pawns[BLACK] & EvalBB::FileMask[ FileBrd[sq] ] ) )
+		{
+			QnScore -= Value::kSemiOpenQueenFile; 
+		}
+	}	
+	return QnScore;
+}
+
 
 int32_t Evaluator::evalKnights(const Board& pos) noexcept
 {
