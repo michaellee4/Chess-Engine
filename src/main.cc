@@ -18,8 +18,8 @@ void runTest()
 using namespace std;
 int main()
 {
-	// Engine& engine = Engine::getInstance();
-	// engine.start();
-	runTest();
+	Engine& engine = Engine::getInstance();
+	engine.start();
+	// runTest();
 	return 0;
 }

@@ -63,7 +63,7 @@ int32_t PV_Table::getPvLine(Board& pos, const uint32_t depth) noexcept
 {
 	ASSERT(depth < kMaxSearchDepth);
 
-	Move move = pos.pv_table.get(pos);
+	Move move = this->get(pos);
 	uint32_t count = 0;
 
 	while(!move.isNull() && count < depth)
@@ -71,8 +71,8 @@ int32_t PV_Table::getPvLine(Board& pos, const uint32_t depth) noexcept
 		ASSERT(count < kMaxSearchDepth);
 		// check move exists here?
 		MM::makeMove(pos, move);
-		pos.pv_arr[count++] = move;
-		move = pos.pv_table.get(pos);
+		this->pv_arr[count++] = move;
+		move = this->get(pos);
 	}
 
 	while(pos.ply > 0)

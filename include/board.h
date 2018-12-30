@@ -77,10 +77,10 @@ class Board
 		// stores the history of moves
 		std::vector<UndoMove> history;
 
-		// Principal variation table
-		PV_Table pv_table;
+		// // Principal variation table
+		// PV_Table pv_table;
 		
-		std::vector<Move> pv_arr;
+		// std::vector<Move> pv_arr;
 
 		std::vector<std::vector<int32_t>> search_hist;
 

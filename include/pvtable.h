@@ -23,14 +23,14 @@ class PV_Table
 {
 	private:
 		std::unordered_map<uint64_t, PV_Entry> pv_table;
-		std::vector<Move> pv_arr;
 	public:
+		std::vector<Move> pv_arr;
 		PV_Table() noexcept;
 		Move get(const Board& pos) noexcept;
 		void insert(const Board& pos, const Move& move) noexcept;
 		int32_t size() const noexcept;
 		void clear() noexcept;
-		static int32_t getPvLine(Board& pos, const uint32_t depth) noexcept;
+		int32_t getPvLine(Board& pos, const uint32_t depth) noexcept;
 };
 
 

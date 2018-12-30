@@ -20,7 +20,7 @@ namespace IO
 	void printBoard(const Board& pos) noexcept;
 	void printBitBoard(const uint64_t) noexcept;
 	void printMoveList(const MoveList& list) noexcept;
-	void printSearchDetails(Board& pos, const SearchInfo& info, int32_t curDepth, int32_t bestScore) noexcept;
+	void printSearchDetails(Board& pos, const SearchInfo& info, int32_t curDepth, int32_t bestScore, PV_Table& pv) noexcept;
 	void printBestMove(Board& pos, const SearchInfo& info, const Move& bestMove) noexcept;
 	Move parseMove(std::string input, Board& pos) noexcept;
 }

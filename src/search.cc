@@ -8,7 +8,7 @@
 #include <sstream>
 #include <iostream>
 #include <cstdio>
-SearchAgent::SearchAgent() noexcept : eval() {}
+SearchAgent::SearchAgent() noexcept : eval(), pv() {}
 
 bool SearchAgent::threeFoldRepetition(const Board& pos) noexcept
 {
@@ -128,7 +128,7 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 		}
 	}
 
-	pos.pv_table.clear();
+	this->pv.clear();
 	pos.ply = 0;
 
 	info.startTime = Stopwatch::getTimeInMilli();
@@ -186,7 +186,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     int32_t legalMoves = 0;
     int32_t prevAlpha = alpha;
     Move bestMove = NOMOVE;
-    Move pvMove = pos.pv_table.get(pos);
+    Move pvMove = this->pv.get(pos);
 	score = -Value::kInfinity;
     if(!pvMove.isNull())
     {
@@ -252,7 +252,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 
     if(alpha != prevAlpha)
     {
-    	pos.pv_table.insert(pos, bestMove);
+    	this->pv.insert(pos, bestMove);
     }
 	return alpha;
 }
@@ -327,7 +327,7 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
     }
 	if(alpha != prevAlpha)
 	{
-		pos.pv_table.insert(pos, bestMove);
+		this->pv.insert(pos, bestMove);
 	}
 	return alpha;
 }
@@ -348,9 +348,9 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info) noexcept
 		{
 			break;
 		}
-		bestMove = pos.pv_arr[0];
-		PV_Table::getPvLine(pos, curDepth);
-		IO::printSearchDetails(pos, info, curDepth, bestScore);
+		bestMove = this->pv.pv_arr[0];
+		pv.getPvLine(pos, curDepth);
+		IO::printSearchDetails(pos, info, curDepth, bestScore, pv);
 	}
 	IO::printBestMove(pos, info, bestMove);
 }

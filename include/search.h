@@ -4,6 +4,7 @@
 #include "board.h"
 #include "searchinfo.h"
 #include "eval.h"
+#include "pvtable.h"
 // Piece Value tables for positional evaluation
 
 class SearchAgent
@@ -19,6 +20,7 @@ private:
 	bool drawnMaterial(const Board& pos) noexcept;
 public:
 	Evaluator eval;
+	PV_Table pv;
 
 	void searchPosition(Board& pos, SearchInfo& info) noexcept;
 	bool isGameOver(Board& pos) noexcept;
