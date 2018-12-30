@@ -3,10 +3,10 @@
 
 #include "defs.h"
 #include "move.h"
+#include "pvtable.h"
 #include <string>
 #include <vector>
 #include <sstream>
-#include "pvtable.h"
 /*** The central unit of the Engine ***/
 // Handles the entire board representation and all information regarding the board.
 class MoveList;
@@ -99,6 +99,8 @@ class Board
 		// returns the number of times that a Sq is attacked by the given side
 		uint32_t sqAttacked(const uint32_t sq, const uint32_t side) const noexcept;
 
+		void flipBoard() noexcept;
+		
 		MoveList getAllMoves() const noexcept;
 		
 		MoveList getAllCaptureMoves() const noexcept;

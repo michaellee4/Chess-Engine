@@ -1,8 +1,9 @@
 #include "move.h"
-#include <sstream>
 #include "defs.h"
-#include<iostream>
 #include "board.h"
+#include "utils.h"
+#include<iostream>
+#include <sstream>
 #include <utility>
 /*** UMOVE ***/
 UndoMove::UndoMove() : move(0), castle_perm(0), en_pas(NO_SQ), fifty_move(0), pos_key(0) {}

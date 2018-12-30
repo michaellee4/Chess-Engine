@@ -1,4 +1,5 @@
 #include "movelist.h"
+#include "utils.h"
 #include <bitset>
 #include <iostream>
 #include <utility>

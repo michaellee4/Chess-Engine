@@ -1,6 +1,6 @@
 #include "eval.h"
 #include "defs.h"
-
+#include "utils.h"
 int32_t Evaluator::evalPawns(const Board& pos) noexcept
 {
 	int32_t pce = wP;
@@ -15,7 +15,7 @@ int32_t Evaluator::evalPawns(const Board& pos) noexcept
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
 		ASSERT(pos.sqOnBoard(sq));
-		PnScore -= Value::PawnTable[Value::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
+		PnScore -= Value::PawnTable[BoardUtils::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
 	}	
 	return PnScore;
 }
@@ -35,7 +35,7 @@ int32_t Evaluator::evalBishops(const Board& pos) noexcept
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
 		ASSERT(pos.sqOnBoard(sq));
-		BiScore -= Value::BishopTable[Value::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
+		BiScore -= Value::BishopTable[BoardUtils::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
 	}	
 	return BiScore;
 }
@@ -55,7 +55,7 @@ int32_t Evaluator::evalRooks(const Board& pos) noexcept
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
 		ASSERT(pos.sqOnBoard(sq));
-		RkScore -= Value::RookTable[Value::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
+		RkScore -= Value::RookTable[BoardUtils::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
 	}	
 	return RkScore;
 }
@@ -74,7 +74,7 @@ int32_t Evaluator::evalKnights(const Board& pos) noexcept
 	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
 		int32_t sq = pos.piece_list[pce][pceNum];
 		ASSERT(pos.sqOnBoard(sq));
-		KnScore -= Value::KnightTable[Value::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
+		KnScore -= Value::KnightTable[BoardUtils::WhiteToBlack[BoardUtils::Sq120ToSq64[sq]]];
 	}			
 	return KnScore;
 }

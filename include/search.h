@@ -19,8 +19,9 @@ private:
 	bool drawnMaterial(const Board& pos) noexcept;
 	bool inCheck(const Board& pos) noexcept;
 
-	Evaluator eval;
 public:
+	Evaluator eval;
+
 	void searchPosition(Board& pos, SearchInfo& info) noexcept;
 	bool isGameOver(Board& pos) noexcept;
 	SearchAgent() noexcept;

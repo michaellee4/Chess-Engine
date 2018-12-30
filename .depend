@@ -12,7 +12,8 @@ io.o: src/io.cc include/io.h include/board.h include/defs.h \
  include/stopwatch.h include/utils.h include/protocol.h include/search.h \
  include/eval.h include/movemaker.h include/movemaker.h
 movelist.o: src/movelist.cc include/movelist.h include/defs.h \
- include/debug.h include/move.h include/board.h include/pvtable.h
+ include/debug.h include/move.h include/board.h include/pvtable.h \
+ include/utils.h include/searchinfo.h
 perft.o: src/perft.cc include/defs.h include/debug.h include/move.h \
  include/perft.h include/board.h include/defs.h include/pvtable.h \
  include/io.h include/movelist.h include/searchinfo.h include/movelist.h \
@@ -58,9 +59,11 @@ utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
  include/move.h include/board.h include/pvtable.h include/searchinfo.h \
  include/defs.h include/io.h include/movelist.h
 eval.o: src/eval.cc include/eval.h include/board.h include/defs.h \
- include/debug.h include/move.h include/pvtable.h include/defs.h
+ include/debug.h include/move.h include/pvtable.h include/defs.h \
+ include/utils.h include/searchinfo.h
 move.o: src/move.cc include/move.h include/defs.h include/debug.h \
- include/move.h include/board.h include/defs.h include/pvtable.h
+ include/move.h include/board.h include/defs.h include/pvtable.h \
+ include/utils.h include/board.h include/searchinfo.h
 uci.o: src/uci.cc include/uci.h include/protocol.h include/board.h \
  include/defs.h include/debug.h include/move.h include/pvtable.h \
  include/searchinfo.h include/search.h include/eval.h include/movemaker.h \

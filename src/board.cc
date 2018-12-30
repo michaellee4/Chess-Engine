@@ -32,9 +32,9 @@ Board::Board() noexcept :
 	    	   search_killers(kNumPlayers, std::vector<Move>(kMaxSearchDepth))
 
 {
-	for(uint32_t i = 0; i < kNumPceTypes; ++i)
+	for(uint32_t pce = 0; pce < kNumPceTypes; ++pce)
 	{
-		this->piece_list[i].reserve(10);
+		this->piece_list[pce].reserve(10);
 	}
 	this->parseFEN(STARTFEN);
 }
@@ -61,9 +61,9 @@ Board::Board(const std::string fen) noexcept :
 									search_hist(kNumPceTypes, std::vector<int32_t>(kBoardArraySize)),
 									search_killers(kNumPlayers, std::vector<Move>(kMaxSearchDepth))
 {
-	for(uint32_t i = 0; i < kNumPceTypes; ++i)
+	for(uint32_t pce = 0; pce < kNumPceTypes; ++pce)
 	{
-		this->piece_list[i].reserve(10);
+		this->piece_list[pce].reserve(10);
 	}
 	this->parseFEN(fen);
 }
@@ -277,9 +277,7 @@ bool checkBoard(const Board& pos) noexcept
 	uint32_t t_majPce[kNumPlayers] = { 0, 0};
 	uint32_t t_minPce[kNumPlayers] = { 0, 0};
 	uint32_t t_material[kNumPlayers] = { 0, 0};
-	
 	uint32_t sq64,t_piece,t_pce_num,sq120,colour,pcount;
-	
 	uint64_t t_pawns[3] = {0ULL, 0ULL, 0ULL};
 	
 	t_pawns[WHITE] = pos.pawns[WHITE];
@@ -287,30 +285,30 @@ bool checkBoard(const Board& pos) noexcept
 	t_pawns[BOTH] = pos.pawns[BOTH];
 	
 	// check piece lists
-	for(t_piece = wP; t_piece <= bK; ++t_piece) {
-		for(t_pce_num = 0; t_pce_num < pos.piece_list[t_piece].size(); ++t_pce_num) {
+	for(t_piece = wP; t_piece <= bK; ++t_piece) 
+	{
+		for(t_pce_num = 0; t_pce_num < pos.piece_list[t_piece].size(); ++t_pce_num) 
+		{
 			sq120 = pos.piece_list[t_piece][t_pce_num];
 			ASSERT(pos.pieces[sq120]==t_piece);
 		}	
 	}
-	
 	// check piece count and other counters	
-	for(sq64 = 0; sq64 < kChessboardSize; ++sq64) {
+	for(sq64 = 0; sq64 < kChessboardSize; ++sq64) 
+	{
 		sq120 = BoardUtils::Sq64ToSq120[sq64];
 		t_piece = pos.pieces[sq120];
 		++t_pceNum[t_piece];
 		colour = PieceInfo::PieceCol[t_piece];
 		if( PieceInfo::PieceBig[t_piece] == true) ++t_bigPce[colour];
 		if( PieceInfo::PieceMin[t_piece] == true) ++t_minPce[colour];
-		if( PieceInfo::PieceMaj[t_piece] == true) ++t_majPce[colour];
-		
+		if( PieceInfo::PieceMaj[t_piece] == true) ++t_majPce[colour];	
 		t_material[colour] += PieceInfo::PieceVal[t_piece];
 	}
-	
-	for(t_piece = wP; t_piece <= bK; ++t_piece) {
+	for(t_piece = wP; t_piece <= bK; ++t_piece) 
+	{
 		ASSERT(t_pceNum[t_piece]==pos.piece_list[t_piece].size());	
 	}
-	
 	// check bitboards count
 	pcount = BB::countBits(t_pawns[WHITE]);
 	ASSERT(pcount == pos.piece_list[wP].size());
@@ -320,32 +318,28 @@ bool checkBoard(const Board& pos) noexcept
 	ASSERT(pcount == (pos.piece_list[bP].size() + pos.piece_list[wP].size()));
 	(void) pcount;
 	// check bitboards squares
-	while(t_pawns[WHITE]) {
+	while(t_pawns[WHITE]) 
+	{
 		sq64 = BB::popBit(t_pawns[WHITE]);
 		ASSERT(pos.pieces[BoardUtils::Sq64ToSq120[sq64]] == wP);
 	}
-	
-	while(t_pawns[BLACK]) {
+	while(t_pawns[BLACK]) 
+	{
 		sq64 = BB::popBit(t_pawns[BLACK]);
 		ASSERT(pos.pieces[BoardUtils::Sq64ToSq120[sq64]] == bP);
 	}
-	
-	while(t_pawns[BOTH]) {
+	while(t_pawns[BOTH]) 
+	{
 		sq64 = BB::popBit(t_pawns[BOTH]);
 		ASSERT( (pos.pieces[BoardUtils::Sq64ToSq120[sq64]] == bP) || (pos.pieces[BoardUtils::Sq64ToSq120[sq64]] == wP) );
-	}
-	
+	}	
 	ASSERT(t_material[WHITE]==pos.material[WHITE] && t_material[BLACK]==pos.material[BLACK]);
 	ASSERT(t_minPce[WHITE]==pos.min_pce[WHITE] && t_minPce[BLACK]==pos.min_pce[BLACK]);
 	ASSERT(t_majPce[WHITE]==pos.maj_pce[WHITE] && t_majPce[BLACK]==pos.maj_pce[BLACK]);
 	ASSERT(t_bigPce[WHITE]==pos.big_pce[WHITE] && t_bigPce[BLACK]==pos.big_pce[BLACK]);	
-	
-	ASSERT(pos.side_to_move==WHITE || pos.side_to_move==BLACK);
-	// printf("%d %d\n",Hash::generatePosKey(pos), pos.pos_key );ASSERT(Hasher::generatePosKey(pos)==pos.pos_key);
-	
+	ASSERT(pos.side_to_move==WHITE || pos.side_to_move==BLACK);	
 	ASSERT(pos.en_pas==NO_SQ || ( BoardUtils::RankBrd[pos.en_pas]==RANK_6 && pos.side_to_move == WHITE)
 		 || ( BoardUtils::RankBrd[pos.en_pas]==RANK_3 && pos.side_to_move == BLACK));
-	
 	ASSERT(pos.pieces[pos.king_sq[WHITE]] == wK);
 	ASSERT(pos.pieces[pos.king_sq[BLACK]] == bK);
 		 
@@ -376,9 +370,6 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 		if(this->pieces[sq + Attack::bPCap[1]] == bP)
 			++numAttackers;
 	}
-
-
-
 	// Check Knight
 	uint32_t attackingKnight = attacker == WHITE ? wN : bN;
 	for(uint32_t i = 0; i < Attack::KnMoves.size(); ++i)
@@ -386,7 +377,6 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 		if(this->pieces[sq + Attack::KnMoves[i]] == attackingKnight)
 			++numAttackers;
 	}
-
 	// Check Horizontal and Vertical
 	uint32_t attackingRook = attacker == WHITE ? wR : bR;
 	uint32_t attackingQueen = attacker == WHITE ? wQ : bQ;
@@ -406,9 +396,7 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 			t_sq += move;
 			pce = this->pieces[t_sq];
 		}
-
 	}
-
 	uint32_t attackingBishop = attacker == WHITE ? wB : bB;
 	for(uint32_t i = 0 ; i < Attack::BiMoves.size(); ++i )
 	{
@@ -427,15 +415,12 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 			pce = this->pieces[t_sq];
 		}
 	}
-
 	uint32_t attackingKing = attacker == WHITE ? wK : bK;
 	for(uint32_t i = 0; i < Attack::KiMoves.size(); ++i)
 	{
 		if(this->pieces[sq + Attack::KiMoves[i]] == attackingKing)
 			++numAttackers;
 	}
-	// Check Diagonals
-
 	return numAttackers;
 }
 
@@ -451,4 +436,37 @@ MoveList Board::getAllCaptureMoves() const noexcept
 	MoveList m;
 	m.generateAllCaptureMoves(*this);
 	return m;
+}
+
+void Board::flipBoard() noexcept
+{
+	using namespace BoardUtils;
+	std::array<int32_t, kChessboardSize> tmpPieceArray;
+	std::array<int32_t, kNumPceTypes> inversePieceEnum {EMPTY, bP, bN, bB, bR, bQ, bK, wP, wN, wB, wR, wQ, wK};
+	int32_t tmpSide = !this->side_to_move;
+	int32_t tmpCastlePerm = 0;
+	int32_t tmpEnPas = NO_SQ;
+
+	if(this->castle_perm & WKCA) tmpCastlePerm |= BKCA;
+	if(this->castle_perm & WQCA) tmpCastlePerm |= BKCA;
+	if(this->castle_perm & BKCA) tmpCastlePerm |= WKCA;
+	if(this->castle_perm & BQCA) tmpCastlePerm |= WQCA;
+	if(this->en_pas != NO_SQ) tmpEnPas = Sq64ToSq120[WhiteToBlack[this->en_pas]];
+
+	for(uint32_t sq = 0; sq < kChessboardSize; ++sq)
+	{
+		tmpPieceArray[sq] = this->pieces[Sq64ToSq120[WhiteToBlack[sq]]];
+	}
+	this->resetBoard();
+	for(uint32_t sq = 0; sq < kChessboardSize; ++sq)
+	{
+		int32_t tmpPiece = inversePieceEnum[tmpPieceArray[sq]];
+		this->pieces[Sq64ToSq120[sq]] = tmpPiece;
+	}
+	this->side_to_move = tmpSide;
+	this->castle_perm = tmpCastlePerm;
+	this->en_pas = tmpEnPas;
+	this->pos_key = Hash::generatePosKey(*this);
+	this->updatePieceLists();
+	ASSERT(checkBoard(pos));
 }

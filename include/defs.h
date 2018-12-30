@@ -68,14 +68,5 @@ namespace Attack
 	constexpr std::array<int32_t, 8> KiMoves { -1, -10, 1, 10, -9, -11, 11, 9 };
 }
 
-namespace BoardUtils
-{
-	// *** initialized in init
-	extern std::array<int32_t, kBoardArraySize> Sq120ToSq64;
-	extern std::array<int32_t, kChessboardSize> Sq64ToSq120;
-	extern std::array<int32_t, kBoardArraySize> FileBrd;
-	extern std::array<int32_t, kBoardArraySize> RankBrd;
-}
-
 const Move NOMOVE(0);
 #endif
