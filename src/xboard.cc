@@ -4,12 +4,13 @@
 #include <iostream>
 #include <sstream>
 #include <cstdio>
-XBoardManager::XBoardManager() noexcept : ProtocolManager() { info.GAME_MODE = ProtocolManager::kXBoard;}
+#include "searchinfo.h"
+XBoardManager::XBoardManager() noexcept : ProtocolManager() { info.protocol = ProtocolManager::kXBoard;}
 XBoardManager::~XBoardManager() noexcept {}
 
 void XBoardManager::loop()
 {
-	info.POST_THINKING = true;
+	info.doPrint = true;
 
 	std::cout << "feature ping=1 setboard=1 colors=0 usermove=1" << std::endl;
 	std::cout << "feature done=1" << std::endl;

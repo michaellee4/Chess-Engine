@@ -3,9 +3,10 @@
 #include "defs.h"
 #include "movemaker.h"
 #include "io.h"
+#include "searchinfo.h"
 #include <iostream>
 #include <sstream>
-ConsoleManager::ConsoleManager() noexcept : ProtocolManager() { info.GAME_MODE = ProtocolManager::kConsole;}
+ConsoleManager::ConsoleManager() noexcept : ProtocolManager() { info.protocol = ProtocolManager::kConsole;}
 ConsoleManager::~ConsoleManager() noexcept {}
 
 void ConsoleManager::loop()
@@ -13,7 +14,7 @@ void ConsoleManager::loop()
 	std::cout << "\nConsole Mode! \n";
 	std::cout << "Type help for commands \n";
 
-	info.POST_THINKING = true;
+	info.doPrint = true;
 
 	std::string buf;
 	std::string cmd;
@@ -65,7 +66,7 @@ void ConsoleManager::loop()
 		}
 		else if(buf == "post")
 		{
-			this->info.POST_THINKING = true;
+			this->info.doPrint = true;
 		}
 		else if(buf == "print")
 		{
@@ -73,7 +74,7 @@ void ConsoleManager::loop()
 		}
 		else if(buf == "nopost")
 		{
-			this->info.POST_THINKING = false;
+			this->info.doPrint = false;
 		}
 		else if(buf == "force")
 		{

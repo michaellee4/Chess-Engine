@@ -22,8 +22,8 @@ struct SearchInfo
 	float fh;
 	float fhf;
 
-	int32_t GAME_MODE;
-	bool POST_THINKING;
+	int32_t protocol;
+	bool doPrint;
 	
 	constexpr SearchInfo() noexcept: startTime(0),
 				   stopTime(0),
@@ -37,9 +37,8 @@ struct SearchInfo
 				   stopped(false),
 				   fh(0),
 				   fhf(0),
-				   //console mode
-				   GAME_MODE(2),
-				   POST_THINKING(false){}
+				   protocol(2),
+				   doPrint(false){}
 };
 
 

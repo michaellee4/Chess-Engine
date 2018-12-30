@@ -8,7 +8,7 @@
 #include <sstream>
 
 
-UCIManager::UCIManager() noexcept : ProtocolManager() { info.GAME_MODE = ProtocolManager::kUCI;}
+UCIManager::UCIManager() noexcept : ProtocolManager() { info.protocol = ProtocolManager::kUCI;}
 UCIManager::~UCIManager() noexcept {}
 
 // go depth 6 wtime 180000 btime 100000 binc 1000 winc 1000 movetime 1000 movestogo 40
@@ -76,7 +76,7 @@ void UCIManager::parseGoCmd(const std::string& input)
 	sa.searchPosition(this->pos, this->info);
 }
 
-void UCIManager::parsePosition(const std::string& input)
+void UCIManager::parsePosition(const std::string input)
 {
 
 	std::stringstream ss(input);
@@ -84,20 +84,18 @@ void UCIManager::parsePosition(const std::string& input)
 
 	ss >> buf;
 	ASSERT(buf == "position");
-
-	if(input.substr(0,UCI_STARTPOS.size()) == UCI_STARTPOS)
+	ss>>buf;
+	if(buf == "startpos")
 	{
 		this->pos.parseFEN(STARTFEN);
-		ss >> buf;
 		ASSERT(buf == "startpos");
-
+		
 		// buf == moves || buf == NULL
 		ss >> buf;
 	}
 	else
 	{
 		// buf == "fen"
-		ss>>buf;
 		if(buf != "fen")
 		{
 			this->pos.parseFEN(STARTFEN);
@@ -157,7 +155,7 @@ void UCIManager::loop()
 		}
 		else if(firstWord == "ucinewgame")
 		{
-			parsePosition(UCI_STARTPOS);
+			parsePosition("position startpos");
 		}
 		else if(firstWord == "go")
 		{

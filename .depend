@@ -24,11 +24,12 @@ console.o: src/console.cc include/console.h include/protocol.h \
  include/board.h include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/searchinfo.h include/search.h include/eval.h \
  include/movemaker.h include/stopwatch.h include/defs.h \
- include/movemaker.h include/io.h include/movelist.h
+ include/movemaker.h include/io.h include/movelist.h include/searchinfo.h
 xboard.o: src/xboard.cc include/xboard.h include/protocol.h \
  include/board.h include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/searchinfo.h include/search.h include/eval.h \
- include/movemaker.h include/io.h include/movelist.h include/stopwatch.h
+ include/movemaker.h include/io.h include/movelist.h include/stopwatch.h \
+ include/searchinfo.h
 main.o: src/main.cc include/engine.h include/protocol.h include/board.h \
  include/defs.h include/debug.h include/move.h include/pvtable.h \
  include/searchinfo.h include/search.h include/eval.h include/movemaker.h \
@@ -51,7 +52,7 @@ engine.o: src/engine.cc include/engine.h include/protocol.h \
 search.o: src/search.cc include/search.h include/defs.h include/debug.h \
  include/move.h include/board.h include/pvtable.h include/searchinfo.h \
  include/eval.h include/stopwatch.h include/movelist.h include/utils.h \
- include/movemaker.h include/io.h include/movelist.h
+ include/searchinfo.h include/movemaker.h include/io.h include/movelist.h
 stopwatch.o: src/stopwatch.cc include/stopwatch.h
 utils.o: src/utils.cc include/utils.h include/defs.h include/debug.h \
  include/move.h include/board.h include/pvtable.h include/searchinfo.h \

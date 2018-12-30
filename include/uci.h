@@ -6,10 +6,9 @@
 //might need newline at the end of this string
 class UCIManager : public ProtocolManager
 {
-	const std::string UCI_STARTPOS = "position startpos";
 public:
 	void parseGoCmd(const std::string& cmd);
-	void parsePosition(const std::string& input);
+	void parsePosition(const std::string input);
 	void loop() override;
 	int32_t getProtocol() override;
 	UCIManager() noexcept;

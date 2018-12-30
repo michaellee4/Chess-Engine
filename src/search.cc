@@ -2,6 +2,7 @@
 #include "stopwatch.h"
 #include "movelist.h"
 #include "utils.h"
+#include "searchinfo.h"
 #include "movemaker.h"
 #include "io.h"
 #include <sstream>

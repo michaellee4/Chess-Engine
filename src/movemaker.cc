@@ -216,9 +216,9 @@ void MM::takeMove(Board& pos) noexcept
 	Hash::hashCa(pos);
 
 	UndoMove undo = pos.history[pos.hist_ply];
-	pos.castle_perm = undo.castlePerm;
-	pos.fifty_move = undo.fiftyMove;
-	pos.en_pas = undo.enPas;
+	pos.castle_perm = undo.castle_perm;
+	pos.fifty_move = undo.fifty_move;
+	pos.en_pas = undo.en_pas;
 
     if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
     Hash::hashCa(pos);

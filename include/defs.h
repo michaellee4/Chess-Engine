@@ -9,32 +9,22 @@
 #define STARTFEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
 constexpr uint32_t kMaxSearchDepth = 64;
-
-constexpr uint32_t kNumPceTypes = 13;
-
 constexpr uint32_t kMoveLimit = 2 << 10;
-
 constexpr uint32_t kBoardArraySize = 120;
-
 constexpr uint32_t kChessboardSize = 64;
-
 constexpr uint32_t kNumPlayers = 2;
-
 constexpr uint32_t kNumFilesRanks = 8;
-
+constexpr uint32_t kNumPceTypes = 13;
 const std::string kAppName = "ChessEngine";
+
 // pieces
 enum { EMPTY, wP, wN, wB, wR, wQ, wK, bP, bN, bB, bR, bQ, bK };
-
 // columns
 enum { FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_NONE };
-
 // rows
 enum { RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_NONE };
-
 // sides
 enum { WHITE, BLACK, BOTH };
-
 // int value of actual board squares
 enum {
 	A1 = 21, B1, C1, D1, E1, F1, G1, H1,
@@ -46,12 +36,8 @@ enum {
 	A7 = 81, B7, C7, D7, E7, F7, G7, H7,
 	A8 = 91, B8, C8, D8, E8, F8, G8, H8, NO_SQ, OFFBOARD
 };
-
 // Castling permissions
-enum { WKCA = 1, WQCA = 2, BKCA = 4, BQCA = 8 };
-
-// Current mode
-// enum { UCI_MODE, XBOARD_MODE, CONSOLE_MODE};
+enum { WKCA = 0b0001, WQCA = 0b0010, BKCA = 0b0100, BQCA = 0b1000 };
 
 // Provides dictionaries to get information about a piece
 namespace PieceInfo

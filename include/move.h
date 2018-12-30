@@ -8,9 +8,9 @@ class UndoMove
 {
 	public:
 		int32_t move;
-		int32_t castlePerm;
-		int32_t enPas;
-		int32_t fiftyMove;
+		int32_t castle_perm;
+		int32_t en_pas;
+		int32_t fifty_move;
 		uint64_t pos_key;
 		UndoMove();
 		UndoMove(int32_t _move, const Board& pos);

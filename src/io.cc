@@ -72,22 +72,22 @@ void IO::printMoveList(const MoveList& list) noexcept
 void IO::printSearchDetails(Board& pos, const SearchInfo& info, int32_t curDepth, int32_t bestScore) noexcept
 {
 	std::stringstream guiStr;
-	if (info.GAME_MODE == ProtocolManager::kUCI)
+	if (info.protocol == ProtocolManager::kUCI)
 	{
 		guiStr << "info score cp " << bestScore;
 		guiStr << " depth " << curDepth;
 		guiStr << " nodes " << info.nodes;
 		guiStr << " time "  << Stopwatch::getTimeInMilli() - info.startTime;
 	}
-	else if (info.GAME_MODE == ProtocolManager::kXBoard && info.POST_THINKING)
+	else if (info.protocol == ProtocolManager::kXBoard && info.doPrint)
 	{
 		std::cout << curDepth << ' ' << bestScore << ' ' << (Stopwatch::getTimeInMilli() - (info.startTime / 10)) << ' ' << info.nodes;
 	}
-	else if (info.POST_THINKING)
+	else if (info.doPrint)
 	{
 		guiStr <<"score:"<<bestScore<<" depth:"<<curDepth<<" nodes:"<<info.nodes<<" time:"<<Stopwatch::getTimeInMilli()-info.startTime<<"(ms)";
 	}
-	if(info.GAME_MODE == ProtocolManager::kUCI || info.POST_THINKING)
+	if(info.protocol == ProtocolManager::kUCI || info.doPrint)
 	{
 		int32_t pvMoves = PV_Table::getPvLine(pos, curDepth);
 		guiStr<< " pv";
@@ -102,11 +102,11 @@ void IO::printSearchDetails(Board& pos, const SearchInfo& info, int32_t curDepth
 
 void IO::printBestMove(Board& pos, const SearchInfo& info, const Move& bestMove) noexcept
 {
-	if(info.GAME_MODE == ProtocolManager::kUCI) 
+	if(info.protocol == ProtocolManager::kUCI) 
 	{
 		std::cout << "bestmove " << bestMove.toString() << std::endl;
 	} 
-	else if(info.GAME_MODE == ProtocolManager::kXBoard)
+	else if(info.protocol == ProtocolManager::kXBoard)
 	{		
 		std::cout<<"move "<<bestMove.toString() <<std::endl;
 		MM::makeMove(pos, bestMove);
