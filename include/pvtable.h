@@ -10,6 +10,9 @@ class PV_Entry
 	public:
 		uint64_t pos_key;
 		Move move;
+		int32_t score;
+		int32_t depth;
+		int32_t flags;
 		PV_Entry(uint64_t key, Move move) noexcept;
 		PV_Entry(const PV_Entry& o) noexcept;
 		PV_Entry(PV_Entry&& o) noexcept;
