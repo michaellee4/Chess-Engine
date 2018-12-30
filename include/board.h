@@ -101,6 +101,8 @@ class Board
 
 		void flipBoard() noexcept;
 		
+		bool inCheck() noexcept;
+
 		MoveList getAllMoves() const noexcept;
 		
 		MoveList getAllCaptureMoves() const noexcept;

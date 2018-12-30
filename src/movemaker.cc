@@ -96,6 +96,7 @@ void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos) noexcept
 
 bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 {
+	ASSERT(!moveInfo.isNull());
 	if(moveInfo.isNull())
 		return false;
 	ASSERT(checkBoard(pos));
@@ -272,5 +273,48 @@ void MM::takeMove(Board& pos) noexcept
 		MM::clearPiece(from, pos);
 		MM::addPiece(from, pos, (PieceInfo::PieceCol[promotion] == WHITE ? wP : bP));
 	}
+	ASSERT(checkBoard(pos));
+}
+
+void MM::makeNullMove(Board& pos) noexcept
+{
+	ASSERT(checkBoard(pos));
+	ASSERT(!pos.inCheck());
+	pos.ply++;
+
+	UndoMove uMove = pos.history[pos.hist_ply];
+	uMove.pos_key = pos.pos_key;
+	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
+
+	uMove.move = NOMOVE.move;
+	uMove.en_pas = pos.en_pas;
+	uMove.fifty_move = pos.fifty_move;
+	uMove.castle_perm = pos.castle_perm;
+
+	pos.en_pas = NO_SQ;
+	(void) uMove;
+	
+	pos.side_to_move = !pos.side_to_move;
+	Hash::hashSide(pos);
+	ASSERT(checkBoard(pos));
+	pos.hist_ply ++;
+
+}
+
+void MM::takeNullMove(Board& pos) noexcept
+{
+	ASSERT(checkBoard(pos));
+	pos.hist_ply --;
+	pos.ply --;
+	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
+	
+	UndoMove uMove = pos.history[pos.hist_ply];
+	pos.castle_perm = uMove.castle_perm;
+	pos.fifty_move = uMove.fifty_move;
+	pos.en_pas = uMove.en_pas;
+
+	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
+	pos.side_to_move = !pos.side_to_move;
+	Hash::hashSide(pos);
 	ASSERT(checkBoard(pos));
 }

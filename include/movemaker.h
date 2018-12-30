@@ -33,6 +33,11 @@ public:
 
     // Undo's the last move made which is stored in Board::hist_move
     static void takeMove(Board& pos) noexcept;
+
+    // Similar to above, but the idea is you give your opponent a free move
+    static void makeNullMove(Board& pos) noexcept;
+
+    static void takeNullMove(Board& pos) noexcept;
     
 };
 

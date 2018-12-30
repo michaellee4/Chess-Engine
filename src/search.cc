@@ -47,11 +47,6 @@ int32_t SearchAgent::isRepetition(const Board& pos) noexcept
 	return false;
 }
 
-bool SearchAgent::inCheck(const Board& pos) noexcept
-{
-	return pos.sqAttacked(pos.king_sq[pos.side_to_move], !pos.side_to_move);
-}
-
 bool SearchAgent::isGameOver(Board& pos) noexcept
 {
 	if(pos.fifty_move > 100)
@@ -85,7 +80,7 @@ bool SearchAgent::isGameOver(Board& pos) noexcept
 	}
 	if(legalMoveFound) return false;
 
-	if(inCheck(pos))
+	if(pos.inCheck())
 	{
 		if(pos.side_to_move == WHITE)
 		{
@@ -145,7 +140,6 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 
 int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull) noexcept
 {
-	(void)doNull;
     ASSERT(checkBoard(pos)); 
 
 	if(depth == 0) {
@@ -167,17 +161,33 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     {
     	return eval.evaluatePosition(pos);
     }
-    if(inCheck(pos))
+    if(pos.inCheck())
     {
     	depth ++;
+    }
+    int32_t score = -Value::kInfinity;
+
+    if(doNull && !pos.inCheck() && pos.ply && (pos.big_pce[pos.side_to_move] > 0) && depth >= 4)
+    {
+    	MM::makeNullMove(pos);
+    	score = -alphaBeta(-beta, -beta + 1, depth - 4, pos, info, false);
+    	MM::takeNullMove(pos);
+    	if(info.stopped == true)
+    	{
+    		return 0;
+    	}
+    	if(score >= beta)
+    	{
+    		return beta;
+    	}
     }
 
     MoveList m = pos.getAllMoves();
     int32_t legalMoves = 0;
     int32_t prevAlpha = alpha;
     Move bestMove = NOMOVE;
-    int score = -Value::kInfinity;
     Move pvMove = pos.pv_table.get(pos);
+	score = -Value::kInfinity;
     if(!pvMove.isNull())
     {
 		for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 

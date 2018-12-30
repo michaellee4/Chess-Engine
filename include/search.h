@@ -17,8 +17,6 @@ private:
 	int32_t quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info) noexcept;
 	bool threeFoldRepetition(const Board& pos) noexcept;
 	bool drawnMaterial(const Board& pos) noexcept;
-	bool inCheck(const Board& pos) noexcept;
-
 public:
 	Evaluator eval;
 

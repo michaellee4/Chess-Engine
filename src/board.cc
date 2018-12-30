@@ -468,5 +468,11 @@ void Board::flipBoard() noexcept
 	this->en_pas = tmpEnPas;
 	this->pos_key = Hash::generatePosKey(*this);
 	this->updatePieceLists();
-	ASSERT(checkBoard(pos));
+	ASSERT(checkBoard(*this));
+}
+
+
+bool Board::inCheck() noexcept
+{
+	return this->sqAttacked(this->king_sq[this->side_to_move], !this->side_to_move);
 }

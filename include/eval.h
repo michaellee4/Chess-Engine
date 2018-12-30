@@ -18,7 +18,9 @@ namespace Value
 
 	constexpr int32_t kSemiOpenQueenFile = 3;
 
-	constexpr int32_t kEndGameThreshold = 2 * PieceInfo::PieceVal[wR] + 4 * PieceInfo::PieceVal[wN] + 8 * PieceInfo::PieceVal[wP];
+	constexpr int32_t kEndGameThreshold = PieceInfo::PieceVal[wR] + 2 * PieceInfo::PieceVal[wB] + 2 * PieceInfo::PieceVal[wP];
+
+	constexpr int32_t kBishopPair = 30;
 
 	//passed pawn score based on rank
 	constexpr std::array< int32_t, kNumFilesRanks> passedPawnScore {0, 5, 10, 20, 35, 60, 100, 200};
@@ -66,21 +68,22 @@ namespace Value
 		25	,	25	,	25	,	25	,	25	,	25	,	25	,	25	,
 		0	,	0	,	5	,	10	,	10	,	5	,	0	,	0		
 	};
+
 	constexpr std::array<int32_t, kChessboardSize> KingEndGame = {	
-		-50	,	-20	,	0	,	0	,	0	,	0	,	-20	,	-50	,
-		-20,	0	,	20	,	20	,	20	,	20	,	0	,	-20	,
-		0	,	20	,	40	,	40	,	40	,	40	,	20	,	0	,
-		0	,	20	,	40	,	50	,	50	,	40	,	20	,	0	,
-		0	,	20	,	40	,	50	,	50	,	40	,	20	,	0	,
-		0	,	20	,	40	,	40	,	40	,	40	,	20	,	0	,
-		-20	,	0	,	20	,	20	,	20	,	20	,	0	,	-20	,
-		-50	,	-20	,	0	,	0	,	0	,	0	,	-20	,	-50	
+		-50	,	-10	,	0	,	0	,	0	,	0	,	-10	,	-50	,
+		-10,	0	,	10	,	10	,	10	,	10	,	0	,	-10	,
+		0	,	10	,	15	,	15	,	15	,	15	,	10	,	0	,
+		0	,	10	,	15	,	20	,	20	,	15	,	10	,	0	,
+		0	,	10	,	15	,	20	,	20	,	15	,	10	,	0	,
+		0	,	10	,	15	,	15	,	15	,	15	,	10	,	0	,
+		-10,	0	,	10	,	10	,	10	,	10	,	0	,	-10	,
+		-50	,	-10	,	0	,	0	,	0	,	0	,	-10	,	-50	
 	};
 
 	constexpr std::array<int32_t, kChessboardSize> KingOpening = {	
 		0	,	5	,	5	,	-10	,	-10	,	0	,	10	,	5	,
-		-10	,	-10	,	-10	,	-10	,	-10	,	-10	,	-10	,	-10	,
 		-30	,	-30	,	-30	,	-30	,	-30	,	-30	,	-30	,	-30	,
+		-50	,	-50	,	-50	,	-50	,	-50	,	-50	,	-50	,	-50	,
 		-70	,	-70	,	-70	,	-70	,	-70	,	-70	,	-70	,	-70	,
 		-70	,	-70	,	-70	,	-70	,	-70	,	-70	,	-70	,	-70	,
 		-70	,	-70	,	-70	,	-70	,	-70	,	-70	,	-70	,	-70	,

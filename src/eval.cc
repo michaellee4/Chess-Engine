@@ -64,6 +64,10 @@ int32_t Evaluator::evalBishops(const Board& pos) noexcept
 		ASSERT(pos.sqOnBoard(sq));
 		BiScore -= Value::BishopTable[WhiteToBlack[Sq120ToSq64[sq]]];
 	}	
+
+	if(pos.piece_list[wB].size() >= 2) BiScore += Value::kBishopPair;
+	if(pos.piece_list[bB].size() >= 2) BiScore -= Value::kBishopPair;
+	
 	return BiScore;
 }
 
@@ -147,7 +151,7 @@ int32_t Evaluator::evalKings(const Board& pos) noexcept
 	int32_t pce = wK;
 	// use king sq?
 	int32_t sq = pos.piece_list[pce][0];
-	if(pos.piece_list[bQ].size() == 0 || pos.material[BLACK] <= Value::kEndGameThreshold)
+	if(pos.material[BLACK] <= Value::kEndGameThreshold)
 	{
 		KingScore += Value::KingEndGame[ Sq120ToSq64[sq] ];
 	}
@@ -158,7 +162,7 @@ int32_t Evaluator::evalKings(const Board& pos) noexcept
 
 	pce = bK;
 	sq = pos.piece_list[pce][0];
-	if(pos.piece_list[wQ].size() == 0 || pos.material[WHITE] <= Value::kEndGameThreshold)
+	if(pos.material[WHITE] <= Value::kEndGameThreshold)
 	{
 		KingScore -= Value::KingEndGame[ WhiteToBlack[ Sq120ToSq64[sq]] ];
 	}
@@ -246,7 +250,7 @@ bool Evaluator::drawnMaterial(const Board& pos) noexcept
 
 int32_t Evaluator::evaluatePosition(const Board& pos) noexcept
 {
-	if(drawnMaterial(pos))
+	if((pos.piece_list[wP].size() == 0 && pos.piece_list[bP].size() == 0) && drawnMaterial(pos))
 	{
 		return 0;
 	}
