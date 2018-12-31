@@ -4,6 +4,7 @@
 #include "board.h"
 #include "searchinfo.h"
 #include "eval.h"
+#include "polyglot.h"
 #include "pvtable.h"
 // Piece Value tables for positional evaluation
 

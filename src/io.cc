@@ -113,7 +113,7 @@ void IO::printBestMove(Board& pos, const SearchInfo& info, const Move& bestMove)
 	}
 }
 
-Move IO::parseMove(std::string input, Board& pos) noexcept
+Move IO::parseMove(std::string input, const Board& pos) noexcept
 {
 	stringToLower(input);
 	if(input[1] < '1' || input[1] > '8') return NOMOVE;

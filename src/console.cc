@@ -5,6 +5,7 @@
 #include "io.h"
 #include "searchinfo.h"
 #include "polyglot.h"
+#include "engine.h"
 #include <iostream>
 #include <sstream>
 
@@ -159,10 +160,11 @@ void ConsoleManager::loop()
 			int32_t score2 = this->sa.eval.evaluatePosition(this->pos);
 			std::cout << "Eval: " << score2<<std::endl;
 		}
-		else if (buf == "polykey")
+		else if (buf == "bookmove")
 		{
 			IO::printBoard(pos);
-			std::cout << "PolyKey:" << std::hex << PolyBook::polyKeyFromBoard(pos)<<std::endl;
+			Move m = Engine::getBook().getBookMove(this->pos);
+			std::cout << m.toString()<< std::endl;
 		}
 		else
 		{

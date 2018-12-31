@@ -243,89 +243,82 @@ void Board::updatePieceLists() noexcept
 		}
 	}
 }
+
 uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noexcept
 {
 	uint32_t numAttackers = 0;
 	// Check Pawn
 	if(attacker == WHITE)
 	{
-		if(this->pieces[sq + Attack::wPCap[0]] == wP) 
-		{
+		if(this->pieces[sq + Attack::wPCap[0]] == wP)
 			++numAttackers;
-		}
-		if(this->pieces[sq + Attack::wPCap[1]] == wP) 
-		{
+		if(this->pieces[sq + Attack::wPCap[1]] == wP)
 			++numAttackers;
-		}
 	}
 	else
 	{
-		if(this->pieces[sq + Attack::bPCap[0]] == bP) 
-		{
+		if(this->pieces[sq + Attack::bPCap[0]] == bP)
 			++numAttackers;
-		}
-		if(this->pieces[sq + Attack::bPCap[1]] == bP) 
-		{
+		if(this->pieces[sq + Attack::bPCap[1]] == bP)
 			++numAttackers;
-		}
 	}
 	// Check Knight
 	uint32_t attackingKnight = attacker == WHITE ? wN : bN;
-	for(int KnMove : Attack::KnMoves)
+	for(uint32_t i = 0; i < Attack::KnMoves.size(); ++i)
 	{
-		if(this->pieces[sq + KnMove] == attackingKnight) 
-		{
+		if(this->pieces[sq + Attack::KnMoves[i]] == attackingKnight)
 			++numAttackers;
-		}
 	}
+
 	// Check Horizontal and Vertical
 	uint32_t attackingRook = attacker == WHITE ? wR : bR;
 	uint32_t attackingQueen = attacker == WHITE ? wQ : bQ;
-	for(uint32_t move : Attack::RkMoves)
+	for(uint32_t i = 0 ; i < Attack::RkMoves.size(); ++i )
 	{
+		uint32_t move = Attack::RkMoves[i];
 		uint32_t t_sq = sq + move;
 		uint32_t pce = this->pieces[t_sq];
 		while(pce != OFFBOARD)
 		{
 			if(pce != EMPTY)
 			{
-				if(pce == attackingRook || pce == attackingQueen) 
-				{
+				if(pce == attackingRook || pce == attackingQueen)
 					++numAttackers;
-				}
 				break;
 			}
 			t_sq += move;
 			pce = this->pieces[t_sq];
 		}
+
 	}
+
 	uint32_t attackingBishop = attacker == WHITE ? wB : bB;
-	for(uint32_t move : Attack::BiMoves)
+	for(uint32_t i = 0 ; i < Attack::BiMoves.size(); ++i )
 	{
+		uint32_t move = Attack::BiMoves[i];
 		uint32_t t_sq = sq + move;
 		uint32_t pce = this->pieces[t_sq];
 		while(pce != OFFBOARD)
 		{
 			if(pce != EMPTY)
 			{
-				if(pce == attackingBishop || pce == attackingQueen) 
-				{
+				if(pce == attackingBishop || pce == attackingQueen)
 					++numAttackers;
-				}
 				break;
 			}
 			t_sq += move;
 			pce = this->pieces[t_sq];
 		}
 	}
+
 	uint32_t attackingKing = attacker == WHITE ? wK : bK;
-	for(int KiMove : Attack::KiMoves)
+	for(uint32_t i = 0; i < Attack::KiMoves.size(); ++i)
 	{
-		if(this->pieces[sq + KiMove] == attackingKing) 	
-		{
+		if(this->pieces[sq + Attack::KiMoves[i]] == attackingKing)
 			++numAttackers;
-		}
 	}
+	// Check Diagonals
+
 	return numAttackers;
 }
 

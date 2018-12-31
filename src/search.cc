@@ -3,6 +3,7 @@
 #include "movelist.h"
 #include "utils.h"
 #include "searchinfo.h"
+#include "engine.h"
 #include "movemaker.h"
 #include "io.h"
 #include <sstream>
@@ -362,17 +363,25 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info) noexcept
 	Move bestMove = NOMOVE;
 	int32_t bestScore = -Value::kInfinity;
 	this->clearForSearch(pos, info);
-	for(uint32_t curDepth = 1 ; curDepth <= info.depth; ++curDepth)
+	if(Engine::getConfig().useBook)
 	{
-		std::stringstream guiStr;
-		bestScore = this->alphaBeta(-Value::kInfinity, Value::kInfinity, curDepth, pos, info, true);
-		if(info.stopped)
+		bestMove = Engine::getBook().getBookMove(pos);
+	}
+	if(bestMove.isNull())
+	{
+		// only iterative deepening search if no book move was found
+		for(uint32_t curDepth = 1 ; curDepth <= info.depth; ++curDepth)
 		{
-			break;
+			std::stringstream guiStr;
+			bestScore = this->alphaBeta(-Value::kInfinity, Value::kInfinity, curDepth, pos, info, true);
+			if(info.stopped)
+			{
+				break;
+			}
+			int32_t pvMoves = pv.getPvLine(pos, curDepth);
+			bestMove = this->pv.pv_arr[0];
+			IO::printSearchDetails(info, curDepth, bestScore, pv, pvMoves);
 		}
-		int32_t pvMoves = pv.getPvLine(pos, curDepth);
-		bestMove = this->pv.pv_arr[0];
-		IO::printSearchDetails(info, curDepth, bestScore, pv, pvMoves);
 	}
 	IO::printBestMove(pos, info, bestMove);
 }

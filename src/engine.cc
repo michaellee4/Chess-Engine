@@ -4,12 +4,14 @@
 #include "uci.h"
 #include "xboard.h"
 #include "console.h"
+#include "protocol.h"
 #include <iostream>
 
-Engine::Engine() noexcept: protocol() 
+Engine::Engine() noexcept: protocol(), config(), book()
 {
 	//Only ever called once because engine is a singleton
 	Init::initAll();
+	config.useBook = book.readBook();
 }
 
 void Engine::printGreeting() const noexcept

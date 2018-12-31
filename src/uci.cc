@@ -4,6 +4,7 @@
 #include "move.h"
 #include "utils.h"
 #include "stopwatch.h"
+#include "engine.h"
 #include <iostream>
 #include <sstream>
 
@@ -129,14 +130,19 @@ void UCIManager::loop()
 	std::string buf;
 	std::cout << "id name "<<kAppName<<'\n';
 	std::cout << "id author ml45898\n";
-	std::cout << "uciok\n";
+	std::cout << "option name Hashtype spin default 64 min 4 max "<<125000<<'\n';
+	std::cout << "option name Book type check default true\n";
+	std::cout << "uciok" << std::endl;
 	while(true)
 	{
 		buf.clear();
 		std::cout<<std::flush;
 		if(!(getline (std::cin, buf))) { continue; }
 		if(buf == "\n") { continue; }
-		std::string firstWord = buf.substr(0, buf.find(' '));
+		stringToLower(buf);
+		std::stringstream ss(buf);
+		std::string firstWord;
+		ss >>firstWord;
 		if(firstWord == "isready")
 		{
 			std::cout << "readyok\n";
@@ -163,6 +169,25 @@ void UCIManager::loop()
 			std::cout << "id name "<< kAppName<< '\n';
 			std::cout << "id author ml45898\n";
 			std::cout << "uciok\n";	
+		}
+		else if (firstWord == "setoption")
+		{
+			// name
+			ss >> buf;
+			// option name
+			ss>>buf;
+			if(buf == "book")
+			{
+				std::string tmp = ss.str();
+				if(tmp.find("true") != std::string::npos)
+				{
+					Engine::getConfig().useBook = true;
+				}
+				else
+				{
+					Engine::getConfig().useBook = false;
+				}
+			}
 		}
 		if(this->info.quit) { break; }
 	}
