@@ -162,7 +162,7 @@ void ConsoleManager::loop()
 		else if (buf == "polykey")
 		{
 			IO::printBoard(pos);
-			std::cout << "PolyKey:" << std::hex << Polyglot::polyKeyFromBoard(pos)<<std::endl;
+			std::cout << "PolyKey:" << std::hex << PolyBook::polyKeyFromBoard(pos)<<std::endl;
 		}
 		else
 		{

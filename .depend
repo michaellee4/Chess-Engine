@@ -13,7 +13,8 @@ io.o: src/io.cc include/io.h include/board.h include/defs.h \
  include/debug.h include/move.h include/pvtable.h include/movelist.h \
  include/searchinfo.h include/pvtable.h include/defs.h \
  include/stopwatch.h include/utils.h include/protocol.h include/search.h \
- include/eval.h include/movemaker.h include/movemaker.h
+ include/eval.h include/movemaker.h include/polyglot.h \
+ include/movemaker.h
 movelist.o: src/movelist.cc include/movelist.h include/defs.h \
  include/debug.h include/move.h include/board.h include/pvtable.h \
  include/utils.h include/searchinfo.h
@@ -23,9 +24,9 @@ bitboard.o: src/bitboard.cc include/defs.h include/debug.h include/move.h \
 console.o: src/console.cc include/console.h include/protocol.h \
  include/board.h include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/searchinfo.h include/search.h include/eval.h \
- include/movemaker.h include/stopwatch.h include/defs.h \
- include/movemaker.h include/io.h include/movelist.h include/searchinfo.h \
- include/polyglot.h
+ include/movemaker.h include/polyglot.h include/stopwatch.h \
+ include/defs.h include/movemaker.h include/io.h include/movelist.h \
+ include/searchinfo.h include/polyglot.h
 tester.o: src/tester.cc include/defs.h include/debug.h include/move.h \
  include/tester.h include/board.h include/defs.h include/pvtable.h \
  include/io.h include/movelist.h include/searchinfo.h include/movelist.h \
@@ -33,13 +34,13 @@ tester.o: src/tester.cc include/defs.h include/debug.h include/move.h \
 xboard.o: src/xboard.cc include/xboard.h include/protocol.h \
  include/board.h include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/searchinfo.h include/search.h include/eval.h \
- include/movemaker.h include/io.h include/movelist.h include/stopwatch.h \
- include/searchinfo.h
+ include/movemaker.h include/polyglot.h include/io.h include/movelist.h \
+ include/stopwatch.h include/searchinfo.h
 main.o: src/main.cc include/engine.h include/protocol.h include/board.h \
  include/defs.h include/debug.h include/move.h include/pvtable.h \
  include/searchinfo.h include/search.h include/eval.h include/movemaker.h \
- include/tester.h include/stopwatch.h include/polyglot.h \
- include/bitboard.h
+ include/polyglot.h include/tester.h include/stopwatch.h \
+ include/polyglot.h include/bitboard.h
 hash.o: src/hash.cc include/defs.h include/debug.h include/move.h \
  include/hash.h include/board.h include/defs.h include/pvtable.h \
  include/utils.h include/searchinfo.h include/board.h
@@ -54,8 +55,8 @@ pvtable.o: src/pvtable.cc include/pvtable.h include/move.h include/defs.h \
 engine.o: src/engine.cc include/engine.h include/protocol.h \
  include/board.h include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/searchinfo.h include/search.h include/eval.h \
- include/movemaker.h include/defs.h include/init.h include/uci.h \
- include/xboard.h include/console.h
+ include/movemaker.h include/polyglot.h include/defs.h include/init.h \
+ include/uci.h include/xboard.h include/console.h
 search.o: src/search.cc include/search.h include/defs.h include/debug.h \
  include/move.h include/board.h include/pvtable.h include/searchinfo.h \
  include/eval.h include/stopwatch.h include/movelist.h include/utils.h \
@@ -74,5 +75,5 @@ move.o: src/move.cc include/move.h include/defs.h include/debug.h \
 uci.o: src/uci.cc include/uci.h include/protocol.h include/board.h \
  include/defs.h include/debug.h include/move.h include/pvtable.h \
  include/searchinfo.h include/search.h include/eval.h include/movemaker.h \
- include/defs.h include/io.h include/movelist.h include/move.h \
- include/utils.h include/stopwatch.h
+ include/polyglot.h include/defs.h include/io.h include/movelist.h \
+ include/move.h include/utils.h include/stopwatch.h

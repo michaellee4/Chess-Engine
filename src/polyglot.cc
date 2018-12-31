@@ -3,8 +3,11 @@
 #include "polyglot.h"
 #include "board.h"
 #include "utils.h"
+#include <fstream>
+#include <iostream>
 
-bool Polyglot::enPasPossible(const Board& pos)
+PolyBook::PolyBook() noexcept : book() {}
+bool PolyBook::enPasPossible(const Board& pos)
 {
 	uint32_t tgtSq = 0;
 	uint32_t tgtPce = pos.side_to_move == WHITE ? wP : bP;
@@ -26,7 +29,7 @@ bool Polyglot::enPasPossible(const Board& pos)
 	return false;
 }
 
-uint64_t Polyglot::polyKeyFromBoard(const Board& pos)
+uint64_t PolyBook::polyKeyFromBoard(const Board& pos)
 {
 	uint64_t posPolyKey = 0;
 
@@ -62,4 +65,32 @@ uint64_t Polyglot::polyKeyFromBoard(const Board& pos)
 		posPolyKey ^= PolyKeys::Random64[sideOffset];
 	}
 	return posPolyKey;
+}
+
+void PolyBook::readBook()
+{
+	// std::ifstream polyBook("lib/polyglot-collection/Performance.bin", std::ios::binary | std::ios::ate);
+
+	// if(!polyBook.is_open())
+	// {
+	// 	std::cout << "Unable to open polyglot book" << std::endl;
+	// }
+	// else
+	// {
+	// 	uint64_t fileSize = polyBook.tellg();
+	// 	polyBook.clear();
+	// 	polyBook.seekg(0, std::ios::beg);
+	// 	int32_t numEntries = fileSize / sizeof(PolyglotEntry);
+
+	// 	this->book = std::vector<PolyglotEntry>(numEntries);
+	// 	if(polyBook.read((uint8_t*)this->book.data(), fileSize))
+	// 	{
+
+	// 	}
+	// 	else
+	// 	{
+	// 		std::cout << "Unable to read polyglot book into buffer" << std::endl;	
+	// 	}
+	// }
+
 }
