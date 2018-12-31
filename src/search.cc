@@ -207,6 +207,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 		}
     }
 
+    bool foundPv = false;
 	for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
 	{
 		m.reorderList(moveNum);
@@ -216,8 +217,22 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
         {
             continue;
         }
+
         ++legalMoves;
-        score = -1 * this->alphaBeta(-beta, -alpha, depth - 1, pos, info, true);
+
+        if(foundPv)
+        {
+        	score = -1 * this->alphaBeta(-alpha - 1, -alpha, depth - 1, pos, info, true);
+        	if(score > alpha && score < beta)
+        	{
+        		score = -1 * this->alphaBeta(-beta, -alpha, depth - 1, pos, info, true);
+        	}
+        }
+        else
+        {
+        	score = -1 * this->alphaBeta(-beta, -alpha, depth - 1, pos, info, true);
+        }
+
         MM::takeMove(pos);
 
         if(info.stopped)
@@ -246,6 +261,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 	        		this->pv.insert(pos, bestMove, beta, depth, HFBETA);
 	        		return beta;
 	        	}
+	        	foundPv = true;
 	        	alpha = score;
 	        	if(!curMove.wasCapture())
 	        	{

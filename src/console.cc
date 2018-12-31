@@ -4,6 +4,7 @@
 #include "movemaker.h"
 #include "io.h"
 #include "searchinfo.h"
+#include "polyglot.h"
 #include <iostream>
 #include <sstream>
 
@@ -157,6 +158,11 @@ void ConsoleManager::loop()
 			IO::printBoard(this->pos);
 			int32_t score2 = this->sa.eval.evaluatePosition(this->pos);
 			std::cout << "Eval: " << score2<<std::endl;
+		}
+		else if (buf == "polykey")
+		{
+			IO::printBoard(pos);
+			std::cout << "PolyKey:" << std::hex << Polyglot::polyKeyFromBoard(pos)<<std::endl;
 		}
 		else
 		{

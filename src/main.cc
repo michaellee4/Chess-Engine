@@ -1,6 +1,7 @@
 #include "engine.h"
 #include "tester.h"
 #include "stopwatch.h"
+#include "polyglot.h"
 #include "bitboard.h"
 #include <iostream>
 void runTest()
