@@ -8,21 +8,17 @@
 #include <sstream>
 ConsoleManager::ConsoleManager() noexcept : ProtocolManager() { info.protocol = ProtocolManager::kConsole;}
 ConsoleManager::~ConsoleManager() noexcept {}
-
 void ConsoleManager::loop()
 {
 	std::cout << "\nConsole Mode! \n";
 	std::cout << "Type help for commands \n";
-
 	info.doPrint = true;
-
 	std::string buf;
 	std::string cmd;
 	int32_t depth = 5;
 	std::vector<int32_t> movesToGo { 30, 30 };
 	int32_t moveTime = 10 * Stopwatch::kMilliPerSecond;
 	uint32_t engineSide = BLACK;
-
 	while(true)
 	{
 		std::cout<<std::flush;
@@ -168,7 +164,6 @@ void ConsoleManager::loop()
 		}
 	}
 }
-
 int32_t ConsoleManager::getProtocol()
 {
 	return ProtocolManager::kConsole;

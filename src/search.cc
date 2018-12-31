@@ -9,7 +9,6 @@
 #include <iostream>
 #include <cstdio>
 SearchAgent::SearchAgent() noexcept : eval(), pv() {}
-
 bool SearchAgent::threeFoldRepetition(const Board& pos) noexcept
 {
 	int32_t numRep = 0;
@@ -22,7 +21,6 @@ bool SearchAgent::threeFoldRepetition(const Board& pos) noexcept
 	}
 	return numRep > 2;
 }
-
 bool SearchAgent::drawnMaterial(const Board& pos) noexcept
 {
 	auto pieceList = pos.piece_list;
@@ -35,18 +33,15 @@ bool SearchAgent::drawnMaterial(const Board& pos) noexcept
 	if(!pieceList[bN].empty() && !pieceList[bB].empty()) return false;
 	return true;
 }
-
 int32_t SearchAgent::isRepetition(const Board& pos) noexcept
 {
 	for(int32_t idx = pos.hist_ply - pos.fifty_move; idx < pos.hist_ply - 1; ++idx)
 	{
-		ASSERT(idx >= 0 && (unsigned)idx < kMoveLimit);
 		if(pos.pos_key == pos.history[idx].pos_key)
 			return true;
 	}
 	return false;
 }
-
 bool SearchAgent::isGameOver(Board& pos) noexcept
 {
 	if(pos.fifty_move > 100)
@@ -64,7 +59,6 @@ bool SearchAgent::isGameOver(Board& pos) noexcept
 		std::cout << "1/2-1/2 {insufficient material (claimed by " << kAppName << ")}" << std::endl;
 		return true;
 	}
-
 	MoveList m = pos.getAllMoves();
 	bool legalMoveFound = false;
 	for(uint32_t i = 0; i < m.size(); ++i)
@@ -79,7 +73,6 @@ bool SearchAgent::isGameOver(Board& pos) noexcept
 		break;
 	}
 	if(legalMoveFound) return false;
-
 	if(pos.inCheck())
 	{
 		if(pos.side_to_move == WHITE)
@@ -100,7 +93,6 @@ bool SearchAgent::isGameOver(Board& pos) noexcept
 	}
 	return false;
 }
-
 void SearchAgent::checkStop(SearchInfo& info)
 {
 	if(info.timeLimit && Stopwatch::getTimeInMilli() > info.stopTime)
@@ -109,7 +101,6 @@ void SearchAgent::checkStop(SearchInfo& info)
 	}
 	ReadInput(info);
 }
-
 void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 {
 	for(uint32_t i = 0; i < kNumPceTypes; ++i)
@@ -119,7 +110,6 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 			pos.search_hist[i][j] = 0;
 		}
 	}
-
 	for(uint32_t i = 0; i < kNumPlayers; ++i)
 	{
 		for(uint32_t j = 0; j < kMaxSearchDepth; ++j)
@@ -127,32 +117,24 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 			pos.search_killers[i][j] = NOMOVE;
 		}
 	}
-
 	// this->pv.clear();
 	pos.ply = 0;
-
 	info.startTime = Stopwatch::getTimeInMilli();
 	info.stopped = false;
 	info.nodes = 0;
 	info.fh = 0;
 	info.fhf = 0;
 }
-
 int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull) noexcept
 {
-    ASSERT(checkBoard(pos)); 
-
 	if(depth == 0) {
 		return this->quiescenceSearch(alpha, beta, pos, info);
     }
-
 	if((info.nodes & kInterval )== 0)
 	{
 		this->checkStop(info);
 	}
-
     ++info.nodes;
-
     if((isRepetition(pos) || pos.fifty_move >= 100) && pos.ply)
     {
     	return 0;
@@ -165,15 +147,12 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     {
     	depth ++;
     }
-
     int32_t score = -Value::kInfinity;
     Move pvMove = NOMOVE;
-
     if(this->pv.getHashEntry(pos, pvMove, score, alpha, beta, depth))
     {
     	return score;
     }
-
     if(doNull && !pos.inCheck() && pos.ply && (pos.big_pce[pos.side_to_move] > 1) && depth >= 4)
     {
     	MM::makeNullMove(pos);
@@ -188,7 +167,6 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     		return beta;
     	}
     }
-
     MoveList m = pos.getAllMoves();
     int32_t legalMoves = 0;
     int32_t prevAlpha = alpha;
@@ -206,12 +184,10 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 			}
 		}
     }
-
 	for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
 	{
 		m.reorderList(moveNum);
         Move curMove = m[moveNum];
-
         if ( !MM::makeMove(pos,curMove))  {
             continue;
         }
@@ -235,7 +211,6 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 	        			++info.fhf;
 	        		}
 	        		++info.fh;
-
 	        		if(!curMove.wasCapture())
 	        		{
 	        			pos.search_killers[1][pos.ply] = pos.search_killers[0][pos.ply];
@@ -261,7 +236,6 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     	}
     	else return 0;
     }
-
     if(alpha != prevAlpha)
     {
     	this->pv.insert(pos, bestMove, bestScore, depth, HFEXACT);
@@ -272,18 +246,13 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     }
 	return alpha;
 }
-
 int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info) noexcept
 {
-	ASSERT(checkBoard(pos));
-
 	if( ( info.nodes & kInterval )== 0)
 	{
 		this->checkStop(info);
 	}
-
 	++info.nodes;
-
 	if(isRepetition(pos) || pos.fifty_move >= 100)
 	{
 		return 0;
@@ -292,9 +261,7 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 	{
 		return eval.evaluatePosition(pos);
 	}
-
 	int32_t initialScore = eval.evaluatePosition(pos);
-	
 	if(initialScore >= beta)
 	{
 		return beta;
@@ -303,17 +270,13 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 	{
 		alpha = initialScore;
 	}
-
 	MoveList m = pos.getAllCaptureMoves();
-
     int32_t legalMoves = 0;
     int score = -Value::kInfinity;
-
     for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
 	{
 		m.reorderList(moveNum);
         Move curMove = m[moveNum];
-
         if ( !MM::makeMove(pos,curMove))  {
             continue;
         }
@@ -340,7 +303,6 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
     }
 	return alpha;
 }
-
 //uses iterative deepening
 void SearchAgent::searchPosition(Board& pos, SearchInfo& info) noexcept
 {
@@ -348,7 +310,6 @@ void SearchAgent::searchPosition(Board& pos, SearchInfo& info) noexcept
 	Move bestMove = NOMOVE;
 	int32_t bestScore = -Value::kInfinity;
 	this->clearForSearch(pos, info);
-
 	for(uint32_t curDepth = 1 ; curDepth <= info.depth; ++curDepth)
 	{
 		std::stringstream guiStr;

@@ -7,14 +7,11 @@
 #include "searchinfo.h"
 XBoardManager::XBoardManager() noexcept : ProtocolManager() { info.protocol = ProtocolManager::kXBoard;}
 XBoardManager::~XBoardManager() noexcept {}
-
 void XBoardManager::loop()
 {
 	info.doPrint = true;
-
 	std::cout << "feature ping=1 setboard=1 colors=0 usermove=1" << std::endl;
 	std::cout << "feature done=1" << std::endl;
-
 	std::string buf;
 	std::string cmd;
 	int32_t depth = -1;
@@ -59,7 +56,6 @@ void XBoardManager::loop()
 		if(!(getline (std::cin, buf))) { continue; }
 		std::stringstream ss(buf);
 		ss >> buf;
-
 		if (buf == "quit") 
 		{
 			this->info.quit = true;
@@ -153,7 +149,6 @@ void XBoardManager::loop()
 		}
 	}
 }
-
 int32_t XBoardManager::getProtocol()
 {
 	return ProtocolManager::kXBoard;

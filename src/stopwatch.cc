@@ -1,5 +1,4 @@
 #include "stopwatch.h"
-
 Stopwatch::Stopwatch() noexcept : start_time(Time::now()) {}
 Stopwatch::~Stopwatch() noexcept
 {
@@ -15,7 +14,6 @@ float Stopwatch::stop() noexcept
 	float milli = dur.count();
 	return milli;
 }
-
 uint64_t Stopwatch::getTimeInMilli() noexcept
 {
 	using namespace std::chrono;

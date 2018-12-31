@@ -101,5 +101,4 @@ class Board
 };
 		// reconstructs the board state and checks if they match
 		// Used for debugging.
-		bool checkBoard(const Board& pos) noexcept;
 #endif

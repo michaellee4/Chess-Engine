@@ -16,21 +16,16 @@ void IO::printBitBoard(uint64_t bb) noexcept
 		{
 			int sq = fileRankToSq(file, rank);
 			int sq64 = BoardUtils::Sq120ToSq64[sq];
-
 			printf("%c", ((1ULL << sq64) & bb) ? 'X' : '-' );
 		}
 		printf("\n");
 	}
 	printf("\n\n");
 }
-
 void IO::printBoard(const Board& pos) noexcept
 {
-	
 	int sq,file,rank,piece;
-	
 	printf("\nGame Board:\n\n");
-	
 	for(rank = RANK_8; rank >= RANK_1; --rank) {
 		printf("%d  ",rank+1);
 		for(file = FILE_A; file <= FILE_H; ++file) {
@@ -40,7 +35,6 @@ void IO::printBoard(const Board& pos) noexcept
 		}
 		printf("\n");
 	}
-	
 	printf("\n   ");
 	for(file = FILE_A; file <= FILE_H; ++file) {
 		printf("%3c",'a'+file);	
@@ -56,7 +50,6 @@ void IO::printBoard(const Board& pos) noexcept
 			);
 	std::cout << "PosKey: " << pos.pos_key << "\n" << '\n';
 }
-
 void IO::printMoveList(const MoveList& list) noexcept
 {
 	for(uint32_t i = 0; i < list.size(); ++i)
@@ -68,7 +61,6 @@ void IO::printMoveList(const MoveList& list) noexcept
 	}
 		printf("MoveList Total: %u Moves\n\n", list.size() );
 }
-
 void IO::printSearchDetails(const SearchInfo& info, int32_t curDepth, int32_t bestScore, PV_Table& pv, int32_t pvMoves) noexcept
 {
 	std::stringstream guiStr;
@@ -98,7 +90,6 @@ void IO::printSearchDetails(const SearchInfo& info, int32_t curDepth, int32_t be
 	}
 	std::cout << guiStr.str() << std::flush;
 }
-
 void IO::printBestMove(Board& pos, const SearchInfo& info, const Move& bestMove) noexcept
 {
 	if(info.protocol == ProtocolManager::kUCI) 
@@ -117,21 +108,17 @@ void IO::printBestMove(Board& pos, const SearchInfo& info, const Move& bestMove)
 		IO::printBoard(pos);
 	}
 }
-
 Move IO::parseMove(std::string input, Board& pos) noexcept
 {
 	stringToLower(input);
-
 	if(input[1] < '1' || input[1] > '8') return NOMOVE;
 	if(input[0] < 'a' || input[0] > 'h') return NOMOVE;
 	if(input[3] < '1' || input[3] > '8') return NOMOVE;
 	if(input[2] < 'a' || input[2] > 'h') return NOMOVE;
-
 	uint32_t fromSq = fileRankToSq(input[0] - 'a', input[1] - '1');
 	uint32_t toSq = fileRankToSq(input[2] - 'a', input[3] - '1');
 	char promPce = input.size() > 4 ? input[4] : '*';
 	MoveList m = pos.getAllMoves();
-
 	for(uint32_t i = 0; i < m.size(); ++i)
 	{
 		Move cur = m[i];

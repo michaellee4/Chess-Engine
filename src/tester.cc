@@ -8,20 +8,14 @@
 #include <iostream>
 #include <sstream>
 PerftTester::PerftTester() noexcept : leafNodes(0) {}
-
 void PerftTester::perft(uint32_t depth, Board& pos) noexcept
 {
-    ASSERT(checkBoard(pos));  
-
 	if(depth == 0) {
         ++this->leafNodes;
         return;
     }	
-
     MoveList m = pos.getAllMoves();
-      
 	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {	
-       
         if ( !MM::makeMove(pos,m[MoveNum]))  {
             continue;
         }
@@ -29,20 +23,15 @@ void PerftTester::perft(uint32_t depth, Board& pos) noexcept
         MM::takeMove(pos);
     }
 }
-
-
 int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) noexcept
  {
-    ASSERT(checkBoard(pos));
 	if(print)
 	{
 		IO::printBoard(pos);
 		std::cout << "\n" << "Starting Test To Depth: "<< depth << "\n";
 	}
 	this->leafNodes = 0;
-
     MoveList m = pos.getAllMoves();
-    
 	for(uint32_t MoveNum = 0; MoveNum < m.size(); ++MoveNum) {
         Move move = m[MoveNum];
         if ( !MM::makeMove(pos, move))  {
@@ -59,17 +48,14 @@ int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) noexce
 		std::cout << "\n" << "Test Complete : " << this->leafNodes << " nodes visited" << "\n";
     return this->leafNodes;
 }
-
 void PerftTester::perftTestAll(Board& pos) noexcept
 {
-	
 	std::ifstream perftFile("tests/perftsuite.epd");
 	std::string linebuf;
 	std::string fen;
 	char buf;
 	int depth;
 	int expected;
-	
 	if (perftFile.is_open())
 	{
 		while (getline(perftFile, linebuf))
