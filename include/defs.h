@@ -39,6 +39,8 @@ enum {
 // Castling permissions
 enum { WKCA = 0b0001, WQCA = 0b0010, BKCA = 0b0100, BQCA = 0b1000 };
 
+enum {  HFNONE, HFALPHA, HFBETA, HFEXACT};
+
 // Provides dictionaries to get information about a piece
 namespace PieceInfo
 {

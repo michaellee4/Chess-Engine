@@ -44,7 +44,8 @@ movemaker.o: src/movemaker.cc include/movemaker.h include/defs.h \
  include/searchinfo.h include/move.h include/hash.h
 pvtable.o: src/pvtable.cc include/pvtable.h include/move.h include/defs.h \
  include/debug.h include/board.h include/defs.h include/pvtable.h \
- include/movemaker.h include/board.h include/utils.h include/searchinfo.h
+ include/movemaker.h include/board.h include/utils.h include/searchinfo.h \
+ include/eval.h
 engine.o: src/engine.cc include/engine.h include/protocol.h \
  include/board.h include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/searchinfo.h include/search.h include/eval.h \

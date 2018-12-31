@@ -128,7 +128,7 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 		}
 	}
 
-	this->pv.clear();
+	// this->pv.clear();
 	pos.ply = 0;
 
 	info.startTime = Stopwatch::getTimeInMilli();
@@ -165,7 +165,14 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     {
     	depth ++;
     }
+
     int32_t score = -Value::kInfinity;
+    Move pvMove = NOMOVE;
+
+    if(this->pv.getHashEntry(pos, pvMove, score, alpha, beta, depth))
+    {
+    	return score;
+    }
 
     if(doNull && !pos.inCheck() && pos.ply && (pos.big_pce[pos.side_to_move] > 1) && depth >= 4)
     {
@@ -186,8 +193,8 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     int32_t legalMoves = 0;
     int32_t prevAlpha = alpha;
     Move bestMove = NOMOVE;
-    Move pvMove = this->pv.get(pos);
 	score = -Value::kInfinity;
+	int32_t bestScore = -Value::kInfinity;
     if(!pvMove.isNull())
     {
 		for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
@@ -214,45 +221,54 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
         if(info.stopped)
         {
         	return 0;
-        }   
-        if(score > alpha)
+        }
+        if(score > bestScore)
         {
-        	if(score >= beta)
-        	{
-        		if(legalMoves == 1)
-        		{
-        			++info.fhf;
-        		}
-        		++info.fh;
-
-        		if(!curMove.wasCapture())
-        		{
-        			pos.search_killers[1][pos.ply] = pos.search_killers[0][pos.ply];
-        			pos.search_killers[0][pos.ply] = curMove;
-        		}
-
-        		return beta;
-        	}
-        	alpha = score;
+        	bestScore = score;
         	bestMove = curMove;
-        	if(!curMove.wasCapture())
-        	{
-        		pos.search_hist[pos.pieces[bestMove.from()]][bestMove.to()] += depth;
-        	}
+	        if(score > alpha)
+	        {
+	        	if(score >= beta)
+	        	{
+	        		if(legalMoves == 1)
+	        		{
+	        			++info.fhf;
+	        		}
+	        		++info.fh;
+
+	        		if(!curMove.wasCapture())
+	        		{
+	        			pos.search_killers[1][pos.ply] = pos.search_killers[0][pos.ply];
+	        			pos.search_killers[0][pos.ply] = curMove;
+	        		}
+	        		this->pv.insert(pos, bestMove, beta, depth, HFBETA);
+	        		return beta;
+	        	}
+	        	alpha = score;
+	        	if(!curMove.wasCapture())
+	        	{
+	        		pos.search_hist[pos.pieces[bestMove.from()]][bestMove.to()] += depth;
+	        	}
+	        }
         }
     }
     if(legalMoves == 0)
     {
     	if(pos.sqAttacked(pos.king_sq[pos.side_to_move], !pos.side_to_move))
     	{
-    		return -Value::kMateScore + pos.ply;
+    		// use infinity?
+    		return -Value::kInfinity + pos.ply;
     	}
     	else return 0;
     }
 
     if(alpha != prevAlpha)
     {
-    	this->pv.insert(pos, bestMove);
+    	this->pv.insert(pos, bestMove, bestScore, depth, HFEXACT);
+    }
+    else
+    {
+    	this->pv.insert(pos, bestMove, alpha, depth, HFALPHA);
     }
 	return alpha;
 }
@@ -291,8 +307,6 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 	MoveList m = pos.getAllCaptureMoves();
 
     int32_t legalMoves = 0;
-    int32_t prevAlpha = alpha;
-    Move bestMove = NOMOVE;
     int score = -Value::kInfinity;
 
     for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
@@ -322,13 +336,8 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
         		return beta;
         	}
         	alpha = score;
-        	bestMove = curMove;
         }
     }
-	if(alpha != prevAlpha)
-	{
-		this->pv.insert(pos, bestMove);
-	}
 	return alpha;
 }
 
