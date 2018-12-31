@@ -45,7 +45,7 @@ class MoveList
 		static constexpr uint32_t kPvMoveBonus = 2000000;
 		
 		MoveList() noexcept; 
-		MoveList(const MoveList& o) noexcept;
+		MoveList(const MoveList& o);
 		MoveList(MoveList&& o) noexcept;
 		void generateAllMoves(const Board& pos) noexcept;
 		void generateAllCaptureMoves(const Board& pos) noexcept;

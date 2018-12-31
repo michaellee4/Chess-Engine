@@ -43,14 +43,12 @@ int32_t Evaluator::evalBishops(const Board& pos) noexcept
 {
 	int32_t pce = wB;	
 	int32_t BiScore = 0;
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		BiScore += Value::BishopTable[Sq120ToSq64[sq]];
+	for(int32_t sq : pos.piece_list[pce]) {
+			BiScore += Value::BishopTable[Sq120ToSq64[sq]];
 	}	
 	pce = bB;	
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		BiScore -= Value::BishopTable[WhiteToBlack[Sq120ToSq64[sq]]];
+	for(int32_t sq : pos.piece_list[pce]) {
+			BiScore -= Value::BishopTable[WhiteToBlack[Sq120ToSq64[sq]]];
 	}	
 	if(pos.piece_list[wB].size() >= 2) BiScore += Value::kBishopPair;
 	if(pos.piece_list[bB].size() >= 2) BiScore -= Value::kBishopPair;
@@ -146,14 +144,12 @@ int32_t Evaluator::evalKnights(const Board& pos) noexcept
 {
 	int32_t pce = wN;	
 	int32_t KnScore = 0;
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		KnScore += Value::KnightTable[Sq120ToSq64[sq]];
+	for(int32_t sq : pos.piece_list[pce]) {
+			KnScore += Value::KnightTable[Sq120ToSq64[sq]];
 	}	
 	pce = bN;	
-	for(uint32_t pceNum = 0; pceNum < pos.piece_list[pce].size(); ++pceNum) {
-		int32_t sq = pos.piece_list[pce][pceNum];
-		KnScore -= Value::KnightTable[WhiteToBlack[Sq120ToSq64[sq]]];
+	for(int32_t sq : pos.piece_list[pce]) {
+			KnScore -= Value::KnightTable[WhiteToBlack[Sq120ToSq64[sq]]];
 	}			
 	return KnScore;
 }

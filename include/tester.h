@@ -10,7 +10,7 @@ class PerftTester
 {
 private:
 	const uint32_t depth_limit = 6;
-	long leafNodes;
+	uint64_t leafNodes;
 	void perft(uint32_t depth, Board& pos) noexcept;
 public:
 	int perftTest(uint32_t depth, Board& pos, bool print) noexcept;

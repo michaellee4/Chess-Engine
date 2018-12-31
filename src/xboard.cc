@@ -6,7 +6,7 @@
 #include <cstdio>
 #include "searchinfo.h"
 XBoardManager::XBoardManager() noexcept : ProtocolManager() { info.protocol = ProtocolManager::kXBoard;}
-XBoardManager::~XBoardManager() noexcept {}
+XBoardManager::~XBoardManager() noexcept = default;
 void XBoardManager::loop()
 {
 	info.doPrint = true;
@@ -27,7 +27,7 @@ void XBoardManager::loop()
 	while (true)
 	{
 		std::cout << std::flush;
-		if(this->pos.side_to_move == (unsigned)engineSide && !sa.isGameOver(this->pos))
+		if(this->pos.side_to_move == static_cast<unsigned>(engineSide) && !sa.isGameOver(this->pos))
 		{
 			this->info.startTime = Stopwatch::getTimeInMilli();
 			this->info.depth = depth;
@@ -38,7 +38,7 @@ void XBoardManager::loop()
 				time -= 50;
 				this->info.stopTime = this->info.startTime + time + inc;
 			}
-			if(depth == -1 || depth > (signed)kMaxSearchDepth)
+			if(depth == -1 || depth > static_cast<signed>(kMaxSearchDepth))
 			{
 				this->info.depth = kMaxSearchDepth;
 			}

@@ -9,7 +9,7 @@ MoveList::MoveList() noexcept : moves()
 {
 	moves.reserve(kMaxPossibleMoves);
 }
-MoveList::MoveList(const MoveList& o) noexcept : moves(o.moves) {}
+MoveList::MoveList(const MoveList& o) = default;
 MoveList::MoveList(MoveList&& o) noexcept : moves(std::move(o.moves)) {}
 void MoveList::addQuietMove(const Board& pos, Move&& move) noexcept
 {
@@ -106,9 +106,9 @@ void MoveList::generateBishopMoves(const Board& pos, uint32_t side) noexcept
 	for(uint32_t pce = 0; pce < pos.piece_list[bi].size(); ++pce )
 	{
 		int curBiSq = pos.piece_list[bi][pce];
-		for(uint32_t move = 0; move < Attack::BiMoves.size(); ++move )
+		for(int BiMove : Attack::BiMoves)
 		{
-			int newSq = curBiSq + Attack::BiMoves[move];
+			int newSq = curBiSq + BiMove;
 			while(sqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
@@ -120,7 +120,7 @@ void MoveList::generateBishopMoves(const Board& pos, uint32_t side) noexcept
 					break;
 				}
 				this->addQuietMove(pos, Move(curBiSq, newSq, EMPTY, EMPTY, 0));
-				newSq += Attack::BiMoves[move];
+				newSq += BiMove;
 			}
 		}
 	}
@@ -131,9 +131,9 @@ void MoveList::generateRookMoves(const Board& pos, uint32_t side) noexcept
 	for(uint32_t pce = 0; pce < pos.piece_list[rk].size(); ++pce)
 	{
 		int curRkSq = pos.piece_list[rk][pce];
-		for(uint32_t move = 0; move < Attack::RkMoves.size(); ++move)
+		for(int RkMove : Attack::RkMoves)
 		{
-			int newSq = curRkSq + Attack::RkMoves[move];
+			int newSq = curRkSq + RkMove;
 			while(sqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
@@ -145,7 +145,7 @@ void MoveList::generateRookMoves(const Board& pos, uint32_t side) noexcept
 					break;
 				}
 				this->addQuietMove(pos, Move(curRkSq, newSq, EMPTY, EMPTY, 0));
-				newSq += Attack::RkMoves[move];
+				newSq += RkMove;
 			}
 		}
 	}
@@ -156,9 +156,9 @@ void MoveList::generateQueenMoves(const Board& pos, uint32_t side) noexcept
 	for(uint32_t pce = 0; pce < pos.piece_list[Qn].size(); ++pce)
 	{
 		int curQn = pos.piece_list[Qn][pce];
-		for(uint32_t move = 0; move < Attack::BiMoves.size(); ++move)
+		for(int BiMove : Attack::BiMoves)
 		{
-			int newSq = curQn + Attack::BiMoves[move];
+			int newSq = curQn + BiMove;
 			while(sqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
@@ -170,16 +170,16 @@ void MoveList::generateQueenMoves(const Board& pos, uint32_t side) noexcept
 					break;
 				}
 					this->addQuietMove(pos, Move(curQn, newSq, EMPTY, EMPTY, 0));
-				newSq += Attack::BiMoves[move];
+				newSq += BiMove;
 			}
 		}
 	}
 	for(uint32_t pce = 0; pce < pos.piece_list[Qn].size(); ++pce)
 	{
 		int curQn = pos.piece_list[Qn][pce];
-		for(uint32_t move = 0; move < Attack::RkMoves.size(); ++move)
+		for(int RkMove : Attack::RkMoves)
 		{
-			int newSq = curQn + Attack::RkMoves[move];
+			int newSq = curQn + RkMove;
 			while(sqOnBoard(newSq))
 			{
 				if(pos.pieces[newSq] != EMPTY)
@@ -191,7 +191,7 @@ void MoveList::generateQueenMoves(const Board& pos, uint32_t side) noexcept
 					break;
 				}
 					this->addQuietMove(pos, Move(curQn, newSq, EMPTY, EMPTY, 0));
-				newSq += Attack::RkMoves[move];
+				newSq += RkMove;
 			}
 		}
 	}
@@ -208,9 +208,9 @@ void MoveList::generateKnightMoves(const Board& pos, uint32_t side) noexcept
 	for(uint32_t pce = 0; pce < pos.piece_list[kn].size(); ++pce)
 	{
 		int curKnSq = pos.piece_list[kn][pce];
-		for(uint32_t move = 0; move < Attack::KnMoves.size(); ++move)
+		for(int KnMove : Attack::KnMoves)
 		{
-			int newSq = curKnSq + Attack::KnMoves[move];
+			int newSq = curKnSq + KnMove;
 			if(sqOnBoard(newSq))
 			{
 				if(PieceInfo::PieceCol[pos.pieces[newSq]]== !side)
@@ -230,9 +230,9 @@ void MoveList::generateKingMoves(const Board& pos, uint32_t side) noexcept
 {
 	int ki = side == WHITE ? wK : bK;
 	int kingSq = pos.piece_list[ki][0];
-	for(uint32_t move = 0; move < Attack::KiMoves.size(); ++move)
+	for(int KiMove : Attack::KiMoves)
 	{
-		int newSq = kingSq + Attack::KiMoves[move];
+		int newSq = kingSq + KiMove;
 		if(sqOnBoard(newSq) /*&& !pos.sqAttacked(newSq, !side)*/)
 		{
 			if(pos.pieces[newSq] == EMPTY)
@@ -280,11 +280,11 @@ void MoveList::generatePawnMoves(const Board& pos, uint32_t side) noexcept
 		}
 		if(pos.en_pas != NO_SQ)
 		{
-			if((unsigned)(sq + cap1) == pos.en_pas)
+			if(static_cast<unsigned>(sq + cap1) == pos.en_pas)
 			{
 				this->addEnPasMove(pos, Move(sq, sq + cap1, EMPTY, EMPTY, EP));
 			}
-			if((unsigned)(sq + cap2) == pos.en_pas)
+			if(static_cast<unsigned>(sq + cap2) == pos.en_pas)
 			{
 				this->addEnPasMove(pos, Move(sq, sq + cap2, EMPTY, EMPTY, EP));
 			}

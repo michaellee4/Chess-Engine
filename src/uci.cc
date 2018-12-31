@@ -7,7 +7,7 @@
 #include <iostream>
 #include <sstream>
 UCIManager::UCIManager() noexcept : ProtocolManager() { info.protocol = ProtocolManager::kUCI;}
-UCIManager::~UCIManager() noexcept {}
+UCIManager::~UCIManager() noexcept = default;
 // go depth 6 wtime 180000 btime 100000 binc 1000 winc 1000 movetime 1000 movestogo 40
 void UCIManager::parseGoCmd(const std::string& input)
 {
@@ -72,7 +72,7 @@ void UCIManager::parseGoCmd(const std::string& input)
 	std::cout<<"time:"<<time<<" start:"<<this->info.startTime<<" stop:"<<this->info.stopTime<<" depth:"<<this->info.depth<<" timeset:"<<this->info.timeLimit<<'\n';
 	sa.searchPosition(this->pos, this->info);
 }
-void UCIManager::parsePosition(const std::string input)
+void UCIManager::parsePosition(const std::string& input)
 {
 	std::stringstream ss(input);
 	std::string buf;
@@ -130,7 +130,7 @@ void UCIManager::loop()
 		std::cout<<std::flush;
 		if(!(getline (std::cin, buf))) { continue; }
 		if(buf == "\n") { continue; }
-		std::string firstWord = buf.substr(0, buf.find(" "));
+		std::string firstWord = buf.substr(0, buf.find(' '));
 		if(firstWord == "isready")
 		{
 			std::cout << "readyok\n";

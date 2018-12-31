@@ -15,8 +15,8 @@ score(0){}
 Move::Move(uint32_t _move, int32_t _score) noexcept : move(_move), score(_score){}
 Move::Move(uint32_t _move) noexcept : move(_move), score(0) {}
 Move::Move() noexcept : move(0), score(0) {}
-Move::Move(const Move& o) noexcept : move(o.move), score(o.score) {}
-Move::Move(Move&& o) noexcept : move(std::move(o.move)), score(std::move(o.score)){}
+Move::Move(const Move& o) noexcept  = default;
+Move::Move(Move&& o) noexcept : move(o.move), score(o.score){}
 const std::string Move::toString() const noexcept
 {
 	if(this->move == 0)
@@ -33,12 +33,13 @@ const std::string Move::toString() const noexcept
 	if(promoted)
 	{
 		char pChar = 'q';
-		if(promoted == wN || promoted == bN)
+		if(promoted == wN || promoted == bN) {
 			pChar = 'n';
-		else if(promoted == wR || promoted == bR)
+		} else if(promoted == wR || promoted == bR) {
 			pChar = 'r';
-		else if(promoted == wB || promoted == bB)
+		} else if(promoted == wB || promoted == bB) {
 			pChar = 'b';
+}
 		stream << pChar;
 	}
   	return stream.str();
@@ -56,8 +57,8 @@ Move& Move::operator=(Move&& o) noexcept
 {
 	if(this != &o)
 	{
-		this->move = std::move(o.move);
-		this->score = std::move(o.score);
+		this->move = o.move;
+		this->score = o.score;
 	}
 	return *this;
 }

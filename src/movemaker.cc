@@ -79,8 +79,9 @@ void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos) noexcept
 }
 bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 {
-	if(moveInfo.isNull())
+	if(moveInfo.isNull()) {
 		return false;
+}
 	int from = moveInfo.from();
 	int to = moveInfo.to();
 	int side = pos.side_to_move;

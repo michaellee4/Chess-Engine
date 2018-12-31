@@ -83,10 +83,10 @@ class Board
 	public:
 		Board() noexcept;
 
-		Board(const std::string fen) noexcept;
+		Board(const std::string& fen) noexcept;
 
 		// Reads in a Forseth-Edwards Notation string and prepares the board in accordance ot it.
-		void parseFEN(const std::string) noexcept;
+		void parseFEN(const std::string&) noexcept;
 		
 		// returns the number of times that a Sq is attacked by the given side
 		uint32_t sqAttacked(const uint32_t sq, const uint32_t side) const noexcept;

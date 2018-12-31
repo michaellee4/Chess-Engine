@@ -121,7 +121,7 @@ void Init::initEvalMasks() noexcept
 	{
 		// forward square
 		int32_t fsq = sq + kNumFilesRanks;
-		while(fsq < (signed)kChessboardSize)
+		while(fsq < static_cast<signed>(kChessboardSize))
 		{
 			whitePassedMask[sq] |= (1ULL << fsq);
 			fsq += kNumFilesRanks;
@@ -136,7 +136,7 @@ void Init::initEvalMasks() noexcept
 		{
 			isolatedMask[sq] |= FileMask[FileBrd[Sq64ToSq120[sq]] - 1];
 			fsq = sq + 7;
-			while(fsq < (signed)kChessboardSize)
+			while(fsq < static_cast<signed>(kChessboardSize))
 			{
 				whitePassedMask[sq] |= (1ULL << fsq);
 				fsq += kNumFilesRanks;
@@ -152,7 +152,7 @@ void Init::initEvalMasks() noexcept
 		{
 			isolatedMask[sq] |= FileMask[FileBrd[Sq64ToSq120[sq]] + 1];
 			fsq = sq + 9;
-			while(fsq < (signed)kChessboardSize)
+			while(fsq < static_cast<signed>(kChessboardSize))
 			{
 				whitePassedMask[sq] |= (1ULL << fsq);
 				fsq += kNumFilesRanks;

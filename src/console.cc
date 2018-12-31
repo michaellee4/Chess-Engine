@@ -7,7 +7,7 @@
 #include <iostream>
 #include <sstream>
 ConsoleManager::ConsoleManager() noexcept : ProtocolManager() { info.protocol = ProtocolManager::kConsole;}
-ConsoleManager::~ConsoleManager() noexcept {}
+ConsoleManager::~ConsoleManager() noexcept = default;
 void ConsoleManager::loop()
 {
 	std::cout << "\nConsole Mode! \n";

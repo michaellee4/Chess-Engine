@@ -5,7 +5,7 @@
 int BB::popBit(uint64_t& bb) noexcept
 {
   uint64_t b = bb ^ (bb - 1);
-  unsigned int fold = (unsigned) ((b & 0xffffffff) ^ (b >> 32));
+  auto fold = static_cast<unsigned>((b & 0xffffffff) ^ (b >> 32));
   bb &= (bb - 1);
   return BB::BitTable[(fold * 0x783a9b23) >> 26];
 }

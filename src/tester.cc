@@ -37,15 +37,17 @@ int PerftTester::perftTest(uint32_t depth, Board& pos, bool print = true) noexce
         if ( !MM::makeMove(pos, move))  {
             continue;
         }
-        long cumnodes = this->leafNodes;
+        uint64_t cumnodes = this->leafNodes;
         perft(depth - 1, pos);
         MM::takeMove(pos);        
-        long oldnodes = this->leafNodes - cumnodes;
-		if(print)
+        uint64_t oldnodes = this->leafNodes - cumnodes;
+		if(print) {
     		std::cout << "move " << MoveNum + 1 << " : " << move.toString() << " : " << oldnodes<<"\n";
+}
 	}
-	if(print)
+	if(print) {
 		std::cout << "\n" << "Test Complete : " << this->leafNodes << " nodes visited" << "\n";
+}
     return this->leafNodes;
 }
 void PerftTester::perftTestAll(Board& pos) noexcept

@@ -34,7 +34,7 @@ Board::Board() noexcept :
 	}
 	this->parseFEN(STARTFEN);
 }
-Board::Board(const std::string fen) noexcept :
+Board::Board(const std::string& fen) noexcept :
 									pieces(kBoardArraySize),
 									pawns(3), 
 									king_sq(kNumPlayers), 
@@ -60,7 +60,7 @@ Board::Board(const std::string fen) noexcept :
 	}
 	this->parseFEN(fen);
 }
-void Board::resetBoard(void) noexcept
+void Board::resetBoard() noexcept
 {
 	for(uint32_t i = 0; i < kBoardArraySize; ++i)
 	{
@@ -137,9 +137,9 @@ void Board::setUpCastlePerm(const std::string& section) noexcept
 	this->castle_perm = 0;
 	if(section[0] != '-')
 	{
-		for(uint32_t i = 0; i < section.size(); ++i )
+		for(char i : section)
 		{
-			switch(section[i])
+			switch(i)
 			{
 				case 'K':
 					this->castle_perm |= WKCA;
@@ -168,13 +168,12 @@ void Board::getenPassant(const std::string& section) noexcept
 }
 void Board::setUpMoveCounters(std::istringstream& stream, std::string& section) noexcept
 {
-	using namespace std;
 	if(stream.good())
 	{
-		this->fifty_move = stoi(section);
+		this->fifty_move = std::stoi(section);
 		// fullmove counter
 		std::getline(stream, section, ' ');
-		this->hist_ply = (stoi(section) - 1 ) * 2 + (this->side_to_move);
+		this->hist_ply = (std::stoi(section) - 1 ) * 2 + (this->side_to_move);
 	}
 	else
 	{
@@ -182,9 +181,8 @@ void Board::setUpMoveCounters(std::istringstream& stream, std::string& section) 
 		this->hist_ply = 1;
 	}
 }
-void Board::parseFEN(const std::string fen) noexcept
+void Board::parseFEN(const std::string& fen) noexcept
 {
-	using namespace std;
 	this->resetBoard();
 	std::istringstream stream(fen);
 	std::string section;
@@ -241,39 +239,44 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 	// Check Pawn
 	if(attacker == WHITE)
 	{
-		if(this->pieces[sq + Attack::wPCap[0]] == wP)
+		if(this->pieces[sq + Attack::wPCap[0]] == wP) {
 			++numAttackers;
-		if(this->pieces[sq + Attack::wPCap[1]] == wP)
+}
+		if(this->pieces[sq + Attack::wPCap[1]] == wP) {
 			++numAttackers;
+}
 	}
 	else
 	{
-		if(this->pieces[sq + Attack::bPCap[0]] == bP)
+		if(this->pieces[sq + Attack::bPCap[0]] == bP) {
 			++numAttackers;
-		if(this->pieces[sq + Attack::bPCap[1]] == bP)
+}
+		if(this->pieces[sq + Attack::bPCap[1]] == bP) {
 			++numAttackers;
+}
 	}
 	// Check Knight
 	uint32_t attackingKnight = attacker == WHITE ? wN : bN;
-	for(uint32_t i = 0; i < Attack::KnMoves.size(); ++i)
+	for(int KnMove : Attack::KnMoves)
 	{
-		if(this->pieces[sq + Attack::KnMoves[i]] == attackingKnight)
+		if(this->pieces[sq + KnMove] == attackingKnight) {
 			++numAttackers;
+}
 	}
 	// Check Horizontal and Vertical
 	uint32_t attackingRook = attacker == WHITE ? wR : bR;
 	uint32_t attackingQueen = attacker == WHITE ? wQ : bQ;
-	for(uint32_t i = 0 ; i < Attack::RkMoves.size(); ++i )
+	for(uint32_t move : Attack::RkMoves)
 	{
-		uint32_t move = Attack::RkMoves[i];
-		uint32_t t_sq = sq + move;
+			uint32_t t_sq = sq + move;
 		uint32_t pce = this->pieces[t_sq];
 		while(pce != OFFBOARD)
 		{
 			if(pce != EMPTY)
 			{
-				if(pce == attackingRook || pce == attackingQueen)
+				if(pce == attackingRook || pce == attackingQueen) {
 					++numAttackers;
+}
 				break;
 			}
 			t_sq += move;
@@ -281,17 +284,17 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 		}
 	}
 	uint32_t attackingBishop = attacker == WHITE ? wB : bB;
-	for(uint32_t i = 0 ; i < Attack::BiMoves.size(); ++i )
+	for(uint32_t move : Attack::BiMoves)
 	{
-		uint32_t move = Attack::BiMoves[i];
-		uint32_t t_sq = sq + move;
+			uint32_t t_sq = sq + move;
 		uint32_t pce = this->pieces[t_sq];
 		while(pce != OFFBOARD)
 		{
 			if(pce != EMPTY)
 			{
-				if(pce == attackingBishop || pce == attackingQueen)
+				if(pce == attackingBishop || pce == attackingQueen) {
 					++numAttackers;
+}
 				break;
 			}
 			t_sq += move;
@@ -299,10 +302,11 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 		}
 	}
 	uint32_t attackingKing = attacker == WHITE ? wK : bK;
-	for(uint32_t i = 0; i < Attack::KiMoves.size(); ++i)
+	for(int KiMove : Attack::KiMoves)
 	{
-		if(this->pieces[sq + Attack::KiMoves[i]] == attackingKing)
+		if(this->pieces[sq + KiMove] == attackingKing) {
 			++numAttackers;
+}
 	}
 	return numAttackers;
 }
@@ -321,7 +325,7 @@ MoveList Board::getAllCaptureMoves() const noexcept
 void Board::flipBoard() noexcept
 {
 	using namespace BoardUtils;
-	std::array<int32_t, kChessboardSize> tmpPieceArray;
+	std::array<int32_t, kChessboardSize> tmpPieceArray{};
 	std::array<int32_t, kNumPceTypes> inversePieceEnum {EMPTY, bP, bN, bB, bR, bQ, bK, wP, wN, wB, wR, wQ, wK};
 	int32_t tmpSide = !this->side_to_move;
 	int32_t tmpCastlePerm = 0;

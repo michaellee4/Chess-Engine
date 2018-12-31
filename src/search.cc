@@ -37,8 +37,9 @@ int32_t SearchAgent::isRepetition(const Board& pos) noexcept
 {
 	for(int32_t idx = pos.hist_ply - pos.fifty_move; idx < pos.hist_ply - 1; ++idx)
 	{
-		if(pos.pos_key == pos.history[idx].pos_key)
+		if(pos.pos_key == pos.history[idx].pos_key) {
 			return true;
+}
 	}
 	return false;
 }
@@ -139,7 +140,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     {
     	return 0;
     }
-    if((unsigned)pos.ply > kMaxSearchDepth - 1)
+    if(static_cast<unsigned>(pos.ply) > kMaxSearchDepth - 1)
     {
     	return eval.evaluatePosition(pos);
     }
@@ -257,7 +258,7 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
 	{
 		return 0;
 	}
-	if((unsigned)pos.ply > kMaxSearchDepth - 1)
+	if(static_cast<unsigned>(pos.ply) > kMaxSearchDepth - 1)
 	{
 		return eval.evaluatePosition(pos);
 	}

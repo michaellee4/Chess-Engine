@@ -8,7 +8,7 @@ class UCIManager : public ProtocolManager
 {
 public:
 	void parseGoCmd(const std::string& cmd);
-	void parsePosition(const std::string input);
+	void parsePosition(const std::string& input);
 	void loop() override;
 	int32_t getProtocol() override;
 	UCIManager() noexcept;
