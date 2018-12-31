@@ -3,5 +3,3 @@ Integrate CMake
 Add Unit Tests
 Use Ncurses for keyboard support
 multithreading? (big if)
-move PV_table and Pv_arr into search (put both in class with wrapper methods);
-k7/8/8/6p1/7P/8/8/K7 b - - 0 1 causes crash at mid depth

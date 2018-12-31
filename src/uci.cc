@@ -175,11 +175,13 @@ void UCIManager::loop()
 			ss >> buf;
 			// option name
 			ss>>buf;
-			if(buf == "Book" || buf == "book")
+			stringToLower(buf);
+			if( buf == "book")
 			{
 				std::string tmp = ss.str();
 				if(tmp.find("true") != std::string::npos)
 				{
+					std::cout << "here"<<std::endl;
 					Engine::getConfig().useBook = true;
 				}
 				else
