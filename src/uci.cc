@@ -139,7 +139,6 @@ void UCIManager::loop()
 		std::cout<<std::flush;
 		if(!(getline (std::cin, buf))) { continue; }
 		if(buf == "\n") { continue; }
-		stringToLower(buf);
 		std::stringstream ss(buf);
 		std::string firstWord;
 		ss >>firstWord;
@@ -176,7 +175,7 @@ void UCIManager::loop()
 			ss >> buf;
 			// option name
 			ss>>buf;
-			if(buf == "book")
+			if(buf == "Book" || buf == "book")
 			{
 				std::string tmp = ss.str();
 				if(tmp.find("true") != std::string::npos)
