@@ -11,26 +11,31 @@
 #include <sstream>
 #include <algorithm>
 #include <cstring>
+
 #ifdef WIN32
-#include "windows.h"
+	#include "windows.h"
 #else
-#include "sys/time.h"
-#include "sys/select.h"
-#include "string.h"
+	#include "sys/time.h"
+	#include "sys/select.h"
+	#include "string.h"
 #endif
+
 bool sqOnBoard(uint32_t sq) noexcept
 {
 	return BoardUtils::Sq120ToSq64[sq] != 65;
 }
+
 //return the 120 sq value of a given file and rank
 int fileRankToSq(int file, int rank) noexcept
 {
 	return 21 + file + rank * 10;
 }
+
 bool isPiece(int piece) noexcept
 {
 	return (piece != OFFBOARD && piece != EMPTY && piece != NO_SQ);
 }
+
 std::string sqToString(const int sq) noexcept
 {
 	std::ostringstream stream;
@@ -39,6 +44,7 @@ std::string sqToString(const int sq) noexcept
 	stream<<file<<rank;
 	return stream.str();
 }
+
 //https://stackoverflow.com/questions/37396278/how-to-generate-very-large-random-number-in-c
 uint64_t randU64() noexcept
 {
@@ -51,26 +57,31 @@ uint64_t randU64() noexcept
 	uniform_int_distribution<uint64_t> distribution(0,0xFFFFFFFFFFFFFFFF);
 	return distribution(generator);
 }
+
 void showAttackedSqs(const int side,Board& pos) noexcept
 {
 	int rank = 0;
 	int file = 0;
 	int sq = 0;
-	printf("\n\nSquares attacked by:%c\n",IO::SideChar[side]);
-	for(rank = RANK_8; rank >= RANK_1; --rank) {
-		for(file = FILE_A; file <= FILE_H; ++file) {
+	std::cout << "\n\nSquares attacked by:"<<IO::SideChar[side]<<'\n';
+	for(rank = RANK_8; rank >= RANK_1; --rank) 
+	{
+		for(file = FILE_A; file <= FILE_H; ++file) 
+		{
 			sq = fileRankToSq(file,rank);
 			int numAtk = pos.sqAttacked(sq, side);
-			printf("%i",numAtk );
+			std::cout << numAtk;
 		}
-		printf("\n");
+		std::cout<<'\n';
 	}  
-    printf("\n\n");
+	std::cout<<"\n\n";
 }
+
 void stringToLower(std::string& str) noexcept
 {
 	std::transform(str.begin(), str.end(), str.begin(), ::tolower);
 }
+
 // http://home.arcor.de/dreamlike/chess/
 // All credits go to above for the following code
 int InputWaiting()
@@ -105,6 +116,7 @@ int InputWaiting()
 	}
 #endif
 }
+
 // Can probably change this to use C++ I/O
 void ReadInput(SearchInfo& info) {
   int             bytes;

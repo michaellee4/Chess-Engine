@@ -8,6 +8,7 @@
 #include<cstdio>
 #include <algorithm>
 using namespace MoveFlags;
+
 void MM::clearPiece(const uint32_t sq, Board& pos) noexcept
 {
 	int pce = pos.pieces[sq];
@@ -34,6 +35,7 @@ void MM::clearPiece(const uint32_t sq, Board& pos) noexcept
 	}
 	pos.piece_list[pce].erase(std::remove(pos.piece_list[pce].begin(), pos.piece_list[pce].end(), sq), pos.piece_list[pce].end());
 }
+
 void MM::addPiece(const uint32_t sq, Board& pos, const uint32_t pce) noexcept
 {
 	int col = PieceInfo::PieceCol[pce];
@@ -59,6 +61,7 @@ void MM::addPiece(const uint32_t sq, Board& pos, const uint32_t pce) noexcept
 	pos.material[col]+=PieceInfo::PieceVal[pce];
 	pos.piece_list[pce].push_back(sq);
 }
+
 void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos) noexcept
 {
 	int pce = pos.pieces[src];
@@ -77,6 +80,7 @@ void MM::movePiece(const uint32_t src, const uint32_t dest, Board& pos) noexcept
 	//find and replace the old sq with the dest sq
 	*std::find(pos.piece_list[pce].begin(), pos.piece_list[pce].end(), src)  = dest;	
 }
+
 bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 {
 	if(moveInfo.isNull()) {
@@ -111,12 +115,15 @@ bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 			default:  break;
 		}
 	}
+
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
+
 	Hash::hashCa(pos);
 	pos.history[pos.hist_ply] = UndoMove(move, pos);
 	pos.castle_perm &= CastlePerm[from] & CastlePerm[to];
 	pos.en_pas = NO_SQ;
 	Hash::hashCa(pos);
+
 	int captured = moveInfo.captured();
 	++pos.fifty_move;
 	if(captured != EMPTY)
@@ -124,8 +131,10 @@ bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 		MM::clearPiece(to, pos);
 		pos.fifty_move = 0;
 	}
+
 	++pos.hist_ply;
 	++pos.ply;
+
 	if(PieceInfo::PiecePawn[pos.pieces[from]])
 	{
 		pos.fifty_move = 0;
@@ -136,19 +145,24 @@ bool MM::makeMove(Board& pos, const Move& moveInfo) noexcept
 			Hash::hashEP(pos);
 		}
 	}
+
 	MM::movePiece(from , to , pos);
+
 	int promotion = moveInfo.promoted();
 	if(promotion != EMPTY)
 	{
 		MM::clearPiece(to, pos);
 		MM::addPiece(to, pos, promotion);
 	}
+
 	if(PieceInfo::PieceKing[pos.pieces[to]])
 	{
 		pos.king_sq[pos.side_to_move] = to;
 	}
+
 	pos.side_to_move ^= 1;
 	Hash::hashSide(pos);
+
 	if(pos.sqAttacked(pos.king_sq[side], !side))
 	{
 		MM::takeMove(pos);
@@ -160,20 +174,26 @@ void MM::takeMove(Board& pos) noexcept
 {
 	--pos.hist_ply;
 	--pos.ply;
+
 	Move moveInfo = Move(pos.history[pos.hist_ply].move);
 	int move = moveInfo.move;
 	int from = moveInfo.from();
 	int to = moveInfo.to();
+
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
 	Hash::hashCa(pos);
+
 	UndoMove& undo = pos.history[pos.hist_ply];
 	pos.castle_perm = undo.castle_perm;
 	pos.fifty_move = undo.fifty_move;
 	pos.en_pas = undo.en_pas;
+
     if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
+
     Hash::hashCa(pos);
 	pos.side_to_move ^= 1;
 	Hash::hashSide(pos);
+
 	if(move & EP)
 	{
 		int offset = Attack::PnMoves[pos.side_to_move];
@@ -199,16 +219,19 @@ void MM::takeMove(Board& pos) noexcept
 			default:  break;
 		}
 	}
+
 	MM::movePiece(to, from, pos);
 	if (PieceInfo::PieceKing[pos.pieces[from]])
 	{
 		pos.king_sq[pos.side_to_move] = from;
 	}
+
 	int captured = moveInfo.captured();
 	if(captured != EMPTY)
 	{
 		MM::addPiece(to, pos, captured);
 	}
+
 	int promotion = moveInfo.promoted();
 	if(promotion != EMPTY)
 	{
@@ -216,31 +239,42 @@ void MM::takeMove(Board& pos) noexcept
 		MM::addPiece(from, pos, (PieceInfo::PieceCol[promotion] == WHITE ? wP : bP));
 	}
 }
+
 void MM::makeNullMove(Board& pos) noexcept
 {
 	pos.ply++;
+
 	UndoMove& uMove = pos.history[pos.hist_ply];
 	uMove.pos_key = pos.pos_key;
+
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
+
 	uMove.move = NOMOVE.move;
 	uMove.en_pas = pos.en_pas;
 	uMove.fifty_move = pos.fifty_move;
 	uMove.castle_perm = pos.castle_perm;
 	pos.en_pas = NO_SQ;
+
 	(void) uMove;
+
 	pos.side_to_move = !pos.side_to_move;
 	Hash::hashSide(pos);
+
 	pos.hist_ply ++;
 }
+
 void MM::takeNullMove(Board& pos) noexcept
 {
 	pos.hist_ply --;
 	pos.ply --;
+
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
+
 	UndoMove& uMove = pos.history[pos.hist_ply];
 	pos.castle_perm = uMove.castle_perm;
 	pos.fifty_move = uMove.fifty_move;
 	pos.en_pas = uMove.en_pas;
+	
 	if(pos.en_pas != NO_SQ) Hash::hashEP(pos);
 	pos.side_to_move = !pos.side_to_move;
 	Hash::hashSide(pos);

@@ -8,6 +8,7 @@
 #include "movelist.h"
 #include <vector>
 #include <iostream>
+
 namespace BoardUtils
 {
 	// *** used in init
@@ -16,21 +17,25 @@ namespace BoardUtils
 	std::array<int32_t, kBoardArraySize> FileBrd;
 	std::array<int32_t, kBoardArraySize> RankBrd;
 }
+
 namespace Hash
 {
  	std::array<std::array<uint64_t, kBoardArraySize>, kNumPceTypes> PieceKeys;
  	uint64_t SideKey;
 	std::array<uint64_t, 16> CastleKeys;
 }
+
 namespace BB
 {
 	std::array<uint64_t, kChessboardSize> SetMask;
 	std::array<uint64_t, kChessboardSize> ClearMask;
 }
+
 namespace MvvLva
 {
 	std::array<std::array<int32_t, kNumPceTypes>, kNumPceTypes> MvvLvaScore;
 }
+
 namespace EvalBB
 {
 	std::array<uint64_t, kNumFilesRanks> FileMask;
@@ -39,6 +44,7 @@ namespace EvalBB
 	std::array<uint64_t, kChessboardSize> blackPassedMask;
 	std::array<uint64_t, kChessboardSize> isolatedMask;
 }
+
 void Init::initFileRankBrd() noexcept
 {
 	for(uint32_t sq = 0; sq < kBoardArraySize; ++sq)
@@ -56,6 +62,7 @@ void Init::initFileRankBrd() noexcept
 		}
 	}
 }
+
 // creates 2 arrays to map 64 <-> 120 board square representations
 void Init::initSq120ToSq64() noexcept
 {
@@ -80,6 +87,7 @@ void Init::initSq120ToSq64() noexcept
 		}
 	}
 }
+
 void Init::initBitMasks() noexcept
 {
 	for(uint32_t index = 0; index < kChessboardSize; ++index)
@@ -88,6 +96,7 @@ void Init::initBitMasks() noexcept
 		BB::ClearMask[index] = ~BB::SetMask[index];
 	}
 }
+
 void Init::initHashKeys() noexcept
 {
 	for(uint32_t i = 0; i < kNumPceTypes; ++i )
@@ -103,6 +112,7 @@ void Init::initHashKeys() noexcept
 		Hash::CastleKeys[i] = randU64();
 	}
 }
+
 void Init::initEvalMasks() noexcept
 {
 	using namespace EvalBB;
@@ -166,6 +176,7 @@ void Init::initEvalMasks() noexcept
 		}
 	}
 }
+
 void Init::initMvvLva() noexcept
 {
 	for (int32_t atk = wP; atk <= bK; ++atk)
@@ -176,6 +187,7 @@ void Init::initMvvLva() noexcept
 		}
 	}
 }
+
 void Init::initAll() noexcept
 {
 	initSq120ToSq64();

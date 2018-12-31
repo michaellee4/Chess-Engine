@@ -6,8 +6,11 @@
 #include "stopwatch.h"
 #include <iostream>
 #include <sstream>
+
 UCIManager::UCIManager() noexcept : ProtocolManager() { info.protocol = ProtocolManager::kUCI;}
+
 UCIManager::~UCIManager() noexcept = default;
+
 // go depth 6 wtime 180000 btime 100000 binc 1000 winc 1000 movetime 1000 movestogo 40
 void UCIManager::parseGoCmd(const std::string& input)
 {
@@ -17,6 +20,7 @@ void UCIManager::parseGoCmd(const std::string& input)
 	int64_t time = -1;
 	int64_t inc = 0;
 	this->info.timeLimit = false;
+
 	std::string buf;
 	std::stringstream ss(input);
 	while(ss.good())
@@ -72,6 +76,7 @@ void UCIManager::parseGoCmd(const std::string& input)
 	std::cout<<"time:"<<time<<" start:"<<this->info.startTime<<" stop:"<<this->info.stopTime<<" depth:"<<this->info.depth<<" timeset:"<<this->info.timeLimit<<'\n';
 	sa.searchPosition(this->pos, this->info);
 }
+
 void UCIManager::parsePosition(const std::string& input)
 {
 	std::stringstream ss(input);
@@ -118,6 +123,7 @@ void UCIManager::parsePosition(const std::string& input)
 	}
 	IO::printBoard(this->pos);
 }
+
 void UCIManager::loop()
 {
 	std::string buf;
@@ -161,6 +167,7 @@ void UCIManager::loop()
 		if(this->info.quit) { break; }
 	}
 }
+
 int32_t UCIManager::getProtocol()
 {
 	return ProtocolManager::kUCI;

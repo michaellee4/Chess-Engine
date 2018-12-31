@@ -1,13 +1,14 @@
 #include "io.h"
-#include <bitset>
-#include <iostream>
-#include <sstream>
 #include "pvtable.h"
 #include "defs.h"
 #include "stopwatch.h"
 #include "utils.h"
 #include "protocol.h"
 #include "movemaker.h"
+#include <bitset>
+#include <iostream>
+#include <sstream>
+
 void IO::printBitBoard(uint64_t bb) noexcept
 {
 	for (int32_t rank = RANK_8; rank >=RANK_1; --rank)
@@ -16,40 +17,41 @@ void IO::printBitBoard(uint64_t bb) noexcept
 		{
 			int sq = fileRankToSq(file, rank);
 			int sq64 = BoardUtils::Sq120ToSq64[sq];
-			printf("%c", ((1ULL << sq64) & bb) ? 'X' : '-' );
+			std::cout<<(((1ULL << sq64) & bb) ? 'X' : '-' );
 		}
-		printf("\n");
+		std::cout << '\n';
 	}
-	printf("\n\n");
+	std::cout<<'\n' << std::endl;
 }
+
 void IO::printBoard(const Board& pos) noexcept
 {
 	int sq,file,rank,piece;
-	printf("\nGame Board:\n\n");
+	std::cout<< "\nGame Board:\n\n";
 	for(rank = RANK_8; rank >= RANK_1; --rank) {
-		printf("%d  ",rank+1);
+		std::cout<<rank+1<<"  ";
 		for(file = FILE_A; file <= FILE_H; ++file) {
 			sq = fileRankToSq(file,rank);
 			piece = pos.pieces[sq];
 			printf("%3c",IO::PceChar[piece]);
 		}
-		printf("\n");
+		std::cout<<'\n';
 	}
-	printf("\n   ");
+	std::cout<<"\n   ";
 	for(file = FILE_A; file <= FILE_H; ++file) {
 		printf("%3c",'a'+file);	
 	}
-	printf("\n");
-	printf("side:%c\n",IO::SideChar[pos.side_to_move]);
-	printf("enPas:%s (%d)\n",IO::epstr.at(pos.en_pas).c_str(),pos.en_pas);
-	printf("castle:%c%c%c%c\n",
-			pos.castle_perm & WKCA ? 'K' : '-',
-			pos.castle_perm & WQCA ? 'Q' : '-',
-			pos.castle_perm & BKCA ? 'k' : '-',
-			pos.castle_perm & BQCA ? 'q' : '-'	
-			);
+	std::cout << '\n';
+	std::cout << "side:"<<IO::SideChar[pos.side_to_move]<<'\n';
+	std::cout << "enPas:"<<IO::epstr.at(pos.en_pas) << " (" << pos.en_pas << ")\n";
+	std::cout << "castle:"<<(pos.castle_perm & WKCA ? 'K' : '-')
+						  <<(pos.castle_perm & WQCA ? 'Q' : '-')
+						  <<(pos.castle_perm & BKCA ? 'k' : '-')
+						  <<(pos.castle_perm & BQCA ? 'q' : '-')
+						  <<'\n';
 	std::cout << "PosKey: " << pos.pos_key << "\n" << '\n';
 }
+
 void IO::printMoveList(const MoveList& list) noexcept
 {
 	for(uint32_t i = 0; i < list.size(); ++i)
@@ -59,8 +61,9 @@ void IO::printMoveList(const MoveList& list) noexcept
 		std::bitset<32> bits(curMove.move);
 		std::cout <<  bits <<'\n';
 	}
-		printf("MoveList Total: %u Moves\n\n", list.size() );
+	std::cout << "MoveList Total: "<<list.size() << " Moves" <<"\n\n";
 }
+
 void IO::printSearchDetails(const SearchInfo& info, int32_t curDepth, int32_t bestScore, PV_Table& pv, int32_t pvMoves) noexcept
 {
 	std::stringstream guiStr;
@@ -90,6 +93,7 @@ void IO::printSearchDetails(const SearchInfo& info, int32_t curDepth, int32_t be
 	}
 	std::cout << guiStr.str() << std::flush;
 }
+
 void IO::printBestMove(Board& pos, const SearchInfo& info, const Move& bestMove) noexcept
 {
 	if(info.protocol == ProtocolManager::kUCI) 
@@ -108,6 +112,7 @@ void IO::printBestMove(Board& pos, const SearchInfo& info, const Move& bestMove)
 		IO::printBoard(pos);
 	}
 }
+
 Move IO::parseMove(std::string input, Board& pos) noexcept
 {
 	stringToLower(input);

@@ -5,16 +5,19 @@
 #include "xboard.h"
 #include "console.h"
 #include <iostream>
+
 Engine::Engine() noexcept: protocol() 
 {
 	//Only ever called once because engine is a singleton
 	Init::initAll();
 }
+
 void Engine::printGreeting() const noexcept
 {
 	std::cout << "C++ Chess Engine" << std::endl;
 	std::cout << "Type \'console\' for an interactive console\n" << std::endl;
 }
+
 void Engine::start() noexcept
 {
 	this->printGreeting();

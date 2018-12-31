@@ -2,6 +2,7 @@
 #include "hash.h"
 #include "utils.h"
 #include "board.h"
+
 uint64_t Hash::generatePosKey(const Board& pos)
 {
 	uint64_t hash = 0;

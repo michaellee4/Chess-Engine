@@ -5,12 +5,16 @@
 #include <utility>
 #include <algorithm>
 using namespace MoveFlags;
+
 MoveList::MoveList() noexcept : moves()
 {
 	moves.reserve(kMaxPossibleMoves);
 }
+
 MoveList::MoveList(const MoveList& o) = default;
+
 MoveList::MoveList(MoveList&& o) noexcept : moves(std::move(o.moves)) {}
+
 void MoveList::addQuietMove(const Board& pos, Move&& move) noexcept
 {
 	if(pos.search_killers[0][pos.ply] == move)
@@ -27,17 +31,20 @@ void MoveList::addQuietMove(const Board& pos, Move&& move) noexcept
 	}
 	this->moves.emplace_back(move);
 }
+
 void MoveList::addCaptureMove(const Board& pos, Move&& move) noexcept
 {
 	move.score = MvvLva::MvvLvaScore[move.captured()][pos.pieces[move.from()]] + kCaptureBonus;
 	this->moves.emplace_back(move);
 }
+
 void MoveList::addEnPasMove(const Board& pos, Move&& move) noexcept
 {
 	(void) pos;
 	move.score = 105 + kCaptureBonus;
 	this->moves.emplace_back(move);
 }
+
 void MoveList::addPawnMove(const Board& pos, uint32_t from, uint32_t to, uint32_t side) noexcept
 {
 	if(side == WHITE)
@@ -69,6 +76,7 @@ void MoveList::addPawnMove(const Board& pos, uint32_t from, uint32_t to, uint32_
 		}	
 	}
 }
+
 void MoveList::addPawnCaptureMove(const Board& pos, uint32_t from, uint32_t to, uint32_t cap, uint32_t side) noexcept
 {
 	if(side == WHITE)
@@ -100,6 +108,7 @@ void MoveList::addPawnCaptureMove(const Board& pos, uint32_t from, uint32_t to, 
 		}
 	}
 }
+
 void MoveList::generateBishopMoves(const Board& pos, uint32_t side) noexcept
 {
 	int bi = side == WHITE ? wB : bB;
@@ -125,6 +134,7 @@ void MoveList::generateBishopMoves(const Board& pos, uint32_t side) noexcept
 		}
 	}
 }
+
 void MoveList::generateRookMoves(const Board& pos, uint32_t side) noexcept
 {
 	int rk = side == WHITE ? wR : bR;
@@ -150,6 +160,7 @@ void MoveList::generateRookMoves(const Board& pos, uint32_t side) noexcept
 		}
 	}
 }
+
 void MoveList::generateQueenMoves(const Board& pos, uint32_t side) noexcept
 {
 	int Qn = side == WHITE ? wQ : bQ;
@@ -196,12 +207,14 @@ void MoveList::generateQueenMoves(const Board& pos, uint32_t side) noexcept
 		}
 	}
 }
+
 void MoveList::generateSlidingMoves(const Board& pos, uint32_t side) noexcept
 {
 	this->generateBishopMoves(pos, side);
 	this->generateRookMoves(pos, side);
 	this->generateQueenMoves(pos, side);
 }
+
 void MoveList::generateKnightMoves(const Board& pos, uint32_t side) noexcept
 {
 	int kn = side == WHITE ? wN : bN;
@@ -225,6 +238,7 @@ void MoveList::generateKnightMoves(const Board& pos, uint32_t side) noexcept
 		}
 	}
 }
+
 //*** does not include attacked squares.
 void MoveList::generateKingMoves(const Board& pos, uint32_t side) noexcept
 {
@@ -246,11 +260,13 @@ void MoveList::generateKingMoves(const Board& pos, uint32_t side) noexcept
 		}
 	}
 }
+
 void MoveList::generateNonSlidingMoves(const Board& pos, uint32_t side) noexcept
 {
 	this->generateKnightMoves(pos, side);
 	this->generateKingMoves(pos, side);
 }
+
 void MoveList::generatePawnMoves(const Board& pos, uint32_t side) noexcept
 {
 	uint32_t oppositeSide = !side;
@@ -291,6 +307,7 @@ void MoveList::generatePawnMoves(const Board& pos, uint32_t side) noexcept
 		}
 	}
 }
+
 void MoveList::generateCastlingMoves(const Board& pos, uint32_t side) noexcept
 {
 	if(side == WHITE)
@@ -340,6 +357,7 @@ void MoveList::generateCastlingMoves(const Board& pos, uint32_t side) noexcept
 		}
 	}
 }
+
 void MoveList::generateAllMoves(const Board& pos) noexcept
 {
 	this->moves.clear();
@@ -348,19 +366,16 @@ void MoveList::generateAllMoves(const Board& pos) noexcept
 	this->generateSlidingMoves(pos, pos.side_to_move);
 	this->generateCastlingMoves(pos, pos.side_to_move);
 }
+
 void MoveList::generateAllCaptureMoves(const Board& pos) noexcept
 {
 	this->generateAllMoves(pos);
-	// for(int i = moves.size() - 1; i >= 0; --i)
-	// {
-	// 	if(!moves[i].wasCapture() && !moves[i].enPassant())
-	// 		moves.erase(moves.begin() + i);
-	// }
 	this->moves.erase(	std::remove_if(	this->moves.begin(), 
 										this->moves.end(), 
 										[](const Move& m){return (!m.wasCapture() && !m.enPassant());}),
 					  	this->moves.end());
 }
+
 void MoveList::reorderList(int32_t startIdx) noexcept
 {
 	int32_t curBest = 0;
@@ -377,14 +392,17 @@ void MoveList::reorderList(int32_t startIdx) noexcept
 	this->moves[startIdx] = this->moves[bestIdx];
 	this->moves[bestIdx] = tmp;
 }
+
 uint32_t MoveList::size() const noexcept
 {
 	return this->moves.size();
 }
+
 const Move& MoveList::operator[](const int idx) const noexcept	
 {
 	return moves[idx];
 }
+
 Move& MoveList::operator[](const int idx) noexcept	
 {
 	return moves[idx];

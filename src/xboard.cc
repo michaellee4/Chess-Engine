@@ -5,15 +5,17 @@
 #include <sstream>
 #include <cstdio>
 #include "searchinfo.h"
+
 XBoardManager::XBoardManager() noexcept : ProtocolManager() { info.protocol = ProtocolManager::kXBoard;}
+
 XBoardManager::~XBoardManager() noexcept = default;
+
 void XBoardManager::loop()
 {
 	info.doPrint = true;
 	std::cout << "feature ping=1 setboard=1 colors=0 usermove=1" << std::endl;
 	std::cout << "feature done=1" << std::endl;
-	std::string buf;
-	std::string cmd;
+
 	int32_t depth = -1;
 	std::vector<int32_t> movesToGo { 30, 30 };
 	int32_t moveTime = -1;
@@ -22,8 +24,10 @@ void XBoardManager::loop()
 	int32_t engineSide = BLACK;
 	int32_t mps = 0;
 	int timeLeft;   
-	int sec;
-	// int32_t score;
+	int sec = 0;
+
+	std::string buf;
+	std::string cmd;
 	while (true)
 	{
 		std::cout << std::flush;
@@ -149,6 +153,7 @@ void XBoardManager::loop()
 		}
 	}
 }
+
 int32_t XBoardManager::getProtocol()
 {
 	return ProtocolManager::kXBoard;

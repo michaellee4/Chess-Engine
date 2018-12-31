@@ -66,10 +66,12 @@ void Board::resetBoard() noexcept
 	{
 		this->pieces[i] = OFFBOARD;
 	}
+
 	for(uint32_t i = 0; i < kChessboardSize; ++i)
 	{
 		this->pieces[BoardUtils::Sq64ToSq120[i]] = EMPTY;
 	}
+
 	for(uint32_t i = 0; i < kNumPlayers; ++i)
 	{
 		this->big_pce[i] = 0;
@@ -78,11 +80,13 @@ void Board::resetBoard() noexcept
 		this->material[i] = 0;
 		this->pawns[i] = 0;
 	}
+
 	this->pawns[2] = 0;
 	for(uint32_t i = 0; i < kNumPceTypes; ++i)
 	{
 		this->piece_list[i].clear();
 	}
+
 	this->king_sq[WHITE] = 0;
 	this->king_sq[BLACK] = 0;
 	this->side_to_move = BOTH;
@@ -186,21 +190,27 @@ void Board::parseFEN(const std::string& fen) noexcept
 	this->resetBoard();
 	std::istringstream stream(fen);
 	std::string section;
+
 	// piece locations 
 	std::getline(stream, section, ' ');
 	this->setUpPieces(section);
+
 	// side to move
 	std::getline(stream, section, ' ');
 	this->side_to_move = section[0] == 'w' ? WHITE : BLACK;
+
 	// Castling permissions
 	std::getline(stream, section, ' ');
 	this->setUpCastlePerm(section);
+
 	// En Passant Square
 	std::getline(stream, section, ' ');
 	this->getenPassant(section);
+
 	// halfmove clock (halfmoves since capture or pawn advance)
 	std::getline(stream, section, ' ');
 	this->setUpMoveCounters(stream, section);
+
 	this->pos_key = Hash::generatePosKey(*this);
 	this->updatePieceLists();
 }
@@ -239,44 +249,50 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 	// Check Pawn
 	if(attacker == WHITE)
 	{
-		if(this->pieces[sq + Attack::wPCap[0]] == wP) {
+		if(this->pieces[sq + Attack::wPCap[0]] == wP) 
+		{
 			++numAttackers;
-}
-		if(this->pieces[sq + Attack::wPCap[1]] == wP) {
+		}
+		if(this->pieces[sq + Attack::wPCap[1]] == wP) 
+		{
 			++numAttackers;
-}
+		}
 	}
 	else
 	{
-		if(this->pieces[sq + Attack::bPCap[0]] == bP) {
+		if(this->pieces[sq + Attack::bPCap[0]] == bP) 
+		{
 			++numAttackers;
-}
-		if(this->pieces[sq + Attack::bPCap[1]] == bP) {
+		}
+		if(this->pieces[sq + Attack::bPCap[1]] == bP) 
+		{
 			++numAttackers;
-}
+		}
 	}
 	// Check Knight
 	uint32_t attackingKnight = attacker == WHITE ? wN : bN;
 	for(int KnMove : Attack::KnMoves)
 	{
-		if(this->pieces[sq + KnMove] == attackingKnight) {
+		if(this->pieces[sq + KnMove] == attackingKnight) 
+		{
 			++numAttackers;
-}
+		}
 	}
 	// Check Horizontal and Vertical
 	uint32_t attackingRook = attacker == WHITE ? wR : bR;
 	uint32_t attackingQueen = attacker == WHITE ? wQ : bQ;
 	for(uint32_t move : Attack::RkMoves)
 	{
-			uint32_t t_sq = sq + move;
+		uint32_t t_sq = sq + move;
 		uint32_t pce = this->pieces[t_sq];
 		while(pce != OFFBOARD)
 		{
 			if(pce != EMPTY)
 			{
-				if(pce == attackingRook || pce == attackingQueen) {
+				if(pce == attackingRook || pce == attackingQueen) 
+				{
 					++numAttackers;
-}
+				}
 				break;
 			}
 			t_sq += move;
@@ -286,15 +302,16 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 	uint32_t attackingBishop = attacker == WHITE ? wB : bB;
 	for(uint32_t move : Attack::BiMoves)
 	{
-			uint32_t t_sq = sq + move;
+		uint32_t t_sq = sq + move;
 		uint32_t pce = this->pieces[t_sq];
 		while(pce != OFFBOARD)
 		{
 			if(pce != EMPTY)
 			{
-				if(pce == attackingBishop || pce == attackingQueen) {
+				if(pce == attackingBishop || pce == attackingQueen) 
+				{
 					++numAttackers;
-}
+				}
 				break;
 			}
 			t_sq += move;
@@ -304,24 +321,28 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 	uint32_t attackingKing = attacker == WHITE ? wK : bK;
 	for(int KiMove : Attack::KiMoves)
 	{
-		if(this->pieces[sq + KiMove] == attackingKing) {
+		if(this->pieces[sq + KiMove] == attackingKing) 	
+		{
 			++numAttackers;
-}
+		}
 	}
 	return numAttackers;
 }
+
 MoveList Board::getAllMoves() const noexcept
 {
 	MoveList m;
 	m.generateAllMoves(*this);
 	return m;
 }
+
 MoveList Board::getAllCaptureMoves() const noexcept
 {
 	MoveList m;
 	m.generateAllCaptureMoves(*this);
 	return m;
 }
+
 void Board::flipBoard() noexcept
 {
 	using namespace BoardUtils;
@@ -351,6 +372,7 @@ void Board::flipBoard() noexcept
 	this->pos_key = Hash::generatePosKey(*this);
 	this->updatePieceLists();
 }
+
 bool Board::inCheck() noexcept
 {
 	return this->sqAttacked(this->king_sq[this->side_to_move], !this->side_to_move);
