@@ -1,5 +1,7 @@
-Use a linter (clang-tidy)
 Integrate CMake
 Add Unit Tests
 Use Ncurses for keyboard support
-multithreading? (big if)
+Multithreading?
+Add comments
+Document using Doxygen and LaTeX
+take care of hard coded file paths
