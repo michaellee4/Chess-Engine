@@ -1,3 +1,4 @@
+ADD GITHUB README.md
 Integrate CMake
 Add Unit Tests
 Use Ncurses for keyboard support
