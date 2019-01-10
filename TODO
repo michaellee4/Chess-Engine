@@ -2,6 +2,3 @@ Integrate CMake
 Add Unit Tests
 Use Ncurses for keyboard support
 Multithreading?
-Add comments
-Document using Doxygen and LaTeX
-take care of hard coded file paths
