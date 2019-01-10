@@ -1,0 +1,220 @@
+\hypertarget{namespaceValue}{}\section{Value Namespace Reference}
+\label{namespaceValue}\index{Value@{Value}}
+
+
+Provides several constant values used for evaluating the board state.  
+
+
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceValue_aed547988abe75be2e24c74f02fd9ddb9}\label{namespaceValue_aed547988abe75be2e24c74f02fd9ddb9}} 
+constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_aed547988abe75be2e24c74f02fd9ddb9}{k\+Infinity}} = 30000
+\begin{DoxyCompactList}\small\item\em Highest possible score. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceValue_a88d993145245aca4baa932c1dbc7fd92}\label{namespaceValue_a88d993145245aca4baa932c1dbc7fd92}} 
+constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_a88d993145245aca4baa932c1dbc7fd92}{k\+Mate\+Score}} = 29000
+\begin{DoxyCompactList}\small\item\em Score for a Checkmate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceValue_a354b47d5941b61c2a883ba36823e4c98}\label{namespaceValue_a354b47d5941b61c2a883ba36823e4c98}} 
+constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_a354b47d5941b61c2a883ba36823e4c98}{k\+Isolated\+Pawn}} = -\/10
+\begin{DoxyCompactList}\small\item\em Score bonus for isolated pawns (no same color pawn on adjacent files) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceValue_adaecf503d96c902ebae1588565e5c3e1}\label{namespaceValue_adaecf503d96c902ebae1588565e5c3e1}} 
+constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_adaecf503d96c902ebae1588565e5c3e1}{k\+Open\+Rook\+File}} = 10
+\begin{DoxyCompactList}\small\item\em Score bonus for a Rook on an open file (no pawns) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceValue_a81946dee27fcd0bd24d914082169be38}\label{namespaceValue_a81946dee27fcd0bd24d914082169be38}} 
+constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_a81946dee27fcd0bd24d914082169be38}{k\+Semi\+Open\+Rook\+File}} = 5
+\begin{DoxyCompactList}\small\item\em Score bonus for a Rook on a semi-\/open file (no same color pawn) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceValue_a1b62aec2245b0434f86252680fe2d837}\label{namespaceValue_a1b62aec2245b0434f86252680fe2d837}} 
+constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_a1b62aec2245b0434f86252680fe2d837}{k\+Open\+Queen\+File}} = 5
+\begin{DoxyCompactList}\small\item\em Score bonus for a Queen on an open file (no pawns) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceValue_a4d8e9e3283f0dfb8767defd3c4375bf9}\label{namespaceValue_a4d8e9e3283f0dfb8767defd3c4375bf9}} 
+constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_a4d8e9e3283f0dfb8767defd3c4375bf9}{k\+Semi\+Open\+Queen\+File}} = 3
+\begin{DoxyCompactList}\small\item\em Score bonus for a Queen on a semi-\/open file (no same color pawn) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceValue_aba807f233f0cb45bc9479d3b2697450b}\label{namespaceValue_aba807f233f0cb45bc9479d3b2697450b}} 
+constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_aba807f233f0cb45bc9479d3b2697450b}{k\+End\+Game\+Threshold}} = Piece\+Info\+::\+Piece\+Val\mbox{[}wR\mbox{]} + 2 $\ast$ Piece\+Info\+::\+Piece\+Val\mbox{[}wB\mbox{]} + 2 $\ast$ Piece\+Info\+::\+Piece\+Val\mbox{[}wP\mbox{]}
+\begin{DoxyCompactList}\small\item\em Material threshold to determine when the endgame starts. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceValue_a662b268cafa7fb0924985d533150c6c2}\label{namespaceValue_a662b268cafa7fb0924985d533150c6c2}} 
+constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_a662b268cafa7fb0924985d533150c6c2}{k\+Bishop\+Pair}} = 30
+\begin{DoxyCompactList}\small\item\em Score bonus for the Bishop pair. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespaceValue_aa30303e1cad8afe4b7ef7cf689ab2352}\label{namespaceValue_aa30303e1cad8afe4b7ef7cf689ab2352}} 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Num\+Files\+Ranks $>$ \mbox{\hyperlink{namespaceValue_aa30303e1cad8afe4b7ef7cf689ab2352}{passed\+Pawn\+Score}} \{0, 5, 10, 20, 35, 60, 100, 200\}
+\begin{DoxyCompactList}\small\item\em Score bonus for Passed pawns based on distance. \end{DoxyCompactList}\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_a8b6c72010096d1ae9eb653c5be418db0}{Pawn\+Table}}
+\begin{DoxyCompactList}\small\item\em Scores the position of the Pawns. \end{DoxyCompactList}\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_a4b65a409f1e288260d4e71d6c13376b5}{Knight\+Table}}
+\begin{DoxyCompactList}\small\item\em Scores the position of the Knights. \end{DoxyCompactList}\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_ab06336272528cf2e9e3772123f5eb5bb}{Bishop\+Table}}
+\begin{DoxyCompactList}\small\item\em Scores the position of the Bishops. \end{DoxyCompactList}\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_ae8066836a21ce4367ff232f08ce796a8}{Rook\+Table}}
+\begin{DoxyCompactList}\small\item\em Scores the position of the Rooks. \end{DoxyCompactList}\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_a581231b1446aff281ae15f755b875341}{King\+End\+Game}}
+\begin{DoxyCompactList}\small\item\em Scores the king in the late game. Prioritizes the center. \end{DoxyCompactList}\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_a0b4d4bb236eb7c18c48df42e6e3ca1fd}{King\+Opening}}
+\begin{DoxyCompactList}\small\item\em Scores the king for the earlygame. Prioritizes staying safe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Provides several constant values used for evaluating the board state. 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceValue_ab06336272528cf2e9e3772123f5eb5bb}\label{namespaceValue_ab06336272528cf2e9e3772123f5eb5bb}} 
+\index{Value@{Value}!Bishop\+Table@{Bishop\+Table}}
+\index{Bishop\+Table@{Bishop\+Table}!Value@{Value}}
+\subsubsection{\texorpdfstring{Bishop\+Table}{BishopTable}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+Bishop\+Table}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+        0   ,   0   ,   -10 ,   0   ,   0   ,   -10 ,   0   ,   0   ,
+        0   ,   0   ,   0   ,   10  ,   10  ,   0   ,   0   ,   0   ,
+        0   ,   0   ,   10  ,   15  ,   15  ,   10  ,   0   ,   0   ,
+        0   ,   10  ,   15  ,   20  ,   20  ,   15  ,   10  ,   0   ,
+        0   ,   10  ,   15  ,   20  ,   20  ,   15  ,   10  ,   0   ,
+        0   ,   0   ,   10  ,   15  ,   15  ,   10  ,   0   ,   0   ,
+        0   ,   0   ,   0   ,   10  ,   10  ,   0   ,   0   ,   0   ,
+        0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   
+    \}
+\end{DoxyCode}
+
+
+Scores the position of the Bishops. 
+
+
+
+Definition at line 96 of file eval.\+h.
+
+\mbox{\Hypertarget{namespaceValue_a581231b1446aff281ae15f755b875341}\label{namespaceValue_a581231b1446aff281ae15f755b875341}} 
+\index{Value@{Value}!King\+End\+Game@{King\+End\+Game}}
+\index{King\+End\+Game@{King\+End\+Game}!Value@{Value}}
+\subsubsection{\texorpdfstring{King\+End\+Game}{KingEndGame}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+King\+End\+Game}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{ 
+        -50 ,   -10 ,   0   ,   0   ,   0   ,   0   ,   -10 ,   -50 ,
+        -10,    0   ,   10  ,   10  ,   10  ,   10  ,   0   ,   -10 ,
+        0   ,   10  ,   15  ,   15  ,   15  ,   15  ,   10  ,   0   ,
+        0   ,   10  ,   15  ,   20  ,   20  ,   15  ,   10  ,   0   ,
+        0   ,   10  ,   15  ,   20  ,   20  ,   15  ,   10  ,   0   ,
+        0   ,   10  ,   15  ,   15  ,   15  ,   15  ,   10  ,   0   ,
+        -10,    0   ,   10  ,   10  ,   10  ,   10  ,   0   ,   -10 ,
+        -50 ,   -10 ,   0   ,   0   ,   0   ,   0   ,   -10 ,   -50 
+    \}
+\end{DoxyCode}
+
+
+Scores the king in the late game. Prioritizes the center. 
+
+
+
+Definition at line 123 of file eval.\+h.
+
+\mbox{\Hypertarget{namespaceValue_a0b4d4bb236eb7c18c48df42e6e3ca1fd}\label{namespaceValue_a0b4d4bb236eb7c18c48df42e6e3ca1fd}} 
+\index{Value@{Value}!King\+Opening@{King\+Opening}}
+\index{King\+Opening@{King\+Opening}!Value@{Value}}
+\subsubsection{\texorpdfstring{King\+Opening}{KingOpening}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+King\+Opening}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{ 
+        0   ,   5   ,   5   ,   -10 ,   -10 ,   0   ,   10  ,   5   ,
+        -30 ,   -30 ,   -30 ,   -30 ,   -30 ,   -30 ,   -30 ,   -30 ,
+        -50 ,   -50 ,   -50 ,   -50 ,   -50 ,   -50 ,   -50 ,   -50 ,
+        -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,
+        -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,
+        -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,
+        -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,
+        -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70     
+    \}
+\end{DoxyCode}
+
+
+Scores the king for the earlygame. Prioritizes staying safe. 
+
+
+
+Definition at line 137 of file eval.\+h.
+
+\mbox{\Hypertarget{namespaceValue_a4b65a409f1e288260d4e71d6c13376b5}\label{namespaceValue_a4b65a409f1e288260d4e71d6c13376b5}} 
+\index{Value@{Value}!Knight\+Table@{Knight\+Table}}
+\index{Knight\+Table@{Knight\+Table}!Value@{Value}}
+\subsubsection{\texorpdfstring{Knight\+Table}{KnightTable}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+Knight\+Table}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+        0   ,   -10 ,   0   ,   0   ,   0   ,   0   ,   -10 ,   0   ,
+        0   ,   0   ,   0   ,   5   ,   5   ,   0   ,   0   ,   0   ,
+        0   ,   0   ,   10  ,   10  ,   10  ,   10  ,   0   ,   0   ,
+        0   ,   0   ,   10  ,   20  ,   20  ,   10  ,   5   ,   0   ,
+        5   ,   10  ,   15  ,   20  ,   20  ,   15  ,   10  ,   5   ,
+        5   ,   10  ,   10  ,   20  ,   20  ,   10  ,   10  ,   5   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0       
+    \}
+\end{DoxyCode}
+
+
+Scores the position of the Knights. 
+
+
+
+Definition at line 82 of file eval.\+h.
+
+\mbox{\Hypertarget{namespaceValue_a8b6c72010096d1ae9eb653c5be418db0}\label{namespaceValue_a8b6c72010096d1ae9eb653c5be418db0}} 
+\index{Value@{Value}!Pawn\+Table@{Pawn\+Table}}
+\index{Pawn\+Table@{Pawn\+Table}!Value@{Value}}
+\subsubsection{\texorpdfstring{Pawn\+Table}{PawnTable}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+Pawn\+Table}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+        0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,
+        10  ,   10  ,   0   ,   -10 ,   -10 ,   0   ,   10  ,   10  ,
+        5   ,   0   ,   0   ,   5   ,   5   ,   0   ,   0   ,   5   ,
+        0   ,   0   ,   10  ,   20  ,   20  ,   10  ,   0   ,   0   ,
+        5   ,   5   ,   5   ,   10  ,   10  ,   5   ,   5   ,   5   ,
+        10  ,   10  ,   10  ,   20  ,   20  ,   10  ,   10  ,   10  ,
+        20  ,   20  ,   20  ,   30  ,   30  ,   20  ,   20  ,   20  ,
+        0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   
+    \}
+\end{DoxyCode}
+
+
+Scores the position of the Pawns. 
+
+
+
+Definition at line 68 of file eval.\+h.
+
+\mbox{\Hypertarget{namespaceValue_ae8066836a21ce4367ff232f08ce796a8}\label{namespaceValue_ae8066836a21ce4367ff232f08ce796a8}} 
+\index{Value@{Value}!Rook\+Table@{Rook\+Table}}
+\index{Rook\+Table@{Rook\+Table}!Value@{Value}}
+\subsubsection{\texorpdfstring{Rook\+Table}{RookTable}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+Rook\+Table}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        25  ,   25  ,   25  ,   25  ,   25  ,   25  ,   25  ,   25  ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0       
+    \}
+\end{DoxyCode}
+
+
+Scores the position of the Rooks. 
+
+
+
+Definition at line 110 of file eval.\+h.
+

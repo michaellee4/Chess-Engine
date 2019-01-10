@@ -11,6 +11,7 @@ var searchData=
   ['setupmovecounters',['setUpMoveCounters',['../classBoard.html#a635ae307c20455554c2cea611c7561f1',1,'Board']]],
   ['setuppieces',['setUpPieces',['../classBoard.html#a097a5d64cd3772c539f7ce6dda9a929a',1,'Board']]],
   ['showattackedsqs',['showAttackedSqs',['../utils_8h.html#adfbe08fdadaa1067f5a9fe8ef13088d8',1,'showAttackedSqs(const int side, Board &amp;pos) noexcept:&#160;utils.cc'],['../utils_8cc.html#adfbe08fdadaa1067f5a9fe8ef13088d8',1,'showAttackedSqs(const int side, Board &amp;pos) noexcept:&#160;utils.cc']]],
+  ['sidechar',['SideChar',['../namespaceIO.html#ac0e91e487904b7ef2a84da82dd8163b1',1,'IO']]],
   ['size',['size',['../classMoveList.html#a4975d53e1bca9fde5bbc9d02242f18e7',1,'MoveList::size()'],['../classPvTable.html#a6df38f01a626250eb8d1878d1fbb0029',1,'PvTable::size()']]],
   ['sqattacked',['sqAttacked',['../classBoard.html#aeb6553a6d78975ad65261542ba8989e4',1,'Board']]],
   ['sqonboard',['sqOnBoard',['../utils_8h.html#af2872fdf2a6599d24229c9c63b5b4681',1,'sqOnBoard(uint32_t sq) noexcept:&#160;utils.cc'],['../utils_8cc.html#af2872fdf2a6599d24229c9c63b5b4681',1,'sqOnBoard(uint32_t sq) noexcept:&#160;utils.cc']]],

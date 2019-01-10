@@ -23,6 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Chess Engine
    </div>
+   <div id="projectbrief">Chess Engine that utilizes the Alpha-beta algorithm and plays at ~2650 elo</div>
   </td>
  </tr>
  </tbody>
@@ -67,26 +68,36 @@ $(function() {
 <div class="title">Init Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provides methods to initialize the non constant arrays used throughout the engine.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1f7b3ccd301db5369963fb7a9bd86d42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInit.html#a1f7b3ccd301db5369963fb7a9bd86d42">initAll</a> () noexcept</td></tr>
+<tr class="memdesc:a1f7b3ccd301db5369963fb7a9bd86d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls all of the other 'init' methods.  <a href="#a1f7b3ccd301db5369963fb7a9bd86d42">More...</a><br /></td></tr>
 <tr class="separator:a1f7b3ccd301db5369963fb7a9bd86d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a632a82ed6ce4587f5977a9089477d13a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInit.html#a632a82ed6ce4587f5977a9089477d13a">initSq120ToSq64</a> () noexcept</td></tr>
+<tr class="memdesc:a632a82ed6ce4587f5977a9089477d13a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in the arrays that convert between array-120 to array-64 representations.  <a href="#a632a82ed6ce4587f5977a9089477d13a">More...</a><br /></td></tr>
 <tr class="separator:a632a82ed6ce4587f5977a9089477d13a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0ffdba0cdf68df3778883fc7d1d8a5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInit.html#ae0ffdba0cdf68df3778883fc7d1d8a5f">initBitMasks</a> () noexcept</td></tr>
+<tr class="memdesc:ae0ffdba0cdf68df3778883fc7d1d8a5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in the arrays used for setting/clearing bits in bitboards.  <a href="#ae0ffdba0cdf68df3778883fc7d1d8a5f">More...</a><br /></td></tr>
 <tr class="separator:ae0ffdba0cdf68df3778883fc7d1d8a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a746ad8efce2e70882c0b862407056fe5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInit.html#a746ad8efce2e70882c0b862407056fe5">initHashKeys</a> () noexcept</td></tr>
+<tr class="memdesc:a746ad8efce2e70882c0b862407056fe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in the hashkeys arrays that will be used to for getting the board's hashkey.  <a href="#a746ad8efce2e70882c0b862407056fe5">More...</a><br /></td></tr>
 <tr class="separator:a746ad8efce2e70882c0b862407056fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf211e7bffeba17a44b4da8cd83dbfcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInit.html#abf211e7bffeba17a44b4da8cd83dbfcd">initFileRankBrd</a> () noexcept</td></tr>
+<tr class="memdesc:abf211e7bffeba17a44b4da8cd83dbfcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in the arrays that return the file/rank # for a given square.  <a href="#abf211e7bffeba17a44b4da8cd83dbfcd">More...</a><br /></td></tr>
 <tr class="separator:abf211e7bffeba17a44b4da8cd83dbfcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a836df13b70275ee90841a157d0e380dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInit.html#a836df13b70275ee90841a157d0e380dd">initEvalMasks</a> () noexcept</td></tr>
+<tr class="memdesc:a836df13b70275ee90841a157d0e380dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in the arrays used for evaluating pawn structure during evaluation.  <a href="#a836df13b70275ee90841a157d0e380dd">More...</a><br /></td></tr>
 <tr class="separator:a836df13b70275ee90841a157d0e380dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87c48a69ce4bce6bd35619d9e9f8aee5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceInit.html#a87c48a69ce4bce6bd35619d9e9f8aee5">initMvvLva</a> () noexcept</td></tr>
+<tr class="memdesc:a87c48a69ce4bce6bd35619d9e9f8aee5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in the arrays to determine most valuable victim least valuable attacker priority.  <a href="#a87c48a69ce4bce6bd35619d9e9f8aee5">More...</a><br /></td></tr>
 <tr class="separator:a87c48a69ce4bce6bd35619d9e9f8aee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This namespace provides all the methods used to fill in the non static const arrays used throughout the engine </p>
+<div class="textblock"><p>Provides methods to initialize the non constant arrays used throughout the engine. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a1f7b3ccd301db5369963fb7a9bd86d42"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1f7b3ccd301db5369963fb7a9bd86d42">&#9670;&nbsp;</a></span>initAll()</h2>
@@ -110,7 +121,17 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Input: None Output: None Operation: Calls all of the 'init' methods below </p>
+
+<p>Calls all of the other 'init' methods. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="init_8cc_source.html#l00197">197</a> of file <a class="el" href="init_8cc_source.html">init.cc</a>.</p>
 
 </div>
 </div>
@@ -136,7 +157,17 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Input: None Output: None Operation: Fills in the arrays used for setting/clearing bits in bitboards </p>
+
+<p>Fills in the arrays used for setting/clearing bits in bitboards. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="init_8cc_source.html#l00097">97</a> of file <a class="el" href="init_8cc_source.html">init.cc</a>.</p>
 
 </div>
 </div>
@@ -162,7 +193,17 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Input: None Output: None Operation: Fills in the arrays used for evaluating pawn structure during evaluation </p>
+
+<p>Fills in the arrays used for evaluating pawn structure during evaluation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="init_8cc_source.html#l00122">122</a> of file <a class="el" href="init_8cc_source.html">init.cc</a>.</p>
 
 </div>
 </div>
@@ -188,7 +229,17 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Input: None Output: None Operation: Fills in the arrays that return the file/rank # for a given square </p>
+
+<p>Fills in the arrays that return the file/rank # for a given square. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="init_8cc_source.html#l00054">54</a> of file <a class="el" href="init_8cc_source.html">init.cc</a>.</p>
 
 </div>
 </div>
@@ -214,7 +265,17 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Input: None Output: None Operation: Fills in the hashkeys arrays that will be used to for getting the board's hashkey </p>
+
+<p>Fills in the hashkeys arrays that will be used to for getting the board's hashkey. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="init_8cc_source.html#l00106">106</a> of file <a class="el" href="init_8cc_source.html">init.cc</a>.</p>
 
 </div>
 </div>
@@ -240,7 +301,17 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Input: None Output: None Operation: Fills in the arrays to determine most valuable victim least valuable attacker priority </p>
+
+<p>Fills in the arrays to determine most valuable victim least valuable attacker priority. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="init_8cc_source.html#l00186">186</a> of file <a class="el" href="init_8cc_source.html">init.cc</a>.</p>
 
 </div>
 </div>
@@ -266,7 +337,17 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Input: None Output: None Operation: Fills in the arrays that convert between array-120 to array-64 representations </p>
+
+<p>Fills in the arrays that convert between array-120 to array-64 representations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="init_8cc_source.html#l00073">73</a> of file <a class="el" href="init_8cc_source.html">init.cc</a>.</p>
 
 </div>
 </div>

@@ -10,6 +10,9 @@
 #include "protocol.h"
 #include "polyglot.h"
 
+/**
+	@brief Stores the flags for the engine.
+ */
 struct EngineConfig
 {
 	bool useBook;
@@ -19,15 +22,30 @@ struct EngineConfig
 class Engine
 {
 public:
+/**
+	@brief Gets the instance of the Engine singleton.
+	@param None
+	@return The Engine instance
+ */
 	static Engine& getInstance()
 	{
 		static Engine instance;
 		return instance;
 	}
+/**
+	@brief Gets the instance of the Engine config.
+	@param None
+	@return The Engine config
+ */
 	static EngineConfig& getConfig()
 	{
 		return Engine::getInstance().config;
 	}
+/**
+	@brief Gets the Polyglot opening book that is being used by the engine.
+	@param None
+	@return The Polyglot opening book that the engine is using.
+ */
 	static PolyBook& getBook()
 	{
 		return Engine::getInstance().book;

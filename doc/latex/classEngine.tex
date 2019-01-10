@@ -15,15 +15,12 @@ void {\bfseries start} () noexcept
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classEngine_ae174f8fa16fbab1633489283db2b0c9f}\label{classEngine_ae174f8fa16fbab1633489283db2b0c9f}} 
-static \mbox{\hyperlink{classEngine}{Engine}} \& {\bfseries get\+Instance} ()
-\item 
-\mbox{\Hypertarget{classEngine_a0829ed04a1463100784500122bbe426f}\label{classEngine_a0829ed04a1463100784500122bbe426f}} 
-static \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \& {\bfseries get\+Config} ()
-\item 
-\mbox{\Hypertarget{classEngine_a02d2a190f06bd06f23eb6ed02474f990}\label{classEngine_a02d2a190f06bd06f23eb6ed02474f990}} 
-static \mbox{\hyperlink{classPolyBook}{Poly\+Book}} \& {\bfseries get\+Book} ()
-\end{DoxyCompactItemize}
+static \mbox{\hyperlink{classEngine}{Engine}} \& \mbox{\hyperlink{classEngine_ae174f8fa16fbab1633489283db2b0c9f}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the instance of the \mbox{\hyperlink{classEngine}{Engine}} singleton. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \& \mbox{\hyperlink{classEngine_a0829ed04a1463100784500122bbe426f}{get\+Config}} ()
+\begin{DoxyCompactList}\small\item\em Gets the instance of the \mbox{\hyperlink{classEngine}{Engine}} config. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classPolyBook}{Poly\+Book}} \& \mbox{\hyperlink{classEngine_a02d2a190f06bd06f23eb6ed02474f990}{get\+Book}} ()
+\begin{DoxyCompactList}\small\item\em Gets the Polyglot opening book that is being used by the engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -47,7 +44,76 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classProtocolManager}{Protocol\+Manag
 \subsection{Detailed Description}
 
 
-Definition at line 19 of file engine.\+h.
+Definition at line 22 of file engine.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classEngine_a02d2a190f06bd06f23eb6ed02474f990}\label{classEngine_a02d2a190f06bd06f23eb6ed02474f990}} 
+\index{Engine@{Engine}!get\+Book@{get\+Book}}
+\index{get\+Book@{get\+Book}!Engine@{Engine}}
+\subsubsection{\texorpdfstring{get\+Book()}{getBook()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classPolyBook}{Poly\+Book}}\& Engine\+::get\+Book (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the Polyglot opening book that is being used by the engine. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Polyglot opening book that the engine is using. 
+\end{DoxyReturn}
+
+
+Definition at line 49 of file engine.\+h.
+
+\mbox{\Hypertarget{classEngine_a0829ed04a1463100784500122bbe426f}\label{classEngine_a0829ed04a1463100784500122bbe426f}} 
+\index{Engine@{Engine}!get\+Config@{get\+Config}}
+\index{get\+Config@{get\+Config}!Engine@{Engine}}
+\subsubsection{\texorpdfstring{get\+Config()}{getConfig()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structEngineConfig}{Engine\+Config}}\& Engine\+::get\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the instance of the \mbox{\hyperlink{classEngine}{Engine}} config. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \mbox{\hyperlink{classEngine}{Engine}} config 
+\end{DoxyReturn}
+
+
+Definition at line 40 of file engine.\+h.
+
+\mbox{\Hypertarget{classEngine_ae174f8fa16fbab1633489283db2b0c9f}\label{classEngine_ae174f8fa16fbab1633489283db2b0c9f}} 
+\index{Engine@{Engine}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Engine@{Engine}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classEngine}{Engine}}\& Engine\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the instance of the \mbox{\hyperlink{classEngine}{Engine}} singleton. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \mbox{\hyperlink{classEngine}{Engine}} instance 
+\end{DoxyReturn}
+
+
+Definition at line 30 of file engine.\+h.
 
 
 

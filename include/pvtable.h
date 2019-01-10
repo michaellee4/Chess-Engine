@@ -1,6 +1,6 @@
 /**
 *	@file pvtable.h
-*	@brief Contains declarations for the transposition table class used for caching.
+*	@brief Contains declarations for the Principal Variation/transposition table class used for caching.
 *	@author Michael Lee
 *	@date 1/9/2019
 */
@@ -13,7 +13,7 @@
 
 class Board;
 /**
- * This class holds the cached info of our searches for use with the PVTable
+ * This class holds the cached info of our searches for use with the Principal Variation Table
  */
 class PvEntry
 {

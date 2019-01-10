@@ -3,39 +3,210 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classEvaluator_a82ac01bb85da704f7a9f1a059c0e91fb}\label{classEvaluator_a82ac01bb85da704f7a9f1a059c0e91fb}} 
-int32\+\_\+t {\bfseries evaluate\+Position} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\end{DoxyCompactItemize}
+int32\+\_\+t \mbox{\hyperlink{classEvaluator_a82ac01bb85da704f7a9f1a059c0e91fb}{evaluate\+Position}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Evaluates the score for the current board position for the side to move. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classEvaluator_a76e81d148449a9bb6c1616895223ad77}\label{classEvaluator_a76e81d148449a9bb6c1616895223ad77}} 
-int32\+\_\+t {\bfseries eval\+Pawns} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\item 
-\mbox{\Hypertarget{classEvaluator_ab8235a37e631665e0dbdbffdddf015f7}\label{classEvaluator_ab8235a37e631665e0dbdbffdddf015f7}} 
-int32\+\_\+t {\bfseries eval\+Bishops} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\item 
-\mbox{\Hypertarget{classEvaluator_ac1cfc6e10fcd71fc4148415d889a4085}\label{classEvaluator_ac1cfc6e10fcd71fc4148415d889a4085}} 
-int32\+\_\+t {\bfseries eval\+Rooks} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\item 
-\mbox{\Hypertarget{classEvaluator_aaf81df6872cb3c5acabc05b4865c4bcd}\label{classEvaluator_aaf81df6872cb3c5acabc05b4865c4bcd}} 
-int32\+\_\+t {\bfseries eval\+Knights} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\item 
-\mbox{\Hypertarget{classEvaluator_a322d577548dd00c32e949cad62a17393}\label{classEvaluator_a322d577548dd00c32e949cad62a17393}} 
-int32\+\_\+t {\bfseries eval\+Queens} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\item 
-\mbox{\Hypertarget{classEvaluator_af8971fc82010e0a08a1e510847bf304c}\label{classEvaluator_af8971fc82010e0a08a1e510847bf304c}} 
-int32\+\_\+t {\bfseries eval\+Kings} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\item 
-\mbox{\Hypertarget{classEvaluator_aec21b1e28f162b7f1e4edc9e8f725a8b}\label{classEvaluator_aec21b1e28f162b7f1e4edc9e8f725a8b}} 
-bool {\bfseries drawn\+Material} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\end{DoxyCompactItemize}
+int32\+\_\+t \mbox{\hyperlink{classEvaluator_a76e81d148449a9bb6c1616895223ad77}{eval\+Pawns}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Evaluates the strength of the Pawns. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classEvaluator_ab8235a37e631665e0dbdbffdddf015f7}{eval\+Bishops}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Evaluates the strength of the Bishop. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classEvaluator_ac1cfc6e10fcd71fc4148415d889a4085}{eval\+Rooks}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Evaluates the strength of the Rook. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classEvaluator_aaf81df6872cb3c5acabc05b4865c4bcd}{eval\+Knights}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Evaluates the strength of the Knights. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classEvaluator_a322d577548dd00c32e949cad62a17393}{eval\+Queens}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Evaluates the strength of the Queens. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classEvaluator_af8971fc82010e0a08a1e510847bf304c}{eval\+Kings}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Evaluates the strength of the Kings. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classEvaluator_aec21b1e28f162b7f1e4edc9e8f725a8b}{drawn\+Material}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Determines if there is enough material to end in checkmate. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 
 
-Definition at line 111 of file eval.\+h.
+Definition at line 159 of file eval.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classEvaluator_aec21b1e28f162b7f1e4edc9e8f725a8b}\label{classEvaluator_aec21b1e28f162b7f1e4edc9e8f725a8b}} 
+\index{Evaluator@{Evaluator}!drawn\+Material@{drawn\+Material}}
+\index{drawn\+Material@{drawn\+Material}!Evaluator@{Evaluator}}
+\subsubsection{\texorpdfstring{drawn\+Material()}{drawnMaterial()}}
+{\footnotesize\ttfamily bool Evaluator\+::drawn\+Material (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Determines if there is enough material to end in checkmate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there is enough material on either side to lead to checkmate, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 188 of file eval.\+cc.
+
+\mbox{\Hypertarget{classEvaluator_ab8235a37e631665e0dbdbffdddf015f7}\label{classEvaluator_ab8235a37e631665e0dbdbffdddf015f7}} 
+\index{Evaluator@{Evaluator}!eval\+Bishops@{eval\+Bishops}}
+\index{eval\+Bishops@{eval\+Bishops}!Evaluator@{Evaluator}}
+\subsubsection{\texorpdfstring{eval\+Bishops()}{evalBishops()}}
+{\footnotesize\ttfamily int32\+\_\+t Evaluator\+::eval\+Bishops (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Evaluates the strength of the Bishop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The score attributed to the Bishop. 
+\end{DoxyReturn}
+
+
+Definition at line 52 of file eval.\+cc.
+
+\mbox{\Hypertarget{classEvaluator_af8971fc82010e0a08a1e510847bf304c}\label{classEvaluator_af8971fc82010e0a08a1e510847bf304c}} 
+\index{Evaluator@{Evaluator}!eval\+Kings@{eval\+Kings}}
+\index{eval\+Kings@{eval\+Kings}!Evaluator@{Evaluator}}
+\subsubsection{\texorpdfstring{eval\+Kings()}{evalKings()}}
+{\footnotesize\ttfamily int32\+\_\+t Evaluator\+::eval\+Kings (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Evaluates the strength of the Kings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The score attributed to the Kings. 
+\end{DoxyReturn}
+
+
+Definition at line 142 of file eval.\+cc.
+
+\mbox{\Hypertarget{classEvaluator_aaf81df6872cb3c5acabc05b4865c4bcd}\label{classEvaluator_aaf81df6872cb3c5acabc05b4865c4bcd}} 
+\index{Evaluator@{Evaluator}!eval\+Knights@{eval\+Knights}}
+\index{eval\+Knights@{eval\+Knights}!Evaluator@{Evaluator}}
+\subsubsection{\texorpdfstring{eval\+Knights()}{evalKnights()}}
+{\footnotesize\ttfamily int32\+\_\+t Evaluator\+::eval\+Knights (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Evaluates the strength of the Knights. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The score attributed to the Knights. 
+\end{DoxyReturn}
+
+
+Definition at line 171 of file eval.\+cc.
+
+\mbox{\Hypertarget{classEvaluator_a76e81d148449a9bb6c1616895223ad77}\label{classEvaluator_a76e81d148449a9bb6c1616895223ad77}} 
+\index{Evaluator@{Evaluator}!eval\+Pawns@{eval\+Pawns}}
+\index{eval\+Pawns@{eval\+Pawns}!Evaluator@{Evaluator}}
+\subsubsection{\texorpdfstring{eval\+Pawns()}{evalPawns()}}
+{\footnotesize\ttfamily int32\+\_\+t Evaluator\+::eval\+Pawns (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Evaluates the strength of the Pawns. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The score attributed to the Pawns. 
+\end{DoxyReturn}
+
+
+Definition at line 14 of file eval.\+cc.
+
+\mbox{\Hypertarget{classEvaluator_a322d577548dd00c32e949cad62a17393}\label{classEvaluator_a322d577548dd00c32e949cad62a17393}} 
+\index{Evaluator@{Evaluator}!eval\+Queens@{eval\+Queens}}
+\index{eval\+Queens@{eval\+Queens}!Evaluator@{Evaluator}}
+\subsubsection{\texorpdfstring{eval\+Queens()}{evalQueens()}}
+{\footnotesize\ttfamily int32\+\_\+t Evaluator\+::eval\+Queens (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Evaluates the strength of the Queens. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The score attributed to the Queens. 
+\end{DoxyReturn}
+
+
+Definition at line 108 of file eval.\+cc.
+
+\mbox{\Hypertarget{classEvaluator_ac1cfc6e10fcd71fc4148415d889a4085}\label{classEvaluator_ac1cfc6e10fcd71fc4148415d889a4085}} 
+\index{Evaluator@{Evaluator}!eval\+Rooks@{eval\+Rooks}}
+\index{eval\+Rooks@{eval\+Rooks}!Evaluator@{Evaluator}}
+\subsubsection{\texorpdfstring{eval\+Rooks()}{evalRooks()}}
+{\footnotesize\ttfamily int32\+\_\+t Evaluator\+::eval\+Rooks (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Evaluates the strength of the Rook. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The score attributed to the Rook. 
+\end{DoxyReturn}
+
+
+Definition at line 72 of file eval.\+cc.
+
+\mbox{\Hypertarget{classEvaluator_a82ac01bb85da704f7a9f1a059c0e91fb}\label{classEvaluator_a82ac01bb85da704f7a9f1a059c0e91fb}} 
+\index{Evaluator@{Evaluator}!evaluate\+Position@{evaluate\+Position}}
+\index{evaluate\+Position@{evaluate\+Position}!Evaluator@{Evaluator}}
+\subsubsection{\texorpdfstring{evaluate\+Position()}{evaluatePosition()}}
+{\footnotesize\ttfamily int32\+\_\+t Evaluator\+::evaluate\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Evaluates the score for the current board position for the side to move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The overall score of the position 
+\end{DoxyReturn}
+
+
+Definition at line 243 of file eval.\+cc.
 
 
 

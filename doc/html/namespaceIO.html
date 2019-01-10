@@ -23,6 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Chess Engine
    </div>
+   <div id="projectbrief">Chess Engine that utilizes the Alpha-beta algorithm and plays at ~2650 elo</div>
   </td>
  </tr>
  </tbody>
@@ -68,47 +69,332 @@ $(function() {
 <div class="title">IO Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Various functions to print out engine data structures.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4a4d2d4f2b6ab5c67e9c087d93db774a"><td class="memItemLeft" align="right" valign="top"><a id="a4a4d2d4f2b6ab5c67e9c087d93db774a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printBoard</b> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memitem:a4a4d2d4f2b6ab5c67e9c087d93db774a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#a4a4d2d4f2b6ab5c67e9c087d93db774a">printBoard</a> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:a4a4d2d4f2b6ab5c67e9c087d93db774a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints out the board to stdio.  <a href="#a4a4d2d4f2b6ab5c67e9c087d93db774a">More...</a><br /></td></tr>
 <tr class="separator:a4a4d2d4f2b6ab5c67e9c087d93db774a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63d56732e8ecc79bfe532301e858017e"><td class="memItemLeft" align="right" valign="top"><a id="a63d56732e8ecc79bfe532301e858017e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printBitBoard</b> (const uint64_t) noexcept</td></tr>
-<tr class="separator:a63d56732e8ecc79bfe532301e858017e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34aa1665a2c3f474c1073f0ff9b67db0"><td class="memItemLeft" align="right" valign="top"><a id="a34aa1665a2c3f474c1073f0ff9b67db0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printMoveList</b> (const <a class="el" href="classMoveList.html">MoveList</a> &amp;list) noexcept</td></tr>
+<tr class="memitem:a40b1f9e06e7f1fa9ad6d03382998a704"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#a40b1f9e06e7f1fa9ad6d03382998a704">printBitBoard</a> (const uint64_t bb) noexcept</td></tr>
+<tr class="memdesc:a40b1f9e06e7f1fa9ad6d03382998a704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints out the bitboard to stdio.  <a href="#a40b1f9e06e7f1fa9ad6d03382998a704">More...</a><br /></td></tr>
+<tr class="separator:a40b1f9e06e7f1fa9ad6d03382998a704"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34aa1665a2c3f474c1073f0ff9b67db0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#a34aa1665a2c3f474c1073f0ff9b67db0">printMoveList</a> (const <a class="el" href="classMoveList.html">MoveList</a> &amp;list) noexcept</td></tr>
+<tr class="memdesc:a34aa1665a2c3f474c1073f0ff9b67db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints out the <a class="el" href="classMoveList.html">MoveList</a> to stdio.  <a href="#a34aa1665a2c3f474c1073f0ff9b67db0">More...</a><br /></td></tr>
 <tr class="separator:a34aa1665a2c3f474c1073f0ff9b67db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a029095064998d6f3bcf6022cf2876705"><td class="memItemLeft" align="right" valign="top"><a id="a029095064998d6f3bcf6022cf2876705"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printSearchDetails</b> (const <a class="el" href="structSearchInfo.html">SearchInfo</a> &amp;info, int32_t curDepth, int32_t bestScore, <a class="el" href="classPvTable.html">PvTable</a> &amp;pv, int32_t pvMoves) noexcept</td></tr>
+<tr class="memitem:a029095064998d6f3bcf6022cf2876705"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#a029095064998d6f3bcf6022cf2876705">printSearchDetails</a> (const <a class="el" href="structSearchInfo.html">SearchInfo</a> &amp;info, int32_t curDepth, int32_t bestScore, <a class="el" href="classPvTable.html">PvTable</a> &amp;pv, int32_t pvMoves) noexcept</td></tr>
+<tr class="memdesc:a029095064998d6f3bcf6022cf2876705"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints out the search details to stdio.  <a href="#a029095064998d6f3bcf6022cf2876705">More...</a><br /></td></tr>
 <tr class="separator:a029095064998d6f3bcf6022cf2876705"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a308ab394cf5fd18910986fbe556d01bb"><td class="memItemLeft" align="right" valign="top"><a id="a308ab394cf5fd18910986fbe556d01bb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printBestMove</b> (<a class="el" href="classBoard.html">Board</a> &amp;pos, const <a class="el" href="structSearchInfo.html">SearchInfo</a> &amp;info, const <a class="el" href="classMove.html">Move</a> &amp;bestMove) noexcept</td></tr>
+<tr class="memitem:a308ab394cf5fd18910986fbe556d01bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#a308ab394cf5fd18910986fbe556d01bb">printBestMove</a> (<a class="el" href="classBoard.html">Board</a> &amp;pos, const <a class="el" href="structSearchInfo.html">SearchInfo</a> &amp;info, const <a class="el" href="classMove.html">Move</a> &amp;bestMove) noexcept</td></tr>
+<tr class="memdesc:a308ab394cf5fd18910986fbe556d01bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints out the best move stdio for the protocol manager.  <a href="#a308ab394cf5fd18910986fbe556d01bb">More...</a><br /></td></tr>
 <tr class="separator:a308ab394cf5fd18910986fbe556d01bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aade794118f1d0f0cba9d335e10360ce1"><td class="memItemLeft" align="right" valign="top"><a id="aade794118f1d0f0cba9d335e10360ce1"></a>
-<a class="el" href="classMove.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><b>parseMove</b> (std::string input, const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memitem:aade794118f1d0f0cba9d335e10360ce1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMove.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#aade794118f1d0f0cba9d335e10360ce1">parseMove</a> (std::string input, const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:aade794118f1d0f0cba9d335e10360ce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads in a move string and converts it to the internal representation.  <a href="#aade794118f1d0f0cba9d335e10360ce1">More...</a><br /></td></tr>
 <tr class="separator:aade794118f1d0f0cba9d335e10360ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a1c70218e9ea5ec5ff1a2a3e486dc1c9d"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#a1c70218e9ea5ec5ff1a2a3e486dc1c9d">PceChar</a> = &quot;.PNBRQKpnbrqk&quot;</td></tr>
 <tr class="separator:a1c70218e9ea5ec5ff1a2a3e486dc1c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0e91e487904b7ef2a84da82dd8163b1"><td class="memItemLeft" align="right" valign="top"><a id="ac0e91e487904b7ef2a84da82dd8163b1"></a>
-const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>SideChar</b> = &quot;wb-&quot;</td></tr>
+<tr class="memitem:ac0e91e487904b7ef2a84da82dd8163b1"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#ac0e91e487904b7ef2a84da82dd8163b1">SideChar</a> = &quot;wb-&quot;</td></tr>
 <tr class="separator:ac0e91e487904b7ef2a84da82dd8163b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa43c5eefed9ad388801e187fb1c4b9f7"><td class="memItemLeft" align="right" valign="top"><a id="aa43c5eefed9ad388801e187fb1c4b9f7"></a>
-const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>RankChar</b> = &quot;12345678&quot;</td></tr>
+<tr class="memitem:aa43c5eefed9ad388801e187fb1c4b9f7"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#aa43c5eefed9ad388801e187fb1c4b9f7">RankChar</a> = &quot;12345678&quot;</td></tr>
 <tr class="separator:aa43c5eefed9ad388801e187fb1c4b9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af411d58290cad5da877276bff7704388"><td class="memItemLeft" align="right" valign="top"><a id="af411d58290cad5da877276bff7704388"></a>
-const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>FileChar</b> = &quot;abcdefgh&quot;</td></tr>
+<tr class="memitem:af411d58290cad5da877276bff7704388"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#af411d58290cad5da877276bff7704388">FileChar</a> = &quot;abcdefgh&quot;</td></tr>
 <tr class="separator:af411d58290cad5da877276bff7704388"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64af1143e1386143bb867f972b2d2c58"><td class="memItemLeft" align="right" valign="top">const std::unordered_map&lt; uint32_t, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>epstr</b></td></tr>
+<tr class="memitem:a64af1143e1386143bb867f972b2d2c58"><td class="memItemLeft" align="right" valign="top">const std::unordered_map&lt; uint32_t, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceIO.html#a64af1143e1386143bb867f972b2d2c58">epstr</a></td></tr>
 <tr class="separator:a64af1143e1386143bb867f972b2d2c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This namespace provides several methods to print the various <a class="el" href="classEngine.html">Engine</a> data structures </p>
-</div><h2 class="groupheader">Variable Documentation</h2>
+<div class="textblock"><p>Various functions to print out engine data structures. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="aade794118f1d0f0cba9d335e10360ce1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aade794118f1d0f0cba9d335e10360ce1">&#9670;&nbsp;</a></span>parseMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMove.html">Move</a> IO::parseMove </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads in a move string and converts it to the internal representation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>The move that was read in (e.g e2e4). </td></tr>
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The internal representation of the input move. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="io_8cc_source.html#l00122">122</a> of file <a class="el" href="io_8cc_source.html">io.cc</a>.</p>
+
+</div>
+</div>
+<a id="a308ab394cf5fd18910986fbe556d01bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a308ab394cf5fd18910986fbe556d01bb">&#9670;&nbsp;</a></span>printBestMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IO::printBestMove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structSearchInfo.html">SearchInfo</a> &amp;&#160;</td>
+          <td class="paramname"><em>info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMove.html">Move</a> &amp;&#160;</td>
+          <td class="paramname"><em>bestMove</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints out the best move stdio for the protocol manager. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+    <tr><td class="paramname">info</td><td>The engine's searchInfo struct. </td></tr>
+    <tr><td class="paramname">bestMove</td><td>The best move that was found. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="io_8cc_source.html#l00103">103</a> of file <a class="el" href="io_8cc_source.html">io.cc</a>.</p>
+
+</div>
+</div>
+<a id="a40b1f9e06e7f1fa9ad6d03382998a704"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40b1f9e06e7f1fa9ad6d03382998a704">&#9670;&nbsp;</a></span>printBitBoard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IO::printBitBoard </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>bb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints out the bitboard to stdio. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bb</td><td>The bitboard to print. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="io_8cc_source.html#l00018">18</a> of file <a class="el" href="io_8cc_source.html">io.cc</a>.</p>
+
+</div>
+</div>
+<a id="a4a4d2d4f2b6ab5c67e9c087d93db774a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a4d2d4f2b6ab5c67e9c087d93db774a">&#9670;&nbsp;</a></span>printBoard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IO::printBoard </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints out the board to stdio. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="io_8cc_source.html#l00033">33</a> of file <a class="el" href="io_8cc_source.html">io.cc</a>.</p>
+
+</div>
+</div>
+<a id="a34aa1665a2c3f474c1073f0ff9b67db0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34aa1665a2c3f474c1073f0ff9b67db0">&#9670;&nbsp;</a></span>printMoveList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IO::printMoveList </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classMoveList.html">MoveList</a> &amp;&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints out the <a class="el" href="classMoveList.html">MoveList</a> to stdio. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>The <a class="el" href="classMoveList.html">MoveList</a> to print. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="io_8cc_source.html#l00061">61</a> of file <a class="el" href="io_8cc_source.html">io.cc</a>.</p>
+
+</div>
+</div>
+<a id="a029095064998d6f3bcf6022cf2876705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a029095064998d6f3bcf6022cf2876705">&#9670;&nbsp;</a></span>printSearchDetails()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IO::printSearchDetails </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structSearchInfo.html">SearchInfo</a> &amp;&#160;</td>
+          <td class="paramname"><em>info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>curDepth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>bestScore</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classPvTable.html">PvTable</a> &amp;&#160;</td>
+          <td class="paramname"><em>pv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>pvMoves</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints out the search details to stdio. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">info</td><td>The engine's searchInfo struct </td></tr>
+    <tr><td class="paramname">curDepth</td><td>The current search depth. </td></tr>
+    <tr><td class="paramname">bestScore</td><td>The evaluation of the current board state </td></tr>
+    <tr><td class="paramname">pv</td><td>The transposition table. </td></tr>
+    <tr><td class="paramname">pvMoves</td><td>The length of the Pv line </td></tr>
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="io_8cc_source.html#l00073">73</a> of file <a class="el" href="io_8cc_source.html">io.cc</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
 <a id="a64af1143e1386143bb867f972b2d2c58"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a64af1143e1386143bb867f972b2d2c58">&#9670;&nbsp;</a></span>epstr</h2>
 
@@ -120,7 +406,27 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>FileChar
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">    {{71,<span class="stringliteral">&quot;a6&quot;</span>}, {72,<span class="stringliteral">&quot;b6&quot;</span>}, {73,<span class="stringliteral">&quot;c6&quot;</span>}, {74,<span class="stringliteral">&quot;d6&quot;</span>}, {75,<span class="stringliteral">&quot;e6&quot;</span>}, {76,<span class="stringliteral">&quot;f6&quot;</span>}, {77,<span class="stringliteral">&quot;g6&quot;</span>}, {78,<span class="stringliteral">&quot;h6&quot;</span>},</div><div class="line">     {41,<span class="stringliteral">&quot;a3&quot;</span>}, {42,<span class="stringliteral">&quot;b3&quot;</span>}, {43,<span class="stringliteral">&quot;c3&quot;</span>}, {44,<span class="stringliteral">&quot;d3&quot;</span>}, {45,<span class="stringliteral">&quot;e3&quot;</span>}, {46,<span class="stringliteral">&quot;f3&quot;</span>}, {47,<span class="stringliteral">&quot;g3&quot;</span>}, {48,<span class="stringliteral">&quot;h3&quot;</span>}, {99, <span class="stringliteral">&quot;None&quot;</span>}}</div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">= </div><div class="line">    {{71,<span class="stringliteral">&quot;a6&quot;</span>}, {72,<span class="stringliteral">&quot;b6&quot;</span>}, {73,<span class="stringliteral">&quot;c6&quot;</span>}, {74,<span class="stringliteral">&quot;d6&quot;</span>}, {75,<span class="stringliteral">&quot;e6&quot;</span>}, {76,<span class="stringliteral">&quot;f6&quot;</span>}, {77,<span class="stringliteral">&quot;g6&quot;</span>}, {78,<span class="stringliteral">&quot;h6&quot;</span>},</div><div class="line">     {41,<span class="stringliteral">&quot;a3&quot;</span>}, {42,<span class="stringliteral">&quot;b3&quot;</span>}, {43,<span class="stringliteral">&quot;c3&quot;</span>}, {44,<span class="stringliteral">&quot;d3&quot;</span>}, {45,<span class="stringliteral">&quot;e3&quot;</span>}, {46,<span class="stringliteral">&quot;f3&quot;</span>}, {47,<span class="stringliteral">&quot;g3&quot;</span>}, {48,<span class="stringliteral">&quot;h3&quot;</span>}, {99, <span class="stringliteral">&quot;None&quot;</span>}}</div></div><!-- fragment --><p>Dictionary to provide string representations of enPassant sq's </p>
+
+<p class="definition">Definition at line <a class="el" href="io_8h_source.html#l00040">40</a> of file <a class="el" href="io_8h_source.html">io.h</a>.</p>
+
+</div>
+</div>
+<a id="af411d58290cad5da877276bff7704388"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af411d58290cad5da877276bff7704388">&#9670;&nbsp;</a></span>FileChar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string IO::FileChar = &quot;abcdefgh&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dictionary to provide string representations of files </p>
+
+<p class="definition">Definition at line <a class="el" href="io_8h_source.html#l00036">36</a> of file <a class="el" href="io_8h_source.html">io.h</a>.</p>
+
 </div>
 </div>
 <a id="a1c70218e9ea5ec5ff1a2a3e486dc1c9d"></a>
@@ -134,7 +440,43 @@ const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>FileChar
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Dictionaries to provide string representations of pieces/sides/ranks/files/enPassant sq's </p>
+<p>Dictionary to provide string representations of piecess </p>
+
+<p class="definition">Definition at line <a class="el" href="io_8h_source.html#l00024">24</a> of file <a class="el" href="io_8h_source.html">io.h</a>.</p>
+
+</div>
+</div>
+<a id="aa43c5eefed9ad388801e187fb1c4b9f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa43c5eefed9ad388801e187fb1c4b9f7">&#9670;&nbsp;</a></span>RankChar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string IO::RankChar = &quot;12345678&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dictionary to provide string representations of ranks </p>
+
+<p class="definition">Definition at line <a class="el" href="io_8h_source.html#l00032">32</a> of file <a class="el" href="io_8h_source.html">io.h</a>.</p>
+
+</div>
+</div>
+<a id="ac0e91e487904b7ef2a84da82dd8163b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0e91e487904b7ef2a84da82dd8163b1">&#9670;&nbsp;</a></span>SideChar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string IO::SideChar = &quot;wb-&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dictionary to provide string representations of sides </p>
+
+<p class="definition">Definition at line <a class="el" href="io_8h_source.html#l00028">28</a> of file <a class="el" href="io_8h_source.html">io.h</a>.</p>
 
 </div>
 </div>

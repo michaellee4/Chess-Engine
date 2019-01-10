@@ -1,46 +1,193 @@
 \hypertarget{namespaceIO}{}\section{IO Namespace Reference}
 \label{namespaceIO}\index{IO@{IO}}
+
+
+Various functions to print out engine data structures.  
+
+
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{namespaceIO_a4a4d2d4f2b6ab5c67e9c087d93db774a}\label{namespaceIO_a4a4d2d4f2b6ab5c67e9c087d93db774a}} 
-void {\bfseries print\+Board} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\item 
-\mbox{\Hypertarget{namespaceIO_a63d56732e8ecc79bfe532301e858017e}\label{namespaceIO_a63d56732e8ecc79bfe532301e858017e}} 
-void {\bfseries print\+Bit\+Board} (const uint64\+\_\+t) noexcept
-\item 
-\mbox{\Hypertarget{namespaceIO_a34aa1665a2c3f474c1073f0ff9b67db0}\label{namespaceIO_a34aa1665a2c3f474c1073f0ff9b67db0}} 
-void {\bfseries print\+Move\+List} (const \mbox{\hyperlink{classMoveList}{Move\+List}} \&list) noexcept
-\item 
-\mbox{\Hypertarget{namespaceIO_a029095064998d6f3bcf6022cf2876705}\label{namespaceIO_a029095064998d6f3bcf6022cf2876705}} 
-void {\bfseries print\+Search\+Details} (const \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info, int32\+\_\+t cur\+Depth, int32\+\_\+t best\+Score, \mbox{\hyperlink{classPvTable}{Pv\+Table}} \&pv, int32\+\_\+t pv\+Moves) noexcept
-\item 
-\mbox{\Hypertarget{namespaceIO_a308ab394cf5fd18910986fbe556d01bb}\label{namespaceIO_a308ab394cf5fd18910986fbe556d01bb}} 
-void {\bfseries print\+Best\+Move} (\mbox{\hyperlink{classBoard}{Board}} \&pos, const \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info, const \mbox{\hyperlink{classMove}{Move}} \&best\+Move) noexcept
-\item 
-\mbox{\Hypertarget{namespaceIO_aade794118f1d0f0cba9d335e10360ce1}\label{namespaceIO_aade794118f1d0f0cba9d335e10360ce1}} 
-\mbox{\hyperlink{classMove}{Move}} {\bfseries parse\+Move} (std\+::string input, const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{namespaceIO_a4a4d2d4f2b6ab5c67e9c087d93db774a}{print\+Board}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Prints out the board to stdio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceIO_a40b1f9e06e7f1fa9ad6d03382998a704}{print\+Bit\+Board}} (const uint64\+\_\+t bb) noexcept
+\begin{DoxyCompactList}\small\item\em Prints out the bitboard to stdio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceIO_a34aa1665a2c3f474c1073f0ff9b67db0}{print\+Move\+List}} (const \mbox{\hyperlink{classMoveList}{Move\+List}} \&list) noexcept
+\begin{DoxyCompactList}\small\item\em Prints out the \mbox{\hyperlink{classMoveList}{Move\+List}} to stdio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceIO_a029095064998d6f3bcf6022cf2876705}{print\+Search\+Details}} (const \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info, int32\+\_\+t cur\+Depth, int32\+\_\+t best\+Score, \mbox{\hyperlink{classPvTable}{Pv\+Table}} \&pv, int32\+\_\+t pv\+Moves) noexcept
+\begin{DoxyCompactList}\small\item\em Prints out the search details to stdio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceIO_a308ab394cf5fd18910986fbe556d01bb}{print\+Best\+Move}} (\mbox{\hyperlink{classBoard}{Board}} \&pos, const \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info, const \mbox{\hyperlink{classMove}{Move}} \&best\+Move) noexcept
+\begin{DoxyCompactList}\small\item\em Prints out the best move stdio for the protocol manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{namespaceIO_aade794118f1d0f0cba9d335e10360ce1}{parse\+Move}} (std\+::string input, const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Reads in a move string and converts it to the internal representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 const std\+::string \mbox{\hyperlink{namespaceIO_a1c70218e9ea5ec5ff1a2a3e486dc1c9d}{Pce\+Char}} = \char`\"{}.P\+N\+B\+R\+Q\+Kpnbrqk\char`\"{}
 \item 
-\mbox{\Hypertarget{namespaceIO_ac0e91e487904b7ef2a84da82dd8163b1}\label{namespaceIO_ac0e91e487904b7ef2a84da82dd8163b1}} 
-const std\+::string {\bfseries Side\+Char} = \char`\"{}wb-\/\char`\"{}
+const std\+::string \mbox{\hyperlink{namespaceIO_ac0e91e487904b7ef2a84da82dd8163b1}{Side\+Char}} = \char`\"{}wb-\/\char`\"{}
 \item 
-\mbox{\Hypertarget{namespaceIO_aa43c5eefed9ad388801e187fb1c4b9f7}\label{namespaceIO_aa43c5eefed9ad388801e187fb1c4b9f7}} 
-const std\+::string {\bfseries Rank\+Char} = \char`\"{}12345678\char`\"{}
+const std\+::string \mbox{\hyperlink{namespaceIO_aa43c5eefed9ad388801e187fb1c4b9f7}{Rank\+Char}} = \char`\"{}12345678\char`\"{}
 \item 
-\mbox{\Hypertarget{namespaceIO_af411d58290cad5da877276bff7704388}\label{namespaceIO_af411d58290cad5da877276bff7704388}} 
-const std\+::string {\bfseries File\+Char} = \char`\"{}abcdefgh\char`\"{}
+const std\+::string \mbox{\hyperlink{namespaceIO_af411d58290cad5da877276bff7704388}{File\+Char}} = \char`\"{}abcdefgh\char`\"{}
 \item 
-const std\+::unordered\+\_\+map$<$ uint32\+\_\+t, std\+::string $>$ {\bfseries epstr}
+const std\+::unordered\+\_\+map$<$ uint32\+\_\+t, std\+::string $>$ \mbox{\hyperlink{namespaceIO_a64af1143e1386143bb867f972b2d2c58}{epstr}}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-This namespace provides several methods to print the various \mbox{\hyperlink{classEngine}{Engine}} data structures 
+Various functions to print out engine data structures. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceIO_aade794118f1d0f0cba9d335e10360ce1}\label{namespaceIO_aade794118f1d0f0cba9d335e10360ce1}} 
+\index{IO@{IO}!parse\+Move@{parse\+Move}}
+\index{parse\+Move@{parse\+Move}!IO@{IO}}
+\subsubsection{\texorpdfstring{parse\+Move()}{parseMove()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMove}{Move}} I\+O\+::parse\+Move (\begin{DoxyParamCaption}\item[{std\+::string}]{input,  }\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Reads in a move string and converts it to the internal representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The move that was read in (e.\+g e2e4). \\
+\hline
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The internal representation of the input move. 
+\end{DoxyReturn}
+
+
+Definition at line 122 of file io.\+cc.
+
+\mbox{\Hypertarget{namespaceIO_a308ab394cf5fd18910986fbe556d01bb}\label{namespaceIO_a308ab394cf5fd18910986fbe556d01bb}} 
+\index{IO@{IO}!print\+Best\+Move@{print\+Best\+Move}}
+\index{print\+Best\+Move@{print\+Best\+Move}!IO@{IO}}
+\subsubsection{\texorpdfstring{print\+Best\+Move()}{printBestMove()}}
+{\footnotesize\ttfamily void I\+O\+::print\+Best\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{const \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&}]{info,  }\item[{const \mbox{\hyperlink{classMove}{Move}} \&}]{best\+Move }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Prints out the best move stdio for the protocol manager. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em info} & The engine\textquotesingle{}s search\+Info struct. \\
+\hline
+{\em best\+Move} & The best move that was found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+
+
+Definition at line 103 of file io.\+cc.
+
+\mbox{\Hypertarget{namespaceIO_a40b1f9e06e7f1fa9ad6d03382998a704}\label{namespaceIO_a40b1f9e06e7f1fa9ad6d03382998a704}} 
+\index{IO@{IO}!print\+Bit\+Board@{print\+Bit\+Board}}
+\index{print\+Bit\+Board@{print\+Bit\+Board}!IO@{IO}}
+\subsubsection{\texorpdfstring{print\+Bit\+Board()}{printBitBoard()}}
+{\footnotesize\ttfamily void I\+O\+::print\+Bit\+Board (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{bb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Prints out the bitboard to stdio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bb} & The bitboard to print. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+
+
+Definition at line 18 of file io.\+cc.
+
+\mbox{\Hypertarget{namespaceIO_a4a4d2d4f2b6ab5c67e9c087d93db774a}\label{namespaceIO_a4a4d2d4f2b6ab5c67e9c087d93db774a}} 
+\index{IO@{IO}!print\+Board@{print\+Board}}
+\index{print\+Board@{print\+Board}!IO@{IO}}
+\subsubsection{\texorpdfstring{print\+Board()}{printBoard()}}
+{\footnotesize\ttfamily void I\+O\+::print\+Board (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Prints out the board to stdio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file io.\+cc.
+
+\mbox{\Hypertarget{namespaceIO_a34aa1665a2c3f474c1073f0ff9b67db0}\label{namespaceIO_a34aa1665a2c3f474c1073f0ff9b67db0}} 
+\index{IO@{IO}!print\+Move\+List@{print\+Move\+List}}
+\index{print\+Move\+List@{print\+Move\+List}!IO@{IO}}
+\subsubsection{\texorpdfstring{print\+Move\+List()}{printMoveList()}}
+{\footnotesize\ttfamily void I\+O\+::print\+Move\+List (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMoveList}{Move\+List}} \&}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Prints out the \mbox{\hyperlink{classMoveList}{Move\+List}} to stdio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The \mbox{\hyperlink{classMoveList}{Move\+List}} to print. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+
+
+Definition at line 61 of file io.\+cc.
+
+\mbox{\Hypertarget{namespaceIO_a029095064998d6f3bcf6022cf2876705}\label{namespaceIO_a029095064998d6f3bcf6022cf2876705}} 
+\index{IO@{IO}!print\+Search\+Details@{print\+Search\+Details}}
+\index{print\+Search\+Details@{print\+Search\+Details}!IO@{IO}}
+\subsubsection{\texorpdfstring{print\+Search\+Details()}{printSearchDetails()}}
+{\footnotesize\ttfamily void I\+O\+::print\+Search\+Details (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&}]{info,  }\item[{int32\+\_\+t}]{cur\+Depth,  }\item[{int32\+\_\+t}]{best\+Score,  }\item[{\mbox{\hyperlink{classPvTable}{Pv\+Table}} \&}]{pv,  }\item[{int32\+\_\+t}]{pv\+Moves }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Prints out the search details to stdio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & The engine\textquotesingle{}s search\+Info struct \\
+\hline
+{\em cur\+Depth} & The current search depth. \\
+\hline
+{\em best\+Score} & The evaluation of the current board state \\
+\hline
+{\em pv} & The transposition table. \\
+\hline
+{\em pv\+Moves} & The length of the Pv line \\
+\hline
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+
+
+Definition at line 73 of file io.\+cc.
+
+
 
 \subsection{Variable Documentation}
 \mbox{\Hypertarget{namespaceIO_a64af1143e1386143bb867f972b2d2c58}\label{namespaceIO_a64af1143e1386143bb867f972b2d2c58}} 
@@ -55,10 +202,47 @@ This namespace provides several methods to print the various \mbox{\hyperlink{cl
     \{\{71,\textcolor{stringliteral}{"a6"}\}, \{72,\textcolor{stringliteral}{"b6"}\}, \{73,\textcolor{stringliteral}{"c6"}\}, \{74,\textcolor{stringliteral}{"d6"}\}, \{75,\textcolor{stringliteral}{"e6"}\}, \{76,\textcolor{stringliteral}{"f6"}\}, \{77,\textcolor{stringliteral}{"g6"}\}, \{78,\textcolor{stringliteral}{"h6"}\},
      \{41,\textcolor{stringliteral}{"a3"}\}, \{42,\textcolor{stringliteral}{"b3"}\}, \{43,\textcolor{stringliteral}{"c3"}\}, \{44,\textcolor{stringliteral}{"d3"}\}, \{45,\textcolor{stringliteral}{"e3"}\}, \{46,\textcolor{stringliteral}{"f3"}\}, \{47,\textcolor{stringliteral}{"g3"}\}, \{48,\textcolor{stringliteral}{"h3"}\}, \{99, \textcolor{stringliteral}{"None"}\}\}
 \end{DoxyCode}
+Dictionary to provide string representations of en\+Passant sq\textquotesingle{}s 
+
+Definition at line 40 of file io.\+h.
+
+\mbox{\Hypertarget{namespaceIO_af411d58290cad5da877276bff7704388}\label{namespaceIO_af411d58290cad5da877276bff7704388}} 
+\index{IO@{IO}!File\+Char@{File\+Char}}
+\index{File\+Char@{File\+Char}!IO@{IO}}
+\subsubsection{\texorpdfstring{File\+Char}{FileChar}}
+{\footnotesize\ttfamily const std\+::string I\+O\+::\+File\+Char = \char`\"{}abcdefgh\char`\"{}}
+
+Dictionary to provide string representations of files 
+
+Definition at line 36 of file io.\+h.
+
 \mbox{\Hypertarget{namespaceIO_a1c70218e9ea5ec5ff1a2a3e486dc1c9d}\label{namespaceIO_a1c70218e9ea5ec5ff1a2a3e486dc1c9d}} 
 \index{IO@{IO}!Pce\+Char@{Pce\+Char}}
 \index{Pce\+Char@{Pce\+Char}!IO@{IO}}
 \subsubsection{\texorpdfstring{Pce\+Char}{PceChar}}
 {\footnotesize\ttfamily const std\+::string I\+O\+::\+Pce\+Char = \char`\"{}.P\+N\+B\+R\+Q\+Kpnbrqk\char`\"{}}
 
-Dictionaries to provide string representations of pieces/sides/ranks/files/en\+Passant sq\textquotesingle{}s 
+Dictionary to provide string representations of piecess 
+
+Definition at line 24 of file io.\+h.
+
+\mbox{\Hypertarget{namespaceIO_aa43c5eefed9ad388801e187fb1c4b9f7}\label{namespaceIO_aa43c5eefed9ad388801e187fb1c4b9f7}} 
+\index{IO@{IO}!Rank\+Char@{Rank\+Char}}
+\index{Rank\+Char@{Rank\+Char}!IO@{IO}}
+\subsubsection{\texorpdfstring{Rank\+Char}{RankChar}}
+{\footnotesize\ttfamily const std\+::string I\+O\+::\+Rank\+Char = \char`\"{}12345678\char`\"{}}
+
+Dictionary to provide string representations of ranks 
+
+Definition at line 32 of file io.\+h.
+
+\mbox{\Hypertarget{namespaceIO_ac0e91e487904b7ef2a84da82dd8163b1}\label{namespaceIO_ac0e91e487904b7ef2a84da82dd8163b1}} 
+\index{IO@{IO}!Side\+Char@{Side\+Char}}
+\index{Side\+Char@{Side\+Char}!IO@{IO}}
+\subsubsection{\texorpdfstring{Side\+Char}{SideChar}}
+{\footnotesize\ttfamily const std\+::string I\+O\+::\+Side\+Char = \char`\"{}wb-\/\char`\"{}}
+
+Dictionary to provide string representations of sides 
+
+Definition at line 28 of file io.\+h.
+

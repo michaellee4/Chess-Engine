@@ -15,9 +15,12 @@ var searchData=
   ['get',['get',['../classPvTable.html#affc22eb520f1e4c8fc30366e38af5868',1,'PvTable']]],
   ['getallcapturemoves',['getAllCaptureMoves',['../classBoard.html#a884b9114fd749aeec4359fac01eb1db1',1,'Board']]],
   ['getallmoves',['getAllMoves',['../classBoard.html#a515095fc28f6aa8057296914156b09cb',1,'Board']]],
+  ['getbook',['getBook',['../classEngine.html#a02d2a190f06bd06f23eb6ed02474f990',1,'Engine']]],
   ['getbookmove',['getBookMove',['../classPolyBook.html#a594d060bcb84f4d6cd3999ca4698f847',1,'PolyBook']]],
+  ['getconfig',['getConfig',['../classEngine.html#a0829ed04a1463100784500122bbe426f',1,'Engine']]],
   ['getenpassant',['getEnPassant',['../classBoard.html#a9e6c964048b76b8f93c583383efe80ac',1,'Board']]],
   ['gethashentry',['getHashEntry',['../classPvTable.html#a0eb2e071414179f05f606ece66b8e0aa',1,'PvTable']]],
+  ['getinstance',['getInstance',['../classEngine.html#ae174f8fa16fbab1633489283db2b0c9f',1,'Engine']]],
   ['getprotocol',['getProtocol',['../classConsoleManager.html#a12c11521d46af302d6c7d79d3b8174b4',1,'ConsoleManager::getProtocol()'],['../classProtocolManager.html#a2ab274fd7510b28e7ac36405aebdbe82',1,'ProtocolManager::getProtocol()'],['../classUCIManager.html#af85c53751a85a5cb624e10fb1f9962c7',1,'UCIManager::getProtocol()'],['../classXBoardManager.html#a388ebffa15fa11ee763f4144f01fbcaf',1,'XBoardManager::getProtocol()']]],
   ['getpvline',['getPvLine',['../classPvTable.html#a6e87189dbe8ce348782ad2423ac14b08',1,'PvTable']]],
   ['gettimeinmilli',['getTimeInMilli',['../classStopwatch.html#a789c42b276146b4d043fac2e30684d7c',1,'Stopwatch']]]

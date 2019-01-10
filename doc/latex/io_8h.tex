@@ -10,42 +10,38 @@ Contains declarations of functions that print the various \mbox{\hyperlink{class
 {\ttfamily \#include \char`\"{}movelist.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}searchinfo.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$string$>$}\newline
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceIO}{IO}}
+\begin{DoxyCompactList}\small\item\em Various functions to print out engine data structures. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{io_8h_a4a4d2d4f2b6ab5c67e9c087d93db774a}\label{io_8h_a4a4d2d4f2b6ab5c67e9c087d93db774a}} 
-void {\bfseries I\+O\+::print\+Board} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\item 
-\mbox{\Hypertarget{io_8h_a63d56732e8ecc79bfe532301e858017e}\label{io_8h_a63d56732e8ecc79bfe532301e858017e}} 
-void {\bfseries I\+O\+::print\+Bit\+Board} (const uint64\+\_\+t) noexcept
-\item 
-\mbox{\Hypertarget{io_8h_a34aa1665a2c3f474c1073f0ff9b67db0}\label{io_8h_a34aa1665a2c3f474c1073f0ff9b67db0}} 
-void {\bfseries I\+O\+::print\+Move\+List} (const \mbox{\hyperlink{classMoveList}{Move\+List}} \&list) noexcept
-\item 
-\mbox{\Hypertarget{io_8h_a029095064998d6f3bcf6022cf2876705}\label{io_8h_a029095064998d6f3bcf6022cf2876705}} 
-void {\bfseries I\+O\+::print\+Search\+Details} (const \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info, int32\+\_\+t cur\+Depth, int32\+\_\+t best\+Score, \mbox{\hyperlink{classPvTable}{Pv\+Table}} \&pv, int32\+\_\+t pv\+Moves) noexcept
-\item 
-\mbox{\Hypertarget{io_8h_a308ab394cf5fd18910986fbe556d01bb}\label{io_8h_a308ab394cf5fd18910986fbe556d01bb}} 
-void {\bfseries I\+O\+::print\+Best\+Move} (\mbox{\hyperlink{classBoard}{Board}} \&pos, const \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info, const \mbox{\hyperlink{classMove}{Move}} \&best\+Move) noexcept
-\item 
-\mbox{\Hypertarget{io_8h_aade794118f1d0f0cba9d335e10360ce1}\label{io_8h_aade794118f1d0f0cba9d335e10360ce1}} 
-\mbox{\hyperlink{classMove}{Move}} {\bfseries I\+O\+::parse\+Move} (std\+::string input, const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{namespaceIO_a4a4d2d4f2b6ab5c67e9c087d93db774a}{I\+O\+::print\+Board}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Prints out the board to stdio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceIO_a40b1f9e06e7f1fa9ad6d03382998a704}{I\+O\+::print\+Bit\+Board}} (const uint64\+\_\+t bb) noexcept
+\begin{DoxyCompactList}\small\item\em Prints out the bitboard to stdio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceIO_a34aa1665a2c3f474c1073f0ff9b67db0}{I\+O\+::print\+Move\+List}} (const \mbox{\hyperlink{classMoveList}{Move\+List}} \&list) noexcept
+\begin{DoxyCompactList}\small\item\em Prints out the \mbox{\hyperlink{classMoveList}{Move\+List}} to stdio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceIO_a029095064998d6f3bcf6022cf2876705}{I\+O\+::print\+Search\+Details}} (const \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info, int32\+\_\+t cur\+Depth, int32\+\_\+t best\+Score, \mbox{\hyperlink{classPvTable}{Pv\+Table}} \&pv, int32\+\_\+t pv\+Moves) noexcept
+\begin{DoxyCompactList}\small\item\em Prints out the search details to stdio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceIO_a308ab394cf5fd18910986fbe556d01bb}{I\+O\+::print\+Best\+Move}} (\mbox{\hyperlink{classBoard}{Board}} \&pos, const \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info, const \mbox{\hyperlink{classMove}{Move}} \&best\+Move) noexcept
+\begin{DoxyCompactList}\small\item\em Prints out the best move stdio for the protocol manager. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{namespaceIO_aade794118f1d0f0cba9d335e10360ce1}{I\+O\+::parse\+Move}} (std\+::string input, const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Reads in a move string and converts it to the internal representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-const std\+::string \mbox{\hyperlink{io_8h_a1c70218e9ea5ec5ff1a2a3e486dc1c9d}{I\+O\+::\+Pce\+Char}} = \char`\"{}.P\+N\+B\+R\+Q\+Kpnbrqk\char`\"{}
+const std\+::string \mbox{\hyperlink{namespaceIO_a1c70218e9ea5ec5ff1a2a3e486dc1c9d}{I\+O\+::\+Pce\+Char}} = \char`\"{}.P\+N\+B\+R\+Q\+Kpnbrqk\char`\"{}
 \item 
-\mbox{\Hypertarget{io_8h_ac0e91e487904b7ef2a84da82dd8163b1}\label{io_8h_ac0e91e487904b7ef2a84da82dd8163b1}} 
-const std\+::string {\bfseries I\+O\+::\+Side\+Char} = \char`\"{}wb-\/\char`\"{}
+const std\+::string \mbox{\hyperlink{namespaceIO_ac0e91e487904b7ef2a84da82dd8163b1}{I\+O\+::\+Side\+Char}} = \char`\"{}wb-\/\char`\"{}
 \item 
-\mbox{\Hypertarget{io_8h_aa43c5eefed9ad388801e187fb1c4b9f7}\label{io_8h_aa43c5eefed9ad388801e187fb1c4b9f7}} 
-const std\+::string {\bfseries I\+O\+::\+Rank\+Char} = \char`\"{}12345678\char`\"{}
+const std\+::string \mbox{\hyperlink{namespaceIO_aa43c5eefed9ad388801e187fb1c4b9f7}{I\+O\+::\+Rank\+Char}} = \char`\"{}12345678\char`\"{}
 \item 
-\mbox{\Hypertarget{io_8h_af411d58290cad5da877276bff7704388}\label{io_8h_af411d58290cad5da877276bff7704388}} 
-const std\+::string {\bfseries I\+O\+::\+File\+Char} = \char`\"{}abcdefgh\char`\"{}
+const std\+::string \mbox{\hyperlink{namespaceIO_af411d58290cad5da877276bff7704388}{I\+O\+::\+File\+Char}} = \char`\"{}abcdefgh\char`\"{}
 \item 
-const std\+::unordered\+\_\+map$<$ uint32\+\_\+t, std\+::string $>$ {\bfseries I\+O\+::epstr}
+const std\+::unordered\+\_\+map$<$ uint32\+\_\+t, std\+::string $>$ \mbox{\hyperlink{namespaceIO_a64af1143e1386143bb867f972b2d2c58}{I\+O\+::epstr}}
 \end{DoxyCompactItemize}
 
 
@@ -58,32 +54,3 @@ Michael Lee
 \begin{DoxyDate}{Date}
 1/9/2019 
 \end{DoxyDate}
-
-
-\subsection{Variable Documentation}
-\mbox{\Hypertarget{io_8h_file_a64af1143e1386143bb867f972b2d2c58}\label{io_8h_file_a64af1143e1386143bb867f972b2d2c58}} 
-\index{io.\+h@{io.\+h}!epstr@{epstr}}
-\index{epstr@{epstr}!io.\+h@{io.\+h}}
-\subsubsection{\texorpdfstring{epstr}{epstr}}
-{\footnotesize\ttfamily const std\+::unordered\+\_\+map$<$uint32\+\_\+t, std\+::string$>$ I\+O\+::epstr}
-
-{\bfseries Initial value\+:}
-\begin{DoxyCode}
-= 
-    \{\{71,\textcolor{stringliteral}{"a6"}\}, \{72,\textcolor{stringliteral}{"b6"}\}, \{73,\textcolor{stringliteral}{"c6"}\}, \{74,\textcolor{stringliteral}{"d6"}\}, \{75,\textcolor{stringliteral}{"e6"}\}, \{76,\textcolor{stringliteral}{"f6"}\}, \{77,\textcolor{stringliteral}{"g6"}\}, \{78,\textcolor{stringliteral}{"h6"}\},
-     \{41,\textcolor{stringliteral}{"a3"}\}, \{42,\textcolor{stringliteral}{"b3"}\}, \{43,\textcolor{stringliteral}{"c3"}\}, \{44,\textcolor{stringliteral}{"d3"}\}, \{45,\textcolor{stringliteral}{"e3"}\}, \{46,\textcolor{stringliteral}{"f3"}\}, \{47,\textcolor{stringliteral}{"g3"}\}, \{48,\textcolor{stringliteral}{"h3"}\}, \{99, \textcolor{stringliteral}{"None"}\}\}
-\end{DoxyCode}
-
-
-Definition at line 25 of file io.\+h.
-
-\mbox{\Hypertarget{io_8h_file_a1c70218e9ea5ec5ff1a2a3e486dc1c9d}\label{io_8h_file_a1c70218e9ea5ec5ff1a2a3e486dc1c9d}} 
-\index{io.\+h@{io.\+h}!Pce\+Char@{Pce\+Char}}
-\index{Pce\+Char@{Pce\+Char}!io.\+h@{io.\+h}}
-\subsubsection{\texorpdfstring{Pce\+Char}{PceChar}}
-{\footnotesize\ttfamily const std\+::string I\+O\+::\+Pce\+Char = \char`\"{}.P\+N\+B\+R\+Q\+Kpnbrqk\char`\"{}}
-
-Dictionaries to provide string representations of pieces/sides/ranks/files/en\+Passant sq\textquotesingle{}s 
-
-Definition at line 21 of file io.\+h.
-

@@ -7,55 +7,60 @@
 #ifndef INIT_H
 #define INIT_H
 
+
+/**
+	@brief Provides methods to initialize the non constant arrays used throughout the engine
+ */
 namespace Init
 {
-	/**
-	 * Input: None
-	 * Output: None
-	 * Operation: Calls all of the 'init' methods below
-	 */
+
+/**
+	@brief Calls all of the other 'init' methods.
+	@param None
+	@return None.
+ */
 	void initAll() noexcept;
 
-	/**
-	 * Input: None
-	 * Output: None
-	 * Operation: Fills in the arrays that convert between array-120 to array-64 representations
-	 */
+/**
+	@brief Fills in the arrays that convert between array-120 to array-64 representations.
+	@param None
+	@return None.
+ */
 	void initSq120ToSq64() noexcept;
 
-	/**
-	 * Input: None
-	 * Output: None
-	 * Operation: Fills in the arrays used for setting/clearing bits in bitboards
-	 */
+/**
+	@brief Fills in the arrays used for setting/clearing bits in bitboards.
+	@param None
+	@return None.
+ */
 	void initBitMasks() noexcept;
 
-	/**
-	 * Input: None
-	 * Output: None
-	 * Operation: Fills in the hashkeys arrays that will be used to for getting the board's hashkey
-	 */
+/**
+	@brief Fills in the hashkeys arrays that will be used to for getting the board's hashkey.
+	@param None
+	@return None.
+ */
 	void initHashKeys() noexcept;
 
-	/**
-	 * Input: None
-	 * Output: None
-	 * Operation: Fills in the arrays that return the file/rank # for a given square
-	 */
+/**
+	@brief Fills in the arrays that return the file/rank # for a given square.
+	@param None
+	@return None.
+ */
 	void initFileRankBrd() noexcept;	
 
-	/**
-	 * Input: None
-	 * Output: None
-	 * Operation: Fills in the arrays used for evaluating pawn structure during evaluation
-	 */
+/**
+	@brief Fills in the arrays used for evaluating pawn structure during evaluation.
+	@param None
+	@return None.
+ */
 	void initEvalMasks() noexcept;
 
-	/**
-	 * Input: None
-	 * Output: None
-	 * Operation: Fills in the arrays to determine most valuable victim least valuable attacker priority
-	 */
+/**
+	@brief Fills in the arrays to determine most valuable victim least valuable attacker priority.
+	@param None
+	@return None.
+ */
 	void initMvvLva() noexcept;
 }
 

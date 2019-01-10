@@ -72,38 +72,335 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a82ac01bb85da704f7a9f1a059c0e91fb"><td class="memItemLeft" align="right" valign="top"><a id="a82ac01bb85da704f7a9f1a059c0e91fb"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>evaluatePosition</b> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memitem:a82ac01bb85da704f7a9f1a059c0e91fb"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvaluator.html#a82ac01bb85da704f7a9f1a059c0e91fb">evaluatePosition</a> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:a82ac01bb85da704f7a9f1a059c0e91fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the score for the current board position for the side to move.  <a href="#a82ac01bb85da704f7a9f1a059c0e91fb">More...</a><br /></td></tr>
 <tr class="separator:a82ac01bb85da704f7a9f1a059c0e91fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a76e81d148449a9bb6c1616895223ad77"><td class="memItemLeft" align="right" valign="top"><a id="a76e81d148449a9bb6c1616895223ad77"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>evalPawns</b> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memitem:a76e81d148449a9bb6c1616895223ad77"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvaluator.html#a76e81d148449a9bb6c1616895223ad77">evalPawns</a> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:a76e81d148449a9bb6c1616895223ad77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the strength of the Pawns.  <a href="#a76e81d148449a9bb6c1616895223ad77">More...</a><br /></td></tr>
 <tr class="separator:a76e81d148449a9bb6c1616895223ad77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8235a37e631665e0dbdbffdddf015f7"><td class="memItemLeft" align="right" valign="top"><a id="ab8235a37e631665e0dbdbffdddf015f7"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>evalBishops</b> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memitem:ab8235a37e631665e0dbdbffdddf015f7"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvaluator.html#ab8235a37e631665e0dbdbffdddf015f7">evalBishops</a> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:ab8235a37e631665e0dbdbffdddf015f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the strength of the Bishop.  <a href="#ab8235a37e631665e0dbdbffdddf015f7">More...</a><br /></td></tr>
 <tr class="separator:ab8235a37e631665e0dbdbffdddf015f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1cfc6e10fcd71fc4148415d889a4085"><td class="memItemLeft" align="right" valign="top"><a id="ac1cfc6e10fcd71fc4148415d889a4085"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>evalRooks</b> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memitem:ac1cfc6e10fcd71fc4148415d889a4085"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvaluator.html#ac1cfc6e10fcd71fc4148415d889a4085">evalRooks</a> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:ac1cfc6e10fcd71fc4148415d889a4085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the strength of the Rook.  <a href="#ac1cfc6e10fcd71fc4148415d889a4085">More...</a><br /></td></tr>
 <tr class="separator:ac1cfc6e10fcd71fc4148415d889a4085"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf81df6872cb3c5acabc05b4865c4bcd"><td class="memItemLeft" align="right" valign="top"><a id="aaf81df6872cb3c5acabc05b4865c4bcd"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>evalKnights</b> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memitem:aaf81df6872cb3c5acabc05b4865c4bcd"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvaluator.html#aaf81df6872cb3c5acabc05b4865c4bcd">evalKnights</a> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:aaf81df6872cb3c5acabc05b4865c4bcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the strength of the Knights.  <a href="#aaf81df6872cb3c5acabc05b4865c4bcd">More...</a><br /></td></tr>
 <tr class="separator:aaf81df6872cb3c5acabc05b4865c4bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a322d577548dd00c32e949cad62a17393"><td class="memItemLeft" align="right" valign="top"><a id="a322d577548dd00c32e949cad62a17393"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>evalQueens</b> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memitem:a322d577548dd00c32e949cad62a17393"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvaluator.html#a322d577548dd00c32e949cad62a17393">evalQueens</a> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:a322d577548dd00c32e949cad62a17393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the strength of the Queens.  <a href="#a322d577548dd00c32e949cad62a17393">More...</a><br /></td></tr>
 <tr class="separator:a322d577548dd00c32e949cad62a17393"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8971fc82010e0a08a1e510847bf304c"><td class="memItemLeft" align="right" valign="top"><a id="af8971fc82010e0a08a1e510847bf304c"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>evalKings</b> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memitem:af8971fc82010e0a08a1e510847bf304c"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvaluator.html#af8971fc82010e0a08a1e510847bf304c">evalKings</a> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:af8971fc82010e0a08a1e510847bf304c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluates the strength of the Kings.  <a href="#af8971fc82010e0a08a1e510847bf304c">More...</a><br /></td></tr>
 <tr class="separator:af8971fc82010e0a08a1e510847bf304c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec21b1e28f162b7f1e4edc9e8f725a8b"><td class="memItemLeft" align="right" valign="top"><a id="aec21b1e28f162b7f1e4edc9e8f725a8b"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>drawnMaterial</b> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memitem:aec21b1e28f162b7f1e4edc9e8f725a8b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvaluator.html#aec21b1e28f162b7f1e4edc9e8f725a8b">drawnMaterial</a> (const <a class="el" href="classBoard.html">Board</a> &amp;pos) noexcept</td></tr>
+<tr class="memdesc:aec21b1e28f162b7f1e4edc9e8f725a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if there is enough material to end in checkmate.  <a href="#aec21b1e28f162b7f1e4edc9e8f725a8b">More...</a><br /></td></tr>
 <tr class="separator:aec21b1e28f162b7f1e4edc9e8f725a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="eval_8h_source.html#l00111">111</a> of file <a class="el" href="eval_8h_source.html">eval.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<p class="definition">Definition at line <a class="el" href="eval_8h_source.html#l00159">159</a> of file <a class="el" href="eval_8h_source.html">eval.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aec21b1e28f162b7f1e4edc9e8f725a8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec21b1e28f162b7f1e4edc9e8f725a8b">&#9670;&nbsp;</a></span>drawnMaterial()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Evaluator::drawnMaterial </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines if there is enough material to end in checkmate. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if there is enough material on either side to lead to checkmate, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="eval_8cc_source.html#l00188">188</a> of file <a class="el" href="eval_8cc_source.html">eval.cc</a>.</p>
+
+</div>
+</div>
+<a id="ab8235a37e631665e0dbdbffdddf015f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8235a37e631665e0dbdbffdddf015f7">&#9670;&nbsp;</a></span>evalBishops()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Evaluator::evalBishops </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evaluates the strength of the Bishop. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The score attributed to the Bishop. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="eval_8cc_source.html#l00052">52</a> of file <a class="el" href="eval_8cc_source.html">eval.cc</a>.</p>
+
+</div>
+</div>
+<a id="af8971fc82010e0a08a1e510847bf304c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8971fc82010e0a08a1e510847bf304c">&#9670;&nbsp;</a></span>evalKings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Evaluator::evalKings </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evaluates the strength of the Kings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The score attributed to the Kings. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="eval_8cc_source.html#l00142">142</a> of file <a class="el" href="eval_8cc_source.html">eval.cc</a>.</p>
+
+</div>
+</div>
+<a id="aaf81df6872cb3c5acabc05b4865c4bcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf81df6872cb3c5acabc05b4865c4bcd">&#9670;&nbsp;</a></span>evalKnights()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Evaluator::evalKnights </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evaluates the strength of the Knights. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The score attributed to the Knights. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="eval_8cc_source.html#l00171">171</a> of file <a class="el" href="eval_8cc_source.html">eval.cc</a>.</p>
+
+</div>
+</div>
+<a id="a76e81d148449a9bb6c1616895223ad77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76e81d148449a9bb6c1616895223ad77">&#9670;&nbsp;</a></span>evalPawns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Evaluator::evalPawns </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evaluates the strength of the Pawns. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The score attributed to the Pawns. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="eval_8cc_source.html#l00014">14</a> of file <a class="el" href="eval_8cc_source.html">eval.cc</a>.</p>
+
+</div>
+</div>
+<a id="a322d577548dd00c32e949cad62a17393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a322d577548dd00c32e949cad62a17393">&#9670;&nbsp;</a></span>evalQueens()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Evaluator::evalQueens </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evaluates the strength of the Queens. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The score attributed to the Queens. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="eval_8cc_source.html#l00108">108</a> of file <a class="el" href="eval_8cc_source.html">eval.cc</a>.</p>
+
+</div>
+</div>
+<a id="ac1cfc6e10fcd71fc4148415d889a4085"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1cfc6e10fcd71fc4148415d889a4085">&#9670;&nbsp;</a></span>evalRooks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Evaluator::evalRooks </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evaluates the strength of the Rook. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The score attributed to the Rook. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="eval_8cc_source.html#l00072">72</a> of file <a class="el" href="eval_8cc_source.html">eval.cc</a>.</p>
+
+</div>
+</div>
+<a id="a82ac01bb85da704f7a9f1a059c0e91fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82ac01bb85da704f7a9f1a059c0e91fb">&#9670;&nbsp;</a></span>evaluatePosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Evaluator::evaluatePosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classBoard.html">Board</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Evaluates the score for the current board position for the side to move. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The current board state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The overall score of the position </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="eval_8cc_source.html#l00243">243</a> of file <a class="el" href="eval_8cc_source.html">eval.cc</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="eval_8h_source.html">eval.h</a></li>
 <li>src/<a class="el" href="eval_8cc_source.html">eval.cc</a></li>
 </ul>
