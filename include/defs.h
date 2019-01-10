@@ -15,12 +15,19 @@
 #define STARTFEN  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 
 constexpr uint32_t kMaxSearchDepth = 64;
+
 constexpr uint32_t kMoveLimit = 2 << 10;
+
 constexpr uint32_t kBoardArraySize = 120;
+
 constexpr uint32_t kChessboardSize = 64;
+
 constexpr uint32_t kNumPlayers = 2;
+
 constexpr uint32_t kNumFilesRanks = 8;
+
 constexpr uint32_t kNumPceTypes = 13;
+
 const std::string kAppName = "ChessEngine";
 
 // pieces
@@ -47,34 +54,6 @@ enum { WKCA = 0b0001, WQCA = 0b0010, BKCA = 0b0100, BQCA = 0b1000 };
 
 enum {  HFNONE, HFALPHA, HFBETA, HFEXACT};
 
-// Provides dictionaries to get information about a piece
-namespace PieceInfo
-{
-	constexpr std::array<bool, kNumPceTypes> PieceBig { false, false, true, true, true, true, true, false, true, true, true, true, true };
-	constexpr std::array<bool, kNumPceTypes> PieceMaj { false, false, false, false, true, true, true, false, false, false, true, true, true };
-	constexpr std::array<bool, kNumPceTypes> PieceMin { false, false, true, true, false, false, false, false, true, true, false, false, false };
-	constexpr std::array<uint32_t, kNumPceTypes> PieceVal  { 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000  };
-	constexpr std::array<uint32_t, kNumPceTypes> PieceCol  { BOTH, WHITE, WHITE, WHITE, WHITE, WHITE, WHITE, BLACK, BLACK, BLACK, BLACK, BLACK, BLACK };
-	constexpr std::array<bool, kNumPceTypes> PieceSlides { false, false, false, true, true, true, false, false, false, true, true, true, false };
-	constexpr std::array<bool, kNumPceTypes> PiecePawn { false, true, false, false, false, false, false, true, false, false, false, false, false };	
-	constexpr std::array<bool, kNumPceTypes> PieceKing { false, false, false, false, false, false, true, false, false, false, false, false, true };
-	constexpr std::array<bool, kNumPceTypes> PieceRookQueen { false, false, false, false, true, true, false, false, false, false, true, true, false };
-	constexpr std::array<bool, kNumPceTypes> PieceBishopQueen { false, false, false, true, false, true, false, false, false, true, false, true, false };
-	constexpr std::array<bool, kNumPceTypes> PieceKnight { false, false, true, false, false, false, false, false, true, false, false, false, false };
-
- }
-
-// Lists attack patterns for Pieces on the 120 Sq board.
-namespace Attack
-{
-	constexpr std::array<int32_t, 2> wPCap   { -11, -9 };
-	constexpr std::array<int32_t, 2> bPCap   {  11,  9 };
-	constexpr std::array<int32_t, 2> PnMoves { -10, 10 };
-	constexpr std::array<int32_t, 8> KnMoves { -8, -19, -21, -12, 8, 19, 21, 12 };
-	constexpr std::array<int32_t, 4> RkMoves { -1, -10, 1, 10 };
-	constexpr std::array<int32_t, 4> BiMoves { -9, -11, 11, 9 };
-	constexpr std::array<int32_t, 8> KiMoves { -1, -10, 1, 10, -9, -11, 11, 9 };
-}
-
 const Move NOMOVE(0);
+
 #endif

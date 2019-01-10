@@ -5,7 +5,9 @@
 *	@date 1/9/2019
 */
 #include "movelist.h"
+#include "pieceinfo.h"
 #include "utils.h"
+#include "attack.h"
 #include <bitset>
 #include <iostream>
 #include <utility>

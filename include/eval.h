@@ -7,6 +7,7 @@
 #ifndef EVAL_H
 #define EVAL_H
 #include "board.h"
+#include "pieceinfo.h"
 #include "defs.h"
 
 /**

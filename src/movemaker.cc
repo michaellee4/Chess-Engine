@@ -6,7 +6,9 @@
 */
 #include "movemaker.h"
 #include "defs.h"
+#include "attack.h"
 #include "bitboard.h"
+#include "pieceinfo.h"
 #include "debug.h"
 #include "utils.h"
 #include "move.h"
