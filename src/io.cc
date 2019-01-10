@@ -64,7 +64,7 @@ void IO::printMoveList(const MoveList& list) noexcept
 	std::cout << "MoveList Total: "<<list.size() << " Moves" <<"\n\n";
 }
 
-void IO::printSearchDetails(const SearchInfo& info, int32_t curDepth, int32_t bestScore, PV_Table& pv, int32_t pvMoves) noexcept
+void IO::printSearchDetails(const SearchInfo& info, int32_t curDepth, int32_t bestScore, PvTable& pv, int32_t pvMoves) noexcept
 {
 	std::stringstream guiStr;
 	if (info.protocol == ProtocolManager::kUCI)

@@ -26,7 +26,7 @@ namespace IO
 	void printBoard(const Board& pos) noexcept;
 	void printBitBoard(const uint64_t) noexcept;
 	void printMoveList(const MoveList& list) noexcept;
-	void printSearchDetails(const SearchInfo& info, int32_t curDepth, int32_t bestScore, PV_Table& pv, int32_t pvMoves) noexcept;
+	void printSearchDetails(const SearchInfo& info, int32_t curDepth, int32_t bestScore, PvTable& pv, int32_t pvMoves) noexcept;
 	void printBestMove(Board& pos, const SearchInfo& info, const Move& bestMove) noexcept;
 	Move parseMove(std::string input, const Board& pos) noexcept;
 }

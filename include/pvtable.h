@@ -9,7 +9,7 @@ class Board;
 /**
  * This class holds the cached info of our searches for use with the PVTable
  */
-class PV_Entry
+class PvEntry
 {
 	public:
 		uint64_t pos_key;
@@ -17,29 +17,69 @@ class PV_Entry
 		int32_t score;
 		int32_t depth;
 		int32_t flags;
-		PV_Entry(uint64_t key, Move _move, int32_t _score, int32_t _depth, int32_t _flags) noexcept;
-		PV_Entry(uint64_t key, Move move) noexcept;
-		PV_Entry(const PV_Entry& o) noexcept;
-		PV_Entry(PV_Entry&& o) noexcept;
-		PV_Entry() noexcept;
+		PvEntry(uint64_t key, Move _move, int32_t _score, int32_t _depth, int32_t _flags) noexcept;
+		PvEntry(uint64_t key, Move move) noexcept;
+		PvEntry(const PvEntry& o) noexcept;
+		PvEntry(PvEntry&& o) noexcept;
+		PvEntry() noexcept;
 
-		PV_Entry& operator=(const PV_Entry& o) noexcept;
-		PV_Entry& operator=(PV_Entry&& o) noexcept;
+		PvEntry& operator=(const PvEntry& o) noexcept;
+		PvEntry& operator=(PvEntry&& o) noexcept;
 };
 
-class PV_Table
+/**
+ * This class holds all info for a given position with the best move found. 
+ * Serves as a cache to improve evaluation speed. Also called a transposition table.
+ */
+class PvTable
 {
 	private:
-		std::unordered_map<uint64_t, PV_Entry> pv_table;
+		std::unordered_map<uint64_t, PvEntry> pv_table;
 	public:
 		std::vector<Move> pv_arr;
-		PV_Table() noexcept;
+
+		PvTable() noexcept;
+
+		/**
+		 * Input: Board object
+		 * Output: the best move previously found for this position
+		 * Operation: None
+		 */
 		Move get(const Board& pos) noexcept;
+
+		/**
+		 * Input: Board object, move, and optional flags
+		 * Output: None
+		 * Operation: Stashes the move associated with this position into the hash map
+		 */
 		void insert(const Board& pos, const Move& move) noexcept;
 		void insert(const Board& pos, const Move& move, int32_t score, int32_t depth, int32_t flags) noexcept;
+		/**
+		 * Input: None
+		 * Output: The number of entries in the transposition table
+		 * Operation: None
+		 */
 		int32_t size() const noexcept;
+
+		/**
+		 * Input: None
+		 * Output: None
+		 * Operation: Clears all entries in the transposition table
+		 */
 		void clear() noexcept;
+
+		/**
+		 * Input: Board object, search depth
+		 * Output: The length of the current pvLine
+		 * Operation: Fills in the pv array with the searched pv moves
+		 */
 		int32_t getPvLine(Board& pos, const uint32_t depth) noexcept;
+
+		/**
+		 * Input: Board object, move, alpha beta info
+		 * Output: true if position has an applicable cached move
+		 * Operation: Checks the alpha beta bounds and returns if a better cached move is found
+		 */
 		bool getHashEntry(Board& pos,Move& pvMove,int32_t& score,int32_t alpha,int32_t beta, int32_t depth) noexcept;
 };
 

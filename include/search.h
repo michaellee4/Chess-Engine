@@ -71,7 +71,7 @@ private:
 	bool drawnMaterial(const Board& pos) noexcept;
 public:
 	Evaluator eval;
-	PV_Table pv;
+	PvTable pv;
 
 	/**
 	 * Input: Board object, Searchinfo object
