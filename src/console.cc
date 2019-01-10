@@ -64,6 +64,7 @@ void ConsoleManager::loop()
 			std::cout << ("post - show thinking\n");
 			std::cout << ("nopost - do not show thinking\n");
 			std::cout << ("new - start new game\n");
+			std::cout << ("setboard \"fen\" - set the board based on the provided fen\n");
 			std::cout << ("go - set computer thinking\n");
 			std::cout << ("depth x - set depth to x\n");
 			std::cout << ("time x - set thinking time to x seconds (depth still applies if set)\n");
