@@ -1,0 +1,51 @@
+\hypertarget{hash_8h}{}\section{include/hash.h File Reference}
+\label{hash_8h}\index{include/hash.\+h@{include/hash.\+h}}
+
+
+Contains declarations of functions that manipulate the board position key.  
+
+
+{\ttfamily \#include \char`\"{}board.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defs.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$array$>$}\newline
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceHash}{Hash}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{namespaceHash_ac97f6604fcb1ad14616b2617e6bae967}{Hash\+::generate\+Pos\+Key}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos)
+\begin{DoxyCompactList}\small\item\em Gets the position hash key for the current position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceHash_a9c05f63ef598638f821882d96e1ce185}{Hash\+::hash\+Pce}} (uint32\+\_\+t pce, uint32\+\_\+t sq, \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Hashes in/out a piece on a given square. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceHash_a27755caeb25c1de2a9cd390440b73f37}{Hash\+::hash\+Ca}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Hashes in/out the castle permissions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceHash_a3894ddfcbe25311e465ca3efcefbfe75}{Hash\+::hash\+Side}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Hashes in/out the side to move. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceHash_a8f7a084e23934f0acade5177e1925928}{Hash\+::hash\+EP}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Hashes in/out the en\+Passant square. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceHash_aff162a90408333f82a32806c4792a88d}\label{namespaceHash_aff162a90408333f82a32806c4792a88d}} 
+std\+::array$<$ std\+::array$<$ uint64\+\_\+t, k\+Board\+Array\+Size $>$, k\+Num\+Pce\+Types $>$ {\bfseries Hash\+::\+Piece\+Keys}
+\item 
+\mbox{\Hypertarget{namespaceHash_a5ed567a4d8542636dde31ae4f3d95e28}\label{namespaceHash_a5ed567a4d8542636dde31ae4f3d95e28}} 
+uint64\+\_\+t {\bfseries Hash\+::\+Side\+Key}
+\item 
+\mbox{\Hypertarget{namespaceHash_a961bf38be4a9f19f3fb39cb731cefadb}\label{namespaceHash_a961bf38be4a9f19f3fb39cb731cefadb}} 
+std\+::array$<$ uint64\+\_\+t, 16 $>$ {\bfseries Hash\+::\+Castle\+Keys}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains declarations of functions that manipulate the board position key. 
+
+\begin{DoxyAuthor}{Author}
+Michael Lee 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1/9/2019 
+\end{DoxyDate}

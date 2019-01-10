@@ -1,3 +1,9 @@
+/**
+*	@file tester.cc
+*	@brief Contains definitions of functions declared in tester.h
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "defs.h"
 #include "tester.h"
 #include "io.h"

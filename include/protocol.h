@@ -1,3 +1,9 @@
+/**
+*	@file protocol.h
+*	@brief Contains declaration of base class for default protocal functionality.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #ifndef PROTOCOL_H
 #define PROTOCOL_H
 
@@ -6,11 +12,6 @@
 #include "search.h"
 #include "movemaker.h"
 
-/**
- * This class serves as a base class
- * that details the basic functionality
- * of the various protocols
- */
 class ProtocolManager
 {
 protected:
@@ -18,33 +19,28 @@ protected:
 	SearchInfo info;
 	SearchAgent sa;
 public:
-	/**
-	 * Protocol identifiers
-	 */
 	static constexpr int32_t kUCI = 0;
 	static constexpr int32_t kXBoard = 1;
 	static constexpr int32_t kConsole = 2;
-
-	/**
-	 * Input: None
-	 * Output: None
-	 * Operation: Starts the game loop
-	 */
+/**
+	@brief Starts the protocol loop.
+	@param None
+	@return None
+ */
 	virtual void loop() = 0;
 
-	/**
-	 * Input: None
-	 * Output: true if a stop command has been sent by the user/Arena
-	 *  	   false otherwise
-	 * Operation: None
-	 */
+/**
+	@brief Checks if the engine has recieved a stop signal from the GUI.
+	@param None
+	@return true if a stop command has been sent, false otherwise
+ */
 	virtual bool isOver() { return this->info.quit; }
 
-	/**
-	 * Input: None
-	 * Output: The protocol identifier of the derived class
-	 * Operation: None
-	 */
+/**
+	@brief Returns the protocol identifier for the current protocol.
+	@param None
+	@return The protocol identifier
+ */
 	virtual int32_t getProtocol() = 0;
 	
 	ProtocolManager() : pos(), info(), sa() {}

@@ -1,0 +1,86 @@
+\hypertarget{namespaceBB}{}\section{BB Namespace Reference}
+\label{namespaceBB}\index{BB@{BB}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespaceBB_a947400d855a9c4b3e62433637ec18f4b}{pop\+Bit}} (uint64\+\_\+t \&) noexcept
+\item 
+int \mbox{\hyperlink{namespaceBB_ae9ac6d5ba9f117b648a13a99374e13b9}{count\+Bits}} (uint64\+\_\+t bb) noexcept
+\item 
+void \mbox{\hyperlink{namespaceBB_aaf574afbd59d42b7ffc4acc32837d2f4}{set\+Bit}} (uint64\+\_\+t \&bb, int index) noexcept
+\item 
+void \mbox{\hyperlink{namespaceBB_a0b7cfd66f113184ea3448d59e18e1a8b}{clear\+Bit}} (uint64\+\_\+t \&bb, int index) noexcept
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceBB_a0acc37f2676f5477b3ae05b694d6de80}{Bit\+Table}}
+\item 
+std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceBB_a10499bbea66c7e9162798c25c7f956e1}{Set\+Mask}}
+\item 
+\mbox{\Hypertarget{namespaceBB_a99ec7f28c784ee9a728d3269c24f1ce3}\label{namespaceBB_a99ec7f28c784ee9a728d3269c24f1ce3}} 
+std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Clear\+Mask}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This namespace provides several methods relating to the manipulation of bitboards most notably the pawn bitboards. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceBB_a0b7cfd66f113184ea3448d59e18e1a8b}\label{namespaceBB_a0b7cfd66f113184ea3448d59e18e1a8b}} 
+\index{BB@{BB}!clear\+Bit@{clear\+Bit}}
+\index{clear\+Bit@{clear\+Bit}!BB@{BB}}
+\subsubsection{\texorpdfstring{clear\+Bit()}{clearBit()}}
+{\footnotesize\ttfamily void B\+B\+::clear\+Bit (\begin{DoxyParamCaption}\item[{uint64\+\_\+t \&}]{bb,  }\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Input\+: 64 bit bitboard, index Output\+: None Operation\+: sets the bit at index to 0
+
+Sets the bit at index to 0 \mbox{\Hypertarget{namespaceBB_ae9ac6d5ba9f117b648a13a99374e13b9}\label{namespaceBB_ae9ac6d5ba9f117b648a13a99374e13b9}} 
+\index{BB@{BB}!count\+Bits@{count\+Bits}}
+\index{count\+Bits@{count\+Bits}!BB@{BB}}
+\subsubsection{\texorpdfstring{count\+Bits()}{countBits()}}
+{\footnotesize\ttfamily int B\+B\+::count\+Bits (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Input\+: 64 bit bitboard Output\+: Number of 1\textquotesingle{}s in provided bitboard Operation\+: None
+
+Returns the number of 1\textquotesingle{}s in the bitboard \mbox{\Hypertarget{namespaceBB_a947400d855a9c4b3e62433637ec18f4b}\label{namespaceBB_a947400d855a9c4b3e62433637ec18f4b}} 
+\index{BB@{BB}!pop\+Bit@{pop\+Bit}}
+\index{pop\+Bit@{pop\+Bit}!BB@{BB}}
+\subsubsection{\texorpdfstring{pop\+Bit()}{popBit()}}
+{\footnotesize\ttfamily int B\+B\+::pop\+Bit (\begin{DoxyParamCaption}\item[{uint64\+\_\+t \&}]{bb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Input\+: 64 bit bitboard Output\+: Resulting value after operation Operation\+: sets the highest order 1 bit to 0
+
+Sets the highest order bit to 0 Returns the value after the operations \mbox{\Hypertarget{namespaceBB_aaf574afbd59d42b7ffc4acc32837d2f4}\label{namespaceBB_aaf574afbd59d42b7ffc4acc32837d2f4}} 
+\index{BB@{BB}!set\+Bit@{set\+Bit}}
+\index{set\+Bit@{set\+Bit}!BB@{BB}}
+\subsubsection{\texorpdfstring{set\+Bit()}{setBit()}}
+{\footnotesize\ttfamily void B\+B\+::set\+Bit (\begin{DoxyParamCaption}\item[{uint64\+\_\+t \&}]{bb,  }\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Input\+: 64 bit bitboard, index Output\+: None Operation\+: sets the bit at index to 1
+
+Sets the bit at index to 1 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceBB_a0acc37f2676f5477b3ae05b694d6de80}\label{namespaceBB_a0acc37f2676f5477b3ae05b694d6de80}} 
+\index{BB@{BB}!Bit\+Table@{Bit\+Table}}
+\index{Bit\+Table@{Bit\+Table}!BB@{BB}}
+\subsubsection{\texorpdfstring{Bit\+Table}{BitTable}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ B\+B\+::\+Bit\+Table}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+      63, 30, 3, 32, 25, 41, 22, 33, 15, 50, 42, 13, 11, 53, 19, 34, 61, 29, 2,
+      51, 21, 43, 45, 10, 18, 47, 1, 54, 9, 57, 0, 35, 62, 31, 40, 4, 49, 5, 52,
+      26, 60, 6, 23, 44, 46, 27, 56, 16, 7, 39, 48, 24, 59, 14, 12, 55, 38, 28,
+      58, 20, 37, 17, 36, 8
+    \}
+\end{DoxyCode}
+Magic numbers used for pop/set bit in bitboard \mbox{\Hypertarget{namespaceBB_a10499bbea66c7e9162798c25c7f956e1}\label{namespaceBB_a10499bbea66c7e9162798c25c7f956e1}} 
+\index{BB@{BB}!Set\+Mask@{Set\+Mask}}
+\index{Set\+Mask@{Set\+Mask}!BB@{BB}}
+\subsubsection{\texorpdfstring{Set\+Mask}{SetMask}}
+{\footnotesize\ttfamily std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ B\+B\+::\+Set\+Mask}
+
+bit masks used to set/clear bits on a bitboard 

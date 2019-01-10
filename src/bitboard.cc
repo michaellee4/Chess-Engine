@@ -1,3 +1,9 @@
+/**
+*	@file bitboard.cc
+*	@brief Contains definitions of functions declared in bitboard.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "bitboard.h"
 #include "defs.h"
 #include "utils.h"

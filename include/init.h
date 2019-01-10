@@ -1,10 +1,12 @@
+/**
+*	@file init.h
+*	@brief Contains declarations of functions that fill the non static constant arrays used throughout the engine.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #ifndef INIT_H
 #define INIT_H
 
-/**
- * This namespace provides all the methods used to fill 
- * in the non static const arrays used throughout the engine
- */
 namespace Init
 {
 	/**

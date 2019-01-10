@@ -1,3 +1,9 @@
+/**
+*	@file main.cc
+*	@brief Entry point of the engine.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "engine.h"
 #include "tester.h"
 #include "stopwatch.h"

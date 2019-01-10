@@ -1,3 +1,9 @@
+/**
+*	@file uci.h
+*	@brief Contains declarations of functions for the UCI protocol.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #ifndef UCI_H
 #define UCI_H
 #include "protocol.h"

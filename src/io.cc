@@ -1,3 +1,9 @@
+/**
+*	@file io.cc
+*	@brief Contains definitions of functions declared in io.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "io.h"
 #include "pvtable.h"
 #include "defs.h"

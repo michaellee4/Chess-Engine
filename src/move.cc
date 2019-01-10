@@ -1,3 +1,9 @@
+/**
+*	@file move.cc
+*	@brief Contains definitions of functions declared in move.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "move.h"
 #include "defs.h"
 #include "board.h"

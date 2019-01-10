@@ -1,3 +1,9 @@
+/**
+*	@file eval.h
+*	@brief Contains declarations of functions that determine the strength of a given position.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #ifndef EVAL_H
 #define EVAL_H
 #include "board.h"

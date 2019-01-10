@@ -1,9 +1,13 @@
+/**
+*	@file searchinfo.h
+*	@brief Contains information about the search constraints provided by the engine
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
+
 #ifndef SEARCHINFO_H
 #define SEARCHINFO_H
 
-/**
- * This class holds info about the various search constraints provided by the engine
- */
 struct SearchInfo
 {
 	uint64_t startTime;

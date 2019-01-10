@@ -1,3 +1,9 @@
+/**
+*	@file debug.h
+*	@brief Defines an assert function for debugging.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #ifndef DEBUG_H
 #define DEBUG_H
 

@@ -1,0 +1,147 @@
+\hypertarget{namespaceHash}{}\section{Hash Namespace Reference}
+\label{namespaceHash}\index{Hash@{Hash}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{namespaceHash_ac97f6604fcb1ad14616b2617e6bae967}{generate\+Pos\+Key}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos)
+\begin{DoxyCompactList}\small\item\em Gets the position hash key for the current position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceHash_a9c05f63ef598638f821882d96e1ce185}{hash\+Pce}} (uint32\+\_\+t pce, uint32\+\_\+t sq, \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Hashes in/out a piece on a given square. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceHash_a27755caeb25c1de2a9cd390440b73f37}{hash\+Ca}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Hashes in/out the castle permissions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceHash_a3894ddfcbe25311e465ca3efcefbfe75}{hash\+Side}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Hashes in/out the side to move. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceHash_a8f7a084e23934f0acade5177e1925928}{hash\+EP}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Hashes in/out the en\+Passant square. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceHash_aff162a90408333f82a32806c4792a88d}\label{namespaceHash_aff162a90408333f82a32806c4792a88d}} 
+std\+::array$<$ std\+::array$<$ uint64\+\_\+t, k\+Board\+Array\+Size $>$, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Keys}
+\item 
+\mbox{\Hypertarget{namespaceHash_a5ed567a4d8542636dde31ae4f3d95e28}\label{namespaceHash_a5ed567a4d8542636dde31ae4f3d95e28}} 
+uint64\+\_\+t {\bfseries Side\+Key}
+\item 
+\mbox{\Hypertarget{namespaceHash_a961bf38be4a9f19f3fb39cb731cefadb}\label{namespaceHash_a961bf38be4a9f19f3fb39cb731cefadb}} 
+std\+::array$<$ uint64\+\_\+t, 16 $>$ {\bfseries Castle\+Keys}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This namespace provides various functions related to manipulating the board\textquotesingle{}s hashkey 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceHash_ac97f6604fcb1ad14616b2617e6bae967}\label{namespaceHash_ac97f6604fcb1ad14616b2617e6bae967}} 
+\index{Hash@{Hash}!generate\+Pos\+Key@{generate\+Pos\+Key}}
+\index{generate\+Pos\+Key@{generate\+Pos\+Key}!Hash@{Hash}}
+\subsubsection{\texorpdfstring{generate\+Pos\+Key()}{generatePosKey()}}
+{\footnotesize\ttfamily uint64\+\_\+t Hash\+::generate\+Pos\+Key (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Gets the position hash key for the current position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The 64 bit position key. 
+\end{DoxyReturn}
+
+
+Definition at line 12 of file hash.\+cc.
+
+\mbox{\Hypertarget{namespaceHash_a27755caeb25c1de2a9cd390440b73f37}\label{namespaceHash_a27755caeb25c1de2a9cd390440b73f37}} 
+\index{Hash@{Hash}!hash\+Ca@{hash\+Ca}}
+\index{hash\+Ca@{hash\+Ca}!Hash@{Hash}}
+\subsubsection{\texorpdfstring{hash\+Ca()}{hashCa()}}
+{\footnotesize\ttfamily void Hash\+::hash\+Ca (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Hashes in/out the castle permissions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+
+
+Definition at line 46 of file hash.\+h.
+
+\mbox{\Hypertarget{namespaceHash_a8f7a084e23934f0acade5177e1925928}\label{namespaceHash_a8f7a084e23934f0acade5177e1925928}} 
+\index{Hash@{Hash}!hash\+EP@{hash\+EP}}
+\index{hash\+EP@{hash\+EP}!Hash@{Hash}}
+\subsubsection{\texorpdfstring{hash\+E\+P()}{hashEP()}}
+{\footnotesize\ttfamily void Hash\+::hash\+EP (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Hashes in/out the en\+Passant square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+
+
+Definition at line 66 of file hash.\+h.
+
+\mbox{\Hypertarget{namespaceHash_a9c05f63ef598638f821882d96e1ce185}\label{namespaceHash_a9c05f63ef598638f821882d96e1ce185}} 
+\index{Hash@{Hash}!hash\+Pce@{hash\+Pce}}
+\index{hash\+Pce@{hash\+Pce}!Hash@{Hash}}
+\subsubsection{\texorpdfstring{hash\+Pce()}{hashPce()}}
+{\footnotesize\ttfamily void Hash\+::hash\+Pce (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{pce,  }\item[{uint32\+\_\+t}]{sq,  }\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Hashes in/out a piece on a given square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pce} & The piece to hash in/out. \\
+\hline
+{\em sq} & The square that the piece is/will be on \\
+\hline
+{\em pos} & The current board state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 36 of file hash.\+h.
+
+\mbox{\Hypertarget{namespaceHash_a3894ddfcbe25311e465ca3efcefbfe75}\label{namespaceHash_a3894ddfcbe25311e465ca3efcefbfe75}} 
+\index{Hash@{Hash}!hash\+Side@{hash\+Side}}
+\index{hash\+Side@{hash\+Side}!Hash@{Hash}}
+\subsubsection{\texorpdfstring{hash\+Side()}{hashSide()}}
+{\footnotesize\ttfamily void Hash\+::hash\+Side (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Hashes in/out the side to move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None. 
+\end{DoxyReturn}
+
+
+Definition at line 56 of file hash.\+h.
+

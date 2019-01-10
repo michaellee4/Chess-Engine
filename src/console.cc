@@ -1,3 +1,9 @@
+/**
+*	@file console.cc
+*	@brief Contains definitions of functions declared in console.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "console.h"
 #include "stopwatch.h"
 #include "defs.h"

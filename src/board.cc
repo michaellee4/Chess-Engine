@@ -1,3 +1,9 @@
+/**
+*	@file board.cc
+*	@brief Contains definitions of functions declared in board.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "board.h"
 #include "defs.h"
 #include "debug.h"

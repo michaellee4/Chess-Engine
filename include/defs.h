@@ -1,3 +1,9 @@
+/**
+*	@file defs.h
+*	@brief Contains declarations of various constant arrays used throughout the engine
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #ifndef DEFS_H
 #define DEFS_H
 

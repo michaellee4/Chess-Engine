@@ -1,3 +1,9 @@
+/**
+*	@file uci.cc
+*	@brief Contains definitions of functions declared in uci.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "uci.h"
 #include "defs.h"
 #include "io.h"

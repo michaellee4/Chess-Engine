@@ -1,3 +1,9 @@
+/**
+*	@file engine.h
+*	@brief Defines the central engine data structure
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #ifndef ENGINE_H
 #define ENGINE_H
 #include <memory>

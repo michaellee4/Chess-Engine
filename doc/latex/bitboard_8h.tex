@@ -1,0 +1,158 @@
+\hypertarget{bitboard_8h}{}\section{include/bitboard.h File Reference}
+\label{bitboard_8h}\index{include/bitboard.\+h@{include/bitboard.\+h}}
+
+
+Contains declarations of functions that manipulate bitboards.  
+
+
+{\ttfamily \#include \char`\"{}defs.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{bitboard_8h_a64427fd1eee98a36ce930f3a236d1274}{B\+B\+::pop\+Bit}} (uint64\+\_\+t \&bb) noexcept
+\begin{DoxyCompactList}\small\item\em Sets the highest order 1 bit to 0. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{bitboard_8h_ae9ac6d5ba9f117b648a13a99374e13b9}{B\+B\+::count\+Bits}} (uint64\+\_\+t bb) noexcept
+\begin{DoxyCompactList}\small\item\em Counts the number of 1\textquotesingle{}s in the bitboard. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bitboard_8h_aaf574afbd59d42b7ffc4acc32837d2f4}{B\+B\+::set\+Bit}} (uint64\+\_\+t \&bb, int index) noexcept
+\begin{DoxyCompactList}\small\item\em Sets the bit at index to 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bitboard_8h_a0b7cfd66f113184ea3448d59e18e1a8b}{B\+B\+::clear\+Bit}} (uint64\+\_\+t \&bb, int index) noexcept
+\begin{DoxyCompactList}\small\item\em Sets the bit at index to 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{bitboard_8h_a0acc37f2676f5477b3ae05b694d6de80}{B\+B\+::\+Bit\+Table}}
+\item 
+\mbox{\Hypertarget{bitboard_8h_a10499bbea66c7e9162798c25c7f956e1}\label{bitboard_8h_a10499bbea66c7e9162798c25c7f956e1}} 
+std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries B\+B\+::\+Set\+Mask}
+\item 
+\mbox{\Hypertarget{bitboard_8h_a99ec7f28c784ee9a728d3269c24f1ce3}\label{bitboard_8h_a99ec7f28c784ee9a728d3269c24f1ce3}} 
+std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries B\+B\+::\+Clear\+Mask}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains declarations of functions that manipulate bitboards. 
+
+\begin{DoxyAuthor}{Author}
+Michael Lee 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1/9/2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{bitboard_8h_file_a0b7cfd66f113184ea3448d59e18e1a8b}\label{bitboard_8h_file_a0b7cfd66f113184ea3448d59e18e1a8b}} 
+\index{bitboard.\+h@{bitboard.\+h}!clear\+Bit@{clear\+Bit}}
+\index{clear\+Bit@{clear\+Bit}!bitboard.\+h@{bitboard.\+h}}
+\subsubsection{\texorpdfstring{clear\+Bit()}{clearBit()}}
+{\footnotesize\ttfamily void B\+B\+::clear\+Bit (\begin{DoxyParamCaption}\item[{uint64\+\_\+t \&}]{bb,  }\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Sets the bit at index to 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bb} & The desired bitboard. \\
+\hline
+{\em index} & The index to set to 0. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+Sets the bit at index to 0 
+
+Definition at line 45 of file bitboard.\+cc.
+
+\mbox{\Hypertarget{bitboard_8h_file_ae9ac6d5ba9f117b648a13a99374e13b9}\label{bitboard_8h_file_ae9ac6d5ba9f117b648a13a99374e13b9}} 
+\index{bitboard.\+h@{bitboard.\+h}!count\+Bits@{count\+Bits}}
+\index{count\+Bits@{count\+Bits}!bitboard.\+h@{bitboard.\+h}}
+\subsubsection{\texorpdfstring{count\+Bits()}{countBits()}}
+{\footnotesize\ttfamily int B\+B\+::count\+Bits (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Counts the number of 1\textquotesingle{}s in the bitboard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bb} & The desired bitboard \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of 1\textquotesingle{}s in the bitboard.
+\end{DoxyReturn}
+Returns the number of 1\textquotesingle{}s in the bitboard 
+
+Definition at line 27 of file bitboard.\+cc.
+
+\mbox{\Hypertarget{bitboard_8h_file_a64427fd1eee98a36ce930f3a236d1274}\label{bitboard_8h_file_a64427fd1eee98a36ce930f3a236d1274}} 
+\index{bitboard.\+h@{bitboard.\+h}!pop\+Bit@{pop\+Bit}}
+\index{pop\+Bit@{pop\+Bit}!bitboard.\+h@{bitboard.\+h}}
+\subsubsection{\texorpdfstring{pop\+Bit()}{popBit()}}
+{\footnotesize\ttfamily int B\+B\+::pop\+Bit (\begin{DoxyParamCaption}\item[{uint64\+\_\+t \&}]{bb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Sets the highest order 1 bit to 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bb} & The desired bitboard \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the bit that was flipped
+\end{DoxyReturn}
+Sets the highest order bit to 0 Returns the value after the operations 
+
+Definition at line 16 of file bitboard.\+cc.
+
+\mbox{\Hypertarget{bitboard_8h_file_aaf574afbd59d42b7ffc4acc32837d2f4}\label{bitboard_8h_file_aaf574afbd59d42b7ffc4acc32837d2f4}} 
+\index{bitboard.\+h@{bitboard.\+h}!set\+Bit@{set\+Bit}}
+\index{set\+Bit@{set\+Bit}!bitboard.\+h@{bitboard.\+h}}
+\subsubsection{\texorpdfstring{set\+Bit()}{setBit()}}
+{\footnotesize\ttfamily void B\+B\+::set\+Bit (\begin{DoxyParamCaption}\item[{uint64\+\_\+t \&}]{bb,  }\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Sets the bit at index to 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bb} & The desired bitboard \\
+\hline
+{\em index} & The index to set to 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None.
+\end{DoxyReturn}
+Sets the bit at index to 1 
+
+Definition at line 37 of file bitboard.\+cc.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{bitboard_8h_file_a0acc37f2676f5477b3ae05b694d6de80}\label{bitboard_8h_file_a0acc37f2676f5477b3ae05b694d6de80}} 
+\index{bitboard.\+h@{bitboard.\+h}!Bit\+Table@{Bit\+Table}}
+\index{Bit\+Table@{Bit\+Table}!bitboard.\+h@{bitboard.\+h}}
+\subsubsection{\texorpdfstring{Bit\+Table}{BitTable}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ B\+B\+::\+Bit\+Table}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+      63, 30, 3, 32, 25, 41, 22, 33, 15, 50, 42, 13, 11, 53, 19, 34, 61, 29, 2,
+      51, 21, 43, 45, 10, 18, 47, 1, 54, 9, 57, 0, 35, 62, 31, 40, 4, 49, 5, 52,
+      26, 60, 6, 23, 44, 46, 27, 56, 16, 7, 39, 48, 24, 59, 14, 12, 55, 38, 28,
+      58, 20, 37, 17, 36, 8
+    \}
+\end{DoxyCode}
+Magic numbers used for pop/set bit in bitboard 
+
+Definition at line 18 of file bitboard.\+h.
+

@@ -1,3 +1,9 @@
+/**
+*	@file polyglot.cc
+*	@brief Contains definitions of functions declared in polyglot.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "defs.h"
 #include "polyglotkeys.h"
 #include "polyglot.h"

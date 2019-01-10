@@ -1,0 +1,275 @@
+\hypertarget{defs_8h}{}\section{include/defs.h File Reference}
+\label{defs_8h}\index{include/defs.\+h@{include/defs.\+h}}
+
+
+Contains declarations of various constant arrays used throughout the engine.  
+
+
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}move.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{defs_8h_a6669646a83f3fcd6e10d0ac2007ba052}\label{defs_8h_a6669646a83f3fcd6e10d0ac2007ba052}} 
+\#define {\bfseries S\+T\+A\+R\+T\+F\+EN}~\char`\"{}rnbqkbnr/pppppppp/8/8/8/8/P\+P\+P\+P\+P\+P\+PP/R\+N\+B\+Q\+K\+B\+NR w K\+Qkq -\/ 0 1\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{defs_8h_a06fc87d81c62e9abb8790b6e5713c55b}\label{defs_8h_a06fc87d81c62e9abb8790b6e5713c55b}} 
+enum \{ \newline
+{\bfseries E\+M\+P\+TY}, 
+{\bfseries wP}, 
+{\bfseries wN}, 
+{\bfseries wB}, 
+\newline
+{\bfseries wR}, 
+{\bfseries wQ}, 
+{\bfseries wK}, 
+{\bfseries bP}, 
+\newline
+{\bfseries bN}, 
+{\bfseries bB}, 
+{\bfseries bR}, 
+{\bfseries bQ}, 
+\newline
+{\bfseries bK}
+ \}
+\item 
+\mbox{\Hypertarget{defs_8h_adf764cbdea00d65edcd07bb9953ad2b7}\label{defs_8h_adf764cbdea00d65edcd07bb9953ad2b7}} 
+enum \{ \newline
+{\bfseries F\+I\+L\+E\+\_\+A}, 
+{\bfseries F\+I\+L\+E\+\_\+B}, 
+{\bfseries F\+I\+L\+E\+\_\+C}, 
+{\bfseries F\+I\+L\+E\+\_\+D}, 
+\newline
+{\bfseries F\+I\+L\+E\+\_\+E}, 
+{\bfseries F\+I\+L\+E\+\_\+F}, 
+{\bfseries F\+I\+L\+E\+\_\+G}, 
+{\bfseries F\+I\+L\+E\+\_\+H}, 
+\newline
+{\bfseries F\+I\+L\+E\+\_\+\+N\+O\+NE}
+ \}
+\item 
+\mbox{\Hypertarget{defs_8h_a99fb83031ce9923c84392b4e92f956b5}\label{defs_8h_a99fb83031ce9923c84392b4e92f956b5}} 
+enum \{ \newline
+{\bfseries R\+A\+N\+K\+\_\+1}, 
+{\bfseries R\+A\+N\+K\+\_\+2}, 
+{\bfseries R\+A\+N\+K\+\_\+3}, 
+{\bfseries R\+A\+N\+K\+\_\+4}, 
+\newline
+{\bfseries R\+A\+N\+K\+\_\+5}, 
+{\bfseries R\+A\+N\+K\+\_\+6}, 
+{\bfseries R\+A\+N\+K\+\_\+7}, 
+{\bfseries R\+A\+N\+K\+\_\+8}, 
+\newline
+{\bfseries R\+A\+N\+K\+\_\+\+N\+O\+NE}
+ \}
+\item 
+\mbox{\Hypertarget{defs_8h_abc6126af1d45847bc59afa0aa3216b04}\label{defs_8h_abc6126af1d45847bc59afa0aa3216b04}} 
+enum \{ {\bfseries W\+H\+I\+TE}, 
+{\bfseries B\+L\+A\+CK}, 
+{\bfseries B\+O\+TH}
+ \}
+\item 
+\mbox{\Hypertarget{defs_8h_adc29c2ff13d900c2f185ee95427fb06c}\label{defs_8h_adc29c2ff13d900c2f185ee95427fb06c}} 
+enum \{ \newline
+{\bfseries A1} = 21, 
+{\bfseries B1}, 
+{\bfseries C1}, 
+{\bfseries D1}, 
+\newline
+{\bfseries E1}, 
+{\bfseries F1}, 
+{\bfseries G1}, 
+{\bfseries H1}, 
+\newline
+{\bfseries A2} = 31, 
+{\bfseries B2}, 
+{\bfseries C2}, 
+{\bfseries D2}, 
+\newline
+{\bfseries E2}, 
+{\bfseries F2}, 
+{\bfseries G2}, 
+{\bfseries H2}, 
+\newline
+{\bfseries A3} = 41, 
+{\bfseries B3}, 
+{\bfseries C3}, 
+{\bfseries D3}, 
+\newline
+{\bfseries E3}, 
+{\bfseries F3}, 
+{\bfseries G3}, 
+{\bfseries H3}, 
+\newline
+{\bfseries A4} = 51, 
+{\bfseries B4}, 
+{\bfseries C4}, 
+{\bfseries D4}, 
+\newline
+{\bfseries E4}, 
+{\bfseries F4}, 
+{\bfseries G4}, 
+{\bfseries H4}, 
+\newline
+{\bfseries A5} = 61, 
+{\bfseries B5}, 
+{\bfseries C5}, 
+{\bfseries D5}, 
+\newline
+{\bfseries E5}, 
+{\bfseries F5}, 
+{\bfseries G5}, 
+{\bfseries H5}, 
+\newline
+{\bfseries A6} = 71, 
+{\bfseries B6}, 
+{\bfseries C6}, 
+{\bfseries D6}, 
+\newline
+{\bfseries E6}, 
+{\bfseries F6}, 
+{\bfseries G6}, 
+{\bfseries H6}, 
+\newline
+{\bfseries A7} = 81, 
+{\bfseries B7}, 
+{\bfseries C7}, 
+{\bfseries D7}, 
+\newline
+{\bfseries E7}, 
+{\bfseries F7}, 
+{\bfseries G7}, 
+{\bfseries H7}, 
+\newline
+{\bfseries A8} = 91, 
+{\bfseries B8}, 
+{\bfseries C8}, 
+{\bfseries D8}, 
+\newline
+{\bfseries E8}, 
+{\bfseries F8}, 
+{\bfseries G8}, 
+{\bfseries H8}, 
+\newline
+{\bfseries N\+O\+\_\+\+SQ}, 
+{\bfseries O\+F\+F\+B\+O\+A\+RD}
+ \}
+\item 
+\mbox{\Hypertarget{defs_8h_a61dadd085c1777f559549e05962b2c9e}\label{defs_8h_a61dadd085c1777f559549e05962b2c9e}} 
+enum \{ {\bfseries W\+K\+CA} = 0b0001, 
+{\bfseries W\+Q\+CA} = 0b0010, 
+{\bfseries B\+K\+CA} = 0b0100, 
+{\bfseries B\+Q\+CA} = 0b1000
+ \}
+\item 
+\mbox{\Hypertarget{defs_8h_a726ca809ffd3d67ab4b8476646f26635}\label{defs_8h_a726ca809ffd3d67ab4b8476646f26635}} 
+enum \{ {\bfseries H\+F\+N\+O\+NE}, 
+{\bfseries H\+F\+A\+L\+P\+HA}, 
+{\bfseries H\+F\+B\+E\+TA}, 
+{\bfseries H\+F\+E\+X\+A\+CT}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{defs_8h_a3a4cbce2897f61441c981e44750d3848}\label{defs_8h_a3a4cbce2897f61441c981e44750d3848}} 
+const \mbox{\hyperlink{classMove}{Move}} {\bfseries N\+O\+M\+O\+VE} (0)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{defs_8h_aabb66c29082e539fa21ed5f8cbb2e25b}\label{defs_8h_aabb66c29082e539fa21ed5f8cbb2e25b}} 
+constexpr uint32\+\_\+t {\bfseries k\+Max\+Search\+Depth} = 64
+\item 
+\mbox{\Hypertarget{defs_8h_a051654665a87a226a1349163507e40d4}\label{defs_8h_a051654665a87a226a1349163507e40d4}} 
+constexpr uint32\+\_\+t {\bfseries k\+Move\+Limit} = 2 $<$$<$ 10
+\item 
+\mbox{\Hypertarget{defs_8h_a828392e3517e7bf6895696199c7fdf4f}\label{defs_8h_a828392e3517e7bf6895696199c7fdf4f}} 
+constexpr uint32\+\_\+t {\bfseries k\+Board\+Array\+Size} = 120
+\item 
+\mbox{\Hypertarget{defs_8h_a901d7bb0bf36a71e09079f9dd4168c4c}\label{defs_8h_a901d7bb0bf36a71e09079f9dd4168c4c}} 
+constexpr uint32\+\_\+t {\bfseries k\+Chessboard\+Size} = 64
+\item 
+\mbox{\Hypertarget{defs_8h_a15c17e92e928ca782572219272b62da3}\label{defs_8h_a15c17e92e928ca782572219272b62da3}} 
+constexpr uint32\+\_\+t {\bfseries k\+Num\+Players} = 2
+\item 
+\mbox{\Hypertarget{defs_8h_ab849322dfd3344623f425e94b416fc66}\label{defs_8h_ab849322dfd3344623f425e94b416fc66}} 
+constexpr uint32\+\_\+t {\bfseries k\+Num\+Files\+Ranks} = 8
+\item 
+\mbox{\Hypertarget{defs_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}\label{defs_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}} 
+constexpr uint32\+\_\+t {\bfseries k\+Num\+Pce\+Types} = 13
+\item 
+\mbox{\Hypertarget{defs_8h_a3e9497aec1dc96f28176e82b3309092b}\label{defs_8h_a3e9497aec1dc96f28176e82b3309092b}} 
+const std\+::string {\bfseries k\+App\+Name} = \char`\"{}Chess\+Engine\char`\"{}
+\item 
+\mbox{\Hypertarget{defs_8h_ab092fc01811699d480edb92ab9864f71}\label{defs_8h_ab092fc01811699d480edb92ab9864f71}} 
+constexpr std\+::array$<$ bool, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+Big} \{ false, false, true, true, true, true, true, false, true, true, true, true, true \}
+\item 
+\mbox{\Hypertarget{defs_8h_a1a1d6bd927fc1d3ade0c94cfbe345c86}\label{defs_8h_a1a1d6bd927fc1d3ade0c94cfbe345c86}} 
+constexpr std\+::array$<$ bool, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+Maj} \{ false, false, false, false, true, true, true, false, false, false, true, true, true \}
+\item 
+\mbox{\Hypertarget{defs_8h_a1681e87a2e9b102711a18183ff2e877d}\label{defs_8h_a1681e87a2e9b102711a18183ff2e877d}} 
+constexpr std\+::array$<$ bool, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+Min} \{ false, false, true, true, false, false, false, false, true, true, false, false, false \}
+\item 
+\mbox{\Hypertarget{defs_8h_a480c1e7f0033918244741fc9621ad985}\label{defs_8h_a480c1e7f0033918244741fc9621ad985}} 
+constexpr std\+::array$<$ uint32\+\_\+t, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+Val} \{ 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000 \}
+\item 
+\mbox{\Hypertarget{defs_8h_adecc5f24c6e2e38a94ec6484b5af3b23}\label{defs_8h_adecc5f24c6e2e38a94ec6484b5af3b23}} 
+constexpr std\+::array$<$ uint32\+\_\+t, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+Col} \{ B\+O\+TH, W\+H\+I\+TE, W\+H\+I\+TE, W\+H\+I\+TE, W\+H\+I\+TE, W\+H\+I\+TE, W\+H\+I\+TE, B\+L\+A\+CK, B\+L\+A\+CK, B\+L\+A\+CK, B\+L\+A\+CK, B\+L\+A\+CK, B\+L\+A\+CK \}
+\item 
+\mbox{\Hypertarget{defs_8h_a22da8fd00e51a3f0d7128893b4532aad}\label{defs_8h_a22da8fd00e51a3f0d7128893b4532aad}} 
+constexpr std\+::array$<$ bool, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+Slides} \{ false, false, false, true, true, true, false, false, false, true, true, true, false \}
+\item 
+\mbox{\Hypertarget{defs_8h_aba7ec3f5dc7d7fc2fc5e38f3d62cda56}\label{defs_8h_aba7ec3f5dc7d7fc2fc5e38f3d62cda56}} 
+constexpr std\+::array$<$ bool, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+Pawn} \{ false, true, false, false, false, false, false, true, false, false, false, false, false \}
+\item 
+\mbox{\Hypertarget{defs_8h_a42610aecd549d824030b993347c878c2}\label{defs_8h_a42610aecd549d824030b993347c878c2}} 
+constexpr std\+::array$<$ bool, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+King} \{ false, false, false, false, false, false, true, false, false, false, false, false, true \}
+\item 
+\mbox{\Hypertarget{defs_8h_a467a57290dbec59cd82a2f86b2c992b8}\label{defs_8h_a467a57290dbec59cd82a2f86b2c992b8}} 
+constexpr std\+::array$<$ bool, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+Rook\+Queen} \{ false, false, false, false, true, true, false, false, false, false, true, true, false \}
+\item 
+\mbox{\Hypertarget{defs_8h_a5a3661847a5e0eec222dc1ed1c046952}\label{defs_8h_a5a3661847a5e0eec222dc1ed1c046952}} 
+constexpr std\+::array$<$ bool, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+Bishop\+Queen} \{ false, false, false, true, false, true, false, false, false, true, false, true, false \}
+\item 
+\mbox{\Hypertarget{defs_8h_acb98882f0d8e8f4f052b2369b07c2cdc}\label{defs_8h_acb98882f0d8e8f4f052b2369b07c2cdc}} 
+constexpr std\+::array$<$ bool, k\+Num\+Pce\+Types $>$ {\bfseries Piece\+Info\+::\+Piece\+Knight} \{ false, false, true, false, false, false, false, false, true, false, false, false, false \}
+\item 
+\mbox{\Hypertarget{defs_8h_aba774adc537591a2dace8ebf2215027d}\label{defs_8h_aba774adc537591a2dace8ebf2215027d}} 
+constexpr std\+::array$<$ int32\+\_\+t, 2 $>$ {\bfseries Attack\+::w\+P\+Cap} \{ -\/11, -\/9 \}
+\item 
+\mbox{\Hypertarget{defs_8h_a17e2306ab0379a6b31c39653c8328455}\label{defs_8h_a17e2306ab0379a6b31c39653c8328455}} 
+constexpr std\+::array$<$ int32\+\_\+t, 2 $>$ {\bfseries Attack\+::b\+P\+Cap} \{ 11, 9 \}
+\item 
+\mbox{\Hypertarget{defs_8h_ad86fe8d8652f19e9d182fca575ad56dc}\label{defs_8h_ad86fe8d8652f19e9d182fca575ad56dc}} 
+constexpr std\+::array$<$ int32\+\_\+t, 2 $>$ {\bfseries Attack\+::\+Pn\+Moves} \{ -\/10, 10 \}
+\item 
+\mbox{\Hypertarget{defs_8h_a9766aec9ff1db2b4978b74e87b9220a1}\label{defs_8h_a9766aec9ff1db2b4978b74e87b9220a1}} 
+constexpr std\+::array$<$ int32\+\_\+t, 8 $>$ {\bfseries Attack\+::\+Kn\+Moves} \{ -\/8, -\/19, -\/21, -\/12, 8, 19, 21, 12 \}
+\item 
+\mbox{\Hypertarget{defs_8h_a820d1cf837df102dc24ac62b3c903d45}\label{defs_8h_a820d1cf837df102dc24ac62b3c903d45}} 
+constexpr std\+::array$<$ int32\+\_\+t, 4 $>$ {\bfseries Attack\+::\+Rk\+Moves} \{ -\/1, -\/10, 1, 10 \}
+\item 
+\mbox{\Hypertarget{defs_8h_a69a28344c45a39f51b1196a6d78a7cf5}\label{defs_8h_a69a28344c45a39f51b1196a6d78a7cf5}} 
+constexpr std\+::array$<$ int32\+\_\+t, 4 $>$ {\bfseries Attack\+::\+Bi\+Moves} \{ -\/9, -\/11, 11, 9 \}
+\item 
+\mbox{\Hypertarget{defs_8h_a0614d021c90c3ff6d470c1c13a1f0ad9}\label{defs_8h_a0614d021c90c3ff6d470c1c13a1f0ad9}} 
+constexpr std\+::array$<$ int32\+\_\+t, 8 $>$ {\bfseries Attack\+::\+Ki\+Moves} \{ -\/1, -\/10, 1, 10, -\/9, -\/11, 11, 9 \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains declarations of various constant arrays used throughout the engine. 
+
+\begin{DoxyAuthor}{Author}
+Michael Lee 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1/9/2019 
+\end{DoxyDate}

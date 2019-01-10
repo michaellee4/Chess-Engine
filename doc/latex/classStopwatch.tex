@@ -1,0 +1,120 @@
+\hypertarget{classStopwatch}{}\section{Stopwatch Class Reference}
+\label{classStopwatch}\index{Stopwatch@{Stopwatch}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classStopwatch_aff8757dda8e913cc671eb3baeb662109}{start}} () noexcept
+\begin{DoxyCompactList}\small\item\em Starts the internal timer. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classStopwatch_ae614c46daae8d773f15d7ff603245cd0}{stop}} () noexcept
+\begin{DoxyCompactList}\small\item\em Stops the internal timer and returns the time elapsed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint64\+\_\+t \mbox{\hyperlink{classStopwatch_a789c42b276146b4d043fac2e30684d7c}{get\+Time\+In\+Milli}} () noexcept
+\begin{DoxyCompactList}\small\item\em Get the time since the epoch in milliseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStopwatch_a9d3511a4c1fb3544757883f0ffc6f140}\label{classStopwatch_a9d3511a4c1fb3544757883f0ffc6f140}} 
+static constexpr int32\+\_\+t {\bfseries k\+Milli\+Per\+Second} = 1000
+\item 
+\mbox{\Hypertarget{classStopwatch_a2603fc92466f39b1ac12718ac3d052e8}\label{classStopwatch_a2603fc92466f39b1ac12718ac3d052e8}} 
+static constexpr int32\+\_\+t {\bfseries k\+Seconds\+Per\+Minute} = 60
+\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStopwatch_aa9ff69ca66fa3a4dde86ba27e03bb7b8}\label{classStopwatch_aa9ff69ca66fa3a4dde86ba27e03bb7b8}} 
+typedef std\+::chrono\+::high\+\_\+resolution\+\_\+clock {\bfseries Time}
+\item 
+\mbox{\Hypertarget{classStopwatch_ac126d5ce9b6c280a79630bb65e4df83a}\label{classStopwatch_ac126d5ce9b6c280a79630bb65e4df83a}} 
+typedef std\+::chrono\+::milliseconds {\bfseries ms}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStopwatch_a9252f7329528193968d74bd3502f3bba}\label{classStopwatch_a9252f7329528193968d74bd3502f3bba}} 
+Time\+::time\+\_\+point {\bfseries start\+\_\+time}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file stopwatch.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classStopwatch_a789c42b276146b4d043fac2e30684d7c}\label{classStopwatch_a789c42b276146b4d043fac2e30684d7c}} 
+\index{Stopwatch@{Stopwatch}!get\+Time\+In\+Milli@{get\+Time\+In\+Milli}}
+\index{get\+Time\+In\+Milli@{get\+Time\+In\+Milli}!Stopwatch@{Stopwatch}}
+\subsubsection{\texorpdfstring{get\+Time\+In\+Milli()}{getTimeInMilli()}}
+{\footnotesize\ttfamily uint64\+\_\+t Stopwatch\+::get\+Time\+In\+Milli (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+Get the time since the epoch in milliseconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Get the time since the epoch in milliseconds 
+\end{DoxyReturn}
+
+
+Definition at line 28 of file stopwatch.\+cc.
+
+\mbox{\Hypertarget{classStopwatch_aff8757dda8e913cc671eb3baeb662109}\label{classStopwatch_aff8757dda8e913cc671eb3baeb662109}} 
+\index{Stopwatch@{Stopwatch}!start@{start}}
+\index{start@{start}!Stopwatch@{Stopwatch}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Stopwatch\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Starts the internal timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 16 of file stopwatch.\+cc.
+
+\mbox{\Hypertarget{classStopwatch_ae614c46daae8d773f15d7ff603245cd0}\label{classStopwatch_ae614c46daae8d773f15d7ff603245cd0}} 
+\index{Stopwatch@{Stopwatch}!stop@{stop}}
+\index{stop@{stop}!Stopwatch@{Stopwatch}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily float Stopwatch\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Stops the internal timer and returns the time elapsed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The time elapsed since \mbox{\hyperlink{classStopwatch_aff8757dda8e913cc671eb3baeb662109}{start()}} was called in milliseconds. 
+\end{DoxyReturn}
+
+
+Definition at line 21 of file stopwatch.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{stopwatch_8h}{stopwatch.\+h}}\item 
+src/\mbox{\hyperlink{stopwatch_8cc}{stopwatch.\+cc}}\end{DoxyCompactItemize}

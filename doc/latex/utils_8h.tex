@@ -1,0 +1,284 @@
+\hypertarget{utils_8h}{}\section{include/utils.h File Reference}
+\label{utils_8h}\index{include/utils.\+h@{include/utils.\+h}}
+
+
+Contains declarations of functions that perform various miscellaneous actions in the engine.  
+
+
+{\ttfamily \#include \char`\"{}defs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}board.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}searchinfo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}move.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{utils_8h_af2872fdf2a6599d24229c9c63b5b4681}{sq\+On\+Board}} (uint32\+\_\+t sq) noexcept
+\begin{DoxyCompactList}\small\item\em Checks if a square number in array-\/120 form is on the array-\/64 board representation. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{utils_8h_af0a28c376c31ad77b17c6c9dce6d22f0}{file\+Rank\+To\+Sq}} (int32\+\_\+t file, int32\+\_\+t rank) noexcept
+\begin{DoxyCompactList}\small\item\em Gets the array-\/120 square number of a given file and rank number. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{utils_8h_a22a76bff1ad6e147ee5c5ce1d79a2011}{rand\+U64}} () noexcept
+\begin{DoxyCompactList}\small\item\em Generates a uniformally-\/distributed random 64-\/bit number. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{utils_8h_aa1cc1f874064dcbc8af5fef509a2e072}{is\+Piece}} (int32\+\_\+t piece) noexcept
+\begin{DoxyCompactList}\small\item\em Generates a uniformally-\/distributed random 64-\/bit number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8h_adfbe08fdadaa1067f5a9fe8ef13088d8}{show\+Attacked\+Sqs}} (const int side, \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Prints the 8x8 board with numbers indicating how many times each square is attacked by the provided side. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{utils_8h_a4894a6bfc09e914035ec00613e489173}{sq\+To\+String}} (const int sq) noexcept
+\begin{DoxyCompactList}\small\item\em Returns the string representation of the square. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8h_a2366a4fd138cc50aae6927d60e38a3d2}{string\+To\+Lower}} (std\+::string \&str) noexcept
+\begin{DoxyCompactList}\small\item\em Changes the given string to lowercase. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{utils_8h_ad4b24a6726f1f0bf071fec1015534fc0}{Input\+Waiting}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the G\+UI interface has sent an interrrupt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8h_ae40d2c304c2dd2981945585bc4b154c8}{Read\+Input}} (\mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info)
+\begin{DoxyCompactList}\small\item\em Reads in the G\+UI signal from stdin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{utils_8h_acb30fb200bee7f696848c33073d0485a}\label{utils_8h_acb30fb200bee7f696848c33073d0485a}} 
+std\+::array$<$ int32\+\_\+t, k\+Board\+Array\+Size $>$ {\bfseries Board\+Utils\+::\+Sq120\+To\+Sq64}
+\item 
+\mbox{\Hypertarget{utils_8h_a5a960d52a984a45cfda07754f69a614b}\label{utils_8h_a5a960d52a984a45cfda07754f69a614b}} 
+std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Board\+Utils\+::\+Sq64\+To\+Sq120}
+\item 
+\mbox{\Hypertarget{utils_8h_a9f0563bd26396dfb72ff308c9ac68c1f}\label{utils_8h_a9f0563bd26396dfb72ff308c9ac68c1f}} 
+std\+::array$<$ int32\+\_\+t, k\+Board\+Array\+Size $>$ {\bfseries Board\+Utils\+::\+File\+Brd}
+\item 
+\mbox{\Hypertarget{utils_8h_a8d2f3e6cccbc30a3c9e9d3441f2d4716}\label{utils_8h_a8d2f3e6cccbc30a3c9e9d3441f2d4716}} 
+std\+::array$<$ int32\+\_\+t, k\+Board\+Array\+Size $>$ {\bfseries Board\+Utils\+::\+Rank\+Brd}
+\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{utils_8h_a57c9db3929335f073c630b7447c3246c}{Board\+Utils\+::\+White\+To\+Black}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains declarations of functions that perform various miscellaneous actions in the engine. 
+
+\begin{DoxyAuthor}{Author}
+Michael Lee 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1/9/2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{utils_8h_af0a28c376c31ad77b17c6c9dce6d22f0}\label{utils_8h_af0a28c376c31ad77b17c6c9dce6d22f0}} 
+\index{utils.\+h@{utils.\+h}!file\+Rank\+To\+Sq@{file\+Rank\+To\+Sq}}
+\index{file\+Rank\+To\+Sq@{file\+Rank\+To\+Sq}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{file\+Rank\+To\+Sq()}{fileRankToSq()}}
+{\footnotesize\ttfamily int file\+Rank\+To\+Sq (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{file,  }\item[{int32\+\_\+t}]{rank }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Gets the array-\/120 square number of a given file and rank number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & F\+I\+L\+E\+\_\+A $<$= file $<$= F\+I\+L\+E\+\_\+H \\
+\hline
+{\em rank} & R\+A\+N\+K\+\_\+1 $<$= rank $<$= R\+A\+N\+K\+\_\+8 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The array-\/120 square number of the given file and rank number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utils_8h_ad4b24a6726f1f0bf071fec1015534fc0}\label{utils_8h_ad4b24a6726f1f0bf071fec1015534fc0}} 
+\index{utils.\+h@{utils.\+h}!Input\+Waiting@{Input\+Waiting}}
+\index{Input\+Waiting@{Input\+Waiting}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{Input\+Waiting()}{InputWaiting()}}
+{\footnotesize\ttfamily int Input\+Waiting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the G\+UI interface has sent an interrrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there was a G\+UI interrupt, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 91 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8h_aa1cc1f874064dcbc8af5fef509a2e072}\label{utils_8h_aa1cc1f874064dcbc8af5fef509a2e072}} 
+\index{utils.\+h@{utils.\+h}!is\+Piece@{is\+Piece}}
+\index{is\+Piece@{is\+Piece}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{is\+Piece()}{isPiece()}}
+{\footnotesize\ttfamily bool is\+Piece (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{piece }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Generates a uniformally-\/distributed random 64-\/bit number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece} & A piece, O\+F\+F\+B\+O\+A\+RD, E\+M\+P\+TY, or N\+O\+\_\+\+SQ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if wP $<$= piece $<$= bK, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utils_8h_a22a76bff1ad6e147ee5c5ce1d79a2011}\label{utils_8h_a22a76bff1ad6e147ee5c5ce1d79a2011}} 
+\index{utils.\+h@{utils.\+h}!rand\+U64@{rand\+U64}}
+\index{rand\+U64@{rand\+U64}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{rand\+U64()}{randU64()}}
+{\footnotesize\ttfamily uint64\+\_\+t rand\+U64 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Generates a uniformally-\/distributed random 64-\/bit number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A random 64 bit number 
+\end{DoxyReturn}
+
+
+Definition at line 54 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8h_ae40d2c304c2dd2981945585bc4b154c8}\label{utils_8h_ae40d2c304c2dd2981945585bc4b154c8}} 
+\index{utils.\+h@{utils.\+h}!Read\+Input@{Read\+Input}}
+\index{Read\+Input@{Read\+Input}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{Read\+Input()}{ReadInput()}}
+{\footnotesize\ttfamily void Read\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&}]{info }\end{DoxyParamCaption})}
+
+
+
+Reads in the G\+UI signal from stdin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & The engine\textquotesingle{}s search\+Info instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 125 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8h_adfbe08fdadaa1067f5a9fe8ef13088d8}\label{utils_8h_adfbe08fdadaa1067f5a9fe8ef13088d8}} 
+\index{utils.\+h@{utils.\+h}!show\+Attacked\+Sqs@{show\+Attacked\+Sqs}}
+\index{show\+Attacked\+Sqs@{show\+Attacked\+Sqs}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{show\+Attacked\+Sqs()}{showAttackedSqs()}}
+{\footnotesize\ttfamily void show\+Attacked\+Sqs (\begin{DoxyParamCaption}\item[{const int}]{side,  }\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Prints the 8x8 board with numbers indicating how many times each square is attacked by the provided side. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em side} & The attacking side \\
+\hline
+{\em pos} & The board state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 65 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8h_af2872fdf2a6599d24229c9c63b5b4681}\label{utils_8h_af2872fdf2a6599d24229c9c63b5b4681}} 
+\index{utils.\+h@{utils.\+h}!sq\+On\+Board@{sq\+On\+Board}}
+\index{sq\+On\+Board@{sq\+On\+Board}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{sq\+On\+Board()}{sqOnBoard()}}
+{\footnotesize\ttfamily bool sq\+On\+Board (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{sq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Checks if a square number in array-\/120 form is on the array-\/64 board representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sq} & The square number in array-\/120 form. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the square is on the array-\/64 board, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 29 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8h_a4894a6bfc09e914035ec00613e489173}\label{utils_8h_a4894a6bfc09e914035ec00613e489173}} 
+\index{utils.\+h@{utils.\+h}!sq\+To\+String@{sq\+To\+String}}
+\index{sq\+To\+String@{sq\+To\+String}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{sq\+To\+String()}{sqToString()}}
+{\footnotesize\ttfamily std\+::string sq\+To\+String (\begin{DoxyParamCaption}\item[{const int}]{sq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Returns the string representation of the square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sq} & A square in array-\/120 form. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string representation of the square (e.\+g \char`\"{}\+A1\char`\"{}). 
+\end{DoxyReturn}
+
+
+Definition at line 45 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8h_a2366a4fd138cc50aae6927d60e38a3d2}\label{utils_8h_a2366a4fd138cc50aae6927d60e38a3d2}} 
+\index{utils.\+h@{utils.\+h}!string\+To\+Lower@{string\+To\+Lower}}
+\index{string\+To\+Lower@{string\+To\+Lower}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{string\+To\+Lower()}{stringToLower()}}
+{\footnotesize\ttfamily void string\+To\+Lower (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Changes the given string to lowercase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & the string to change to lower. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 84 of file utils.\+cc.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{utils_8h_file_a57c9db3929335f073c630b7447c3246c}\label{utils_8h_file_a57c9db3929335f073c630b7447c3246c}} 
+\index{utils.\+h@{utils.\+h}!White\+To\+Black@{White\+To\+Black}}
+\index{White\+To\+Black@{White\+To\+Black}!utils.\+h@{utils.\+h}}
+\subsubsection{\texorpdfstring{White\+To\+Black}{WhiteToBlack}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Board\+Utils\+::\+White\+To\+Black}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+        56  ,   57  ,   58  ,   59  ,   60  ,   61  ,   62  ,   63  ,
+        48  ,   49  ,   50  ,   51  ,   52  ,   53  ,   54  ,   55  ,
+        40  ,   41  ,   42  ,   43  ,   44  ,   45  ,   46  ,   47  ,
+        32  ,   33  ,   34  ,   35  ,   36  ,   37  ,   38  ,   39  ,
+        24  ,   25  ,   26  ,   27  ,   28  ,   29  ,   30  ,   31  ,
+        16  ,   17  ,   18  ,   19  ,   20  ,   21  ,   22  ,   23  ,
+        8   ,   9   ,   10  ,   11  ,   12  ,   13  ,   14  ,   15  ,
+        0   ,   1   ,   2   ,   3   ,   4   ,   5   ,   6   ,   7
+    \}
+\end{DoxyCode}
+Gives the corresponding square to the Black side from the White side 
+
+Definition at line 27 of file utils.\+h.
+

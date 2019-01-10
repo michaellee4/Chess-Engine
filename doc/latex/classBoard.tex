@@ -1,0 +1,392 @@
+\hypertarget{classBoard}{}\section{Board Class Reference}
+\label{classBoard}\index{Board@{Board}}
+
+
+{\ttfamily \#include $<$board.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBoard_a389b1348b474b089182d7205a71f4284}\label{classBoard_a389b1348b474b089182d7205a71f4284}} 
+{\bfseries Board} (const std\+::string \&fen) noexcept
+\item 
+void \mbox{\hyperlink{classBoard_a7cab67d5057bca8aeeb54a3cb84a1580}{parse\+F\+EN}} (const std\+::string \&) noexcept
+\begin{DoxyCompactList}\small\item\em Set up the \mbox{\hyperlink{classBoard}{Board}} representation of the calling \mbox{\hyperlink{classBoard}{Board}} object. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classBoard_aeb6553a6d78975ad65261542ba8989e4}{sq\+Attacked}} (const uint32\+\_\+t sq, const uint32\+\_\+t side) const noexcept
+\begin{DoxyCompactList}\small\item\em Gets the number of times a square is attacked by a given side. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMoveList}{Move\+List}} \mbox{\hyperlink{classBoard_a515095fc28f6aa8057296914156b09cb}{get\+All\+Moves}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Gets all the possible moves, including ones that happen during check. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMoveList}{Move\+List}} \mbox{\hyperlink{classBoard_a884b9114fd749aeec4359fac01eb1db1}{get\+All\+Capture\+Moves}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get all possible moves that involve capture, including ones that happen during check. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a6007b1cc2025e26a23e63621f36fee19}{flip\+Board}} () noexcept
+\begin{DoxyCompactList}\small\item\em Flips the internal \mbox{\hyperlink{classBoard}{Board}} representation along the central file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBoard_a05bfcc94444986be0ae0f2ad694d629a}{in\+Check}} () noexcept
+\begin{DoxyCompactList}\small\item\em Checks if the current side is in check. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBoard_a47a3111cc3c0026571baeb01dd71b3a2}\label{classBoard_a47a3111cc3c0026571baeb01dd71b3a2}} 
+std\+::vector$<$ uint32\+\_\+t $>$ {\bfseries pieces}
+\item 
+\mbox{\Hypertarget{classBoard_a6c5c1e1423c9b6b9d495fc1d31e96573}\label{classBoard_a6c5c1e1423c9b6b9d495fc1d31e96573}} 
+std\+::vector$<$ uint64\+\_\+t $>$ {\bfseries pawns}
+\item 
+\mbox{\Hypertarget{classBoard_a6546084187b2ccf29a10f64ea09a7e0c}\label{classBoard_a6546084187b2ccf29a10f64ea09a7e0c}} 
+std\+::vector$<$ int32\+\_\+t $>$ {\bfseries king\+\_\+sq}
+\item 
+\mbox{\Hypertarget{classBoard_a8d282a1a8eeb588ed520cf3561d4b733}\label{classBoard_a8d282a1a8eeb588ed520cf3561d4b733}} 
+uint32\+\_\+t {\bfseries side\+\_\+to\+\_\+move}
+\item 
+\mbox{\Hypertarget{classBoard_a17b2f81c74320df145a3a5327d7194b5}\label{classBoard_a17b2f81c74320df145a3a5327d7194b5}} 
+uint32\+\_\+t {\bfseries en\+\_\+pas}
+\item 
+\mbox{\Hypertarget{classBoard_abe45cab2eaae7e2580281352fbaeef86}\label{classBoard_abe45cab2eaae7e2580281352fbaeef86}} 
+uint32\+\_\+t {\bfseries fifty\+\_\+move}
+\item 
+\mbox{\Hypertarget{classBoard_a7b757de66ef8bd1fc5001a30f2f37534}\label{classBoard_a7b757de66ef8bd1fc5001a30f2f37534}} 
+int32\+\_\+t {\bfseries ply}
+\item 
+\mbox{\Hypertarget{classBoard_a208fc0898354ca9bf15fbd109c627abd}\label{classBoard_a208fc0898354ca9bf15fbd109c627abd}} 
+int32\+\_\+t {\bfseries hist\+\_\+ply}
+\item 
+\mbox{\Hypertarget{classBoard_a6cc3287e1565e4fae61ffdd1b8975c03}\label{classBoard_a6cc3287e1565e4fae61ffdd1b8975c03}} 
+uint64\+\_\+t {\bfseries pos\+\_\+key}
+\item 
+\mbox{\Hypertarget{classBoard_a09e4430a38cad60da56cafb69336d29e}\label{classBoard_a09e4430a38cad60da56cafb69336d29e}} 
+uint32\+\_\+t {\bfseries castle\+\_\+perm}
+\item 
+\mbox{\Hypertarget{classBoard_a1eccd1cb47a855caa1ed9d44cfc2f698}\label{classBoard_a1eccd1cb47a855caa1ed9d44cfc2f698}} 
+std\+::vector$<$ std\+::vector$<$ uint32\+\_\+t $>$ $>$ {\bfseries piece\+\_\+list}
+\item 
+\mbox{\Hypertarget{classBoard_a0eb07b018b2dbd00e98260b53d747405}\label{classBoard_a0eb07b018b2dbd00e98260b53d747405}} 
+std\+::vector$<$ uint32\+\_\+t $>$ {\bfseries big\+\_\+pce}
+\item 
+\mbox{\Hypertarget{classBoard_a4ab7ed914850af43d50ddac56f65540b}\label{classBoard_a4ab7ed914850af43d50ddac56f65540b}} 
+std\+::vector$<$ uint32\+\_\+t $>$ {\bfseries maj\+\_\+pce}
+\item 
+\mbox{\Hypertarget{classBoard_a7b0851e3e6ee5768eb79c2c8b12115da}\label{classBoard_a7b0851e3e6ee5768eb79c2c8b12115da}} 
+std\+::vector$<$ uint32\+\_\+t $>$ {\bfseries min\+\_\+pce}
+\item 
+\mbox{\Hypertarget{classBoard_a6f61a4de025f73967c32fa2508e57e61}\label{classBoard_a6f61a4de025f73967c32fa2508e57e61}} 
+std\+::vector$<$ uint32\+\_\+t $>$ {\bfseries material}
+\item 
+\mbox{\Hypertarget{classBoard_a5b52af2962ada66d52026a094fa5d295}\label{classBoard_a5b52af2962ada66d52026a094fa5d295}} 
+std\+::vector$<$ \mbox{\hyperlink{classUndoMove}{Undo\+Move}} $>$ {\bfseries history}
+\item 
+\mbox{\Hypertarget{classBoard_a28585b33f128969c741a882f972e49f5}\label{classBoard_a28585b33f128969c741a882f972e49f5}} 
+std\+::vector$<$ std\+::vector$<$ int32\+\_\+t $>$ $>$ {\bfseries search\+\_\+hist}
+\item 
+\mbox{\Hypertarget{classBoard_a18d1d7fd12618d3dfaa9d845577ad361}\label{classBoard_a18d1d7fd12618d3dfaa9d845577ad361}} 
+std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{classMove}{Move}} $>$ $>$ {\bfseries search\+\_\+killers}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBoard_a72d31a84b6f4491b41ad249a047ffa6f}{reset\+Board}} (void) noexcept
+\begin{DoxyCompactList}\small\item\em Resets all board variables to default values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a2b86adf733a5509848f0cc689be49866}{update\+Piece\+Lists}} (void) noexcept
+\begin{DoxyCompactList}\small\item\em Updates all internal \mbox{\hyperlink{classBoard}{Board}} vectors related to pieces. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a097a5d64cd3772c539f7ce6dda9a929a}{set\+Up\+Pieces}} (const std\+::string \&pieces) noexcept
+\begin{DoxyCompactList}\small\item\em Parses the first F\+EN argument and places the pieces on the board as indicated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_acc2461d64efdfd469ec2dcada47c45b0}{set\+Up\+Castle\+Perm}} (const std\+::string \&perm) noexcept
+\begin{DoxyCompactList}\small\item\em Parses the castle argument of the F\+EN. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a9e6c964048b76b8f93c583383efe80ac}{get\+En\+Passant}} (const std\+::string \&en\+Pas) noexcept
+\begin{DoxyCompactList}\small\item\em Parses the en\+Passant argument of the F\+EN. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBoard_a635ae307c20455554c2cea611c7561f1}{set\+Up\+Move\+Counters}} (std\+::istringstream \&stream, std\+::string \&section) noexcept
+\begin{DoxyCompactList}\small\item\em Parses the ply counter argument(s) of the F\+EN if they exist. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Handles the entire board representation and all information regarding the board. 
+
+Definition at line 22 of file board.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBoard_a6007b1cc2025e26a23e63621f36fee19}\label{classBoard_a6007b1cc2025e26a23e63621f36fee19}} 
+\index{Board@{Board}!flip\+Board@{flip\+Board}}
+\index{flip\+Board@{flip\+Board}!Board@{Board}}
+\subsubsection{\texorpdfstring{flip\+Board()}{flipBoard()}}
+{\footnotesize\ttfamily void Board\+::flip\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Flips the internal \mbox{\hyperlink{classBoard}{Board}} representation along the central file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 355 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_a884b9114fd749aeec4359fac01eb1db1}\label{classBoard_a884b9114fd749aeec4359fac01eb1db1}} 
+\index{Board@{Board}!get\+All\+Capture\+Moves@{get\+All\+Capture\+Moves}}
+\index{get\+All\+Capture\+Moves@{get\+All\+Capture\+Moves}!Board@{Board}}
+\subsubsection{\texorpdfstring{get\+All\+Capture\+Moves()}{getAllCaptureMoves()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMoveList}{Move\+List}} Board\+::get\+All\+Capture\+Moves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Get all possible moves that involve capture, including ones that happen during check. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{classMoveList}{Move\+List}} with all possible capture moves. 
+\end{DoxyReturn}
+
+
+Definition at line 347 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_a515095fc28f6aa8057296914156b09cb}\label{classBoard_a515095fc28f6aa8057296914156b09cb}} 
+\index{Board@{Board}!get\+All\+Moves@{get\+All\+Moves}}
+\index{get\+All\+Moves@{get\+All\+Moves}!Board@{Board}}
+\subsubsection{\texorpdfstring{get\+All\+Moves()}{getAllMoves()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMoveList}{Move\+List}} Board\+::get\+All\+Moves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Gets all the possible moves, including ones that happen during check. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{classMoveList}{Move\+List}} with all possible moves 
+\end{DoxyReturn}
+
+
+Definition at line 340 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_a9e6c964048b76b8f93c583383efe80ac}\label{classBoard_a9e6c964048b76b8f93c583383efe80ac}} 
+\index{Board@{Board}!get\+En\+Passant@{get\+En\+Passant}}
+\index{get\+En\+Passant@{get\+En\+Passant}!Board@{Board}}
+\subsubsection{\texorpdfstring{get\+En\+Passant()}{getEnPassant()}}
+{\footnotesize\ttfamily void Board\+::get\+En\+Passant (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{en\+Pas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Parses the en\+Passant argument of the F\+EN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 176 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_a05bfcc94444986be0ae0f2ad694d629a}\label{classBoard_a05bfcc94444986be0ae0f2ad694d629a}} 
+\index{Board@{Board}!in\+Check@{in\+Check}}
+\index{in\+Check@{in\+Check}!Board@{Board}}
+\subsubsection{\texorpdfstring{in\+Check()}{inCheck()}}
+{\footnotesize\ttfamily bool Board\+::in\+Check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Checks if the current side is in check. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the current side to move is in check, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 385 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_a7cab67d5057bca8aeeb54a3cb84a1580}\label{classBoard_a7cab67d5057bca8aeeb54a3cb84a1580}} 
+\index{Board@{Board}!parse\+F\+EN@{parse\+F\+EN}}
+\index{parse\+F\+EN@{parse\+F\+EN}!Board@{Board}}
+\subsubsection{\texorpdfstring{parse\+F\+E\+N()}{parseFEN()}}
+{\footnotesize\ttfamily void Board\+::parse\+F\+EN (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{fen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Set up the \mbox{\hyperlink{classBoard}{Board}} representation of the calling \mbox{\hyperlink{classBoard}{Board}} object. 
+
+
+\begin{DoxyPre}
+Example: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+                          ^                          ^  ^   ^ ^ ^
+                          1                          2  3   4 5 6
+     \end{DoxyPre}
+
+\begin{DoxyEnumerate}
+\item Piece locations
+\item Current side to move
+\item Castling permissions
+\item En\+Passant square
+\item Halfmove clock (fifty move count)
+\item Fullmove number 
+\begin{DoxyParams}{Parameters}
+{\em fen} & The Forsyth-\/\+Edwards Notation string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+\end{DoxyEnumerate}
+
+Definition at line 202 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_a72d31a84b6f4491b41ad249a047ffa6f}\label{classBoard_a72d31a84b6f4491b41ad249a047ffa6f}} 
+\index{Board@{Board}!reset\+Board@{reset\+Board}}
+\index{reset\+Board@{reset\+Board}!Board@{Board}}
+\subsubsection{\texorpdfstring{reset\+Board()}{resetBoard()}}
+{\footnotesize\ttfamily void Board\+::reset\+Board (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Resets all board variables to default values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 72 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_acc2461d64efdfd469ec2dcada47c45b0}\label{classBoard_acc2461d64efdfd469ec2dcada47c45b0}} 
+\index{Board@{Board}!set\+Up\+Castle\+Perm@{set\+Up\+Castle\+Perm}}
+\index{set\+Up\+Castle\+Perm@{set\+Up\+Castle\+Perm}!Board@{Board}}
+\subsubsection{\texorpdfstring{set\+Up\+Castle\+Perm()}{setUpCastlePerm()}}
+{\footnotesize\ttfamily void Board\+::set\+Up\+Castle\+Perm (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{perm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Parses the castle argument of the F\+EN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 150 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_a635ae307c20455554c2cea611c7561f1}\label{classBoard_a635ae307c20455554c2cea611c7561f1}} 
+\index{Board@{Board}!set\+Up\+Move\+Counters@{set\+Up\+Move\+Counters}}
+\index{set\+Up\+Move\+Counters@{set\+Up\+Move\+Counters}!Board@{Board}}
+\subsubsection{\texorpdfstring{set\+Up\+Move\+Counters()}{setUpMoveCounters()}}
+{\footnotesize\ttfamily void Board\+::set\+Up\+Move\+Counters (\begin{DoxyParamCaption}\item[{std\+::istringstream \&}]{stream,  }\item[{std\+::string \&}]{section }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Parses the ply counter argument(s) of the F\+EN if they exist. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 186 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_a097a5d64cd3772c539f7ce6dda9a929a}\label{classBoard_a097a5d64cd3772c539f7ce6dda9a929a}} 
+\index{Board@{Board}!set\+Up\+Pieces@{set\+Up\+Pieces}}
+\index{set\+Up\+Pieces@{set\+Up\+Pieces}!Board@{Board}}
+\subsubsection{\texorpdfstring{set\+Up\+Pieces()}{setUpPieces()}}
+{\footnotesize\ttfamily void Board\+::set\+Up\+Pieces (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{pieces }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Parses the first F\+EN argument and places the pieces on the board as indicated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 110 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_aeb6553a6d78975ad65261542ba8989e4}\label{classBoard_aeb6553a6d78975ad65261542ba8989e4}} 
+\index{Board@{Board}!sq\+Attacked@{sq\+Attacked}}
+\index{sq\+Attacked@{sq\+Attacked}!Board@{Board}}
+\subsubsection{\texorpdfstring{sq\+Attacked()}{sqAttacked()}}
+{\footnotesize\ttfamily uint32\+\_\+t Board\+::sq\+Attacked (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{sq,  }\item[{const uint32\+\_\+t}]{side }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Gets the number of times a square is attacked by a given side. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sq} & The target square. \\
+\hline
+{\em side} & The attacking side \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of times the target square is attacked by the given side 
+\end{DoxyReturn}
+
+
+Definition at line 262 of file board.\+cc.
+
+\mbox{\Hypertarget{classBoard_a2b86adf733a5509848f0cc689be49866}\label{classBoard_a2b86adf733a5509848f0cc689be49866}} 
+\index{Board@{Board}!update\+Piece\+Lists@{update\+Piece\+Lists}}
+\index{update\+Piece\+Lists@{update\+Piece\+Lists}!Board@{Board}}
+\subsubsection{\texorpdfstring{update\+Piece\+Lists()}{updatePieceLists()}}
+{\footnotesize\ttfamily void Board\+::update\+Piece\+Lists (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Updates all internal \mbox{\hyperlink{classBoard}{Board}} vectors related to pieces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 232 of file board.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{board_8h}{board.\+h}}\item 
+src/\mbox{\hyperlink{board_8cc}{board.\+cc}}\end{DoxyCompactItemize}

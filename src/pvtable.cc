@@ -1,3 +1,9 @@
+/**
+*	@file pvtable.cc
+*	@brief Contains definitions of functions declared in pvtable.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "pvtable.h"
 #include "defs.h"
 #include "board.h"

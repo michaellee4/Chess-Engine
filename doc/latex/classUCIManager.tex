@@ -1,0 +1,94 @@
+\hypertarget{classUCIManager}{}\section{U\+C\+I\+Manager Class Reference}
+\label{classUCIManager}\index{U\+C\+I\+Manager@{U\+C\+I\+Manager}}
+
+
+{\ttfamily \#include $<$uci.\+h$>$}
+
+Inheritance diagram for U\+C\+I\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUCIManager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUCIManager_aa8959f05532509ccee25ef91e3edde63}\label{classUCIManager_aa8959f05532509ccee25ef91e3edde63}} 
+void {\bfseries parse\+Go\+Cmd} (const std\+::string \&cmd)
+\item 
+\mbox{\Hypertarget{classUCIManager_a71a9473ca9e8ba6486c77326dace417e}\label{classUCIManager_a71a9473ca9e8ba6486c77326dace417e}} 
+void {\bfseries parse\+Position} (const std\+::string \&input)
+\item 
+void \mbox{\hyperlink{classUCIManager_aa2fa2a352e6d58f00c8388da0d8541e1}{loop}} () override
+\begin{DoxyCompactList}\small\item\em Starts the protocol loop. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classUCIManager_af85c53751a85a5cb624e10fb1f9962c7}{get\+Protocol}} () override
+\begin{DoxyCompactList}\small\item\em Returns the protocol identifier for the current protocol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+See \mbox{\hyperlink{classProtocolManager}{Protocol\+Manager}} documentation 
+
+Definition at line 15 of file uci.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classUCIManager_af85c53751a85a5cb624e10fb1f9962c7}\label{classUCIManager_af85c53751a85a5cb624e10fb1f9962c7}} 
+\index{U\+C\+I\+Manager@{U\+C\+I\+Manager}!get\+Protocol@{get\+Protocol}}
+\index{get\+Protocol@{get\+Protocol}!U\+C\+I\+Manager@{U\+C\+I\+Manager}}
+\subsubsection{\texorpdfstring{get\+Protocol()}{getProtocol()}}
+{\footnotesize\ttfamily int32\+\_\+t U\+C\+I\+Manager\+::get\+Protocol (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns the protocol identifier for the current protocol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The protocol identifier 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classProtocolManager_a2ab274fd7510b28e7ac36405aebdbe82}{Protocol\+Manager}}.
+
+
+
+Definition at line 203 of file uci.\+cc.
+
+\mbox{\Hypertarget{classUCIManager_aa2fa2a352e6d58f00c8388da0d8541e1}\label{classUCIManager_aa2fa2a352e6d58f00c8388da0d8541e1}} 
+\index{U\+C\+I\+Manager@{U\+C\+I\+Manager}!loop@{loop}}
+\index{loop@{loop}!U\+C\+I\+Manager@{U\+C\+I\+Manager}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void U\+C\+I\+Manager\+::loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Starts the protocol loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classProtocolManager_aa3ae25a03e2f070ea486fd9319715a6a}{Protocol\+Manager}}.
+
+
+
+Definition at line 134 of file uci.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{uci_8h}{uci.\+h}}\item 
+src/\mbox{\hyperlink{uci_8cc}{uci.\+cc}}\end{DoxyCompactItemize}

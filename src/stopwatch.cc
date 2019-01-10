@@ -1,3 +1,9 @@
+/**
+*	@file stopwatch.cc
+*	@brief Contains definitions of functions declared in stopwatch.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "stopwatch.h"
 
 Stopwatch::Stopwatch() noexcept : start_time(Time::now()) {}

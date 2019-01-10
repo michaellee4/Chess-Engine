@@ -1,0 +1,297 @@
+\hypertarget{classSearchAgent}{}\section{Search\+Agent Class Reference}
+\label{classSearchAgent}\index{Search\+Agent@{Search\+Agent}}
+
+
+{\ttfamily \#include $<$search.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSearchAgent_a9bf258c0e75f45ab803cdcbde4d90fee}{search\+Position}} (\mbox{\hyperlink{classBoard}{Board}} \&pos, \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info) noexcept
+\begin{DoxyCompactList}\small\item\em Performs iterative deepening alpha-\/beta search on the position. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSearchAgent_ae345af56fed112c0c826653c07e2cd99}{is\+Game\+Over}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Checks if there is checkmate, stalemate, insufficient material, or threefold repetition. ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSearchAgent_aaccc22d27a8b90a72608d3ff0bf4f758}\label{classSearchAgent_aaccc22d27a8b90a72608d3ff0bf4f758}} 
+\mbox{\hyperlink{classEvaluator}{Evaluator}} {\bfseries eval}
+\item 
+\mbox{\Hypertarget{classSearchAgent_ac010d05e44c840531d4e9b05ec58b46a}\label{classSearchAgent_ac010d05e44c840531d4e9b05ec58b46a}} 
+\mbox{\hyperlink{classPvTable}{Pv\+Table}} {\bfseries pv}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int32\+\_\+t \mbox{\hyperlink{classSearchAgent_acbc393afa5ab599c1bf3ffcd279b60a7}{is\+Repetition}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Checks if the position has happened before. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSearchAgent_aff45768956489f9696ff62c8db26db6b}{check\+Stop}} (\mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info)
+\begin{DoxyCompactList}\small\item\em Checks if the time limit has been passed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSearchAgent_a5f8153e871a9030a537684323668a1cd}{clear\+For\+Search}} (\mbox{\hyperlink{classBoard}{Board}} \&pos, \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info) noexcept
+\begin{DoxyCompactList}\small\item\em Clears the board\textquotesingle{}s search\+\_\+hist and search\+\_\+killers vectors. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classSearchAgent_a276e7dc17f276cf7d1c5fe91218f55c2}{alpha\+Beta}} (int32\+\_\+t alpha, int32\+\_\+t beta, uint32\+\_\+t depth, \mbox{\hyperlink{classBoard}{Board}} \&pos, \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info, bool do\+Null) noexcept
+\begin{DoxyCompactList}\small\item\em Recursively performs the mini-\/max algorithm with alpha-\/beta pruning. If do\+Null is set, considers making a null move to improve search time. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classSearchAgent_a0a66b7b202216f6e794a963df3a83cb2}{quiescence\+Search}} (int32\+\_\+t alpha, int32\+\_\+t beta, \mbox{\hyperlink{classBoard}{Board}} \&pos, \mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info) noexcept
+\begin{DoxyCompactList}\small\item\em Searches similarly to alpha-\/beta but only on capture moves. Used to avoid the horizon effect. ~\newline
+ \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSearchAgent_acaf7ae2df02a071a23e6db4fbbdc7d99}{three\+Fold\+Repetition}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Checks if threefold repetition has occurred. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSearchAgent_a93b96a89b905ff786e520b23481ed0d7}{drawn\+Material}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Checks if there is sufficient material to checkmate either side. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr uint32\+\_\+t \mbox{\hyperlink{classSearchAgent_ac040d91cab3fb103bce31d669d2bba47}{k\+Interval}} = 0x7\+FF
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class provides functions to search through the board state 
+
+Definition at line 20 of file search.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSearchAgent_a276e7dc17f276cf7d1c5fe91218f55c2}\label{classSearchAgent_a276e7dc17f276cf7d1c5fe91218f55c2}} 
+\index{Search\+Agent@{Search\+Agent}!alpha\+Beta@{alpha\+Beta}}
+\index{alpha\+Beta@{alpha\+Beta}!Search\+Agent@{Search\+Agent}}
+\subsubsection{\texorpdfstring{alpha\+Beta()}{alphaBeta()}}
+{\footnotesize\ttfamily int32\+\_\+t Search\+Agent\+::alpha\+Beta (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{alpha,  }\item[{int32\+\_\+t}]{beta,  }\item[{uint32\+\_\+t}]{depth,  }\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{\mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&}]{info,  }\item[{bool}]{do\+Null }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Recursively performs the mini-\/max algorithm with alpha-\/beta pruning. If do\+Null is set, considers making a null move to improve search time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em alpha} & The alpha cutoff \\
+\hline
+{\em beta} & The beta cutoff \\
+\hline
+{\em depth} & The current depth of the search \\
+\hline
+{\em pos} & The current board state \\
+\hline
+{\em info} & The engine\textquotesingle{}s search\+Info object \\
+\hline
+{\em do\+Null} & Null move flag \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The evaluation of the current position 
+\end{DoxyReturn}
+
+
+Definition at line 152 of file search.\+cc.
+
+\mbox{\Hypertarget{classSearchAgent_aff45768956489f9696ff62c8db26db6b}\label{classSearchAgent_aff45768956489f9696ff62c8db26db6b}} 
+\index{Search\+Agent@{Search\+Agent}!check\+Stop@{check\+Stop}}
+\index{check\+Stop@{check\+Stop}!Search\+Agent@{Search\+Agent}}
+\subsubsection{\texorpdfstring{check\+Stop()}{checkStop()}}
+{\footnotesize\ttfamily void Search\+Agent\+::check\+Stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks if the time limit has been passed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 114 of file search.\+cc.
+
+\mbox{\Hypertarget{classSearchAgent_a5f8153e871a9030a537684323668a1cd}\label{classSearchAgent_a5f8153e871a9030a537684323668a1cd}} 
+\index{Search\+Agent@{Search\+Agent}!clear\+For\+Search@{clear\+For\+Search}}
+\index{clear\+For\+Search@{clear\+For\+Search}!Search\+Agent@{Search\+Agent}}
+\subsubsection{\texorpdfstring{clear\+For\+Search()}{clearForSearch()}}
+{\footnotesize\ttfamily void Search\+Agent\+::clear\+For\+Search (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{\mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Clears the board\textquotesingle{}s search\+\_\+hist and search\+\_\+killers vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em info} & The engine\textquotesingle{}s search\+Info object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 126 of file search.\+cc.
+
+\mbox{\Hypertarget{classSearchAgent_a93b96a89b905ff786e520b23481ed0d7}\label{classSearchAgent_a93b96a89b905ff786e520b23481ed0d7}} 
+\index{Search\+Agent@{Search\+Agent}!drawn\+Material@{drawn\+Material}}
+\index{drawn\+Material@{drawn\+Material}!Search\+Agent@{Search\+Agent}}
+\subsubsection{\texorpdfstring{drawn\+Material()}{drawnMaterial()}}
+{\footnotesize\ttfamily bool Search\+Agent\+::drawn\+Material (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Checks if there is sufficient material to checkmate either side. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there is sufficient material on either side to cause checkmate. 
+\end{DoxyReturn}
+
+
+Definition at line 34 of file search.\+cc.
+
+\mbox{\Hypertarget{classSearchAgent_ae345af56fed112c0c826653c07e2cd99}\label{classSearchAgent_ae345af56fed112c0c826653c07e2cd99}} 
+\index{Search\+Agent@{Search\+Agent}!is\+Game\+Over@{is\+Game\+Over}}
+\index{is\+Game\+Over@{is\+Game\+Over}!Search\+Agent@{Search\+Agent}}
+\subsubsection{\texorpdfstring{is\+Game\+Over()}{isGameOver()}}
+{\footnotesize\ttfamily bool Search\+Agent\+::is\+Game\+Over (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Checks if there is checkmate, stalemate, insufficient material, or threefold repetition. ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the game has concluded in one way or other, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 59 of file search.\+cc.
+
+\mbox{\Hypertarget{classSearchAgent_acbc393afa5ab599c1bf3ffcd279b60a7}\label{classSearchAgent_acbc393afa5ab599c1bf3ffcd279b60a7}} 
+\index{Search\+Agent@{Search\+Agent}!is\+Repetition@{is\+Repetition}}
+\index{is\+Repetition@{is\+Repetition}!Search\+Agent@{Search\+Agent}}
+\subsubsection{\texorpdfstring{is\+Repetition()}{isRepetition()}}
+{\footnotesize\ttfamily int32\+\_\+t Search\+Agent\+::is\+Repetition (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Checks if the position has happened before. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the current position has happened before, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 47 of file search.\+cc.
+
+\mbox{\Hypertarget{classSearchAgent_a0a66b7b202216f6e794a963df3a83cb2}\label{classSearchAgent_a0a66b7b202216f6e794a963df3a83cb2}} 
+\index{Search\+Agent@{Search\+Agent}!quiescence\+Search@{quiescence\+Search}}
+\index{quiescence\+Search@{quiescence\+Search}!Search\+Agent@{Search\+Agent}}
+\subsubsection{\texorpdfstring{quiescence\+Search()}{quiescenceSearch()}}
+{\footnotesize\ttfamily int32\+\_\+t Search\+Agent\+::quiescence\+Search (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{alpha,  }\item[{int32\+\_\+t}]{beta,  }\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{\mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Searches similarly to alpha-\/beta but only on capture moves. Used to avoid the horizon effect. ~\newline
+ 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alpha} & The alpha cutoff \\
+\hline
+{\em beta} & The beta cutoff \\
+\hline
+{\em pos} & The current board state \\
+\hline
+{\em info} & The engine\textquotesingle{}s search\+Info object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The evaluation of the current position 
+\end{DoxyReturn}
+
+
+Definition at line 303 of file search.\+cc.
+
+\mbox{\Hypertarget{classSearchAgent_a9bf258c0e75f45ab803cdcbde4d90fee}\label{classSearchAgent_a9bf258c0e75f45ab803cdcbde4d90fee}} 
+\index{Search\+Agent@{Search\+Agent}!search\+Position@{search\+Position}}
+\index{search\+Position@{search\+Position}!Search\+Agent@{Search\+Agent}}
+\subsubsection{\texorpdfstring{search\+Position()}{searchPosition()}}
+{\footnotesize\ttfamily void Search\+Agent\+::search\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{\mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Performs iterative deepening alpha-\/beta search on the position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state \\
+\hline
+{\em info} & The engine\textquotesingle{}s search\+Info object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 367 of file search.\+cc.
+
+\mbox{\Hypertarget{classSearchAgent_acaf7ae2df02a071a23e6db4fbbdc7d99}\label{classSearchAgent_acaf7ae2df02a071a23e6db4fbbdc7d99}} 
+\index{Search\+Agent@{Search\+Agent}!three\+Fold\+Repetition@{three\+Fold\+Repetition}}
+\index{three\+Fold\+Repetition@{three\+Fold\+Repetition}!Search\+Agent@{Search\+Agent}}
+\subsubsection{\texorpdfstring{three\+Fold\+Repetition()}{threeFoldRepetition()}}
+{\footnotesize\ttfamily bool Search\+Agent\+::three\+Fold\+Repetition (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Checks if threefold repetition has occurred. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if threefold repetition has occurred, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 21 of file search.\+cc.
+
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classSearchAgent_ac040d91cab3fb103bce31d669d2bba47}\label{classSearchAgent_ac040d91cab3fb103bce31d669d2bba47}} 
+\index{Search\+Agent@{Search\+Agent}!k\+Interval@{k\+Interval}}
+\index{k\+Interval@{k\+Interval}!Search\+Agent@{Search\+Agent}}
+\subsubsection{\texorpdfstring{k\+Interval}{kInterval}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t Search\+Agent\+::k\+Interval = 0x7\+FF\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Bitmask to check search flags every 2048 positions 
+
+Definition at line 26 of file search.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{search_8h}{search.\+h}}\item 
+src/\mbox{\hyperlink{search_8cc}{search.\+cc}}\end{DoxyCompactItemize}

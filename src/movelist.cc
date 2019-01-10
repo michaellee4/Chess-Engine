@@ -1,3 +1,9 @@
+/**
+*	@file movelist.cc
+*	@brief Contains definitions of functions declared in movelist.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "movelist.h"
 #include "utils.h"
 #include <bitset>

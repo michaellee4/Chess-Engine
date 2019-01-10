@@ -1,0 +1,57 @@
+\hypertarget{classEngine}{}\section{Engine Class Reference}
+\label{classEngine}\index{Engine@{Engine}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEngine_ab9ee0ddff1237cf61eb482bfce9ab480}\label{classEngine_ab9ee0ddff1237cf61eb482bfce9ab480}} 
+{\bfseries Engine} (const \mbox{\hyperlink{classEngine}{Engine}} \&)=delete
+\item 
+\mbox{\Hypertarget{classEngine_a5d7e8ec8383567cfe24b2b94c5730729}\label{classEngine_a5d7e8ec8383567cfe24b2b94c5730729}} 
+void {\bfseries operator=} (const \mbox{\hyperlink{classEngine}{Engine}} \&)=delete
+\item 
+\mbox{\Hypertarget{classEngine_aa78d58b978bb3c6bb147bc999e9523c1}\label{classEngine_aa78d58b978bb3c6bb147bc999e9523c1}} 
+void {\bfseries start} () noexcept
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEngine_ae174f8fa16fbab1633489283db2b0c9f}\label{classEngine_ae174f8fa16fbab1633489283db2b0c9f}} 
+static \mbox{\hyperlink{classEngine}{Engine}} \& {\bfseries get\+Instance} ()
+\item 
+\mbox{\Hypertarget{classEngine_a0829ed04a1463100784500122bbe426f}\label{classEngine_a0829ed04a1463100784500122bbe426f}} 
+static \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \& {\bfseries get\+Config} ()
+\item 
+\mbox{\Hypertarget{classEngine_a02d2a190f06bd06f23eb6ed02474f990}\label{classEngine_a02d2a190f06bd06f23eb6ed02474f990}} 
+static \mbox{\hyperlink{classPolyBook}{Poly\+Book}} \& {\bfseries get\+Book} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEngine_a8402fb1995ca48ebb645b82bf943aac7}\label{classEngine_a8402fb1995ca48ebb645b82bf943aac7}} 
+void {\bfseries print\+Greeting} () const noexcept
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEngine_a20ac20c3580244eced45e2f2f767a8da}\label{classEngine_a20ac20c3580244eced45e2f2f767a8da}} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classProtocolManager}{Protocol\+Manager}} $>$ {\bfseries protocol}
+\item 
+\mbox{\Hypertarget{classEngine_a63db1301ca47ea013b3fa83fd541a9aa}\label{classEngine_a63db1301ca47ea013b3fa83fd541a9aa}} 
+\mbox{\hyperlink{structEngineConfig}{Engine\+Config}} {\bfseries config}
+\item 
+\mbox{\Hypertarget{classEngine_aa30f12ae58d51f051f22499f95c2602e}\label{classEngine_aa30f12ae58d51f051f22499f95c2602e}} 
+\mbox{\hyperlink{classPolyBook}{Poly\+Book}} {\bfseries book}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 19 of file engine.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{engine_8h}{engine.\+h}}\item 
+src/\mbox{\hyperlink{engine_8cc}{engine.\+cc}}\end{DoxyCompactItemize}

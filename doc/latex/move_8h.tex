@@ -1,0 +1,52 @@
+\hypertarget{move_8h}{}\section{include/move.h File Reference}
+\label{move_8h}\index{include/move.\+h@{include/move.\+h}}
+
+
+Defines the custom internal move representation.  
+
+
+{\ttfamily \#include $<$string$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classUndoMove}{Undo\+Move}}
+\begin{DoxyCompactList}\small\item\em This class stores info needed to undo a move that was made. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classMove}{Move}}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceMoveFlags}{Move\+Flags}}
+\begin{DoxyCompactList}\small\item\em This namespace stores flags used to extract parameters from a move. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceMoveFlags_a7a96b11dd0c3e88e0ce9b72b54c84c41}\label{namespaceMoveFlags_a7a96b11dd0c3e88e0ce9b72b54c84c41}} 
+constexpr int32\+\_\+t {\bfseries Move\+Flags\+::\+SQ} = 0x7F
+\item 
+\mbox{\Hypertarget{namespaceMoveFlags_ab067b1a070bcf23ae247e186f3757316}\label{namespaceMoveFlags_ab067b1a070bcf23ae247e186f3757316}} 
+constexpr int32\+\_\+t {\bfseries Move\+Flags\+::\+EP} = 0x40000
+\item 
+\mbox{\Hypertarget{namespaceMoveFlags_af572962024bd7c9c20330cc3bdd8d866}\label{namespaceMoveFlags_af572962024bd7c9c20330cc3bdd8d866}} 
+constexpr int32\+\_\+t {\bfseries Move\+Flags\+::\+PS} = 0x80000
+\item 
+\mbox{\Hypertarget{namespaceMoveFlags_a9f31abaa59188bb5e9126e6c9374a3e7}\label{namespaceMoveFlags_a9f31abaa59188bb5e9126e6c9374a3e7}} 
+constexpr int32\+\_\+t {\bfseries Move\+Flags\+::\+CA} = 0x1000000
+\item 
+\mbox{\Hypertarget{namespaceMoveFlags_aa3cdd7b76b32e036a190328e9ed62612}\label{namespaceMoveFlags_aa3cdd7b76b32e036a190328e9ed62612}} 
+constexpr int32\+\_\+t {\bfseries Move\+Flags\+::\+C\+AP} = 0x7\+C000
+\item 
+\mbox{\Hypertarget{namespaceMoveFlags_ae7a9b4000dcdee40996b9283eb329fda}\label{namespaceMoveFlags_ae7a9b4000dcdee40996b9283eb329fda}} 
+constexpr int32\+\_\+t {\bfseries Move\+Flags\+::\+P\+R\+OM} = 0x\+F00000
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the custom internal move representation. 
+
+\begin{DoxyAuthor}{Author}
+Michael Lee 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1/9/2019 
+\end{DoxyDate}

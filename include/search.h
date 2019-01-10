@@ -1,3 +1,10 @@
+/**
+*	@file search.h
+*	@brief Contains declarations of functions to search through the board state.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
+
 #ifndef SEARCH_H
 #define SEARCH_H
 #include "defs.h"
@@ -14,77 +21,77 @@ class SearchAgent
 {
 private:
 	/**
-	 * bitmask to check search flags every 2048 positions
+	 * Bitmask to check search flags every 2048 positions
 	 */
 	static constexpr uint32_t kInterval = 0x7FF;
-
-	/**
-	 * Input: None
-	 * Output: true if current position has happened in the last 50 moves
-	 * 		   false otherwise
-	 * Operation: None
-	 */
+/**
+	@brief Checks if the position has happened before.
+	@param pos The current board state.
+	@return true if the current position has happened before, false otherwise
+ */
 	int32_t isRepetition(const Board& pos) noexcept;
-
-	/**
-	 * Input: None
-	 * Output: None
-	 * Operation: Starts the game loop
-	 */
+/**
+	@brief Checks if the time limit has been passed.
+	@param None
+	@return None
+ */
 	void checkStop(SearchInfo& info);
-
-	/**
-	 * Input: Board object, SearchInfo object
-	 * Output: None
-	 * Operation: Clears the board's search_hist and search_killers vectors
-	 */
+/**
+	@brief Clears the board's search_hist and search_killers vectors.
+	@param pos The current board state.
+	@param info The engine's searchInfo object.
+	@return None
+ */
 	void clearForSearch(Board& pos, SearchInfo& info) noexcept;
-
-	/**
-	 * Input: alpha cutoff, beta cutoff, search depth, Board object, Searchinfo object, Null move flag
-	 * Output: score of the current position
-	 * Operation: Recursively performs the mini-max algorithm with alpha-beta pruning
-	 * 			  If doNull is set, considers making a null move to improve search time
-	 */
+/**
+	@brief Recursively performs the mini-max algorithm with alpha-beta pruning. If doNull is set, considers making a null move to improve search time	@param pos The current board state.
+	@param alpha The alpha cutoff
+	@param beta The beta cutoff
+	@param depth The current depth of the search
+	@param pos The current board state
+	@param info The engine's searchInfo object
+	@param doNull Null move flag
+	@return The evaluation of the current position
+ */
 	int32_t alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull) noexcept;
-
-	/**
-	 * Input: alpha cutoff, beta cutoff, search depth, Board object, Searchinfo object
-	 * Output: score of the current position
-	 * Operation: Searches similarly to alpha-beta but only on capture moves
-	 * 			  Used to avoid the horizon effect.
-	 */
+/**
+	@brief Searches similarly to alpha-beta but only on capture moves. Used to avoid the horizon effect.	
+	@param alpha The alpha cutoff
+	@param beta The beta cutoff
+	@param pos The current board state
+	@param info The engine's searchInfo object
+	@return The evaluation of the current position
+ */
 	int32_t quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info) noexcept;
 
-	/**
-	 * Input: Board object
-	 * Output: true if the position has been repeated 3 times before, false otherwise
-	 * Operation: None
-	 */
+/**
+	@brief Checks if threefold repetition has occurred	
+	@param pos The current board state
+	@return true if threefold repetition has occurred, false otherwise.
+ */
 	bool threeFoldRepetition(const Board& pos) noexcept;
-
-	/**
-	 * Input: Board object
-	 * Output: True if there is sufficient material on either side to checkmate assuming perfect play
-	 * Operation: None
-	 */
+/**
+	@brief Checks if there is sufficient material to checkmate either side.
+	@param pos The current board state
+	@return true if there is sufficient material on either side to cause checkmate.
+ */
 	bool drawnMaterial(const Board& pos) noexcept;
 public:
 	Evaluator eval;
 	PvTable pv;
-
-	/**
-	 * Input: Board object, Searchinfo object
-	 * Output: Prints out the search line and best move to the console
-	 * Operation: Performs iterative deepening alpha-beta search on the given position
-	 */
+/**
+	@brief Performs iterative deepening alpha-beta search on the position.
+	@param pos The current board state
+	@param info The engine's searchInfo object
+	@return None
+ */
 	void searchPosition(Board& pos, SearchInfo& info) noexcept;
 
-	/**
-	 * Input: Board object
-	 * Output: true if 3-fold repetition, 50 move rule, checkmate, stalemate, or insufficent material has occurred, false otherwise
-	 * Operation: None
-	 */
+/**
+	@brief Checks if there is checkmate, stalemate, insufficient material, or threefold repetition.	
+	@param pos The current board state
+	@return true if the game has concluded in one way or other, false otherwise
+ */
 	bool isGameOver(Board& pos) noexcept;
 
 	SearchAgent() noexcept;

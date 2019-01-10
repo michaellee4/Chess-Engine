@@ -1,3 +1,9 @@
+/**
+*	@file init.cc
+*	@brief Contains definitions of functions declared in init.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "defs.h"
 #include "utils.h"
 #include "init.h"

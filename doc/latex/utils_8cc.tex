@@ -1,0 +1,215 @@
+\hypertarget{utils_8cc}{}\section{src/utils.cc File Reference}
+\label{utils_8cc}\index{src/utils.\+cc@{src/utils.\+cc}}
+
+
+Contains definitions of functions declared in \mbox{\hyperlink{utils_8h}{utils.\+h}}.  
+
+
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}io.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}movelist.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}movemaker.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include \char`\"{}sys/time.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sys/select.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{utils_8cc_af2872fdf2a6599d24229c9c63b5b4681}{sq\+On\+Board}} (uint32\+\_\+t sq) noexcept
+\begin{DoxyCompactList}\small\item\em Checks if a square number in array-\/120 form is on the array-\/64 board representation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{utils_8cc_aabfef1fe5467aa3e1230ef698dd115b1}\label{utils_8cc_aabfef1fe5467aa3e1230ef698dd115b1}} 
+int {\bfseries file\+Rank\+To\+Sq} (int file, int rank) noexcept
+\item 
+\mbox{\Hypertarget{utils_8cc_a52cdf5f7d109b99e2108e16c35c9a029}\label{utils_8cc_a52cdf5f7d109b99e2108e16c35c9a029}} 
+bool {\bfseries is\+Piece} (int piece) noexcept
+\item 
+std\+::string \mbox{\hyperlink{utils_8cc_a4894a6bfc09e914035ec00613e489173}{sq\+To\+String}} (const int sq) noexcept
+\begin{DoxyCompactList}\small\item\em Returns the string representation of the square. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{utils_8cc_a22a76bff1ad6e147ee5c5ce1d79a2011}{rand\+U64}} () noexcept
+\begin{DoxyCompactList}\small\item\em Generates a uniformally-\/distributed random 64-\/bit number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8cc_adfbe08fdadaa1067f5a9fe8ef13088d8}{show\+Attacked\+Sqs}} (const int side, \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Prints the 8x8 board with numbers indicating how many times each square is attacked by the provided side. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8cc_a2366a4fd138cc50aae6927d60e38a3d2}{string\+To\+Lower}} (std\+::string \&str) noexcept
+\begin{DoxyCompactList}\small\item\em Changes the given string to lowercase. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{utils_8cc_ad4b24a6726f1f0bf071fec1015534fc0}{Input\+Waiting}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the G\+UI interface has sent an interrrupt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8cc_ae40d2c304c2dd2981945585bc4b154c8}{Read\+Input}} (\mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&info)
+\begin{DoxyCompactList}\small\item\em Reads in the G\+UI signal from stdin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains definitions of functions declared in \mbox{\hyperlink{utils_8h}{utils.\+h}}. 
+
+\begin{DoxyAuthor}{Author}
+Michael Lee 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1/9/2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{utils_8cc_ad4b24a6726f1f0bf071fec1015534fc0}\label{utils_8cc_ad4b24a6726f1f0bf071fec1015534fc0}} 
+\index{utils.\+cc@{utils.\+cc}!Input\+Waiting@{Input\+Waiting}}
+\index{Input\+Waiting@{Input\+Waiting}!utils.\+cc@{utils.\+cc}}
+\subsubsection{\texorpdfstring{Input\+Waiting()}{InputWaiting()}}
+{\footnotesize\ttfamily int Input\+Waiting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the G\+UI interface has sent an interrrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there was a G\+UI interrupt, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 91 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8cc_a22a76bff1ad6e147ee5c5ce1d79a2011}\label{utils_8cc_a22a76bff1ad6e147ee5c5ce1d79a2011}} 
+\index{utils.\+cc@{utils.\+cc}!rand\+U64@{rand\+U64}}
+\index{rand\+U64@{rand\+U64}!utils.\+cc@{utils.\+cc}}
+\subsubsection{\texorpdfstring{rand\+U64()}{randU64()}}
+{\footnotesize\ttfamily uint64\+\_\+t rand\+U64 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Generates a uniformally-\/distributed random 64-\/bit number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A random 64 bit number 
+\end{DoxyReturn}
+
+
+Definition at line 54 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8cc_ae40d2c304c2dd2981945585bc4b154c8}\label{utils_8cc_ae40d2c304c2dd2981945585bc4b154c8}} 
+\index{utils.\+cc@{utils.\+cc}!Read\+Input@{Read\+Input}}
+\index{Read\+Input@{Read\+Input}!utils.\+cc@{utils.\+cc}}
+\subsubsection{\texorpdfstring{Read\+Input()}{ReadInput()}}
+{\footnotesize\ttfamily void Read\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSearchInfo}{Search\+Info}} \&}]{info }\end{DoxyParamCaption})}
+
+
+
+Reads in the G\+UI signal from stdin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & The engine\textquotesingle{}s search\+Info instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 125 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8cc_adfbe08fdadaa1067f5a9fe8ef13088d8}\label{utils_8cc_adfbe08fdadaa1067f5a9fe8ef13088d8}} 
+\index{utils.\+cc@{utils.\+cc}!show\+Attacked\+Sqs@{show\+Attacked\+Sqs}}
+\index{show\+Attacked\+Sqs@{show\+Attacked\+Sqs}!utils.\+cc@{utils.\+cc}}
+\subsubsection{\texorpdfstring{show\+Attacked\+Sqs()}{showAttackedSqs()}}
+{\footnotesize\ttfamily void show\+Attacked\+Sqs (\begin{DoxyParamCaption}\item[{const int}]{side,  }\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Prints the 8x8 board with numbers indicating how many times each square is attacked by the provided side. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em side} & The attacking side \\
+\hline
+{\em pos} & The board state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 65 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8cc_af2872fdf2a6599d24229c9c63b5b4681}\label{utils_8cc_af2872fdf2a6599d24229c9c63b5b4681}} 
+\index{utils.\+cc@{utils.\+cc}!sq\+On\+Board@{sq\+On\+Board}}
+\index{sq\+On\+Board@{sq\+On\+Board}!utils.\+cc@{utils.\+cc}}
+\subsubsection{\texorpdfstring{sq\+On\+Board()}{sqOnBoard()}}
+{\footnotesize\ttfamily bool sq\+On\+Board (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{sq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Checks if a square number in array-\/120 form is on the array-\/64 board representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sq} & The square number in array-\/120 form. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the square is on the array-\/64 board, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 29 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8cc_a4894a6bfc09e914035ec00613e489173}\label{utils_8cc_a4894a6bfc09e914035ec00613e489173}} 
+\index{utils.\+cc@{utils.\+cc}!sq\+To\+String@{sq\+To\+String}}
+\index{sq\+To\+String@{sq\+To\+String}!utils.\+cc@{utils.\+cc}}
+\subsubsection{\texorpdfstring{sq\+To\+String()}{sqToString()}}
+{\footnotesize\ttfamily std\+::string sq\+To\+String (\begin{DoxyParamCaption}\item[{const int}]{sq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Returns the string representation of the square. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sq} & A square in array-\/120 form. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string representation of the square (e.\+g \char`\"{}\+A1\char`\"{}). 
+\end{DoxyReturn}
+
+
+Definition at line 45 of file utils.\+cc.
+
+\mbox{\Hypertarget{utils_8cc_a2366a4fd138cc50aae6927d60e38a3d2}\label{utils_8cc_a2366a4fd138cc50aae6927d60e38a3d2}} 
+\index{utils.\+cc@{utils.\+cc}!string\+To\+Lower@{string\+To\+Lower}}
+\index{string\+To\+Lower@{string\+To\+Lower}!utils.\+cc@{utils.\+cc}}
+\subsubsection{\texorpdfstring{string\+To\+Lower()}{stringToLower()}}
+{\footnotesize\ttfamily void string\+To\+Lower (\begin{DoxyParamCaption}\item[{std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Changes the given string to lowercase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & the string to change to lower. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 84 of file utils.\+cc.
+

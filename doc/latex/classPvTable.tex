@@ -1,0 +1,227 @@
+\hypertarget{classPvTable}{}\section{Pv\+Table Class Reference}
+\label{classPvTable}\index{Pv\+Table@{Pv\+Table}}
+
+
+{\ttfamily \#include $<$pvtable.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{classPvTable_affc22eb520f1e4c8fc30366e38af5868}{get}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Get the best move previously found for this position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPvTable_aeb05a7085dcd5f16c35dbb30f152056a}{insert}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, const \mbox{\hyperlink{classMove}{Move}} \&move) noexcept
+\begin{DoxyCompactList}\small\item\em Stashes the move associated with this position into the hash map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPvTable_ab26b0faf926e5c7de086f328ca1eaf79}{insert}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, const \mbox{\hyperlink{classMove}{Move}} \&move, int32\+\_\+t score, int32\+\_\+t depth, int32\+\_\+t flags) noexcept
+\begin{DoxyCompactList}\small\item\em Stashes the move associated with this position into the hash map. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classPvTable_a6df38f01a626250eb8d1878d1fbb0029}{size}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Gets the number of entries in the transposition table. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPvTable_a96b49a337793b2dc29d7f049ae54091f}{clear}} () noexcept
+\begin{DoxyCompactList}\small\item\em Clears all entries in the transposition table. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{classPvTable_a6e87189dbe8ce348782ad2423ac14b08}{get\+Pv\+Line}} (\mbox{\hyperlink{classBoard}{Board}} \&pos, const uint32\+\_\+t depth) noexcept
+\begin{DoxyCompactList}\small\item\em Fills in the pv array with the searched pv moves and returns the length of the line. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPvTable_a0eb2e071414179f05f606ece66b8e0aa}{get\+Hash\+Entry}} (\mbox{\hyperlink{classBoard}{Board}} \&pos, \mbox{\hyperlink{classMove}{Move}} \&pv\+Move, int32\+\_\+t \&score, int32\+\_\+t alpha, int32\+\_\+t beta, int32\+\_\+t depth) noexcept
+\begin{DoxyCompactList}\small\item\em Checks the alpha beta bounds and returns if a better, previously cached move is found. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPvTable_aee04d36ed95071d6c553205e0b9de3e5}\label{classPvTable_aee04d36ed95071d6c553205e0b9de3e5}} 
+std\+::vector$<$ \mbox{\hyperlink{classMove}{Move}} $>$ {\bfseries pv\+\_\+arr}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPvTable_a10751ef66b0018b33e36623c24c44b91}\label{classPvTable_a10751ef66b0018b33e36623c24c44b91}} 
+std\+::unordered\+\_\+map$<$ uint64\+\_\+t, \mbox{\hyperlink{classPvEntry}{Pv\+Entry}} $>$ {\bfseries pv\+\_\+table}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds all info for a given position with the best move found. Serves as a cache to improve evaluation speed. Also called a transposition table. 
+
+Definition at line 40 of file pvtable.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPvTable_a96b49a337793b2dc29d7f049ae54091f}\label{classPvTable_a96b49a337793b2dc29d7f049ae54091f}} 
+\index{Pv\+Table@{Pv\+Table}!clear@{clear}}
+\index{clear@{clear}!Pv\+Table@{Pv\+Table}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Pv\+Table\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Clears all entries in the transposition table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 89 of file pvtable.\+cc.
+
+\mbox{\Hypertarget{classPvTable_affc22eb520f1e4c8fc30366e38af5868}\label{classPvTable_affc22eb520f1e4c8fc30366e38af5868}} 
+\index{Pv\+Table@{Pv\+Table}!get@{get}}
+\index{get@{get}!Pv\+Table@{Pv\+Table}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMove}{Move}} Pv\+Table\+::get (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Get the best move previously found for this position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The best move previously found for this position. 
+\end{DoxyReturn}
+
+
+Definition at line 58 of file pvtable.\+cc.
+
+\mbox{\Hypertarget{classPvTable_a0eb2e071414179f05f606ece66b8e0aa}\label{classPvTable_a0eb2e071414179f05f606ece66b8e0aa}} 
+\index{Pv\+Table@{Pv\+Table}!get\+Hash\+Entry@{get\+Hash\+Entry}}
+\index{get\+Hash\+Entry@{get\+Hash\+Entry}!Pv\+Table@{Pv\+Table}}
+\subsubsection{\texorpdfstring{get\+Hash\+Entry()}{getHashEntry()}}
+{\footnotesize\ttfamily bool Pv\+Table\+::get\+Hash\+Entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{\mbox{\hyperlink{classMove}{Move}} \&}]{pv\+Move,  }\item[{int32\+\_\+t \&}]{score,  }\item[{int32\+\_\+t}]{alpha,  }\item[{int32\+\_\+t}]{beta,  }\item[{int32\+\_\+t}]{depth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Checks the alpha beta bounds and returns if a better, previously cached move is found. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em pv\+Move} & The move to store the found move in if found. \\
+\hline
+{\em score} & The score buffer to store the found score in if found \\
+\hline
+{\em alpha} & The alpha cutoff \\
+\hline
+{\em beta} & The beta cutoff \\
+\hline
+{\em depth} & The desired search depth \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the position has an applicable cached move. 
+\end{DoxyReturn}
+
+
+Definition at line 112 of file pvtable.\+cc.
+
+\mbox{\Hypertarget{classPvTable_a6e87189dbe8ce348782ad2423ac14b08}\label{classPvTable_a6e87189dbe8ce348782ad2423ac14b08}} 
+\index{Pv\+Table@{Pv\+Table}!get\+Pv\+Line@{get\+Pv\+Line}}
+\index{get\+Pv\+Line@{get\+Pv\+Line}!Pv\+Table@{Pv\+Table}}
+\subsubsection{\texorpdfstring{get\+Pv\+Line()}{getPvLine()}}
+{\footnotesize\ttfamily int32\+\_\+t Pv\+Table\+::get\+Pv\+Line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{const uint32\+\_\+t}]{depth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Fills in the pv array with the searched pv moves and returns the length of the line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em depth} & The search depth. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of moves in the Pv line 
+\end{DoxyReturn}
+
+
+Definition at line 94 of file pvtable.\+cc.
+
+\mbox{\Hypertarget{classPvTable_aeb05a7085dcd5f16c35dbb30f152056a}\label{classPvTable_aeb05a7085dcd5f16c35dbb30f152056a}} 
+\index{Pv\+Table@{Pv\+Table}!insert@{insert}}
+\index{insert@{insert}!Pv\+Table@{Pv\+Table}}
+\subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Pv\+Table\+::insert (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{const \mbox{\hyperlink{classMove}{Move}} \&}]{move }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Stashes the move associated with this position into the hash map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em move} & The move to store for this position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 64 of file pvtable.\+cc.
+
+\mbox{\Hypertarget{classPvTable_ab26b0faf926e5c7de086f328ca1eaf79}\label{classPvTable_ab26b0faf926e5c7de086f328ca1eaf79}} 
+\index{Pv\+Table@{Pv\+Table}!insert@{insert}}
+\index{insert@{insert}!Pv\+Table@{Pv\+Table}}
+\subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Pv\+Table\+::insert (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{const \mbox{\hyperlink{classMove}{Move}} \&}]{move,  }\item[{int32\+\_\+t}]{score,  }\item[{int32\+\_\+t}]{depth,  }\item[{int32\+\_\+t}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Stashes the move associated with this position into the hash map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em move} & The move to store for this position. \\
+\hline
+{\em score} & The evaluation of this position. \\
+\hline
+{\em depth} & The depth that this position was previously searched to. \\
+\hline
+{\em flags} & The flags that are associated with the move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 70 of file pvtable.\+cc.
+
+\mbox{\Hypertarget{classPvTable_a6df38f01a626250eb8d1878d1fbb0029}\label{classPvTable_a6df38f01a626250eb8d1878d1fbb0029}} 
+\index{Pv\+Table@{Pv\+Table}!size@{size}}
+\index{size@{size}!Pv\+Table@{Pv\+Table}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily int32\+\_\+t Pv\+Table\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Gets the number of entries in the transposition table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of entries in the transposition table. 
+\end{DoxyReturn}
+
+
+Definition at line 84 of file pvtable.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{pvtable_8h}{pvtable.\+h}}\item 
+src/\mbox{\hyperlink{pvtable_8cc}{pvtable.\+cc}}\end{DoxyCompactItemize}

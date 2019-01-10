@@ -1,3 +1,10 @@
+/**
+*     @file polyglotkeys.h
+*     @brief Contains all 781 polyglot hashkeys used in the opening
+*     @author Michael Lee
+*     @date 1/9/2019
+*/
+
 #ifndef POLYGLOTKEYS_H
 #define POLYGLOTKEYS_H
 

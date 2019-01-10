@@ -1,3 +1,9 @@
+/**
+*	@file console.h
+*	@brief Contains declarations of functions for the console protocol
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #ifndef CONSOLE_H
 #define CONSOLE_H
 #include "protocol.h"

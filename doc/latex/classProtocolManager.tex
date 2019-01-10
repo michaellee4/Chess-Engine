@@ -1,0 +1,122 @@
+\hypertarget{classProtocolManager}{}\section{Protocol\+Manager Class Reference}
+\label{classProtocolManager}\index{Protocol\+Manager@{Protocol\+Manager}}
+Inheritance diagram for Protocol\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classProtocolManager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classProtocolManager_aa3ae25a03e2f070ea486fd9319715a6a}{loop}} ()=0
+\begin{DoxyCompactList}\small\item\em Starts the protocol loop. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classProtocolManager_a1cab1bcb93ca3542821965e62ee59c33}{is\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the engine has recieved a stop signal from the G\+UI. \end{DoxyCompactList}\item 
+virtual int32\+\_\+t \mbox{\hyperlink{classProtocolManager_a2ab274fd7510b28e7ac36405aebdbe82}{get\+Protocol}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the protocol identifier for the current protocol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classProtocolManager_abda5da0d5f313a17757f56953cc9fb9c}\label{classProtocolManager_abda5da0d5f313a17757f56953cc9fb9c}} 
+static constexpr int32\+\_\+t {\bfseries k\+U\+CI} = 0
+\item 
+\mbox{\Hypertarget{classProtocolManager_aae0d7c85f7908af043982e22b230164c}\label{classProtocolManager_aae0d7c85f7908af043982e22b230164c}} 
+static constexpr int32\+\_\+t {\bfseries k\+X\+Board} = 1
+\item 
+\mbox{\Hypertarget{classProtocolManager_a5efa22d57690c47bc1e7aeaabe898ac8}\label{classProtocolManager_a5efa22d57690c47bc1e7aeaabe898ac8}} 
+static constexpr int32\+\_\+t {\bfseries k\+Console} = 2
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classProtocolManager_ad8d2e4041601fb0fb0c51456641f2283}\label{classProtocolManager_ad8d2e4041601fb0fb0c51456641f2283}} 
+\mbox{\hyperlink{classBoard}{Board}} {\bfseries pos}
+\item 
+\mbox{\Hypertarget{classProtocolManager_a1384f769e3bbb83e7876d0d8c21ce4fb}\label{classProtocolManager_a1384f769e3bbb83e7876d0d8c21ce4fb}} 
+\mbox{\hyperlink{structSearchInfo}{Search\+Info}} {\bfseries info}
+\item 
+\mbox{\Hypertarget{classProtocolManager_af985b55fd4fb30eceae7f434c9c3ee05}\label{classProtocolManager_af985b55fd4fb30eceae7f434c9c3ee05}} 
+\mbox{\hyperlink{classSearchAgent}{Search\+Agent}} {\bfseries sa}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 15 of file protocol.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classProtocolManager_a2ab274fd7510b28e7ac36405aebdbe82}\label{classProtocolManager_a2ab274fd7510b28e7ac36405aebdbe82}} 
+\index{Protocol\+Manager@{Protocol\+Manager}!get\+Protocol@{get\+Protocol}}
+\index{get\+Protocol@{get\+Protocol}!Protocol\+Manager@{Protocol\+Manager}}
+\subsubsection{\texorpdfstring{get\+Protocol()}{getProtocol()}}
+{\footnotesize\ttfamily virtual int32\+\_\+t Protocol\+Manager\+::get\+Protocol (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the protocol identifier for the current protocol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The protocol identifier 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classUCIManager_af85c53751a85a5cb624e10fb1f9962c7}{U\+C\+I\+Manager}}, \mbox{\hyperlink{classConsoleManager_a12c11521d46af302d6c7d79d3b8174b4}{Console\+Manager}}, and \mbox{\hyperlink{classXBoardManager_a388ebffa15fa11ee763f4144f01fbcaf}{X\+Board\+Manager}}.
+
+\mbox{\Hypertarget{classProtocolManager_a1cab1bcb93ca3542821965e62ee59c33}\label{classProtocolManager_a1cab1bcb93ca3542821965e62ee59c33}} 
+\index{Protocol\+Manager@{Protocol\+Manager}!is\+Over@{is\+Over}}
+\index{is\+Over@{is\+Over}!Protocol\+Manager@{Protocol\+Manager}}
+\subsubsection{\texorpdfstring{is\+Over()}{isOver()}}
+{\footnotesize\ttfamily virtual bool Protocol\+Manager\+::is\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Checks if the engine has recieved a stop signal from the G\+UI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a stop command has been sent, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 37 of file protocol.\+h.
+
+\mbox{\Hypertarget{classProtocolManager_aa3ae25a03e2f070ea486fd9319715a6a}\label{classProtocolManager_aa3ae25a03e2f070ea486fd9319715a6a}} 
+\index{Protocol\+Manager@{Protocol\+Manager}!loop@{loop}}
+\index{loop@{loop}!Protocol\+Manager@{Protocol\+Manager}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily virtual void Protocol\+Manager\+::loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Starts the protocol loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classUCIManager_aa2fa2a352e6d58f00c8388da0d8541e1}{U\+C\+I\+Manager}}, \mbox{\hyperlink{classConsoleManager_a69261543a87cf7d3c7ec004c566145fd}{Console\+Manager}}, and \mbox{\hyperlink{classXBoardManager_a7d59ec1b3eaf1d140ad8f7cacd2ae956}{X\+Board\+Manager}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{protocol_8h}{protocol.\+h}}\end{DoxyCompactItemize}

@@ -1,3 +1,9 @@
+/**
+*	@file eval.cc
+*	@brief Contains definitions of functions declared in eval.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "eval.h"
 #include "defs.h"
 #include "utils.h"

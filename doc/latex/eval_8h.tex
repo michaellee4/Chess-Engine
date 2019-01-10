@@ -1,0 +1,226 @@
+\hypertarget{eval_8h}{}\section{include/eval.h File Reference}
+\label{eval_8h}\index{include/eval.\+h@{include/eval.\+h}}
+
+
+Contains declarations of functions that determine the strength of a given position.  
+
+
+{\ttfamily \#include \char`\"{}board.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}defs.\+h\char`\"{}}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classEvaluator}{Evaluator}}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{eval_8h_aed547988abe75be2e24c74f02fd9ddb9}\label{eval_8h_aed547988abe75be2e24c74f02fd9ddb9}} 
+constexpr int32\+\_\+t {\bfseries Value\+::k\+Infinity} = 30000
+\item 
+\mbox{\Hypertarget{eval_8h_a88d993145245aca4baa932c1dbc7fd92}\label{eval_8h_a88d993145245aca4baa932c1dbc7fd92}} 
+constexpr int32\+\_\+t {\bfseries Value\+::k\+Mate\+Score} = 29000
+\item 
+\mbox{\Hypertarget{eval_8h_a354b47d5941b61c2a883ba36823e4c98}\label{eval_8h_a354b47d5941b61c2a883ba36823e4c98}} 
+constexpr int32\+\_\+t {\bfseries Value\+::k\+Isolated\+Pawn} = -\/10
+\item 
+\mbox{\Hypertarget{eval_8h_adaecf503d96c902ebae1588565e5c3e1}\label{eval_8h_adaecf503d96c902ebae1588565e5c3e1}} 
+constexpr int32\+\_\+t {\bfseries Value\+::k\+Open\+Rook\+File} = 10
+\item 
+\mbox{\Hypertarget{eval_8h_a81946dee27fcd0bd24d914082169be38}\label{eval_8h_a81946dee27fcd0bd24d914082169be38}} 
+constexpr int32\+\_\+t {\bfseries Value\+::k\+Semi\+Open\+Rook\+File} = 5
+\item 
+\mbox{\Hypertarget{eval_8h_a1b62aec2245b0434f86252680fe2d837}\label{eval_8h_a1b62aec2245b0434f86252680fe2d837}} 
+constexpr int32\+\_\+t {\bfseries Value\+::k\+Open\+Queen\+File} = 5
+\item 
+\mbox{\Hypertarget{eval_8h_a4d8e9e3283f0dfb8767defd3c4375bf9}\label{eval_8h_a4d8e9e3283f0dfb8767defd3c4375bf9}} 
+constexpr int32\+\_\+t {\bfseries Value\+::k\+Semi\+Open\+Queen\+File} = 3
+\item 
+\mbox{\Hypertarget{eval_8h_aba807f233f0cb45bc9479d3b2697450b}\label{eval_8h_aba807f233f0cb45bc9479d3b2697450b}} 
+constexpr int32\+\_\+t {\bfseries Value\+::k\+End\+Game\+Threshold} = Piece\+Info\+::\+Piece\+Val\mbox{[}wR\mbox{]} + 2 $\ast$ Piece\+Info\+::\+Piece\+Val\mbox{[}wB\mbox{]} + 2 $\ast$ Piece\+Info\+::\+Piece\+Val\mbox{[}wP\mbox{]}
+\item 
+\mbox{\Hypertarget{eval_8h_a662b268cafa7fb0924985d533150c6c2}\label{eval_8h_a662b268cafa7fb0924985d533150c6c2}} 
+constexpr int32\+\_\+t {\bfseries Value\+::k\+Bishop\+Pair} = 30
+\item 
+\mbox{\Hypertarget{eval_8h_aa30303e1cad8afe4b7ef7cf689ab2352}\label{eval_8h_aa30303e1cad8afe4b7ef7cf689ab2352}} 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Num\+Files\+Ranks $>$ {\bfseries Value\+::passed\+Pawn\+Score} \{0, 5, 10, 20, 35, 60, 100, 200\}
+\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Value\+::\+Pawn\+Table}
+\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Value\+::\+Knight\+Table}
+\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Value\+::\+Bishop\+Table}
+\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Value\+::\+Rook\+Table}
+\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Value\+::\+King\+End\+Game}
+\item 
+constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Value\+::\+King\+Opening}
+\item 
+\mbox{\Hypertarget{eval_8h_ac79d062bc8f00b09f43b769d9fbba010}\label{eval_8h_ac79d062bc8f00b09f43b769d9fbba010}} 
+std\+::array$<$ uint64\+\_\+t, k\+Num\+Files\+Ranks $>$ {\bfseries Eval\+B\+B\+::\+File\+Mask}
+\item 
+\mbox{\Hypertarget{eval_8h_a02d6c6bd56103f97e39b6bb473caaded}\label{eval_8h_a02d6c6bd56103f97e39b6bb473caaded}} 
+std\+::array$<$ uint64\+\_\+t, k\+Num\+Files\+Ranks $>$ {\bfseries Eval\+B\+B\+::\+Rank\+Mask}
+\item 
+\mbox{\Hypertarget{eval_8h_a5207f3122e51280185841a84c4dbded2}\label{eval_8h_a5207f3122e51280185841a84c4dbded2}} 
+std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Eval\+B\+B\+::white\+Passed\+Mask}
+\item 
+\mbox{\Hypertarget{eval_8h_a052e3c66beeab03cb8f918d20aeb2ebe}\label{eval_8h_a052e3c66beeab03cb8f918d20aeb2ebe}} 
+std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Eval\+B\+B\+::black\+Passed\+Mask}
+\item 
+\mbox{\Hypertarget{eval_8h_a2bdc6c0c53d928a1b70e4e65042c7abe}\label{eval_8h_a2bdc6c0c53d928a1b70e4e65042c7abe}} 
+std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Eval\+B\+B\+::isolated\+Mask}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains declarations of functions that determine the strength of a given position. 
+
+\begin{DoxyAuthor}{Author}
+Michael Lee 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1/9/2019 
+\end{DoxyDate}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{eval_8h_file_ab06336272528cf2e9e3772123f5eb5bb}\label{eval_8h_file_ab06336272528cf2e9e3772123f5eb5bb}} 
+\index{eval.\+h@{eval.\+h}!Bishop\+Table@{Bishop\+Table}}
+\index{Bishop\+Table@{Bishop\+Table}!eval.\+h@{eval.\+h}}
+\subsubsection{\texorpdfstring{Bishop\+Table}{BishopTable}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+Bishop\+Table}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+        0   ,   0   ,   -10 ,   0   ,   0   ,   -10 ,   0   ,   0   ,
+        0   ,   0   ,   0   ,   10  ,   10  ,   0   ,   0   ,   0   ,
+        0   ,   0   ,   10  ,   15  ,   15  ,   10  ,   0   ,   0   ,
+        0   ,   10  ,   15  ,   20  ,   20  ,   15  ,   10  ,   0   ,
+        0   ,   10  ,   15  ,   20  ,   20  ,   15  ,   10  ,   0   ,
+        0   ,   0   ,   10  ,   15  ,   15  ,   10  ,   0   ,   0   ,
+        0   ,   0   ,   0   ,   10  ,   10  ,   0   ,   0   ,   0   ,
+        0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   
+    \}
+\end{DoxyCode}
+
+
+Definition at line 56 of file eval.\+h.
+
+\mbox{\Hypertarget{eval_8h_file_a581231b1446aff281ae15f755b875341}\label{eval_8h_file_a581231b1446aff281ae15f755b875341}} 
+\index{eval.\+h@{eval.\+h}!King\+End\+Game@{King\+End\+Game}}
+\index{King\+End\+Game@{King\+End\+Game}!eval.\+h@{eval.\+h}}
+\subsubsection{\texorpdfstring{King\+End\+Game}{KingEndGame}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+King\+End\+Game}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{ 
+        -50 ,   -10 ,   0   ,   0   ,   0   ,   0   ,   -10 ,   -50 ,
+        -10,    0   ,   10  ,   10  ,   10  ,   10  ,   0   ,   -10 ,
+        0   ,   10  ,   15  ,   15  ,   15  ,   15  ,   10  ,   0   ,
+        0   ,   10  ,   15  ,   20  ,   20  ,   15  ,   10  ,   0   ,
+        0   ,   10  ,   15  ,   20  ,   20  ,   15  ,   10  ,   0   ,
+        0   ,   10  ,   15  ,   15  ,   15  ,   15  ,   10  ,   0   ,
+        -10,    0   ,   10  ,   10  ,   10  ,   10  ,   0   ,   -10 ,
+        -50 ,   -10 ,   0   ,   0   ,   0   ,   0   ,   -10 ,   -50 
+    \}
+\end{DoxyCode}
+
+
+Definition at line 78 of file eval.\+h.
+
+\mbox{\Hypertarget{eval_8h_file_a0b4d4bb236eb7c18c48df42e6e3ca1fd}\label{eval_8h_file_a0b4d4bb236eb7c18c48df42e6e3ca1fd}} 
+\index{eval.\+h@{eval.\+h}!King\+Opening@{King\+Opening}}
+\index{King\+Opening@{King\+Opening}!eval.\+h@{eval.\+h}}
+\subsubsection{\texorpdfstring{King\+Opening}{KingOpening}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+King\+Opening}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{ 
+        0   ,   5   ,   5   ,   -10 ,   -10 ,   0   ,   10  ,   5   ,
+        -30 ,   -30 ,   -30 ,   -30 ,   -30 ,   -30 ,   -30 ,   -30 ,
+        -50 ,   -50 ,   -50 ,   -50 ,   -50 ,   -50 ,   -50 ,   -50 ,
+        -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,
+        -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,
+        -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,
+        -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,
+        -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70 ,   -70     
+    \}
+\end{DoxyCode}
+
+
+Definition at line 89 of file eval.\+h.
+
+\mbox{\Hypertarget{eval_8h_file_a4b65a409f1e288260d4e71d6c13376b5}\label{eval_8h_file_a4b65a409f1e288260d4e71d6c13376b5}} 
+\index{eval.\+h@{eval.\+h}!Knight\+Table@{Knight\+Table}}
+\index{Knight\+Table@{Knight\+Table}!eval.\+h@{eval.\+h}}
+\subsubsection{\texorpdfstring{Knight\+Table}{KnightTable}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+Knight\+Table}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+        0   ,   -10 ,   0   ,   0   ,   0   ,   0   ,   -10 ,   0   ,
+        0   ,   0   ,   0   ,   5   ,   5   ,   0   ,   0   ,   0   ,
+        0   ,   0   ,   10  ,   10  ,   10  ,   10  ,   0   ,   0   ,
+        0   ,   0   ,   10  ,   20  ,   20  ,   10  ,   5   ,   0   ,
+        5   ,   10  ,   15  ,   20  ,   20  ,   15  ,   10  ,   5   ,
+        5   ,   10  ,   10  ,   20  ,   20  ,   10  ,   10  ,   5   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0       
+    \}
+\end{DoxyCode}
+
+
+Definition at line 45 of file eval.\+h.
+
+\mbox{\Hypertarget{eval_8h_file_a8b6c72010096d1ae9eb653c5be418db0}\label{eval_8h_file_a8b6c72010096d1ae9eb653c5be418db0}} 
+\index{eval.\+h@{eval.\+h}!Pawn\+Table@{Pawn\+Table}}
+\index{Pawn\+Table@{Pawn\+Table}!eval.\+h@{eval.\+h}}
+\subsubsection{\texorpdfstring{Pawn\+Table}{PawnTable}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+Pawn\+Table}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+        0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,
+        10  ,   10  ,   0   ,   -10 ,   -10 ,   0   ,   10  ,   10  ,
+        5   ,   0   ,   0   ,   5   ,   5   ,   0   ,   0   ,   5   ,
+        0   ,   0   ,   10  ,   20  ,   20  ,   10  ,   0   ,   0   ,
+        5   ,   5   ,   5   ,   10  ,   10  ,   5   ,   5   ,   5   ,
+        10  ,   10  ,   10  ,   20  ,   20  ,   10  ,   10  ,   10  ,
+        20  ,   20  ,   20  ,   30  ,   30  ,   20  ,   20  ,   20  ,
+        0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   ,   0   
+    \}
+\end{DoxyCode}
+
+
+Definition at line 34 of file eval.\+h.
+
+\mbox{\Hypertarget{eval_8h_file_ae8066836a21ce4367ff232f08ce796a8}\label{eval_8h_file_ae8066836a21ce4367ff232f08ce796a8}} 
+\index{eval.\+h@{eval.\+h}!Rook\+Table@{Rook\+Table}}
+\index{Rook\+Table@{Rook\+Table}!eval.\+h@{eval.\+h}}
+\subsubsection{\texorpdfstring{Rook\+Table}{RookTable}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, k\+Chessboard\+Size$>$ Value\+::\+Rook\+Table}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0   ,
+        25  ,   25  ,   25  ,   25  ,   25  ,   25  ,   25  ,   25  ,
+        0   ,   0   ,   5   ,   10  ,   10  ,   5   ,   0   ,   0       
+    \}
+\end{DoxyCode}
+
+
+Definition at line 67 of file eval.\+h.
+

@@ -1,3 +1,9 @@
+/**
+*	@file movemaker.cc
+*	@brief Contains definitions of functions declared in movemaker.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "movemaker.h"
 #include "defs.h"
 #include "bitboard.h"

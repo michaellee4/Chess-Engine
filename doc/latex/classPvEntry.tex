@@ -1,0 +1,58 @@
+\hypertarget{classPvEntry}{}\section{Pv\+Entry Class Reference}
+\label{classPvEntry}\index{Pv\+Entry@{Pv\+Entry}}
+
+
+{\ttfamily \#include $<$pvtable.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPvEntry_afeeef31547873fa5fc9aa09ab4c4f06b}\label{classPvEntry_afeeef31547873fa5fc9aa09ab4c4f06b}} 
+{\bfseries Pv\+Entry} (uint64\+\_\+t key, \mbox{\hyperlink{classMove}{Move}} \+\_\+move, int32\+\_\+t \+\_\+score, int32\+\_\+t \+\_\+depth, int32\+\_\+t \+\_\+flags) noexcept
+\item 
+\mbox{\Hypertarget{classPvEntry_ace4807fc22c58c833b65cf13ac09908a}\label{classPvEntry_ace4807fc22c58c833b65cf13ac09908a}} 
+{\bfseries Pv\+Entry} (uint64\+\_\+t key, \mbox{\hyperlink{classMove}{Move}} move) noexcept
+\item 
+\mbox{\Hypertarget{classPvEntry_af33c5a8a15b3b08ba46255cd6b83b52e}\label{classPvEntry_af33c5a8a15b3b08ba46255cd6b83b52e}} 
+{\bfseries Pv\+Entry} (const \mbox{\hyperlink{classPvEntry}{Pv\+Entry}} \&o) noexcept
+\item 
+\mbox{\Hypertarget{classPvEntry_ac55e594a47f0c00b0f32dcc41cb741ba}\label{classPvEntry_ac55e594a47f0c00b0f32dcc41cb741ba}} 
+{\bfseries Pv\+Entry} (\mbox{\hyperlink{classPvEntry}{Pv\+Entry}} \&\&o) noexcept
+\item 
+\mbox{\Hypertarget{classPvEntry_aa435b3aa50a3820f911a38daece696ad}\label{classPvEntry_aa435b3aa50a3820f911a38daece696ad}} 
+\mbox{\hyperlink{classPvEntry}{Pv\+Entry}} \& {\bfseries operator=} (const \mbox{\hyperlink{classPvEntry}{Pv\+Entry}} \&o) noexcept
+\item 
+\mbox{\Hypertarget{classPvEntry_aef1422ab13067d76d00d879ff053cd0b}\label{classPvEntry_aef1422ab13067d76d00d879ff053cd0b}} 
+\mbox{\hyperlink{classPvEntry}{Pv\+Entry}} \& {\bfseries operator=} (\mbox{\hyperlink{classPvEntry}{Pv\+Entry}} \&\&o) noexcept
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPvEntry_ab1e717bdabc6da4bf546d0b1af252091}\label{classPvEntry_ab1e717bdabc6da4bf546d0b1af252091}} 
+uint64\+\_\+t {\bfseries pos\+\_\+key}
+\item 
+\mbox{\Hypertarget{classPvEntry_a6e6ab2e38db069902f7aeb2dae727a1e}\label{classPvEntry_a6e6ab2e38db069902f7aeb2dae727a1e}} 
+\mbox{\hyperlink{classMove}{Move}} {\bfseries move}
+\item 
+\mbox{\Hypertarget{classPvEntry_a00a4547715d4b994bf2e889e7a4b29a9}\label{classPvEntry_a00a4547715d4b994bf2e889e7a4b29a9}} 
+int32\+\_\+t {\bfseries score}
+\item 
+\mbox{\Hypertarget{classPvEntry_a75056e46bf9a3a8ed3955119fc83ace8}\label{classPvEntry_a75056e46bf9a3a8ed3955119fc83ace8}} 
+int32\+\_\+t {\bfseries depth}
+\item 
+\mbox{\Hypertarget{classPvEntry_a90d1ef7b561954f7265af72e3cdd94be}\label{classPvEntry_a90d1ef7b561954f7265af72e3cdd94be}} 
+int32\+\_\+t {\bfseries flags}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds the cached info of our searches for use with the P\+V\+Table 
+
+Definition at line 18 of file pvtable.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{pvtable_8h}{pvtable.\+h}}\item 
+src/\mbox{\hyperlink{pvtable_8cc}{pvtable.\+cc}}\end{DoxyCompactItemize}

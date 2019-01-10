@@ -1,3 +1,9 @@
+/**
+*	@file engine.cc
+*	@brief Contains definitions of functions declared in engine.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "engine.h"
 #include "defs.h"
 #include "init.h"

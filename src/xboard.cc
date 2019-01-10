@@ -1,3 +1,9 @@
+/**
+*	@file xboard.cc
+*	@brief Contains definitions of functions declared in xboard.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "xboard.h"
 #include "io.h"
 #include "stopwatch.h"

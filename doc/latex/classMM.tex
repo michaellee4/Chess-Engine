@@ -1,0 +1,202 @@
+\hypertarget{classMM}{}\section{MM Class Reference}
+\label{classMM}\index{MM@{MM}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classMM_ad56f88355a078f3b14b290fe153966b4}{make\+Move}} (\mbox{\hyperlink{classBoard}{Board}} \&pos, const \mbox{\hyperlink{classMove}{Move}} \&move\+Info) noexcept
+\begin{DoxyCompactList}\small\item\em Makes the provided move (move piece/capture/update board) \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classMM_aaf252571e1f48cae22b2093bf55058b5}{take\+Move}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Undos the last move that was made which is stored in Board\+::history. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classMM_a363e843e6bebaf747bf9482c963ed6b9}{make\+Null\+Move}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Similar in concept to Make move, but gives the opposing side a free move. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classMM_aabe809e8405f8ea0666a7d6e25aedac5}{take\+Null\+Move}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Undos the last null move. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classMM_a590ca1cb1afc08df645f947e48c13e0c}{clear\+Piece}} (const uint32\+\_\+t sq, \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Removes the piece on the given square from the internal board representation. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classMM_a2f50160abe49fcba984c0db8cca3a2e4}{add\+Piece}} (const uint32\+\_\+t sq, \mbox{\hyperlink{classBoard}{Board}} \&pos, const uint32\+\_\+t pce) noexcept
+\begin{DoxyCompactList}\small\item\em Adds the piece on the given square to the internal board representation. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classMM_a0a47ca15cd28a2b8136e7be86aff84e7}{move\+Piece}} (const uint32\+\_\+t src, const uint32\+\_\+t dest, \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Moves the piece from the source square to the dest square and performs capture if applicable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 34 of file movemaker.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMM_a2f50160abe49fcba984c0db8cca3a2e4}\label{classMM_a2f50160abe49fcba984c0db8cca3a2e4}} 
+\index{MM@{MM}!add\+Piece@{add\+Piece}}
+\index{add\+Piece@{add\+Piece}!MM@{MM}}
+\subsubsection{\texorpdfstring{add\+Piece()}{addPiece()}}
+{\footnotesize\ttfamily void M\+M\+::add\+Piece (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{sq,  }\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{const uint32\+\_\+t}]{pce }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Adds the piece on the given square to the internal board representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sq} & The square to add the piece to. \\
+\hline
+{\em pos} & The current board state. \\
+\hline
+{\em pce} & The piece to add to the target square \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 45 of file movemaker.\+cc.
+
+\mbox{\Hypertarget{classMM_a590ca1cb1afc08df645f947e48c13e0c}\label{classMM_a590ca1cb1afc08df645f947e48c13e0c}} 
+\index{MM@{MM}!clear\+Piece@{clear\+Piece}}
+\index{clear\+Piece@{clear\+Piece}!MM@{MM}}
+\subsubsection{\texorpdfstring{clear\+Piece()}{clearPiece()}}
+{\footnotesize\ttfamily void M\+M\+::clear\+Piece (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{sq,  }\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Removes the piece on the given square from the internal board representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sq} & The square to clear. \\
+\hline
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 18 of file movemaker.\+cc.
+
+\mbox{\Hypertarget{classMM_ad56f88355a078f3b14b290fe153966b4}\label{classMM_ad56f88355a078f3b14b290fe153966b4}} 
+\index{MM@{MM}!make\+Move@{make\+Move}}
+\index{make\+Move@{make\+Move}!MM@{MM}}
+\subsubsection{\texorpdfstring{make\+Move()}{makeMove()}}
+{\footnotesize\ttfamily bool M\+M\+::make\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{const \mbox{\hyperlink{classMove}{Move}} \&}]{move\+Info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+Makes the provided move (move piece/capture/update board) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if move was successfully made (legal), false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 90 of file movemaker.\+cc.
+
+\mbox{\Hypertarget{classMM_a363e843e6bebaf747bf9482c963ed6b9}\label{classMM_a363e843e6bebaf747bf9482c963ed6b9}} 
+\index{MM@{MM}!make\+Null\+Move@{make\+Null\+Move}}
+\index{make\+Null\+Move@{make\+Null\+Move}!MM@{MM}}
+\subsubsection{\texorpdfstring{make\+Null\+Move()}{makeNullMove()}}
+{\footnotesize\ttfamily void M\+M\+::make\+Null\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+Similar in concept to Make move, but gives the opposing side a free move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 249 of file movemaker.\+cc.
+
+\mbox{\Hypertarget{classMM_a0a47ca15cd28a2b8136e7be86aff84e7}\label{classMM_a0a47ca15cd28a2b8136e7be86aff84e7}} 
+\index{MM@{MM}!move\+Piece@{move\+Piece}}
+\index{move\+Piece@{move\+Piece}!MM@{MM}}
+\subsubsection{\texorpdfstring{move\+Piece()}{movePiece()}}
+{\footnotesize\ttfamily void M\+M\+::move\+Piece (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{src,  }\item[{const uint32\+\_\+t}]{dest,  }\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Moves the piece from the source square to the dest square and performs capture if applicable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em src} & The square the piece starts on. \\
+\hline
+{\em dest} & The square the piece is moving to. \\
+\hline
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 71 of file movemaker.\+cc.
+
+\mbox{\Hypertarget{classMM_aaf252571e1f48cae22b2093bf55058b5}\label{classMM_aaf252571e1f48cae22b2093bf55058b5}} 
+\index{MM@{MM}!take\+Move@{take\+Move}}
+\index{take\+Move@{take\+Move}!MM@{MM}}
+\subsubsection{\texorpdfstring{take\+Move()}{takeMove()}}
+{\footnotesize\ttfamily void M\+M\+::take\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+Undos the last move that was made which is stored in Board\+::history. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 179 of file movemaker.\+cc.
+
+\mbox{\Hypertarget{classMM_aabe809e8405f8ea0666a7d6e25aedac5}\label{classMM_aabe809e8405f8ea0666a7d6e25aedac5}} 
+\index{MM@{MM}!take\+Null\+Move@{take\+Null\+Move}}
+\index{take\+Null\+Move@{take\+Null\+Move}!MM@{MM}}
+\subsubsection{\texorpdfstring{take\+Null\+Move()}{takeNullMove()}}
+{\footnotesize\ttfamily void M\+M\+::take\+Null\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+Undos the last null move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 272 of file movemaker.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{movemaker_8h}{movemaker.\+h}}\item 
+src/\mbox{\hyperlink{movemaker_8cc}{movemaker.\+cc}}\end{DoxyCompactItemize}

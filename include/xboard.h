@@ -1,3 +1,9 @@
+/**
+*	@file xboard.h
+*	@brief Contains declarations for the XBoard protocol.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #ifndef XBOARD_H
 #define XBOARD_H
 #include "protocol.h"

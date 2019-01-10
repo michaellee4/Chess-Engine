@@ -1,3 +1,9 @@
+/**
+*	@file hash.cc
+*	@brief Contains definitions of functions declared in hash.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "defs.h"
 #include "hash.h"
 #include "utils.h"

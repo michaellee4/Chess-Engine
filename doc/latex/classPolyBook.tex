@@ -1,0 +1,255 @@
+\hypertarget{classPolyBook}{}\section{Poly\+Book Class Reference}
+\label{classPolyBook}\index{Poly\+Book@{Poly\+Book}}
+
+
+{\ttfamily \#include $<$polyglot.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classPolyBook_ac9eaa321dd857646c059b84aa67f5c9b}{read\+Book}} ()
+\begin{DoxyCompactList}\small\item\em Reads in from lib/polyglot-\/collection/\+Performance.\+bin. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{classPolyBook_a594d060bcb84f4d6cd3999ca4698f847}{get\+Book\+Move}} (\mbox{\hyperlink{classBoard}{Board}} \&pos)
+\begin{DoxyCompactList}\small\item\em Randomly returns one of the possible opening book moves for the given position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classPolyBook_a41fe4efcd8f8711183a1fe09753659c7}{en\+Pas\+Possible}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos)
+\begin{DoxyCompactList}\small\item\em Checks if en\+Passant is possible and there is a pawn in pace to perform the capture. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classPolyBook_a787f1b994ee7f1fd68c482c2de32e568}{poly\+Key\+From\+Board}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos)
+\begin{DoxyCompactList}\small\item\em Generates the polyglot hashkey from the current board state. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{classPolyBook_a8b9892943292728371f789a813a27e08}{endian\+\_\+swap\+\_\+u16}} (uint16\+\_\+t big\+End)
+\begin{DoxyCompactList}\small\item\em Returns the little-\/endian value of the big-\/endian input. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classPolyBook_afa6d55231591c049ca1944a68b41fe2e}{endian\+\_\+swap\+\_\+u32}} (uint32\+\_\+t big\+End)
+\begin{DoxyCompactList}\small\item\em Returns the little-\/endian value of the big-\/endian input. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{classPolyBook_acb13b8524d6af4dd768072404dcd8488}{endian\+\_\+swap\+\_\+u64}} (uint64\+\_\+t big\+End)
+\begin{DoxyCompactList}\small\item\em Returns the little-\/endian value of the big-\/endian input. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{classPolyBook_acf3e5a4d7722aa0784e5bda2d117c0c7}{convert\+Poly\+Move}} (uint16\+\_\+t poly\+Move, const \mbox{\hyperlink{classBoard}{Board}} \&pos)
+\begin{DoxyCompactList}\small\item\em Converts a polyglot move to the internal move representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structPolyglotEntry}{Polyglot\+Entry}} $>$ \mbox{\hyperlink{classPolyBook_af0e0977de41238bf9b36758ce6b898c1}{book}}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::array$<$ int32\+\_\+t, 13 $>$ \mbox{\hyperlink{classPolyBook_a904f2b4eae9f4a94a11429d47906acd6}{poly\+Piece}} \{ -\/1, 1, 3, 5, 7, 9, 11, 0, 2, 4, 6, 8, 10\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class holds the in memory representation of the polyglot book 
+
+Definition at line 26 of file polyglot.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPolyBook_acf3e5a4d7722aa0784e5bda2d117c0c7}\label{classPolyBook_acf3e5a4d7722aa0784e5bda2d117c0c7}} 
+\index{Poly\+Book@{Poly\+Book}!convert\+Poly\+Move@{convert\+Poly\+Move}}
+\index{convert\+Poly\+Move@{convert\+Poly\+Move}!Poly\+Book@{Poly\+Book}}
+\subsubsection{\texorpdfstring{convert\+Poly\+Move()}{convertPolyMove()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMove}{Move}} Poly\+Book\+::convert\+Poly\+Move (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{poly\+Move,  }\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Converts a polyglot move to the internal move representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em poly\+Move} & The book move in Polyglot form. \\
+\hline
+{\em pos} & The current board state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The internal representation of the poly move. 
+\end{DoxyReturn}
+
+
+Definition at line 136 of file polyglot.\+cc.
+
+\mbox{\Hypertarget{classPolyBook_a8b9892943292728371f789a813a27e08}\label{classPolyBook_a8b9892943292728371f789a813a27e08}} 
+\index{Poly\+Book@{Poly\+Book}!endian\+\_\+swap\+\_\+u16@{endian\+\_\+swap\+\_\+u16}}
+\index{endian\+\_\+swap\+\_\+u16@{endian\+\_\+swap\+\_\+u16}!Poly\+Book@{Poly\+Book}}
+\subsubsection{\texorpdfstring{endian\+\_\+swap\+\_\+u16()}{endian\_swap\_u16()}}
+{\footnotesize\ttfamily uint16\+\_\+t Poly\+Book\+::endian\+\_\+swap\+\_\+u16 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{big\+End }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Returns the little-\/endian value of the big-\/endian input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em big\+End} & The big\+Endian 16 bit number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The little-\/endian value of the input number. 
+\end{DoxyReturn}
+
+
+Definition at line 108 of file polyglot.\+cc.
+
+\mbox{\Hypertarget{classPolyBook_afa6d55231591c049ca1944a68b41fe2e}\label{classPolyBook_afa6d55231591c049ca1944a68b41fe2e}} 
+\index{Poly\+Book@{Poly\+Book}!endian\+\_\+swap\+\_\+u32@{endian\+\_\+swap\+\_\+u32}}
+\index{endian\+\_\+swap\+\_\+u32@{endian\+\_\+swap\+\_\+u32}!Poly\+Book@{Poly\+Book}}
+\subsubsection{\texorpdfstring{endian\+\_\+swap\+\_\+u32()}{endian\_swap\_u32()}}
+{\footnotesize\ttfamily uint32\+\_\+t Poly\+Book\+::endian\+\_\+swap\+\_\+u32 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{big\+End }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Returns the little-\/endian value of the big-\/endian input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em big\+End} & The big\+Endian 32 bit number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The little-\/endian value of the input number. 
+\end{DoxyReturn}
+
+
+Definition at line 114 of file polyglot.\+cc.
+
+\mbox{\Hypertarget{classPolyBook_acb13b8524d6af4dd768072404dcd8488}\label{classPolyBook_acb13b8524d6af4dd768072404dcd8488}} 
+\index{Poly\+Book@{Poly\+Book}!endian\+\_\+swap\+\_\+u64@{endian\+\_\+swap\+\_\+u64}}
+\index{endian\+\_\+swap\+\_\+u64@{endian\+\_\+swap\+\_\+u64}!Poly\+Book@{Poly\+Book}}
+\subsubsection{\texorpdfstring{endian\+\_\+swap\+\_\+u64()}{endian\_swap\_u64()}}
+{\footnotesize\ttfamily uint64\+\_\+t Poly\+Book\+::endian\+\_\+swap\+\_\+u64 (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{big\+End }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Returns the little-\/endian value of the big-\/endian input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em big\+End} & The big\+Endian 64 bit number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The little-\/endian value of the input number. 
+\end{DoxyReturn}
+
+
+Definition at line 123 of file polyglot.\+cc.
+
+\mbox{\Hypertarget{classPolyBook_a41fe4efcd8f8711183a1fe09753659c7}\label{classPolyBook_a41fe4efcd8f8711183a1fe09753659c7}} 
+\index{Poly\+Book@{Poly\+Book}!en\+Pas\+Possible@{en\+Pas\+Possible}}
+\index{en\+Pas\+Possible@{en\+Pas\+Possible}!Poly\+Book@{Poly\+Book}}
+\subsubsection{\texorpdfstring{en\+Pas\+Possible()}{enPasPossible()}}
+{\footnotesize\ttfamily bool Poly\+Book\+::en\+Pas\+Possible (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks if en\+Passant is possible and there is a pawn in pace to perform the capture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if en\+Passant is possible with capture, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 19 of file polyglot.\+cc.
+
+\mbox{\Hypertarget{classPolyBook_a594d060bcb84f4d6cd3999ca4698f847}\label{classPolyBook_a594d060bcb84f4d6cd3999ca4698f847}} 
+\index{Poly\+Book@{Poly\+Book}!get\+Book\+Move@{get\+Book\+Move}}
+\index{get\+Book\+Move@{get\+Book\+Move}!Poly\+Book@{Poly\+Book}}
+\subsubsection{\texorpdfstring{get\+Book\+Move()}{getBookMove()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMove}{Move}} Poly\+Book\+::get\+Book\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+Randomly returns one of the possible opening book moves for the given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A possible book move for the position. 
+\end{DoxyReturn}
+
+
+Definition at line 161 of file polyglot.\+cc.
+
+\mbox{\Hypertarget{classPolyBook_a787f1b994ee7f1fd68c482c2de32e568}\label{classPolyBook_a787f1b994ee7f1fd68c482c2de32e568}} 
+\index{Poly\+Book@{Poly\+Book}!poly\+Key\+From\+Board@{poly\+Key\+From\+Board}}
+\index{poly\+Key\+From\+Board@{poly\+Key\+From\+Board}!Poly\+Book@{Poly\+Book}}
+\subsubsection{\texorpdfstring{poly\+Key\+From\+Board()}{polyKeyFromBoard()}}
+{\footnotesize\ttfamily uint64\+\_\+t Poly\+Book\+::poly\+Key\+From\+Board (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generates the polyglot hashkey from the current board state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The polyglot hashkey for a given board position. 
+\end{DoxyReturn}
+
+
+Definition at line 41 of file polyglot.\+cc.
+
+\mbox{\Hypertarget{classPolyBook_ac9eaa321dd857646c059b84aa67f5c9b}\label{classPolyBook_ac9eaa321dd857646c059b84aa67f5c9b}} 
+\index{Poly\+Book@{Poly\+Book}!read\+Book@{read\+Book}}
+\index{read\+Book@{read\+Book}!Poly\+Book@{Poly\+Book}}
+\subsubsection{\texorpdfstring{read\+Book()}{readBook()}}
+{\footnotesize\ttfamily bool Poly\+Book\+::read\+Book (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads in from lib/polyglot-\/collection/\+Performance.\+bin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the book was successfully read into memory, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 79 of file polyglot.\+cc.
+
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classPolyBook_af0e0977de41238bf9b36758ce6b898c1}\label{classPolyBook_af0e0977de41238bf9b36758ce6b898c1}} 
+\index{Poly\+Book@{Poly\+Book}!book@{book}}
+\index{book@{book}!Poly\+Book@{Poly\+Book}}
+\subsubsection{\texorpdfstring{book}{book}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{structPolyglotEntry}{Polyglot\+Entry}}$>$ Poly\+Book\+::book\hspace{0.3cm}{\ttfamily [private]}}
+
+Provides a buffer to read in the polyglot entries 
+
+Definition at line 75 of file polyglot.\+h.
+
+\mbox{\Hypertarget{classPolyBook_a904f2b4eae9f4a94a11429d47906acd6}\label{classPolyBook_a904f2b4eae9f4a94a11429d47906acd6}} 
+\index{Poly\+Book@{Poly\+Book}!poly\+Piece@{poly\+Piece}}
+\index{poly\+Piece@{poly\+Piece}!Poly\+Book@{Poly\+Book}}
+\subsubsection{\texorpdfstring{poly\+Piece}{polyPiece}}
+{\footnotesize\ttfamily constexpr std\+::array$<$int32\+\_\+t, 13$>$ Poly\+Book\+::poly\+Piece \{ -\/1, 1, 3, 5, 7, 9, 11, 0, 2, 4, 6, 8, 10\}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Since the polyglot book uses different values for the pieces, this array provides a conversion 
+
+Definition at line 32 of file polyglot.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{polyglot_8h}{polyglot.\+h}}\item 
+src/\mbox{\hyperlink{polyglot_8cc}{polyglot.\+cc}}\end{DoxyCompactItemize}

@@ -1,0 +1,533 @@
+\hypertarget{classMoveList}{}\section{Move\+List Class Reference}
+\label{classMoveList}\index{Move\+List@{Move\+List}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMoveList_abc6483211a12cbe3764ee5983f9d1fa7}\label{classMoveList_abc6483211a12cbe3764ee5983f9d1fa7}} 
+{\bfseries Move\+List} (const \mbox{\hyperlink{classMoveList}{Move\+List}} \&o)
+\item 
+\mbox{\Hypertarget{classMoveList_ab9fce85e68b304d522daa3d7940593c6}\label{classMoveList_ab9fce85e68b304d522daa3d7940593c6}} 
+{\bfseries Move\+List} (\mbox{\hyperlink{classMoveList}{Move\+List}} \&\&o) noexcept
+\item 
+void \mbox{\hyperlink{classMoveList_a6453c799251a6809fcf9312df1ad0814}{generate\+All\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Add all possible moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a30fea5a9f5345fafbf0e67a0aa7e8e82}{generate\+All\+Capture\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Add all possible capture moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a24fbd4061fa4ffb33cdb1ab4a5a2001a}{reorder\+List}} (int32\+\_\+t idx) noexcept
+\begin{DoxyCompactList}\small\item\em Reorders the movelist to maximize alpha-\/beta hits. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classMoveList_a4975d53e1bca9fde5bbc9d02242f18e7}{size}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the number of possible moves int he \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMoveList_a539ff8144c5e10279c0579e9ed891210}\label{classMoveList_a539ff8144c5e10279c0579e9ed891210}} 
+const \mbox{\hyperlink{classMove}{Move}} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int idx) const noexcept
+\item 
+\mbox{\Hypertarget{classMoveList_a50ecbac39d2fb550193a393260d0b6d4}\label{classMoveList_a50ecbac39d2fb550193a393260d0b6d4}} 
+\mbox{\hyperlink{classMove}{Move}} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int idx) noexcept
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMoveList_aec718c4a47eab2b41d8ea7f01b224ac4}\label{classMoveList_aec718c4a47eab2b41d8ea7f01b224ac4}} 
+static constexpr uint32\+\_\+t {\bfseries k\+Pv\+Move\+Bonus} = 2000000
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMoveList_adf7f04859cd7d9dfa7cc1790c58ce073}{add\+Quiet\+Move}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, \mbox{\hyperlink{classMove}{Move}} \&\&move) noexcept
+\begin{DoxyCompactList}\small\item\em Add a move that does not capture to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a9ee3ce73b272288e63c3d7a0bd255bd0}{add\+Capture\+Move}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, \mbox{\hyperlink{classMove}{Move}} \&\&move) noexcept
+\begin{DoxyCompactList}\small\item\em Add a move that does capture to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a7e381e3b0f8e9c7caf670ec470b8143d}{add\+En\+Pas\+Move}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, \mbox{\hyperlink{classMove}{Move}} \&\&move) noexcept
+\begin{DoxyCompactList}\small\item\em Add a move that performs en\+Passant to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_ae7a6441ad78b4726b986d4ea3de335b6}{add\+Pawn\+Move}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, uint32\+\_\+t from, uint32\+\_\+t to, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add a move that involves a pawn. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_ac3af5c03221e2b73cfd7c5a4926c7b03}{add\+Pawn\+Capture\+Move}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, uint32\+\_\+t from, uint32\+\_\+t to, uint32\+\_\+t cap, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add a capture move that involves a pawn. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a309f4e2408ad522162cda7e2e778d66f}{generate\+Pawn\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add all Pawn moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a65a2fdca6072299405610f1770dde58e}{generate\+Bishop\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add all Bishop moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a2f10e1e4e2b5bec034656a3038b42d95}{generate\+Rook\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add all Rook moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a8f0dedc3c310ad2ce503e9327c089997}{generate\+Queen\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add all Queen moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_aec2684c095f75d4215908b140d604635}{generate\+Knight\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add all Knight moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a01f21c1bed30c674219746d10c0a7aa7}{generate\+King\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add all King moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a631546d45818cb40c204dde6fa368ea8}{generate\+Sliding\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add all Rook/\+Bishop/\+Queen moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_a56da1abbedf5d6c23b1e321740ecfae9}{generate\+Non\+Sliding\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&pos, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add all Knight/\+King moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMoveList_ae0f3fcb8d21bf22c9e7509308d5fc9fe}{generate\+Castling\+Moves}} (const \mbox{\hyperlink{classBoard}{Board}} \&psd, uint32\+\_\+t side) noexcept
+\begin{DoxyCompactList}\small\item\em Add all Castling moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMoveList_a9e368dbdc56fb19ee74dffb617ce563a}\label{classMoveList_a9e368dbdc56fb19ee74dffb617ce563a}} 
+std\+::vector$<$ \mbox{\hyperlink{classMove}{Move}} $>$ {\bfseries moves}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMoveList_a532b7bebe93bf5c880f4052f00e7e94d}\label{classMoveList_a532b7bebe93bf5c880f4052f00e7e94d}} 
+static constexpr uint32\+\_\+t {\bfseries k\+Max\+Possible\+Moves} = 256
+\item 
+\mbox{\Hypertarget{classMoveList_a8e4934092e8a2758dab3e29c0ee3b279}\label{classMoveList_a8e4934092e8a2758dab3e29c0ee3b279}} 
+static constexpr uint32\+\_\+t {\bfseries k\+Capture\+Bonus} = 1000000
+\item 
+\mbox{\Hypertarget{classMoveList_a943cdb5871724b348df4cf6a1633857f}\label{classMoveList_a943cdb5871724b348df4cf6a1633857f}} 
+static constexpr uint32\+\_\+t {\bfseries k\+Primary\+Killer\+Bonus} = 900000
+\item 
+\mbox{\Hypertarget{classMoveList_a859b219cee0c5eb99ba68ff98e25560d}\label{classMoveList_a859b219cee0c5eb99ba68ff98e25560d}} 
+static constexpr uint32\+\_\+t {\bfseries k\+Secondary\+Killer\+Bonus} = 800000
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 24 of file movelist.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMoveList_a9ee3ce73b272288e63c3d7a0bd255bd0}\label{classMoveList_a9ee3ce73b272288e63c3d7a0bd255bd0}} 
+\index{Move\+List@{Move\+List}!add\+Capture\+Move@{add\+Capture\+Move}}
+\index{add\+Capture\+Move@{add\+Capture\+Move}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{add\+Capture\+Move()}{addCaptureMove()}}
+{\footnotesize\ttfamily void Move\+List\+::add\+Capture\+Move (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{\mbox{\hyperlink{classMove}{Move}} \&\&}]{move }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add a move that does capture to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em move} & The move to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 41 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a7e381e3b0f8e9c7caf670ec470b8143d}\label{classMoveList_a7e381e3b0f8e9c7caf670ec470b8143d}} 
+\index{Move\+List@{Move\+List}!add\+En\+Pas\+Move@{add\+En\+Pas\+Move}}
+\index{add\+En\+Pas\+Move@{add\+En\+Pas\+Move}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{add\+En\+Pas\+Move()}{addEnPasMove()}}
+{\footnotesize\ttfamily void Move\+List\+::add\+En\+Pas\+Move (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{\mbox{\hyperlink{classMove}{Move}} \&\&}]{move }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add a move that performs en\+Passant to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em move} & The move to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 47 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_ac3af5c03221e2b73cfd7c5a4926c7b03}\label{classMoveList_ac3af5c03221e2b73cfd7c5a4926c7b03}} 
+\index{Move\+List@{Move\+List}!add\+Pawn\+Capture\+Move@{add\+Pawn\+Capture\+Move}}
+\index{add\+Pawn\+Capture\+Move@{add\+Pawn\+Capture\+Move}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{add\+Pawn\+Capture\+Move()}{addPawnCaptureMove()}}
+{\footnotesize\ttfamily void Move\+List\+::add\+Pawn\+Capture\+Move (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{uint32\+\_\+t}]{from,  }\item[{uint32\+\_\+t}]{to,  }\item[{uint32\+\_\+t}]{cap,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add a capture move that involves a pawn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em from} & The source square. \\
+\hline
+{\em to} & The destination square. \\
+\hline
+{\em cap} & The piece that was captured. \\
+\hline
+{\em side} & The side to move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 86 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_ae7a6441ad78b4726b986d4ea3de335b6}\label{classMoveList_ae7a6441ad78b4726b986d4ea3de335b6}} 
+\index{Move\+List@{Move\+List}!add\+Pawn\+Move@{add\+Pawn\+Move}}
+\index{add\+Pawn\+Move@{add\+Pawn\+Move}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{add\+Pawn\+Move()}{addPawnMove()}}
+{\footnotesize\ttfamily void Move\+List\+::add\+Pawn\+Move (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{uint32\+\_\+t}]{from,  }\item[{uint32\+\_\+t}]{to,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add a move that involves a pawn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em from} & The source square. \\
+\hline
+{\em to} & The destination square. \\
+\hline
+{\em side} & The side the pawn belongs to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 54 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_adf7f04859cd7d9dfa7cc1790c58ce073}\label{classMoveList_adf7f04859cd7d9dfa7cc1790c58ce073}} 
+\index{Move\+List@{Move\+List}!add\+Quiet\+Move@{add\+Quiet\+Move}}
+\index{add\+Quiet\+Move@{add\+Quiet\+Move}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{add\+Quiet\+Move()}{addQuietMove()}}
+{\footnotesize\ttfamily void Move\+List\+::add\+Quiet\+Move (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{\mbox{\hyperlink{classMove}{Move}} \&\&}]{move }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add a move that does not capture to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em move} & The move to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 24 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a30fea5a9f5345fafbf0e67a0aa7e8e82}\label{classMoveList_a30fea5a9f5345fafbf0e67a0aa7e8e82}} 
+\index{Move\+List@{Move\+List}!generate\+All\+Capture\+Moves@{generate\+All\+Capture\+Moves}}
+\index{generate\+All\+Capture\+Moves@{generate\+All\+Capture\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+All\+Capture\+Moves()}{generateAllCaptureMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+All\+Capture\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Add all possible capture moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 376 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a6453c799251a6809fcf9312df1ad0814}\label{classMoveList_a6453c799251a6809fcf9312df1ad0814}} 
+\index{Move\+List@{Move\+List}!generate\+All\+Moves@{generate\+All\+Moves}}
+\index{generate\+All\+Moves@{generate\+All\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+All\+Moves()}{generateAllMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+All\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Add all possible moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 367 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a65a2fdca6072299405610f1770dde58e}\label{classMoveList_a65a2fdca6072299405610f1770dde58e}} 
+\index{Move\+List@{Move\+List}!generate\+Bishop\+Moves@{generate\+Bishop\+Moves}}
+\index{generate\+Bishop\+Moves@{generate\+Bishop\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+Bishop\+Moves()}{generateBishopMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+Bishop\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add all Bishop moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em side} & The side to move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 118 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_ae0f3fcb8d21bf22c9e7509308d5fc9fe}\label{classMoveList_ae0f3fcb8d21bf22c9e7509308d5fc9fe}} 
+\index{Move\+List@{Move\+List}!generate\+Castling\+Moves@{generate\+Castling\+Moves}}
+\index{generate\+Castling\+Moves@{generate\+Castling\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+Castling\+Moves()}{generateCastlingMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+Castling\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{psd,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add all Castling moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em side} & The side to move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 317 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a01f21c1bed30c674219746d10c0a7aa7}\label{classMoveList_a01f21c1bed30c674219746d10c0a7aa7}} 
+\index{Move\+List@{Move\+List}!generate\+King\+Moves@{generate\+King\+Moves}}
+\index{generate\+King\+Moves@{generate\+King\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+King\+Moves()}{generateKingMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+King\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add all King moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em side} & The side to move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 249 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_aec2684c095f75d4215908b140d604635}\label{classMoveList_aec2684c095f75d4215908b140d604635}} 
+\index{Move\+List@{Move\+List}!generate\+Knight\+Moves@{generate\+Knight\+Moves}}
+\index{generate\+Knight\+Moves@{generate\+Knight\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+Knight\+Moves()}{generateKnightMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+Knight\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add all Knight moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em side} & The side to move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 224 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a56da1abbedf5d6c23b1e321740ecfae9}\label{classMoveList_a56da1abbedf5d6c23b1e321740ecfae9}} 
+\index{Move\+List@{Move\+List}!generate\+Non\+Sliding\+Moves@{generate\+Non\+Sliding\+Moves}}
+\index{generate\+Non\+Sliding\+Moves@{generate\+Non\+Sliding\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+Non\+Sliding\+Moves()}{generateNonSlidingMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+Non\+Sliding\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add all Knight/\+King moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em side} & The side to move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 270 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a309f4e2408ad522162cda7e2e778d66f}\label{classMoveList_a309f4e2408ad522162cda7e2e778d66f}} 
+\index{Move\+List@{Move\+List}!generate\+Pawn\+Moves@{generate\+Pawn\+Moves}}
+\index{generate\+Pawn\+Moves@{generate\+Pawn\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+Pawn\+Moves()}{generatePawnMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+Pawn\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add all Pawn moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em side} & The side to move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 276 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a8f0dedc3c310ad2ce503e9327c089997}\label{classMoveList_a8f0dedc3c310ad2ce503e9327c089997}} 
+\index{Move\+List@{Move\+List}!generate\+Queen\+Moves@{generate\+Queen\+Moves}}
+\index{generate\+Queen\+Moves@{generate\+Queen\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+Queen\+Moves()}{generateQueenMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+Queen\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add all Queen moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em side} & The side to move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 170 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a2f10e1e4e2b5bec034656a3038b42d95}\label{classMoveList_a2f10e1e4e2b5bec034656a3038b42d95}} 
+\index{Move\+List@{Move\+List}!generate\+Rook\+Moves@{generate\+Rook\+Moves}}
+\index{generate\+Rook\+Moves@{generate\+Rook\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+Rook\+Moves()}{generateRookMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+Rook\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add all Rook moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em side} & The side to move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 144 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a631546d45818cb40c204dde6fa368ea8}\label{classMoveList_a631546d45818cb40c204dde6fa368ea8}} 
+\index{Move\+List@{Move\+List}!generate\+Sliding\+Moves@{generate\+Sliding\+Moves}}
+\index{generate\+Sliding\+Moves@{generate\+Sliding\+Moves}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{generate\+Sliding\+Moves()}{generateSlidingMoves()}}
+{\footnotesize\ttfamily void Move\+List\+::generate\+Sliding\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{uint32\+\_\+t}]{side }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Add all Rook/\+Bishop/\+Queen moves to the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The current board state. \\
+\hline
+{\em side} & The side to move. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 217 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a24fbd4061fa4ffb33cdb1ab4a5a2001a}\label{classMoveList_a24fbd4061fa4ffb33cdb1ab4a5a2001a}} 
+\index{Move\+List@{Move\+List}!reorder\+List@{reorder\+List}}
+\index{reorder\+List@{reorder\+List}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{reorder\+List()}{reorderList()}}
+{\footnotesize\ttfamily void Move\+List\+::reorder\+List (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Reorders the movelist to maximize alpha-\/beta hits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The index to start reordering the list at. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 385 of file movelist.\+cc.
+
+\mbox{\Hypertarget{classMoveList_a4975d53e1bca9fde5bbc9d02242f18e7}\label{classMoveList_a4975d53e1bca9fde5bbc9d02242f18e7}} 
+\index{Move\+List@{Move\+List}!size@{size}}
+\index{size@{size}!Move\+List@{Move\+List}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily uint32\+\_\+t Move\+List\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Get the number of possible moves int he \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size of the \mbox{\hyperlink{classMoveList}{Move\+List}}. 
+\end{DoxyReturn}
+
+
+Definition at line 402 of file movelist.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{movelist_8h}{movelist.\+h}}\item 
+src/\mbox{\hyperlink{movelist_8cc}{movelist.\+cc}}\end{DoxyCompactItemize}

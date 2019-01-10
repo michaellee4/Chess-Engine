@@ -1,3 +1,9 @@
+/**
+*	@file utils.cc
+*	@brief Contains definitions of functions declared in utils.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "utils.h"
 #include "defs.h"
 #include "io.h"

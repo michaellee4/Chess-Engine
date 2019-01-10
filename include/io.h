@@ -1,3 +1,9 @@
+/**
+*	@file io.h
+*	@brief Contains declarations of functions that print the various Engine data structures
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #ifndef IO_H
 #define IO_H
 
@@ -7,9 +13,6 @@
 #include "searchinfo.h"
 #include <string>
 
-/**
- * This namespace provides several methods to print the various Engine data structures
- */
 namespace IO
 {
 	/**

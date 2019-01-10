@@ -1,0 +1,105 @@
+\hypertarget{classPerftTester}{}\section{Perft\+Tester Class Reference}
+\label{classPerftTester}\index{Perft\+Tester@{Perft\+Tester}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classPerftTester_aed268b09419b18b94d64a66a4bc9598f}{perft\+Test}} (uint32\+\_\+t depth, \mbox{\hyperlink{classBoard}{Board}} \&pos, bool print) noexcept
+\item 
+void \mbox{\hyperlink{classPerftTester_a993123204bd16a3b6d2185e6658fa66f}{perft\+Test\+All}} (\mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classPerftTester_a7fa4c10a5d72fb37434da764d72ccd85}{perft}} (uint32\+\_\+t depth, \mbox{\hyperlink{classBoard}{Board}} \&pos) noexcept
+\begin{DoxyCompactList}\small\item\em Recursive helper method that backtracks through all possible moves and counts the number of leaf nodes (final positions) reached. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPerftTester_afca3247344fbbf3c818bfd78c86811e0}\label{classPerftTester_afca3247344fbbf3c818bfd78c86811e0}} 
+const uint32\+\_\+t {\bfseries depth\+\_\+limit} = 6
+\item 
+\mbox{\Hypertarget{classPerftTester_aa662e5b636e1a16de1337b4e19eb5033}\label{classPerftTester_aa662e5b636e1a16de1337b4e19eb5033}} 
+uint64\+\_\+t {\bfseries leaf\+Nodes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file tester.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPerftTester_a7fa4c10a5d72fb37434da764d72ccd85}\label{classPerftTester_a7fa4c10a5d72fb37434da764d72ccd85}} 
+\index{Perft\+Tester@{Perft\+Tester}!perft@{perft}}
+\index{perft@{perft}!Perft\+Tester@{Perft\+Tester}}
+\subsubsection{\texorpdfstring{perft()}{perft()}}
+{\footnotesize\ttfamily void Perft\+Tester\+::perft (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{depth,  }\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+Recursive helper method that backtracks through all possible moves and counts the number of leaf nodes (final positions) reached. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em depth} & Current search depth. \\
+\hline
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 19 of file tester.\+cc.
+
+\mbox{\Hypertarget{classPerftTester_aed268b09419b18b94d64a66a4bc9598f}\label{classPerftTester_aed268b09419b18b94d64a66a4bc9598f}} 
+\index{Perft\+Tester@{Perft\+Tester}!perft\+Test@{perft\+Test}}
+\index{perft\+Test@{perft\+Test}!Perft\+Tester@{Perft\+Tester}}
+\subsubsection{\texorpdfstring{perft\+Test()}{perftTest()}}
+{\footnotesize\ttfamily int Perft\+Tester\+::perft\+Test (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{depth,  }\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos,  }\item[{bool}]{print = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Calls the perft helper function to count number of leaf nodes reached. If print is enabled then the engine will also output the time taken and total number of positions reached from each possible initial move from the starting position 
+\begin{DoxyParams}{Parameters}
+{\em depth} & Desired search depth. \\
+\hline
+{\em pos} & The current board state. \\
+\hline
+{\em print} & Print enabled \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Total number of leaf nodes reached 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file tester.\+cc.
+
+\mbox{\Hypertarget{classPerftTester_a993123204bd16a3b6d2185e6658fa66f}\label{classPerftTester_a993123204bd16a3b6d2185e6658fa66f}} 
+\index{Perft\+Tester@{Perft\+Tester}!perft\+Test\+All@{perft\+Test\+All}}
+\index{perft\+Test\+All@{perft\+Test\+All}!Perft\+Tester@{Perft\+Tester}}
+\subsubsection{\texorpdfstring{perft\+Test\+All()}{perftTestAll()}}
+{\footnotesize\ttfamily void Perft\+Tester\+::perft\+Test\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBoard}{Board}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Loops through all provided positions in the perftsuite.\+epd file and automatically performs a perft test to depth 5 (depth 6 takes too long for some positions) and verifies the results with the provided number in the file.
+\begin{DoxyParams}{Parameters}
+{\em depth} & Desired search depth. \\
+\hline
+{\em pos} & The current board state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 70 of file tester.\+cc.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{tester_8h}{tester.\+h}}\item 
+src/\mbox{\hyperlink{tester_8cc}{tester.\+cc}}\end{DoxyCompactItemize}

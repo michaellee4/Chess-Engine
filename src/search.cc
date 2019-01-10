@@ -1,3 +1,9 @@
+/**
+*	@file search.cc
+*	@brief Contains definitions of functions declared in search.h.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
 #include "search.h"
 #include "stopwatch.h"
 #include "movelist.h"

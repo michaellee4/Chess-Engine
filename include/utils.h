@@ -1,3 +1,10 @@
+/**
+*	@file utils.h
+*	@brief Contains declarations of functions that perform various miscellaneous actions in the engine.
+*	@author Michael Lee
+*	@date 1/9/2019
+*/
+
 #ifndef UTILS_H
 #define UTILS_H
 
@@ -14,6 +21,9 @@ namespace BoardUtils
 	extern std::array<int32_t, kChessboardSize> Sq64ToSq120;
 	extern std::array<int32_t, kBoardArraySize> FileBrd;
 	extern std::array<int32_t, kBoardArraySize> RankBrd;
+	/**
+	* Gives the corresponding square to the Black side from the White side
+ 	*/
 	constexpr std::array<int32_t, kChessboardSize> WhiteToBlack {
 		56	,	57	,	58	,	59	,	60	,	61	,	62	,	63	,
 		48	,	49	,	50	,	51	,	52	,	53	,	54	,	55	,
@@ -27,68 +37,66 @@ namespace BoardUtils
 }
 
 /**
- * Input: A square in array-120 format
- * Output: true if the square is on the board in array-120 format, false otherwise
- * Operation: None
+	@brief Checks if a square number in array-120 form is on the array-64 board representation.
+	@param sq The square number in array-120 form.
+	@return true if the square is on the array-64 board, false otherwise.
  */
 bool sqOnBoard(uint32_t sq) noexcept;
 
 /**
- * Input: A file and rank (e.g A1)
- * Output: the square number of the file/rank in array-120 form
- * Operation: None
+	@brief Gets the array-120 square number of a given file and rank number.
+	@param file FILE_A <= file <= FILE_H
+	@param rank RANK_1 <= rank <= RANK_8
+	@return The array-120 square number of the given file and rank number
  */
-int fileRankToSq(int file, int rank) noexcept;
+int fileRankToSq(int32_t file, int32_t rank) noexcept;
 
 /**
- * Input: None
- * Output: A random 64 bit number
- * Operation: Uses the standard uniform distribution generator to generate the number
- * credits to //https://stackoverflow.com/questions/37396278/how-to-generate-very-large-random-number-in-c
+	@brief Generates a uniformally-distributed random 64-bit number.
+	@param None
+	@return A random 64 bit number
  */
 uint64_t randU64() noexcept;
 
 /**
- * Input: an integer
- * Output: true if the number is a piece within the range of the piece enum
- * Operation: None
+	@brief Generates a uniformally-distributed random 64-bit number.
+	@param piece A piece, OFFBOARD, EMPTY, or NO_SQ
+	@return true if wP <= piece <= bK, false otherwise
  */
-bool isPiece(int piece) noexcept;
-
+bool isPiece(int32_t piece) noexcept;
 /**
- * Input: None
- * Output: Prints the 8x8 board with numbers indicating how many 
- *		   times each square is attacked by the provided side
- * Operation: None
+	@brief Prints the 8x8 board with numbers indicating how many times each square is attacked by the provided side.
+	@param side The attacking side
+	@param pos The board state
+	@return None
  */
 void showAttackedSqs(const int side,Board& pos) noexcept;
 
 /**
- * Input: An integer
- * Output: The string representation of the square (e.g "A1")
- * Operation: None
+	@brief Returns the string representation of the square.
+	@param sq A square in array-120 form.
+	@return The string representation of the square (e.g "A1").
  */
 std::string sqToString(const int sq) noexcept;
 
 /**
- * Input: A string
- * Output: None
- * Operation: Changes the underlying string to lowercase
+	@brief Changes the given string to lowercase.
+	@param str the string to change to lower.
+	@return None
  */
 void stringToLower(std::string& str) noexcept;
 
 /**
- * Input: None
- * Output: true(1) if the gui interface is attempting to send input to the engine, false(0) otherwise 
- * Credits to the olithink chess engine for the code
+	@brief Checks if the GUI interface has sent an interrrupt
+	@param None
+	@return true if there was a GUI interrupt, false otherwise.
  */
 int InputWaiting();
 
 /**
- * Input: SearchInfo object
- * Output: None
- * Operation: updates the SearchInfo object if input was detected
- * Credits to the olithink chess engine for the code
+	@brief Reads in the GUI signal from stdin.
+	@param info The engine's searchInfo instance
+	@return None
  */
 void ReadInput(SearchInfo& info);
 

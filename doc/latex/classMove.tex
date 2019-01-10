@@ -1,0 +1,321 @@
+\hypertarget{classMove}{}\section{Move Class Reference}
+\label{classMove}\index{Move@{Move}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMove_ac63ab436cc90ca3b83f6bf9328745410}\label{classMove_ac63ab436cc90ca3b83f6bf9328745410}} 
+{\bfseries Move} (uint32\+\_\+t \mbox{\hyperlink{classMove_a5a16b2160e1cb66cde53dd6251616243}{from}}, uint32\+\_\+t \mbox{\hyperlink{classMove_a14f68402d1ad19b441730a7f7d703362}{to}}, uint32\+\_\+t \mbox{\hyperlink{classMove_a5a8811a7e6ee7fe36675d49038f2ea2b}{captured}}, uint32\+\_\+t prom, uint32\+\_\+t flag) noexcept
+\item 
+\mbox{\Hypertarget{classMove_a880d0197342959b353fd6de7d0cae16f}\label{classMove_a880d0197342959b353fd6de7d0cae16f}} 
+{\bfseries Move} (uint32\+\_\+t \+\_\+move, int32\+\_\+t \+\_\+score) noexcept
+\item 
+\mbox{\Hypertarget{classMove_a023d4469f67a68d9d39ce24b95031ab8}\label{classMove_a023d4469f67a68d9d39ce24b95031ab8}} 
+{\bfseries Move} (uint32\+\_\+t \+\_\+move) noexcept
+\item 
+\mbox{\Hypertarget{classMove_a29a98334b21446eba8df130c2521b13f}\label{classMove_a29a98334b21446eba8df130c2521b13f}} 
+{\bfseries Move} (const \mbox{\hyperlink{classMove}{Move}} \&o) noexcept
+\item 
+\mbox{\Hypertarget{classMove_a84c4266bc47d32d7c07a72f76c2d2e46}\label{classMove_a84c4266bc47d32d7c07a72f76c2d2e46}} 
+{\bfseries Move} (\mbox{\hyperlink{classMove}{Move}} \&\&o) noexcept
+\item 
+constexpr uint32\+\_\+t \mbox{\hyperlink{classMove_a5a16b2160e1cb66cde53dd6251616243}{from}} () const
+\begin{DoxyCompactList}\small\item\em Gets the square that the move is starting from. \end{DoxyCompactList}\item 
+constexpr uint32\+\_\+t \mbox{\hyperlink{classMove_a14f68402d1ad19b441730a7f7d703362}{to}} () const
+\begin{DoxyCompactList}\small\item\em Gets the square that the move is ending on. \end{DoxyCompactList}\item 
+constexpr uint32\+\_\+t \mbox{\hyperlink{classMove_a5a8811a7e6ee7fe36675d49038f2ea2b}{captured}} () const
+\begin{DoxyCompactList}\small\item\em Gets the piece That was captured. \end{DoxyCompactList}\item 
+constexpr uint32\+\_\+t \mbox{\hyperlink{classMove_a69a64f5ba158cf0f48765ea40de0daf0}{en\+Passant}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the move was an En\+Passant move. \end{DoxyCompactList}\item 
+constexpr uint32\+\_\+t \mbox{\hyperlink{classMove_ae9eaee49438859900541d7a308161a8b}{pawn\+Start}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the move was a pawn start (pawn double move). \end{DoxyCompactList}\item 
+constexpr uint32\+\_\+t \mbox{\hyperlink{classMove_a68741632b4a38ae64152541ed3c641ae}{promoted}} () const
+\begin{DoxyCompactList}\small\item\em Gets the piece that was promoted to if any. \end{DoxyCompactList}\item 
+constexpr uint32\+\_\+t \mbox{\hyperlink{classMove_a35d7341c2a9074102451bf4df0d8b4c2}{castle}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the move was a castle move. \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{classMove_ac986baf2580e64f47828c8adf23a25f0}{is\+Null}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the move was N\+U\+L\+L\+M\+O\+VE. \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{classMove_aa270da1cc5c6f10882cd14e9a61d2ebe}{was\+Capture}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the move was a capture. \end{DoxyCompactList}\item 
+constexpr bool \mbox{\hyperlink{classMove_a06483745a13016873fc99db2ea74e042}{was\+Promotion}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the move was a promotion. \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classMove_a521cf6fe1679a7354ee007037df2da34}{to\+String}} () const noexcept
+\begin{DoxyCompactList}\small\item\em Gets the string representation of a move (e.\+g \char`\"{}e2e4\char`\"{}). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMove_a9474c9aae57d49cc2e74dfcd3466a62f}\label{classMove_a9474c9aae57d49cc2e74dfcd3466a62f}} 
+\mbox{\hyperlink{classMove}{Move}} \& {\bfseries operator=} (const \mbox{\hyperlink{classMove}{Move}} \&o) noexcept
+\item 
+\mbox{\Hypertarget{classMove_a14f146246c87d23b4b6f8d4853868436}\label{classMove_a14f146246c87d23b4b6f8d4853868436}} 
+\mbox{\hyperlink{classMove}{Move}} \& {\bfseries operator=} (\mbox{\hyperlink{classMove}{Move}} \&\&o) noexcept
+\item 
+\mbox{\Hypertarget{classMove_abe04723add8693b51f92d5f11e5a350a}\label{classMove_abe04723add8693b51f92d5f11e5a350a}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classMove}{Move}} \&rhs) const noexcept
+\item 
+\mbox{\Hypertarget{classMove_a1d317f2b6d8bf51a825319f8ceacdd27}\label{classMove_a1d317f2b6d8bf51a825319f8ceacdd27}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{classMove}{Move}} \&rhs) const noexcept
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMove_a05c0d1c118aaccb4928569c740ecdb5f}\label{classMove_a05c0d1c118aaccb4928569c740ecdb5f}} 
+uint32\+\_\+t {\bfseries move}
+\item 
+\mbox{\Hypertarget{classMove_a910be8d231eabe9a9cd98988f1274538}\label{classMove_a910be8d231eabe9a9cd98988f1274538}} 
+int32\+\_\+t {\bfseries score}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 40 of file move.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMove_a5a8811a7e6ee7fe36675d49038f2ea2b}\label{classMove_a5a8811a7e6ee7fe36675d49038f2ea2b}} 
+\index{Move@{Move}!captured@{captured}}
+\index{captured@{captured}!Move@{Move}}
+\subsubsection{\texorpdfstring{captured()}{captured()}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t Move\+::captured (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the piece That was captured. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The piece that was captured. 
+\end{DoxyReturn}
+
+
+Definition at line 69 of file move.\+h.
+
+\mbox{\Hypertarget{classMove_a35d7341c2a9074102451bf4df0d8b4c2}\label{classMove_a35d7341c2a9074102451bf4df0d8b4c2}} 
+\index{Move@{Move}!castle@{castle}}
+\index{castle@{castle}!Move@{Move}}
+\subsubsection{\texorpdfstring{castle()}{castle()}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t Move\+::castle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the move was a castle move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there was a castle move, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 93 of file move.\+h.
+
+\mbox{\Hypertarget{classMove_a69a64f5ba158cf0f48765ea40de0daf0}\label{classMove_a69a64f5ba158cf0f48765ea40de0daf0}} 
+\index{Move@{Move}!en\+Passant@{en\+Passant}}
+\index{en\+Passant@{en\+Passant}!Move@{Move}}
+\subsubsection{\texorpdfstring{en\+Passant()}{enPassant()}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t Move\+::en\+Passant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the move was an En\+Passant move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there was En\+Passant, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 75 of file move.\+h.
+
+\mbox{\Hypertarget{classMove_a5a16b2160e1cb66cde53dd6251616243}\label{classMove_a5a16b2160e1cb66cde53dd6251616243}} 
+\index{Move@{Move}!from@{from}}
+\index{from@{from}!Move@{Move}}
+\subsubsection{\texorpdfstring{from()}{from()}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t Move\+::from (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the square that the move is starting from. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The source square 
+\end{DoxyReturn}
+
+
+Definition at line 57 of file move.\+h.
+
+\mbox{\Hypertarget{classMove_ac986baf2580e64f47828c8adf23a25f0}\label{classMove_ac986baf2580e64f47828c8adf23a25f0}} 
+\index{Move@{Move}!is\+Null@{is\+Null}}
+\index{is\+Null@{is\+Null}!Move@{Move}}
+\subsubsection{\texorpdfstring{is\+Null()}{isNull()}}
+{\footnotesize\ttfamily constexpr bool Move\+::is\+Null (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the move was N\+U\+L\+L\+M\+O\+VE. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if ($\ast$this) == N\+U\+L\+L\+M\+O\+VE, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 100 of file move.\+h.
+
+\mbox{\Hypertarget{classMove_ae9eaee49438859900541d7a308161a8b}\label{classMove_ae9eaee49438859900541d7a308161a8b}} 
+\index{Move@{Move}!pawn\+Start@{pawn\+Start}}
+\index{pawn\+Start@{pawn\+Start}!Move@{Move}}
+\subsubsection{\texorpdfstring{pawn\+Start()}{pawnStart()}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t Move\+::pawn\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the move was a pawn start (pawn double move). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there was a pawn start, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 81 of file move.\+h.
+
+\mbox{\Hypertarget{classMove_a68741632b4a38ae64152541ed3c641ae}\label{classMove_a68741632b4a38ae64152541ed3c641ae}} 
+\index{Move@{Move}!promoted@{promoted}}
+\index{promoted@{promoted}!Move@{Move}}
+\subsubsection{\texorpdfstring{promoted()}{promoted()}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t Move\+::promoted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the piece that was promoted to if any. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The piece that was promoted to if any. 
+\end{DoxyReturn}
+
+
+Definition at line 87 of file move.\+h.
+
+\mbox{\Hypertarget{classMove_a14f68402d1ad19b441730a7f7d703362}\label{classMove_a14f68402d1ad19b441730a7f7d703362}} 
+\index{Move@{Move}!to@{to}}
+\index{to@{to}!Move@{Move}}
+\subsubsection{\texorpdfstring{to()}{to()}}
+{\footnotesize\ttfamily constexpr uint32\+\_\+t Move\+::to (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the square that the move is ending on. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The destination square 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file move.\+h.
+
+\mbox{\Hypertarget{classMove_a521cf6fe1679a7354ee007037df2da34}\label{classMove_a521cf6fe1679a7354ee007037df2da34}} 
+\index{Move@{Move}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!Move@{Move}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily const std\+::string Move\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Gets the string representation of a move (e.\+g \char`\"{}e2e4\char`\"{}). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string representation of a move. 
+\end{DoxyReturn}
+
+
+Definition at line 35 of file move.\+cc.
+
+\mbox{\Hypertarget{classMove_aa270da1cc5c6f10882cd14e9a61d2ebe}\label{classMove_aa270da1cc5c6f10882cd14e9a61d2ebe}} 
+\index{Move@{Move}!was\+Capture@{was\+Capture}}
+\index{was\+Capture@{was\+Capture}!Move@{Move}}
+\subsubsection{\texorpdfstring{was\+Capture()}{wasCapture()}}
+{\footnotesize\ttfamily constexpr bool Move\+::was\+Capture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the move was a capture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there was a capture, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 106 of file move.\+h.
+
+\mbox{\Hypertarget{classMove_a06483745a13016873fc99db2ea74e042}\label{classMove_a06483745a13016873fc99db2ea74e042}} 
+\index{Move@{Move}!was\+Promotion@{was\+Promotion}}
+\index{was\+Promotion@{was\+Promotion}!Move@{Move}}
+\subsubsection{\texorpdfstring{was\+Promotion()}{wasPromotion()}}
+{\footnotesize\ttfamily constexpr bool Move\+::was\+Promotion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the move was a promotion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there was a promotion, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 112 of file move.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{move_8h}{move.\+h}}\item 
+src/\mbox{\hyperlink{move_8cc}{move.\+cc}}\end{DoxyCompactItemize}
