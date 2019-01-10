@@ -1,6 +1,6 @@
 # Chess-Engine
 
-C++ Chess Engine, UCI compliant
+C++ Chess Engine, UCI and XBoard/WinBoard compliant
 
 ## Board representation
 * Uses a 10x12 Board array  
@@ -41,10 +41,11 @@ C++ Chess Engine, UCI compliant
 * Iterative Deepening
 * Alpha-beta pruning
 * Quiescence search
+
+## Move Ordering Improvements
 * Transposition Table
 * Polyglot opening book
-* Move ordering
-* Most Valuable Victim / Least Valuable Attacker
+* Most Valuable Victim / Least Valuable Aggressor
 * Killer moves
 * Null Move Pruning
 
