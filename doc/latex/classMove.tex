@@ -1,5 +1,9 @@
 \hypertarget{classMove}{}\section{Move Class Reference}
 \label{classMove}\index{Move@{Move}}
+
+
+{\ttfamily \#include $<$move.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -65,8 +69,21 @@ int32\+\_\+t {\bfseries score}
 
 \subsection{Detailed Description}
 
+\begin{DoxyPre}
+    Internal representation of moves
+    0000 0000 1 1111 1 1111 1111111 1111111 
+              ^   ^  ^   ^      ^       ^
+              1   2  3   4      5       6
+    1. Castle
+    2. Promoted piece
+    3. EnPassant
+    4. Captured piece
+    5. To square
+    6. From square
+   \end{DoxyPre}
+ 
 
-Definition at line 40 of file move.\+h.
+Definition at line 55 of file move.\+h.
 
 
 
@@ -91,7 +108,7 @@ The piece that was captured.
 \end{DoxyReturn}
 
 
-Definition at line 69 of file move.\+h.
+Definition at line 84 of file move.\+h.
 
 \mbox{\Hypertarget{classMove_a35d7341c2a9074102451bf4df0d8b4c2}\label{classMove_a35d7341c2a9074102451bf4df0d8b4c2}} 
 \index{Move@{Move}!castle@{castle}}
@@ -113,7 +130,7 @@ true if there was a castle move, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 93 of file move.\+h.
+Definition at line 108 of file move.\+h.
 
 \mbox{\Hypertarget{classMove_a69a64f5ba158cf0f48765ea40de0daf0}\label{classMove_a69a64f5ba158cf0f48765ea40de0daf0}} 
 \index{Move@{Move}!en\+Passant@{en\+Passant}}
@@ -135,7 +152,7 @@ true if there was En\+Passant, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 75 of file move.\+h.
+Definition at line 90 of file move.\+h.
 
 \mbox{\Hypertarget{classMove_a5a16b2160e1cb66cde53dd6251616243}\label{classMove_a5a16b2160e1cb66cde53dd6251616243}} 
 \index{Move@{Move}!from@{from}}
@@ -157,7 +174,7 @@ The source square
 \end{DoxyReturn}
 
 
-Definition at line 57 of file move.\+h.
+Definition at line 72 of file move.\+h.
 
 \mbox{\Hypertarget{classMove_ac986baf2580e64f47828c8adf23a25f0}\label{classMove_ac986baf2580e64f47828c8adf23a25f0}} 
 \index{Move@{Move}!is\+Null@{is\+Null}}
@@ -179,7 +196,7 @@ true if ($\ast$this) == N\+U\+L\+L\+M\+O\+VE, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 100 of file move.\+h.
+Definition at line 115 of file move.\+h.
 
 \mbox{\Hypertarget{classMove_ae9eaee49438859900541d7a308161a8b}\label{classMove_ae9eaee49438859900541d7a308161a8b}} 
 \index{Move@{Move}!pawn\+Start@{pawn\+Start}}
@@ -201,7 +218,7 @@ true if there was a pawn start, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 81 of file move.\+h.
+Definition at line 96 of file move.\+h.
 
 \mbox{\Hypertarget{classMove_a68741632b4a38ae64152541ed3c641ae}\label{classMove_a68741632b4a38ae64152541ed3c641ae}} 
 \index{Move@{Move}!promoted@{promoted}}
@@ -223,7 +240,7 @@ The piece that was promoted to if any.
 \end{DoxyReturn}
 
 
-Definition at line 87 of file move.\+h.
+Definition at line 102 of file move.\+h.
 
 \mbox{\Hypertarget{classMove_a14f68402d1ad19b441730a7f7d703362}\label{classMove_a14f68402d1ad19b441730a7f7d703362}} 
 \index{Move@{Move}!to@{to}}
@@ -245,7 +262,7 @@ The destination square
 \end{DoxyReturn}
 
 
-Definition at line 63 of file move.\+h.
+Definition at line 78 of file move.\+h.
 
 \mbox{\Hypertarget{classMove_a521cf6fe1679a7354ee007037df2da34}\label{classMove_a521cf6fe1679a7354ee007037df2da34}} 
 \index{Move@{Move}!to\+String@{to\+String}}
@@ -289,7 +306,7 @@ true if there was a capture, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 106 of file move.\+h.
+Definition at line 121 of file move.\+h.
 
 \mbox{\Hypertarget{classMove_a06483745a13016873fc99db2ea74e042}\label{classMove_a06483745a13016873fc99db2ea74e042}} 
 \index{Move@{Move}!was\+Promotion@{was\+Promotion}}
@@ -311,7 +328,7 @@ true if there was a promotion, false otherwise.
 \end{DoxyReturn}
 
 
-Definition at line 112 of file move.\+h.
+Definition at line 127 of file move.\+h.
 
 
 

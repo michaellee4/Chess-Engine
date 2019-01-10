@@ -69,6 +69,8 @@ $(function() {
 <div class="title">Move Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="move_8h_source.html">move.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -143,8 +145,19 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 <tr class="separator:a910be8d231eabe9a9cd98988f1274538"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00040">40</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<div class="textblock"><pre>
+    Internal representation of moves
+    0000 0000 1 1111 1 1111 1111111 1111111 
+              ^   ^  ^   ^      ^       ^
+              1   2  3   4      5       6
+    1. Castle
+    2. Promoted piece
+    3. EnPassant
+    4. Captured piece
+    5. To square
+    6. From square
+   </pre> 
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00055">55</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5a8811a7e6ee7fe36675d49038f2ea2b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a8811a7e6ee7fe36675d49038f2ea2b">&#9670;&nbsp;</a></span>captured()</h2>
@@ -178,7 +191,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The piece that was captured. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00069">69</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00084">84</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 
 </div>
 </div>
@@ -214,7 +227,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if there was a castle move, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00093">93</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00108">108</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 
 </div>
 </div>
@@ -250,7 +263,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if there was EnPassant, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00075">75</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00090">90</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 
 </div>
 </div>
@@ -286,7 +299,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The source square </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00057">57</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00072">72</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 
 </div>
 </div>
@@ -322,7 +335,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if (*this) == NULLMOVE, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00100">100</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00115">115</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 
 </div>
 </div>
@@ -358,7 +371,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if there was a pawn start, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00081">81</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00096">96</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 
 </div>
 </div>
@@ -394,7 +407,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The piece that was promoted to if any. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00087">87</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00102">102</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 
 </div>
 </div>
@@ -430,7 +443,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The destination square </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00063">63</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00078">78</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 
 </div>
 </div>
@@ -502,7 +515,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if there was a capture, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00106">106</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00121">121</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 
 </div>
 </div>
@@ -538,7 +551,7 @@ int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>score</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if there was a promotion, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00112">112</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move_8h_source.html#l00127">127</a> of file <a class="el" href="move_8h_source.html">move.h</a>.</p>
 
 </div>
 </div>

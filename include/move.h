@@ -37,6 +37,21 @@ namespace MoveFlags
 	constexpr int32_t CAP = 0x7C000;
 	constexpr int32_t PROM = 0xF00000;
 }
+
+/**
+<pre>
+	Internal representation of moves
+	0000 0000 1 1111 1 1111 1111111 1111111 
+	          ^   ^  ^   ^      ^       ^
+              1   2  3   4      5       6
+    1. Castle
+    2. Promoted piece
+    3. EnPassant
+    4. Captured piece
+    5. To square
+    6. From square
+   </pre>
+ */
 class Move
 {
 public:
