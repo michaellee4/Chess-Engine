@@ -1,0 +1,627 @@
+\begin{theindex}
+
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/bitboard.\+h}, 
+		\hyperpage{85}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/board.\+h}, 
+		\hyperpage{88}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/console.\+h}, 
+		\hyperpage{89}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/debug.\+h}, 
+		\hyperpage{89}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/defs.\+h}, 
+		\hyperpage{90}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/engine.\+h}, 
+		\hyperpage{92}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/eval.\+h}, 
+		\hyperpage{92}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/hash.\+h}, 
+		\hyperpage{94}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/init.\+h}, 
+		\hyperpage{94}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/io.\+h}, 
+		\hyperpage{95}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/move.\+h}, 
+		\hyperpage{96}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/movelist.\+h}, 
+		\hyperpage{97}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/movemaker.\+h}, 
+		\hyperpage{98}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/polyglot.\+h}, 
+		\hyperpage{99}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/polyglotkeys.\+h}, 
+		\hyperpage{100}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/protocol.\+h}, 
+		\hyperpage{100}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/pvtable.\+h}, 
+		\hyperpage{101}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/search.\+h}, 
+		\hyperpage{101}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/searchinfo.\+h}, 
+		\hyperpage{102}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/stopwatch.\+h}, 
+		\hyperpage{102}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/tester.\+h}, 
+		\hyperpage{103}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/uci.\+h}, 
+		\hyperpage{103}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/utils.\+h}, 
+		\hyperpage{104}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/xboard.\+h}, 
+		\hyperpage{109}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/bitboard.\+cc}, 
+		\hyperpage{110}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/board.\+cc}, 
+		\hyperpage{110}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/console.\+cc}, 
+		\hyperpage{111}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/engine.\+cc}, 
+		\hyperpage{111}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/eval.\+cc}, 
+		\hyperpage{112}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/hash.\+cc}, 
+		\hyperpage{112}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/init.\+cc}, 
+		\hyperpage{113}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/io.\+cc}, 
+		\hyperpage{113}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/main.\+cc}, 
+		\hyperpage{114}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/move.\+cc}, 
+		\hyperpage{114}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/movelist.\+cc}, 
+		\hyperpage{115}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/movemaker.\+cc}, 
+		\hyperpage{115}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/polyglot.\+cc}, 
+		\hyperpage{116}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/pvtable.\+cc}, 
+		\hyperpage{116}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/search.\+cc}, 
+		\hyperpage{117}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/stopwatch.\+cc}, 
+		\hyperpage{117}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/tester.\+cc}, 
+		\hyperpage{118}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/uci.\+cc}, 
+		\hyperpage{118}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/utils.\+cc}, 
+		\hyperpage{119}
+  \item {/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/src/xboard.\+cc}, 
+		\hyperpage{123}
+
+  \indexspace
+
+  \item {add\+Capture\+Move}
+    \subitem {Move\+List}, \hyperpage{49}
+  \item {add\+En\+Pas\+Move}
+    \subitem {Move\+List}, \hyperpage{49}
+  \item {add\+Pawn\+Capture\+Move}
+    \subitem {Move\+List}, \hyperpage{50}
+  \item {add\+Pawn\+Move}
+    \subitem {Move\+List}, \hyperpage{50}
+  \item {add\+Piece}
+    \subitem {MM}, \hyperpage{39}
+  \item {add\+Quiet\+Move}
+    \subitem {Move\+List}, \hyperpage{51}
+  \item {alpha\+Beta}
+    \subitem {Search\+Agent}, \hyperpage{71}
+
+  \indexspace
+
+  \item {Bishop\+Table}
+    \subitem {Value}, \hyperpage{21}
+  \item {Bit\+Table}
+    \subitem {bitboard.\+h}, \hyperpage{87}
+  \item {bitboard.\+h}
+    \subitem {Bit\+Table}, \hyperpage{87}
+    \subitem {clear\+Bit}, \hyperpage{86}
+    \subitem {count\+Bits}, \hyperpage{86}
+    \subitem {pop\+Bit}, \hyperpage{86}
+    \subitem {set\+Bit}, \hyperpage{87}
+  \item {Board}, \hyperpage{25}
+    \subitem {flip\+Board}, \hyperpage{26}
+    \subitem {get\+All\+Capture\+Moves}, \hyperpage{26}
+    \subitem {get\+All\+Moves}, \hyperpage{27}
+    \subitem {get\+En\+Passant}, \hyperpage{27}
+    \subitem {in\+Check}, \hyperpage{27}
+    \subitem {parse\+F\+EN}, \hyperpage{28}
+    \subitem {reset\+Board}, \hyperpage{28}
+    \subitem {set\+Up\+Castle\+Perm}, \hyperpage{29}
+    \subitem {set\+Up\+Move\+Counters}, \hyperpage{29}
+    \subitem {set\+Up\+Pieces}, \hyperpage{30}
+    \subitem {sq\+Attacked}, \hyperpage{30}
+    \subitem {update\+Piece\+Lists}, \hyperpage{30}
+  \item {book}
+    \subitem {Poly\+Book}, \hyperpage{63}
+
+  \indexspace
+
+  \item {captured}
+    \subitem {Move}, \hyperpage{43}
+  \item {castle}
+    \subitem {Move}, \hyperpage{44}
+  \item {Castle\+Perm}
+    \subitem {movemaker.\+h}, \hyperpage{99}
+  \item {check\+Stop}
+    \subitem {Search\+Agent}, \hyperpage{72}
+  \item {clear}
+    \subitem {Pv\+Table}, \hyperpage{67}
+  \item {clear\+Bit}
+    \subitem {bitboard.\+h}, \hyperpage{86}
+  \item {clear\+For\+Search}
+    \subitem {Search\+Agent}, \hyperpage{72}
+  \item {clear\+Piece}
+    \subitem {MM}, \hyperpage{40}
+  \item {Console\+Manager}, \hyperpage{31}
+    \subitem {get\+Protocol}, \hyperpage{32}
+    \subitem {loop}, \hyperpage{32}
+  \item {convert\+Poly\+Move}
+    \subitem {Poly\+Book}, \hyperpage{60}
+  \item {count\+Bits}
+    \subitem {bitboard.\+h}, \hyperpage{86}
+
+  \indexspace
+
+  \item {drawn\+Material}
+    \subitem {Evaluator}, \hyperpage{36}
+    \subitem {Search\+Agent}, \hyperpage{73}
+
+  \indexspace
+
+  \item {en\+Pas\+Possible}
+    \subitem {Poly\+Book}, \hyperpage{61}
+  \item {en\+Passant}
+    \subitem {Move}, \hyperpage{44}
+  \item {endian\+\_\+swap\+\_\+u16}
+    \subitem {Poly\+Book}, \hyperpage{60}
+  \item {endian\+\_\+swap\+\_\+u32}
+    \subitem {Poly\+Book}, \hyperpage{60}
+  \item {endian\+\_\+swap\+\_\+u64}
+    \subitem {Poly\+Book}, \hyperpage{61}
+  \item {Engine}, \hyperpage{33}
+    \subitem {get\+Book}, \hyperpage{33}
+    \subitem {get\+Config}, \hyperpage{34}
+    \subitem {get\+Instance}, \hyperpage{34}
+  \item {Engine\+Config}, \hyperpage{35}
+  \item {epstr}
+    \subitem {IO}, \hyperpage{18}
+  \item {eval\+Bishops}
+    \subitem {Evaluator}, \hyperpage{36}
+  \item {eval\+Kings}
+    \subitem {Evaluator}, \hyperpage{36}
+  \item {eval\+Knights}
+    \subitem {Evaluator}, \hyperpage{37}
+  \item {eval\+Pawns}
+    \subitem {Evaluator}, \hyperpage{37}
+  \item {eval\+Queens}
+    \subitem {Evaluator}, \hyperpage{38}
+  \item {eval\+Rooks}
+    \subitem {Evaluator}, \hyperpage{38}
+  \item {evaluate\+Position}
+    \subitem {Evaluator}, \hyperpage{38}
+  \item {Evaluator}, \hyperpage{35}
+    \subitem {drawn\+Material}, \hyperpage{36}
+    \subitem {eval\+Bishops}, \hyperpage{36}
+    \subitem {eval\+Kings}, \hyperpage{36}
+    \subitem {eval\+Knights}, \hyperpage{37}
+    \subitem {eval\+Pawns}, \hyperpage{37}
+    \subitem {eval\+Queens}, \hyperpage{38}
+    \subitem {eval\+Rooks}, \hyperpage{38}
+    \subitem {evaluate\+Position}, \hyperpage{38}
+
+  \indexspace
+
+  \item {File\+Char}
+    \subitem {IO}, \hyperpage{18}
+  \item {file\+Rank\+To\+Sq}
+    \subitem {utils.\+h}, \hyperpage{105}
+  \item {flip\+Board}
+    \subitem {Board}, \hyperpage{26}
+  \item {from}
+    \subitem {Move}, \hyperpage{44}
+
+  \indexspace
+
+  \item {generate\+All\+Capture\+Moves}
+    \subitem {Move\+List}, \hyperpage{51}
+  \item {generate\+All\+Moves}
+    \subitem {Move\+List}, \hyperpage{52}
+  \item {generate\+Bishop\+Moves}
+    \subitem {Move\+List}, \hyperpage{52}
+  \item {generate\+Castling\+Moves}
+    \subitem {Move\+List}, \hyperpage{52}
+  \item {generate\+King\+Moves}
+    \subitem {Move\+List}, \hyperpage{53}
+  \item {generate\+Knight\+Moves}
+    \subitem {Move\+List}, \hyperpage{53}
+  \item {generate\+Non\+Sliding\+Moves}
+    \subitem {Move\+List}, \hyperpage{54}
+  \item {generate\+Pawn\+Moves}
+    \subitem {Move\+List}, \hyperpage{54}
+  \item {generate\+Pos\+Key}
+    \subitem {Hash}, \hyperpage{9}
+  \item {generate\+Queen\+Moves}
+    \subitem {Move\+List}, \hyperpage{55}
+  \item {generate\+Rook\+Moves}
+    \subitem {Move\+List}, \hyperpage{55}
+  \item {generate\+Sliding\+Moves}
+    \subitem {Move\+List}, \hyperpage{55}
+  \item {get}
+    \subitem {Pv\+Table}, \hyperpage{67}
+  \item {get\+All\+Capture\+Moves}
+    \subitem {Board}, \hyperpage{26}
+  \item {get\+All\+Moves}
+    \subitem {Board}, \hyperpage{27}
+  \item {get\+Book}
+    \subitem {Engine}, \hyperpage{33}
+  \item {get\+Book\+Move}
+    \subitem {Poly\+Book}, \hyperpage{62}
+  \item {get\+Config}
+    \subitem {Engine}, \hyperpage{34}
+  \item {get\+En\+Passant}
+    \subitem {Board}, \hyperpage{27}
+  \item {get\+Hash\+Entry}
+    \subitem {Pv\+Table}, \hyperpage{68}
+  \item {get\+Instance}
+    \subitem {Engine}, \hyperpage{34}
+  \item {get\+Protocol}
+    \subitem {Console\+Manager}, \hyperpage{32}
+    \subitem {Protocol\+Manager}, \hyperpage{64}
+    \subitem {U\+C\+I\+Manager}, \hyperpage{80}
+    \subitem {X\+Board\+Manager}, \hyperpage{82}
+  \item {get\+Pv\+Line}
+    \subitem {Pv\+Table}, \hyperpage{68}
+  \item {get\+Time\+In\+Milli}
+    \subitem {Stopwatch}, \hyperpage{78}
+
+  \indexspace
+
+  \item {Hash}, \hyperpage{9}
+    \subitem {generate\+Pos\+Key}, \hyperpage{9}
+    \subitem {hash\+Ca}, \hyperpage{10}
+    \subitem {hash\+EP}, \hyperpage{10}
+    \subitem {hash\+Pce}, \hyperpage{10}
+    \subitem {hash\+Side}, \hyperpage{11}
+  \item {hash\+Ca}
+    \subitem {Hash}, \hyperpage{10}
+  \item {hash\+EP}
+    \subitem {Hash}, \hyperpage{10}
+  \item {hash\+Pce}
+    \subitem {Hash}, \hyperpage{10}
+  \item {hash\+Side}
+    \subitem {Hash}, \hyperpage{11}
+
+  \indexspace
+
+  \item {in\+Check}
+    \subitem {Board}, \hyperpage{27}
+  \item {Init}, \hyperpage{11}
+    \subitem {init\+All}, \hyperpage{12}
+    \subitem {init\+Bit\+Masks}, \hyperpage{12}
+    \subitem {init\+Eval\+Masks}, \hyperpage{13}
+    \subitem {init\+File\+Rank\+Brd}, \hyperpage{13}
+    \subitem {init\+Hash\+Keys}, \hyperpage{13}
+    \subitem {init\+Mvv\+Lva}, \hyperpage{14}
+    \subitem {init\+Sq120\+To\+Sq64}, \hyperpage{14}
+  \item {init\+All}
+    \subitem {Init}, \hyperpage{12}
+  \item {init\+Bit\+Masks}
+    \subitem {Init}, \hyperpage{12}
+  \item {init\+Eval\+Masks}
+    \subitem {Init}, \hyperpage{13}
+  \item {init\+File\+Rank\+Brd}
+    \subitem {Init}, \hyperpage{13}
+  \item {init\+Hash\+Keys}
+    \subitem {Init}, \hyperpage{13}
+  \item {init\+Mvv\+Lva}
+    \subitem {Init}, \hyperpage{14}
+  \item {init\+Sq120\+To\+Sq64}
+    \subitem {Init}, \hyperpage{14}
+  \item {Input\+Waiting}
+    \subitem {utils.\+cc}, \hyperpage{120}
+    \subitem {utils.\+h}, \hyperpage{105}
+  \item {insert}
+    \subitem {Pv\+Table}, \hyperpage{69}
+  \item {IO}, \hyperpage{15}
+    \subitem {epstr}, \hyperpage{18}
+    \subitem {File\+Char}, \hyperpage{18}
+    \subitem {parse\+Move}, \hyperpage{15}
+    \subitem {Pce\+Char}, \hyperpage{18}
+    \subitem {print\+Best\+Move}, \hyperpage{16}
+    \subitem {print\+Bit\+Board}, \hyperpage{16}
+    \subitem {print\+Board}, \hyperpage{17}
+    \subitem {print\+Move\+List}, \hyperpage{17}
+    \subitem {print\+Search\+Details}, \hyperpage{17}
+    \subitem {Rank\+Char}, \hyperpage{19}
+    \subitem {Side\+Char}, \hyperpage{19}
+  \item {is\+Game\+Over}
+    \subitem {Search\+Agent}, \hyperpage{73}
+  \item {is\+Null}
+    \subitem {Move}, \hyperpage{45}
+  \item {is\+Over}
+    \subitem {Protocol\+Manager}, \hyperpage{65}
+  \item {is\+Piece}
+    \subitem {utils.\+h}, \hyperpage{106}
+  \item {is\+Repetition}
+    \subitem {Search\+Agent}, \hyperpage{73}
+
+  \indexspace
+
+  \item {k\+Interval}
+    \subitem {Search\+Agent}, \hyperpage{76}
+  \item {King\+End\+Game}
+    \subitem {Value}, \hyperpage{21}
+  \item {King\+Opening}
+    \subitem {Value}, \hyperpage{22}
+  \item {Knight\+Table}
+    \subitem {Value}, \hyperpage{22}
+
+  \indexspace
+
+  \item {loop}
+    \subitem {Console\+Manager}, \hyperpage{32}
+    \subitem {Protocol\+Manager}, \hyperpage{65}
+    \subitem {U\+C\+I\+Manager}, \hyperpage{80}
+    \subitem {X\+Board\+Manager}, \hyperpage{82}
+
+  \indexspace
+
+  \item {make\+Move}
+    \subitem {MM}, \hyperpage{40}
+  \item {make\+Null\+Move}
+    \subitem {MM}, \hyperpage{41}
+  \item {MM}, \hyperpage{39}
+    \subitem {add\+Piece}, \hyperpage{39}
+    \subitem {clear\+Piece}, \hyperpage{40}
+    \subitem {make\+Move}, \hyperpage{40}
+    \subitem {make\+Null\+Move}, \hyperpage{41}
+    \subitem {move\+Piece}, \hyperpage{41}
+    \subitem {take\+Move}, \hyperpage{41}
+    \subitem {take\+Null\+Move}, \hyperpage{42}
+  \item {Move}, \hyperpage{42}
+    \subitem {captured}, \hyperpage{43}
+    \subitem {castle}, \hyperpage{44}
+    \subitem {en\+Passant}, \hyperpage{44}
+    \subitem {from}, \hyperpage{44}
+    \subitem {is\+Null}, \hyperpage{45}
+    \subitem {pawn\+Start}, \hyperpage{45}
+    \subitem {promoted}, \hyperpage{46}
+    \subitem {to}, \hyperpage{46}
+    \subitem {to\+String}, \hyperpage{46}
+    \subitem {was\+Capture}, \hyperpage{47}
+    \subitem {was\+Promotion}, \hyperpage{47}
+  \item {Move\+Flags}, \hyperpage{19}
+  \item {Move\+List}, \hyperpage{48}
+    \subitem {add\+Capture\+Move}, \hyperpage{49}
+    \subitem {add\+En\+Pas\+Move}, \hyperpage{49}
+    \subitem {add\+Pawn\+Capture\+Move}, \hyperpage{50}
+    \subitem {add\+Pawn\+Move}, \hyperpage{50}
+    \subitem {add\+Quiet\+Move}, \hyperpage{51}
+    \subitem {generate\+All\+Capture\+Moves}, \hyperpage{51}
+    \subitem {generate\+All\+Moves}, \hyperpage{52}
+    \subitem {generate\+Bishop\+Moves}, \hyperpage{52}
+    \subitem {generate\+Castling\+Moves}, \hyperpage{52}
+    \subitem {generate\+King\+Moves}, \hyperpage{53}
+    \subitem {generate\+Knight\+Moves}, \hyperpage{53}
+    \subitem {generate\+Non\+Sliding\+Moves}, \hyperpage{54}
+    \subitem {generate\+Pawn\+Moves}, \hyperpage{54}
+    \subitem {generate\+Queen\+Moves}, \hyperpage{55}
+    \subitem {generate\+Rook\+Moves}, \hyperpage{55}
+    \subitem {generate\+Sliding\+Moves}, \hyperpage{55}
+    \subitem {reorder\+List}, \hyperpage{56}
+    \subitem {size}, \hyperpage{56}
+  \item {move\+Piece}
+    \subitem {MM}, \hyperpage{41}
+  \item {movemaker.\+h}
+    \subitem {Castle\+Perm}, \hyperpage{99}
+  \item {Mvv\+Lva}, \hyperpage{20}
+
+  \indexspace
+
+  \item {parse\+F\+EN}
+    \subitem {Board}, \hyperpage{28}
+  \item {parse\+Move}
+    \subitem {IO}, \hyperpage{15}
+  \item {pawn\+Start}
+    \subitem {Move}, \hyperpage{45}
+  \item {Pawn\+Table}
+    \subitem {Value}, \hyperpage{22}
+  \item {Pce\+Char}
+    \subitem {IO}, \hyperpage{18}
+  \item {perft}
+    \subitem {Perft\+Tester}, \hyperpage{57}
+  \item {perft\+Test}
+    \subitem {Perft\+Tester}, \hyperpage{58}
+  \item {perft\+Test\+All}
+    \subitem {Perft\+Tester}, \hyperpage{58}
+  \item {Perft\+Tester}, \hyperpage{57}
+    \subitem {perft}, \hyperpage{57}
+    \subitem {perft\+Test}, \hyperpage{58}
+    \subitem {perft\+Test\+All}, \hyperpage{58}
+  \item {Poly\+Book}, \hyperpage{59}
+    \subitem {book}, \hyperpage{63}
+    \subitem {convert\+Poly\+Move}, \hyperpage{60}
+    \subitem {en\+Pas\+Possible}, \hyperpage{61}
+    \subitem {endian\+\_\+swap\+\_\+u16}, \hyperpage{60}
+    \subitem {endian\+\_\+swap\+\_\+u32}, \hyperpage{60}
+    \subitem {endian\+\_\+swap\+\_\+u64}, \hyperpage{61}
+    \subitem {get\+Book\+Move}, \hyperpage{62}
+    \subitem {poly\+Key\+From\+Board}, \hyperpage{62}
+    \subitem {poly\+Piece}, \hyperpage{63}
+    \subitem {read\+Book}, \hyperpage{62}
+  \item {poly\+Key\+From\+Board}
+    \subitem {Poly\+Book}, \hyperpage{62}
+  \item {Poly\+Keys}, \hyperpage{20}
+  \item {poly\+Piece}
+    \subitem {Poly\+Book}, \hyperpage{63}
+  \item {Polyglot\+Entry}, \hyperpage{63}
+  \item {pop\+Bit}
+    \subitem {bitboard.\+h}, \hyperpage{86}
+  \item {print\+Best\+Move}
+    \subitem {IO}, \hyperpage{16}
+  \item {print\+Bit\+Board}
+    \subitem {IO}, \hyperpage{16}
+  \item {print\+Board}
+    \subitem {IO}, \hyperpage{17}
+  \item {print\+Move\+List}
+    \subitem {IO}, \hyperpage{17}
+  \item {print\+Search\+Details}
+    \subitem {IO}, \hyperpage{17}
+  \item {promoted}
+    \subitem {Move}, \hyperpage{46}
+  \item {Protocol\+Manager}, \hyperpage{64}
+    \subitem {get\+Protocol}, \hyperpage{64}
+    \subitem {is\+Over}, \hyperpage{65}
+    \subitem {loop}, \hyperpage{65}
+  \item {Pv\+Entry}, \hyperpage{66}
+  \item {Pv\+Table}, \hyperpage{66}
+    \subitem {clear}, \hyperpage{67}
+    \subitem {get}, \hyperpage{67}
+    \subitem {get\+Hash\+Entry}, \hyperpage{68}
+    \subitem {get\+Pv\+Line}, \hyperpage{68}
+    \subitem {insert}, \hyperpage{69}
+    \subitem {size}, \hyperpage{70}
+
+  \indexspace
+
+  \item {quiescence\+Search}
+    \subitem {Search\+Agent}, \hyperpage{75}
+
+  \indexspace
+
+  \item {rand\+U64}
+    \subitem {utils.\+cc}, \hyperpage{120}
+    \subitem {utils.\+h}, \hyperpage{106}
+  \item {Rank\+Char}
+    \subitem {IO}, \hyperpage{19}
+  \item {read\+Book}
+    \subitem {Poly\+Book}, \hyperpage{62}
+  \item {Read\+Input}
+    \subitem {utils.\+cc}, \hyperpage{121}
+    \subitem {utils.\+h}, \hyperpage{106}
+  \item {reorder\+List}
+    \subitem {Move\+List}, \hyperpage{56}
+  \item {reset\+Board}
+    \subitem {Board}, \hyperpage{28}
+  \item {Rook\+Table}
+    \subitem {Value}, \hyperpage{23}
+
+  \indexspace
+
+  \item {Search\+Agent}, \hyperpage{70}
+    \subitem {alpha\+Beta}, \hyperpage{71}
+    \subitem {check\+Stop}, \hyperpage{72}
+    \subitem {clear\+For\+Search}, \hyperpage{72}
+    \subitem {drawn\+Material}, \hyperpage{73}
+    \subitem {is\+Game\+Over}, \hyperpage{73}
+    \subitem {is\+Repetition}, \hyperpage{73}
+    \subitem {k\+Interval}, \hyperpage{76}
+    \subitem {quiescence\+Search}, \hyperpage{75}
+    \subitem {search\+Position}, \hyperpage{75}
+    \subitem {three\+Fold\+Repetition}, \hyperpage{76}
+  \item {Search\+Info}, \hyperpage{77}
+  \item {search\+Position}
+    \subitem {Search\+Agent}, \hyperpage{75}
+  \item {set\+Bit}
+    \subitem {bitboard.\+h}, \hyperpage{87}
+  \item {set\+Up\+Castle\+Perm}
+    \subitem {Board}, \hyperpage{29}
+  \item {set\+Up\+Move\+Counters}
+    \subitem {Board}, \hyperpage{29}
+  \item {set\+Up\+Pieces}
+    \subitem {Board}, \hyperpage{30}
+  \item {show\+Attacked\+Sqs}
+    \subitem {utils.\+cc}, \hyperpage{121}
+    \subitem {utils.\+h}, \hyperpage{107}
+  \item {Side\+Char}
+    \subitem {IO}, \hyperpage{19}
+  \item {size}
+    \subitem {Move\+List}, \hyperpage{56}
+    \subitem {Pv\+Table}, \hyperpage{70}
+  \item {sq\+Attacked}
+    \subitem {Board}, \hyperpage{30}
+  \item {sq\+On\+Board}
+    \subitem {utils.\+cc}, \hyperpage{121}
+    \subitem {utils.\+h}, \hyperpage{107}
+  \item {sq\+To\+String}
+    \subitem {utils.\+cc}, \hyperpage{122}
+    \subitem {utils.\+h}, \hyperpage{108}
+  \item {start}
+    \subitem {Stopwatch}, \hyperpage{78}
+  \item {stop}
+    \subitem {Stopwatch}, \hyperpage{79}
+  \item {Stopwatch}, \hyperpage{77}
+    \subitem {get\+Time\+In\+Milli}, \hyperpage{78}
+    \subitem {start}, \hyperpage{78}
+    \subitem {stop}, \hyperpage{79}
+  \item {string\+To\+Lower}
+    \subitem {utils.\+cc}, \hyperpage{122}
+    \subitem {utils.\+h}, \hyperpage{108}
+
+  \indexspace
+
+  \item {take\+Move}
+    \subitem {MM}, \hyperpage{41}
+  \item {take\+Null\+Move}
+    \subitem {MM}, \hyperpage{42}
+  \item {three\+Fold\+Repetition}
+    \subitem {Search\+Agent}, \hyperpage{76}
+  \item {to}
+    \subitem {Move}, \hyperpage{46}
+  \item {to\+String}
+    \subitem {Move}, \hyperpage{46}
+
+  \indexspace
+
+  \item {U\+C\+I\+Manager}, \hyperpage{79}
+    \subitem {get\+Protocol}, \hyperpage{80}
+    \subitem {loop}, \hyperpage{80}
+  \item {Undo\+Move}, \hyperpage{81}
+  \item {update\+Piece\+Lists}
+    \subitem {Board}, \hyperpage{30}
+  \item {utils.\+cc}
+    \subitem {Input\+Waiting}, \hyperpage{120}
+    \subitem {rand\+U64}, \hyperpage{120}
+    \subitem {Read\+Input}, \hyperpage{121}
+    \subitem {show\+Attacked\+Sqs}, \hyperpage{121}
+    \subitem {sq\+On\+Board}, \hyperpage{121}
+    \subitem {sq\+To\+String}, \hyperpage{122}
+    \subitem {string\+To\+Lower}, \hyperpage{122}
+  \item {utils.\+h}
+    \subitem {file\+Rank\+To\+Sq}, \hyperpage{105}
+    \subitem {Input\+Waiting}, \hyperpage{105}
+    \subitem {is\+Piece}, \hyperpage{106}
+    \subitem {rand\+U64}, \hyperpage{106}
+    \subitem {Read\+Input}, \hyperpage{106}
+    \subitem {show\+Attacked\+Sqs}, \hyperpage{107}
+    \subitem {sq\+On\+Board}, \hyperpage{107}
+    \subitem {sq\+To\+String}, \hyperpage{108}
+    \subitem {string\+To\+Lower}, \hyperpage{108}
+    \subitem {White\+To\+Black}, \hyperpage{109}
+
+  \indexspace
+
+  \item {Value}, \hyperpage{20}
+    \subitem {Bishop\+Table}, \hyperpage{21}
+    \subitem {King\+End\+Game}, \hyperpage{21}
+    \subitem {King\+Opening}, \hyperpage{22}
+    \subitem {Knight\+Table}, \hyperpage{22}
+    \subitem {Pawn\+Table}, \hyperpage{22}
+    \subitem {Rook\+Table}, \hyperpage{23}
+
+  \indexspace
+
+  \item {was\+Capture}
+    \subitem {Move}, \hyperpage{47}
+  \item {was\+Promotion}
+    \subitem {Move}, \hyperpage{47}
+  \item {White\+To\+Black}
+    \subitem {utils.\+h}, \hyperpage{109}
+
+  \indexspace
+
+  \item {X\+Board\+Manager}, \hyperpage{81}
+    \subitem {get\+Protocol}, \hyperpage{82}
+    \subitem {loop}, \hyperpage{82}
+
+\end{theindex}
