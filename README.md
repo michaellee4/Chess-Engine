@@ -2,6 +2,20 @@
 
 C++ Chess Engine, UCI and XBoard/WinBoard compliant
 
+## Usage
+To use the engine in console mode on linux
+1. Clone the repository
+2. Run 'make clean; 'make'
+3. Run the executable './ce'
+4. Type "console" into stdin
+5. Type "help" to pull up information on how to set up the board and make moves
+6. Have fun!
+
+## Linking with Arena
+If you want to link the engine to the Arena Chess GUI then you will first need to download the latest version of Arena for your operating system here: http://www.playwitharena.com/
+
+After downloading Arena, run the Arena executable select 'Engines' -> 'Install New Engine' and select the chess engine executable. Next go to 'Engines' -> 'Manage Engines' and make sure that the information for the engine is correct. Lastly go to 'Engines' -> 'Load Engine' and select the engine that you've added. You should now be able to play against the engine with a gui by making a move for white.
+
 ## Board representation
 * Uses a 10x12 Board array  
 <pre>
@@ -57,4 +71,8 @@ C++ Chess Engine, UCI and XBoard/WinBoard compliant
 
 ## Resources
 * https://www.chessprogramming.org/Main_Page
+* http://www.playwitharena.com/
+* http://hgm.nubati.net/book_format.html
+* http://wbec-ridderkerk.nl/html/UCIProtocol.html
+* http://hgm.nubati.net/CECP.html
 * Credits to Bluefever Software, an educational youtube channel, for inspiration on the engine.
