@@ -8,7 +8,7 @@
 #ifndef MOVELIST_H
 #define MOVELIST_H
 
-#include "defs.h"
+#include "constants.h"
 #include "board.h"
 #include "move.h"
 

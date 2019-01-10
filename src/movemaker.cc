@@ -5,7 +5,7 @@
 *	@date 1/9/2019
 */
 #include "movemaker.h"
-#include "defs.h"
+#include "constants.h"
 #include "attack.h"
 #include "bitboard.h"
 #include "pieceinfo.h"

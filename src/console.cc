@@ -6,7 +6,7 @@
 */
 #include "console.h"
 #include "stopwatch.h"
-#include "defs.h"
+#include "constants.h"
 #include "movemaker.h"
 #include "io.h"
 #include "searchinfo.h"

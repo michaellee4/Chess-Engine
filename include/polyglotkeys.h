@@ -14,7 +14,7 @@
 #  define U64(u) (u##ULL)
 #endif
 
-#include "defs.h"
+#include "constants.h"
 
 /**
  * This namespace holds all 781 polyglot hashkeys for use in the opening

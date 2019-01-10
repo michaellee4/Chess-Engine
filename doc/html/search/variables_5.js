@@ -3,5 +3,17 @@ var searchData=
   ['passedpawnscore',['passedPawnScore',['../namespaceValue.html#aa30303e1cad8afe4b7ef7cf689ab2352',1,'Value']]],
   ['pawntable',['PawnTable',['../namespaceValue.html#a8b6c72010096d1ae9eb653c5be418db0',1,'Value']]],
   ['pcechar',['PceChar',['../namespaceIO.html#a1c70218e9ea5ec5ff1a2a3e486dc1c9d',1,'IO']]],
+  ['piecebig',['PieceBig',['../namespacePieceInfo.html#ab092fc01811699d480edb92ab9864f71',1,'PieceInfo']]],
+  ['piecebishopqueen',['PieceBishopQueen',['../namespacePieceInfo.html#a5a3661847a5e0eec222dc1ed1c046952',1,'PieceInfo']]],
+  ['piececol',['PieceCol',['../namespacePieceInfo.html#adecc5f24c6e2e38a94ec6484b5af3b23',1,'PieceInfo']]],
+  ['pieceking',['PieceKing',['../namespacePieceInfo.html#a42610aecd549d824030b993347c878c2',1,'PieceInfo']]],
+  ['pieceknight',['PieceKnight',['../namespacePieceInfo.html#acb98882f0d8e8f4f052b2369b07c2cdc',1,'PieceInfo']]],
+  ['piecemaj',['PieceMaj',['../namespacePieceInfo.html#a1a1d6bd927fc1d3ade0c94cfbe345c86',1,'PieceInfo']]],
+  ['piecemin',['PieceMin',['../namespacePieceInfo.html#a1681e87a2e9b102711a18183ff2e877d',1,'PieceInfo']]],
+  ['piecepawn',['PiecePawn',['../namespacePieceInfo.html#aba7ec3f5dc7d7fc2fc5e38f3d62cda56',1,'PieceInfo']]],
+  ['piecerookqueen',['PieceRookQueen',['../namespacePieceInfo.html#a467a57290dbec59cd82a2f86b2c992b8',1,'PieceInfo']]],
+  ['pieceslides',['PieceSlides',['../namespacePieceInfo.html#a22da8fd00e51a3f0d7128893b4532aad',1,'PieceInfo']]],
+  ['pieceval',['PieceVal',['../namespacePieceInfo.html#a480c1e7f0033918244741fc9621ad985',1,'PieceInfo']]],
+  ['pnmoves',['PnMoves',['../namespaceAttack.html#ad86fe8d8652f19e9d182fca575ad56dc',1,'Attack']]],
   ['polypiece',['polyPiece',['../classPolyBook.html#a904f2b4eae9f4a94a11429d47906acd6',1,'PolyBook']]]
 ];

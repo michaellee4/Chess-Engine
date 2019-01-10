@@ -5,7 +5,7 @@
 *	@date 1/9/2019
 */
 #include "uci.h"
-#include "defs.h"
+#include "constants.h"
 #include "io.h"
 #include "move.h"
 #include "utils.h"

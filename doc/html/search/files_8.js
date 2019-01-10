@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['search_2ecc',['search.cc',['../search_8cc.html',1,'']]],
-  ['search_2eh',['search.h',['../search_8h.html',1,'']]],
-  ['searchinfo_2eh',['searchinfo.h',['../searchinfo_8h.html',1,'']]],
-  ['stopwatch_2ecc',['stopwatch.cc',['../stopwatch_8cc.html',1,'']]],
-  ['stopwatch_2eh',['stopwatch.h',['../stopwatch_8h.html',1,'']]]
+  ['pieceinfo_2eh',['pieceinfo.h',['../pieceinfo_8h.html',1,'']]],
+  ['polyglot_2ecc',['polyglot.cc',['../polyglot_8cc.html',1,'']]],
+  ['polyglot_2eh',['polyglot.h',['../polyglot_8h.html',1,'']]],
+  ['polyglotkeys_2eh',['polyglotkeys.h',['../polyglotkeys_8h.html',1,'']]],
+  ['protocol_2eh',['protocol.h',['../protocol_8h.html',1,'']]],
+  ['pvtable_2ecc',['pvtable.cc',['../pvtable_8cc.html',1,'']]],
+  ['pvtable_2eh',['pvtable.h',['../pvtable_8h.html',1,'']]]
 ];

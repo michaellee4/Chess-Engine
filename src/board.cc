@@ -5,7 +5,7 @@
 *	@date 1/9/2019
 */
 #include "board.h"
-#include "defs.h"
+#include "constants.h"
 #include "debug.h"
 #include "pieceinfo.h"
 #include "hash.h"

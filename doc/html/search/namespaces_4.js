@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['value',['Value',['../namespaceValue.html',1,'']]]
+  ['pieceinfo',['PieceInfo',['../namespacePieceInfo.html',1,'']]],
+  ['polykeys',['PolyKeys',['../namespacePolyKeys.html',1,'']]]
 ];

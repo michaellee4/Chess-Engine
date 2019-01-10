@@ -8,7 +8,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "defs.h"
+#include "constants.h"
 #include "move.h"
 #include "pvtable.h"
 #include <string>

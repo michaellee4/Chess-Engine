@@ -7,7 +7,7 @@
 #ifndef HASH_H
 #define HASH_H
 #include "board.h"
-#include "defs.h"
+#include "constants.h"
 #include <array>
 
 /**

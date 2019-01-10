@@ -6,7 +6,7 @@
 */
 #include "io.h"
 #include "pvtable.h"
-#include "defs.h"
+#include "constants.h"
 #include "stopwatch.h"
 #include "utils.h"
 #include "protocol.h"

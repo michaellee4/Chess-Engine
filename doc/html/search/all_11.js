@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['uci_2ecc',['uci.cc',['../uci_8cc.html',1,'']]],
-  ['uci_2eh',['uci.h',['../uci_8h.html',1,'']]],
-  ['ucimanager',['UCIManager',['../classUCIManager.html',1,'']]],
-  ['undomove',['UndoMove',['../classUndoMove.html',1,'']]],
-  ['updatepiecelists',['updatePieceLists',['../classBoard.html#a2b86adf733a5509848f0cc689be49866',1,'Board']]],
-  ['utils_2ecc',['utils.cc',['../utils_8cc.html',1,'']]],
-  ['utils_2eh',['utils.h',['../utils_8h.html',1,'']]]
+  ['takemove',['takeMove',['../classMM.html#aaf252571e1f48cae22b2093bf55058b5',1,'MM']]],
+  ['takenullmove',['takeNullMove',['../classMM.html#aabe809e8405f8ea0666a7d6e25aedac5',1,'MM']]],
+  ['tester_2ecc',['tester.cc',['../tester_8cc.html',1,'']]],
+  ['tester_2eh',['tester.h',['../tester_8h.html',1,'']]],
+  ['threefoldrepetition',['threeFoldRepetition',['../classSearchAgent.html#acaf7ae2df02a071a23e6db4fbbdc7d99',1,'SearchAgent']]],
+  ['to',['to',['../classMove.html#a14f68402d1ad19b441730a7f7d703362',1,'Move']]],
+  ['tostring',['toString',['../classMove.html#a521cf6fe1679a7354ee007037df2da34',1,'Move']]]
 ];

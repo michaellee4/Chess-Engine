@@ -8,7 +8,7 @@
 #ifndef MOVEMAKER_H
 #define MOVEMAKER_H
 
-#include "defs.h"
+#include "constants.h"
 #include "board.h"
 
 /**

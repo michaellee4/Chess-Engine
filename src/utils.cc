@@ -5,7 +5,7 @@
 *	@date 1/9/2019
 */
 #include "utils.h"
-#include "defs.h"
+#include "constants.h"
 #include "io.h"
 #include "movelist.h"
 #include "movemaker.h"

@@ -4,7 +4,7 @@
 *	@author Michael Lee
 *	@date 1/9/2019
 */
-#include "defs.h"
+#include "constants.h"
 #include "tester.h"
 #include "io.h"
 #include "movelist.h"

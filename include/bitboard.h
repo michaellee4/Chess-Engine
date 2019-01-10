@@ -7,7 +7,7 @@
 #ifndef BITBOARD_H
 #define BITBOARD_H
 
-#include "defs.h"
+#include "constants.h"
 
 namespace BB
 {

@@ -1,0 +1,221 @@
+\hypertarget{constants_8h}{}\section{/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/constants.h File Reference}
+\label{constants_8h}\index{/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/constants.\+h@{/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/constants.\+h}}
+
+
+Contains declarations of various constant arrays used throughout the engine.  
+
+
+{\ttfamily \#include \char`\"{}debug.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}move.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constants_8h_a6669646a83f3fcd6e10d0ac2007ba052}\label{constants_8h_a6669646a83f3fcd6e10d0ac2007ba052}} 
+\#define {\bfseries S\+T\+A\+R\+T\+F\+EN}~\char`\"{}rnbqkbnr/pppppppp/8/8/8/8/P\+P\+P\+P\+P\+P\+PP/R\+N\+B\+Q\+K\+B\+NR w K\+Qkq -\/ 0 1\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constants_8h_a06fc87d81c62e9abb8790b6e5713c55b}\label{constants_8h_a06fc87d81c62e9abb8790b6e5713c55b}} 
+enum \{ \newline
+{\bfseries E\+M\+P\+TY}, 
+{\bfseries wP}, 
+{\bfseries wN}, 
+{\bfseries wB}, 
+\newline
+{\bfseries wR}, 
+{\bfseries wQ}, 
+{\bfseries wK}, 
+{\bfseries bP}, 
+\newline
+{\bfseries bN}, 
+{\bfseries bB}, 
+{\bfseries bR}, 
+{\bfseries bQ}, 
+\newline
+{\bfseries bK}
+ \}
+\begin{DoxyCompactList}\small\item\em The integer values for each piece. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_adf764cbdea00d65edcd07bb9953ad2b7}\label{constants_8h_adf764cbdea00d65edcd07bb9953ad2b7}} 
+enum \{ \newline
+{\bfseries F\+I\+L\+E\+\_\+A}, 
+{\bfseries F\+I\+L\+E\+\_\+B}, 
+{\bfseries F\+I\+L\+E\+\_\+C}, 
+{\bfseries F\+I\+L\+E\+\_\+D}, 
+\newline
+{\bfseries F\+I\+L\+E\+\_\+E}, 
+{\bfseries F\+I\+L\+E\+\_\+F}, 
+{\bfseries F\+I\+L\+E\+\_\+G}, 
+{\bfseries F\+I\+L\+E\+\_\+H}, 
+\newline
+{\bfseries F\+I\+L\+E\+\_\+\+N\+O\+NE}
+ \}
+\begin{DoxyCompactList}\small\item\em The integer values for each file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_a99fb83031ce9923c84392b4e92f956b5}\label{constants_8h_a99fb83031ce9923c84392b4e92f956b5}} 
+enum \{ \newline
+{\bfseries R\+A\+N\+K\+\_\+1}, 
+{\bfseries R\+A\+N\+K\+\_\+2}, 
+{\bfseries R\+A\+N\+K\+\_\+3}, 
+{\bfseries R\+A\+N\+K\+\_\+4}, 
+\newline
+{\bfseries R\+A\+N\+K\+\_\+5}, 
+{\bfseries R\+A\+N\+K\+\_\+6}, 
+{\bfseries R\+A\+N\+K\+\_\+7}, 
+{\bfseries R\+A\+N\+K\+\_\+8}, 
+\newline
+{\bfseries R\+A\+N\+K\+\_\+\+N\+O\+NE}
+ \}
+\begin{DoxyCompactList}\small\item\em The integer values for each rank. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_abc6126af1d45847bc59afa0aa3216b04}\label{constants_8h_abc6126af1d45847bc59afa0aa3216b04}} 
+enum \{ {\bfseries W\+H\+I\+TE}, 
+{\bfseries B\+L\+A\+CK}, 
+{\bfseries B\+O\+TH}
+ \}
+\begin{DoxyCompactList}\small\item\em The integer values for the sides. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_adc29c2ff13d900c2f185ee95427fb06c}\label{constants_8h_adc29c2ff13d900c2f185ee95427fb06c}} 
+enum \{ \newline
+{\bfseries A1} = 21, 
+{\bfseries B1}, 
+{\bfseries C1}, 
+{\bfseries D1}, 
+\newline
+{\bfseries E1}, 
+{\bfseries F1}, 
+{\bfseries G1}, 
+{\bfseries H1}, 
+\newline
+{\bfseries A2} = 31, 
+{\bfseries B2}, 
+{\bfseries C2}, 
+{\bfseries D2}, 
+\newline
+{\bfseries E2}, 
+{\bfseries F2}, 
+{\bfseries G2}, 
+{\bfseries H2}, 
+\newline
+{\bfseries A3} = 41, 
+{\bfseries B3}, 
+{\bfseries C3}, 
+{\bfseries D3}, 
+\newline
+{\bfseries E3}, 
+{\bfseries F3}, 
+{\bfseries G3}, 
+{\bfseries H3}, 
+\newline
+{\bfseries A4} = 51, 
+{\bfseries B4}, 
+{\bfseries C4}, 
+{\bfseries D4}, 
+\newline
+{\bfseries E4}, 
+{\bfseries F4}, 
+{\bfseries G4}, 
+{\bfseries H4}, 
+\newline
+{\bfseries A5} = 61, 
+{\bfseries B5}, 
+{\bfseries C5}, 
+{\bfseries D5}, 
+\newline
+{\bfseries E5}, 
+{\bfseries F5}, 
+{\bfseries G5}, 
+{\bfseries H5}, 
+\newline
+{\bfseries A6} = 71, 
+{\bfseries B6}, 
+{\bfseries C6}, 
+{\bfseries D6}, 
+\newline
+{\bfseries E6}, 
+{\bfseries F6}, 
+{\bfseries G6}, 
+{\bfseries H6}, 
+\newline
+{\bfseries A7} = 81, 
+{\bfseries B7}, 
+{\bfseries C7}, 
+{\bfseries D7}, 
+\newline
+{\bfseries E7}, 
+{\bfseries F7}, 
+{\bfseries G7}, 
+{\bfseries H7}, 
+\newline
+{\bfseries A8} = 91, 
+{\bfseries B8}, 
+{\bfseries C8}, 
+{\bfseries D8}, 
+\newline
+{\bfseries E8}, 
+{\bfseries F8}, 
+{\bfseries G8}, 
+{\bfseries H8}, 
+\newline
+{\bfseries N\+O\+\_\+\+SQ}, 
+{\bfseries O\+F\+F\+B\+O\+A\+RD}
+ \}
+\begin{DoxyCompactList}\small\item\em The integer values for each square that is on the board, N\+O\+\_\+\+SQ is used for the En\+Pas square. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_a61dadd085c1777f559549e05962b2c9e}\label{constants_8h_a61dadd085c1777f559549e05962b2c9e}} 
+enum \{ {\bfseries W\+K\+CA} = 0b0001, 
+{\bfseries W\+Q\+CA} = 0b0010, 
+{\bfseries B\+K\+CA} = 0b0100, 
+{\bfseries B\+Q\+CA} = 0b1000
+ \}
+\begin{DoxyCompactList}\small\item\em The bit layout for each individual castle perm combined using bitwise $\vert$. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_a726ca809ffd3d67ab4b8476646f26635}\label{constants_8h_a726ca809ffd3d67ab4b8476646f26635}} 
+enum \{ {\bfseries H\+F\+N\+O\+NE}, 
+{\bfseries H\+F\+A\+L\+P\+HA}, 
+{\bfseries H\+F\+B\+E\+TA}, 
+{\bfseries H\+F\+E\+X\+A\+CT}
+ \}
+\begin{DoxyCompactList}\small\item\em Flags used in the transposition table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constants_8h_a3a4cbce2897f61441c981e44750d3848}\label{constants_8h_a3a4cbce2897f61441c981e44750d3848}} 
+const \mbox{\hyperlink{classMove}{Move}} \mbox{\hyperlink{constants_8h_a3a4cbce2897f61441c981e44750d3848}{N\+O\+M\+O\+VE}} (0)
+\begin{DoxyCompactList}\small\item\em Represents an illegal or invalid move. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{constants_8h_aabb66c29082e539fa21ed5f8cbb2e25b}\label{constants_8h_aabb66c29082e539fa21ed5f8cbb2e25b}} 
+constexpr uint32\+\_\+t \mbox{\hyperlink{constants_8h_aabb66c29082e539fa21ed5f8cbb2e25b}{k\+Max\+Search\+Depth}} = 64
+\begin{DoxyCompactList}\small\item\em The search limit, only ever used when no depth limit is given by the gui or infinite search is on. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_a051654665a87a226a1349163507e40d4}\label{constants_8h_a051654665a87a226a1349163507e40d4}} 
+constexpr uint32\+\_\+t \mbox{\hyperlink{constants_8h_a051654665a87a226a1349163507e40d4}{k\+Move\+Limit}} = 2 $<$$<$ 10
+\begin{DoxyCompactList}\small\item\em The maximum possible moves allowed for an game of chess. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_a828392e3517e7bf6895696199c7fdf4f}\label{constants_8h_a828392e3517e7bf6895696199c7fdf4f}} 
+constexpr uint32\+\_\+t \mbox{\hyperlink{constants_8h_a828392e3517e7bf6895696199c7fdf4f}{k\+Board\+Array\+Size}} = 120
+\begin{DoxyCompactList}\small\item\em The size if the internal board representation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}\label{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}} 
+constexpr uint32\+\_\+t \mbox{\hyperlink{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}{k\+Chessboard\+Size}} = 64
+\begin{DoxyCompactList}\small\item\em The actual size of a chessboard. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_a15c17e92e928ca782572219272b62da3}\label{constants_8h_a15c17e92e928ca782572219272b62da3}} 
+constexpr uint32\+\_\+t \mbox{\hyperlink{constants_8h_a15c17e92e928ca782572219272b62da3}{k\+Num\+Players}} = 2
+\begin{DoxyCompactList}\small\item\em The number of players in a game of chess. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_ab849322dfd3344623f425e94b416fc66}\label{constants_8h_ab849322dfd3344623f425e94b416fc66}} 
+constexpr uint32\+\_\+t \mbox{\hyperlink{constants_8h_ab849322dfd3344623f425e94b416fc66}{k\+Num\+Files\+Ranks}} = 8
+\begin{DoxyCompactList}\small\item\em The length/width of a chessboard. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}\label{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}} 
+constexpr uint32\+\_\+t \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} = 13
+\begin{DoxyCompactList}\small\item\em The total number of different pieces. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{constants_8h_a3e9497aec1dc96f28176e82b3309092b}\label{constants_8h_a3e9497aec1dc96f28176e82b3309092b}} 
+const std\+::string \mbox{\hyperlink{constants_8h_a3e9497aec1dc96f28176e82b3309092b}{k\+App\+Name}} = \char`\"{}Chess\+Engine\char`\"{}
+\begin{DoxyCompactList}\small\item\em The default name of the chess engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains declarations of various constant arrays used throughout the engine. 
+
+\begin{DoxyAuthor}{Author}
+Michael Lee 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1/9/2019 
+\end{DoxyDate}

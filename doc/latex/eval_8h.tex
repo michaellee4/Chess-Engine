@@ -6,7 +6,8 @@ Contains declarations of functions that determine the strength of a given positi
 
 
 {\ttfamily \#include \char`\"{}board.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}defs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pieceinfo.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}constants.\+h\char`\"{}}\newline
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
@@ -42,40 +43,40 @@ constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_a1b62aec2245b0434f8625268
 constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_a4d8e9e3283f0dfb8767defd3c4375bf9}{Value\+::k\+Semi\+Open\+Queen\+File}} = 3
 \begin{DoxyCompactList}\small\item\em Score bonus for a Queen on a semi-\/open file (no same color pawn) \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceValue_aba807f233f0cb45bc9479d3b2697450b}\label{namespaceValue_aba807f233f0cb45bc9479d3b2697450b}} 
-constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_aba807f233f0cb45bc9479d3b2697450b}{Value\+::k\+End\+Game\+Threshold}} = Piece\+Info\+::\+Piece\+Val\mbox{[}wR\mbox{]} + 2 $\ast$ Piece\+Info\+::\+Piece\+Val\mbox{[}wB\mbox{]} + 2 $\ast$ Piece\+Info\+::\+Piece\+Val\mbox{[}wP\mbox{]}
+constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_aba807f233f0cb45bc9479d3b2697450b}{Value\+::k\+End\+Game\+Threshold}} = \mbox{\hyperlink{namespacePieceInfo_a480c1e7f0033918244741fc9621ad985}{Piece\+Info\+::\+Piece\+Val}}\mbox{[}wR\mbox{]} + 2 $\ast$ \mbox{\hyperlink{namespacePieceInfo_a480c1e7f0033918244741fc9621ad985}{Piece\+Info\+::\+Piece\+Val}}\mbox{[}wB\mbox{]} + 2 $\ast$ \mbox{\hyperlink{namespacePieceInfo_a480c1e7f0033918244741fc9621ad985}{Piece\+Info\+::\+Piece\+Val}}\mbox{[}wP\mbox{]}
 \begin{DoxyCompactList}\small\item\em Material threshold to determine when the endgame starts. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceValue_a662b268cafa7fb0924985d533150c6c2}\label{namespaceValue_a662b268cafa7fb0924985d533150c6c2}} 
 constexpr int32\+\_\+t \mbox{\hyperlink{namespaceValue_a662b268cafa7fb0924985d533150c6c2}{Value\+::k\+Bishop\+Pair}} = 30
 \begin{DoxyCompactList}\small\item\em Score bonus for the Bishop pair. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{namespaceValue_aa30303e1cad8afe4b7ef7cf689ab2352}\label{namespaceValue_aa30303e1cad8afe4b7ef7cf689ab2352}} 
-constexpr std\+::array$<$ int32\+\_\+t, k\+Num\+Files\+Ranks $>$ \mbox{\hyperlink{namespaceValue_aa30303e1cad8afe4b7ef7cf689ab2352}{Value\+::passed\+Pawn\+Score}} \{0, 5, 10, 20, 35, 60, 100, 200\}
+constexpr std\+::array$<$ int32\+\_\+t, \mbox{\hyperlink{constants_8h_ab849322dfd3344623f425e94b416fc66}{k\+Num\+Files\+Ranks}} $>$ \mbox{\hyperlink{namespaceValue_aa30303e1cad8afe4b7ef7cf689ab2352}{Value\+::passed\+Pawn\+Score}} \{0, 5, 10, 20, 35, 60, 100, 200\}
 \begin{DoxyCompactList}\small\item\em Score bonus for Passed pawns based on distance. \end{DoxyCompactList}\item 
-constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_a8b6c72010096d1ae9eb653c5be418db0}{Value\+::\+Pawn\+Table}}
+constexpr std\+::array$<$ int32\+\_\+t, \mbox{\hyperlink{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}{k\+Chessboard\+Size}} $>$ \mbox{\hyperlink{namespaceValue_a8b6c72010096d1ae9eb653c5be418db0}{Value\+::\+Pawn\+Table}}
 \begin{DoxyCompactList}\small\item\em Scores the position of the Pawns. \end{DoxyCompactList}\item 
-constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_a4b65a409f1e288260d4e71d6c13376b5}{Value\+::\+Knight\+Table}}
+constexpr std\+::array$<$ int32\+\_\+t, \mbox{\hyperlink{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}{k\+Chessboard\+Size}} $>$ \mbox{\hyperlink{namespaceValue_a4b65a409f1e288260d4e71d6c13376b5}{Value\+::\+Knight\+Table}}
 \begin{DoxyCompactList}\small\item\em Scores the position of the Knights. \end{DoxyCompactList}\item 
-constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_ab06336272528cf2e9e3772123f5eb5bb}{Value\+::\+Bishop\+Table}}
+constexpr std\+::array$<$ int32\+\_\+t, \mbox{\hyperlink{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}{k\+Chessboard\+Size}} $>$ \mbox{\hyperlink{namespaceValue_ab06336272528cf2e9e3772123f5eb5bb}{Value\+::\+Bishop\+Table}}
 \begin{DoxyCompactList}\small\item\em Scores the position of the Bishops. \end{DoxyCompactList}\item 
-constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_ae8066836a21ce4367ff232f08ce796a8}{Value\+::\+Rook\+Table}}
+constexpr std\+::array$<$ int32\+\_\+t, \mbox{\hyperlink{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}{k\+Chessboard\+Size}} $>$ \mbox{\hyperlink{namespaceValue_ae8066836a21ce4367ff232f08ce796a8}{Value\+::\+Rook\+Table}}
 \begin{DoxyCompactList}\small\item\em Scores the position of the Rooks. \end{DoxyCompactList}\item 
-constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_a581231b1446aff281ae15f755b875341}{Value\+::\+King\+End\+Game}}
+constexpr std\+::array$<$ int32\+\_\+t, \mbox{\hyperlink{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}{k\+Chessboard\+Size}} $>$ \mbox{\hyperlink{namespaceValue_a581231b1446aff281ae15f755b875341}{Value\+::\+King\+End\+Game}}
 \begin{DoxyCompactList}\small\item\em Scores the king in the late game. Prioritizes the center. \end{DoxyCompactList}\item 
-constexpr std\+::array$<$ int32\+\_\+t, k\+Chessboard\+Size $>$ \mbox{\hyperlink{namespaceValue_a0b4d4bb236eb7c18c48df42e6e3ca1fd}{Value\+::\+King\+Opening}}
+constexpr std\+::array$<$ int32\+\_\+t, \mbox{\hyperlink{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}{k\+Chessboard\+Size}} $>$ \mbox{\hyperlink{namespaceValue_a0b4d4bb236eb7c18c48df42e6e3ca1fd}{Value\+::\+King\+Opening}}
 \begin{DoxyCompactList}\small\item\em Scores the king for the earlygame. Prioritizes staying safe. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{eval_8h_ac79d062bc8f00b09f43b769d9fbba010}\label{eval_8h_ac79d062bc8f00b09f43b769d9fbba010}} 
-std\+::array$<$ uint64\+\_\+t, k\+Num\+Files\+Ranks $>$ {\bfseries Eval\+B\+B\+::\+File\+Mask}
+std\+::array$<$ uint64\+\_\+t, \mbox{\hyperlink{constants_8h_ab849322dfd3344623f425e94b416fc66}{k\+Num\+Files\+Ranks}} $>$ {\bfseries Eval\+B\+B\+::\+File\+Mask}
 \item 
 \mbox{\Hypertarget{eval_8h_a02d6c6bd56103f97e39b6bb473caaded}\label{eval_8h_a02d6c6bd56103f97e39b6bb473caaded}} 
-std\+::array$<$ uint64\+\_\+t, k\+Num\+Files\+Ranks $>$ {\bfseries Eval\+B\+B\+::\+Rank\+Mask}
+std\+::array$<$ uint64\+\_\+t, \mbox{\hyperlink{constants_8h_ab849322dfd3344623f425e94b416fc66}{k\+Num\+Files\+Ranks}} $>$ {\bfseries Eval\+B\+B\+::\+Rank\+Mask}
 \item 
 \mbox{\Hypertarget{eval_8h_a5207f3122e51280185841a84c4dbded2}\label{eval_8h_a5207f3122e51280185841a84c4dbded2}} 
-std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Eval\+B\+B\+::white\+Passed\+Mask}
+std\+::array$<$ uint64\+\_\+t, \mbox{\hyperlink{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}{k\+Chessboard\+Size}} $>$ {\bfseries Eval\+B\+B\+::white\+Passed\+Mask}
 \item 
 \mbox{\Hypertarget{eval_8h_a052e3c66beeab03cb8f918d20aeb2ebe}\label{eval_8h_a052e3c66beeab03cb8f918d20aeb2ebe}} 
-std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Eval\+B\+B\+::black\+Passed\+Mask}
+std\+::array$<$ uint64\+\_\+t, \mbox{\hyperlink{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}{k\+Chessboard\+Size}} $>$ {\bfseries Eval\+B\+B\+::black\+Passed\+Mask}
 \item 
 \mbox{\Hypertarget{eval_8h_a2bdc6c0c53d928a1b70e4e65042c7abe}\label{eval_8h_a2bdc6c0c53d928a1b70e4e65042c7abe}} 
-std\+::array$<$ uint64\+\_\+t, k\+Chessboard\+Size $>$ {\bfseries Eval\+B\+B\+::isolated\+Mask}
+std\+::array$<$ uint64\+\_\+t, \mbox{\hyperlink{constants_8h_a901d7bb0bf36a71e09079f9dd4168c4c}{k\+Chessboard\+Size}} $>$ {\bfseries Eval\+B\+B\+::isolated\+Mask}
 \end{DoxyCompactItemize}
 
 

@@ -7,7 +7,7 @@
 
 #ifndef SEARCH_H
 #define SEARCH_H
-#include "defs.h"
+#include "constants.h"
 #include "board.h"
 #include "searchinfo.h"
 #include "eval.h"

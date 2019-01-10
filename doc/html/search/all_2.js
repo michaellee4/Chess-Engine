@@ -11,6 +11,7 @@ var searchData=
   ['console_2ecc',['console.cc',['../console_8cc.html',1,'']]],
   ['console_2eh',['console.h',['../console_8h.html',1,'']]],
   ['consolemanager',['ConsoleManager',['../classConsoleManager.html',1,'']]],
+  ['constants_2eh',['constants.h',['../constants_8h.html',1,'']]],
   ['convertpolymove',['convertPolyMove',['../classPolyBook.html#acf3e5a4d7722aa0784e5bda2d117c0c7',1,'PolyBook']]],
   ['countbits',['countBits',['../bitboard_8h.html#ae9ac6d5ba9f117b648a13a99374e13b9',1,'BB']]]
 ];

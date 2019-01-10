@@ -5,7 +5,7 @@
 *	@date 1/9/2019
 */
 #include "pvtable.h"
-#include "defs.h"
+#include "constants.h"
 #include "board.h"
 #include "movemaker.h"
 #include "utils.h"

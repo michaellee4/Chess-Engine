@@ -5,7 +5,7 @@
 *	@date 1/9/2019
 */
 #include "bitboard.h"
-#include "defs.h"
+#include "constants.h"
 #include "utils.h"
 #include <cstdio>
 

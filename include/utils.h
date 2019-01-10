@@ -8,7 +8,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "defs.h"
+#include "constants.h"
 #include "board.h"
 #include "searchinfo.h"
 #include "move.h"

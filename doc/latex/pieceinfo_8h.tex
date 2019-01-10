@@ -1,0 +1,59 @@
+\hypertarget{pieceinfo_8h}{}\section{/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/pieceinfo.h File Reference}
+\label{pieceinfo_8h}\index{/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/pieceinfo.\+h@{/home/michael/\+Documents/\+Projects/\+C++/\+Chess-\/\+Engine/include/pieceinfo.\+h}}
+
+
+Contains constant that provide information indexed by pieces.  
+
+
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacePieceInfo}{Piece\+Info}}
+\begin{DoxyCompactList}\small\item\em Holds Dictionaries to give information for each piece from wP $<$= piece $<$= bK. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacePieceInfo_ab092fc01811699d480edb92ab9864f71}\label{namespacePieceInfo_ab092fc01811699d480edb92ab9864f71}} 
+constexpr std\+::array$<$ bool, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_ab092fc01811699d480edb92ab9864f71}{Piece\+Info\+::\+Piece\+Big}} \{ false, false, true, true, true, true, true, false, true, true, true, true, true \}
+\begin{DoxyCompactList}\small\item\em Check if a piece is a non-\/\+Pawn. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacePieceInfo_a1a1d6bd927fc1d3ade0c94cfbe345c86}\label{namespacePieceInfo_a1a1d6bd927fc1d3ade0c94cfbe345c86}} 
+constexpr std\+::array$<$ bool, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_a1a1d6bd927fc1d3ade0c94cfbe345c86}{Piece\+Info\+::\+Piece\+Maj}} \{ false, false, false, false, true, true, true, false, false, false, true, true, true \}
+\begin{DoxyCompactList}\small\item\em Check if a piece is a Rook, Queen, or King. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacePieceInfo_a1681e87a2e9b102711a18183ff2e877d}\label{namespacePieceInfo_a1681e87a2e9b102711a18183ff2e877d}} 
+constexpr std\+::array$<$ bool, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_a1681e87a2e9b102711a18183ff2e877d}{Piece\+Info\+::\+Piece\+Min}} \{ false, false, true, true, false, false, false, false, true, true, false, false, false \}
+\begin{DoxyCompactList}\small\item\em Check if a piece is a Bishop or Knight. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacePieceInfo_a480c1e7f0033918244741fc9621ad985}\label{namespacePieceInfo_a480c1e7f0033918244741fc9621ad985}} 
+constexpr std\+::array$<$ uint32\+\_\+t, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_a480c1e7f0033918244741fc9621ad985}{Piece\+Info\+::\+Piece\+Val}} \{ 0, 100, 325, 325, 550, 1000, 50000, 100, 325, 325, 550, 1000, 50000 \}
+\begin{DoxyCompactList}\small\item\em Check the value of a piece in centipawns. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacePieceInfo_adecc5f24c6e2e38a94ec6484b5af3b23}\label{namespacePieceInfo_adecc5f24c6e2e38a94ec6484b5af3b23}} 
+constexpr std\+::array$<$ uint32\+\_\+t, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_adecc5f24c6e2e38a94ec6484b5af3b23}{Piece\+Info\+::\+Piece\+Col}} \{ B\+O\+TH, W\+H\+I\+TE, W\+H\+I\+TE, W\+H\+I\+TE, W\+H\+I\+TE, W\+H\+I\+TE, W\+H\+I\+TE, B\+L\+A\+CK, B\+L\+A\+CK, B\+L\+A\+CK, B\+L\+A\+CK, B\+L\+A\+CK, B\+L\+A\+CK \}
+\begin{DoxyCompactList}\small\item\em Check the color of a piece. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacePieceInfo_a22da8fd00e51a3f0d7128893b4532aad}\label{namespacePieceInfo_a22da8fd00e51a3f0d7128893b4532aad}} 
+constexpr std\+::array$<$ bool, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_a22da8fd00e51a3f0d7128893b4532aad}{Piece\+Info\+::\+Piece\+Slides}} \{ false, false, false, true, true, true, false, false, false, true, true, true, false \}
+\begin{DoxyCompactList}\small\item\em Check if a piece is a Bishop, Rook, Queen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacePieceInfo_aba7ec3f5dc7d7fc2fc5e38f3d62cda56}\label{namespacePieceInfo_aba7ec3f5dc7d7fc2fc5e38f3d62cda56}} 
+constexpr std\+::array$<$ bool, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_aba7ec3f5dc7d7fc2fc5e38f3d62cda56}{Piece\+Info\+::\+Piece\+Pawn}} \{ false, true, false, false, false, false, false, true, false, false, false, false, false \}
+\begin{DoxyCompactList}\small\item\em Check if a piece is a Pawn. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacePieceInfo_a42610aecd549d824030b993347c878c2}\label{namespacePieceInfo_a42610aecd549d824030b993347c878c2}} 
+constexpr std\+::array$<$ bool, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_a42610aecd549d824030b993347c878c2}{Piece\+Info\+::\+Piece\+King}} \{ false, false, false, false, false, false, true, false, false, false, false, false, true \}
+\begin{DoxyCompactList}\small\item\em Check if a piece is a King. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacePieceInfo_a467a57290dbec59cd82a2f86b2c992b8}\label{namespacePieceInfo_a467a57290dbec59cd82a2f86b2c992b8}} 
+constexpr std\+::array$<$ bool, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_a467a57290dbec59cd82a2f86b2c992b8}{Piece\+Info\+::\+Piece\+Rook\+Queen}} \{ false, false, false, false, true, true, false, false, false, false, true, true, false \}
+\begin{DoxyCompactList}\small\item\em Check if a piece is a Queen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacePieceInfo_a5a3661847a5e0eec222dc1ed1c046952}\label{namespacePieceInfo_a5a3661847a5e0eec222dc1ed1c046952}} 
+constexpr std\+::array$<$ bool, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_a5a3661847a5e0eec222dc1ed1c046952}{Piece\+Info\+::\+Piece\+Bishop\+Queen}} \{ false, false, false, true, false, true, false, false, false, true, false, true, false \}
+\begin{DoxyCompactList}\small\item\em Check if a piece is a Bishop or a Queen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespacePieceInfo_acb98882f0d8e8f4f052b2369b07c2cdc}\label{namespacePieceInfo_acb98882f0d8e8f4f052b2369b07c2cdc}} 
+constexpr std\+::array$<$ bool, \mbox{\hyperlink{constants_8h_a65fd654c96b3bb6b2e3f2e5c2d5bb09c}{k\+Num\+Pce\+Types}} $>$ \mbox{\hyperlink{namespacePieceInfo_acb98882f0d8e8f4f052b2369b07c2cdc}{Piece\+Info\+::\+Piece\+Knight}} \{ false, false, true, false, false, false, false, false, true, false, false, false, false \}
+\begin{DoxyCompactList}\small\item\em Check if a piece is a Knight. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains constant that provide information indexed by pieces. 
+
+\begin{DoxyAuthor}{Author}
+Michael Lee 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1/9/2019 
+\end{DoxyDate}

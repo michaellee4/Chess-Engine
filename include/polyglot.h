@@ -6,7 +6,7 @@
 */
 #ifndef POLYGLOT_H
 #define POLYGLOT_H
-#include "defs.h"
+#include "constants.h"
 #include <vector>
 
 /**

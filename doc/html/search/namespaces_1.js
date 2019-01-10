@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['init',['Init',['../namespaceInit.html',1,'']]],
-  ['io',['IO',['../namespaceIO.html',1,'']]]
+  ['hash',['Hash',['../namespaceHash.html',1,'']]]
 ];

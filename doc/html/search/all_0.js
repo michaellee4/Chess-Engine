@@ -6,5 +6,7 @@ var searchData=
   ['addpawnmove',['addPawnMove',['../classMoveList.html#ae7a6441ad78b4726b986d4ea3de335b6',1,'MoveList']]],
   ['addpiece',['addPiece',['../classMM.html#a2f50160abe49fcba984c0db8cca3a2e4',1,'MM']]],
   ['addquietmove',['addQuietMove',['../classMoveList.html#adf7f04859cd7d9dfa7cc1790c58ce073',1,'MoveList']]],
-  ['alphabeta',['alphaBeta',['../classSearchAgent.html#a276e7dc17f276cf7d1c5fe91218f55c2',1,'SearchAgent']]]
+  ['alphabeta',['alphaBeta',['../classSearchAgent.html#a276e7dc17f276cf7d1c5fe91218f55c2',1,'SearchAgent']]],
+  ['attack',['Attack',['../namespaceAttack.html',1,'']]],
+  ['attack_2eh',['attack.h',['../attack_8h.html',1,'']]]
 ];

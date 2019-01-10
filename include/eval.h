@@ -8,7 +8,7 @@
 #define EVAL_H
 #include "board.h"
 #include "pieceinfo.h"
-#include "defs.h"
+#include "constants.h"
 
 /**
 	@brief Provides several constant values used for evaluating the board state.
