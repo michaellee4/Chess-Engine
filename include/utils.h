@@ -26,26 +26,70 @@ namespace BoardUtils
 	};
 }
 
+/**
+ * Input: A square in array-120 format
+ * Output: true if the square is on the board in array-120 format, false otherwise
+ * Operation: None
+ */
 bool sqOnBoard(uint32_t sq) noexcept;
 
-// returns the SQ# on the 120 Sq board representation
+/**
+ * Input: A file and rank (e.g A1)
+ * Output: the square number of the file/rank in array-120 form
+ * Operation: None
+ */
 int fileRankToSq(int file, int rank) noexcept;
 
-// generates a random 64 bit integer
+/**
+ * Input: None
+ * Output: A random 64 bit number
+ * Operation: Uses the standard uniform distribution generator to generate the number
+ * credits to //https://stackoverflow.com/questions/37396278/how-to-generate-very-large-random-number-in-c
+ */
 uint64_t randU64() noexcept;
 
+/**
+ * Input: an integer
+ * Output: true if the number is a piece within the range of the piece enum
+ * Operation: None
+ */
 bool isPiece(int piece) noexcept;
 
-// prints the 8x8 board with numbers indicating how many times each sq is attacked by the provided side
+/**
+ * Input: None
+ * Output: Prints the 8x8 board with numbers indicating how many 
+ *		   times each square is attacked by the provided side
+ * Operation: None
+ */
 void showAttackedSqs(const int side,Board& pos) noexcept;
 
-// String representation of a square
+/**
+ * Input: An integer
+ * Output: The string representation of the square (e.g "A1")
+ * Operation: None
+ */
 std::string sqToString(const int sq) noexcept;
 
+/**
+ * Input: A string
+ * Output: None
+ * Operation: Changes the underlying string to lowercase
+ */
 void stringToLower(std::string& str) noexcept;
 
+/**
+ * Input: None
+ * Output: true(1) if the gui interface is attempting to send input to the engine, false(0) otherwise 
+ * Credits to the olithink chess engine for the code
+ */
 int InputWaiting();
 
+/**
+ * Input: SearchInfo object
+ * Output: None
+ * Operation: updates the SearchInfo object if input was detected
+ * Credits to the olithink chess engine for the code
+ */
 void ReadInput(SearchInfo& info);
 
 #endif

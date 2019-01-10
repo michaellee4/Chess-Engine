@@ -1,24 +1,59 @@
 #ifndef INIT_H
 #define INIT_H
 
+/**
+ * This namespace provides all the methods used to fill 
+ * in the non static const arrays used throughout the engine
+ */
 namespace Init
 {
+	/**
+	 * Input: None
+	 * Output: None
+	 * Operation: Calls all of the 'init' methods below
+	 */
 	void initAll() noexcept;
 
-	// creates 2 arrays to map 64 <-> 120 board square representations
+	/**
+	 * Input: None
+	 * Output: None
+	 * Operation: Fills in the arrays that convert between array-120 to array-64 representations
+	 */
 	void initSq120ToSq64() noexcept;
 
-	// initializes bitmasks used in bitboards.cc
+	/**
+	 * Input: None
+	 * Output: None
+	 * Operation: Fills in the arrays used for setting/clearing bits in bitboards
+	 */
 	void initBitMasks() noexcept;
 
-	// initializes all necessary hash codes for position hashes
+	/**
+	 * Input: None
+	 * Output: None
+	 * Operation: Fills in the hashkeys arrays that will be used to for getting the board's hashkey
+	 */
 	void initHashKeys() noexcept;
 
-	// initializes the two arrays to return a given square's file and rank
+	/**
+	 * Input: None
+	 * Output: None
+	 * Operation: Fills in the arrays that return the file/rank # for a given square
+	 */
 	void initFileRankBrd() noexcept;	
 
+	/**
+	 * Input: None
+	 * Output: None
+	 * Operation: Fills in the arrays used for evaluating pawn structure during evaluation
+	 */
 	void initEvalMasks() noexcept;
-	// initializes the MvvLva arrays
+
+	/**
+	 * Input: None
+	 * Output: None
+	 * Operation: Fills in the arrays to determine most valuable victim least valuable attacker priority
+	 */
 	void initMvvLva() noexcept;
 }
 

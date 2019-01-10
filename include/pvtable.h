@@ -4,7 +4,11 @@
 #include "move.h"
 #include <unordered_map>
 #include <vector>
+
 class Board;
+/**
+ * This class holds the cached info of our searches for use with the PVTable
+ */
 class PV_Entry
 {
 	public:

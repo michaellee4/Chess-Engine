@@ -45,16 +45,14 @@ std::string sqToString(const int sq) noexcept
 	return stream.str();
 }
 
-//https://stackoverflow.com/questions/37396278/how-to-generate-very-large-random-number-in-c
 uint64_t randU64() noexcept
 {
-	using namespace std;
 	/* Seed */
-	random_device rd;
+	std::random_device rd;
 	/* Random number generator */
-	default_random_engine generator(rd());
+	std::default_random_engine generator(rd());
 	/* Distribution on which to apply the generator */
-	uniform_int_distribution<uint64_t> distribution(0,0xFFFFFFFFFFFFFFFF);
+	std::uniform_int_distribution<uint64_t> distribution(0,0xFFFFFFFFFFFFFFFF);
 	return distribution(generator);
 }
 

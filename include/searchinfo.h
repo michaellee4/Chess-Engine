@@ -1,6 +1,9 @@
 #ifndef SEARCHINFO_H
 #define SEARCHINFO_H
 
+/**
+ * This class holds info about the various search constraints provided by the engine
+ */
 struct SearchInfo
 {
 	uint64_t startTime;

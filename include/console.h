@@ -1,6 +1,10 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 #include "protocol.h"
+
+/**
+ * See ProtocolManager documentation
+ */
 class ConsoleManager : public ProtocolManager
 {
 public:

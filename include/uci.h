@@ -3,7 +3,9 @@
 #include "protocol.h"
 #include<string>
 	
-//might need newline at the end of this string
+/**
+ * See ProtocolManager documentation
+ */
 class UCIManager : public ProtocolManager
 {
 public:

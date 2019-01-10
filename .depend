@@ -19,9 +19,9 @@ io.o: src/io.cc include/io.h include/board.h include/defs.h \
 movelist.o: src/movelist.cc include/movelist.h include/defs.h \
  include/debug.h include/move.h include/board.h include/pvtable.h \
  include/utils.h include/searchinfo.h
-bitboard.o: src/bitboard.cc include/defs.h include/debug.h include/move.h \
- include/bitboard.h include/defs.h include/utils.h include/board.h \
- include/pvtable.h include/searchinfo.h
+bitboard.o: src/bitboard.cc include/bitboard.h include/defs.h \
+ include/debug.h include/move.h include/defs.h include/utils.h \
+ include/board.h include/pvtable.h include/searchinfo.h
 console.o: src/console.cc include/console.h include/protocol.h \
  include/board.h include/defs.h include/debug.h include/move.h \
  include/pvtable.h include/searchinfo.h include/search.h include/eval.h \

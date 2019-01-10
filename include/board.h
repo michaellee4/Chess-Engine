@@ -13,20 +13,41 @@ class MoveList;
 class Board
 {
 	private:
-		// Resets the board to the empty state
+
+		/**
+		 * Resets all board variables to default values
+		 * Called by parseFEN() and flipBoard()
+		 */
 		void resetBoard(void) noexcept;
 
-		// Update the underlying board information arrays
+		/**
+		 * Updates all internal Board vectors related to pieces
+		 * Called by parseFEN() and flipBoard()
+		 */
 		void updatePieceLists(void) noexcept;
 
-		// Places the pieces on the board using the fen
-		void setUpPieces(const std::string& section) noexcept;
+		/**
+		 * Parses the first FEN argument and places the pieces on the board as indicated
+		 * Called by parseFEN()
+		 */
+		void setUpPieces(const std::string& pieces) noexcept;
 
-		// Sets up castling permissions with the fen
-		void setUpCastlePerm(const std::string& section) noexcept;
+		/**
+		 * Parses the castle argument of the FEN
+		 * Called by parseFEN()
+		 */
+		void setUpCastlePerm(const std::string& perm) noexcept;
 
-		void getenPassant(const std::string& section) noexcept;
+		/**
+		 * Parses the enPassant argument of the FEN
+		 * Called by parseFEN()
+		 */
+		void getEnPassant(const std::string& enPas) noexcept;
 
+		/**
+		 * Parses the ply counter argument(s) of the FEN if they exist
+		 * Called by parseFEN()
+		 */
 		void setUpMoveCounters(std::istringstream& stream, std::string& section) noexcept;
 
 	public:
@@ -85,20 +106,54 @@ class Board
 
 		Board(const std::string& fen) noexcept;
 
-		// Reads in a Forseth-Edwards Notation string and prepares the board in accordance ot it.
+		/**
+		 * Input: A Forsyth-Edwards Notation string
+		 * Output: None, will internally set up the 
+		 *		   Board representation of the calling
+		 *		   Board object.
+		 *
+		 * Example: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+		 *							^							^	^  ^ ^ ^
+		 *							1							2	3  4 5 6
+		 *
+		 * 1. Piece locations
+		 * 2. Current side to move
+		 * 3. Castling permissions
+		 * 4. EnPassant square
+		 * 5. Halfmove clock (fifty move count)
+		 * 6. Fullmove number
+		 */
 		void parseFEN(const std::string&) noexcept;
-		
-		// returns the number of times that a Sq is attacked by the given side
+
+		/**
+		 * Input: Target square in array-120 format
+		 *		 Attacking side (WHITE, BLACK)
+		 * Output: Number of times target sq is attacked by provided side
+		 */		
 		uint32_t sqAttacked(const uint32_t sq, const uint32_t side) const noexcept;
 
-		void flipBoard() noexcept;
-		
-		bool inCheck() noexcept;
-
+		/**
+		 * Output: A MoveList object with all possible moves (including moves where king is in check)
+		 */
 		MoveList getAllMoves() const noexcept;
-		
+
+		/**
+		 * Output: A MoveList object with all possible capture moves (including moves where king is in check)
+		 * Used in Queiescence search
+		 */
 		MoveList getAllCaptureMoves() const noexcept;
+		
+		/**
+		 * Flips the internal Board representation along the central file
+		 * Used primarily for debugging search evaluation
+		 * Assert(eval(pos) == eval(pos.flipBoard()))
+		 */
+		void flipBoard() noexcept;
+
+		/**
+		 * Output: true if the current side to move is in check, false otherwise.
+		 */
+		bool inCheck() noexcept;
 };
-		// reconstructs the board state and checks if they match
-		// Used for debugging.
+
 #endif

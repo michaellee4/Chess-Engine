@@ -7,7 +7,8 @@
 #include "movelist.h"
 #include <string>
 #include <sstream>
-#include <cstdio> 
+#include <cstdio>
+
 Board::Board() noexcept :
 			   pieces(kBoardArraySize),
 			   pawns(3), 
@@ -34,6 +35,7 @@ Board::Board() noexcept :
 	}
 	this->parseFEN(STARTFEN);
 }
+
 Board::Board(const std::string& fen) noexcept :
 									pieces(kBoardArraySize),
 									pawns(3), 
@@ -60,6 +62,7 @@ Board::Board(const std::string& fen) noexcept :
 	}
 	this->parseFEN(fen);
 }
+
 void Board::resetBoard() noexcept
 {
 	for(uint32_t i = 0; i < kBoardArraySize; ++i)
@@ -97,16 +100,17 @@ void Board::resetBoard() noexcept
 	this->hist_ply = 0;
 	this->pos_key = 0ULL;
 }
-void Board::setUpPieces(const std::string& section) noexcept
+
+void Board::setUpPieces(const std::string& pieces) noexcept
 {
 	int fenIdx = 0;
 	for(int32_t rank = RANK_8; rank >= RANK_1; rank --)
 	{
 		for(uint32_t file = FILE_A; file <= FILE_H; ++file)
 		{
-			if(isdigit(section[fenIdx]))
+			if(isdigit(pieces[fenIdx]))
 			{
-				for(int32_t i = 0; i < section[fenIdx] - '0'; ++i)
+				for(int32_t i = 0; i < pieces[fenIdx] - '0'; ++i)
 				{
 					this->pieces[fileRankToSq(file, rank)] = EMPTY;
 					++file;
@@ -115,7 +119,7 @@ void Board::setUpPieces(const std::string& section) noexcept
 			}
 			else
 			{
-				switch(section[fenIdx])
+				switch(pieces[fenIdx])
 				{
 					case 'p':this->pieces[fileRankToSq(file, rank)] = bP;break;
 					case 'n':this->pieces[fileRankToSq(file, rank)] = bN;break;
@@ -136,12 +140,13 @@ void Board::setUpPieces(const std::string& section) noexcept
 		++fenIdx;
 	}
 }
-void Board::setUpCastlePerm(const std::string& section) noexcept
+
+void Board::setUpCastlePerm(const std::string& perm) noexcept
 {
 	this->castle_perm = 0;
-	if(section[0] != '-')
+	if(perm[0] != '-')
 	{
-		for(char i : section)
+		for(char i : perm)
 		{
 			switch(i)
 			{
@@ -161,15 +166,17 @@ void Board::setUpCastlePerm(const std::string& section) noexcept
 		}
 	}
 }
-void Board::getenPassant(const std::string& section) noexcept
+
+void Board::getEnPassant(const std::string& enPas) noexcept
 {
-	if(section != "-")
+	if(enPas != "-")
 	{
-		int file = section[0] - 'a';
-		int rank = section[1] - '1';
+		int file = enPas[0] - 'a';
+		int rank = enPas[1] - '1';
 		this->en_pas = fileRankToSq(file, rank);
 	}
 }
+
 void Board::setUpMoveCounters(std::istringstream& stream, std::string& section) noexcept
 {
 	if(stream.good())
@@ -185,6 +192,7 @@ void Board::setUpMoveCounters(std::istringstream& stream, std::string& section) 
 		this->hist_ply = 1;
 	}
 }
+
 void Board::parseFEN(const std::string& fen) noexcept
 {
 	this->resetBoard();
@@ -205,7 +213,7 @@ void Board::parseFEN(const std::string& fen) noexcept
 
 	// En Passant Square
 	std::getline(stream, section, ' ');
-	this->getenPassant(section);
+	this->getEnPassant(section);
 
 	// halfmove clock (halfmoves since capture or pawn advance)
 	std::getline(stream, section, ' ');
@@ -214,6 +222,7 @@ void Board::parseFEN(const std::string& fen) noexcept
 	this->pos_key = Hash::generatePosKey(*this);
 	this->updatePieceLists();
 }
+
 void Board::updatePieceLists() noexcept
 {
 	for(uint32_t index = 0; index < kBoardArraySize; ++index)
@@ -335,6 +344,7 @@ MoveList Board::getAllCaptureMoves() const noexcept
 	m.generateAllCaptureMoves(*this);
 	return m;
 }
+
 
 void Board::flipBoard() noexcept
 {

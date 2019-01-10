@@ -9,6 +9,10 @@
 
 #include "defs.h"
 
+/**
+ * This namespace holds all 781 polyglot hashkeys for use in the opening
+ * credits to http://hgm.nubati.net/book_format.html
+ */
 namespace PolyKeys
 {
    constexpr std::array<uint64_t, 781> Random64 {

@@ -104,14 +104,19 @@ bool SearchAgent::isGameOver(Board& pos) noexcept
 	}
 	return false;
 }
+
 void SearchAgent::checkStop(SearchInfo& info)
 {
-	if(info.timeLimit && Stopwatch::getTimeInMilli() > info.stopTime)
+	if((info.nodes & kInterval ) == 0)
 	{
-		info.stopped = true;
+		if(info.timeLimit && Stopwatch::getTimeInMilli() > info.stopTime)
+		{
+			info.stopped = true;
+		}
+		ReadInput(info);
 	}
-	ReadInput(info);
 }
+
 void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 {
 	for(uint32_t i = 0; i < kNumPceTypes; ++i)
@@ -130,7 +135,6 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 		}
 	}
 
-	// this->pv.clear();
 	pos.ply = 0;
 	info.startTime = Stopwatch::getTimeInMilli();
 	info.stopped = false;
@@ -141,22 +145,21 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 
 int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull) noexcept
 {
-	if(depth == 0) {
+	if(depth == 0) 
+	{
 		return this->quiescenceSearch(alpha, beta, pos, info);
     }
 
-	if((info.nodes & kInterval )== 0)
-	{
-		this->checkStop(info);
-	}
+	this->checkStop(info);
 
     ++info.nodes;
+
     if((isRepetition(pos) || pos.fifty_move >= 100) && pos.ply)
     {
     	return 0;
     }
 
-    if(static_cast<unsigned>(pos.ply) > kMaxSearchDepth - 1)
+    if(static_cast<unsigned>(pos.ply) >= kMaxSearchDepth)
     {
     	return eval.evaluatePosition(pos);
     }
@@ -293,10 +296,8 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 
 int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, SearchInfo& info) noexcept
 {
-	if( ( info.nodes & kInterval )== 0)
-	{
-		this->checkStop(info);
-	}
+
+	this->checkStop(info);
 
 	++info.nodes;
 	if(isRepetition(pos) || pos.fifty_move >= 100)

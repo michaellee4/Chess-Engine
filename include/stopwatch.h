@@ -4,7 +4,9 @@
 #include <chrono>
 #include <unistd.h>
 
-// Simple stopwatch class for benchmarking
+/**
+ * This class provides some basic benchmarking and timing functions
+ */
 class Stopwatch
 {
     typedef std::chrono::high_resolution_clock Time;
@@ -16,8 +18,26 @@ class Stopwatch
 		static constexpr int32_t kSecondsPerMinute = 60;
 		Stopwatch() noexcept;
 		~Stopwatch() noexcept;
+		
+		/**
+		 * Input: None
+		 * Output: None
+		 * Operation: Starts the internal timer.
+		 */
 		void start() noexcept;
+
+		/**
+		 * Input: None
+		 * Output: The time elapsed since start() was called in milliseconds
+		 * Operation: None
+		 */
 		float stop() noexcept;
+
+		/**
+		 * Input: None
+		 * Output: Time since the epoch in milliseconds.
+		 * Operation: None
+		 */
 		static uint64_t getTimeInMilli() noexcept;
 };
 

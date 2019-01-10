@@ -7,8 +7,14 @@
 #include "searchinfo.h"
 #include <string>
 
+/**
+ * This namespace provides several methods to print the various Engine data structures
+ */
 namespace IO
 {
+	/**
+	 * Dictionaries to provide string representations of pieces/sides/ranks/files/enPassant sq's
+	 */
 	const std::string PceChar = ".PNBRQKpnbrqk";
 	const std::string SideChar = "wb-";
 	const std::string RankChar = "12345678";
