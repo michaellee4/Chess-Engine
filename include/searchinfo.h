@@ -26,9 +26,6 @@ struct SearchInfo
 	bool quit;
 	bool stopped;
 
-	float fh;
-	float fhf;
-
 	int32_t protocol;
 	bool doPrint;
 	
@@ -42,8 +39,6 @@ struct SearchInfo
 				   infinite(false),
 				   quit(false),
 				   stopped(false),
-				   fh(0),
-				   fhf(0),
 				   protocol(2),
 				   doPrint(false){}
 };

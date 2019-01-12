@@ -80,6 +80,10 @@ public:
 	Evaluator eval;
 	PvTable pv;
 /**
+	@brief Depth reduction value used in null move pruning
+ */
+	static constexpr int32_t R = 4;
+/**
 	@brief Performs iterative deepening alpha-beta search on the position.
 	@param pos The current board state
 	@param info The engine's searchInfo object

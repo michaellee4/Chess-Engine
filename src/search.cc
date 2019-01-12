@@ -145,8 +145,6 @@ void SearchAgent::clearForSearch(Board& pos, SearchInfo& info) noexcept
 	info.startTime = Stopwatch::getTimeInMilli();
 	info.stopped = false;
 	info.nodes = 0;
-	info.fh = 0;
-	info.fhf = 0;
 }
 
 int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Board& pos, SearchInfo& info, bool doNull) noexcept
@@ -167,26 +165,28 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 
     if(static_cast<unsigned>(pos.ply) >= kMaxSearchDepth)
     {
-    	return eval.evaluatePosition(pos);
+    	return this->eval.evaluatePosition(pos);
     }
 
+    //extend depth if in check since check move is usually trivial
     if(pos.inCheck())
     {
     	depth ++;
     }
 
+    // Check if we have a valid entry in our transposition table
     int32_t score = -Value::kInfinity;
     Move pvMove = NOMOVE;
-
     if(this->pv.getHashEntry(pos, pvMove, score, alpha, beta, depth))
     {
     	return score;
     }
 
-    if(doNull && !pos.inCheck() && pos.ply && (pos.big_pce[pos.side_to_move] > 1) && depth >= 4)
+    // search null move
+    if(doNull && !pos.inCheck() && pos.ply && (pos.big_pce[pos.side_to_move] > 1) && depth >= R)
     {
     	MM::makeNullMove(pos);
-    	score = -alphaBeta(-beta, -beta + 1, depth - 4, pos, info, false);
+    	score = -1 * this->alphaBeta(-beta, -beta + 1, depth - R, pos, info, false);
     	MM::takeNullMove(pos);
     	if(info.stopped)
     	{
@@ -199,12 +199,8 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
     }
 
     MoveList m = pos.getAllMoves();
-    int32_t legalMoves = 0;
-    int32_t prevAlpha = alpha;
-    Move bestMove = NOMOVE;
-	score = -Value::kInfinity;
-	int32_t bestScore = -Value::kInfinity;
 
+	//assign pv bonus
     if(!pvMove.isNull())
     {
 		for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
@@ -216,6 +212,12 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 			}
 		}
     }
+
+    int32_t legalMoves = 0;
+    int32_t prevAlpha = alpha;
+    Move bestMove = NOMOVE;
+	score = -Value::kInfinity;
+	int32_t bestScore = -Value::kInfinity;
 
     bool foundPv = false;
 	for(uint32_t moveNum = 0; moveNum < m.size(); ++moveNum) 
@@ -250,6 +252,7 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
         	return 0;
         }
 
+        // we found a new best move, make sure it's within bounds
         if(score > bestScore)
         {
         	bestScore = score;
@@ -258,11 +261,6 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 	        {
 	        	if(score >= beta)
 	        	{
-	        		if(legalMoves == 1)
-	        		{
-	        			++info.fhf;
-	        		}
-	        		++info.fh;
 	        		if(!curMove.wasCapture())
 	        		{
 	        			pos.search_killers[1][pos.ply] = pos.search_killers[0][pos.ply];
@@ -280,15 +278,17 @@ int32_t SearchAgent::alphaBeta(int32_t alpha, int32_t beta, uint32_t depth, Boar
 	        }
         }
     }
+
+    // Check for mate
     if(legalMoves == 0)
     {
     	if(pos.sqAttacked(pos.king_sq[pos.side_to_move], !pos.side_to_move))
     	{
-    		// use infinity?
     		return -Value::kInfinity + pos.ply;
     	}
     	else return 0;
     }
+    // Found new, better move so let's stash it
     if(alpha != prevAlpha)
     {
     	this->pv.insert(pos, bestMove, bestScore, depth, HFEXACT);
@@ -350,11 +350,6 @@ int32_t SearchAgent::quiescenceSearch(int32_t alpha, int32_t beta, Board& pos, S
         {
         	if(score >= beta)
         	{
-        		if(legalMoves == 1)
-        		{
-        			++info.fhf;
-        		}
-        		++info.fh;
         		return beta;
         	}
         	alpha = score;
