@@ -5,7 +5,7 @@ C++ Chess Engine, UCI and XBoard/WinBoard compliant
 ## Usage
 To use the engine in console mode on linux
 1. Clone the repository
-2. Run 'make clean; 'make'
+2. Run 'make clean; 'make' ('make linux' puts the executable in bin/linux)
 3. Run the executable './ce'
 4. Type "console" into stdin
 5. Type "help" to pull up information on how to set up the board and make moves
