@@ -50,7 +50,9 @@ After downloading Arena, run the Arena executable select 'Engines' -> 'Install N
     5. To square
     6. From square
 </pre>
-
+* Enter moves to engine as follows
+     - [target][dest][promotion]?
+     - ex. a2a4, b7b8q
 ## Search
 * Iterative Deepening
 * Alpha-beta pruning
