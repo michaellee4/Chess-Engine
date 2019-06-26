@@ -70,7 +70,7 @@ void ConsoleManager::loop()
 			std::cout << ("time x - set thinking time to x seconds (depth still applies if set)\n");
 			std::cout << ("view - show current depth and movetime settings\n");
 			std::cout << ("** note ** - to reset time and depth, set to 0\n");
-			std::cout << ("enter moves using b7b8q notation\n\n\n");
+			std::cout << ("enter moves using [src][dest][promotion?] format, e.g a2a4, b7b8q\n\n\n");
 			std::cout << std::flush;
 		}
 		else if (buf == "quit" || buf[0] == 'q')
