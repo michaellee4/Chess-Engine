@@ -54,6 +54,7 @@ void ConsoleManager::loop()
 			if (std::cin.eof()) 
 			{
 				this->info.quit = true;
+				std::cout << std::endl;
 				break;
 			}
 			continue; 
