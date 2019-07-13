@@ -69,6 +69,7 @@ void ConsoleManager::loop()
 			std::cout << ("Commands:\n");
 			std::cout << ("quit - quit game\n");
 			std::cout << ("force - computer will not think\n");
+			std::cout << ("book [on/off]- toggle opening book usage\n");
 			std::cout << ("print - show board\n");
 			std::cout << ("post - show thinking\n");
 			std::cout << ("nopost - do not show thinking\n");
@@ -102,6 +103,11 @@ void ConsoleManager::loop()
 		else if(buf == "force")
 		{
 			engineSide = BOTH;
+		}
+		else if(buf == "book")
+		{
+			ss >> cmd;
+			Engine::getInstance().getConfig().useBook = (cmd == "on");
 		}
 		else if(buf == "view")
 		{
