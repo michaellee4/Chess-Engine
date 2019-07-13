@@ -49,7 +49,15 @@ void ConsoleManager::loop()
 
 		std::cout << '\n'<<kAppName<<" > " << std::flush;
 
-		if(!(getline (std::cin, buf))) { continue; }
+		if(!(getline (std::cin, buf))) 
+		{ 
+			if (std::cin.eof()) 
+			{
+				this->info.quit = true;
+				break;
+			}
+			continue; 
+		}
 		if(buf == "\n") { continue; }
 
 		std::stringstream ss(buf);
