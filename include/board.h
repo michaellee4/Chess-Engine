@@ -142,7 +142,9 @@ Example: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
 	@param side The attacking side
 	@return The number of times the target square is attacked by the given side
  */
-	uint32_t sqAttacked(const uint32_t sq, const uint32_t side) const noexcept;
+	uint32_t numAttackers(const uint32_t sq, const uint32_t side) const noexcept;
+	bool sqAttacked(const uint32_t sq, const uint32_t side) const noexcept;
+	
 /**
 	@brief Gets all the possible moves, including ones that happen during check.
 	@param None

@@ -1,0 +1,707 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 20.22      1.64     1.64 125049325     0.00     0.00  MM::makeMove(Board&, Move const&)
+ 20.22      3.28     1.64 125049325     0.00     0.00  Board::sqAttacked(unsigned int, unsigned int) const
+  9.99      4.09     0.81 250098650     0.00     0.00  MM::movePiece(unsigned int, unsigned int, Board&)
+  9.99      4.90     0.81 125049325     0.00     0.00  MM::takeMove(Board&)
+  5.43      5.34     0.44 105196954     0.00     0.00  MoveList::addQuietMove(Board const&, Move&&)
+  4.07      5.67     0.33 253007068     0.00     0.00  __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > std::__find_if<__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__ops::_Iter_equals_val<unsigned int const> >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__ops::_Iter_equals_val<unsigned int const>, std::random_access_iterator_tag)
+  2.71      5.89     0.22  5072213     0.00     0.00  MoveList::generatePawnMoves(Board const&, unsigned int)
+  2.71      6.11     0.22 350391536     0.00     0.00  sqOnBoard(unsigned int)
+  2.22      6.29     0.18 285209202     0.00     0.00  BB::setBit(unsigned long&, int)
+  2.10      6.46     0.17 285209170     0.00     0.00  BB::clearBit(unsigned long&, int)
+  2.10      6.63     0.17 125049325     0.00     0.00  Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int)
+  1.85      6.78     0.15  5072213     0.00     0.00  MoveList::generateRookMoves(Board const&, unsigned int)
+  1.60      6.91     0.13 38181488     0.00     0.00  MoveList::addPawnMove(Board const&, unsigned int, unsigned int, unsigned int)
+  1.60      7.04     0.13  5072213     0.00     0.00  MoveList::generateKnightMoves(Board const&, unsigned int)
+  1.48      7.16     0.12       20     0.01     0.40  std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf()
+  1.36      7.27     0.11 125049325     0.00     0.00  UndoMove::UndoMove(int, Board const&)
+  1.23      7.37     0.10  5072213     0.00     0.00  MoveList::generateBishopMoves(Board const&, unsigned int)
+  1.23      7.47     0.10 130121538     0.00     0.00  MoveList::size() const
+  1.11      7.56     0.09  5072213     0.00     0.00  MoveList::generateKingMoves(Board const&, unsigned int)
+  0.99      7.64     0.08 125049330     0.00     0.00  Move::Move(unsigned int)
+  0.86      7.71     0.07  2908418     0.00     0.00  MM::clearPiece(unsigned int, Board&)
+  0.74      7.77     0.06  5072213     0.00     0.00  MoveList::generateQueenMoves(Board const&, unsigned int)
+  0.62      7.82     0.05 244281814     0.00     0.00  Move::operator==(Move const&) const
+  0.62      7.87     0.05                             Move::operator=(Move&&)
+  0.37      7.90     0.03  5072213     0.00     0.00  MoveList::generateCastlingMoves(Board const&, unsigned int)
+  0.37      7.93     0.03 125049473     0.00     0.00  Move::Move(Move const&)
+  0.37      7.96     0.03                             Move::Move(unsigned int, int)
+  0.25      7.98     0.02 125049325     0.00     0.00  MoveList::operator[](int)
+  0.25      8.00     0.02  2908418     0.00     0.00  MM::addPiece(unsigned int, Board&, unsigned int)
+  0.25      8.02     0.02     2048     0.00     0.00  UndoMove::UndoMove()
+  0.25      8.04     0.02                             MoveList::reorderList(int)
+  0.25      8.06     0.02                             Stopwatch::getTimeInMilli()
+  0.25      8.08     0.02                             MoveList::operator[](int) const
+  0.12      8.09     0.01  5072213     0.00     0.00  MoveList::generateAllMoves(Board const&)
+  0.12      8.10     0.01       64     0.00     0.00  Move::Move()
+  0.12      8.11     0.01                             BB::countBits(unsigned long)
+  0.00      8.11     0.00  5072213     0.00     0.00  MoveList::MoveList()
+  0.00      8.11     0.00  5072213     0.00     0.00  Board::getAllMoves() const
+  0.00      8.11     0.00  1112062     0.00     0.00  MoveList::addPawnCaptureMove(Board const&, unsigned int, unsigned int, unsigned int, unsigned int)
+  0.00      8.11     0.00     1577     0.00     0.00  randU64()
+  0.00      8.11     0.00     1577     0.00     0.00  unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul> >(std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul>&, std::uniform_int_distribution<unsigned long>::param_type const&)
+  0.00      8.11     0.00      256     0.00     0.00  fileRankToSq(int, int)
+  0.00      8.11     0.00      153     0.00     0.00  std::__detail::_Hash_node<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, false> > >::_M_allocate_node<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&>(std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&)
+  0.00      8.11     0.00      120     0.00     0.00  isPiece(int)
+  0.00      8.11     0.00       20     0.00     0.00  Move::toString[abi:cxx11]() const
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z7runTestv
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z9sqOnBoardj
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10BoardUtils11Sq120ToSq64E
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10UCIManagerC2Ev
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN11PerftTesterC2Ev
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN11SearchAgentC2Ev
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN13XBoardManagerC2Ev
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN14ConsoleManagerC2Ev
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN2BB6popBitERm
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN2IO13printBitBoardEm
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN2MM10clearPieceEjR5Board
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4Hash14generatePosKeyERK5Board
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN5BoardC2Ev
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6EngineC2Ev
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN7PvEntryC2Em4Move
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN8MoveListC2Ev
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN8PolyBookC2Ev
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN8UndoMoveC2Ev
+  0.00      8.11     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN9Evaluator9evalPawnsERK5Board
+  0.00      8.11     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) [clone .constprop.0]
+  0.00      8.11     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) [clone .constprop.0]
+  0.00      8.11     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) [clone .constprop.0]
+  0.00      8.11     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) [clone .constprop.0]
+  0.00      8.11     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) [clone .constprop.0]
+  0.00      8.11     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) [clone .constprop.0]
+  0.00      8.11     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) [clone .constprop.0]
+  0.00      8.11     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) [clone .constprop.0]
+  0.00      8.11     0.00        1     0.00     0.00  __static_initialization_and_destruction_0(int, int) [clone .constprop.0]
+  0.00      8.11     0.00        1     0.00     7.93  PerftTester::perftTest(unsigned int, Board&, bool)
+  0.00      8.11     0.00        1     0.00     0.00  PerftTester::PerftTester()
+  0.00      8.11     0.00        1     0.00     0.00  IO::printBoard(Board const&)
+  0.00      8.11     0.00        1     0.00     0.00  Hash::generatePosKey(Board const&)
+  0.00      8.11     0.00        1     0.00     0.00  Init::initEvalMasks()
+  0.00      8.11     0.00        1     0.00     0.00  Init::initAll()
+  0.00      8.11     0.00        1     0.00     0.00  Board::resetBoard()
+  0.00      8.11     0.00        1     0.00     0.00  Board::setUpPieces(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      8.11     0.00        1     0.00     0.00  Board::updatePieceLists()
+  0.00      8.11     0.00        1     0.00     0.00  Board::parseFEN(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      8.11     0.00        1     0.00     0.03  Board::Board()
+  0.00      8.11     0.00        1     0.00     0.00  Engine::Engine()
+  0.00      8.11     0.00        1     0.00     0.00  PolyBook::readBook()
+  0.00      8.11     0.00        1     0.00     0.00  PolyBook::PolyBook()
+  0.00      8.11     0.00        1     0.00     0.00  Stopwatch::stop()
+  0.00      8.11     0.00        1     0.00     0.00  Stopwatch::start()
+  0.00      8.11     0.00        1     0.00     0.00  Stopwatch::Stopwatch()
+  0.00      8.11     0.00        1     0.00     0.00  Stopwatch::~Stopwatch()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.12% of 8.11 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     98.2    0.00    7.96                 runTest() [1]
+                0.00    7.93       1/1           PerftTester::perftTest(unsigned int, Board&, bool) [2]
+                0.00    0.03       1/1           Board::Board() [29]
+                0.00    0.00       1/1           PerftTester::PerftTester() [87]
+                0.00    0.00       1/1           Stopwatch::start() [98]
+                0.00    0.00       1/1           Stopwatch::Stopwatch() [99]
+                0.00    0.00       1/1           Stopwatch::stop() [97]
+                0.00    0.00       1/1           Stopwatch::~Stopwatch() [100]
+                0.00    0.00       1/1           Engine::Engine() [94]
+-----------------------------------------------
+                0.00    7.93       1/1           runTest() [1]
+[2]     97.8    0.00    7.93       1         PerftTester::perftTest(unsigned int, Board&, bool) [2]
+                0.12    7.81      20/20          std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf() [3]
+                0.00    0.00      20/125049325     MM::makeMove(Board&, Move const&) [4]
+                0.00    0.00       1/5072213     Board::getAllMoves() const [5]
+                0.00    0.00      20/125049325     MM::takeMove(Board&) [7]
+                0.00    0.00      21/130121538     MoveList::size() const [24]
+                0.00    0.00      20/125049473     Move::Move(Move const&) [31]
+                0.00    0.00      20/125049325     MoveList::operator[](int) [34]
+                0.00    0.00      20/20          Move::toString[abi:cxx11]() const [58]
+                0.00    0.00       1/1           IO::printBoard(Board const&) [88]
+-----------------------------------------------
+                             5072192             std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf() [3]
+                0.12    7.81      20/20          PerftTester::perftTest(unsigned int, Board&, bool) [2]
+[3]     97.8    0.12    7.81      20+5072192 std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf() [3]
+                1.64    2.58 125049305/125049325     MM::makeMove(Board&, Move const&) [4]
+                0.00    1.83 5072212/5072213     Board::getAllMoves() const [5]
+                0.80    0.84 124132516/125049325     MM::takeMove(Board&) [7]
+                0.10    0.00 130121517/130121538     MoveList::size() const [24]
+                0.02    0.00 125049305/125049325     MoveList::operator[](int) [34]
+                             5072192             std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf() [3]
+-----------------------------------------------
+                0.00    0.00      20/125049325     PerftTester::perftTest(unsigned int, Board&, bool) [2]
+                1.64    2.58 125049305/125049325     std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf() [3]
+[4]     52.0    1.64    2.58 125049325         MM::makeMove(Board&, Move const&) [4]
+                1.64    0.00 125049325/125049325     Board::sqAttacked(unsigned int, unsigned int) const [8]
+                0.41    0.34 125049325/250098650     MM::movePiece(unsigned int, unsigned int, Board&) [9]
+                0.11    0.00 125049325/125049325     UndoMove::UndoMove(int, Board const&) [23]
+                0.07    0.01 2908418/2908418     MM::clearPiece(unsigned int, Board&) [26]
+                0.01    0.01  916789/125049325     MM::takeMove(Board&) [7]
+-----------------------------------------------
+                0.00    0.00       1/5072213     PerftTester::perftTest(unsigned int, Board&, bool) [2]
+                0.00    1.83 5072212/5072213     std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf() [3]
+[5]     22.6    0.00    1.83 5072213         Board::getAllMoves() const [5]
+                0.01    1.79 5072213/5072213     MoveList::generateAllMoves(Board const&) [6]
+                0.03    0.00 5072213/5072213     MoveList::generateCastlingMoves(Board const&, unsigned int) [30]
+                0.00    0.00 5072213/5072213     MoveList::MoveList() [52]
+-----------------------------------------------
+                0.01    1.79 5072213/5072213     Board::getAllMoves() const [5]
+[6]     22.2    0.01    1.79 5072213         MoveList::generateAllMoves(Board const&) [6]
+                0.22    0.61 5072213/5072213     MoveList::generatePawnMoves(Board const&, unsigned int) [10]
+                0.13    0.20 5072213/5072213     MoveList::generateKnightMoves(Board const&, unsigned int) [14]
+                0.15    0.04 5072213/5072213     MoveList::generateRookMoves(Board const&, unsigned int) [16]
+                0.10    0.06 5072213/5072213     MoveList::generateBishopMoves(Board const&, unsigned int) [20]
+                0.06    0.09 5072213/5072213     MoveList::generateQueenMoves(Board const&, unsigned int) [21]
+                0.09    0.05 5072213/5072213     MoveList::generateKingMoves(Board const&, unsigned int) [22]
+-----------------------------------------------
+                0.00    0.00      20/125049325     PerftTester::perftTest(unsigned int, Board&, bool) [2]
+                0.01    0.01  916789/125049325     MM::makeMove(Board&, Move const&) [4]
+                0.80    0.84 124132516/125049325     std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf() [3]
+[7]     20.4    0.81    0.84 125049325         MM::takeMove(Board&) [7]
+                0.41    0.34 125049325/250098650     MM::movePiece(unsigned int, unsigned int, Board&) [9]
+                0.08    0.00 125049325/125049330     Move::Move(unsigned int) [25]
+                0.02    0.00 2908418/2908418     MM::addPiece(unsigned int, Board&, unsigned int) [33]
+-----------------------------------------------
+                1.64    0.00 125049325/125049325     MM::makeMove(Board&, Move const&) [4]
+[8]     20.2    1.64    0.00 125049325         Board::sqAttacked(unsigned int, unsigned int) const [8]
+-----------------------------------------------
+                0.41    0.34 125049325/250098650     MM::takeMove(Board&) [7]
+                0.41    0.34 125049325/250098650     MM::makeMove(Board&, Move const&) [4]
+[9]     18.3    0.81    0.67 250098650         MM::movePiece(unsigned int, unsigned int, Board&) [9]
+                0.33    0.00 250098650/253007068     __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > std::__find_if<__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__ops::_Iter_equals_val<unsigned int const> >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__ops::_Iter_equals_val<unsigned int const>, std::random_access_iterator_tag) [13]
+                0.18    0.00 280826152/285209202     BB::setBit(unsigned long&, int) [17]
+                0.17    0.00 280826152/285209170     BB::clearBit(unsigned long&, int) [18]
+-----------------------------------------------
+                0.22    0.61 5072213/5072213     MoveList::generateAllMoves(Board const&) [6]
+[10]    10.2    0.22    0.61 5072213         MoveList::generatePawnMoves(Board const&, unsigned int) [10]
+                0.13    0.24 38181488/38181488     MoveList::addPawnMove(Board const&, unsigned int, unsigned int, unsigned int) [12]
+                0.13    0.02 30907482/105196954     MoveList::addQuietMove(Board const&, Move&&) [11]
+                0.05    0.00 80979916/350391536     sqOnBoard(unsigned int) [15]
+                0.04    0.00 30912988/125049325     Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int) [19]
+                0.00    0.00 1112062/1112062     MoveList::addPawnCaptureMove(Board const&, unsigned int, unsigned int, unsigned int, unsigned int) [41]
+                0.00    0.00    5506/125049473     Move::Move(Move const&) [31]
+-----------------------------------------------
+                0.01    0.00 3321910/105196954     MoveList::generateKingMoves(Board const&, unsigned int) [22]
+                0.04    0.01 9112195/105196954     MoveList::generateQueenMoves(Board const&, unsigned int) [21]
+                0.10    0.02 23673879/105196954     MoveList::generateKnightMoves(Board const&, unsigned int) [14]
+                0.13    0.02 30907482/105196954     MoveList::generatePawnMoves(Board const&, unsigned int) [10]
+                0.16    0.02 38181488/105196954     MoveList::addPawnMove(Board const&, unsigned int, unsigned int, unsigned int) [12]
+[11]     6.3    0.44    0.07 105196954         MoveList::addQuietMove(Board const&, Move&&) [11]
+                0.04    0.00 210393908/244281814     Move::operator==(Move const&) const [27]
+                0.03    0.00 105196954/125049473     Move::Move(Move const&) [31]
+-----------------------------------------------
+                0.13    0.24 38181488/38181488     MoveList::generatePawnMoves(Board const&, unsigned int) [10]
+[12]     4.5    0.13    0.24 38181488         MoveList::addPawnMove(Board const&, unsigned int, unsigned int, unsigned int) [12]
+                0.16    0.02 38181488/105196954     MoveList::addQuietMove(Board const&, Move&&) [11]
+                0.05    0.00 38181488/125049325     Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int) [19]
+-----------------------------------------------
+                0.00    0.00 2908418/253007068     MM::clearPiece(unsigned int, Board&) [26]
+                0.33    0.00 250098650/253007068     MM::movePiece(unsigned int, unsigned int, Board&) [9]
+[13]     4.1    0.33    0.00 253007068         __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > std::__find_if<__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__ops::_Iter_equals_val<unsigned int const> >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__ops::_Iter_equals_val<unsigned int const>, std::random_access_iterator_tag) [13]
+-----------------------------------------------
+                0.13    0.20 5072213/5072213     MoveList::generateAllMoves(Board const&) [6]
+[14]     4.0    0.13    0.20 5072213         MoveList::generateKnightMoves(Board const&, unsigned int) [14]
+                0.10    0.02 23673879/105196954     MoveList::addQuietMove(Board const&, Move&&) [11]
+                0.05    0.00 81074992/350391536     sqOnBoard(unsigned int) [15]
+                0.03    0.00 24258743/125049325     Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int) [19]
+                0.00    0.00  584864/125049473     Move::Move(Move const&) [31]
+-----------------------------------------------
+                0.03    0.00 40577704/350391536     MoveList::generateKingMoves(Board const&, unsigned int) [22]
+                0.03    0.00 45051874/350391536     MoveList::generateRookMoves(Board const&, unsigned int) [16]
+                0.03    0.00 49681771/350391536     MoveList::generateQueenMoves(Board const&, unsigned int) [21]
+                0.03    0.00 53025279/350391536     MoveList::generateBishopMoves(Board const&, unsigned int) [20]
+                0.05    0.00 80979916/350391536     MoveList::generatePawnMoves(Board const&, unsigned int) [10]
+                0.05    0.00 81074992/350391536     MoveList::generateKnightMoves(Board const&, unsigned int) [14]
+[15]     2.7    0.22    0.00 350391536         sqOnBoard(unsigned int) [15]
+-----------------------------------------------
+                0.15    0.04 5072213/5072213     MoveList::generateAllMoves(Board const&) [6]
+[16]     2.3    0.15    0.04 5072213         MoveList::generateRookMoves(Board const&, unsigned int) [16]
+                0.03    0.00 45051874/350391536     sqOnBoard(unsigned int) [15]
+                0.01    0.00 4508384/125049325     Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int) [19]
+                0.00    0.00 8952644/244281814     Move::operator==(Move const&) const [27]
+                0.00    0.00 4508384/125049473     Move::Move(Move const&) [31]
+-----------------------------------------------
+                0.00    0.00      32/285209202     Board::updatePieceLists() [42]
+                0.00    0.00 4383018/285209202     MM::addPiece(unsigned int, Board&, unsigned int) [33]
+                0.18    0.00 280826152/285209202     MM::movePiece(unsigned int, unsigned int, Board&) [9]
+[17]     2.2    0.18    0.00 285209202         BB::setBit(unsigned long&, int) [17]
+-----------------------------------------------
+                0.00    0.00 4383018/285209170     MM::clearPiece(unsigned int, Board&) [26]
+                0.17    0.00 280826152/285209170     MM::movePiece(unsigned int, unsigned int, Board&) [9]
+[18]     2.1    0.17    0.00 285209170         BB::clearBit(unsigned long&, int) [18]
+-----------------------------------------------
+                0.00    0.00 1112062/125049325     MoveList::addPawnCaptureMove(Board const&, unsigned int, unsigned int, unsigned int, unsigned int) [41]
+                0.00    0.00 3330030/125049325     MoveList::generateKingMoves(Board const&, unsigned int) [22]
+                0.01    0.00 4508384/125049325     MoveList::generateRookMoves(Board const&, unsigned int) [16]
+                0.01    0.00 9509640/125049325     MoveList::generateQueenMoves(Board const&, unsigned int) [21]
+                0.02    0.00 13235990/125049325     MoveList::generateBishopMoves(Board const&, unsigned int) [20]
+                0.03    0.00 24258743/125049325     MoveList::generateKnightMoves(Board const&, unsigned int) [14]
+                0.04    0.00 30912988/125049325     MoveList::generatePawnMoves(Board const&, unsigned int) [10]
+                0.05    0.00 38181488/125049325     MoveList::addPawnMove(Board const&, unsigned int, unsigned int, unsigned int) [12]
+[19]     2.1    0.17    0.00 125049325         Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int) [19]
+-----------------------------------------------
+                0.10    0.06 5072213/5072213     MoveList::generateAllMoves(Board const&) [6]
+[20]     2.0    0.10    0.06 5072213         MoveList::generateBishopMoves(Board const&, unsigned int) [20]
+                0.03    0.00 53025279/350391536     sqOnBoard(unsigned int) [15]
+                0.02    0.00 13235990/125049325     Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int) [19]
+                0.01    0.00 24935262/244281814     Move::operator==(Move const&) const [27]
+                0.00    0.00 13235990/125049473     Move::Move(Move const&) [31]
+-----------------------------------------------
+                0.06    0.09 5072213/5072213     MoveList::generateAllMoves(Board const&) [6]
+[21]     1.8    0.06    0.09 5072213         MoveList::generateQueenMoves(Board const&, unsigned int) [21]
+                0.04    0.01 9112195/105196954     MoveList::addQuietMove(Board const&, Move&&) [11]
+                0.03    0.00 49681771/350391536     sqOnBoard(unsigned int) [15]
+                0.01    0.00 9509640/125049325     Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int) [19]
+                0.00    0.00  397445/125049473     Move::Move(Move const&) [31]
+-----------------------------------------------
+                0.09    0.05 5072213/5072213     MoveList::generateAllMoves(Board const&) [6]
+[22]     1.7    0.09    0.05 5072213         MoveList::generateKingMoves(Board const&, unsigned int) [22]
+                0.03    0.00 40577704/350391536     sqOnBoard(unsigned int) [15]
+                0.01    0.00 3321910/105196954     MoveList::addQuietMove(Board const&, Move&&) [11]
+                0.00    0.00 3330030/125049325     Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int) [19]
+                0.00    0.00    8120/125049473     Move::Move(Move const&) [31]
+-----------------------------------------------
+                0.11    0.00 125049325/125049325     MM::makeMove(Board&, Move const&) [4]
+[23]     1.4    0.11    0.00 125049325         UndoMove::UndoMove(int, Board const&) [23]
+-----------------------------------------------
+                0.00    0.00      21/130121538     PerftTester::perftTest(unsigned int, Board&, bool) [2]
+                0.10    0.00 130121517/130121538     std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf() [3]
+[24]     1.2    0.10    0.00 130121538         MoveList::size() const [24]
+-----------------------------------------------
+                0.00    0.00       5/125049330     __libc_csu_init [44]
+                0.08    0.00 125049325/125049330     MM::takeMove(Board&) [7]
+[25]     1.0    0.08    0.00 125049330         Move::Move(unsigned int) [25]
+-----------------------------------------------
+                0.07    0.01 2908418/2908418     MM::makeMove(Board&, Move const&) [4]
+[26]     0.9    0.07    0.01 2908418         MM::clearPiece(unsigned int, Board&) [26]
+                0.00    0.00 2908418/253007068     __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > std::__find_if<__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__ops::_Iter_equals_val<unsigned int const> >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__ops::_Iter_equals_val<unsigned int const>, std::random_access_iterator_tag) [13]
+                0.00    0.00 4383018/285209170     BB::clearBit(unsigned long&, int) [18]
+-----------------------------------------------
+                0.00    0.00 8952644/244281814     MoveList::generateRookMoves(Board const&, unsigned int) [16]
+                0.01    0.00 24935262/244281814     MoveList::generateBishopMoves(Board const&, unsigned int) [20]
+                0.04    0.00 210393908/244281814     MoveList::addQuietMove(Board const&, Move&&) [11]
+[27]     0.6    0.05    0.00 244281814         Move::operator==(Move const&) const [27]
+-----------------------------------------------
+                                                 <spontaneous>
+[28]     0.6    0.05    0.00                 Move::operator=(Move&&) [28]
+-----------------------------------------------
+                0.00    0.03       1/1           runTest() [1]
+[29]     0.4    0.00    0.03       1         Board::Board() [29]
+                0.02    0.00    2048/2048        UndoMove::UndoMove() [35]
+                0.01    0.00      64/64          Move::Move() [39]
+                0.00    0.00     128/125049473     Move::Move(Move const&) [31]
+                0.00    0.00       1/1           Board::parseFEN(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+-----------------------------------------------
+                0.03    0.00 5072213/5072213     Board::getAllMoves() const [5]
+[30]     0.4    0.03    0.00 5072213         MoveList::generateCastlingMoves(Board const&, unsigned int) [30]
+-----------------------------------------------
+                0.00    0.00      20/125049473     PerftTester::perftTest(unsigned int, Board&, bool) [2]
+                0.00    0.00     128/125049473     Board::Board() [29]
+                0.00    0.00    5506/125049473     MoveList::generatePawnMoves(Board const&, unsigned int) [10]
+                0.00    0.00    8120/125049473     MoveList::generateKingMoves(Board const&, unsigned int) [22]
+                0.00    0.00  397445/125049473     MoveList::generateQueenMoves(Board const&, unsigned int) [21]
+                0.00    0.00  584864/125049473     MoveList::generateKnightMoves(Board const&, unsigned int) [14]
+                0.00    0.00 1112062/125049473     MoveList::addPawnCaptureMove(Board const&, unsigned int, unsigned int, unsigned int, unsigned int) [41]
+                0.00    0.00 4508384/125049473     MoveList::generateRookMoves(Board const&, unsigned int) [16]
+                0.00    0.00 13235990/125049473     MoveList::generateBishopMoves(Board const&, unsigned int) [20]
+                0.03    0.00 105196954/125049473     MoveList::addQuietMove(Board const&, Move&&) [11]
+[31]     0.4    0.03    0.00 125049473         Move::Move(Move const&) [31]
+-----------------------------------------------
+                                                 <spontaneous>
+[32]     0.4    0.03    0.00                 Move::Move(unsigned int, int) [32]
+-----------------------------------------------
+                0.02    0.00 2908418/2908418     MM::takeMove(Board&) [7]
+[33]     0.3    0.02    0.00 2908418         MM::addPiece(unsigned int, Board&, unsigned int) [33]
+                0.00    0.00 4383018/285209202     BB::setBit(unsigned long&, int) [17]
+-----------------------------------------------
+                0.00    0.00      20/125049325     PerftTester::perftTest(unsigned int, Board&, bool) [2]
+                0.02    0.00 125049305/125049325     std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf() [3]
+[34]     0.2    0.02    0.00 125049325         MoveList::operator[](int) [34]
+-----------------------------------------------
+                0.02    0.00    2048/2048        Board::Board() [29]
+[35]     0.2    0.02    0.00    2048         UndoMove::UndoMove() [35]
+-----------------------------------------------
+                                                 <spontaneous>
+[36]     0.2    0.02    0.00                 MoveList::reorderList(int) [36]
+-----------------------------------------------
+                                                 <spontaneous>
+[37]     0.2    0.02    0.00                 Stopwatch::getTimeInMilli() [37]
+-----------------------------------------------
+                                                 <spontaneous>
+[38]     0.2    0.02    0.00                 MoveList::operator[](int) const [38]
+-----------------------------------------------
+                0.01    0.00      64/64          Board::Board() [29]
+[39]     0.1    0.01    0.00      64         Move::Move() [39]
+-----------------------------------------------
+                                                 <spontaneous>
+[40]     0.1    0.01    0.00                 BB::countBits(unsigned long) [40]
+-----------------------------------------------
+                0.00    0.00 1112062/1112062     MoveList::generatePawnMoves(Board const&, unsigned int) [10]
+[41]     0.0    0.00    0.00 1112062         MoveList::addPawnCaptureMove(Board const&, unsigned int, unsigned int, unsigned int, unsigned int) [41]
+                0.00    0.00 1112062/125049325     Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int) [19]
+                0.00    0.00 1112062/125049473     Move::Move(Move const&) [31]
+-----------------------------------------------
+                0.00    0.00       1/1           Board::parseFEN(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+[42]     0.0    0.00    0.00       1         Board::updatePieceLists() [42]
+                0.00    0.00      32/285209202     BB::setBit(unsigned long&, int) [17]
+                0.00    0.00     120/120         isPiece(int) [57]
+-----------------------------------------------
+                0.00    0.00       1/1           Board::Board() [29]
+[43]     0.0    0.00    0.00       1         Board::parseFEN(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+                0.00    0.00       1/1           Board::updatePieceLists() [42]
+                0.00    0.00       1/1           Board::resetBoard() [92]
+                0.00    0.00       1/1           Board::setUpPieces(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [93]
+                0.00    0.00       1/1           Hash::generatePosKey(Board const&) [89]
+-----------------------------------------------
+                                                 <spontaneous>
+[44]     0.0    0.00    0.00                 __libc_csu_init [44]
+                0.00    0.00       5/125049330     Move::Move(unsigned int) [25]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [86]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN10UCIManagerC2Ev [62]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN8UndoMoveC2Ev [76]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN9Evaluator9evalPawnsERK5Board [77]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [85]
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z9sqOnBoardj [60]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [84]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN11SearchAgentC2Ev [64]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN6EngineC2Ev [72]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN7PvEntryC2Em4Move [73]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN2MM10clearPieceEjR5Board [69]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN4Hash14generatePosKeyERK5Board [70]
+                0.00    0.00       1/1           _GLOBAL__sub_I__Z7runTestv [59]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [83]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN13XBoardManagerC2Ev [65]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [82]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN11PerftTesterC2Ev [63]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [81]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN14ConsoleManagerC2Ev [66]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN2BB6popBitERm [67]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN8MoveListC2Ev [74]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [80]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN2IO13printBitBoardEm [68]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN5BoardC2Ev [71]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [79]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN8PolyBookC2Ev [75]
+                0.00    0.00       1/1           __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [78]
+                0.00    0.00       1/1           _GLOBAL__sub_I__ZN10BoardUtils11Sq120ToSq64E [61]
+-----------------------------------------------
+                0.00    0.00 5072213/5072213     Board::getAllMoves() const [5]
+[52]     0.0    0.00    0.00 5072213         MoveList::MoveList() [52]
+-----------------------------------------------
+                0.00    0.00    1577/1577        Init::initAll() [91]
+[53]     0.0    0.00    0.00    1577         randU64() [53]
+                0.00    0.00    1577/1577        unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul> >(std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [54]
+-----------------------------------------------
+                                3579             unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul> >(std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [54]
+                0.00    0.00    1577/1577        randU64() [53]
+[54]     0.0    0.00    0.00    1577+3579    unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul> >(std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [54]
+                                3579             unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul> >(std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [54]
+-----------------------------------------------
+                0.00    0.00      64/256         Board::setUpPieces(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [93]
+                0.00    0.00      64/256         IO::printBoard(Board const&) [88]
+                0.00    0.00     128/256         Init::initAll() [91]
+[55]     0.0    0.00    0.00     256         fileRankToSq(int, int) [55]
+-----------------------------------------------
+                0.00    0.00     153/153         std::_Hashtable<unsigned int, std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::__detail::_Select1st, std::equal_to<unsigned int>, std::hash<unsigned int>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_Hashtable<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const*>(std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const*, std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const*, unsigned long, std::hash<unsigned int> const&, std::__detail::_Mod_range_hashing const&, std::__detail::_Default_ranged_hash const&, std::equal_to<unsigned int> const&, std::__detail::_Select1st const&, std::allocator<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&) [202]
+[56]     0.0    0.00    0.00     153         std::__detail::_Hash_node<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, false> > >::_M_allocate_node<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&>(std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [56]
+-----------------------------------------------
+                0.00    0.00     120/120         Board::updatePieceLists() [42]
+[57]     0.0    0.00    0.00     120         isPiece(int) [57]
+-----------------------------------------------
+                0.00    0.00      20/20          PerftTester::perftTest(unsigned int, Board&, bool) [2]
+[58]     0.0    0.00    0.00      20         Move::toString[abi:cxx11]() const [58]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[59]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z7runTestv [59]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[60]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z9sqOnBoardj [60]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[61]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10BoardUtils11Sq120ToSq64E [61]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[62]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10UCIManagerC2Ev [62]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[63]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN11PerftTesterC2Ev [63]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[64]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN11SearchAgentC2Ev [64]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[65]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN13XBoardManagerC2Ev [65]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[66]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN14ConsoleManagerC2Ev [66]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[67]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN2BB6popBitERm [67]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[68]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN2IO13printBitBoardEm [68]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[69]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN2MM10clearPieceEjR5Board [69]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[70]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4Hash14generatePosKeyERK5Board [70]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[71]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN5BoardC2Ev [71]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[72]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6EngineC2Ev [72]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[73]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN7PvEntryC2Em4Move [73]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[74]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN8MoveListC2Ev [74]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[75]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN8PolyBookC2Ev [75]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[76]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN8UndoMoveC2Ev [76]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[77]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN9Evaluator9evalPawnsERK5Board [77]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[78]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [78]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[79]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [79]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[80]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [80]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[81]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [81]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[82]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [82]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[83]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [83]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[84]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [84]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[85]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [85]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [44]
+[86]     0.0    0.00    0.00       1         __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [86]
+-----------------------------------------------
+                0.00    0.00       1/1           runTest() [1]
+[87]     0.0    0.00    0.00       1         PerftTester::PerftTester() [87]
+-----------------------------------------------
+                0.00    0.00       1/1           PerftTester::perftTest(unsigned int, Board&, bool) [2]
+[88]     0.0    0.00    0.00       1         IO::printBoard(Board const&) [88]
+                0.00    0.00      64/256         fileRankToSq(int, int) [55]
+-----------------------------------------------
+                0.00    0.00       1/1           Board::parseFEN(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+[89]     0.0    0.00    0.00       1         Hash::generatePosKey(Board const&) [89]
+-----------------------------------------------
+                0.00    0.00       1/1           Init::initAll() [91]
+[90]     0.0    0.00    0.00       1         Init::initEvalMasks() [90]
+-----------------------------------------------
+                0.00    0.00       1/1           Engine::Engine() [94]
+[91]     0.0    0.00    0.00       1         Init::initAll() [91]
+                0.00    0.00    1577/1577        randU64() [53]
+                0.00    0.00     128/256         fileRankToSq(int, int) [55]
+                0.00    0.00       1/1           Init::initEvalMasks() [90]
+-----------------------------------------------
+                0.00    0.00       1/1           Board::parseFEN(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+[92]     0.0    0.00    0.00       1         Board::resetBoard() [92]
+-----------------------------------------------
+                0.00    0.00       1/1           Board::parseFEN(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43]
+[93]     0.0    0.00    0.00       1         Board::setUpPieces(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [93]
+                0.00    0.00      64/256         fileRankToSq(int, int) [55]
+-----------------------------------------------
+                0.00    0.00       1/1           runTest() [1]
+[94]     0.0    0.00    0.00       1         Engine::Engine() [94]
+                0.00    0.00       1/1           Init::initAll() [91]
+                0.00    0.00       1/1           PolyBook::PolyBook() [96]
+                0.00    0.00       1/1           PolyBook::readBook() [95]
+-----------------------------------------------
+                0.00    0.00       1/1           Engine::Engine() [94]
+[95]     0.0    0.00    0.00       1         PolyBook::readBook() [95]
+-----------------------------------------------
+                0.00    0.00       1/1           Engine::Engine() [94]
+[96]     0.0    0.00    0.00       1         PolyBook::PolyBook() [96]
+-----------------------------------------------
+                0.00    0.00       1/1           runTest() [1]
+[97]     0.0    0.00    0.00       1         Stopwatch::stop() [97]
+-----------------------------------------------
+                0.00    0.00       1/1           runTest() [1]
+[98]     0.0    0.00    0.00       1         Stopwatch::start() [98]
+-----------------------------------------------
+                0.00    0.00       1/1           runTest() [1]
+[99]     0.0    0.00    0.00       1         Stopwatch::Stopwatch() [99]
+-----------------------------------------------
+                0.00    0.00       1/1           runTest() [1]
+[100]    0.0    0.00    0.00       1         Stopwatch::~Stopwatch() [100]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [59] _GLOBAL__sub_I__Z7runTestv [15] sqOnBoard(unsigned int) [22] MoveList::generateKingMoves(Board const&, unsigned int)
+  [60] _GLOBAL__sub_I__Z9sqOnBoardj [2] PerftTester::perftTest(unsigned int, Board&, bool) [10] MoveList::generatePawnMoves(Board const&, unsigned int)
+  [61] _GLOBAL__sub_I__ZN10BoardUtils11Sq120ToSq64E [87] PerftTester::PerftTester() [16] MoveList::generateRookMoves(Board const&, unsigned int)
+  [62] _GLOBAL__sub_I__ZN10UCIManagerC2Ev [17] BB::setBit(unsigned long&, int) [41] MoveList::addPawnCaptureMove(Board const&, unsigned int, unsigned int, unsigned int, unsigned int)
+  [63] _GLOBAL__sub_I__ZN11PerftTesterC2Ev [18] BB::clearBit(unsigned long&, int) [21] MoveList::generateQueenMoves(Board const&, unsigned int)
+  [64] _GLOBAL__sub_I__ZN11SearchAgentC2Ev [40] BB::countBits(unsigned long) [20] MoveList::generateBishopMoves(Board const&, unsigned int)
+  [65] _GLOBAL__sub_I__ZN13XBoardManagerC2Ev [88] IO::printBoard(Board const&) [14] MoveList::generateKnightMoves(Board const&, unsigned int)
+  [66] _GLOBAL__sub_I__ZN14ConsoleManagerC2Ev [26] MM::clearPiece(unsigned int, Board&) [30] MoveList::generateCastlingMoves(Board const&, unsigned int)
+  [67] _GLOBAL__sub_I__ZN2BB6popBitERm [33] MM::addPiece(unsigned int, Board&, unsigned int) [52] MoveList::MoveList()
+  [68] _GLOBAL__sub_I__ZN2IO13printBitBoardEm [4] MM::makeMove(Board&, Move const&) [34] MoveList::operator[](int)
+  [69] _GLOBAL__sub_I__ZN2MM10clearPieceEjR5Board [7] MM::takeMove(Board&) [95] PolyBook::readBook()
+  [70] _GLOBAL__sub_I__ZN4Hash14generatePosKeyERK5Board [9] MM::movePiece(unsigned int, unsigned int, Board&) [96] PolyBook::PolyBook()
+  [71] _GLOBAL__sub_I__ZN5BoardC2Ev [89] Hash::generatePosKey(Board const&) [23] UndoMove::UndoMove(int, Board const&)
+  [72] _GLOBAL__sub_I__ZN6EngineC2Ev [90] Init::initEvalMasks() [35] UndoMove::UndoMove()
+  [73] _GLOBAL__sub_I__ZN7PvEntryC2Em4Move [91] Init::initAll() [37] Stopwatch::getTimeInMilli()
+  [74] _GLOBAL__sub_I__ZN8MoveListC2Ev [31] Move::Move(Move const&) [97] Stopwatch::stop()
+  [75] _GLOBAL__sub_I__ZN8PolyBookC2Ev [25] Move::Move(unsigned int) [98] Stopwatch::start()
+  [76] _GLOBAL__sub_I__ZN8UndoMoveC2Ev [32] Move::Move(unsigned int, int) [99] Stopwatch::Stopwatch()
+  [77] _GLOBAL__sub_I__ZN9Evaluator9evalPawnsERK5Board [39] Move::Move() [100] Stopwatch::~Stopwatch()
+  [55] fileRankToSq(int, int) [19] Move::Move(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int) [58] Move::toString[abi:cxx11]() const
+  [78] __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [28] Move::operator=(Move&&) [27] Move::operator==(Move const&) const
+  [79] __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [92] Board::resetBoard() [8] Board::sqAttacked(unsigned int, unsigned int) const
+  [80] __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [93] Board::setUpPieces(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [5] Board::getAllMoves() const
+  [81] __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [42] Board::updatePieceLists() [24] MoveList::size() const
+  [82] __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [43] Board::parseFEN(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [38] MoveList::operator[](int) const
+  [83] __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [29] Board::Board() [54] unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul> >(std::linear_congruential_engine<unsigned long, 16807ul, 0ul, 2147483647ul>&, std::uniform_int_distribution<unsigned long>::param_type const&)
+  [84] __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [94] Engine::Engine() [3] std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::~basic_stringbuf()
+  [85] __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [12] MoveList::addPawnMove(Board const&, unsigned int, unsigned int, unsigned int) [56] std::__detail::_Hash_node<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, false>* std::__detail::_Hashtable_alloc<std::allocator<std::__detail::_Hash_node<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, false> > >::_M_allocate_node<std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&>(std::pair<unsigned int const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&)
+  [86] __static_initialization_and_destruction_0(int, int) [clone .constprop.0] [36] MoveList::reorderList(int) [13] __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > > std::__find_if<__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__ops::_Iter_equals_val<unsigned int const> >(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, __gnu_cxx::__ops::_Iter_equals_val<unsigned int const>, std::random_access_iterator_tag)
+  [57] isPiece(int)           [11] MoveList::addQuietMove(Board const&, Move&&)
+  [53] randU64()               [6] MoveList::generateAllMoves(Board const&)

@@ -261,7 +261,7 @@ void Board::updatePieceLists() noexcept
 	}
 }
 
-uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noexcept
+uint32_t Board::numAttackers(const uint32_t sq, const uint32_t attacker) const noexcept
 {
 	uint32_t numAttackers = 0;
 	// Check Pawn
@@ -334,9 +334,84 @@ uint32_t Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noe
 		if(this->pieces[sq + Attack::KiMoves[i]] == attackingKing)
 			++numAttackers;
 	}
-	// Check Diagonals
 
 	return numAttackers;
+}
+
+bool Board::sqAttacked(const uint32_t sq, const uint32_t attacker) const noexcept
+{
+	// Check Pawn
+	if(attacker == WHITE)
+	{
+		if(this->pieces[sq + Attack::wPCap[0]] == wP)
+			return true;
+		if(this->pieces[sq + Attack::wPCap[1]] == wP)
+			return true;
+	}
+	else
+	{
+		if(this->pieces[sq + Attack::bPCap[0]] == bP)
+			return true;
+		if(this->pieces[sq + Attack::bPCap[1]] == bP)
+			return true;
+	}
+	// Check Knight
+	uint32_t attackingKnight = attacker == WHITE ? wN : bN;
+	for(uint32_t i = 0; i < Attack::KnMoves.size(); ++i)
+	{
+		if(this->pieces[sq + Attack::KnMoves[i]] == attackingKnight)
+			return true;
+	}
+
+	// Check Horizontal and Vertical
+	uint32_t attackingRook = attacker == WHITE ? wR : bR;
+	uint32_t attackingQueen = attacker == WHITE ? wQ : bQ;
+	for(uint32_t i = 0 ; i < Attack::RkMoves.size(); ++i )
+	{
+		uint32_t move = Attack::RkMoves[i];
+		uint32_t t_sq = sq + move;
+		uint32_t pce = this->pieces[t_sq];
+		while(pce != OFFBOARD)
+		{
+			if(pce != EMPTY)
+			{
+				if(pce == attackingRook || pce == attackingQueen)
+					return true;
+				break;
+			}
+			t_sq += move;
+			pce = this->pieces[t_sq];
+		}
+
+	}
+
+	uint32_t attackingBishop = attacker == WHITE ? wB : bB;
+	for(uint32_t i = 0 ; i < Attack::BiMoves.size(); ++i )
+	{
+		uint32_t move = Attack::BiMoves[i];
+		uint32_t t_sq = sq + move;
+		uint32_t pce = this->pieces[t_sq];
+		while(pce != OFFBOARD)
+		{
+			if(pce != EMPTY)
+			{
+				if(pce == attackingBishop || pce == attackingQueen)
+					return true;
+				break;
+			}
+			t_sq += move;
+			pce = this->pieces[t_sq];
+		}
+	}
+
+	uint32_t attackingKing = attacker == WHITE ? wK : bK;
+	for(uint32_t i = 0; i < Attack::KiMoves.size(); ++i)
+	{
+		if(this->pieces[sq + Attack::KiMoves[i]] == attackingKing)
+			return true;
+	}
+
+	return false;
 }
 
 MoveList Board::getAllMoves() const noexcept
