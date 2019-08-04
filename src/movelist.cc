@@ -21,7 +21,7 @@ MoveList::MoveList() noexcept : moves()
 
 MoveList::MoveList(const MoveList& o) = default;
 
-MoveList::MoveList(MoveList&& o) noexcept : moves(std::move(o.moves)) {}
+MoveList::MoveList(MoveList&& o) noexcept = default; 
 
 void MoveList::addQuietMove(const Board& pos, Move&& move) noexcept
 {

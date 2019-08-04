@@ -17,7 +17,7 @@ PvEntry::PvEntry(uint64_t key, Move _move) noexcept : pos_key(key), move(std::mo
 
 PvEntry::PvEntry(const PvEntry& o) noexcept  = default;
 
-PvEntry::PvEntry(PvEntry&& o) noexcept : pos_key(o.pos_key), move(std::move(o.move)), score(o.score), depth(o.depth), flags(o.flags) {}
+PvEntry::PvEntry(PvEntry&& o) noexcept = default; 
 
 PvEntry::PvEntry() noexcept : pos_key(0ULL), move(NOMOVE), score(0), depth(0), flags(0) {}
 

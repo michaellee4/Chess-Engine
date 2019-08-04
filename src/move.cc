@@ -30,7 +30,7 @@ Move::Move() noexcept : move(0), score(0) {}
 
 Move::Move(const Move& o) noexcept  = default;
 
-Move::Move(Move&& o) noexcept : move(o.move), score(o.score){}
+Move::Move(Move&& o) noexcept = default; 
 
 const std::string Move::toString() const noexcept
 {
