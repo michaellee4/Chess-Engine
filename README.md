@@ -9,7 +9,9 @@ To use the engine in console mode on linux
 3. Run the executable './ce'
 4. Type "console" into stdin
 5. Type "help" to pull up information on how to set up the board and make moves
-6. Have fun!
+6. Enter moves to engine as follows
+     - [target][dest][promotion]?
+     - ex. a2a4, b7b8q
 
 ## Linking with Arena
 If you want to link the engine to the Arena Chess GUI then you will first need to download the latest version of Arena for your operating system here: http://www.playwitharena.com/
@@ -50,10 +52,9 @@ After downloading Arena, run the Arena executable select 'Engines' -> 'Install N
     5. To square
     6. From square
 </pre>
-* Enter moves to engine as follows
-     - [target][dest][promotion]?
-     - ex. a2a4, b7b8q
+
 ## Search
+* Mini-max
 * Iterative Deepening
 * Alpha-beta pruning
 * Quiescence search
@@ -70,6 +71,11 @@ After downloading Arena, run the Arena executable select 'Engines' -> 'Install N
 * Piece Square tables
 * Mobility
 * Pawn structure
+* Special Bonuses
+     - Bishop pair
+     - Non-Isolated Pawns
+     - Passed Pawns
+     - King endgame positioning
 
 ## Resources
 * https://www.chessprogramming.org/Main_Page
