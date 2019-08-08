@@ -76,6 +76,9 @@ After downloading Arena, run the Arena executable select 'Engines' -> 'Install N
      - Non-Isolated Pawns
      - Passed Pawns
      - King endgame positioning
+     
+## Documentation
+* Documentation can be viewed either via Doxygen in the docs/ directory or directly in the \*.h files located in the include/ directory
 
 ## Resources
 * https://www.chessprogramming.org/Main_Page
